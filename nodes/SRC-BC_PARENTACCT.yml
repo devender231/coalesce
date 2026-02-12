@@ -1,0 +1,73 @@
+fileVersion: 1
+id: 70c997d7-b76d-4b08-85ad-9a91525bbd82
+name: BC_PARENTACCT
+operation:
+  database: ""
+  deployEnabled: true
+  description: ""
+  locationName: SRC
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5cea129-88d3-4e61-9b5d-3261f7bebbcd
+          stepCounter: 70c997d7-b76d-4b08-85ad-9a91525bbd82
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: OWNERID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f809e23f-b06d-4d16-bd9f-740d2d9719c4
+          stepCounter: 70c997d7-b76d-4b08-85ad-9a91525bbd82
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FOREIGNENTITYID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d8131c48-c2f5-4282-ae41-7c14bc2cd076
+          stepCounter: 70c997d7-b76d-4b08-85ad-9a91525bbd82
+        config: {}
+        dataType: VARCHAR(20)
+        defaultValue: ""
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: BC_PARENTACCT
+  schema: ""
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
