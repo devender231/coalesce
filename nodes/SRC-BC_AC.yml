@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 20f21f43-850e-4063-8fa5-ac7dfdf5878e
-name: BC_ACCOUNT
+name: BC_AC
 operation:
   database: ""
   deployEnabled: true
@@ -293,7 +293,7 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
-  name: BC_ACCOUNT
+  name: BC_AC
   schema: ""
   sqlType: Source
   type: sourceInput
