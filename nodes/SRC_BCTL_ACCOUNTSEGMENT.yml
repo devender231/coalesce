@@ -3,66 +3,44 @@ id: SRC_BCTL_ACCOUNTSEGMENT
 name: SRC_BCTL_ACCOUNTSEGMENT
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: ''
-  database: ''
+  database: ""
   deployEnabled: true
   description: Source table BCTL_ACCOUNTSEGMENT
   isMultisource: false
   locationName: SOURCE
-  materializationType: view
+  materializationType: source
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
-        isBusinessKey: false
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
-        dataType: VARCHAR
-        defaultValue: ""
+        dataType: STRING
         description: ""
-        isBusinessKey: false
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -79,7 +57,7 @@ operation:
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTSEGMENT
   overrideSQL: false
-  schema: ''
+  schema: ""
   sqlType: Source
   type: sql
   version: 1
