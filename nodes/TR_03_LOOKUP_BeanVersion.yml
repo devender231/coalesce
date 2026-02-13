@@ -1,0 +1,142 @@
+fileVersion: 1
+id: tr-003-lookup-beanversion
+name: TR_03_LOOKUP_BeanVersion
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: "Transformation 3: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
+  isMultisource: true
+  locationName: TARGET
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: lkp-bean-001
+          stepCounter: tr-003-lookup-beanversion
+        config: {}
+        dataType: NUMBER(38,0)
+        description: "BatchID"
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: der-batch-001
+                stepCounter: tr-002-derived-batchid
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: lkp-bean-002
+          stepCounter: tr-003-lookup-beanversion
+        config: {}
+        dataType: NUMBER(38,0)
+        description: "Account ID"
+        name: ACCOUNT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: der-batch-002
+                stepCounter: tr-002-derived-batchid
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: lkp-bean-003
+          stepCounter: tr-003-lookup-beanversion
+        config: {}
+        dataType: VARCHAR(20)
+        description: "Public ID"
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: der-batch-003
+                stepCounter: tr-002-derived-batchid
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: lkp-bean-004
+          stepCounter: tr-003-lookup-beanversion
+        config: {}
+        dataType: VARCHAR(20)
+        description: "Source Bean Version"
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: der-batch-004
+                stepCounter: tr-002-derived-batchid
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: lkp-bean-005
+          stepCounter: tr-003-lookup-beanversion
+        config: {}
+        dataType: VARCHAR(20)
+        description: "EDW Bean Version from DIMBILLINGACCOUNT lookup"
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "dim.BEANVERSION"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: lkp-bean-006
+          stepCounter: tr-003-lookup-beanversion
+        config: {}
+        dataType: VARCHAR(255)
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: der-batch-005
+                stepCounter: tr-002-derived-batchid
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: lkp-bean-007
+          stepCounter: tr-003-lookup-beanversion
+        config: {}
+        dataType: VARCHAR(255)
+        description: "Account Name"
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: der-batch-006
+                stepCounter: tr-002-derived-batchid
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          TR_02_DERIVED_BatchID: derived_data
+          DIMBILLINGACCOUNT: dim
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TARGET
+            nodeName: TR_02_DERIVED_BatchID
+          - locationName: SRC
+            nodeName: DIMBILLINGACCOUNT
+        join:
+          joinCondition: |
+            FROM {{ ref('TARGET', 'TR_02_DERIVED_BatchID') }} derived_data
+            LEFT JOIN {{ ref('SRC', 'DIMBILLINGACCOUNT') }} dim
+              ON derived_data.PUBLICID = dim.PUBLICID
+        name: TR_03_LOOKUP_BeanVersion
+        noLinkRefs: []
+  name: TR_03_LOOKUP_BeanVersion
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
