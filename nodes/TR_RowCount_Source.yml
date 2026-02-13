@@ -1,0 +1,56 @@
+fileVersion: 1
+id: T1
+name: TR_RowCount_Source
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: "Counts source rows from OLE_SRC - GuideWire for audit tracking"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        description: "Source row count"
+        name: SOURCE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: J1
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          JOIN_DimBillingAccount: J1
+        customSQL:
+          customSQL: |
+            SELECT COUNT(*) AS SOURCE_ROW_COUNT
+            FROM {{ ref('SRC', 'JOIN_DimBillingAccount') }}
+        dependencies:
+          - locationName: SRC
+            nodeName: JOIN_DimBillingAccount
+        join:
+          joinCondition: ""
+        name: TR_RowCount_Source
+        noLinkRefs: []
+  name: TR_RowCount_Source
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
