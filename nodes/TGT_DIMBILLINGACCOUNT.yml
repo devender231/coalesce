@@ -1,0 +1,612 @@
+fileVersion: 1
+id: TGT_DIMBILLINGACCOUNT
+name: TGT_DIMBILLINGACCOUNT
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Loads and updates Snowflake table DIMBILLINGACCOUNT from GuideWire and related source tables, with SCD logic and audit row counts."
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account Name"
+        name: ACCOUNTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account Type Name"
+        name: ACCOUNTTYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Billing Level Name"
+        name: BILLINGLEVEL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Service Tier Name"
+        name: SERVICETIER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Security Zone Name"
+        name: SECURITYZONE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account Segment Name"
+        name: SEGMENT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Account Close Date"
+        name: CLOSEDATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Account Create Time"
+        name: CREATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Delinquency Status Name"
+        name: DELINQUENCYSTATUS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "First Twice Per Month Invoice Day of Month"
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Second Twice Per Month Invoice Day of Month"
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Public ID"
+        name: PUBLICID
+        nullable: true
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account ID"
+        name: ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Bean Version"
+        name: BEANVERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Retired Flag"
+        name: RETIRED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Update Time"
+        name: UPDATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C18
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Parent Account ID"
+        name: PARENTACCOUNTID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C18
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C19
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Insured First Name"
+        name: INSUREDFIRSTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C19
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C20
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Insured Last Name"
+        name: INSUREDLASTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C20
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Address Line 1"
+        name: ADDRESSLINE1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C21
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Address Line 2"
+        name: ADDRESSLINE2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C22
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C23
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Address Line 3"
+        name: ADDRESSLINE3
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C23
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C24
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "City"
+        name: CITY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C24
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C25
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Postal Code"
+        name: POSTALCODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C25
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C26
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "State Name"
+        name: STATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C26
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C27
+          stepCounter: TGT_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Batch ID for ETL tracking"
+        name: BATCHID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C27
+                stepCounter: TRANS_FINAL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+  name: TGT_DIMBILLINGACCOUNT
+  schema: ""
+  sqlType: Target
+  type: table
+  version: 1
+
+type: Node
