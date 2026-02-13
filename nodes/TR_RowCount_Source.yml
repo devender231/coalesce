@@ -1,56 +1,73 @@
 fileVersion: 1
-id: T1
+id: TR_RowCount_Source
 name: TR_RowCount_Source
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
     postSQL: ""
     preSQL: ""
-    testsEnabled: true
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: false
     truncateBefore: false
-  database: ""
+    warehouseName: ''
+  database: ''
   deployEnabled: true
-  description: "Counts source rows from OLE_SRC - GuideWire for audit tracking"
+  description: 'Row Count transformation - Counts source rows from OLE_SRC GuideWire and stores in User::SourceCount variable'
   isMultisource: false
-  locationName: SRC
+  locationName: TRANSFORM
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 1
-          stepCounter: T1
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: "Source row count"
+        dataType: NUMBER
+        defaultValue: ""
+        description: "Count of source rows"
         name: SOURCE_ROW_COUNT
         nullable: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: J1
+          - columnReferences: []
             transform: "COUNT(*)"
+      - columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: "Variable name for storing count"
+        name: VARIABLE_NAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'User::SourceCount'"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          JOIN_DimBillingAccount: J1
+          JOIN_DimBillingAccount: 1
         customSQL:
-          customSQL: |
-            SELECT COUNT(*) AS SOURCE_ROW_COUNT
-            FROM {{ ref('SRC', 'JOIN_DimBillingAccount') }}
+          customSQL: ""
         dependencies:
-          - locationName: SRC
+          - locationName: TRANSFORM
             nodeName: JOIN_DimBillingAccount
         join:
-          joinCondition: ""
+          joinCondition: |
+            FROM {{ ref('TRANSFORM', 'JOIN_DimBillingAccount') }} JOIN_DimBillingAccount
         name: TR_RowCount_Source
         noLinkRefs: []
   name: TR_RowCount_Source
   overrideSQL: false
-  schema: ""
-  sqlType: Stage
+  schema: ''
+  sqlType: Transform
   type: sql
   version: 1
-type: Node
