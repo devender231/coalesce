@@ -1,0 +1,34 @@
+name: TR_05_ROWCOUNT_UNCHANGED
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts unchanged rows where BeanVersion matches EDWBeanVersion
+config:
+  materialized: ephemeral
+  
+source:
+  name: TR_04_CONDITIONALSPLIT_SCD
+  type: conditional_split
+  output_path: UNCHANGED_ROWS
+
+transformation_logic:
+  operation: COUNT
+  count_variable: User::UnChangeCount
+  description: |
+    Captures the count of rows where BEANVERSION == EDWBeanVersion.
+    These rows require no action as they are already up-to-date in the dimension.
+    Count is stored in SSIS variable User::UnChangeCount for audit logging.
+
+output_columns:
+  - name: UNCHANGED_ROW_COUNT
+    data_type: INTEGER
+    expression: COUNT(*)
+    description: Total count of unchanged rows
+
+execution_order: 6
+dependencies:
+  - TR_04_CONDITIONALSPLIT_SCD
+
+notes: |
+  Fifth transformation in the pipeline (first row count after split).
+  Processes UNCHANGED_ROWS output from conditional split.
+  These rows are filtered out and not sent to the target dimension.
