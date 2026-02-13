@@ -1,0 +1,33 @@
+name: TR_01_ROWCOUNT_SOURCE
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts source rows from OLE_SRC - GuideWire for audit purposes
+config:
+  materialized: ephemeral
+  
+source:
+  name: JOIN_DIMBILLINGACCOUNT_ALL
+  type: join
+
+transformation_logic:
+  operation: COUNT
+  count_variable: User::SourceCount
+  description: |
+    Captures the total number of rows from the joined source data
+    before any filtering or transformation is applied.
+    This count is stored in SSIS variable User::SourceCount for audit logging.
+
+output_columns:
+  - name: ROW_COUNT
+    data_type: INTEGER
+    expression: COUNT(*)
+    description: Total count of source rows
+
+execution_order: 2
+dependencies:
+  - JOIN_DIMBILLINGACCOUNT_ALL
+
+notes: |
+  First transformation in the pipeline.
+  Executes immediately after all joins are complete.
+  Provides baseline row count for data quality validation and audit trail.
