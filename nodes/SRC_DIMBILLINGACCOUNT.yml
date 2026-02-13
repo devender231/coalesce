@@ -1,14 +1,57 @@
-name: SRC_DIMBILLINGACCOUNT
-type: source
-config:
-  source_type: table
+fileVersion: 1
+id: S15
+name: DIMBILLINGACCOUNT
+operation:
   database: ""
+  deployEnabled: true
+  description: ""
+  locationName: SOURCE
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S15
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: PUBLICID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S15
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+  name: DIMBILLINGACCOUNT
   schema: ""
-  table: DIMBILLINGACCOUNT
-  columns:
-    - name: PUBLICID
-      data_type: STRING
-      description: Public identifier
-    - name: BEANVERSION
-      data_type: STRING
-      description: Bean version for optimistic locking
+  sqlType: Source
+  type: sourceInput
+  version: 1
+
+type: Node
