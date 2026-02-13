@@ -1,0 +1,392 @@
+fileVersion: 1
+id: T1
+name: STG_DIMBILLINGACCOUNT
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Loads and updates Snowflake table DIMBILLINGACCOUNT from GuideWire and related source tables, with SCD logic and audit row counts."
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Public ID from BC_ACCOUNT"
+        name: PUBLICID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Bean version from BC_ACCOUNT"
+        name: BEANVERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account number"
+        name: ACCOUNTNUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account name"
+        name: ACCOUNTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account type ID"
+        name: ACCOUNTTYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Billing level ID"
+        name: BILLINGLEVEL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Service tier ID"
+        name: SERVICETIER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Security zone ID"
+        name: SECURITYZONEID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account segment ID"
+        name: SEGMENT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: T1
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Account close date"
+        name: CLOSEDATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
+          stepCounter: T1
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Account create time"
+        name: CREATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Delinquency status ID"
+        name: DELINQUENCYSTATUS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "First twice per month invoice day of month"
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Second twice per month invoice day of month"
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account ID from BC_ACCOUNT"
+        name: ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Retired flag"
+        name: RETIRED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: T1
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Account update time"
+        name: UPDATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+  name: STG_DIMBILLINGACCOUNT
+  schema: ""
+  sqlType: Target
+  type: table
+  version: 1
+
+type: Node
