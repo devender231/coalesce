@@ -5,7 +5,7 @@ operation:
   database: ""
   deployEnabled: true
   description: ""
-  locationName: SOURCE
+  locationName: SRC ("PC_COALESCE_DB"."RAW")
   metadata:
     columns:
       - acceptedValues:
