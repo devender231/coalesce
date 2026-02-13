@@ -10,17 +10,22 @@ operation:
   description: Source table BCTL_ACCOUNTTYPE
   isMultisource: false
   locationName: SOURCE
-  materializationType: view
+  materializationType: source
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -28,13 +33,18 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
@@ -58,6 +68,6 @@ operation:
   name: SRC_BCTL_ACCOUNTTYPE
   overrideSQL: false
   schema: ""
-  sqlType: Source
+  sqlType: SOURCE
   type: sql
   version: 1
