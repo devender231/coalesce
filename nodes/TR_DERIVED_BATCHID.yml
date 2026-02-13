@@ -1,0 +1,345 @@
+fileVersion: 1
+id: TR_DERIVED_BATCHID
+name: TR_DERIVED_BATCHID
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Derived Column transformation - Adds or overwrites BatchID column with value from User::BatchID variable"
+  isMultisource: false
+  locationName: TRANSFORM
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: INTEGER
+        description: "Account Number from BC_ACCOUNT"
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Account Name from BC_ACCOUNT"
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Account Type Name"
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: INTEGER
+        description: "Parent Account Foreign Entity ID"
+        name: PARENTACCT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Billing Level Name"
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Customer Service Tier Name"
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Security Zone Name"
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Delinquency Status Name"
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 9
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Account Segment Name"
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 10
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Insured Contact First Name"
+        name: INSURED_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 11
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Insured Contact Last Name"
+        name: INSURED_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 12
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Insured Address Line 1"
+        name: INSURED_ADDRESSLINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Insured Address Line 2"
+        name: INSURED_ADDRESSLINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 14
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Insured Address Line 3"
+        name: INSURED_ADDRESSLINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 15
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Insured City"
+        name: INSURED_CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 16
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Insured State Name"
+        name: INSURED_STATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 17
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Insured Postal Code"
+        name: INSURED_POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 18
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: DATETIME
+        description: "Account Close Date"
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 19
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: DATETIME
+        description: "Account Create Time"
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 20
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: INTEGER
+        description: "First Twice Per Month Invoice Day of Month"
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 21
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: INTEGER
+        description: "Second Twice Per Month Invoice Day of Month"
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 22
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Account Public ID"
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 23
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: STRING
+        description: "Account Bean Version"
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 24
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: INTEGER
+        description: "Account Retired Flag"
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 25
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: DATETIME
+        description: "Account Update Time"
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25
+                stepCounter: TR_ROW_COUNT_SOURCE
+            transform: ""
+      - columnReference:
+          columnCounter: 26
+          stepCounter: TR_DERIVED_BATCHID
+        dataType: INTEGER
+        description: "Derived column - BatchID from User::BatchID variable"
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "{{ var_BatchID }}"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TRANSFORM
+            nodeName: TR_ROW_COUNT_SOURCE
+        join:
+          joinCondition: ""
+        name: TR_DERIVED_BATCHID
+        noLinkRefs: []
+  name: TR_DERIVED_BATCHID
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
