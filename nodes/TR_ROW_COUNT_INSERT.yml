@@ -1,0 +1,48 @@
+fileVersion: 1
+id: TR_ROW_COUNT_INSERT
+name: TR_ROW_COUNT_INSERT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts new insert rows where lookup found no match in DIMBILLINGACCOUNT and stores in User::InsertCount variable"
+  isMultisource: false
+  locationName: TRANSFORM
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: TR_ROW_COUNT_INSERT
+        dataType: INTEGER
+        description: "Count of new insert rows (no EDW match)"
+        name: INSERT_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: |
+            SELECT COUNT(*) AS INSERT_ROW_COUNT
+            FROM {{ ref('TR_CONDITIONAL_SPLIT_SCD') }}
+            WHERE SCD_ACTION = 'INSERT'
+        dependencies:
+          - locationName: TRANSFORM
+            nodeName: TR_CONDITIONAL_SPLIT_SCD
+        join:
+          joinCondition: ""
+        name: TR_ROW_COUNT_INSERT
+        noLinkRefs: []
+  name: TR_ROW_COUNT_INSERT
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
