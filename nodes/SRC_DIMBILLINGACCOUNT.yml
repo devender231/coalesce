@@ -1,0 +1,14 @@
+name: SRC_DIMBILLINGACCOUNT
+type: source
+config:
+  source_type: table
+  database: ""
+  schema: ""
+  table: DIMBILLINGACCOUNT
+  columns:
+    - name: PUBLICID
+      data_type: STRING
+      description: Public identifier
+    - name: BEANVERSION
+      data_type: STRING
+      description: Bean version for optimistic locking
