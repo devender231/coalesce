@@ -10,17 +10,22 @@ operation:
   description: Source table BC_ADDRESS
   isMultisource: false
   locationName: SOURCE
-  materializationType: view
+  materializationType: source
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -28,13 +33,18 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_ADDRESS
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
@@ -42,13 +52,18 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_ADDRESS
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
@@ -56,13 +71,18 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_ADDRESS
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ADDRESSLINE3
         nullable: true
         sourceColumnReferences:
@@ -70,13 +90,18 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 5
           stepCounter: SRC_BC_ADDRESS
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: CITY
         nullable: true
         sourceColumnReferences:
@@ -84,13 +109,18 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 6
           stepCounter: SRC_BC_ADDRESS
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: POSTALCODE
         nullable: true
         sourceColumnReferences:
@@ -98,13 +128,18 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 7
           stepCounter: SRC_BC_ADDRESS
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: STATE
         nullable: true
         sourceColumnReferences:
@@ -112,13 +147,18 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -126,13 +166,18 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
         config: {}
         dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -156,6 +201,6 @@ operation:
   name: SRC_BC_ADDRESS
   overrideSQL: false
   schema: ""
-  sqlType: Source
+  sqlType: SOURCE
   type: sql
   version: 1
