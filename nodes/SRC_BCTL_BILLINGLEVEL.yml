@@ -1,57 +1,10 @@
-fileVersion: 1
-id: S10
-name: BCTL_BILLINGLEVEL
-operation:
-  database: ""
-  deployEnabled: true
-  description: ""
-  locationName: SOURCE
-  metadata:
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C1
-          stepCounter: S10
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: ID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C2
-          stepCounter: S10
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: NAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-  name: BCTL_BILLINGLEVEL
-  schema: ""
-  sqlType: Source
-  type: sourceInput
-  version: 1
-
-type: Node
+name: SRC_BCTL_BILLINGLEVEL
+type: source
+config:
+  source_name: BCTL_BILLINGLEVEL
+  source_type: table
+  columns:
+    - name: ID
+      data_type: string
+    - name: NAME
+      data_type: string
