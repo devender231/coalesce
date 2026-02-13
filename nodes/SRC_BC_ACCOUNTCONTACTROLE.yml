@@ -1,0 +1,23 @@
+name: SRC_BC_ACCOUNTCONTACTROLE
+type: source
+config:
+  source_type: table
+  database: ""
+  schema: ""
+  table: BC_ACCOUNTCONTACTROLE
+  columns:
+    - name: ACCOUNTCONTACTID
+      data_type: INTEGER
+      description: Account contact identifier
+    - name: ROLE
+      data_type: INTEGER
+      description: Role identifier
+    - name: ID
+      data_type: INTEGER
+      description: Primary key identifier
+    - name: BEANVERSION
+      data_type: STRING
+      description: Bean version for optimistic locking
+    - name: UPDATETIME
+      data_type: DATETIME
+      description: Last update timestamp
