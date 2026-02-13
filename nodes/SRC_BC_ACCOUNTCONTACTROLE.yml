@@ -1,117 +1,16 @@
-fileVersion: 1
-id: S4
-name: BC_ACCOUNTCONTACTROLE
-operation:
-  database: ""
-  deployEnabled: true
-  description: ""
-  locationName: SOURCE
-  metadata:
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C1
-          stepCounter: S4
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: ACCOUNTCONTACTID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C2
-          stepCounter: S4
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: ROLE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C3
-          stepCounter: S4
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: ID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C4
-          stepCounter: S4
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C5
-          stepCounter: S4
-        config: {}
-        dataType: DATETIME
-        defaultValue: ""
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-  name: BC_ACCOUNTCONTACTROLE
-  schema: ""
-  sqlType: Source
-  type: sourceInput
-  version: 1
-
-type: Node
+name: SRC_BC_ACCOUNTCONTACTROLE
+type: source
+config:
+  source_name: BC_ACCOUNTCONTACTROLE
+  source_type: table
+  columns:
+    - name: ACCOUNTCONTACTID
+      data_type: string
+    - name: ROLE
+      data_type: string
+    - name: ID
+      data_type: string
+    - name: BEANVERSION
+      data_type: string
+    - name: UPDATETIME
+      data_type: string
