@@ -1,309 +1,85 @@
 fileVersion: 1
-id: T2
+id: TR_DerivedColumn_BatchID
 name: TR_DerivedColumn_BatchID
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
     postSQL: ""
     preSQL: ""
-    testsEnabled: true
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: false
     truncateBefore: false
-  database: ""
+    warehouseName: ''
+  database: ''
   deployEnabled: true
-  description: "Adds or overwrites BatchID column from User variable"
+  description: 'Derived Column transformation - Adds BatchID column with value from User::BatchID variable'
   isMultisource: false
-  locationName: SRC
+  locationName: TRANSFORM
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 1
-          stepCounter: T2
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: ""
+        dataType: VARCHAR
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
+                stepCounter: 1
+            transform: "JOIN_DimBillingAccount.ACCOUNTNUMBER"
+      - columnReference:
           columnCounter: 2
-          stepCounter: T2
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: ""
+        dataType: VARCHAR
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: ACCOUNTTYPE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: T2
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: PARENTACCOUNT_ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: BILLINGLEVEL_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: SERVICETIER_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: SECURITYZONE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: DELINQUENCYSTATUS_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: ACCOUNTSEGMENT_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 10
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: INSURED_FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 10
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 11
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: INSURED_LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 11
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 12
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: ADDRESS_LINE1
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 12
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
+                stepCounter: 1
+            transform: "JOIN_DimBillingAccount.ACCOUNTNAME"
+      - columnReference:
           columnCounter: 13
-          stepCounter: T2
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: ""
-        name: ADDRESS_CITY
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 13
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 14
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
-        name: STATE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 14
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 15
-          stepCounter: T2
-        config: {}
-        dataType: STRING
-        description: ""
+        dataType: VARCHAR
         name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 15
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 16
-          stepCounter: T2
+              - columnCounter: 13
+                stepCounter: 1
+            transform: "JOIN_DimBillingAccount.PUBLICID"
+      - columnReference:
+          columnCounter: 15
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: ""
+        dataType: NUMBER
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 16
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 17
-          stepCounter: T2
+              - columnCounter: 15
+                stepCounter: 1
+            transform: "JOIN_DimBillingAccount.BEANVERSION"
+      - columnReference:
+          columnCounter: 37
+          stepCounter: 1
         config: {}
-        dataType: DATETIME
-        description: ""
-        name: CLOSEDATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 17
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 18
-          stepCounter: T2
-        config: {}
-        dataType: DATETIME
-        description: ""
-        name: CREATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 18
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 19
-          stepCounter: T2
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: FIRSTTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 19
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 20
-          stepCounter: T2
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 20
-                stepCounter: J1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 21
-          stepCounter: T2
-        config: {}
-        dataType: INTEGER
-        description: "Derived BatchID from User variable"
+        dataType: NUMBER
+        description: "Batch ID derived from User::BatchID variable"
         name: BATCHID
         nullable: false
         sourceColumnReferences:
@@ -313,21 +89,20 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          JOIN_DimBillingAccount: J1
+          JOIN_DimBillingAccount: 1
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SRC
+          - locationName: TRANSFORM
             nodeName: JOIN_DimBillingAccount
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'JOIN_DimBillingAccount') }} JOIN_DimBillingAccount
+            FROM {{ ref('TRANSFORM', 'JOIN_DimBillingAccount') }} JOIN_DimBillingAccount
         name: TR_DerivedColumn_BatchID
         noLinkRefs: []
   name: TR_DerivedColumn_BatchID
   overrideSQL: false
-  schema: ""
-  sqlType: Stage
+  schema: ''
+  sqlType: Transform
   type: sql
   version: 1
-type: Node
