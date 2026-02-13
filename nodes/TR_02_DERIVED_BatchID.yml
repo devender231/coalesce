@@ -1,0 +1,165 @@
+fileVersion: 1
+id: tr-002-derived-batchid
+name: TR_02_DERIVED_BatchID
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: "Transformation 2: Adds or overwrites BatchID column with value from User::BatchID variable"
+  isMultisource: false
+  locationName: TARGET
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: der-batch-001
+          stepCounter: tr-002-derived-batchid
+        config: {}
+        dataType: NUMBER(38,0)
+        description: "Derived BatchID from variable User::BatchID"
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "{{ var('BatchID') }}"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: der-batch-002
+          stepCounter: tr-002-derived-batchid
+        config: {}
+        dataType: NUMBER(38,0)
+        description: "Account ID"
+        name: ACCOUNT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: rc-src-002
+                stepCounter: tr-001-rowcount-source
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: der-batch-003
+          stepCounter: tr-002-derived-batchid
+        config: {}
+        dataType: VARCHAR(20)
+        description: "Public ID"
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: rc-src-003
+                stepCounter: tr-001-rowcount-source
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: der-batch-004
+          stepCounter: tr-002-derived-batchid
+        config: {}
+        dataType: VARCHAR(20)
+        description: "Bean Version"
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: rc-src-004
+                stepCounter: tr-001-rowcount-source
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: der-batch-005
+          stepCounter: tr-002-derived-batchid
+        config: {}
+        dataType: VARCHAR(255)
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: col-003
+                stepCounter: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: der-batch-006
+          stepCounter: tr-002-derived-batchid
+        config: {}
+        dataType: VARCHAR(255)
+        description: "Account Name"
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: col-004
+                stepCounter: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: der-batch-007
+          stepCounter: tr-002-derived-batchid
+        config: {}
+        dataType: VARCHAR(255)
+        description: "Account Type Name"
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: col-005
+                stepCounter: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: der-batch-008
+          stepCounter: tr-002-derived-batchid
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: "Create Time"
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: col-018
+                stepCounter: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: der-batch-009
+          stepCounter: tr-002-derived-batchid
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: "Update Time"
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: col-019
+                stepCounter: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          TR_01_ROW_COUNT_SourceCount: source_counted
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TARGET
+            nodeName: TR_01_ROW_COUNT_SourceCount
+        join:
+          joinCondition: |
+            FROM {{ ref('TARGET', 'TR_01_ROW_COUNT_SourceCount') }} source_counted
+        name: TR_02_DERIVED_BatchID
+        noLinkRefs: []
+  name: TR_02_DERIVED_BatchID
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
