@@ -1,0 +1,48 @@
+fileVersion: 1
+id: TR_ROW_COUNT_UNCHANGED
+name: TR_ROW_COUNT_UNCHANGED
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts unchanged rows where BeanVersion matches EDW BeanVersion and stores in User::UnChangeCount variable"
+  isMultisource: false
+  locationName: TRANSFORM
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: TR_ROW_COUNT_UNCHANGED
+        dataType: INTEGER
+        description: "Count of unchanged rows (BeanVersion matches)"
+        name: UNCHANGED_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: |
+            SELECT COUNT(*) AS UNCHANGED_ROW_COUNT
+            FROM {{ ref('TR_CONDITIONAL_SPLIT_SCD') }}
+            WHERE SCD_ACTION = 'UNCHANGED'
+        dependencies:
+          - locationName: TRANSFORM
+            nodeName: TR_CONDITIONAL_SPLIT_SCD
+        join:
+          joinCondition: ""
+        name: TR_ROW_COUNT_UNCHANGED
+        noLinkRefs: []
+  name: TR_ROW_COUNT_UNCHANGED
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
