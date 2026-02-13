@@ -1,0 +1,35 @@
+name: SRC_BC_ADDRESS
+type: source
+config:
+  source_type: table
+  database: ""
+  schema: ""
+  table: BC_ADDRESS
+  columns:
+    - name: ID
+      data_type: INTEGER
+      description: Primary key identifier
+    - name: ADDRESSLINE1
+      data_type: STRING
+      description: Address line 1
+    - name: ADDRESSLINE2
+      data_type: STRING
+      description: Address line 2
+    - name: ADDRESSLINE3
+      data_type: STRING
+      description: Address line 3
+    - name: CITY
+      data_type: STRING
+      description: City name
+    - name: POSTALCODE
+      data_type: STRING
+      description: Postal code
+    - name: STATE
+      data_type: INTEGER
+      description: State identifier
+    - name: BEANVERSION
+      data_type: STRING
+      description: Bean version for optimistic locking
+    - name: UPDATETIME
+      data_type: DATETIME
+      description: Last update timestamp
