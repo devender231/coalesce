@@ -1,0 +1,68 @@
+name: TR_02_DERIVED_BATCHID
+type: transformation
+transformation_type: DERIVED_COLUMN
+description: Adds or overwrites BatchID column with current batch identifier
+config:
+  materialized: view
+  
+source:
+  name: JOIN_DIMBILLINGACCOUNT_ALL
+  type: join
+
+transformation_logic:
+  operation: ADD_COLUMN
+  derived_columns:
+    - column_name: BatchID
+      data_type: INTEGER
+      expression: "@[User::BatchID]"
+      description: Current ETL batch identifier from SSIS variable
+      action: ADD_OR_REPLACE
+
+output_columns:
+  # Pass through all columns from join
+  - ACCOUNTNUMBER
+  - ACCOUNTNAME
+  - ACCOUNTTYPE
+  - BILLINGLEVEL
+  - SERVICETIER
+  - SECURITYZONEID
+  - SEGMENT
+  - CLOSEDATE
+  - CREATETIME
+  - DELINQUENCYSTATUS
+  - FIRSTTWICEPERMTHINVOICEDOM
+  - SECONDTWICEPERMTHINVOICEDOM
+  - PUBLICID
+  - ACCOUNT_ID
+  - BEANVERSION
+  - RETIRED
+  - UPDATETIME
+  - ACCOUNTTYPE_NAME
+  - PARENT_ACCOUNT_ID
+  - BILLINGLEVEL_NAME
+  - SERVICETIER_NAME
+  - SECURITYZONE_NAME
+  - DELINQUENCYSTATUS_NAME
+  - ACCOUNTSEGMENT_NAME
+  - INSURED_FIRSTNAME
+  - INSURED_LASTNAME
+  - INSURED_ADDRESS1
+  - INSURED_ADDRESS2
+  - INSURED_ADDRESS3
+  - INSURED_CITY
+  - INSURED_POSTALCODE
+  - INSURED_STATE
+  # New derived column
+  - name: BatchID
+    data_type: INTEGER
+    expression: "@[User::BatchID]"
+
+execution_order: 3
+dependencies:
+  - JOIN_DIMBILLINGACCOUNT_ALL
+  - TR_01_ROWCOUNT_SOURCE
+
+notes: |
+  Second transformation in the pipeline.
+  Adds BatchID to track which ETL batch processed each row.
+  BatchID value comes from SSIS package variable User::BatchID.
