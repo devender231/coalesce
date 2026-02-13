@@ -1,0 +1,46 @@
+name: TR_07_ROWCOUNT_UPDATE
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts update rows where BeanVersion differs from EDWBeanVersion
+config:
+  materialized: ephemeral
+  
+source:
+  name: TR_04_CONDITIONALSPLIT_SCD
+  type: conditional_split
+  output_path: CHANGED_ROWS
+
+transformation_logic:
+  operation: COUNT
+  count_variable: User::UpdateCount
+  description: |
+    Captures the count of rows where BEANVERSION != EDWBeanVersion.
+    These are existing records that have changed and will be updated in the dimension.
+    Count is stored in SSIS variable User::UpdateCount for audit logging.
+
+output_columns:
+  - name: UPDATE_ROW_COUNT
+    data_type: INTEGER
+    expression: COUNT(*)
+    description: Total count of rows to be updated
+
+execution_order: 8
+dependencies:
+  - TR_04_CONDITIONALSPLIT_SCD
+
+notes: |
+  Seventh and final transformation in the pipeline (third row count after split).
+  Processes CHANGED_ROWS output from conditional split.
+  These rows will be sent to the target dimension for UPDATE operation.
+  
+  Complete transformation sequence:
+  1. JOIN_DIMBILLINGACCOUNT_ALL (all joins)
+  2. TR_01_ROWCOUNT_SOURCE (source count)
+  3. TR_02_DERIVED_BATCHID (add BatchID)
+  4. TR_03_LOOKUP_DIMBILLINGACCOUNT (lookup existing records)
+  5. TR_04_CONDITIONALSPLIT_SCD (route based on SCD logic)
+  6. TR_05_ROWCOUNT_UNCHANGED (count unchanged)
+  7. TR_06_ROWCOUNT_INSERT (count inserts)
+  8. TR_07_ROWCOUNT_UPDATE (count updates)
+  
+  Target load: NEW_ROWS and CHANGED_ROWS are sent to DIMBILLINGACCOUNT for INSERT/UPDATE.
