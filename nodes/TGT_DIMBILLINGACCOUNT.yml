@@ -1,0 +1,689 @@
+fileVersion: 1
+id: T1
+name: DIMBILLINGACCOUNT
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Loads and updates Snowflake table DIMBILLINGACCOUNT from GuideWire and related source tables, with SCD logic and audit row counts."
+  locationName: TARGET
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account Name"
+        name: ACCOUNTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account Type Name from BCTL_ACCOUNTTYPE"
+        name: ACCOUNTTYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S9
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Billing Level Name from BCTL_BILLINGLEVEL"
+        name: BILLINGLEVEL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S10
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Customer Service Tier Name from BCTL_CUSTOMERSERVICETIER"
+        name: SERVICETIER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S11
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Security Zone Name from BC_SECURITYZONE"
+        name: SECURITYZONE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S12
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account Segment Name from BCTL_ACCOUNTSEGMENT"
+        name: SEGMENT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S14
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: T1
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Account Close Date"
+        name: CLOSEDATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: T1
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Account Create Time"
+        name: CREATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Delinquency Status Name from BCTL_DELINQUENCYSTATUS"
+        name: DELINQUENCYSTATUS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S13
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "First Twice Per Month Invoice Day of Month"
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Second Twice Per Month Invoice Day of Month"
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Public ID - Primary Key"
+        name: PUBLICID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: true
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account ID"
+        name: ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Bean Version for SCD tracking"
+        name: BEANVERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Retired Flag"
+        name: RETIRED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: T1
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Update Time"
+        name: UPDATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: S1
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C18
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Parent Account ID from BC_PARENTACCT"
+        name: PARENTACCOUNTID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S2
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C19
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Insured First Name from BC_CONTACT"
+        name: INSUREDFIRSTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S6
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C20
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Insured Last Name from BC_CONTACT"
+        name: INSUREDLASTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S6
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Address Line 1 from BC_ADDRESS"
+        name: ADDRESSLINE1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S7
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Address Line 2 from BC_ADDRESS"
+        name: ADDRESSLINE2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S7
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C23
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Address Line 3 from BC_ADDRESS"
+        name: ADDRESSLINE3
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S7
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C24
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "City from BC_ADDRESS"
+        name: CITY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S7
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C25
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "State Name from BCTL_STATE"
+        name: STATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S8
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C26
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Postal Code from BC_ADDRESS"
+        name: POSTALCODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S7
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C27
+          stepCounter: T1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Batch ID for ETL tracking"
+        name: BATCHID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "@[User::BatchID]"
+        transform: "@[User::BatchID]"
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C28
+          stepCounter: T1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "EDW Bean Version from existing DIMBILLINGACCOUNT for SCD comparison"
+        name: EDWBEANVERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S15
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+  name: DIMBILLINGACCOUNT
+  schema: ""
+  sqlType: Target
+  type: targetOutput
+  version: 1
+  dependencies:
+    - locationName: SOURCE
+      nodeName: BC_ACCOUNT
+    - locationName: SOURCE
+      nodeName: BC_PARENTACCT
+    - locationName: SOURCE
+      nodeName: BC_ACCOUNTCONTACT
+    - locationName: SOURCE
+      nodeName: BC_ACCOUNTCONTACTROLE
+    - locationName: SOURCE
+      nodeName: BCTL_ACCOUNTROLE
+    - locationName: SOURCE
+      nodeName: BC_CONTACT
+    - locationName: SOURCE
+      nodeName: BC_ADDRESS
+    - locationName: SOURCE
+      nodeName: BCTL_STATE
+    - locationName: SOURCE
+      nodeName: BCTL_ACCOUNTTYPE
+    - locationName: SOURCE
+      nodeName: BCTL_BILLINGLEVEL
+    - locationName: SOURCE
+      nodeName: BCTL_CUSTOMERSERVICETIER
+    - locationName: SOURCE
+      nodeName: BC_SECURITYZONE
+    - locationName: SOURCE
+      nodeName: BCTL_DELINQUENCYSTATUS
+    - locationName: SOURCE
+      nodeName: BCTL_ACCOUNTSEGMENT
+    - locationName: SOURCE
+      nodeName: DIMBILLINGACCOUNT
+  transformations:
+    - type: ROW_COUNT
+      description: "Counts source rows from OLE_SRC - GuideWire"
+      logic: "Variable: User::SourceCount"
+    - type: DERIVED
+      description: "Adds or overwrites BatchID column"
+      logic: "BatchID = @[User::BatchID]"
+    - type: LOOKUP
+      description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
+      logic: "SQL: Select Publicid, BeanVersion from DimBillingAccount; Join: PUBLICID = DIMBILLINGACCOUNT.PUBLICID"
+    - type: CONDITIONAL_SPLIT
+      description: "Routes rows based on whether BeanVersion matches EDWBeanVersion"
+      logic: "BeanVersion == EDWBeanVersion"
+    - type: ROW_COUNT
+      description: "Counts unchanged rows (BeanVersion matches)"
+      logic: "Variable: User::UnChangeCount"
+    - type: ROW_COUNT
+      description: "Counts new insert rows (lookup no match)"
+      logic: "Variable: User::InsertCount"
+    - type: ROW_COUNT
+      description: "Counts update rows (BeanVersion different)"
+      logic: "Variable: User::UpdateCount"
+  loadType: INSERT_UPDATE
+  scdLogic:
+    enabled: true
+    comparisonColumn: BEANVERSION
+    description: "SCD Type 1 logic - Updates existing records when BeanVersion differs, inserts new records when PUBLICID not found"
+
+type: Node
