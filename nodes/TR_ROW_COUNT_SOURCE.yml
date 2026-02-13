@@ -7,319 +7,511 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Row Count transformation - Counts source rows from GuideWire (OLE_SRC) and stores in User::SourceCount variable"
+  description: Row count transformation for source data - counts rows and stores in User::SourceCount variable
   isMultisource: false
   locationName: TRANSFORM
-  materializationType: view
+  materializationType: transformation
   metadata:
     appliedNodeTests: []
     columns:
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 1
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: INTEGER
-        description: "Account Number from BC_ACCOUNT"
+        description: ""
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 2
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: STRING
-        description: "Account Name from BC_ACCOUNT"
+        description: ""
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 3
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Account Type Name"
-        name: ACCOUNTTYPE_NAME
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 4
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: INTEGER
-        description: "Parent Account Foreign Entity ID"
-        name: PARENTACCT_FOREIGNENTITYID
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTTYPE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 5
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Billing Level Name"
-        name: BILLINGLEVEL_NAME
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: PARENTACCT_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 5
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 6
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Customer Service Tier Name"
-        name: SERVICETIER_NAME
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 6
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 7
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: STRING
-        description: "Security Zone Name"
-        name: SECURITYZONE_NAME
+        description: ""
+        name: BILLINGLEVEL_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 7
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 8
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Delinquency Status Name"
-        name: DELINQUENCYSTATUS_NAME
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SERVICETIER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 8
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 9
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: STRING
-        description: "Account Segment Name"
-        name: SEGMENT_NAME
+        description: ""
+        name: SERVICETIER_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 9
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 10
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Insured Contact First Name"
-        name: INSURED_FIRSTNAME
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECURITYZONEID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 10
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 11
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: STRING
-        description: "Insured Contact Last Name"
-        name: INSURED_LASTNAME
+        description: ""
+        name: SECURITYZONE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 11
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 12
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Insured Address Line 1"
-        name: INSURED_ADDRESSLINE1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 12
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 13
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: STRING
-        description: "Insured Address Line 2"
-        name: INSURED_ADDRESSLINE2
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 13
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 14
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Insured Address Line 3"
-        name: INSURED_ADDRESSLINE3
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SEGMENT
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 14
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 15
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: STRING
-        description: "Insured City"
-        name: INSURED_CITY
+        description: ""
+        name: SEGMENT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 15
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 16
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Insured State Name"
-        name: INSURED_STATE
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: INSURED_ACCOUNTID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 16
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 17
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Insured Postal Code"
-        name: INSURED_POSTALCODE
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTCONTACT_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 17
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 18
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: DATETIME
-        description: "Account Close Date"
-        name: CLOSEDATE
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTCONTACTROLE_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 18
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 19
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: DATETIME
-        description: "Account Create Time"
-        name: CREATETIME
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTROLE_TYPECODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 19
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 20
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: INTEGER
-        description: "First Twice Per Month Invoice Day of Month"
-        name: FIRSTTWICEPERMTHINVOICEDOM
+        description: ""
+        name: CONTACT_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 20
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 21
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: INTEGER
-        description: "Second Twice Per Month Invoice Day of Month"
-        name: SECONDTWICEPERMTHINVOICEDOM
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CONTACT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 21
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 22
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: STRING
-        description: "Account Public ID"
-        name: PUBLICID
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ADDRESS_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 22
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 23
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: STRING
-        description: "Account Bean Version"
-        name: BEANVERSION
+        description: ""
+        name: ADDRESS_LINE1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 23
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 24
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: INTEGER
-        description: "Account Retired Flag"
-        name: RETIRED
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_CITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 24
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 25
           stepCounter: TR_ROW_COUNT_SOURCE
-        dataType: DATETIME
-        description: "Account Update Time"
-        name: UPDATETIME
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: STATE_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 25
-                stepCounter: JOIN_DIMBILLINGACCOUNT_ALL
+                stepCounter: JOIN_ALL_TABLES
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 26
           stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: STRING
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 27
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
         dataType: INTEGER
-        description: "Row count stored in User::SourceCount variable"
-        name: SOURCE_ROW_COUNT
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 30
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 35
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 35
+                stepCounter: JOIN_ALL_TABLES
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 36
+          stepCounter: TR_ROW_COUNT_SOURCE
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ROW_COUNT
         nullable: false
         sourceColumnReferences:
           - columnReferences: []
@@ -327,14 +519,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          JOIN_ALL_TABLES: TR_ROW_COUNT_SOURCE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TRANSFORM
-            nodeName: JOIN_DIMBILLINGACCOUNT_ALL
+            nodeName: JOIN_ALL_TABLES
         join:
-          joinCondition: ""
+          joinCondition: "FROM {{ ref('TRANSFORM', 'JOIN_ALL_TABLES') }}"
         name: TR_ROW_COUNT_SOURCE
         noLinkRefs: []
   name: TR_ROW_COUNT_SOURCE
