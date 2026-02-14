@@ -1,0 +1,32 @@
+name: SRC_LOOKUP_BEANVERSION
+type: transformation
+transformation_type: lookup
+config:
+  description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
+  execution_order: 3
+source:
+  - SRC_DERIVED_BATCHID
+lookup_source:
+  table: SRC_DIMBILLINGACCOUNT
+  columns:
+    - PUBLICID
+    - BEANVERSION
+lookup_join:
+  join_type: LEFT
+  join_conditions:
+    - source_column: PUBLICID
+      lookup_column: PUBLICID
+      operator: "="
+lookup_output:
+  - lookup_column: BEANVERSION
+    output_alias: EDWBeanVersion
+    data_type: STRING
+    nullable: true
+    description: "BeanVersion from existing DimBillingAccount records"
+no_match_behavior:
+  action: pass_through
+  default_value: null
+output:
+  pass_through: true
+  include_all_source_columns: true
+  add_lookup_columns: true
