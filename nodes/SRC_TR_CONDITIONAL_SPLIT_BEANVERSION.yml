@@ -1,0 +1,44 @@
+name: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+type: transformation
+transformation_type: CONDITIONAL_SPLIT
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion
+execution_order: 4
+
+input:
+  source: SRC_TR_LOOKUP_BEANVERSION
+  description: Dataset with lookup results for BeanVersion
+
+transformation_logic:
+  operation: SPLIT_ROWS
+  
+  split_conditions:
+    # Output 1: Unchanged rows (BeanVersion matches)
+    - condition_name: UNCHANGED_ROWS
+      expression: "BEANVERSION == EDWBeanVersion"
+      output_name: UNCHANGED_OUTPUT
+      description: Rows where source and target BeanVersion match (no update needed)
+    
+    # Output 2: Update rows (BeanVersion different)
+    - condition_name: UPDATE_ROWS
+      expression: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+      output_name: UPDATE_OUTPUT
+      description: Rows where BeanVersion differs (update needed)
+    
+    # Output 3: Insert rows (no match in lookup)
+    - condition_name: INSERT_ROWS
+      expression: "EDWBeanVersion IS NULL"
+      output_name: INSERT_OUTPUT
+      description: Rows with no match in target table (new records to insert)
+
+outputs:
+  - name: UNCHANGED_OUTPUT
+    route_to: SRC_TR_ROW_COUNT_UNCHANGED
+    description: Records that don't need updating
+  
+  - name: UPDATE_OUTPUT
+    route_to: SRC_TR_ROW_COUNT_UPDATE
+    description: Records that need to be updated
+  
+  - name: INSERT_OUTPUT
+    route_to: SRC_TR_ROW_COUNT_INSERT
+    description: New records to be inserted
