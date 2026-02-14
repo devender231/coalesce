@@ -1,0 +1,22 @@
+name: SRC_TR_ROW_COUNT_UNCHANGED
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts unchanged rows (BeanVersion matches)
+execution_order: 5
+
+input:
+  source: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+  source_output: UNCHANGED_OUTPUT
+  description: Rows where BeanVersion matches EDWBeanVersion
+
+transformation_logic:
+  operation: COUNT_ROWS
+  output_variable: User::UnChangeCount
+  description: Counts rows that don't require updates
+
+output:
+  name: UNCHANGED_COUNTED
+  pass_through: true
+  metadata:
+    row_count_variable: User::UnChangeCount
+    action: NO_ACTION_REQUIRED
