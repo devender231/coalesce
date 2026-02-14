@@ -1,0 +1,52 @@
+fileVersion: 1
+id: T2
+name: SRC_TR_DERIVED_BATCHID
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: "Adds or overwrites BatchID column"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: T2
+        config: {}
+        dataType: INTEGER
+        description: "Batch ID from variable"
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "{{ var('BatchID') }}"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_JOINS_DIMBILLINGACCOUNT: J1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_JOINS_DIMBILLINGACCOUNT
+        join: |
+          FROM {{ ref('SRC', 'SRC_JOINS_DIMBILLINGACCOUNT') }} SRC_JOINS_DIMBILLINGACCOUNT
+        name: SRC_TR_DERIVED_BATCHID
+        noLinkRefs: []
+  name: SRC_TR_DERIVED_BATCHID
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
