@@ -1,32 +1,49 @@
+# SSIS Package: EDW_BC_Load_DimBillingAccount
+# Component: Transformation 3 - LOOKUP (BeanVersion)
+# Generated from SSIS documentation
+
 name: SRC_LOOKUP_BEANVERSION
 type: transformation
-transformation_type: lookup
-config:
-  description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
+transformation_type: LOOKUP
+description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+
+transformation_details:
   execution_order: 3
-source:
-  - SRC_DERIVED_BATCHID
-lookup_source:
-  table: SRC_DIMBILLINGACCOUNT
-  columns:
-    - PUBLICID
-    - BEANVERSION
-lookup_join:
-  join_type: LEFT
-  join_conditions:
-    - source_column: PUBLICID
-      lookup_column: PUBLICID
-      operator: "="
-lookup_output:
-  - lookup_column: BEANVERSION
-    output_alias: EDWBeanVersion
-    data_type: STRING
-    nullable: true
-    description: "BeanVersion from existing DimBillingAccount records"
-no_match_behavior:
-  action: pass_through
-  default_value: null
+  component_name: LOOKUP
+  operation: Lookup existing records
+  lookup_table: DIMBILLINGACCOUNT
+  
+logic:
+  description: Lookup BeanVersion from dimension table to identify new vs existing records
+  sql_query: "Select Publicid, BeanVersion from DimBillingAccount"
+  join_condition: PUBLICID = DIMBILLINGACCOUNT.PUBLICID
+  
+lookup_configuration:
+  lookup_table: DIMBILLINGACCOUNT
+  lookup_columns:
+    - Publicid
+    - BeanVersion
+  join_columns:
+    input_column: PUBLICID
+    lookup_column: PUBLICID
+  output_columns:
+    - column_name: BeanVersion
+      alias: EDWBeanVersion
+      description: Existing BeanVersion from dimension table
+  cache_mode: Full
+  
+input:
+  source: Previous transformation output (DERIVED)
+  join_key: PUBLICID
+  
 output:
-  pass_through: true
-  include_all_source_columns: true
-  add_lookup_columns: true
+  description: Data stream with looked up BeanVersion column
+  columns_added:
+    - EDWBeanVersion
+  no_match_handling: Output rows with NULL for lookup columns
+  
+metadata:
+  ssis_package: EDW_BC_Load_DimBillingAccount
+  component_type: Transformation
+  transformation_sequence: 3
+  generated_from: SSIS documentation
