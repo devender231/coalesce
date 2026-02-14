@@ -1,0 +1,37 @@
+# SSIS Package: EDW_BC_Load_DimBillingAccount
+# Component: Transformation 6 - ROW_COUNT (Insert Count)
+# Generated from SSIS documentation
+
+name: SRC_ROW_COUNT_INSERT
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts new insert rows (lookup no match)
+
+transformation_details:
+  execution_order: 6
+  component_name: ROW_COUNT
+  operation: Count new insert rows
+  source_output: Conditional Split - New_Records
+  variable_name: User::InsertCount
+  variable_type: Integer
+  
+logic:
+  description: Counts rows where lookup returned no match (new records to insert)
+  condition: ISNULL(EDWBeanVersion)
+  variable_assignment: User::InsertCount = COUNT(*)
+  
+input:
+  source_type: Conditional Split Output
+  source_name: New_Records
+  filter_condition: Lookup no match (NULL EDWBeanVersion)
+  
+output:
+  variable: User::InsertCount
+  description: Total count of new rows to insert into DIMBILLINGACCOUNT
+  action: Route to INSERT operation
+  
+metadata:
+  ssis_package: EDW_BC_Load_DimBillingAccount
+  component_type: Transformation
+  transformation_sequence: 6
+  generated_from: SSIS documentation
