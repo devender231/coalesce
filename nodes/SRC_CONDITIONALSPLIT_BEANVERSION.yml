@@ -1,0 +1,38 @@
+name: SRC_CONDITIONALSPLIT_BEANVERSION
+type: transformation
+transformation_type: conditional_split
+config:
+  description: "Routes rows based on whether BeanVersion matches EDWBeanVersion"
+  execution_order: 4
+source:
+  - SRC_LOOKUP_BEANVERSION
+conditions:
+  - condition_name: UNCHANGED_ROWS
+    expression: "BEANVERSION == EDWBeanVersion"
+    order: 1
+    description: "Rows where source BeanVersion matches existing EDW BeanVersion - no update needed"
+    output_path: unchanged
+  
+  - condition_name: UPDATE_ROWS
+    expression: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+    order: 2
+    description: "Rows where BeanVersion differs from EDW - needs update"
+    output_path: update
+  
+  - condition_name: INSERT_ROWS
+    expression: "EDWBeanVersion IS NULL"
+    order: 3
+    description: "Rows with no match in EDW - new inserts"
+    output_path: insert
+default_output:
+  name: DEFAULT
+  description: "Rows that don't match any condition"
+  output_path: default
+output:
+  split_outputs:
+    - name: unchanged
+      description: "Unchanged rows - counted but not loaded"
+    - name: update
+      description: "Rows to update in target"
+    - name: insert
+      description: "Rows to insert into target"
