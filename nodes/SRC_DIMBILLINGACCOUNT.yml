@@ -1,11 +1,12 @@
 fileVersion: 1
-id: S15
-name: DIMBILLINGACCOUNT
+id: SRC_DIMBILLINGACCOUNT
+name: SRC_DIMBILLINGACCOUNT
 operation:
   database: ""
   deployEnabled: true
-  description: ""
-  locationName: SRC
+  description: "Target table for DimBillingAccount - Loads and updates Snowflake table DIMBILLINGACCOUNT from GuideWire and related source tables, with SCD logic and audit row counts."
+  locationName: TARGET
+  materializationType: table
   metadata:
     columns:
       - acceptedValues:
@@ -14,16 +15,18 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: C1
-          stepCounter: S15
+          stepCounter: SRC_DIMBILLINGACCOUNT
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
-        description: ""
+        description: "Public ID from BC_ACCOUNT"
         name: PUBLICID
         nullable: true
-        primaryKey: false
+        primaryKey: true
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
         transform: ""
         uniqueKey: false
@@ -34,24 +37,552 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: C2
-          stepCounter: S15
+          stepCounter: SRC_DIMBILLINGACCOUNT
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
-        description: ""
+        description: "Bean version for SCD tracking"
         name: BEANVERSION
         nullable: true
         primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
         transform: ""
         uniqueKey: false
 
-  name: DIMBILLINGACCOUNT
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account number"
+        name: ACCOUNTNUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account name"
+        name: ACCOUNTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account type name from lookup"
+        name: ACCOUNTTYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BCTL_ACCOUNTTYPE
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Billing level name from lookup"
+        name: BILLINGLEVEL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BCTL_BILLINGLEVEL
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Service tier name from lookup"
+        name: SERVICETIER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Security zone name"
+        name: SECURITYZONE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BC_SECURITYZONE
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Account segment name from lookup"
+        name: SEGMENT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Account close date"
+        name: CLOSEDATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Account create time"
+        name: CREATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Delinquency status name from lookup"
+        name: DELINQUENCYSTATUS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BCTL_DELINQUENCYSTATUS
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "First twice per month invoice DOM"
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Second twice per month invoice DOM"
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Insured first name"
+        name: INSURED_FIRSTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BC_CONTACT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Insured last name"
+        name: INSURED_LASTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: SRC_BC_CONTACT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Address line 1"
+        name: ADDRESSLINE1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C18
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Address line 2"
+        name: ADDRESSLINE2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C19
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Address line 3"
+        name: ADDRESSLINE3
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C20
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "City"
+        name: CITY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "Postal code"
+        name: POSTALCODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: "State name from lookup"
+        name: STATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: SRC_BCTL_STATE
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C23
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Account ID"
+        name: ACCOUNTID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C24
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Retired flag"
+        name: RETIRED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C25
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: "Update time"
+        name: UPDATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C26
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Batch ID for ETL tracking"
+        name: BATCHID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "@[User::BatchID]"
+        transform: "@[User::BatchID]"
+        uniqueKey: false
+
+  name: SRC_DIMBILLINGACCOUNT
   schema: ""
-  sqlType: Source
-  type: sourceInput
+  sqlType: Target
+  type: table
   version: 1
 
 type: Node
