@@ -1,0 +1,53 @@
+fileVersion: 1
+id: T1
+name: SRC_TR_ROW_COUNT_SOURCE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: "Counts source rows from OLE_SRC - GuideWire"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: T1
+        config: {}
+        dataType: NUMBER
+        description: "Source row count"
+        name: SOURCE_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_JOIN_ALL_TABLES: J1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_JOIN_ALL_TABLES
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_JOIN_ALL_TABLES') }} SRC_JOIN_ALL_TABLES
+        name: SRC_TR_ROW_COUNT_SOURCE
+        noLinkRefs: []
+  name: SRC_TR_ROW_COUNT_SOURCE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
