@@ -1,17 +1,41 @@
+# SSIS Package: EDW_BC_Load_DimBillingAccount
+# Component: Transformation 2 - DERIVED (BatchID)
+# Generated from SSIS documentation
+
 name: SRC_DERIVED_BATCHID
 type: transformation
-transformation_type: derived_column
-config:
-  description: "Adds or overwrites BatchID column"
+transformation_type: DERIVED_COLUMN
+description: Adds or overwrites BatchID column
+
+transformation_details:
   execution_order: 2
-source:
-  - SRC_ROWCOUNT_SOURCE
+  component_name: DERIVED
+  operation: Add or overwrite column
+  column_name: BatchID
+  
+logic:
+  description: Adds BatchID column with value from SSIS variable
+  expression: BatchID = @[User::BatchID]
+  column_operation: Add or Replace
+  
 derived_columns:
   - column_name: BatchID
     expression: "@[User::BatchID]"
-    data_type: INTEGER
-    nullable: false
-    description: "Batch identifier from SSIS variable User::BatchID"
+    data_type: Integer
+    source: SSIS Variable
+    variable_name: User::BatchID
+    operation: Add or Replace
+    
+input:
+  source: Previous transformation output
+  
 output:
-  pass_through: true
-  include_all_source_columns: true
+  description: Data stream with BatchID column added
+  columns_added:
+    - BatchID
+  
+metadata:
+  ssis_package: EDW_BC_Load_DimBillingAccount
+  component_type: Transformation
+  transformation_sequence: 2
+  generated_from: SSIS documentation
