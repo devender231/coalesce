@@ -1,0 +1,18 @@
+name: SRC_ROWCOUNT_INSERT
+type: transformation
+transformation_type: row_count
+config:
+  description: "Counts new insert rows (lookup no match)"
+  execution_order: 6
+  variable_name: "User::InsertCount"
+source:
+  - SRC_CONDITIONALSPLIT_BEANVERSION
+  source_path: insert
+logic:
+  count_type: all_rows
+  output_variable: "User::InsertCount"
+  description: "Counts rows where EDWBeanVersion is NULL - new records to insert"
+output:
+  pass_through: true
+  add_count_column: false
+  route_to_target: true
