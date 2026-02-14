@@ -1,0 +1,15 @@
+name: SRC_BCTL_BILLINGLEVEL
+type: source
+config:
+  source_name: BCTL_BILLINGLEVEL
+  source_type: table
+  database: ""
+  schema: ""
+  table: BCTL_BILLINGLEVEL
+columns:
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: NAME
+    data_type: STRING
+    nullable: true
