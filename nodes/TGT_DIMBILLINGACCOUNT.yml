@@ -607,7 +607,7 @@ operation:
   schema: ""
   type: table
 
-type: Node
+type: sql | sourceInput
 dependencies:
   - locationName: SRC
     nodeName: SRC_TR_CONDITIONALSPLIT
