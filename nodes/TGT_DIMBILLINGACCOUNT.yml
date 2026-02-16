@@ -4,7 +4,7 @@ name: TGT_DIMBILLINGACCOUNT
 operation:
   database: ""
   deployEnabled: true
-  description: "Target table for DimBillingAccount with SCD logic - loads INSERT and UPDATE rows from final business transformation"
+  description: "Target table for DimBillingAccount - materializes INSERT and UPDATE rows from conditional split transformation"
   locationName: TARGET
   materializationType: table
   metadata:
@@ -26,7 +26,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C1
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -48,7 +48,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -70,7 +70,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C3
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -92,7 +92,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C4
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -114,7 +114,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C5
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -136,7 +136,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C6
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -158,7 +158,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C7
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -180,7 +180,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C8
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -202,7 +202,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C9
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -224,7 +224,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C10
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -246,7 +246,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C11
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -268,7 +268,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C12
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -290,7 +290,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C13
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -312,7 +312,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C14
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -334,7 +334,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C15
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -356,7 +356,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C16
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -378,7 +378,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C17
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -400,7 +400,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C18
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -422,7 +422,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C19
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -444,7 +444,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C20
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -466,7 +466,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C21
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -488,7 +488,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C22
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -510,7 +510,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C23
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -532,7 +532,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C24
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -554,7 +554,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C25
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -576,7 +576,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C26
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
@@ -598,18 +598,16 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C27
-                stepCounter: SRC_TR_FINAL_BUSINESS
+                stepCounter: T4
             transform: ""
         transform: ""
         uniqueKey: false
 
   name: TGT_DIMBILLINGACCOUNT
   schema: ""
-  sqlType: Target
   type: table
-  version: 1
 
 type: Node
-dependsOn:
-  - locationName: TARGET
-    nodeName: SRC_TR_FINAL_BUSINESS
+dependencies:
+  - locationName: SRC
+    nodeName: SRC_TR_CONDITIONALSPLIT
