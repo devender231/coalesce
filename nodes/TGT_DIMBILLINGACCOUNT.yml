@@ -1,6 +1,7 @@
 fileVersion: 1
-id: TGT_TEST
-name: TGT_TEST
+id: TGT_DIMBILLINGACCOUNT
+name: TGT_DIMBILLINGACCOUNT
+
 type: Dimension-Dimension
 
 dependencies:
@@ -10,4 +11,4 @@ operation:
   type: table
   database: ""
   schema: ""
-  table: TEST_TABLE
+  table: DIMBILLINGACCOUNT
