@@ -1,19 +1,17 @@
+fileVersion: 1.0
 name: SRC_BC_SECURITYZONE
 type: source
-config:
-  source_name: BC_SECURITYZONE
-  source_type: table
-  location: SRC (GUIDEWIRE.BC.BC_SECURITYZONE)
-  columns:
-    - name: ID
-      data_type: INTEGER
-      nullable: true
-    - name: NAME
-      data_type: STRING
-      nullable: true
-    - name: BEANVERSION
-      data_type: STRING
-      nullable: true
-    - name: UPDATETIME
-      data_type: DATETIME
-      nullable: true
+description: Source table for BC_SECURITYZONE
+sourceLocation:
+  database: BC
+  schema: DBO
+  table: BC_SECURITYZONE
+columns:
+  - name: ID
+    dataType: BIGINT
+  - name: NAME
+    dataType: VARCHAR
+  - name: BEANVERSION
+    dataType: INT
+  - name: UPDATETIME
+    dataType: DATETIME
