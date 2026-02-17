@@ -1,70 +1,11 @@
-fileVersion: 1
-id: SRC_BCTL_CUSTOMERSERVICETIER
 name: SRC_BCTL_CUSTOMERSERVICETIER
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BCTL_CUSTOMERSERVICETIER
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_BCTL_CUSTOMERSERVICETIER: BCTL_CUSTOMERSERVICETIER
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_CUSTOMERSERVICETIER
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} "SRC_BCTL_CUSTOMERSERVICETIER"
-        name: SRC_BCTL_CUSTOMERSERVICETIER
-        noLinkRefs: []
-  name: SRC_BCTL_CUSTOMERSERVICETIER
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+source:
+  location: SRC ("GUIDEWIRE"."BCTL"."BCTL_CUSTOMERSERVICETIER")
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: NAME
+      data_type: STRING
+      nullable: true
