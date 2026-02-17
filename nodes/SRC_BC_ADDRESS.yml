@@ -1,32 +1,45 @@
 name: SRC_BC_ADDRESS
 type: source
 config:
-  source_location: SRC_BILLCENTRAL_DBO_BC_ADDRESS
+  source_name: BC_ADDRESS
+  source_type: table
+  source_location:
+    database: ""
+    schema: ""
   columns:
     - name: ID
-      data_type: BIGINT
+      data_type: INTEGER
+      nullable: true
       order: 1
     - name: ADDRESSLINE1
-      data_type: VARCHAR
+      data_type: STRING
+      nullable: true
       order: 2
     - name: ADDRESSLINE2
-      data_type: VARCHAR
+      data_type: STRING
+      nullable: true
       order: 3
     - name: ADDRESSLINE3
-      data_type: VARCHAR
+      data_type: STRING
+      nullable: true
       order: 4
     - name: CITY
-      data_type: VARCHAR
+      data_type: STRING
+      nullable: true
       order: 5
     - name: POSTALCODE
-      data_type: VARCHAR
+      data_type: STRING
+      nullable: true
       order: 6
     - name: STATE
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 7
     - name: BEANVERSION
-      data_type: INT
+      data_type: STRING
+      nullable: true
       order: 8
     - name: UPDATETIME
       data_type: DATETIME
+      nullable: true
       order: 9
