@@ -1,0 +1,12 @@
+name: SRC_BC_ACCOUNTCONTACTROLE
+type: source
+source:
+  database: GUIDEWIRE
+  schema: BC
+  table: BC_ACCOUNTCONTACTROLE
+columns:
+  - name: ACCOUNTCONTACTID
+  - name: ROLE
+  - name: ID
+  - name: BEANVERSION
+  - name: UPDATETIME
