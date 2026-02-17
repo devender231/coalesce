@@ -1,13 +1,13 @@
-fileVersion: 1.0
 name: SRC_BCTL_ACCOUNTTYPE
 type: source
-description: Source table for BCTL_ACCOUNTTYPE
-sourceLocation:
-  database: BC
-  schema: DBO
+location:
+  database: BILLINGCENTER
+  schema: BCTL
   table: BCTL_ACCOUNTTYPE
 columns:
   - name: ID
     dataType: BIGINT
+    nullable: true
   - name: NAME
     dataType: VARCHAR
+    nullable: true
