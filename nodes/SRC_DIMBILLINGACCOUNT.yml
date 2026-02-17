@@ -1,15 +1,63 @@
+fileVersion: 1
+id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
-type: source
-config:
-  source_name: DIMBILLINGACCOUNT
-  database: EDW
-  schema: DW
-  table: DIMBILLINGACCOUNT
-  location: EDW.DW.DIMBILLINGACCOUNT
-columns:
-  - name: PUBLICID
-    data_type: STRING
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Source table DIMBILLINGACCOUNT from SSIS package EDW_BC_Load_DimBillingAccount
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_DIMBILLINGACCOUNT
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_DIMBILLINGACCOUNT
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: DIMBILLINGACCOUNT
+        join:
+          joinCondition: ""
+        name: SRC_DIMBILLINGACCOUNT
+        noLinkRefs: []
+  name: SRC_DIMBILLINGACCOUNT
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
