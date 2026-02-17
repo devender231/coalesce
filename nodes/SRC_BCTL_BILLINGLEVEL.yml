@@ -1,13 +1,13 @@
+fileVersion: 1.0
 name: SRC_BCTL_BILLINGLEVEL
 type: source
-config:
-  source_name: BCTL_BILLINGLEVEL
-  source_type: table
-  location: SRC (GUIDEWIRE.BCTL.BCTL_BILLINGLEVEL)
-  columns:
-    - name: ID
-      data_type: INTEGER
-      nullable: true
-    - name: NAME
-      data_type: STRING
-      nullable: true
+description: Source table for BCTL_BILLINGLEVEL
+sourceLocation:
+  database: BC
+  schema: DBO
+  table: BCTL_BILLINGLEVEL
+columns:
+  - name: ID
+    dataType: BIGINT
+  - name: NAME
+    dataType: VARCHAR
