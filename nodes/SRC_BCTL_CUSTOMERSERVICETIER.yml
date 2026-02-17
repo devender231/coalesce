@@ -1,13 +1,13 @@
+fileVersion: 1.0
 name: SRC_BCTL_CUSTOMERSERVICETIER
 type: source
-config:
-  source_name: BCTL_CUSTOMERSERVICETIER
-  source_type: table
-  location: SRC (GUIDEWIRE.BCTL.BCTL_CUSTOMERSERVICETIER)
-  columns:
-    - name: ID
-      data_type: INTEGER
-      nullable: true
-    - name: NAME
-      data_type: STRING
-      nullable: true
+description: Source table for BCTL_CUSTOMERSERVICETIER
+sourceLocation:
+  database: BC
+  schema: DBO
+  table: BCTL_CUSTOMERSERVICETIER
+columns:
+  - name: ID
+    dataType: BIGINT
+  - name: NAME
+    dataType: VARCHAR
