@@ -1,75 +1,11 @@
-fileVersion: 1
-id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH
-  database: ""
-  deployEnabled: true
-  description: Source table DIMBILLINGACCOUNT
-  isDataVault: false
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: DIMBILLINGACCOUNT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'DIMBILLINGACCOUNT') }}
-        name: SRC_DIMBILLINGACCOUNT
-        noLinkRefs: []
-  name: SRC_DIMBILLINGACCOUNT
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  source_location: SRC_EDW_DBO_DIMBILLINGACCOUNT
+  columns:
+    - name: PUBLICID
+      data_type: VARCHAR
+      order: 1
+    - name: BEANVERSION
+      data_type: INT
+      order: 2
