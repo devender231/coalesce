@@ -8,7 +8,7 @@ operation:
   table: "DIMBILLINGACCOUNT"
   deployEnabled: true
   description: "Target table for DimBillingAccount with INSERT/UPDATE load type"
-  locationName: TARGET
+  locationName: SRC
   metadata:
     columns:
       - acceptedValues:
@@ -36,4 +36,4 @@ operation:
   version: 1
 dependencies:
   - SRC_TR_ROWCOUNT_UPDATE
-type: target
+type: Node
