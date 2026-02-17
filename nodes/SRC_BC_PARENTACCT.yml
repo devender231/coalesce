@@ -1,7 +1,9 @@
 name: SRC_BC_PARENTACCT
 type: source
-source:
-  location: SRC ("GUIDEWIRE"."BC"."BC_PARENTACCT")
+config:
+  source_name: BC_PARENTACCT
+  source_type: table
+  location: SRC (GUIDEWIRE.BC.BC_PARENTACCT)
   columns:
     - name: OWNERID
       data_type: INTEGER
