@@ -1,13 +1,13 @@
+fileVersion: 1.0
 name: SRC_BCTL_DELINQUENCYSTATUS
 type: source
-config:
-  source_name: BCTL_DELINQUENCYSTATUS
-  source_type: table
-  location: SRC (GUIDEWIRE.BCTL.BCTL_DELINQUENCYSTATUS)
-  columns:
-    - name: ID
-      data_type: INTEGER
-      nullable: true
-    - name: NAME
-      data_type: STRING
-      nullable: true
+description: Source table for BCTL_DELINQUENCYSTATUS
+sourceLocation:
+  database: BC
+  schema: DBO
+  table: BCTL_DELINQUENCYSTATUS
+columns:
+  - name: ID
+    dataType: BIGINT
+  - name: NAME
+    dataType: VARCHAR
