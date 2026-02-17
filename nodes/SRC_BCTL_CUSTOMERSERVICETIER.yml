@@ -1,0 +1,9 @@
+name: SRC_BCTL_CUSTOMERSERVICETIER
+type: source
+source:
+  database: GUIDEWIRE
+  schema: BC
+  table: BCTL_CUSTOMERSERVICETIER
+columns:
+  - name: ID
+  - name: NAME
