@@ -17,7 +17,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: C1
-          stepCounter: TGT1
+          stepCounter: TGT_DIMBILLINGACCOUNT
         config: {}
         dataType: INTEGER
         defaultValue: ""
@@ -36,4 +36,4 @@ operation:
   version: 1
 dependencies:
   - SRC_TR_ROWCOUNT_UPDATE
-type: Node
+type: target
