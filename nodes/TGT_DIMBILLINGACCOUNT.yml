@@ -2,11 +2,13 @@ fileVersion: 1
 id: TGT1
 name: TGT_DIMBILLINGACCOUNT
 operation:
+  type: table
   database: ""
+  schema: ""
+  table: "DIMBILLINGACCOUNT"
   deployEnabled: true
   description: "Target table for DimBillingAccount with INSERT/UPDATE load type"
   locationName: TARGET
-  materializationType: table
   metadata:
     columns:
       - acceptedValues:
@@ -31,10 +33,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: TGT_DIMBILLINGACCOUNT
-  schema: ""
-  sqlType: Target
-  type: table
   version: 1
 dependencies:
   - SRC_TR_ROWCOUNT_UPDATE
-type: Node
+type: target
