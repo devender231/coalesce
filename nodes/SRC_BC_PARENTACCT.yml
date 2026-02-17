@@ -1,91 +1,11 @@
-fileVersion: 1
-id: SRC_BC_PARENTACCT
 name: SRC_BC_PARENTACCT
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BC_PARENTACCT from SSIS package EDW_BC_Load_DimBillingAccount
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_PARENTACCT
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: OWNERID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_PARENTACCT
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_PARENTACCT
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: FOREIGNENTITYID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_PARENTACCT
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_PARENTACCT
-        config: {}
-        dataType: STRING
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_PARENTACCT
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_PARENTACCT
-        config: {}
-        dataType: DATETIME
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_PARENTACCT
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_PARENTACCT
-        join:
-          joinCondition: ""
-        name: SRC_BC_PARENTACCT
-        noLinkRefs: []
-  name: SRC_BC_PARENTACCT
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+location:
+  database: BILLINGCENTER
+  schema: DBO
+  table: BC_PARENTACCT
+columns:
+  - name: OWNERID
+  - name: FOREIGNENTITYID
+  - name: BEANVERSION
+  - name: UPDATETIME
