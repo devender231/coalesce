@@ -1,14 +1,13 @@
+fileVersion: 1.0
 name: SRC_DIMBILLINGACCOUNT
 type: source
-location:
-  name: SRC
-  database: GUIDEWIRE
-  schema: DIM
-table: DIMBILLINGACCOUNT
+description: Source table for DIMBILLINGACCOUNT
+sourceLocation:
+  database: BC
+  schema: DBO
+  table: DIMBILLINGACCOUNT
 columns:
   - name: PUBLICID
-    dataType: STRING
-    nullable: true
+    dataType: VARCHAR
   - name: BEANVERSION
-    dataType: STRING
-    nullable: true
+    dataType: INT
