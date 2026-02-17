@@ -1,21 +1,25 @@
-fileVersion: 1.0
 name: SRC_BC_CONTACT
 type: source
-description: Source table for BC_CONTACT
-sourceLocation:
-  database: BC
-  schema: DBO
+location:
+  database: BILLINGCENTER
+  schema: BC
   table: BC_CONTACT
 columns:
   - name: ID
     dataType: BIGINT
+    nullable: true
   - name: FIRSTNAME
     dataType: VARCHAR
+    nullable: true
   - name: LASTNAME
     dataType: VARCHAR
+    nullable: true
   - name: PRIMARYADDRESSID
     dataType: BIGINT
+    nullable: true
   - name: BEANVERSION
-    dataType: INT
+    dataType: INTEGER
+    nullable: true
   - name: UPDATETIME
-    dataType: DATETIME
+    dataType: TIMESTAMP
+    nullable: true
