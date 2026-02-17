@@ -1,14 +1,40 @@
 fileVersion: 1
-id: TGT_DIMBILLINGACCOUNT
+id: TGT1
 name: TGT_DIMBILLINGACCOUNT
-
-type: Dimension-Dimension
-
-dependencies:
-  - T4
-
 operation:
-  type: table
   database: ""
+  deployEnabled: true
+  description: "Target table for DimBillingAccount with INSERT/UPDATE load type"
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: TGT1
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Update row count"
+        name: UPDATE_COUNT
+        nullable: false
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: T7
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: TGT_DIMBILLINGACCOUNT
   schema: ""
-  table: DIMBILLINGACCOUNT
+  sqlType: Target
+  type: table
+  version: 1
+dependencies:
+  - SRC_TR_ROWCOUNT_UPDATE
+type: Node
