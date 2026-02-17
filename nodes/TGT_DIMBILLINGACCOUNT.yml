@@ -1,5 +1,5 @@
 fileVersion: 1
-id: TGT1
+id: TGT_DIMBILLINGACCOUNT
 name: TGT_DIMBILLINGACCOUNT
 operation:
   type: table
