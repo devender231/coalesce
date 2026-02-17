@@ -1,0 +1,9 @@
+name: SRC_BCTL_STATE
+type: source
+source:
+  database: GUIDEWIRE
+  schema: BC
+  table: BCTL_STATE
+columns:
+  - name: ID
+  - name: NAME
