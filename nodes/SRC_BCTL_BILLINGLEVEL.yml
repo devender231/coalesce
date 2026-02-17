@@ -51,14 +51,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BCTL_BILLINGLEVEL: BCTL_BILLINGLEVEL
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_BILLINGLEVEL
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} "SRC_BCTL_BILLINGLEVEL"
         name: SRC_BCTL_BILLINGLEVEL
         noLinkRefs: []
   name: SRC_BCTL_BILLINGLEVEL
