@@ -1,56 +1,77 @@
 name: SRC_BC_ACCOUNT
 type: source
 config:
-  source_location: SRC_BILLCENTRAL_DBO_BC_ACCOUNT
+  source_name: BC_ACCOUNT
+  source_type: table
+  source_location:
+    database: ""
+    schema: ""
   columns:
     - name: ACCOUNTNUMBER
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 1
     - name: ACCOUNTNAME
-      data_type: VARCHAR
+      data_type: STRING
+      nullable: true
       order: 2
     - name: ACCOUNTTYPE
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 3
     - name: BILLINGLEVEL
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 4
     - name: SERVICETIER
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 5
     - name: SECURITYZONEID
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 6
     - name: SEGMENT
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 7
     - name: CLOSEDATE
       data_type: DATETIME
+      nullable: true
       order: 8
     - name: CREATETIME
       data_type: DATETIME
+      nullable: true
       order: 9
     - name: DELINQUENCYSTATUS
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 10
     - name: FIRSTTWICEPERMTHINVOICEDOM
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 11
     - name: SECONDTWICEPERMTHINVOICEDOM
-      data_type: VARCHAR
+      data_type: INTEGER
+      nullable: true
       order: 12
     - name: PUBLICID
-      data_type: VARCHAR
+      data_type: STRING
+      nullable: true
       order: 13
     - name: ID
-      data_type: BIGINT
+      data_type: INTEGER
+      nullable: true
       order: 14
     - name: BEANVERSION
-      data_type: INT
+      data_type: STRING
+      nullable: true
       order: 15
     - name: RETIRED
-      data_type: BIT
+      data_type: INTEGER
+      nullable: true
       order: 16
     - name: UPDATETIME
       data_type: DATETIME
+      nullable: true
       order: 17
