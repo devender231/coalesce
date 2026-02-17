@@ -1,19 +1,20 @@
 name: SRC_BC_SECURITYZONE
 type: source
-location:
-  database: BILLINGCENTER
+config:
+  source_name: BC_SECURITYZONE
+  database: GUIDEWIRE
   schema: BC
   table: BC_SECURITYZONE
-columns:
-  - name: ID
-    dataType: BIGINT
-    nullable: true
-  - name: NAME
-    dataType: VARCHAR
-    nullable: true
-  - name: BEANVERSION
-    dataType: INTEGER
-    nullable: true
-  - name: UPDATETIME
-    dataType: TIMESTAMP
-    nullable: true
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: NAME
+      data_type: STRING
+      nullable: true
+    - name: BEANVERSION
+      data_type: STRING
+      nullable: true
+    - name: UPDATETIME
+      data_type: DATETIME
+      nullable: true
