@@ -1,11 +1,17 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
 config:
-  source_location: SRC_EDW_DBO_DIMBILLINGACCOUNT
+  source_name: DIMBILLINGACCOUNT
+  source_type: table
+  source_location:
+    database: ""
+    schema: ""
   columns:
     - name: PUBLICID
-      data_type: VARCHAR
+      data_type: STRING
+      nullable: true
       order: 1
     - name: BEANVERSION
-      data_type: INT
+      data_type: STRING
+      nullable: true
       order: 2
