@@ -1,16 +1,26 @@
 fileVersion: 1
-id: TGT_DIMBILLINGACCOUNT
+id: TGT_DIMBILLINGACCOUNT_001
 name: TGT_DIMBILLINGACCOUNT
 operation:
   config:
-    insertStrategy: UNION
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
     postSQL: ""
     preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
     testsEnabled: true
     truncateBefore: false
-  database: ""
+    updateStrategy: UPDATE
+    warehouseName: DEV_WH
+  database: EDW_DEV
   deployEnabled: true
-  description: Target table for DimBillingAccount dimension
+  description: Target table for Billing Account dimension - loads and updates DIMBILLINGACCOUNT from GuideWire and related source tables with SCD logic
   isMultisource: false
   locationName: TARGET
   materializationType: table
@@ -23,22 +33,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: NUMBER(38,0)
-        description: Public ID of the billing account
+        description: Surrogate key for billing account dimension
         hashColumns: []
         hashDetails: null
-        name: PUBLICID
+        name: BILLINGACCOUNTKEY
         nullable: false
+        primaryKey: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -46,22 +53,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Account number
+        description: Public ID from source system
         hashColumns: []
         hashDetails: null
-        name: ACCOUNTNUMBER
+        name: PUBLICID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -69,22 +73,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Account holder name
+        description: Account number
         hashColumns: []
         hashDetails: null
-        name: ACCOUNTHOLDERNAME
+        name: ACCOUNTNUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -92,22 +93,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Billing method
+        description: Account name
         hashColumns: []
         hashDetails: null
-        name: BILLINGMETHOD
+        name: ACCOUNTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -115,22 +113,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 5
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Currency code
+        description: Account type
         hashColumns: []
         hashDetails: null
-        name: CURRENCY
+        name: ACCOUNTTYPE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 5
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -138,22 +133,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 6
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Delinquency status
+        description: Billing level
         hashColumns: []
         hashDetails: null
-        name: DELINQUENCYSTATUS
+        name: BILLINGLEVEL
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -161,22 +153,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 7
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Invoice delivery method
+        description: Service tier
         hashColumns: []
         hashDetails: null
-        name: INVOICEDELIVERYMETHOD
+        name: SERVICETIER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 7
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -184,22 +173,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 8
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: NUMBER(38,0)
-        description: Account holder contact ID
+        description: Security zone ID
         hashColumns: []
         hashDetails: null
-        name: ACCOUNTHOLDERCONTACT
+        name: SECURITYZONEID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 8
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 8
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -207,22 +193,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 9
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Billing address ID
+        dataType: VARCHAR(256)
+        description: Account segment
         hashColumns: []
         hashDetails: null
-        name: BILLINGADDRESS
+        name: SEGMENT
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 9
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 9
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -230,22 +213,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 10
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Frozen set ID
+        dataType: TIMESTAMP_NTZ(9)
+        description: Account close date
         hashColumns: []
         hashDetails: null
-        name: FROZENSET
+        name: CLOSEDATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 10
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 10
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -253,22 +233,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 11
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Invoice stream ID
+        dataType: TIMESTAMP_NTZ(9)
+        description: Record create time
         hashColumns: []
         hashDetails: null
-        name: INVOICESTREAM
+        name: CREATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 11
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 11
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -276,22 +253,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 12
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Payment instrument ID
+        dataType: VARCHAR(256)
+        description: Delinquency status
         hashColumns: []
         hashDetails: null
-        name: PAYMENTINSTRUMENT
+        name: DELINQUENCYSTATUS
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 12
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 12
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -299,22 +273,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 13
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: NUMBER(38,0)
-        description: Unapplied fund ID
+        description: First twice per month invoice day of month
         hashColumns: []
         hashDetails: null
-        name: UNAPPLIEDFUND
+        name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 13
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 13
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -322,22 +293,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 14
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: Create time
+        dataType: NUMBER(38,0)
+        description: Second twice per month invoice day of month
         hashColumns: []
         hashDetails: null
-        name: CREATETIME
+        name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 14
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 14
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -345,22 +313,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 15
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: NUMBER(38,0)
-        description: Create user ID
+        description: Source system ID
         hashColumns: []
         hashDetails: null
-        name: CREATEUSER
+        name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 15
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 15
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -368,22 +333,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 16
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: Update time
+        dataType: NUMBER(38,0)
+        description: Bean version for SCD tracking
         hashColumns: []
         hashDetails: null
-        name: UPDATETIME
+        name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 16
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 16
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -391,22 +353,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 17
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: NUMBER(38,0)
-        description: Update user ID
+        description: Retired flag
         hashColumns: []
         hashDetails: null
-        name: UPDATEUSER
+        name: RETIRED
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 17
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 17
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -414,22 +373,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 18
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Bean version for optimistic locking
+        dataType: TIMESTAMP_NTZ(9)
+        description: Record update time
         hashColumns: []
         hashDetails: null
-        name: BEANVERSION
+        name: UPDATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 18
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 18
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -437,22 +393,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 19
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Account holder name in Kanji
+        description: Parent account public ID
         hashColumns: []
         hashDetails: null
-        name: ACCOUNTHOLDERNAMEKANJ
+        name: PARENTACCOUNT_PUBLICID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 19
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 19
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -460,22 +413,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 20
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Retired value
+        dataType: VARCHAR(256)
+        description: Contact name
         hashColumns: []
         hashDetails: null
-        name: RETIRED
+        name: CONTACTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 20
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 20
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -483,22 +433,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 21
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Archive partition
+        dataType: VARCHAR(256)
+        description: Contact email address
         hashColumns: []
         hashDetails: null
-        name: ARCHIVEPARTITION
+        name: EMAILADDRESS1
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 21
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 21
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -506,22 +453,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 22
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Invoice stream override
+        description: Address line 1
         hashColumns: []
         hashDetails: null
-        name: INVOICESTREAMOVERRIDE
+        name: ADDRESSLINE1
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 22
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 22
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -529,22 +473,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 23
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Fee schedule
+        description: City
         hashColumns: []
         hashDetails: null
-        name: FEESCHEDULE
+        name: CITY
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 23
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 23
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -552,22 +493,19 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 24
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: VARCHAR(256)
-        description: Invoice day of month
+        description: State code
         hashColumns: []
         hashDetails: null
-        name: INVOICEDAYOFMONTH
+        name: STATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 24
-                stepCounter: COND_SPLIT_INSERT
-            transform: ""
-          - columnReferences:
-              - columnCounter: 24
-                stepCounter: COND_SPLIT_UPDATE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -575,7 +513,27 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 25
-          stepCounter: TGT_DIMBILLINGACCOUNT
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
+        config: {}
+        dataType: VARCHAR(256)
+        description: Postal code
+        hashColumns: []
+        hashDetails: null
+        name: POSTALCODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: NUMBER(38,0)
         description: Batch ID for ETL tracking
@@ -583,47 +541,51 @@ operation:
         hashDetails: null
         name: BATCHID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 25
-                stepCounter: COND_SPLIT_INSERT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ETL load timestamp
+        hashColumns: []
+        hashDetails: null
+        name: LOADTIMESTAMP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 25
-                stepCounter: COND_SPLIT_UPDATE
-            transform: ""
+              - columnCounter: null
+                stepCounter: null
+            transform: CURRENT_TIMESTAMP()
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          COND_SPLIT_INSERT: COND_SPLIT_INSERT
+          TRANSFORM_FINAL: TRANSFORM_DIMBILLINGACCOUNT_FINAL
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: WORK
-            nodeName: COND_SPLIT_INSERT
+          - locationName: TRANSFORM
+            nodeName: TRANSFORM_DIMBILLINGACCOUNT_FINAL
         join:
-          joinCondition: FROM {{ ref('WORK', 'COND_SPLIT_INSERT') }} "COND_SPLIT_INSERT"
-        name: TGT_DIMBILLINGACCOUNT
-        noLinkRefs: []
-      - aliases:
-          COND_SPLIT_UPDATE: COND_SPLIT_UPDATE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: WORK
-            nodeName: COND_SPLIT_UPDATE
-        join:
-          joinCondition: |-
-            FROM {{ ref('WORK', 'COND_SPLIT_UPDATE') }} "COND_SPLIT_UPDATE"
-            UNION ALL
-            SELECT * FROM TGT_DIMBILLINGACCOUNT
+          joinCondition: FROM {{ ref('TRANSFORM', 'TRANSFORM_DIMBILLINGACCOUNT_FINAL') }} "TRANSFORM_FINAL"
         name: TGT_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: TGT_DIMBILLINGACCOUNT
   overrideSQL: false
-  schema: ""
+  schema: EDW
   sqlType: Target
   type: sql
   version: 1
 type: Node
+nodeType: target
