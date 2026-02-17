@@ -1,25 +1,26 @@
 name: SRC_BC_CONTACT
 type: source
-location:
-  database: BILLINGCENTER
+config:
+  source_name: BC_CONTACT
+  database: GUIDEWIRE
   schema: BC
   table: BC_CONTACT
-columns:
-  - name: ID
-    dataType: BIGINT
-    nullable: true
-  - name: FIRSTNAME
-    dataType: VARCHAR
-    nullable: true
-  - name: LASTNAME
-    dataType: VARCHAR
-    nullable: true
-  - name: PRIMARYADDRESSID
-    dataType: BIGINT
-    nullable: true
-  - name: BEANVERSION
-    dataType: INTEGER
-    nullable: true
-  - name: UPDATETIME
-    dataType: TIMESTAMP
-    nullable: true
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: FIRSTNAME
+      data_type: STRING
+      nullable: true
+    - name: LASTNAME
+      data_type: STRING
+      nullable: true
+    - name: PRIMARYADDRESSID
+      data_type: INTEGER
+      nullable: true
+    - name: BEANVERSION
+      data_type: STRING
+      nullable: true
+    - name: UPDATETIME
+      data_type: DATETIME
+      nullable: true
