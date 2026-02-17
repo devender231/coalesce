@@ -1,13 +1,13 @@
 name: SRC_BCTL_ACCOUNTTYPE
 type: source
-
-source:
-  location: SRC ("GUIDEWIRE"."BCTL")
-  
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: NAME
-    data_type: STRING
-    nullable: true
+config:
+  source_name: BCTL_ACCOUNTTYPE
+  source_type: table
+  location: SRC (GUIDEWIRE.BCTL.BCTL_ACCOUNTTYPE)
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: NAME
+      data_type: STRING
+      nullable: true
