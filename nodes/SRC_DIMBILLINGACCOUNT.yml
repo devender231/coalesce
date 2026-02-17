@@ -2,8 +2,9 @@ name: SRC_DIMBILLINGACCOUNT
 type: source
 config:
   source_name: DIMBILLINGACCOUNT
-  source_type: table
-  location: SRC (EDW.DBO.DIMBILLINGACCOUNT)
+  database: GUIDEWIRE
+  schema: DW
+  table: DIMBILLINGACCOUNT
   columns:
     - name: PUBLICID
       data_type: STRING
