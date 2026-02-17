@@ -51,14 +51,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_DIMBILLINGACCOUNT: DIMBILLINGACCOUNT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: DIMBILLINGACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'DIMBILLINGACCOUNT') }}
+          joinCondition: FROM {{ ref('SRC', 'DIMBILLINGACCOUNT') }} "SRC_DIMBILLINGACCOUNT"
         name: SRC_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: SRC_DIMBILLINGACCOUNT
