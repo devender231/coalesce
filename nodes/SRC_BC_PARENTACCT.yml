@@ -1,0 +1,18 @@
+name: SRC_BC_PARENTACCT
+type: source
+config:
+  source_location: SRC (DATABASE.SCHEMA)
+  source_table: BC_PARENTACCT
+  columns:
+    - name: OWNERID
+      data_type: INTEGER
+      nullable: true
+    - name: FOREIGNENTITYID
+      data_type: INTEGER
+      nullable: true
+    - name: BEANVERSION
+      data_type: STRING
+      nullable: true
+    - name: UPDATETIME
+      data_type: DATETIME
+      nullable: true
