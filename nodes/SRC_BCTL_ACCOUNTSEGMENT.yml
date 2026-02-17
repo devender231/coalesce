@@ -1,11 +1,17 @@
 name: SRC_BCTL_ACCOUNTSEGMENT
 type: source
 config:
-  source_location: SRC_BILLCENTRAL_DBO_BCTL_ACCOUNTSEGMENT
+  source_name: BCTL_ACCOUNTSEGMENT
+  source_type: table
+  source_location:
+    database: ""
+    schema: ""
   columns:
     - name: ID
-      data_type: BIGINT
+      data_type: INTEGER
+      nullable: true
       order: 1
     - name: NAME
-      data_type: VARCHAR
+      data_type: STRING
+      nullable: true
       order: 2
