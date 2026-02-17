@@ -1,17 +1,19 @@
-fileVersion: 1.0
 name: SRC_BC_SECURITYZONE
 type: source
-description: Source table for BC_SECURITYZONE
-sourceLocation:
-  database: BC
-  schema: DBO
+location:
+  database: BILLINGCENTER
+  schema: BC
   table: BC_SECURITYZONE
 columns:
   - name: ID
     dataType: BIGINT
+    nullable: true
   - name: NAME
     dataType: VARCHAR
+    nullable: true
   - name: BEANVERSION
-    dataType: INT
+    dataType: INTEGER
+    nullable: true
   - name: UPDATETIME
-    dataType: DATETIME
+    dataType: TIMESTAMP
+    nullable: true
