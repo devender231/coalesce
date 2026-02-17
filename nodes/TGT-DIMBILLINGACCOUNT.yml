@@ -1,0 +1,374 @@
+fileVersion: 1
+id: TGT-DIMBILLINGACCOUNT-001
+name: TGT-DIMBILLINGACCOUNT
+description: |
+  Target table for Billing Account dimension. Loads and updates Snowflake table DIMBILLINGACCOUNT 
+  from GuideWire and related source tables, with SCD logic and audit row counts.
+  Package: EDW_BC_Load_DimBillingAccount
+type: target
+location: TARGET
+deployment:
+  targetDatabase: EDW
+  targetSchema: DIM
+  targetTable: DIMBILLINGACCOUNT
+config:
+  insertStrategy: INSERT
+  updateStrategy: UPDATE
+  flagColumn: null
+  businessKey:
+    - PUBLICID
+  changeTrackingColumns:
+    - BEANVERSION
+  loadType: INCREMENTAL
+  truncateBefore: false
+  preSQL: null
+  postSQL: null
+sources:
+  - name: BC_ACCOUNT
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_ACCOUNT
+    alias: ACC
+  - name: BC_PARENTACCT
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_PARENTACCT
+    alias: PACC
+  - name: BC_ACCOUNTCONTACT
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_ACCOUNTCONTACT
+    alias: ACCT_CONT
+  - name: BC_ACCOUNTCONTACTROLE
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_ACCOUNTCONTACTROLE
+    alias: ACCT_ROLE
+  - name: BCTL_ACCOUNTROLE
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_ACCOUNTROLE
+    alias: ROLE_TYPE
+  - name: BC_CONTACT
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_CONTACT
+    alias: CONT
+  - name: BC_ADDRESS
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_ADDRESS
+    alias: ADDR
+  - name: BCTL_STATE
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_STATE
+    alias: ST
+  - name: BCTL_ACCOUNTTYPE
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_ACCOUNTTYPE
+    alias: ACCT_TYPE
+  - name: BCTL_BILLINGLEVEL
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_BILLINGLEVEL
+    alias: BILL_LVL
+  - name: BCTL_CUSTOMERSERVICETIER
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_CUSTOMERSERVICETIER
+    alias: SVC_TIER
+  - name: BC_SECURITYZONE
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_SECURITYZONE
+    alias: SEC_ZONE
+  - name: BCTL_DELINQUENCYSTATUS
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_DELINQUENCYSTATUS
+    alias: DELINQ
+  - name: BCTL_ACCOUNTSEGMENT
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_ACCOUNTSEGMENT
+    alias: ACCT_SEG
+  - name: DIMBILLINGACCOUNT
+    database: EDW
+    schema: DIM
+    table: DIMBILLINGACCOUNT
+    alias: DIM_BA
+transformations:
+  - type: DERIVED_COLUMN
+    name: ADD_BATCH_ID
+    description: Adds BatchID column from parameter
+    expression: "@[User::BatchID]"
+    outputColumn: BATCHID
+  - type: LOOKUP
+    name: LOOKUP_EXISTING_RECORDS
+    description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+    lookupTable: DIMBILLINGACCOUNT
+    lookupColumns:
+      - PUBLICID
+      - BEANVERSION
+    joinCondition: "ACC.PUBLICID = DIM_BA.PUBLICID"
+    outputColumn: EDW_BEANVERSION
+  - type: CONDITIONAL_SPLIT
+    name: ROUTE_CHANGES
+    description: Routes rows based on whether BeanVersion matches EDWBeanVersion
+    conditions:
+      - name: UNCHANGED
+        expression: "BEANVERSION == EDW_BEANVERSION"
+        action: SKIP
+      - name: UPDATE
+        expression: "BEANVERSION != EDW_BEANVERSION AND EDW_BEANVERSION IS NOT NULL"
+        action: UPDATE
+      - name: INSERT
+        expression: "EDW_BEANVERSION IS NULL"
+        action: INSERT
+joins:
+  - type: LEFT
+    leftTable: BC_ACCOUNT
+    leftAlias: ACC
+    rightTable: BCTL_ACCOUNTTYPE
+    rightAlias: ACCT_TYPE
+    condition: "ACC.ACCOUNTTYPE = ACCT_TYPE.ID"
+  - type: LEFT
+    leftTable: BC_ACCOUNT
+    leftAlias: ACC
+    rightTable: BC_PARENTACCT
+    rightAlias: PACC
+    condition: "PACC.OWNERID = ACC.ID"
+  - type: LEFT
+    leftTable: BC_ACCOUNT
+    leftAlias: ACC
+    rightTable: BCTL_BILLINGLEVEL
+    rightAlias: BILL_LVL
+    condition: "ACC.BILLINGLEVEL = BILL_LVL.ID"
+  - type: LEFT
+    leftTable: BC_ACCOUNT
+    leftAlias: ACC
+    rightTable: BCTL_CUSTOMERSERVICETIER
+    rightAlias: SVC_TIER
+    condition: "ACC.SERVICETIER = SVC_TIER.ID"
+  - type: LEFT
+    leftTable: BC_ACCOUNT
+    leftAlias: ACC
+    rightTable: BC_SECURITYZONE
+    rightAlias: SEC_ZONE
+    condition: "ACC.SECURITYZONEID = SEC_ZONE.ID"
+  - type: LEFT
+    leftTable: BC_ACCOUNT
+    leftAlias: ACC
+    rightTable: BCTL_DELINQUENCYSTATUS
+    rightAlias: DELINQ
+    condition: "ACC.DELINQUENCYSTATUS = DELINQ.ID"
+  - type: LEFT
+    leftTable: BC_ACCOUNT
+    leftAlias: ACC
+    rightTable: BCTL_ACCOUNTSEGMENT
+    rightAlias: ACCT_SEG
+    condition: "ACC.SEGMENT = ACCT_SEG.ID"
+  - type: LEFT
+    leftTable: BC_ACCOUNT
+    leftAlias: ACC
+    rightTable: BC_ACCOUNTCONTACT
+    rightAlias: ACCT_CONT
+    condition: "ACCT_CONT.INSUREDACCOUNTID = ACC.ID"
+  - type: INNER
+    leftTable: BC_ACCOUNTCONTACT
+    leftAlias: ACCT_CONT
+    rightTable: BC_ACCOUNTCONTACTROLE
+    rightAlias: ACCT_ROLE
+    condition: "ACCT_ROLE.ACCOUNTCONTACTID = ACCT_CONT.ID"
+  - type: INNER
+    leftTable: BC_ACCOUNTCONTACTROLE
+    leftAlias: ACCT_ROLE
+    rightTable: BCTL_ACCOUNTROLE
+    rightAlias: ROLE_TYPE
+    condition: "ROLE_TYPE.ID = ACCT_ROLE.ROLE AND ROLE_TYPE.TYPECODE = 'insured'"
+  - type: LEFT
+    leftTable: BC_ACCOUNTCONTACT
+    leftAlias: ACCT_CONT
+    rightTable: BC_CONTACT
+    rightAlias: CONT
+    condition: "CONT.ID = ACCT_CONT.CONTACTID"
+  - type: LEFT
+    leftTable: BC_CONTACT
+    leftAlias: CONT
+    rightTable: BC_ADDRESS
+    rightAlias: ADDR
+    condition: "ADDR.ID = CONT.PRIMARYADDRESSID"
+  - type: LEFT
+    leftTable: BC_ADDRESS
+    leftAlias: ADDR
+    rightTable: BCTL_STATE
+    rightAlias: ST
+    condition: "ST.ID = ADDR.STATE"
+columns:
+  - name: ACCOUNTNUMBER
+    dataType: NUMBER(38,0)
+    sourceColumn: ACC.ACCOUNTNUMBER
+    nullable: true
+    description: Account number from BC_ACCOUNT
+  - name: ACCOUNTNAME
+    dataType: VARCHAR(16777216)
+    sourceColumn: ACC.ACCOUNTNAME
+    nullable: true
+    description: Account name from BC_ACCOUNT
+  - name: ACCOUNTTYPE
+    dataType: VARCHAR(16777216)
+    sourceColumn: ACCT_TYPE.NAME
+    nullable: true
+    description: Account type description
+  - name: BILLINGLEVEL
+    dataType: VARCHAR(16777216)
+    sourceColumn: BILL_LVL.NAME
+    nullable: true
+    description: Billing level description
+  - name: SERVICETIER
+    dataType: VARCHAR(16777216)
+    sourceColumn: SVC_TIER.NAME
+    nullable: true
+    description: Customer service tier description
+  - name: SECURITYZONE
+    dataType: VARCHAR(16777216)
+    sourceColumn: SEC_ZONE.NAME
+    nullable: true
+    description: Security zone name
+  - name: SEGMENT
+    dataType: VARCHAR(16777216)
+    sourceColumn: ACCT_SEG.NAME
+    nullable: true
+    description: Account segment description
+  - name: CLOSEDATE
+    dataType: TIMESTAMP_NTZ(9)
+    sourceColumn: ACC.CLOSEDATE
+    nullable: true
+    description: Account close date
+  - name: CREATETIME
+    dataType: TIMESTAMP_NTZ(9)
+    sourceColumn: ACC.CREATETIME
+    nullable: true
+    description: Account creation timestamp
+  - name: DELINQUENCYSTATUS
+    dataType: VARCHAR(16777216)
+    sourceColumn: DELINQ.NAME
+    nullable: true
+    description: Delinquency status description
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: NUMBER(38,0)
+    sourceColumn: ACC.FIRSTTWICEPERMTHINVOICEDOM
+    nullable: true
+    description: First twice per month invoice day of month
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: NUMBER(38,0)
+    sourceColumn: ACC.SECONDTWICEPERMTHINVOICEDOM
+    nullable: true
+    description: Second twice per month invoice day of month
+  - name: PUBLICID
+    dataType: VARCHAR(16777216)
+    sourceColumn: ACC.PUBLICID
+    nullable: false
+    description: Public identifier - Business Key
+  - name: ACCOUNTID
+    dataType: NUMBER(38,0)
+    sourceColumn: ACC.ID
+    nullable: true
+    description: Internal account ID
+  - name: BEANVERSION
+    dataType: VARCHAR(16777216)
+    sourceColumn: ACC.BEANVERSION
+    nullable: true
+    description: Bean version for change tracking
+  - name: RETIRED
+    dataType: NUMBER(38,0)
+    sourceColumn: ACC.RETIRED
+    nullable: true
+    description: Retirement flag
+  - name: UPDATETIME
+    dataType: TIMESTAMP_NTZ(9)
+    sourceColumn: ACC.UPDATETIME
+    nullable: true
+    description: Last update timestamp
+  - name: PARENTACCOUNTID
+    dataType: NUMBER(38,0)
+    sourceColumn: PACC.FOREIGNENTITYID
+    nullable: true
+    description: Parent account foreign entity ID
+  - name: INSUREDFIRSTNAME
+    dataType: VARCHAR(16777216)
+    sourceColumn: CONT.FIRSTNAME
+    nullable: true
+    description: Insured contact first name
+  - name: INSUREDLASTNAME
+    dataType: VARCHAR(16777216)
+    sourceColumn: CONT.LASTNAME
+    nullable: true
+    description: Insured contact last name
+  - name: ADDRESSLINE1
+    dataType: VARCHAR(16777216)
+    sourceColumn: ADDR.ADDRESSLINE1
+    nullable: true
+    description: Address line 1
+  - name: ADDRESSLINE2
+    dataType: VARCHAR(16777216)
+    sourceColumn: ADDR.ADDRESSLINE2
+    nullable: true
+    description: Address line 2
+  - name: ADDRESSLINE3
+    dataType: VARCHAR(16777216)
+    sourceColumn: ADDR.ADDRESSLINE3
+    nullable: true
+    description: Address line 3
+  - name: CITY
+    dataType: VARCHAR(16777216)
+    sourceColumn: ADDR.CITY
+    nullable: true
+    description: City
+  - name: POSTALCODE
+    dataType: VARCHAR(16777216)
+    sourceColumn: ADDR.POSTALCODE
+    nullable: true
+    description: Postal code
+  - name: STATE
+    dataType: VARCHAR(16777216)
+    sourceColumn: ST.NAME
+    nullable: true
+    description: State name
+  - name: BATCHID
+    dataType: NUMBER(38,0)
+    sourceColumn: "@[User::BatchID]"
+    nullable: true
+    description: Batch ID from ETL parameter
+  - name: ETL_INSERT_DATE
+    dataType: TIMESTAMP_NTZ(9)
+    sourceColumn: CURRENT_TIMESTAMP()
+    nullable: false
+    description: ETL insert timestamp
+  - name: ETL_UPDATE_DATE
+    dataType: TIMESTAMP_NTZ(9)
+    sourceColumn: CURRENT_TIMESTAMP()
+    nullable: false
+    description: ETL update timestamp
+auditColumns:
+  sourceCount:
+    variable: User::SourceCount
+    description: Count of source rows from GuideWire
+  insertCount:
+    variable: User::InsertCount
+    description: Count of new insert rows
+  updateCount:
+    variable: User::UpdateCount
+    description: Count of update rows
+  unchangeCount:
+    variable: User::UnChangeCount
+    description: Count of unchanged rows
+metadata:
+  createdBy: Agent3-SSIS-Migration
+  createdDate: 2025-01-22
+  sourcePackage: EDW_BC_Load_DimBillingAccount
+  sourceSystem: GuideWire BillingCenter
+  targetSystem: Snowflake EDW
+  migrationVersion: 1.0
