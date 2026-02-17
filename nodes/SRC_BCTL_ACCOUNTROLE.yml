@@ -1,69 +1,11 @@
-fileVersion: 1
-id: SRC_BCTL_ACCOUNTROLE
 name: SRC_BCTL_ACCOUNTROLE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BCTL_ACCOUNTROLE
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_ACCOUNTROLE
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_ACCOUNTROLE
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: TYPECODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTROLE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
-        name: SRC_BCTL_ACCOUNTROLE
-        noLinkRefs: []
-  name: SRC_BCTL_ACCOUNTROLE
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+source:
+  location: SRC ("GUIDEWIRE"."BCTL"."BCTL_ACCOUNTROLE")
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: TYPECODE
+      data_type: STRING
+      nullable: true
