@@ -1,0 +1,304 @@
+fileVersion: 1
+id: DimBillingAccount-Dimension
+name: DIMBILLINGACCOUNT
+description: |
+  Dimension table for Billing Account information from GuideWire BC system.
+  Implements SCD Type 2 logic based on BeanVersion tracking.
+  Loads and updates account details including account type, billing level, service tier,
+  security zone, delinquency status, segment, and related contact information.
+type: Dimension
+dependencies:
+  - TRF_DERIVED_DimBillingAccount
+columns:
+  - name: ACCOUNTNUMBER
+    description: Account number identifier
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: ACCOUNTNUMBER
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: ACCOUNTNAME
+    description: Account name
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: ACCOUNTNAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: ACCOUNTTYPE
+    description: Account type code
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: ACCOUNTTYPE
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: ACCOUNTTYPENAME
+    description: Account type name from lookup
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: ACCOUNTTYPENAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: BILLINGLEVEL
+    description: Billing level code
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: BILLINGLEVEL
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: BILLINGLEVELNAME
+    description: Billing level name from lookup
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: BILLINGLEVELNAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: SERVICETIER
+    description: Customer service tier code
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: SERVICETIER
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: SERVICETIERNAME
+    description: Customer service tier name from lookup
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: SERVICETIERNAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: SECURITYZONEID
+    description: Security zone identifier
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: SECURITYZONEID
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: SECURITYZONENAME
+    description: Security zone name from lookup
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: SECURITYZONENAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: SEGMENT
+    description: Account segment code
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: SEGMENT
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: SEGMENTNAME
+    description: Account segment name from lookup
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: SEGMENTNAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: CLOSEDATE
+    description: Account close date
+    dataType: TIMESTAMP_NTZ(9)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: CLOSEDATE
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: CREATETIME
+    description: Account creation timestamp
+    dataType: TIMESTAMP_NTZ(9)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: CREATETIME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: DELINQUENCYSTATUS
+    description: Delinquency status code
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: DELINQUENCYSTATUS
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: DELINQUENCYSTATUSNAME
+    description: Delinquency status name from lookup
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: DELINQUENCYSTATUSNAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    description: First twice per month invoice day of month
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: FIRSTTWICEPERMTHINVOICEDOM
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    description: Second twice per month invoice day of month
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: SECONDTWICEPERMTHINVOICEDOM
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: PUBLICID
+    description: Public identifier - Business Key
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: PUBLICID
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: ID
+    description: Internal system identifier
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: ID
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: BEANVERSION
+    description: Bean version for change tracking - SCD Type 2
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: BEANVERSION
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: RETIRED
+    description: Retirement flag
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: RETIRED
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: UPDATETIME
+    description: Last update timestamp
+    dataType: TIMESTAMP_NTZ(9)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: UPDATETIME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: PARENTACCOUNTID
+    description: Parent account foreign entity identifier
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: PARENTACCOUNTID
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: INSUREDFIRSTNAME
+    description: Insured contact first name
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: INSUREDFIRSTNAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: INSUREDLASTNAME
+    description: Insured contact last name
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: INSUREDLASTNAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: ADDRESSLINE1
+    description: Address line 1
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: ADDRESSLINE1
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: ADDRESSLINE2
+    description: Address line 2
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: ADDRESSLINE2
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: ADDRESSLINE3
+    description: Address line 3
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: ADDRESSLINE3
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: CITY
+    description: City
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: CITY
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: POSTALCODE
+    description: Postal code
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: POSTALCODE
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: STATE
+    description: State code
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: STATE
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: STATENAME
+    description: State name from lookup
+    dataType: VARCHAR(16777216)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: STATENAME
+            stepName: TRF_DERIVED_DimBillingAccount
+  - name: BATCHID
+    description: Batch identifier for ETL processing
+    dataType: NUMBER(38,0)
+    nullable: true
+    sourceColumnReferences:
+      - columnReferences:
+          - columnName: BATCHID
+            stepName: TRF_DERIVED_DimBillingAccount
+config:
+  materializationType: table
+  database: SNOWFLAKE
+  schema: DW
+  tableName: DIMBILLINGACCOUNT
+  insertStrategy: MERGE
+  businessKey:
+    - PUBLICID
+  changeTracking:
+    - BEANVERSION
+  operation:
+    type: table
+    database: SNOWFLAKE
+    schema: DW
+    tableName: DIMBILLINGACCOUNT
+    insertStrategy: MERGE
+    businessKey:
+      - PUBLICID
+    changeTracking:
+      - BEANVERSION
