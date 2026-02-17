@@ -1,29 +1,20 @@
 fileVersion: 1
-id: TGT_DIMBILLINGACCOUNT
+id: TGT_DIMBILLINGACCOUNT_001
 name: TGT_DIMBILLINGACCOUNT
 operation:
   config:
     clusterKey: false
-    clusterKeyConfig:
-      items:
-        - {}
-    clusterKeyConfigExpressions:
-      items:
-        - {}
-    clusterKeyExpressions: false
     downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: INSERT
     lagSpecification:
-      items:
-        - {}
+      lag: 1
+      lagUnit: HOUR
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
+    warehouseName: DEV_WH
   database: ""
   deployEnabled: true
   description: Target table for Billing Account dimension with SCD Type 1 logic
@@ -39,37 +30,41 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Account Number
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Surrogate key for billing account dimension
         hashColumns: []
         hashDetails: null
-        name: ACCOUNTNUMBER
-        nullable: true
+        name: BILLINGACCOUNTKEY
+        nullable: false
+        primaryKey: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
+              - columnCounter: null
+                stepCounter: null
+            transform: IDENTITY(1,1)
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Account Name
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Unique public identifier for the account
         hashColumns: []
         hashDetails: null
-        name: ACCOUNTNAME
-        nullable: true
+        name: PUBLICID
+        nullable: false
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
+              - columnCounter: 1
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -77,18 +72,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Account Type ID
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Account number
         hashColumns: []
         hashDetails: null
-        name: ACCOUNTTYPE
+        name: ACCOUNTNUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
+              - columnCounter: 2
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -96,18 +93,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Account Type Description
+        dataType: VARCHAR(512)
+        defaultValue: ""
+        description: Account name
         hashColumns: []
         hashDetails: null
-        name: ACCOUNTTYPE_DESC
+        name: ACCOUNTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
+              - columnCounter: 3
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -115,18 +114,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 5
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Parent Account Number
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Account type identifier
         hashColumns: []
         hashDetails: null
-        name: PARENTACCOUNTNUMBER
+        name: ACCOUNTTYPE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
+              - columnCounter: 4
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -134,18 +135,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 6
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Billing Level ID
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Account type description
         hashColumns: []
         hashDetails: null
-        name: BILLINGLEVEL
+        name: ACCOUNTTYPEDESC
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6
-                stepCounter: 1
+              - columnCounter: 5
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -153,18 +156,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 7
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Billing Level Description
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Billing level identifier
         hashColumns: []
         hashDetails: null
-        name: BILLINGLEVEL_DESC
+        name: BILLINGLEVEL
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 7
-                stepCounter: 1
+              - columnCounter: 6
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -172,18 +177,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 8
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Service Tier ID
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Billing level description
         hashColumns: []
         hashDetails: null
-        name: SERVICETIER
+        name: BILLINGLEVELDESC
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 8
-                stepCounter: 1
+              - columnCounter: 7
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -191,18 +198,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 9
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Service Tier Description
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Service tier identifier
         hashColumns: []
         hashDetails: null
-        name: SERVICETIER_DESC
+        name: SERVICETIER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 9
-                stepCounter: 1
+              - columnCounter: 8
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -210,18 +219,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 10
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Security Zone ID
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Service tier description
         hashColumns: []
         hashDetails: null
-        name: SECURITYZONEID
+        name: SERVICETIERDESC
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 10
-                stepCounter: 1
+              - columnCounter: 9
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -229,18 +240,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 11
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Security Zone Description
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Security zone identifier
         hashColumns: []
         hashDetails: null
-        name: SECURITYZONE_DESC
+        name: SECURITYZONEID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 11
-                stepCounter: 1
+              - columnCounter: 10
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -248,18 +261,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 12
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Account Segment ID
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Security zone public identifier
         hashColumns: []
         hashDetails: null
-        name: SEGMENT
+        name: SECURITYZONEPUBLICID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 12
-                stepCounter: 1
+              - columnCounter: 11
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -267,18 +282,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 13
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Account Segment Description
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Account segment identifier
         hashColumns: []
         hashDetails: null
-        name: SEGMENT_DESC
+        name: SEGMENT
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 13
-                stepCounter: 1
+              - columnCounter: 12
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -286,18 +303,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 14
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: Account Close Date
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Account segment description
         hashColumns: []
         hashDetails: null
-        name: CLOSEDATE
+        name: SEGMENTDESC
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 14
-                stepCounter: 1
+              - columnCounter: 13
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -305,18 +324,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 15
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: TIMESTAMP_NTZ(9)
-        description: Account Create Time
+        defaultValue: ""
+        description: Account close date
         hashColumns: []
         hashDetails: null
-        name: CREATETIME
+        name: CLOSEDATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 15
-                stepCounter: 1
+              - columnCounter: 14
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -324,18 +345,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 16
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Delinquency Status ID
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: Record creation timestamp
         hashColumns: []
         hashDetails: null
-        name: DELINQUENCYSTATUS
+        name: CREATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 16
-                stepCounter: 1
+              - columnCounter: 15
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -343,18 +366,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 17
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Delinquency Status Description
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Delinquency status identifier
         hashColumns: []
         hashDetails: null
-        name: DELINQUENCYSTATUS_DESC
+        name: DELINQUENCYSTATUS
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 17
-                stepCounter: 1
+              - columnCounter: 16
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -362,18 +387,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 18
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: First Twice Per Month Invoice Day of Month
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Delinquency status description
         hashColumns: []
         hashDetails: null
-        name: FIRSTTWICEPERMTHINVOICEDOM
+        name: DELINQUENCYSTATUSDESC
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 18
-                stepCounter: 1
+              - columnCounter: 17
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -381,18 +408,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 19
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: NUMBER(38,0)
-        description: Second Twice Per Month Invoice Day of Month
+        defaultValue: ""
+        description: First twice per month invoice day of month
         hashColumns: []
         hashDetails: null
-        name: SECONDTWICEPERMTHINVOICEDOM
+        name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 19
-                stepCounter: 1
+              - columnCounter: 18
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -400,18 +429,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 20
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Public ID - Primary Key
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Second twice per month invoice day of month
         hashColumns: []
         hashDetails: null
-        name: PUBLICID
-        nullable: false
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 20
-                stepCounter: 1
+              - columnCounter: 19
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -419,18 +450,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 21
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Internal ID
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Parent account public identifier
         hashColumns: []
         hashDetails: null
-        name: ID
+        name: PARENTACCOUNTPUBLICID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 21
-                stepCounter: 1
+              - columnCounter: 20
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -438,18 +471,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 22
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Bean Version for SCD tracking
+        dataType: VARCHAR(512)
+        defaultValue: ""
+        description: Primary contact name
         hashColumns: []
         hashDetails: null
-        name: BEANVERSION
+        name: PRIMARYCONTACTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 22
-                stepCounter: 1
+              - columnCounter: 21
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -457,18 +492,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 23
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: NUMBER(38,0)
-        description: Retired Flag
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Primary contact email
         hashColumns: []
         hashDetails: null
-        name: RETIRED
+        name: PRIMARYCONTACTEMAIL
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 23
-                stepCounter: 1
+              - columnCounter: 22
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -476,18 +513,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 24
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: Update Time
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Primary contact phone
         hashColumns: []
         hashDetails: null
-        name: UPDATETIME
+        name: PRIMARYCONTACTPHONE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 24
-                stepCounter: 1
+              - columnCounter: 23
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -495,18 +534,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 25
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Contact First Name
+        dataType: VARCHAR(1024)
+        defaultValue: ""
+        description: Primary address line 1
         hashColumns: []
         hashDetails: null
-        name: FIRSTNAME
+        name: PRIMARYADDRESSLINE1
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 25
-                stepCounter: 1
+              - columnCounter: 24
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -514,18 +555,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 26
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Contact Last Name
+        dataType: VARCHAR(1024)
+        defaultValue: ""
+        description: Primary address line 2
         hashColumns: []
         hashDetails: null
-        name: LASTNAME
+        name: PRIMARYADDRESSLINE2
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 26
-                stepCounter: 1
+              - columnCounter: 25
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -533,18 +576,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 27
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Address Line 1
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Primary address city
         hashColumns: []
         hashDetails: null
-        name: ADDRESSLINE1
+        name: PRIMARYADDRESSCITY
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 27
-                stepCounter: 1
+              - columnCounter: 26
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -552,18 +597,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 28
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Address Line 2
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Primary address state
         hashColumns: []
         hashDetails: null
-        name: ADDRESSLINE2
+        name: PRIMARYADDRESSSTATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 28
-                stepCounter: 1
+              - columnCounter: 27
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -571,18 +618,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 29
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Address Line 3
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Primary address postal code
         hashColumns: []
         hashDetails: null
-        name: ADDRESSLINE3
+        name: PRIMARYADDRESSPOSTALCODE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 29
-                stepCounter: 1
+              - columnCounter: 28
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -590,18 +639,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 30
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: City
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: Primary address country
         hashColumns: []
         hashDetails: null
-        name: CITY
+        name: PRIMARYADDRESSCOUNTRY
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 30
-                stepCounter: 1
+              - columnCounter: 29
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -609,18 +660,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 31
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: Postal Code
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Bean version for optimistic locking
         hashColumns: []
         hashDetails: null
-        name: POSTALCODE
+        name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 31
-                stepCounter: 1
+              - columnCounter: 30
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -628,18 +681,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 32
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: State Code
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: Retired flag (0=active, 1=retired)
         hashColumns: []
         hashDetails: null
-        name: STATE
+        name: RETIRED
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 32
-                stepCounter: 1
+              - columnCounter: 31
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -647,18 +702,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 33
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
-        dataType: VARCHAR(16777216)
-        description: State Description
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: Record last update timestamp
         hashColumns: []
         hashDetails: null
-        name: STATE_DESC
+        name: UPDATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 33
-                stepCounter: 1
+              - columnCounter: 32
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -666,18 +723,20 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 34
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: NUMBER(38,0)
-        description: Batch ID from ETL process
+        defaultValue: ""
+        description: ETL batch identifier
         hashColumns: []
         hashDetails: null
         name: BATCHID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 34
-                stepCounter: 1
+              - columnCounter: 33
+                stepCounter: TRANS_DIMBILLINGACCOUNT_SCD
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -685,14 +744,35 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 35
-          stepCounter: 1
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
         config: {}
         dataType: TIMESTAMP_NTZ(9)
-        description: ETL Load Timestamp
+        defaultValue: CURRENT_TIMESTAMP()
+        description: ETL insert timestamp
         hashColumns: []
         hashDetails: null
-        name: ETL_LOAD_TIMESTAMP
+        name: ETL_INSERT_TIMESTAMP
         nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CURRENT_TIMESTAMP()
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 36
+          stepCounter: TGT_DIMBILLINGACCOUNT_001
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: CURRENT_TIMESTAMP()
+        description: ETL update timestamp
+        hashColumns: []
+        hashDetails: null
+        name: ETL_UPDATE_TIMESTAMP
+        nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: CURRENT_TIMESTAMP()
@@ -700,20 +780,20 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          CONDITIONAL_SPLIT_UPDATES: CONDITIONAL_SPLIT_UPDATES
+          TRANS_DIMBILLINGACCOUNT_SCD: TGT_DIMBILLINGACCOUNT_001
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TARGET
-            nodeName: CONDITIONAL_SPLIT_UPDATES
+          - locationName: TRANSFORM
+            nodeName: TRANS_DIMBILLINGACCOUNT_SCD
         join:
-          joinCondition: FROM {{ ref('TARGET', 'CONDITIONAL_SPLIT_UPDATES') }} "CONDITIONAL_SPLIT_UPDATES"
+          joinCondition: FROM {{ ref('TRANSFORM', 'TRANS_DIMBILLINGACCOUNT_SCD') }} "TRANS_DIMBILLINGACCOUNT_SCD"
         name: TGT_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: TGT_DIMBILLINGACCOUNT
   overrideSQL: false
   schema: ""
-  sqlType: DT113:::156
+  sqlType: Target
   type: sql
   version: 1
 type: Node
