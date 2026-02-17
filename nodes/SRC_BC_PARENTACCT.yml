@@ -1,0 +1,11 @@
+name: SRC_BC_PARENTACCT
+type: source
+source:
+  database: GUIDEWIRE
+  schema: BC
+  table: BC_PARENTACCT
+columns:
+  - name: OWNERID
+  - name: FOREIGNENTITYID
+  - name: BEANVERSION
+  - name: UPDATETIME
