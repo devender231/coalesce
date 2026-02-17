@@ -1,15 +1,12 @@
 name: SRC_BCTL_DELINQUENCYSTATUS
 type: source
 config:
-  source_name: BCTL_DELINQUENCYSTATUS
-  database: GUIDEWIRE
-  schema: BCTL
-  table: BCTL_DELINQUENCYSTATUS
-  location: GUIDEWIRE.BCTL.BCTL_DELINQUENCYSTATUS
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: NAME
-    data_type: STRING
-    nullable: true
+  source_location: SRC (DATABASE.SCHEMA)
+  source_table: BCTL_DELINQUENCYSTATUS
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: NAME
+      data_type: STRING
+      nullable: true
