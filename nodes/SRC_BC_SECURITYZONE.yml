@@ -85,14 +85,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BC_SECURITYZONE: BC_SECURITYZONE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_SECURITYZONE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_SECURITYZONE') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_SECURITYZONE') }} "SRC_BC_SECURITYZONE"
         name: SRC_BC_SECURITYZONE
         noLinkRefs: []
   name: SRC_BC_SECURITYZONE
