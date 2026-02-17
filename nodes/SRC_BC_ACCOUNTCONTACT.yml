@@ -1,19 +1,22 @@
-fileVersion: 1.0
 name: SRC_BC_ACCOUNTCONTACT
 type: source
-description: Source table for BC_ACCOUNTCONTACT
-sourceLocation:
-  database: BC
-  schema: DBO
+location:
+  database: BILLINGCENTER
+  schema: BC
   table: BC_ACCOUNTCONTACT
 columns:
   - name: INSUREDACCOUNTID
     dataType: BIGINT
+    nullable: true
   - name: CONTACTID
     dataType: BIGINT
+    nullable: true
   - name: ID
     dataType: BIGINT
+    nullable: true
   - name: BEANVERSION
-    dataType: INT
+    dataType: INTEGER
+    nullable: true
   - name: UPDATETIME
-    dataType: DATETIME
+    dataType: TIMESTAMP
+    nullable: true
