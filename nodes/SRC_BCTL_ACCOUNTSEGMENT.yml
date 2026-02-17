@@ -1,13 +1,13 @@
-fileVersion: 1.0
 name: SRC_BCTL_ACCOUNTSEGMENT
 type: source
-description: Source table for BCTL_ACCOUNTSEGMENT
-sourceLocation:
-  database: BC
-  schema: DBO
+location:
+  database: BILLINGCENTER
+  schema: BCTL
   table: BCTL_ACCOUNTSEGMENT
 columns:
   - name: ID
     dataType: BIGINT
+    nullable: true
   - name: NAME
     dataType: VARCHAR
+    nullable: true
