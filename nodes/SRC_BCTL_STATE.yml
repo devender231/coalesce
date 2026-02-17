@@ -1,0 +1,12 @@
+name: SRC_BCTL_STATE
+type: source
+config:
+  source_location: SRC (DATABASE.SCHEMA)
+  source_table: BCTL_STATE
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: NAME
+      data_type: STRING
+      nullable: true
