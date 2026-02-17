@@ -1,13 +1,14 @@
 name: SRC_BCTL_ACCOUNTROLE
 type: source
-location:
-  database: BILLINGCENTER
+config:
+  source_name: BCTL_ACCOUNTROLE
+  database: GUIDEWIRE
   schema: BCTL
   table: BCTL_ACCOUNTROLE
-columns:
-  - name: ID
-    dataType: BIGINT
-    nullable: true
-  - name: TYPECODE
-    dataType: VARCHAR
-    nullable: true
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: TYPECODE
+      data_type: STRING
+      nullable: true
