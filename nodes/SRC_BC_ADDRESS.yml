@@ -1,32 +1,34 @@
 name: SRC_BC_ADDRESS
 type: source
+
 source:
-  location: SRC ("GUIDEWIRE"."BC"."BC_ADDRESS")
-  columns:
-    - name: ID
-      data_type: INTEGER
-      nullable: true
-    - name: ADDRESSLINE1
-      data_type: STRING
-      nullable: true
-    - name: ADDRESSLINE2
-      data_type: STRING
-      nullable: true
-    - name: ADDRESSLINE3
-      data_type: STRING
-      nullable: true
-    - name: CITY
-      data_type: STRING
-      nullable: true
-    - name: POSTALCODE
-      data_type: STRING
-      nullable: true
-    - name: STATE
-      data_type: INTEGER
-      nullable: true
-    - name: BEANVERSION
-      data_type: STRING
-      nullable: true
-    - name: UPDATETIME
-      data_type: DATETIME
-      nullable: true
+  location: SRC ("GUIDEWIRE"."BC")
+  
+columns:
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: ADDRESSLINE1
+    data_type: STRING
+    nullable: true
+  - name: ADDRESSLINE2
+    data_type: STRING
+    nullable: true
+  - name: ADDRESSLINE3
+    data_type: STRING
+    nullable: true
+  - name: CITY
+    data_type: STRING
+    nullable: true
+  - name: POSTALCODE
+    data_type: STRING
+    nullable: true
+  - name: STATE
+    data_type: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    data_type: STRING
+    nullable: true
+  - name: UPDATETIME
+    data_type: DATETIME
+    nullable: true
