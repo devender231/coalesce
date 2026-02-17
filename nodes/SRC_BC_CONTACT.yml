@@ -119,14 +119,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BC_CONTACT: BC_CONTACT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "SRC_BC_CONTACT"
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
