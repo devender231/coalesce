@@ -1,0 +1,9 @@
+name: SRC_BCTL_BILLINGLEVEL
+type: source
+source:
+  database: GUIDEWIRE
+  schema: BC
+  table: BCTL_BILLINGLEVEL
+columns:
+  - name: ID
+  - name: NAME
