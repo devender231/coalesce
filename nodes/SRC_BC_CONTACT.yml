@@ -1,0 +1,13 @@
+name: SRC_BC_CONTACT
+type: source
+source:
+  database: GUIDEWIRE
+  schema: BC
+  table: BC_CONTACT
+columns:
+  - name: ID
+  - name: FIRSTNAME
+  - name: LASTNAME
+  - name: PRIMARYADDRESSID
+  - name: BEANVERSION
+  - name: UPDATETIME
