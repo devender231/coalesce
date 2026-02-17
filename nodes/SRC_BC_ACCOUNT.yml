@@ -1,43 +1,58 @@
-fileVersion: 1.0
 name: SRC_BC_ACCOUNT
 type: source
-description: Source table for BC_ACCOUNT
-sourceLocation:
-  database: BC
-  schema: DBO
+location:
+  database: BILLINGCENTER
+  schema: BC
   table: BC_ACCOUNT
 columns:
   - name: ACCOUNTNUMBER
     dataType: VARCHAR
+    nullable: true
   - name: ACCOUNTNAME
     dataType: VARCHAR
+    nullable: true
   - name: ACCOUNTTYPE
     dataType: VARCHAR
+    nullable: true
   - name: BILLINGLEVEL
     dataType: VARCHAR
+    nullable: true
   - name: SERVICETIER
     dataType: VARCHAR
+    nullable: true
   - name: SECURITYZONEID
     dataType: VARCHAR
+    nullable: true
   - name: SEGMENT
     dataType: VARCHAR
+    nullable: true
   - name: CLOSEDATE
-    dataType: DATETIME
+    dataType: TIMESTAMP
+    nullable: true
   - name: CREATETIME
-    dataType: DATETIME
+    dataType: TIMESTAMP
+    nullable: true
   - name: DELINQUENCYSTATUS
     dataType: VARCHAR
+    nullable: true
   - name: FIRSTTWICEPERMTHINVOICEDOM
-    dataType: VARCHAR
+    dataType: INTEGER
+    nullable: true
   - name: SECONDTWICEPERMTHINVOICEDOM
-    dataType: VARCHAR
+    dataType: INTEGER
+    nullable: true
   - name: PUBLICID
     dataType: VARCHAR
+    nullable: true
   - name: ID
     dataType: BIGINT
+    nullable: true
   - name: BEANVERSION
-    dataType: INT
+    dataType: INTEGER
+    nullable: true
   - name: RETIRED
-    dataType: INT
+    dataType: INTEGER
+    nullable: true
   - name: UPDATETIME
-    dataType: DATETIME
+    dataType: TIMESTAMP
+    nullable: true
