@@ -13,12 +13,12 @@ operation:
     preSQL: ""
     refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: true
+    testsEnabled: false
     truncateBefore: false
-    warehouseName: DEV_WH_XS
+    warehouseName: DEV_WH
   database: ""
   deployEnabled: true
-  description: Source table for BCTL_DELINQUENCYSTATUS
+  description: Source table BCTL_DELINQUENCYSTATUS
   isDataVault: false
   isMultisource: false
   locationName: SRC
@@ -29,43 +29,47 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
         config: {}
-        dataType: NUMBER
+        dataType: VARCHAR
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BCTL_DELINQUENCYSTATUS
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
         config: {}
         dataType: VARCHAR
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BCTL_DELINQUENCYSTATUS
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          BCTL_DELINQUENCYSTATUS: 1
+          SRC_BCTL_DELINQUENCYSTATUS: SRC_BCTL_DELINQUENCYSTATUS
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_DELINQUENCYSTATUS
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
+          joinCondition: FROM {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} SRC_BCTL_DELINQUENCYSTATUS
         name: SRC_BCTL_DELINQUENCYSTATUS
         noLinkRefs: []
   name: SRC_BCTL_DELINQUENCYSTATUS
