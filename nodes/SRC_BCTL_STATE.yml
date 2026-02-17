@@ -1,75 +1,11 @@
-fileVersion: 1
-id: SRC_BCTL_STATE
 name: SRC_BCTL_STATE
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH
-  database: ""
-  deployEnabled: true
-  description: Source table BCTL_STATE
-  isDataVault: false
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_STATE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }}
-        name: SRC_BCTL_STATE
-        noLinkRefs: []
-  name: SRC_BCTL_STATE
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  source_location: SRC_BILLCENTRAL_DBO_BCTL_STATE
+  columns:
+    - name: ID
+      data_type: BIGINT
+      order: 1
+    - name: NAME
+      data_type: VARCHAR
+      order: 2
