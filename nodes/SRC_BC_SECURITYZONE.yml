@@ -1,17 +1,20 @@
 name: SRC_BC_SECURITYZONE
 type: source
-source:
-  location: SRC ("GUIDEWIRE"."BC"."BC_SECURITYZONE")
-  columns:
-    - name: ID
-      data_type: INTEGER
-      nullable: true
-    - name: NAME
-      data_type: STRING
-      nullable: true
-    - name: BEANVERSION
-      data_type: STRING
-      nullable: true
-    - name: UPDATETIME
-      data_type: DATETIME
-      nullable: true
+location:
+  name: SRC
+  database: GUIDEWIRE
+  schema: BC
+table: BC_SECURITYZONE
+columns:
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: NAME
+    dataType: STRING
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
