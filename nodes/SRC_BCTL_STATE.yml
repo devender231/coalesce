@@ -51,14 +51,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BCTL_STATE: BCTL_STATE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_STATE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }} "SRC_BCTL_STATE"
         name: SRC_BCTL_STATE
         noLinkRefs: []
   name: SRC_BCTL_STATE
