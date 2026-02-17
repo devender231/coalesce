@@ -1,11 +1,14 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
-source:
-  location: SRC ("GUIDEWIRE"."DIM"."DIMBILLINGACCOUNT")
-  columns:
-    - name: PUBLICID
-      data_type: STRING
-      nullable: true
-    - name: BEANVERSION
-      data_type: STRING
-      nullable: true
+location:
+  name: SRC
+  database: GUIDEWIRE
+  schema: DIM
+table: DIMBILLINGACCOUNT
+columns:
+  - name: PUBLICID
+    dataType: STRING
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
