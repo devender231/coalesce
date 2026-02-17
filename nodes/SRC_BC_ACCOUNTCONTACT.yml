@@ -1,0 +1,12 @@
+name: SRC_BC_ACCOUNTCONTACT
+type: source
+source:
+  database: GUIDEWIRE
+  schema: BC
+  table: BC_ACCOUNTCONTACT
+columns:
+  - name: INSUREDACCOUNTID
+  - name: CONTACTID
+  - name: ID
+  - name: BEANVERSION
+  - name: UPDATETIME
