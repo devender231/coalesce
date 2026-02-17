@@ -1,357 +1,407 @@
 fileVersion: 1
-id: S1
-name: BC_ACCOUNT
+id: SRC_BC_ACCOUNT
+name: SRC_BC_ACCOUNT
 operation:
-  database: ""
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ''
+    preSQL: ''
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: ''
+  database: GUIDEWIRE
   deployEnabled: true
-  description: ""
-  locationName: SRC
+  description: Source table BC_ACCOUNT from GuideWire
+  isDataVault: false
+  isMultisource: false
+  locationID: ''
+  locationName: BC
+  materializationType: table
   metadata:
+    appliedNodeTests: []
     columns:
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C1
-          stepCounter: S1
+          columnCounter: 0
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: Account Number
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: ACCOUNTNUMBER
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 0
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C2
-          stepCounter: S1
+          columnCounter: 1
+          stepCounter: '0'
         config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
+        dataType: VARCHAR(16777216)
+        defaultValue: ''
+        description: Account Name
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: ACCOUNTNAME
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C3
-          stepCounter: S1
+          columnCounter: 2
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: Account Type ID
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: ACCOUNTTYPE
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C4
-          stepCounter: S1
+          columnCounter: 3
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: Billing Level ID
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: BILLINGLEVEL
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C5
-          stepCounter: S1
+          columnCounter: 4
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: Service Tier ID
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: SERVICETIER
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C6
-          stepCounter: S1
+          columnCounter: 5
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: Security Zone ID
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: SECURITYZONEID
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C7
-          stepCounter: S1
+          columnCounter: 6
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: Segment ID
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: SEGMENT
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C8
-          stepCounter: S1
+          columnCounter: 7
+          stepCounter: '0'
         config: {}
-        dataType: TIMESTAMP_NTZ
-        defaultValue: ""
-        description: ""
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ''
+        description: Close Date
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: CLOSEDATE
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C9
-          stepCounter: S1
+          columnCounter: 8
+          stepCounter: '0'
         config: {}
-        dataType: TIMESTAMP_NTZ
-        defaultValue: ""
-        description: ""
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ''
+        description: Create Time
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: CREATETIME
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C10
-          stepCounter: S1
+          columnCounter: 9
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: Delinquency Status ID
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: DELINQUENCYSTATUS
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C11
-          stepCounter: S1
+          columnCounter: 10
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: First Twice Per Month Invoice DOM
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: FIRSTTWICEPERMTHINVOICEDOM
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C12
-          stepCounter: S1
+          columnCounter: 11
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: Second Twice Per Month Invoice DOM
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C13
-          stepCounter: S1
+          columnCounter: 12
+          stepCounter: '0'
         config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
+        dataType: VARCHAR(16777216)
+        defaultValue: ''
+        description: Public ID - Primary Key
+        hashDetails: null
+        isBusinessKey: true
+        isChangeTracking: false
+        isNullable: true
         name: PUBLICID
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C14
-          stepCounter: S1
+          columnCounter: 13
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: ID
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: ID
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C15
-          stepCounter: S1
+          columnCounter: 14
+          stepCounter: '0'
         config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
+        dataType: VARCHAR(16777216)
+        defaultValue: ''
+        description: Bean Version
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: true
+        isNullable: true
         name: BEANVERSION
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C16
-          stepCounter: S1
+          columnCounter: 15
+          stepCounter: '0'
         config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
+        dataType: NUMBER(38,0)
+        defaultValue: ''
+        description: Retired Flag
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: RETIRED
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: '0'
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C17
-          stepCounter: S1
+          columnCounter: 16
+          stepCounter: '0'
         config: {}
-        dataType: TIMESTAMP_NTZ
-        defaultValue: ""
-        description: ""
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ''
+        description: Update Time
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isNullable: true
         name: UPDATETIME
-        nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-  name: BC_ACCOUNT
-  schema: ""
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: '0'
+            transform: ''
+    cteString: ''
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ''
+        dependencies:
+          - locationName: BC
+            nodeName: BC_ACCOUNT
+        join:
+          joinCondition: FROM {{ ref('BC', 'BC_ACCOUNT') }}
+        name: SRC_BC_ACCOUNT
+        noLinkRefs: []
+  name: SRC_BC_ACCOUNT
+  overrideSQL: false
+  schema: ''
   sqlType: Source
-  type: sourceInput
+  type: sql
   version: 1
-
 type: Node
