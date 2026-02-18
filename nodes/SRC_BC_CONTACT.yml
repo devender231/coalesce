@@ -3,9 +3,20 @@ id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
-  database: ""
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: '{{ parameters.DEV_WAREHOUSE }}'
+  database: '{{ parameters.SOURCE_DATABASE }}'
   deployEnabled: true
   description: Source table BC_CONTACT
   isMultisource: false
@@ -22,14 +33,15 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
+        defaultValue: ""
         description: ""
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,14 +51,15 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
         description: ""
         name: FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -56,14 +69,15 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
         description: ""
         name: LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -73,14 +87,15 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
+        defaultValue: ""
         description: ""
         name: PRIMARYADDRESSID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -90,14 +105,15 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
         description: ""
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -107,32 +123,33 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
         description: ""
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 6
+                stepCounter: SRC_BC_CONTACT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_BC_CONTACT: BC_CONTACT
+          SRC_BC_CONTACT: '{{ parameters.SOURCE_DATABASE }}.{{ parameters.SOURCE_SCHEMA }}.BC_CONTACT'
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "SRC_BC_CONTACT"
+          joinCondition: FROM {{ ref_no_link('SRC', 'BC_CONTACT') }} "SRC_BC_CONTACT"
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
   overrideSQL: false
-  schema: ""
+  schema: '{{ parameters.TARGET_SCHEMA }}'
   sqlType: Source
   type: sql
   version: 1
