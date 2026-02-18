@@ -1,0 +1,39 @@
+name: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+type: transformation
+transformation_type: CONDITIONAL_SPLIT
+config:
+  description: "Routes rows based on whether BeanVersion matches EDWBeanVersion"
+  input_source: "SRC_TR_LOOKUP_BEANVERSION"
+  conditions:
+    - condition_name: "UNCHANGED_ROWS"
+      expression: "BEANVERSION == EDWBeanVersion"
+      output_name: "UNCHANGED_OUTPUT"
+      priority: 1
+      description: "Rows where source BeanVersion matches target BeanVersion (no update needed)"
+    - condition_name: "UPDATE_ROWS"
+      expression: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+      output_name: "UPDATE_OUTPUT"
+      priority: 2
+      description: "Rows where BeanVersion differs from target (requires update)"
+    - condition_name: "INSERT_ROWS"
+      expression: "EDWBeanVersion IS NULL"
+      output_name: "INSERT_OUTPUT"
+      priority: 3
+      description: "Rows with no match in target table (new inserts)"
+  default_output:
+    name: "DEFAULT_OUTPUT"
+    description: "Catch-all for rows not matching any condition"
+  execution_order: 4
+  
+dependencies:
+  - "SRC_TR_LOOKUP_BEANVERSION"
+
+metadata:
+  purpose: "SCD Type 1 logic - route rows for insert, update, or no change"
+  ssis_component: "Conditional Split Transformation"
+  evaluation_order: "Sequential"
+  outputs:
+    - "UNCHANGED_OUTPUT"
+    - "UPDATE_OUTPUT"
+    - "INSERT_OUTPUT"
+    - "DEFAULT_OUTPUT"
