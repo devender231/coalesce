@@ -3,9 +3,20 @@ id: SRC_BCTL_ACCOUNTSEGMENT
 name: SRC_BCTL_ACCOUNTSEGMENT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
-  database: ""
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: '{{ parameters.DEV_WAREHOUSE }}'
+  database: '{{ parameters.SOURCE_DATABASE }}'
   deployEnabled: true
   description: Source table BCTL_ACCOUNTSEGMENT
   isMultisource: false
@@ -22,14 +33,15 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
+        defaultValue: ""
         description: ""
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,32 +51,33 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
         description: ""
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_BCTL_ACCOUNTSEGMENT: BCTL_ACCOUNTSEGMENT
+          SRC_BCTL_ACCOUNTSEGMENT: '{{ parameters.SOURCE_DATABASE }}.{{ parameters.SOURCE_SCHEMA }}.BCTL_ACCOUNTSEGMENT'
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTSEGMENT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} "SRC_BCTL_ACCOUNTSEGMENT"
+          joinCondition: FROM {{ ref_no_link('SRC', 'BCTL_ACCOUNTSEGMENT') }} "SRC_BCTL_ACCOUNTSEGMENT"
         name: SRC_BCTL_ACCOUNTSEGMENT
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTSEGMENT
   overrideSQL: false
-  schema: ""
+  schema: '{{ parameters.TARGET_SCHEMA }}'
   sqlType: Source
   type: sql
   version: 1
