@@ -1,86 +1,25 @@
 fileVersion: 1
-id: SRC_BCTL_ACCOUNTROLE
-name: SRC_BCTL_ACCOUNTROLE
+id: "node_bctl_accountrole_1005"
+isDisabled: false
+name: "SRC_BCTL_ACCOUNTROLE"
+description: "Source node for BCTL_ACCOUNTROLE table"
+database: "GUIDEWIRE_BC"
+schema: "PUBLIC"
+type: "sql"
+locationName: "SRC"
+nodeType: "source"
 operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH
-  database: WORK
-  deployEnabled: true
-  description: Source table BCTL_ACCOUNTROLE
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_ACCOUNTROLE
-        config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_ACCOUNTROLE
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_ACCOUNTROLE
-        config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: TYPECODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_ACCOUNTROLE
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          BCTL_ACCOUNTROLE: SRC_BCTL_ACCOUNTROLE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTROLE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "BCTL_ACCOUNTROLE"
-        name: SRC_BCTL_ACCOUNTROLE
-        noLinkRefs: []
-  name: SRC_BCTL_ACCOUNTROLE
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
-type: Node
+  type: "sql"
+  database: "GUIDEWIRE_BC"
+  schema: "PUBLIC"
+  sqlType: "Source"
+materializationType: "source"
+columns:
+  - columnCounter: 1
+    name: "ID"
+    dataType: "INTEGER"
+    nullable: true
+  - columnCounter: 2
+    name: "TYPECODE"
+    dataType: "VARCHAR(255)"
+    nullable: true
