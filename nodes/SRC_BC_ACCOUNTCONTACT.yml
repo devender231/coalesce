@@ -1,26 +1,25 @@
-fileVersion: 1.0.0
+fileVersion: 1.0
 id: SRC_BC_ACCOUNTCONTACT
 name: SRC_BC_ACCOUNTCONTACT
 type: source
-description: Source table BC_ACCOUNTCONTACT from GuideWire
-
-sources:
-  - name: BC_ACCOUNTCONTACT
-    database: ""
-    schema: ""
-    columns:
-      - name: INSUREDACCOUNTID
-        dataType: INTEGER
-        nullable: true
-      - name: CONTACTID
-        dataType: INTEGER
-        nullable: true
-      - name: ID
-        dataType: INTEGER
-        nullable: true
-      - name: BEANVERSION
-        dataType: STRING
-        nullable: true
-      - name: UPDATETIME
-        dataType: DATETIME
-        nullable: true
+description: Source node for BC_ACCOUNTCONTACT table
+location:
+  database: ""
+  schema: ""
+  table: BC_ACCOUNTCONTACT
+columns:
+  - name: INSUREDACCOUNTID
+    dataType: INTEGER
+    nullable: true
+  - name: CONTACTID
+    dataType: INTEGER
+    nullable: true
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
