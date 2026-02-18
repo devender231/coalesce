@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_ADDRESS from GuideWire
+  description: Source table BC_ADDRESS
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,7 +22,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -41,7 +41,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
         hashColumns: []
         hashDetails: null
@@ -60,7 +60,7 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
         hashColumns: []
         hashDetails: null
@@ -79,7 +79,7 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
         hashColumns: []
         hashDetails: null
@@ -98,7 +98,7 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
         hashColumns: []
         hashDetails: null
@@ -117,7 +117,7 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
         hashColumns: []
         hashDetails: null
@@ -136,7 +136,7 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
         hashColumns: []
         hashDetails: null
@@ -155,7 +155,7 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: NUMBER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -174,7 +174,7 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP
         description: ""
         hashColumns: []
         hashDetails: null
