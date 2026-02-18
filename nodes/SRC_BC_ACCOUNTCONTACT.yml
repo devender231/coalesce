@@ -2,22 +2,22 @@ name: SRC_BC_ACCOUNTCONTACT
 type: source
 config:
   source_type: table
-  source_name: BC_ACCOUNTCONTACT
   database: ""
   schema: ""
-  columns:
-    - name: INSUREDACCOUNTID
-      data_type: INTEGER
-      nullable: true
-    - name: CONTACTID
-      data_type: INTEGER
-      nullable: true
-    - name: ID
-      data_type: INTEGER
-      nullable: true
-    - name: BEANVERSION
-      data_type: STRING
-      nullable: true
-    - name: UPDATETIME
-      data_type: DATETIME
-      nullable: true
+  table: BC_ACCOUNTCONTACT
+columns:
+  - name: INSUREDACCOUNTID
+    data_type: INTEGER
+    nullable: true
+  - name: CONTACTID
+    data_type: INTEGER
+    nullable: true
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    data_type: STRING
+    nullable: true
+  - name: UPDATETIME
+    data_type: DATETIME
+    nullable: true
