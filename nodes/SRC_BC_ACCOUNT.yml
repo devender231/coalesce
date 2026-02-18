@@ -1,14 +1,24 @@
 fileVersion: 1
 id: SRC_BC_ACCOUNT
 name: SRC_BC_ACCOUNT
-nodeType: Source
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
-  database: ""
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH
+  database: WORK
   deployEnabled: true
-  description: Source table BC_ACCOUNT from SSIS package EDW_BC_Load_DimBillingAccount
+  description: Source table BC_ACCOUNT
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -341,14 +351,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BC_ACCOUNT: SRC_BC_ACCOUNT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }} "BC_ACCOUNT"
         name: SRC_BC_ACCOUNT
         noLinkRefs: []
   name: SRC_BC_ACCOUNT
@@ -357,3 +368,4 @@ operation:
   sqlType: Source
   type: sql
   version: 1
+type: Node
