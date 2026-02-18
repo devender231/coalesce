@@ -2,22 +2,22 @@ name: SRC_BC_ACCOUNTCONTACTROLE
 type: source
 config:
   source_type: table
-  source_name: BC_ACCOUNTCONTACTROLE
   database: ""
   schema: ""
-  columns:
-    - name: ACCOUNTCONTACTID
-      data_type: INTEGER
-      nullable: true
-    - name: ROLE
-      data_type: INTEGER
-      nullable: true
-    - name: ID
-      data_type: INTEGER
-      nullable: true
-    - name: BEANVERSION
-      data_type: STRING
-      nullable: true
-    - name: UPDATETIME
-      data_type: DATETIME
-      nullable: true
+  table: BC_ACCOUNTCONTACTROLE
+columns:
+  - name: ACCOUNTCONTACTID
+    data_type: INTEGER
+    nullable: true
+  - name: ROLE
+    data_type: INTEGER
+    nullable: true
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    data_type: STRING
+    nullable: true
+  - name: UPDATETIME
+    data_type: DATETIME
+    nullable: true
