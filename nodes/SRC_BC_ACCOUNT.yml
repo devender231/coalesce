@@ -1,286 +1,60 @@
-fileVersion: 1
+fileVersion: 1.0.0
 id: SRC_BC_ACCOUNT
 name: SRC_BC_ACCOUNT
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH
+type: source
+config:
   database: ""
-  deployEnabled: true
-  description: Source table BC_ACCOUNT
-  isDataVault: false
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: ""
-        name: ACCOUNTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: ACCOUNTTYPE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: BILLINGLEVEL
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: SERVICETIER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: SECURITYZONEID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: SEGMENT
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8
-          stepCounter: 1
-        config: {}
-        dataType: DATETIME
-        description: ""
-        name: CLOSEDATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9
-          stepCounter: 1
-        config: {}
-        dataType: DATETIME
-        description: ""
-        name: CREATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 10
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: DELINQUENCYSTATUS
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 10
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 11
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: FIRSTTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 11
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 12
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 12
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 13
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: ""
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 13
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 14
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 14
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 15
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 15
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 16
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: RETIRED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 16
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 17
-          stepCounter: 1
-        config: {}
-        dataType: DATETIME
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 17
-                stepCounter: 1
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          BC_ACCOUNT: 1
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_ACCOUNT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }}
-        name: SRC_BC_ACCOUNT
-        noLinkRefs: []
-  name: SRC_BC_ACCOUNT
-  overrideSQL: false
   schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+  table: BC_ACCOUNT
+columns:
+  - name: ACCOUNTNUMBER
+    dataType: INTEGER
+    columnOrder: 1
+  - name: ACCOUNTNAME
+    dataType: STRING
+    columnOrder: 2
+  - name: ACCOUNTTYPE
+    dataType: INTEGER
+    columnOrder: 3
+  - name: BILLINGLEVEL
+    dataType: INTEGER
+    columnOrder: 4
+  - name: SERVICETIER
+    dataType: INTEGER
+    columnOrder: 5
+  - name: SECURITYZONEID
+    dataType: INTEGER
+    columnOrder: 6
+  - name: SEGMENT
+    dataType: INTEGER
+    columnOrder: 7
+  - name: CLOSEDATE
+    dataType: DATETIME
+    columnOrder: 8
+  - name: CREATETIME
+    dataType: DATETIME
+    columnOrder: 9
+  - name: DELINQUENCYSTATUS
+    dataType: INTEGER
+    columnOrder: 10
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+    columnOrder: 11
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+    columnOrder: 12
+  - name: PUBLICID
+    dataType: STRING
+    columnOrder: 13
+  - name: ID
+    dataType: INTEGER
+    columnOrder: 14
+  - name: BEANVERSION
+    dataType: STRING
+    columnOrder: 15
+  - name: RETIRED
+    dataType: INTEGER
+    columnOrder: 16
+  - name: UPDATETIME
+    dataType: DATETIME
+    columnOrder: 17
