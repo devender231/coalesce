@@ -3,9 +3,21 @@ id: SRC_BCTL_DELINQUENCYSTATUS
 name: SRC_BCTL_DELINQUENCYSTATUS
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: ""
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
   deployEnabled: true
   description: Source table BCTL_DELINQUENCYSTATUS
   isMultisource: false
@@ -14,57 +26,59 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1
+        stepCounter: SRC_BCTL_DELINQUENCYSTATUS
+      config: {}
+      dataType: INTEGER
+      description: ''
+      hashColumns: []
+      hashDetails: null
+      name: ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: null
+          stepCounter: null
+        transform: ''
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2
+        stepCounter: SRC_BCTL_DELINQUENCYSTATUS
+      config: {}
+      dataType: STRING
+      description: ''
+      hashColumns: []
+      hashDetails: null
+      name: NAME
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: null
+          stepCounter: null
+        transform: ''
+    cteString: ''
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BCTL_DELINQUENCYSTATUS: BCTL_DELINQUENCYSTATUS
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_DELINQUENCYSTATUS
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} "SRC_BCTL_DELINQUENCYSTATUS"
-        name: SRC_BCTL_DELINQUENCYSTATUS
-        noLinkRefs: []
+    - customSQL:
+        customSQL: ''
+      dependencies:
+      - locationName: SRC
+        nodeName: BCTL_DELINQUENCYSTATUS
+      join:
+        joinCondition: FROM {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }}
+      name: SRC_BCTL_DELINQUENCYSTATUS
+      noLinkRefs: []
   name: SRC_BCTL_DELINQUENCYSTATUS
   overrideSQL: false
-  schema: ""
+  schema: ''
   sqlType: Source
   type: sql
   version: 1
