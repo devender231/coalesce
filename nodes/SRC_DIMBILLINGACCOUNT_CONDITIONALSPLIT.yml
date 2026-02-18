@@ -1,0 +1,100 @@
+fileVersion: 1.0
+name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+type: transformation
+description: |
+  Conditional Split transformation for DimBillingAccount package
+  Routes rows based on whether BeanVersion matches EDWBeanVersion
+  Execution Order: Step 5 - After lookup, split rows for INSERT/UPDATE/UNCHANGED
+
+sources:
+  - name: SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION
+    type: transformation
+
+transformation_type: CONDITIONAL_SPLIT
+
+transformation_logic:
+  operation: SPLIT_ROWS
+  description: Routes rows to different outputs based on BeanVersion comparison
+  
+  split_conditions:
+    # Output 1: Unchanged rows (BeanVersion matches)
+    - output_name: UNCHANGED_ROWS
+      condition: "BEANVERSION == EDWBeanVersion"
+      description: Rows where source BeanVersion matches existing dimension BeanVersion
+      priority: 1
+      
+    # Output 2: Update rows (BeanVersion different and EDWBeanVersion not null)
+    - output_name: UPDATE_ROWS
+      condition: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+      description: Rows where BeanVersion changed - requires UPDATE
+      priority: 2
+      
+    # Output 3: Insert rows (no match in lookup - EDWBeanVersion is null)
+    - output_name: INSERT_ROWS
+      condition: "EDWBeanVersion IS NULL"
+      description: New rows not found in dimension - requires INSERT
+      priority: 3
+      
+  default_output:
+    name: ERROR_ROWS
+    description: Rows that don't match any condition (should be empty)
+    
+output_columns:
+  # All columns passed through to each output
+  - BC_ACCOUNT.ACCOUNTNUMBER
+  - BC_ACCOUNT.ACCOUNTNAME
+  - BC_ACCOUNT.ACCOUNTTYPE
+  - BC_ACCOUNT.BILLINGLEVEL
+  - BC_ACCOUNT.SERVICETIER
+  - BC_ACCOUNT.SECURITYZONEID
+  - BC_ACCOUNT.SEGMENT
+  - BC_ACCOUNT.CLOSEDATE
+  - BC_ACCOUNT.CREATETIME
+  - BC_ACCOUNT.DELINQUENCYSTATUS
+  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
+  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
+  - BC_ACCOUNT.PUBLICID
+  - BC_ACCOUNT.ID
+  - BC_ACCOUNT.BEANVERSION
+  - BC_ACCOUNT.RETIRED
+  - BC_ACCOUNT.UPDATETIME
+  - ACCOUNTTYPE_NAME
+  - BILLINGLEVEL_NAME
+  - SERVICETIER_NAME
+  - SECURITYZONE_NAME
+  - DELINQUENCYSTATUS_NAME
+  - SEGMENT_NAME
+  - PARENT_ACCOUNT_ID
+  - INSURED_FIRSTNAME
+  - INSURED_LASTNAME
+  - INSURED_ADDRESS1
+  - INSURED_ADDRESS2
+  - INSURED_ADDRESS3
+  - INSURED_CITY
+  - INSURED_POSTALCODE
+  - INSURED_STATE
+  - BatchID
+  - EDWBeanVersion
+
+output_paths:
+  - name: UNCHANGED_ROWS
+    description: Rows with matching BeanVersion - no action needed
+    next_component: SRC_DIMBILLINGACCOUNT_ROWCOUNT_UNCHANGED
+    
+  - name: UPDATE_ROWS
+    description: Rows with different BeanVersion - UPDATE target
+    next_component: SRC_DIMBILLINGACCOUNT_ROWCOUNT_UPDATE
+    
+  - name: INSERT_ROWS
+    description: New rows not in dimension - INSERT to target
+    next_component: SRC_DIMBILLINGACCOUNT_ROWCOUNT_INSERT
+
+execution_order: 5
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION
+
+metadata:
+  ssis_component_type: CONDITIONAL_SPLIT
+  ssis_condition: "BeanVersion == EDWBeanVersion"
+  purpose: Implement SCD Type 1 logic by routing rows based on change detection
+  scd_type: TYPE_1
