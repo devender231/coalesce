@@ -3,27 +3,14 @@ id: SRC_BCTL_BILLINGLEVEL
 name: SRC_BCTL_BILLINGLEVEL
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: ''
   database: ""
   deployEnabled: true
-  description: Source table for BCTL_BILLINGLEVEL
-  isDataVault: false
+  description: Source table BCTL_BILLINGLEVEL
   isMultisource: false
   locationName: SRC
-  materializationType: table
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -35,10 +22,8 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -54,10 +39,8 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: STRING
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
@@ -65,17 +48,14 @@ operation:
               - columnCounter: 2
                 stepCounter: SRC_BCTL_BILLINGLEVEL
             transform: ""
-    cteString: ""
+    codeGenerated: false
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
-        customSQL:
+      - customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_BILLINGLEVEL
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }}
         name: SRC_BCTL_BILLINGLEVEL
         noLinkRefs: []
   name: SRC_BCTL_BILLINGLEVEL
@@ -84,4 +64,3 @@ operation:
   sqlType: Source
   type: sql
   version: 1
-type: Node
