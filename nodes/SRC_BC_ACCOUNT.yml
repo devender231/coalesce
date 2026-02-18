@@ -1,85 +1,1097 @@
 fileVersion: 1
-id: "node_bc_account_1001"
-isDisabled: false
+id: "node_bc_account_001"
 name: "SRC_BC_ACCOUNT"
-description: "Source node for BC_ACCOUNT table"
+description: "Source node for BC_ACCOUNT"
 database: "GUIDEWIRE_BC"
 schema: "PUBLIC"
 type: "sql"
+sources: []
+parameters:
+  loadType: "Full"
+deployEnabled: true
+version: 1
+isMultisource: false
 locationName: "SRC"
+materializationType: "source"
+metadata:
+  appliedNodeTests: []
+  columns:
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "ACCOUNTNUMBER"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 1
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "VARCHAR(255)"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "ACCOUNTNAME"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 2
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 3
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "ACCOUNTTYPE"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 3
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "BILLINGLEVEL"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 4
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "SERVICETIER"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 5
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 6
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "SECURITYZONEID"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 6
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "SEGMENT"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 7
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "TIMESTAMP"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "CLOSEDATE"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 8
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "TIMESTAMP"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "CREATETIME"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 9
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 10
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "DELINQUENCYSTATUS"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 10
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 11
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "FIRSTTWICEPERMTHINVOICEDOM"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 11
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 12
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "SECONDTWICEPERMTHINVOICEDOM"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 12
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 13
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "VARCHAR(255)"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "PUBLICID"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 13
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 14
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "ID"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 14
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 15
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "VARCHAR(255)"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "BEANVERSION"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 15
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 16
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "RETIRED"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 16
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 17
+        stepCounter: "node_bc_account_001"
+      config: {}
+      dataType: "TIMESTAMP"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "UPDATETIME"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 17
+              stepCounter: "node_bc_account_001"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+  codeGeneration:
+    imports: []
+    macros: []
+    postSQL: ""
+    preSQL: ""
+  enabledColumnTestIDs: []
+  sourceMapping:
+    - customSQL:
+        customSQL: ""
+      dependencies:
+        - locationName: "SRC"
+          nodeName: "BC_ACCOUNT"
+      name: "SRC_BC_ACCOUNT"
+      noLinkRefs: []
 nodeType: "source"
 operation:
-  type: "sql"
+  config:
+    clusterKey: false
+    downstreamOption: "true"
+    groupByAll: false
+    initialize: "ON_CREATE"
+    insertStrategy: "INSERT"
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: false
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: true
+    warehouseName: "DEV_WH_SMALL"
   database: "GUIDEWIRE_BC"
+  deployEnabled: true
+  description: "Source node for BC_ACCOUNT"
+  isMultisource: false
+  locationName: "SRC"
+  materializationType: "source"
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "ACCOUNTNUMBER"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "VARCHAR(255)"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "ACCOUNTNAME"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "ACCOUNTTYPE"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "BILLINGLEVEL"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "SERVICETIER"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "SECURITYZONEID"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "SEGMENT"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "TIMESTAMP"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "CLOSEDATE"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "TIMESTAMP"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "CREATETIME"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "DELINQUENCYSTATUS"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "FIRSTTWICEPERMTHINVOICEDOM"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "SECONDTWICEPERMTHINVOICEDOM"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "VARCHAR(255)"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "PUBLICID"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "ID"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "VARCHAR(255)"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "BEANVERSION"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "RETIRED"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17
+          stepCounter: "node_bc_account_001"
+        config: {}
+        dataType: "TIMESTAMP"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "UPDATETIME"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: "node_bc_account_001"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+    codeGeneration:
+      imports: []
+      macros: []
+      postSQL: ""
+      preSQL: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: "SRC"
+            nodeName: "BC_ACCOUNT"
+        name: "SRC_BC_ACCOUNT"
+        noLinkRefs: []
+  name: "SRC_BC_ACCOUNT"
   schema: "PUBLIC"
-  sqlType: "Source"
-materializationType: "source"
-columns:
-  - columnCounter: 1
-    name: "ACCOUNTNUMBER"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 2
-    name: "ACCOUNTNAME"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 3
-    name: "ACCOUNTTYPE"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 4
-    name: "BILLINGLEVEL"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 5
-    name: "SERVICETIER"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 6
-    name: "SECURITYZONEID"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 7
-    name: "SEGMENT"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 8
-    name: "CLOSEDATE"
-    dataType: "TIMESTAMP"
-    nullable: true
-  - columnCounter: 9
-    name: "CREATETIME"
-    dataType: "TIMESTAMP"
-    nullable: true
-  - columnCounter: 10
-    name: "DELINQUENCYSTATUS"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 11
-    name: "FIRSTTWICEPERMTHINVOICEDOM"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 12
-    name: "SECONDTWICEPERMTHINVOICEDOM"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 13
-    name: "PUBLICID"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 14
-    name: "ID"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 15
-    name: "BEANVERSION"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 16
-    name: "RETIRED"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 17
-    name: "UPDATETIME"
-    dataType: "TIMESTAMP"
-    nullable: true
+  sqlType: "source"
+  type: "sql"
+systemColumns: []
