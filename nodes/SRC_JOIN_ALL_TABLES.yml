@@ -1,0 +1,554 @@
+fileVersion: 1
+id: "SRC_JOIN_ALL_TABLES"
+name: "SRC_JOIN_ALL_TABLES"
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Comprehensive join operation combining all source tables for DimBillingAccount"
+  isMultisource: true
+  locationName: "WORK"
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "ACCOUNTNUMBER"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "ACCOUNTNAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "ACCOUNTTYPE"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "ACCOUNTTYPE_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BCTL_ACCOUNTTYPE"
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "BILLINGLEVEL"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "BILLINGLEVEL_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BCTL_BILLINGLEVEL"
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "SERVICETIER"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "SERVICETIER_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BCTL_CUSTOMERSERVICETIER"
+            transform: ""
+      - columnReference:
+          columnCounter: 9
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "SECURITYZONEID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 10
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "SECURITYZONE_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BC_SECURITYZONE"
+            transform: ""
+      - columnReference:
+          columnCounter: 11
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "SEGMENT"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 12
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "SEGMENT_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BCTL_ACCOUNTSEGMENT"
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "DELINQUENCYSTATUS"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 14
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "DELINQUENCYSTATUS_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BCTL_DELINQUENCYSTATUS"
+            transform: ""
+      - columnReference:
+          columnCounter: 15
+          stepCounter: "1"
+        dataType: DATETIME
+        name: "CLOSEDATE"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 16
+          stepCounter: "1"
+        dataType: DATETIME
+        name: "CREATETIME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 17
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "FIRSTTWICEPERMTHINVOICEDOM"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 18
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "SECONDTWICEPERMTHINVOICEDOM"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 19
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "PUBLICID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 20
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "ACCOUNT_ID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 21
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "ACCOUNT_BEANVERSION"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 22
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "RETIRED"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 23
+          stepCounter: "1"
+        dataType: DATETIME
+        name: "ACCOUNT_UPDATETIME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: "SRC_BC_ACCOUNT"
+            transform: ""
+      - columnReference:
+          columnCounter: 24
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "PARENT_OWNERID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: "SRC_BC_PARENTACCT"
+            transform: ""
+      - columnReference:
+          columnCounter: 25
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "PARENT_FOREIGNENTITYID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BC_PARENTACCT"
+            transform: ""
+      - columnReference:
+          columnCounter: 26
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "INSUREDACCOUNTID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: "SRC_BC_ACCOUNTCONTACT"
+            transform: ""
+      - columnReference:
+          columnCounter: 27
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "CONTACTID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BC_ACCOUNTCONTACT"
+            transform: ""
+      - columnReference:
+          columnCounter: 28
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "ACCOUNTCONTACT_ID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: "SRC_BC_ACCOUNTCONTACT"
+            transform: ""
+      - columnReference:
+          columnCounter: 29
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "ACCOUNTCONTACTROLE_ID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: "SRC_BC_ACCOUNTCONTACTROLE"
+            transform: ""
+      - columnReference:
+          columnCounter: 30
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "ROLE"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BC_ACCOUNTCONTACTROLE"
+            transform: ""
+      - columnReference:
+          columnCounter: 31
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "ROLE_TYPECODE"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BCTL_ACCOUNTROLE"
+            transform: ""
+      - columnReference:
+          columnCounter: 32
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "CONTACT_FIRSTNAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BC_CONTACT"
+            transform: ""
+      - columnReference:
+          columnCounter: 33
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "CONTACT_LASTNAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: "SRC_BC_CONTACT"
+            transform: ""
+      - columnReference:
+          columnCounter: 34
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "PRIMARYADDRESSID"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: "SRC_BC_CONTACT"
+            transform: ""
+      - columnReference:
+          columnCounter: 35
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "ADDRESSLINE1"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BC_ADDRESS"
+            transform: ""
+      - columnReference:
+          columnCounter: 36
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "ADDRESSLINE2"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: "SRC_BC_ADDRESS"
+            transform: ""
+      - columnReference:
+          columnCounter: 37
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "ADDRESSLINE3"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: "SRC_BC_ADDRESS"
+            transform: ""
+      - columnReference:
+          columnCounter: 38
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "CITY"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: "SRC_BC_ADDRESS"
+            transform: ""
+      - columnReference:
+          columnCounter: 39
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "POSTALCODE"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: "SRC_BC_ADDRESS"
+            transform: ""
+      - columnReference:
+          columnCounter: 40
+          stepCounter: "1"
+        dataType: INTEGER
+        name: "STATE"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: "SRC_BC_ADDRESS"
+            transform: ""
+      - columnReference:
+          columnCounter: 41
+          stepCounter: "1"
+        dataType: VARCHAR
+        name: "STATE_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_BCTL_STATE"
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_BC_ACCOUNT: "ACC"
+          SRC_BCTL_ACCOUNTTYPE: "AT"
+          SRC_BC_PARENTACCT: "PA"
+          SRC_BCTL_BILLINGLEVEL: "BL"
+          SRC_BCTL_CUSTOMERSERVICETIER: "CST"
+          SRC_BC_SECURITYZONE: "SZ"
+          SRC_BCTL_DELINQUENCYSTATUS: "DS"
+          SRC_BCTL_ACCOUNTSEGMENT: "AS"
+          SRC_BC_ACCOUNTCONTACT: "ACCT"
+          SRC_BC_ACCOUNTCONTACTROLE: "ACR"
+          SRC_BCTL_ACCOUNTROLE: "AR"
+          SRC_BC_CONTACT: "CNT"
+          SRC_BC_ADDRESS: "ADDR"
+          SRC_BCTL_STATE: "ST"
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: "WORK"
+            nodeName: "SRC_BC_ACCOUNT"
+          - locationName: "WORK"
+            nodeName: "SRC_BCTL_ACCOUNTTYPE"
+          - locationName: "WORK"
+            nodeName: "SRC_BC_PARENTACCT"
+          - locationName: "WORK"
+            nodeName: "SRC_BCTL_BILLINGLEVEL"
+          - locationName: "WORK"
+            nodeName: "SRC_BCTL_CUSTOMERSERVICETIER"
+          - locationName: "WORK"
+            nodeName: "SRC_BC_SECURITYZONE"
+          - locationName: "WORK"
+            nodeName: "SRC_BCTL_DELINQUENCYSTATUS"
+          - locationName: "WORK"
+            nodeName: "SRC_BCTL_ACCOUNTSEGMENT"
+          - locationName: "WORK"
+            nodeName: "SRC_BC_ACCOUNTCONTACT"
+          - locationName: "WORK"
+            nodeName: "SRC_BC_ACCOUNTCONTACTROLE"
+          - locationName: "WORK"
+            nodeName: "SRC_BCTL_ACCOUNTROLE"
+          - locationName: "WORK"
+            nodeName: "SRC_BC_CONTACT"
+          - locationName: "WORK"
+            nodeName: "SRC_BC_ADDRESS"
+          - locationName: "WORK"
+            nodeName: "SRC_BCTL_STATE"
+        join:
+          joinCondition: |-
+            FROM {{ ref('WORK', 'SRC_BC_ACCOUNT') }} "ACC"
+            LEFT JOIN {{ ref('WORK', 'SRC_BCTL_ACCOUNTTYPE') }} "AT"
+              ON "ACC"."ACCOUNTTYPE" = "AT"."ID"
+            LEFT JOIN {{ ref('WORK', 'SRC_BC_PARENTACCT') }} "PA"
+              ON "PA"."OWNERID" = "ACC"."ID"
+            LEFT JOIN {{ ref('WORK', 'SRC_BCTL_BILLINGLEVEL') }} "BL"
+              ON "ACC"."BILLINGLEVEL" = "BL"."ID"
+            LEFT JOIN {{ ref('WORK', 'SRC_BCTL_CUSTOMERSERVICETIER') }} "CST"
+              ON "ACC"."SERVICETIER" = "CST"."ID"
+            LEFT JOIN {{ ref('WORK', 'SRC_BC_SECURITYZONE') }} "SZ"
+              ON "ACC"."SECURITYZONEID" = "SZ"."ID"
+            LEFT JOIN {{ ref('WORK', 'SRC_BCTL_DELINQUENCYSTATUS') }} "DS"
+              ON "ACC"."DELINQUENCYSTATUS" = "DS"."ID"
+            LEFT JOIN {{ ref('WORK', 'SRC_BCTL_ACCOUNTSEGMENT') }} "AS"
+              ON "ACC"."SEGMENT" = "AS"."ID"
+            LEFT JOIN {{ ref('WORK', 'SRC_BC_ACCOUNTCONTACT') }} "ACCT"
+              ON "ACCT"."INSUREDACCOUNTID" = "ACC"."ID"
+            INNER JOIN {{ ref('WORK', 'SRC_BC_ACCOUNTCONTACTROLE') }} "ACR"
+              ON "ACR"."ACCOUNTCONTACTID" = "ACCT"."ID"
+            INNER JOIN {{ ref('WORK', 'SRC_BCTL_ACCOUNTROLE') }} "AR"
+              ON "AR"."ID" = "ACR"."ROLE" AND "AR"."TYPECODE" = 'insured'
+            LEFT JOIN {{ ref('WORK', 'SRC_BC_CONTACT') }} "CNT"
+              ON "CNT"."ID" = "ACCT"."CONTACTID"
+            LEFT JOIN {{ ref('WORK', 'SRC_BC_ADDRESS') }} "ADDR"
+              ON "ADDR"."ID" = "CNT"."PRIMARYADDRESSID"
+            LEFT JOIN {{ ref('WORK', 'SRC_BCTL_STATE') }} "ST"
+              ON "ST"."ID" = "ADDR"."STATE"
+        name: "SRC_JOIN_ALL_TABLES"
+        noLinkRefs: []
+  name: "SRC_JOIN_ALL_TABLES"
+  overrideSQL: false
+  schema: ""
+  sqlType: "DT113:::156"
+  type: "sql"
+  version: 1
+type: "Node"
