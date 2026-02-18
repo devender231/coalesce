@@ -1,76 +1,57 @@
 fileVersion: 1
-id: SRC_DIMBILLINGACCOUNT
-name: SRC_DIMBILLINGACCOUNT
+id: S15
+name: DIMBILLINGACCOUNT
 operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: ""
   database: ""
   deployEnabled: true
-  description: Source table DIMBILLINGACCOUNT
-  isDataVault: false
-  isMultisource: false
+  description: ""
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: SRC_DIMBILLINGACCOUNT
+          columnCounter: C1
+          stepCounter: S15
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
+        defaultValue: ""
         description: ""
         name: PUBLICID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_DIMBILLINGACCOUNT
+          - columnReferences: []
             transform: ""
-      - appliedColumnTests: {}
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: SRC_DIMBILLINGACCOUNT
+          columnCounter: C2
+          stepCounter: S15
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
+        defaultValue: ""
         description: ""
         name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_DIMBILLINGACCOUNT
+          - columnReferences: []
             transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: DIMBILLINGACCOUNT
-        join:
-          joinCondition: ""
-        name: SRC_DIMBILLINGACCOUNT
-        noLinkRefs: []
-  name: SRC_DIMBILLINGACCOUNT
-  overrideSQL: false
+        transform: ""
+        uniqueKey: false
+
+  name: DIMBILLINGACCOUNT
   schema: ""
   sqlType: Source
-  type: sql
+  type: sourceInput
   version: 1
+
+type: Node
