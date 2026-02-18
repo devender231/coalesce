@@ -3,11 +3,24 @@ id: SRC_BC_SECURITYZONE
 name: SRC_BC_SECURITYZONE
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: ""
   database: ""
   deployEnabled: true
   description: Source table BC_SECURITYZONE
+  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -19,56 +32,56 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BC_SECURITYZONE
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BC_SECURITYZONE
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: SRC_BC_SECURITYZONE
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP
         description: ""
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: SRC_BC_SECURITYZONE
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
