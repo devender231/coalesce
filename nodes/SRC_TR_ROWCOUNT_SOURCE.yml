@@ -1,0 +1,53 @@
+fileVersion: 1
+id: SRC_TR_ROWCOUNT_SOURCE
+name: SRC_TR_ROWCOUNT_SOURCE
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Counts source rows from OLE_SRC - GuideWire for User::SourceCount variable"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER
+        description: Row count from source
+        name: ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: COUNT(*)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_JOIN_DIMBILLINGACCOUNT: SRC_JOIN_DIMBILLINGACCOUNT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_JOIN_DIMBILLINGACCOUNT
+        join:
+          joinCondition: |-
+            FROM {{ ref('SRC', 'SRC_JOIN_DIMBILLINGACCOUNT') }} SRC_JOIN_DIMBILLINGACCOUNT
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+  name: SRC_TR_ROWCOUNT_SOURCE
+  overrideSQL: false
+  schema: ""
+  sqlType: DT113:::156
+  type: sql
+  version: 1
+type: Node
