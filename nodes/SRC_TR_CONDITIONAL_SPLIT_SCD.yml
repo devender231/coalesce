@@ -1,0 +1,42 @@
+# Transformation: Conditional Split for SCD Logic
+name: SRC_TR_CONDITIONAL_SPLIT_SCD
+type: CONDITIONAL_SPLIT
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion for SCD processing
+execution_order: 5
+
+input:
+  source: SRC_TR_LOOKUP_BEANVERSION
+  description: Dataset with EDW BeanVersion lookup results
+
+split_conditions:
+  - output_name: UNCHANGED_ROWS
+    condition: BeanVersion == EDWBeanVersion
+    description: Records where BeanVersion matches - no update needed
+    priority: 1
+    next_step: SRC_TR_ROW_COUNT_UNCHANGED
+  
+  - output_name: UPDATE_ROWS
+    condition: BeanVersion != EDWBeanVersion AND !ISNULL(EDWBeanVersion)
+    description: Records where BeanVersion differs - needs update
+    priority: 2
+    next_step: SRC_TR_ROW_COUNT_UPDATE
+  
+  - output_name: INSERT_ROWS
+    condition: ISNULL(EDWBeanVersion)
+    description: Records with no match in lookup - new inserts
+    priority: 3
+    next_step: SRC_TR_ROW_COUNT_INSERT
+
+default_output:
+  name: ERROR_ROWS
+  description: Records that don't match any condition
+  action: LOG_ERROR
+
+output:
+  description: Three separate streams for unchanged, update, and insert processing
+  routing_logic: SCD_TYPE_1
+
+metadata:
+  ssis_component: Conditional Split
+  purpose: Implement SCD Type 1 logic by routing records based on change detection
+  business_rule: Compare source BeanVersion with EDW BeanVersion to determine action
