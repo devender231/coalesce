@@ -1,0 +1,21 @@
+name: SRC_TR_ROW_COUNT_INSERT
+type: transformation
+config:
+  transformation_type: row_count
+  description: Counts new insert rows (lookup no match)
+  execution_order: 6
+input:
+  source: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+  path: insert
+  description: Input from conditional split insert path
+logic:
+  operation: COUNT
+  variable_name: User::InsertCount
+  count_type: insert_rows
+  filter: "EDWBeanVersion IS NULL"
+output:
+  variable: InsertCount
+  data_type: INTEGER
+  description: Count of new rows requiring insert
+dependencies:
+  - SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
