@@ -1,0 +1,12 @@
+name: SRC_BCTL_ACCOUNTROLE
+type: source
+config:
+  source_name: BCTL_ACCOUNTROLE
+  source_type: table
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: TYPECODE
+      data_type: STRING
+      nullable: true
