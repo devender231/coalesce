@@ -1,39 +1,46 @@
 fileVersion: 1
-id: SRC_TR_ROW_COUNT_SOURCE
-name: SRC_TR_ROW_COUNT_SOURCE
+id: "SRC_TR_ROW_COUNT_SOURCE"
+name: "SRC_TR_ROW_COUNT_SOURCE"
 operation:
   config:
     insertStrategy: INSERT
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Row count transformation for source rows from GuideWire
+  description: "Row count transformation - Counts source rows from OLE_SRC GuideWire"
   isMultisource: false
-  locationName: SRC
+  locationName: "WORK"
   materializationType: view
   metadata:
     appliedNodeTests: []
-    columns: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: "1"
+        dataType: NUMBER
+        name: "SOURCE_ROW_COUNT"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_JOIN_DIMBILLINGACCOUNT: SRC_JOIN_DIMBILLINGACCOUNT
+          SRC_JOIN_ALL_TABLES: "JOIN_DATA"
         customSQL:
-          customSQL: |
-            SELECT *,
-                   COUNT(*) OVER() as SourceCount
-            FROM {{ ref('SRC', 'SRC_JOIN_DIMBILLINGACCOUNT') }}
+          customSQL: ""
         dependencies:
-          - locationName: SRC
-            nodeName: SRC_JOIN_DIMBILLINGACCOUNT
+          - locationName: "WORK"
+            nodeName: "SRC_JOIN_ALL_TABLES"
         join:
-          joinCondition: ""
-        name: SRC_TR_ROW_COUNT_SOURCE
+          joinCondition: "FROM {{ ref('WORK', 'SRC_JOIN_ALL_TABLES') }} \"JOIN_DATA\""
+        name: "SRC_TR_ROW_COUNT_SOURCE"
         noLinkRefs: []
-  name: SRC_TR_ROW_COUNT_SOURCE
+  name: "SRC_TR_ROW_COUNT_SOURCE"
   overrideSQL: false
   schema: ""
-  sqlType: Transformation
-  type: sql
+  sqlType: "DT113:::156"
+  type: "sql"
   version: 1
+type: "Node"
