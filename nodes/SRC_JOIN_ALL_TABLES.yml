@@ -1,133 +1,149 @@
 name: SRC_JOIN_ALL_TABLES
 type: join
 config:
-  join_strategy: sequential
-  description: All joins for DimBillingAccount ETL pipeline
-joins:
-  - join_id: 1
-    left_source: SRC_BC_ACCOUNT
-    right_source: SRC_BCTL_ACCOUNTTYPE
-    join_type: LEFT
-    condition: BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
-    output_alias: JOIN_ACCOUNTTYPE
+  join_type: multi_join
+  description: "Joins all source tables for DimBillingAccount ETL process"
+  joins:
+    - join_id: 1
+      left_source: SRC_BC_ACCOUNT
+      right_source: SRC_BCTL_ACCOUNTTYPE
+      join_type: LEFT
+      join_condition: "SRC_BC_ACCOUNT.ACCOUNTTYPE = SRC_BCTL_ACCOUNTTYPE.ID"
+      
+    - join_id: 2
+      left_source: SRC_BC_ACCOUNT
+      right_source: SRC_BC_PARENTACCT
+      join_type: LEFT
+      join_condition: "SRC_BC_PARENTACCT.OWNERID = SRC_BC_ACCOUNT.ID"
+      
+    - join_id: 3
+      left_source: SRC_BC_ACCOUNT
+      right_source: SRC_BCTL_BILLINGLEVEL
+      join_type: LEFT
+      join_condition: "SRC_BC_ACCOUNT.BILLINGLEVEL = SRC_BCTL_BILLINGLEVEL.ID"
+      
+    - join_id: 4
+      left_source: SRC_BC_ACCOUNT
+      right_source: SRC_BCTL_CUSTOMERSERVICETIER
+      join_type: LEFT
+      join_condition: "SRC_BC_ACCOUNT.SERVICETIER = SRC_BCTL_CUSTOMERSERVICETIER.ID"
+      
+    - join_id: 5
+      left_source: SRC_BC_ACCOUNT
+      right_source: SRC_BC_SECURITYZONE
+      join_type: LEFT
+      join_condition: "SRC_BC_ACCOUNT.SECURITYZONEID = SRC_BC_SECURITYZONE.ID"
+      
+    - join_id: 6
+      left_source: SRC_BC_ACCOUNT
+      right_source: SRC_BCTL_DELINQUENCYSTATUS
+      join_type: LEFT
+      join_condition: "SRC_BC_ACCOUNT.DELINQUENCYSTATUS = SRC_BCTL_DELINQUENCYSTATUS.ID"
+      
+    - join_id: 7
+      left_source: SRC_BC_ACCOUNT
+      right_source: SRC_BCTL_ACCOUNTSEGMENT
+      join_type: LEFT
+      join_condition: "SRC_BC_ACCOUNT.SEGMENT = SRC_BCTL_ACCOUNTSEGMENT.ID"
+      
+    - join_id: 8
+      left_source: SRC_BC_ACCOUNT
+      right_source: INSUREDINFO
+      join_type: LEFT
+      join_condition: "INSUREDINFO.ACCOUNTID = SRC_BC_ACCOUNT.ID"
+      description: "Intermediate join result for insured information"
+      
+    - join_id: 9
+      left_source: INSUREDINFO
+      right_source: SRC_BC_ACCOUNTCONTACT
+      join_type: INNER
+      join_condition: "SRC_BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID"
+      
+    - join_id: 10
+      left_source: INSUREDINFO
+      right_source: SRC_BC_ACCOUNTCONTACTROLE
+      join_type: INNER
+      join_condition: "SRC_BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = SRC_BC_ACCOUNTCONTACT.ID"
+      
+    - join_id: 11
+      left_source: INSUREDINFO
+      right_source: SRC_BCTL_ACCOUNTROLE
+      join_type: INNER
+      join_condition: "SRC_BCTL_ACCOUNTROLE.ID = SRC_BC_ACCOUNTCONTACTROLE.ROLE AND SRC_BCTL_ACCOUNTROLE.TYPECODE = 'insured'"
+      
+    - join_id: 12
+      left_source: INSUREDINFO
+      right_source: SRC_BC_CONTACT
+      join_type: LEFT
+      join_condition: "SRC_BC_CONTACT.ID = SRC_BC_ACCOUNTCONTACT.CONTACTID"
+      
+    - join_id: 13
+      left_source: INSUREDINFO
+      right_source: SRC_BC_ADDRESS
+      join_type: LEFT
+      join_condition: "SRC_BC_ADDRESS.ID = SRC_BC_CONTACT.PRIMARYADDRESSID"
+      
+    - join_id: 14
+      left_source: INSUREDINFO
+      right_source: SRC_BCTL_STATE
+      join_type: LEFT
+      join_condition: "SRC_BCTL_STATE.ID = SRC_BC_ADDRESS.STATE"
+      
+    - join_id: 15
+      left_source: LOOKUP_INPUT
+      right_source: SRC_DIMBILLINGACCOUNT
+      join_type: INNER
+      join_condition: "LOOKUP_INPUT.PUBLICID = SRC_DIMBILLINGACCOUNT.PUBLICID"
+      description: "Final lookup join for existing records"
   
-  - join_id: 2
-    left_source: SRC_BC_ACCOUNT
-    right_source: SRC_BC_PARENTACCT
-    join_type: LEFT
-    condition: BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
-    output_alias: JOIN_PARENTACCT
+  output_columns:
+    - ACCOUNTNUMBER
+    - ACCOUNTNAME
+    - ACCOUNTTYPE
+    - BILLINGLEVEL
+    - SERVICETIER
+    - SECURITYZONEID
+    - SEGMENT
+    - CLOSEDATE
+    - CREATETIME
+    - DELINQUENCYSTATUS
+    - FIRSTTWICEPERMTHINVOICEDOM
+    - SECONDTWICEPERMTHINVOICEDOM
+    - PUBLICID
+    - ID
+    - BEANVERSION
+    - RETIRED
+    - UPDATETIME
+    - ACCOUNTTYPE_NAME
+    - BILLINGLEVEL_NAME
+    - SERVICETIER_NAME
+    - SECURITYZONE_NAME
+    - DELINQUENCYSTATUS_NAME
+    - ACCOUNTSEGMENT_NAME
+    - CONTACT_FIRSTNAME
+    - CONTACT_LASTNAME
+    - ADDRESS_LINE1
+    - ADDRESS_LINE2
+    - ADDRESS_LINE3
+    - CITY
+    - POSTALCODE
+    - STATE_NAME
+    - EDWBEANVERSION
   
-  - join_id: 3
-    left_source: SRC_BC_ACCOUNT
-    right_source: SRC_BCTL_BILLINGLEVEL
-    join_type: LEFT
-    condition: BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
-    output_alias: JOIN_BILLINGLEVEL
-  
-  - join_id: 4
-    left_source: SRC_BC_ACCOUNT
-    right_source: SRC_BCTL_CUSTOMERSERVICETIER
-    join_type: LEFT
-    condition: BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
-    output_alias: JOIN_SERVICETIER
-  
-  - join_id: 5
-    left_source: SRC_BC_ACCOUNT
-    right_source: SRC_BC_SECURITYZONE
-    join_type: LEFT
-    condition: BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
-    output_alias: JOIN_SECURITYZONE
-  
-  - join_id: 6
-    left_source: SRC_BC_ACCOUNT
-    right_source: SRC_BCTL_DELINQUENCYSTATUS
-    join_type: LEFT
-    condition: BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
-    output_alias: JOIN_DELINQUENCYSTATUS
-  
-  - join_id: 7
-    left_source: SRC_BC_ACCOUNT
-    right_source: SRC_BCTL_ACCOUNTSEGMENT
-    join_type: LEFT
-    condition: BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
-    output_alias: JOIN_ACCOUNTSEGMENT
-  
-  - join_id: 8
-    left_source: SRC_BC_ACCOUNT
-    right_source: INSUREDINFO
-    join_type: LEFT
-    condition: INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
-    output_alias: JOIN_INSUREDINFO
-    description: Intermediate join result for insured information
-  
-  - join_id: 9
-    left_source: INSUREDINFO
-    right_source: SRC_BC_ACCOUNTCONTACT
-    join_type: INNER
-    condition: BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
-    output_alias: JOIN_ACCOUNTCONTACT
-  
-  - join_id: 10
-    left_source: INSUREDINFO
-    right_source: SRC_BC_ACCOUNTCONTACTROLE
-    join_type: INNER
-    condition: BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
-    output_alias: JOIN_ACCOUNTCONTACTROLE
-  
-  - join_id: 11
-    left_source: INSUREDINFO
-    right_source: SRC_BCTL_ACCOUNTROLE
-    join_type: INNER
-    condition: BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
-    output_alias: JOIN_ACCOUNTROLE
-  
-  - join_id: 12
-    left_source: INSUREDINFO
-    right_source: SRC_BC_CONTACT
-    join_type: LEFT
-    condition: BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
-    output_alias: JOIN_CONTACT
-  
-  - join_id: 13
-    left_source: INSUREDINFO
-    right_source: SRC_BC_ADDRESS
-    join_type: LEFT
-    condition: BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
-    output_alias: JOIN_ADDRESS
-  
-  - join_id: 14
-    left_source: INSUREDINFO
-    right_source: SRC_BCTL_STATE
-    join_type: LEFT
-    condition: BCTL_STATE.ID = BC_ADDRESS.STATE
-    output_alias: JOIN_STATE
-  
-  - join_id: 15
-    left_source: LOOKUP_INPUT
-    right_source: SRC_DIMBILLINGACCOUNT
-    join_type: INNER
-    condition: LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
-    output_alias: JOIN_LOOKUP_DIMBILLINGACCOUNT
-    description: Lookup join for existing records
-execution_order:
-  - Join BC_ACCOUNT with dimension tables (joins 1-7)
-  - Join BC_ACCOUNT with INSUREDINFO (join 8)
-  - Join INSUREDINFO with contact and address tables (joins 9-14)
-  - Perform lookup join with target table (join 15)
-dependencies:
-  - SRC_BC_ACCOUNT
-  - SRC_BCTL_ACCOUNTTYPE
-  - SRC_BC_PARENTACCT
-  - SRC_BCTL_BILLINGLEVEL
-  - SRC_BCTL_CUSTOMERSERVICETIER
-  - SRC_BC_SECURITYZONE
-  - SRC_BCTL_DELINQUENCYSTATUS
-  - SRC_BCTL_ACCOUNTSEGMENT
-  - SRC_BC_ACCOUNTCONTACT
-  - SRC_BC_ACCOUNTCONTACTROLE
-  - SRC_BCTL_ACCOUNTROLE
-  - SRC_BC_CONTACT
-  - SRC_BC_ADDRESS
-  - SRC_BCTL_STATE
-  - SRC_DIMBILLINGACCOUNT
+  execution_order: 1
+  dependencies:
+    - SRC_BC_ACCOUNT
+    - SRC_BCTL_ACCOUNTTYPE
+    - SRC_BC_PARENTACCT
+    - SRC_BCTL_BILLINGLEVEL
+    - SRC_BCTL_CUSTOMERSERVICETIER
+    - SRC_BC_SECURITYZONE
+    - SRC_BCTL_DELINQUENCYSTATUS
+    - SRC_BCTL_ACCOUNTSEGMENT
+    - SRC_BC_ACCOUNTCONTACT
+    - SRC_BC_ACCOUNTCONTACTROLE
+    - SRC_BCTL_ACCOUNTROLE
+    - SRC_BC_CONTACT
+    - SRC_BC_ADDRESS
+    - SRC_BCTL_STATE
+    - SRC_DIMBILLINGACCOUNT
