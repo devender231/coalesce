@@ -1,0 +1,35 @@
+name: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+type: transformation
+config:
+  transformation_type: conditional_split
+  description: Routes rows based on whether BeanVersion matches EDWBeanVersion
+  execution_order: 4
+input:
+  source: SRC_TR_LOOKUP_BEANVERSION
+  description: Input after BeanVersion lookup
+split_conditions:
+  - condition_name: UNCHANGED_ROWS
+    expression: "BEANVERSION == EDWBeanVersion"
+    description: Rows where BeanVersion matches (no update needed)
+    output_path: unchanged
+  
+  - condition_name: UPDATE_ROWS
+    expression: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+    description: Rows where BeanVersion differs (update needed)
+    output_path: update
+  
+  - condition_name: INSERT_ROWS
+    expression: "EDWBeanVersion IS NULL"
+    description: Rows with no lookup match (insert needed)
+    output_path: insert
+    default: true
+output:
+  paths:
+    - path_name: unchanged
+      description: Rows with matching BeanVersion
+    - path_name: update
+      description: Rows requiring update
+    - path_name: insert
+      description: New rows requiring insert
+dependencies:
+  - SRC_TR_LOOKUP_BEANVERSION
