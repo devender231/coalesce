@@ -1,37 +1,206 @@
-fileVersion: 1.0
+fileVersion: 1.0.0
 id: SRC_BC_ADDRESS
 name: SRC_BC_ADDRESS
-type: source
-description: Source node for BC_ADDRESS table
-location:
+operation:
+  config:
+    clusterKey: false
+    clusterKeyConfig: null
+    clusterKeyConfigExpressions:
+    - null
+    clusterKeyExpressions: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    lagSpecification:
+      lag: 1 days
+    orderby: false
+    orderbycolumn: null
+    postSQL: null
+    preSQL: null
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: null
   database: ""
+  deployEnabled: true
+  description: Source table BC_ADDRESS from GuideWire
+  isDataVault: false
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1
+        stepCounter: 1
+      config: {}
+      dataType: NUMBER(38,0)
+      defaultValue: ""
+      description: Record ID
+      isBusinessKey: false
+      name: ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR(16777216)
+      defaultValue: ""
+      description: Address Line 1
+      isBusinessKey: false
+      name: ADDRESSLINE1
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 3
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR(16777216)
+      defaultValue: ""
+      description: Address Line 2
+      isBusinessKey: false
+      name: ADDRESSLINE2
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR(16777216)
+      defaultValue: ""
+      description: Address Line 3
+      isBusinessKey: false
+      name: ADDRESSLINE3
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR(16777216)
+      defaultValue: ""
+      description: City
+      isBusinessKey: false
+      name: CITY
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 6
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR(16777216)
+      defaultValue: ""
+      description: Postal Code
+      isBusinessKey: false
+      name: POSTALCODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7
+        stepCounter: 1
+      config: {}
+      dataType: NUMBER(38,0)
+      defaultValue: ""
+      description: State ID
+      isBusinessKey: false
+      name: STATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR(16777216)
+      defaultValue: ""
+      description: Bean Version
+      isBusinessKey: false
+      name: BEANVERSION
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9
+        stepCounter: 1
+      config: {}
+      dataType: TIMESTAMP_NTZ(9)
+      defaultValue: ""
+      description: Update Time
+      isBusinessKey: false
+      name: UPDATETIME
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+    - aliases: {}
+      customSQL:
+        customSQL: ""
+      dependencies:
+      - locationName: SRC
+        nodeName: BC_ADDRESS
+      join: null
+      name: SRC_BC_ADDRESS
+      noLinkRefs: []
+  name: SRC_BC_ADDRESS
+  overrideSQL: false
   schema: ""
-  table: BC_ADDRESS
-columns:
-  - name: ID
-    dataType: INTEGER
-    nullable: true
-  - name: ADDRESSLINE1
-    dataType: STRING
-    nullable: true
-  - name: ADDRESSLINE2
-    dataType: STRING
-    nullable: true
-  - name: ADDRESSLINE3
-    dataType: STRING
-    nullable: true
-  - name: CITY
-    dataType: STRING
-    nullable: true
-  - name: POSTALCODE
-    dataType: STRING
-    nullable: true
-  - name: STATE
-    dataType: INTEGER
-    nullable: true
-  - name: BEANVERSION
-    dataType: STRING
-    nullable: true
-  - name: UPDATETIME
-    dataType: DATETIME
-    nullable: true
+  sqlType: Source
+  type: sql
+  version: 1
