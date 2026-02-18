@@ -1,75 +1,59 @@
-fileVersion: 1.0
-name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_UNCHANGED
-type: transformation
-description: |
-  Row Count transformation for DimBillingAccount package
-  Counts unchanged rows (BeanVersion matches EDWBeanVersion)
-  Execution Order: Step 6a - After conditional split, count unchanged rows
-
-sources:
-  - name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
-    type: transformation
-    output_path: UNCHANGED_ROWS
-
-transformation_type: ROW_COUNT
-
-transformation_logic:
-  operation: COUNT_ROWS
-  description: Counts rows where BeanVersion matches existing dimension
-  variable_assignment:
-    variable_name: User::UnChangeCount
-    variable_type: INT32
-    scope: PACKAGE
-  
-  count_logic:
-    count_all_rows: true
-    filter_condition: "BEANVERSION == EDWBeanVersion"
-    source_output: UNCHANGED_ROWS
-    
-output_columns:
-  # Pass through all columns from conditional split unchanged output
-  - BC_ACCOUNT.ACCOUNTNUMBER
-  - BC_ACCOUNT.ACCOUNTNAME
-  - BC_ACCOUNT.ACCOUNTTYPE
-  - BC_ACCOUNT.BILLINGLEVEL
-  - BC_ACCOUNT.SERVICETIER
-  - BC_ACCOUNT.SECURITYZONEID
-  - BC_ACCOUNT.SEGMENT
-  - BC_ACCOUNT.CLOSEDATE
-  - BC_ACCOUNT.CREATETIME
-  - BC_ACCOUNT.DELINQUENCYSTATUS
-  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.PUBLICID
-  - BC_ACCOUNT.ID
-  - BC_ACCOUNT.BEANVERSION
-  - BC_ACCOUNT.RETIRED
-  - BC_ACCOUNT.UPDATETIME
-  - ACCOUNTTYPE_NAME
-  - BILLINGLEVEL_NAME
-  - SERVICETIER_NAME
-  - SECURITYZONE_NAME
-  - DELINQUENCYSTATUS_NAME
-  - SEGMENT_NAME
-  - PARENT_ACCOUNT_ID
-  - INSURED_FIRSTNAME
-  - INSURED_LASTNAME
-  - INSURED_ADDRESS1
-  - INSURED_ADDRESS2
-  - INSURED_ADDRESS3
-  - INSURED_CITY
-  - INSURED_POSTALCODE
-  - INSURED_STATE
-  - BatchID
-  - EDWBeanVersion
-
-execution_order: 6
-dependencies:
-  - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
-
-metadata:
-  ssis_component_type: ROW_COUNT
-  ssis_variable: User::UnChangeCount
-  conditional_split_output: UNCHANGED_ROWS
-  purpose: Track number of unchanged rows for audit and reconciliation
-  action: NO_LOAD
+fileVersion: 1
+id: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_UNCHANGED"
+name: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_UNCHANGED"
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts unchanged rows and stores in User::UnChangeCount variable"
+  isMultisource: false
+  locationName: "WORK"
+  materializationType: "view"
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_UNCHANGED"
+        config: {}
+        dataType: "NUMBER(38,0)"
+        description: "Unchanged row count"
+        name: "UNCHANGED_ROW_COUNT"
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT: "SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT"
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: "WORK"
+            nodeName: "SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT"
+        join:
+          joinCondition: |
+            FROM {{ ref('WORK', 'SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT') }} SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+            WHERE OUTPUT_PATH = 'UNCHANGED'
+        name: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_UNCHANGED"
+        noLinkRefs: []
+  name: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_UNCHANGED"
+  overrideSQL: false
+  schema: ""
+  sqlType: "DT113:::156"
+  transformationType: "rowcount"
+  type: "sql"
+  variables:
+    - name: "User::UnChangeCount"
+      description: "Variable to store unchanged row count"
+      dataType: "INTEGER"
+      defaultValue: "0"
+  version: 1
