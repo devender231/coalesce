@@ -1,0 +1,25 @@
+name: SRC_TR_ROWCOUNT_UNCHANGED
+type: transformation
+transformation_type: ROW_COUNT
+config:
+  description: "Counts unchanged rows (BeanVersion matches)"
+  input_source: "SRC_TR_CONDITIONALSPLIT_BEANVERSION.UNCHANGED_OUTPUT"
+  logic:
+    count_variable: "User::UnChangeCount"
+    count_type: "ALL_ROWS"
+    filter_condition: "BEANVERSION == EDWBeanVersion"
+  output:
+    pass_through: false
+    add_count_column: false
+    terminal_node: true
+  execution_order: 5
+  
+dependencies:
+  - "SRC_TR_CONDITIONALSPLIT_BEANVERSION"
+
+metadata:
+  purpose: "Audit count of rows with no changes (BeanVersion match)"
+  variable_scope: "Package"
+  variable_type: "Integer"
+  ssis_component: "Row Count Transformation"
+  output_path: "UNCHANGED_OUTPUT"
