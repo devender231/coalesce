@@ -1,134 +1,41 @@
 fileVersion: 1
-id: SRC_BC_CONTACT
-name: SRC_BC_CONTACT
+id: "node_bc_contact_1006"
+isDisabled: false
+name: "SRC_BC_CONTACT"
+description: "Source node for BC_CONTACT table"
+database: "GUIDEWIRE_BC"
+schema: "PUBLIC"
+type: "sql"
+locationName: "SRC"
+nodeType: "source"
 operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BC_CONTACT
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: STRING
-        description: ""
-        name: FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: STRING
-        description: ""
-        name: LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: PRIMARYADDRESSID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: STRING
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: DATETIME
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-    codeGenerated: false
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_CONTACT
-        name: SRC_BC_CONTACT
-        noLinkRefs: []
-  name: SRC_BC_CONTACT
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+  type: "sql"
+  database: "GUIDEWIRE_BC"
+  schema: "PUBLIC"
+  sqlType: "Source"
+materializationType: "source"
+columns:
+  - columnCounter: 1
+    name: "ID"
+    dataType: "INTEGER"
+    nullable: true
+  - columnCounter: 2
+    name: "FIRSTNAME"
+    dataType: "VARCHAR(255)"
+    nullable: true
+  - columnCounter: 3
+    name: "LASTNAME"
+    dataType: "VARCHAR(255)"
+    nullable: true
+  - columnCounter: 4
+    name: "PRIMARYADDRESSID"
+    dataType: "INTEGER"
+    nullable: true
+  - columnCounter: 5
+    name: "BEANVERSION"
+    dataType: "VARCHAR(255)"
+    nullable: true
+  - columnCounter: 6
+    name: "UPDATETIME"
+    dataType: "TIMESTAMP"
+    nullable: true
