@@ -1,52 +1,39 @@
-fileVersion: 1
-id: T2
+# Transformation: Derived Column - BatchID
+# Package: EDW_BC_Load_DimBillingAccount
+# Description: Adds or overwrites BatchID column with current batch identifier
+
 name: SRC_TR_DERIVED_BATCHID
-operation:
-  config:
-    insertStrategy: INSERT
-    postSQL: ""
-    preSQL: ""
-    testsEnabled: true
-    truncateBefore: true
-  database: ""
-  deployEnabled: true
-  description: "Adds or overwrites BatchID column. Logic: BatchID = @[User::BatchID]"
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: T2
-        config: {}
-        dataType: INTEGER
-        description: "Batch ID from variable"
-        name: BATCHID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: "{{ var('BatchID') }}"
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_JOIN_DIMBILLINGACCOUNT: J1
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_JOIN_DIMBILLINGACCOUNT
-        join: |
-          FROM {{ ref('SRC', 'SRC_JOIN_DIMBILLINGACCOUNT') }} SRC_JOIN_DIMBILLINGACCOUNT
-        name: SRC_TR_DERIVED_BATCHID
-        noLinkRefs: []
-  name: SRC_TR_DERIVED_BATCHID
-  overrideSQL: false
-  schema: ""
-  sqlType: Stage
-  type: sql
-  version: 1
-type: Node
+type: transformation
+transformation_type: DERIVED_COLUMN
+version: 1.0
+execution_order: 2
+
+input:
+  source: SRC_TR_ROW_COUNT_SOURCE
+  description: "Dataset after source row count"
+
+transformation_logic:
+  operation: ADD_DERIVED_COLUMN
+  description: "Adds BatchID column from SSIS variable"
+  columns:
+    - column_name: BatchID
+      expression: "@[User::BatchID]"
+      data_type: INTEGER
+      nullable: false
+      description: "Batch identifier for tracking data load batches"
+      operation_type: "ADD_OR_REPLACE"
+
+output:
+  name: BATCHID_ADDED
+  description: "Dataset with BatchID column added"
+  includes_all_input_columns: true
+  new_columns:
+    - BatchID
+
+metadata:
+  created_by: "Data Engineering Automation Agent"
+  source_package: "EDW_BC_Load_DimBillingAccount"
+  component_type: "Derived Column"
+  purpose: "Add batch tracking identifier"
+  execution_sequence: 2
+  variable_reference: "User::BatchID"
