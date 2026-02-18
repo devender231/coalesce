@@ -1,17 +1,16 @@
-fileVersion: 1.0.0
+fileVersion: 1.0
 id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
 type: source
-description: Source table DIMBILLINGACCOUNT from GuideWire
-
-sources:
-  - name: DIMBILLINGACCOUNT
-    database: ""
-    schema: ""
-    columns:
-      - name: PUBLICID
-        dataType: STRING
-        nullable: true
-      - name: BEANVERSION
-        dataType: STRING
-        nullable: true
+description: Source node for DIMBILLINGACCOUNT table
+location:
+  database: ""
+  schema: ""
+  table: DIMBILLINGACCOUNT
+columns:
+  - name: PUBLICID
+    dataType: STRING
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
