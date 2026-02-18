@@ -1,14 +1,24 @@
 fileVersion: 1
 id: SRC_BCTL_STATE
 name: SRC_BCTL_STATE
-nodeType: Source
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
-  database: ""
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH
+  database: WORK
   deployEnabled: true
-  description: Source table BCTL_STATE from SSIS package EDW_BC_Load_DimBillingAccount
+  description: Source table BCTL_STATE
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -56,14 +66,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BCTL_STATE: SRC_BCTL_STATE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_STATE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }} "BCTL_STATE"
         name: SRC_BCTL_STATE
         noLinkRefs: []
   name: SRC_BCTL_STATE
@@ -72,3 +83,4 @@ operation:
   sqlType: Source
   type: sql
   version: 1
+type: Node
