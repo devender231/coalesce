@@ -1,26 +1,25 @@
-fileVersion: 1.0.0
+fileVersion: 1.0
 id: SRC_BC_ACCOUNTCONTACTROLE
 name: SRC_BC_ACCOUNTCONTACTROLE
 type: source
-description: Source table BC_ACCOUNTCONTACTROLE from GuideWire
-
-sources:
-  - name: BC_ACCOUNTCONTACTROLE
-    database: ""
-    schema: ""
-    columns:
-      - name: ACCOUNTCONTACTID
-        dataType: INTEGER
-        nullable: true
-      - name: ROLE
-        dataType: INTEGER
-        nullable: true
-      - name: ID
-        dataType: INTEGER
-        nullable: true
-      - name: BEANVERSION
-        dataType: STRING
-        nullable: true
-      - name: UPDATETIME
-        dataType: DATETIME
-        nullable: true
+description: Source node for BC_ACCOUNTCONTACTROLE table
+location:
+  database: ""
+  schema: ""
+  table: BC_ACCOUNTCONTACTROLE
+columns:
+  - name: ACCOUNTCONTACTID
+    dataType: INTEGER
+    nullable: true
+  - name: ROLE
+    dataType: INTEGER
+    nullable: true
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
