@@ -1,0 +1,26 @@
+# Transformation: Row Count Unchanged Records
+name: SRC_TR_ROW_COUNT_UNCHANGED
+type: ROW_COUNT
+description: Counts unchanged rows where BeanVersion matches EDWBeanVersion
+execution_order: 6
+
+input:
+  source: SRC_TR_CONDITIONAL_SPLIT_SCD
+  source_output: UNCHANGED_ROWS
+  description: Records where BeanVersion matches - no changes detected
+
+transformation_logic:
+  operation: COUNT_ROWS
+  count_variable: User::UnChangeCount
+  description: Captures count of records with no changes for audit reporting
+
+output:
+  pass_through: true
+  audit_variable: User::UnChangeCount
+  description: Unchanged rows counted and passed through
+  destination: NO_ACTION_REQUIRED
+
+metadata:
+  ssis_component: Row Count
+  purpose: Audit count of unchanged records for ETL monitoring
+  scd_action: NO_UPDATE
