@@ -3,6 +3,10 @@ type: source
 config:
   source_name: BC_SECURITYZONE
   source_type: table
+  location:
+    database: ""
+    schema: ""
+    table: BC_SECURITYZONE
   columns:
     - name: ID
       data_type: INTEGER
