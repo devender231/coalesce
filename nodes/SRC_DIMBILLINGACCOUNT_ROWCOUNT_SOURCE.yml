@@ -1,28 +1,49 @@
-# Row Count Transformation - Source Count
-# Counts source rows from OLE_SRC - GuideWire
+# ROW_COUNT Transformation - Source Row Counter
+# Generated from SSIS Package: DimBillingAccount
+# Execution Order: 2
 
 name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE
-type: transformation
-transformation_type: ROW_COUNT
+type: row_count
 description: Counts source rows from OLE_SRC - GuideWire
 
-source:
-  name: SRC_DIMBILLINGACCOUNT_JOINS
-  type: join
-
+# Transformation Configuration
 transformation:
-  operation: ROW_COUNT
-  variable_name: User::SourceCount
-  description: Captures the total number of rows from the source before any transformations
+  variable: User::SourceCount
+  purpose: Track number of rows from source system for validation and auditing
   
-logic: |
-  -- Count all rows from the joined dataset
-  COUNT(*) AS SourceCount
-  
-output:
-  pass_through: true
-  row_count_variable: User::SourceCount
-  
-execution_order: 2
-dependencies:
+# Dependencies
+input_dependency:
   - SRC_DIMBILLINGACCOUNT_JOINS
+
+# Execution Configuration
+execution_order: 2
+precedence_constraint: Success
+
+# Metadata
+metadata:
+  source_system: GuideWire
+  component_type: ROW_COUNT
+  ssis_component: Row Count
+  created_from: SSIS Package Migration
+  
+# Data Flow
+data_flow:
+  input:
+    source: SRC_DIMBILLINGACCOUNT_JOINS
+    type: joined_dataset
+  output:
+    destination: downstream_transformations
+    row_count_variable: User::SourceCount
+    
+# Validation
+validation:
+  ensure_variable_exists: User::SourceCount
+  log_row_count: true
+  fail_on_zero_rows: false
+
+# Notes
+notes: |
+  This transformation counts the total number of rows coming from the source
+  after all joins have been applied. The count is stored in the SSIS variable
+  User::SourceCount for downstream validation and logging purposes.
+  This is the first transformation in the execution sequence after joins.
