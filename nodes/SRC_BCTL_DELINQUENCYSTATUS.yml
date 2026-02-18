@@ -3,11 +3,24 @@ id: SRC_BCTL_DELINQUENCYSTATUS
 name: SRC_BCTL_DELINQUENCYSTATUS
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: ""
   database: ""
   deployEnabled: true
   description: Source table BCTL_DELINQUENCYSTATUS
+  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -19,28 +32,28 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_DELINQUENCYSTATUS
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_DELINQUENCYSTATUS
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_DELINQUENCYSTATUS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_DELINQUENCYSTATUS
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
