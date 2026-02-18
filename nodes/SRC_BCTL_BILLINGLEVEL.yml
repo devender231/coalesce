@@ -1,72 +1,73 @@
-fileVersion: 1.0.0
-id: SRC_BCTL_BILLINGLEVEL
-name: SRC_BCTL_BILLINGLEVEL
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BCTL_BILLINGLEVEL
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_BILLINGLEVEL
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        isBusinessKey: false
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_BILLINGLEVEL
-        config: {}
-        dataType: VARCHAR(256)
-        description: ""
-        isBusinessKey: false
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          BCTL_BILLINGLEVEL: SRC_BCTL_BILLINGLEVEL
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_BILLINGLEVEL
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} "BCTL_BILLINGLEVEL"
-        name: SRC_BCTL_BILLINGLEVEL
-        noLinkRefs: []
-  name: SRC_BCTL_BILLINGLEVEL
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+steps:
+  SRC_BCTL_BILLINGLEVEL:
+    operation:
+      config:
+        insertStrategy: INSERT
+        selectDistinct: false
+      database: ""
+      dataset: BCTL_BILLINGLEVEL
+      deployEnabled: true
+      description: Source table BCTL_BILLINGLEVEL from SSIS package EDW_BC_Load_DimBillingAccount
+      isMultisource: false
+      locationName: SRC
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 1
+              stepCounter: 1
+            config: {}
+            dataType: INTEGER
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 2
+              stepCounter: 1
+            config: {}
+            dataType: STRING
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 1
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: SRC
+                nodeName: BCTL_BILLINGLEVEL
+            join:
+              joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }}
+            name: SRC_BCTL_BILLINGLEVEL
+            noLinkRefs: []
+      name: SRC_BCTL_BILLINGLEVEL
+      overrideSQL: false
+      schema: ""
+      sqlType: Source
+      type: sql
+      version: 1
