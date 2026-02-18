@@ -1,186 +1,137 @@
 fileVersion: 1
-id: SRC_BC_CONTACT
-name: SRC_BC_CONTACT
+id: S6
+name: BC_CONTACT
 operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
-  description: Source table BC_CONTACT
-  isDataVault: false
-  isMultisource: false
+  description: ""
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: 1
+          columnCounter: C1
+          stepCounter: S6
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: 1
+          columnCounter: C2
+          stepCounter: S6
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: FIRSTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 3
-          stepCounter: 1
+          columnCounter: C3
+          stepCounter: S6
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: LASTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4
-          stepCounter: 1
+          columnCounter: C4
+          stepCounter: S6
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: PRIMARYADDRESSID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5
-          stepCounter: 1
+          columnCounter: C5
+          stepCounter: S6
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 6
-          stepCounter: 1
+          columnCounter: C6
+          stepCounter: S6
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: UPDATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_CONTACT
-        join:
-          joinCondition: ""
-        name: SRC_BC_CONTACT
-        noLinkRefs: []
-  name: SRC_BC_CONTACT
-  overrideSQL: false
+        transform: ""
+        uniqueKey: false
+
+  name: BC_CONTACT
   schema: ""
   sqlType: Source
-  type: sql
+  type: sourceInput
   version: 1
+
+type: Node
