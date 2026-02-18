@@ -1,27 +1,55 @@
+fileVersion: 1
+id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
-type: source
-config:
-  source_type: table
-  source_location:
-    database: ""
-    schema: ""
-    table: BC_CONTACT
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: FIRSTNAME
-    data_type: STRING
-    nullable: true
-  - name: LASTNAME
-    data_type: STRING
-    nullable: true
-  - name: PRIMARYADDRESSID
-    data_type: INTEGER
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
-  - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+nodeType: source
+type: Node
+operation:
+  type: sourceInput
+  database: GUIDEWIRE
+  schema: dbo
+  locationName: SRC
+  deployEnabled: true
+  metadata:
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BC_CONTACT
+        name: ID
+        dataType: NUMBER(38,0)
+        nullable: true
+        primaryKey: false
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BC_CONTACT
+        name: FIRSTNAME
+        dataType: VARCHAR(256)
+        nullable: true
+        primaryKey: false
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_BC_CONTACT
+        name: LASTNAME
+        dataType: VARCHAR(256)
+        nullable: true
+        primaryKey: false
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_BC_CONTACT
+        name: PRIMARYADDRESSID
+        dataType: NUMBER(38,0)
+        nullable: true
+        primaryKey: false
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_BC_CONTACT
+        name: BEANVERSION
+        dataType: VARCHAR(256)
+        nullable: true
+        primaryKey: false
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_BC_CONTACT
+        name: UPDATETIME
+        dataType: TIMESTAMP_NTZ(9)
+        nullable: true
+        primaryKey: false
