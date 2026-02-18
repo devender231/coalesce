@@ -1,0 +1,29 @@
+name: SRC_ROWCOUNT_UPDATE
+type: row_count
+description: Counts update rows (BeanVersion different)
+
+source:
+  name: SRC_CONDITIONAL_SPLIT
+  type: conditional_split
+  output_path: UpdateRows
+
+transformation:
+  type: ROW_COUNT
+  operation: count_rows
+  output_variable: User::UpdateCount
+  
+logic:
+  description: Counts rows where BeanVersion is different (records to update)
+  variable_assignment: User::UpdateCount = COUNT(*)
+  filter: BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
+
+execution_order: 7
+
+dependencies:
+  - SRC_CONDITIONAL_SPLIT
+
+output:
+  pass_through: true
+  columns: all
+  row_count_variable: User::UpdateCount
+  description: Count of records requiring updates
