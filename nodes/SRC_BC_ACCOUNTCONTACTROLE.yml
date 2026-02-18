@@ -1,4 +1,4 @@
-fileVersion: 1.0
+fileVersion: 1
 id: SRC_BC_ACCOUNTCONTACTROLE
 name: SRC_BC_ACCOUNTCONTACTROLE
 operation:
@@ -14,13 +14,18 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ACCOUNTCONTACTID
         nullable: true
         sourceColumnReferences:
@@ -28,13 +33,18 @@ operation:
               - columnCounter: 1
                 stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ROLE
         nullable: true
         sourceColumnReferences:
@@ -42,13 +52,18 @@ operation:
               - columnCounter: 2
                 stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -56,13 +71,18 @@ operation:
               - columnCounter: 3
                 stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: VARCHAR(256)
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -70,13 +90,18 @@ operation:
               - columnCounter: 4
                 stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
