@@ -2,22 +2,17 @@ name: SRC_TR_DERIVED_BATCHID
 type: transformation
 config:
   transformation_type: derived_column
-  description: Adds or overwrites BatchID column
-  execution_order: 2
-input:
-  source: SRC_TR_ROW_COUNT_SOURCE
-  description: Input after source row count
-logic:
-  operation: ADD_OR_REPLACE
+  description: "Adds or overwrites BatchID column"
+  input_source: SRC_TR_ROWCOUNT_SOURCE
   derived_columns:
-    - column_name: BatchID
+    - column_name: BATCHID
       expression: "@[User::BatchID]"
       data_type: INTEGER
-      nullable: false
-      description: Batch identifier from SSIS variable
-output:
-  columns_added:
-    - BatchID
-  description: Dataset with BatchID column added
-dependencies:
-  - SRC_TR_ROW_COUNT_SOURCE
+      operation: add_or_replace
+      description: "Batch identifier for tracking ETL execution"
+  output:
+    pass_through: true
+    include_derived: true
+  execution_order: 3
+  dependencies:
+    - SRC_TR_ROWCOUNT_SOURCE
