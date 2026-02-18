@@ -1,34 +1,26 @@
-# Row Count Transformation - Update Rows
-# Counts update rows (BeanVersion different)
-
 name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_UPDATE
-type: transformation
-transformation_type: ROW_COUNT
-description: Counts update rows where BeanVersion differs from EDW BeanVersion
+type: row_count
+description: Counts update rows (BeanVersion different)
+variable: User::UpdateCount
+input_dependency: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT_BEANVERSION
+input_path: update_rows
+execution_order: 6
 
-source:
-  name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
-  type: transformation
-  output_path: UpdateRows
-
-transformation:
-  operation: ROW_COUNT
-  variable_name: User::UpdateCount
-  description: Captures count of rows requiring updates in DIMBILLINGACCOUNT
+transformation_logic:
+  operation: count_rows
+  counter_variable: User::UpdateCount
+  input_source:
+    component: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT_BEANVERSION
+    output_path: update_rows
   
-logic: |
-  -- Count rows with different BeanVersion
-  COUNT(*) AS UpdateCount
-  WHERE BEANVERSION != EDWBeanVersion 
-    AND EDWBeanVersion IS NOT NULL
+metadata:
+  source_system: SSIS
+  transformation_type: ROW_COUNT
+  purpose: Track count of update records where BeanVersion is different
+  parallel_execution: true
   
-output:
-  pass_through: true
-  row_count_variable: User::UpdateCount
-  action: UPDATE
-  target_table: DIMBILLINGACCOUNT
-  description: These rows will be updated in the target table
-  
-execution_order: 8
-dependencies:
-  - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+validation:
+  required_inputs:
+    - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT_BEANVERSION
+  output_variable: User::UpdateCount
+  variable_type: integer
