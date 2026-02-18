@@ -1,0 +1,27 @@
+fileVersion: 1
+id: SRC_BC_SECURITYZONE
+name: SRC_BC_SECURITYZONE
+nodeType: source
+database: ""
+schema: ""
+type: sourceInput
+sources: []
+parameters:
+  loadType: Reload
+columns:
+  - name: ID
+    dataType: VARCHAR
+    nullable: true
+    description: ID
+  - name: NAME
+    dataType: VARCHAR
+    nullable: true
+    description: Name
+  - name: BEANVERSION
+    dataType: INTEGER
+    nullable: true
+    description: Bean Version
+  - name: UPDATETIME
+    dataType: TIMESTAMP
+    nullable: true
+    description: Update Time
