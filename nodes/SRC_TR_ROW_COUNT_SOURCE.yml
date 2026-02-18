@@ -1,0 +1,34 @@
+# Transformation: Row Count - Source
+# Package: EDW_BC_Load_DimBillingAccount
+# Description: Counts source rows from OLE_SRC - GuideWire
+
+name: SRC_TR_ROW_COUNT_SOURCE
+type: transformation
+transformation_type: ROW_COUNT
+version: 1.0
+execution_order: 1
+
+input:
+  source: SRC_JOIN_DIMBILLINGACCOUNT
+  description: "Joined dataset from all source tables"
+
+transformation_logic:
+  operation: COUNT_ROWS
+  description: "Counts all rows from the joined source dataset"
+  variable_assignment:
+    variable_name: "User::SourceCount"
+    variable_type: "Integer"
+    description: "Stores the count of source rows for audit purposes"
+
+output:
+  name: SOURCE_COUNTED
+  description: "Source dataset with row count captured"
+  pass_through: true
+  audit_variable: "User::SourceCount"
+
+metadata:
+  created_by: "Data Engineering Automation Agent"
+  source_package: "EDW_BC_Load_DimBillingAccount"
+  component_type: "Row Count"
+  purpose: "Audit - Source row count"
+  execution_sequence: 1
