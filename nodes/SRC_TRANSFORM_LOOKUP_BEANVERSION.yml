@@ -1,0 +1,31 @@
+fileVersion: 1.0
+name: SRC_TRANSFORM_LOOKUP_BEANVERSION
+description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+type: Lookup
+config:
+  transformation_type: LOOKUP
+  logic:
+    description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+    lookup_table: DIMBILLINGACCOUNT
+    lookup_query: 'Select Publicid, BeanVersion from DimBillingAccount'
+    join_condition:
+      source_column: PUBLICID
+      lookup_column: PUBLICID
+      join_type: LEFT
+    return_columns:
+      - column_name: BeanVersion
+        alias: EDWBeanVersion
+        data_type: STRING
+    no_match_behavior: PASS_THROUGH
+  input:
+    source: SRC_TRANSFORM_DERIVED_BATCHID
+    description: Dataset with BatchID added
+  output:
+    columns:
+      - EDWBeanVersion
+    description: Dataset with looked up BeanVersion from target table
+
+execution_order: 4
+package: EDW_BC_Load_DimBillingAccount
+dependencies:
+  - SRC_TRANSFORM_DERIVED_BATCHID
