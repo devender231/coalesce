@@ -1,69 +1,58 @@
-fileVersion: 1.0
-name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE
-type: transformation
-description: |
-  Row Count transformation for DimBillingAccount package
-  Counts source rows from OLE_SRC - GuideWire
-  Execution Order: Step 2 - After joins, count source rows
-
-sources:
-  - name: SRC_DIMBILLINGACCOUNT_JOINS
-    type: transformation
-
-transformation_type: ROW_COUNT
-
-transformation_logic:
-  operation: COUNT_ROWS
-  description: Counts all rows from the joined source dataset
-  variable_assignment:
-    variable_name: User::SourceCount
-    variable_type: INT32
-    scope: PACKAGE
-  
-  count_logic:
-    count_all_rows: true
-    filter_condition: null
-    
-output_columns:
-  # Pass through all columns from joined sources
-  - BC_ACCOUNT.ACCOUNTNUMBER
-  - BC_ACCOUNT.ACCOUNTNAME
-  - BC_ACCOUNT.ACCOUNTTYPE
-  - BC_ACCOUNT.BILLINGLEVEL
-  - BC_ACCOUNT.SERVICETIER
-  - BC_ACCOUNT.SECURITYZONEID
-  - BC_ACCOUNT.SEGMENT
-  - BC_ACCOUNT.CLOSEDATE
-  - BC_ACCOUNT.CREATETIME
-  - BC_ACCOUNT.DELINQUENCYSTATUS
-  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.PUBLICID
-  - BC_ACCOUNT.ID
-  - BC_ACCOUNT.BEANVERSION
-  - BC_ACCOUNT.RETIRED
-  - BC_ACCOUNT.UPDATETIME
-  - ACCOUNTTYPE_NAME
-  - BILLINGLEVEL_NAME
-  - SERVICETIER_NAME
-  - SECURITYZONE_NAME
-  - DELINQUENCYSTATUS_NAME
-  - SEGMENT_NAME
-  - PARENT_ACCOUNT_ID
-  - INSURED_FIRSTNAME
-  - INSURED_LASTNAME
-  - INSURED_ADDRESS1
-  - INSURED_ADDRESS2
-  - INSURED_ADDRESS3
-  - INSURED_CITY
-  - INSURED_POSTALCODE
-  - INSURED_STATE
-
-execution_order: 2
-dependencies:
-  - SRC_DIMBILLINGACCOUNT_JOINS
-
-metadata:
-  ssis_component_type: ROW_COUNT
-  ssis_variable: User::SourceCount
-  purpose: Track number of source rows for audit and reconciliation
+fileVersion: 1
+id: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE"
+name: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE"
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts source rows and stores in User::SourceCount variable"
+  isMultisource: false
+  locationName: "WORK"
+  materializationType: "view"
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE"
+        config: {}
+        dataType: "NUMBER(38,0)"
+        description: "Source row count"
+        name: "SOURCE_ROW_COUNT"
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_DIMBILLINGACCOUNT_JOINS: "SRC_DIMBILLINGACCOUNT_JOINS"
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: "WORK"
+            nodeName: "SRC_DIMBILLINGACCOUNT_JOINS"
+        join:
+          joinCondition: |
+            FROM {{ ref('WORK', 'SRC_DIMBILLINGACCOUNT_JOINS') }} SRC_DIMBILLINGACCOUNT_JOINS
+        name: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE"
+        noLinkRefs: []
+  name: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE"
+  overrideSQL: false
+  schema: ""
+  sqlType: "DT113:::156"
+  transformationType: "rowcount"
+  type: "sql"
+  variables:
+    - name: "User::SourceCount"
+      description: "Variable to store source row count"
+      dataType: "INTEGER"
+      defaultValue: "0"
+  version: 1
