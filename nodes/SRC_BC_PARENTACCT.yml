@@ -1,20 +1,111 @@
-name: SRC_BC_PARENTACCT
-type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BC_PARENTACCT
-columns:
-  - name: OWNERID
-    data_type: INTEGER
-    nullable: true
-  - name: FOREIGNENTITYID
-    data_type: INTEGER
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
-  - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+steps:
+  SRC_BC_PARENTACCT:
+    operation:
+      config:
+        insertStrategy: INSERT
+        selectDistinct: false
+      database: ""
+      dataset: BC_PARENTACCT
+      deployEnabled: true
+      description: Source table BC_PARENTACCT from SSIS package EDW_BC_Load_DimBillingAccount
+      isMultisource: false
+      locationName: SRC
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 1
+              stepCounter: 1
+            config: {}
+            dataType: INTEGER
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: OWNERID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 2
+              stepCounter: 1
+            config: {}
+            dataType: INTEGER
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: FOREIGNENTITYID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 3
+              stepCounter: 1
+            config: {}
+            dataType: STRING
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: BEANVERSION
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 4
+              stepCounter: 1
+            config: {}
+            dataType: DATETIME
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: UPDATETIME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4
+                    stepCounter: 1
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: SRC
+                nodeName: BC_PARENTACCT
+            join:
+              joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }}
+            name: SRC_BC_PARENTACCT
+            noLinkRefs: []
+      name: SRC_BC_PARENTACCT
+      overrideSQL: false
+      schema: ""
+      sqlType: Source
+      type: sql
+      version: 1
