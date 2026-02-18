@@ -1,9 +1,0 @@
-name: SRC_DIMBILLINGACCOUNT
-type: source
-location:
-  database: SOURCE_DB
-  schema: SOURCE_SCHEMA
-  table: DIMBILLINGACCOUNT
-columns:
-  - name: PUBLICID
-  - name: BEANVERSION

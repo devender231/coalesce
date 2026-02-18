@@ -1,9 +1,0 @@
-name: SRC_BCTL_ACCOUNTROLE
-type: source
-location:
-  database: SOURCE_DB
-  schema: SOURCE_SCHEMA
-  table: BCTL_ACCOUNTROLE
-columns:
-  - name: ID
-  - name: TYPECODE

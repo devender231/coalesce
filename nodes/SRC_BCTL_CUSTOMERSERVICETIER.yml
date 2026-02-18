@@ -1,9 +1,0 @@
-name: SRC_BCTL_CUSTOMERSERVICETIER
-type: source
-location:
-  database: SOURCE_DB
-  schema: SOURCE_SCHEMA
-  table: BCTL_CUSTOMERSERVICETIER
-columns:
-  - name: ID
-  - name: NAME
