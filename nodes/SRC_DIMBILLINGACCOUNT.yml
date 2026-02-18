@@ -1,0 +1,12 @@
+name: SRC_DIMBILLINGACCOUNT
+type: source
+config:
+  source_name: DIMBILLINGACCOUNT
+  source_type: table
+  columns:
+    - name: PUBLICID
+      data_type: STRING
+      nullable: true
+    - name: BEANVERSION
+      data_type: STRING
+      nullable: true
