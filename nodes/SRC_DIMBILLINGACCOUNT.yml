@@ -3,9 +3,20 @@ id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
-  database: ""
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: '{{ parameters.DEV_WAREHOUSE }}'
+  database: '{{ parameters.SOURCE_DATABASE }}'
   deployEnabled: true
   description: Source table DIMBILLINGACCOUNT
   isMultisource: false
@@ -22,14 +33,15 @@ operation:
           columnCounter: 1
           stepCounter: SRC_DIMBILLINGACCOUNT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
         description: ""
         name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_DIMBILLINGACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,32 +51,33 @@ operation:
           columnCounter: 2
           stepCounter: SRC_DIMBILLINGACCOUNT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
         description: ""
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_DIMBILLINGACCOUNT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_DIMBILLINGACCOUNT: DIMBILLINGACCOUNT
+          SRC_DIMBILLINGACCOUNT: '{{ parameters.SOURCE_DATABASE }}.{{ parameters.SOURCE_SCHEMA }}.DIMBILLINGACCOUNT'
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: DIMBILLINGACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'DIMBILLINGACCOUNT') }} "SRC_DIMBILLINGACCOUNT"
+          joinCondition: FROM {{ ref_no_link('SRC', 'DIMBILLINGACCOUNT') }} "SRC_DIMBILLINGACCOUNT"
         name: SRC_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: SRC_DIMBILLINGACCOUNT
   overrideSQL: false
-  schema: ""
+  schema: '{{ parameters.TARGET_SCHEMA }}'
   sqlType: Source
   type: sql
   version: 1
