@@ -1,0 +1,29 @@
+name: SRC_ROWCOUNT_INSERT
+type: row_count
+description: Counts new insert rows (lookup no match)
+
+source:
+  name: SRC_CONDITIONAL_SPLIT
+  type: conditional_split
+  output_path: InsertRows
+
+transformation:
+  type: ROW_COUNT
+  operation: count_rows
+  output_variable: User::InsertCount
+  
+logic:
+  description: Counts rows with no lookup match (new records to insert)
+  variable_assignment: User::InsertCount = COUNT(*)
+  filter: EDWBeanVersion IS NULL
+
+execution_order: 6
+
+dependencies:
+  - SRC_CONDITIONAL_SPLIT
+
+output:
+  pass_through: true
+  columns: all
+  row_count_variable: User::InsertCount
+  description: Count of new records for insertion
