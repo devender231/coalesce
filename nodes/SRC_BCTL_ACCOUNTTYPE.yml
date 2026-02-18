@@ -1,29 +1,17 @@
 fileVersion: 1
 id: SRC_BCTL_ACCOUNTTYPE
 name: SRC_BCTL_ACCOUNTTYPE
+nodeType: Source
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: ''
   database: ""
   deployEnabled: true
-  description: Source table for BCTL_ACCOUNTTYPE
-  isDataVault: false
+  description: Source table BCTL_ACCOUNTTYPE from SSIS package EDW_BC_Load_DimBillingAccount
   isMultisource: false
   locationName: SRC
-  materializationType: table
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -35,7 +23,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -54,7 +42,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
@@ -84,4 +72,3 @@ operation:
   sqlType: Source
   type: sql
   version: 1
-type: Node
