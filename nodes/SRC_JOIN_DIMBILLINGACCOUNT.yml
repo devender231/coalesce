@@ -7,218 +7,36 @@ operation:
     postSQL: ""
     preSQL: ""
     testsEnabled: true
-    truncateBefore: false
+    truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Join operations for DimBillingAccount from multiple BC tables"
+  description: "Joins all source tables for DimBillingAccount ETL"
   isMultisource: true
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
-    columns:
-      - columnCounter: 1
-        dataType: INTEGER
-        description: "Account Number"
-        name: ACCOUNTNUMBER
-        nullable: true
-      - columnCounter: 2
-        dataType: STRING
-        description: "Account Name"
-        name: ACCOUNTNAME
-        nullable: true
-      - columnCounter: 3
-        dataType: STRING
-        description: "Account Type Name"
-        name: ACCOUNTTYPE_NAME
-        nullable: true
-      - columnCounter: 4
-        dataType: STRING
-        description: "Billing Level Name"
-        name: BILLINGLEVEL_NAME
-        nullable: true
-      - columnCounter: 5
-        dataType: STRING
-        description: "Service Tier Name"
-        name: SERVICETIER_NAME
-        nullable: true
-      - columnCounter: 6
-        dataType: STRING
-        description: "Security Zone Name"
-        name: SECURITYZONE_NAME
-        nullable: true
-      - columnCounter: 7
-        dataType: STRING
-        description: "Segment Name"
-        name: SEGMENT_NAME
-        nullable: true
-      - columnCounter: 8
-        dataType: DATETIME
-        description: "Close Date"
-        name: CLOSEDATE
-        nullable: true
-      - columnCounter: 9
-        dataType: DATETIME
-        description: "Create Time"
-        name: CREATETIME
-        nullable: true
-      - columnCounter: 10
-        dataType: STRING
-        description: "Delinquency Status Name"
-        name: DELINQUENCYSTATUS_NAME
-        nullable: true
-      - columnCounter: 11
-        dataType: INTEGER
-        description: "First Twice Per Month Invoice DOM"
-        name: FIRSTTWICEPERMTHINVOICEDOM
-        nullable: true
-      - columnCounter: 12
-        dataType: INTEGER
-        description: "Second Twice Per Month Invoice DOM"
-        name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-      - columnCounter: 13
-        dataType: STRING
-        description: "Public ID"
-        name: PUBLICID
-        nullable: true
-      - columnCounter: 14
-        dataType: INTEGER
-        description: "Account ID"
-        name: ID
-        nullable: true
-      - columnCounter: 15
-        dataType: STRING
-        description: "Bean Version"
-        name: BEANVERSION
-        nullable: true
-      - columnCounter: 16
-        dataType: INTEGER
-        description: "Retired Flag"
-        name: RETIRED
-        nullable: true
-      - columnCounter: 17
-        dataType: DATETIME
-        description: "Update Time"
-        name: UPDATETIME
-        nullable: true
-      - columnCounter: 18
-        dataType: INTEGER
-        description: "Parent Account Foreign Entity ID"
-        name: PARENTACCT_FOREIGNENTITYID
-        nullable: true
-      - columnCounter: 19
-        dataType: STRING
-        description: "Insured First Name"
-        name: INSURED_FIRSTNAME
-        nullable: true
-      - columnCounter: 20
-        dataType: STRING
-        description: "Insured Last Name"
-        name: INSURED_LASTNAME
-        nullable: true
-      - columnCounter: 21
-        dataType: STRING
-        description: "Insured Address Line 1"
-        name: INSURED_ADDRESSLINE1
-        nullable: true
-      - columnCounter: 22
-        dataType: STRING
-        description: "Insured Address Line 2"
-        name: INSURED_ADDRESSLINE2
-        nullable: true
-      - columnCounter: 23
-        dataType: STRING
-        description: "Insured Address Line 3"
-        name: INSURED_ADDRESSLINE3
-        nullable: true
-      - columnCounter: 24
-        dataType: STRING
-        description: "Insured City"
-        name: INSURED_CITY
-        nullable: true
-      - columnCounter: 25
-        dataType: STRING
-        description: "Insured Postal Code"
-        name: INSURED_POSTALCODE
-        nullable: true
-      - columnCounter: 26
-        dataType: STRING
-        description: "Insured State Name"
-        name: INSURED_STATE_NAME
-        nullable: true
+    columns: []
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - customSQL:
-          customSQL: |
-            SELECT
-              BC_ACCOUNT.ACCOUNTNUMBER,
-              BC_ACCOUNT.ACCOUNTNAME,
-              BCTL_ACCOUNTTYPE.NAME AS ACCOUNTTYPE_NAME,
-              BCTL_BILLINGLEVEL.NAME AS BILLINGLEVEL_NAME,
-              BCTL_CUSTOMERSERVICETIER.NAME AS SERVICETIER_NAME,
-              BC_SECURITYZONE.NAME AS SECURITYZONE_NAME,
-              BCTL_ACCOUNTSEGMENT.NAME AS SEGMENT_NAME,
-              BC_ACCOUNT.CLOSEDATE,
-              BC_ACCOUNT.CREATETIME,
-              BCTL_DELINQUENCYSTATUS.NAME AS DELINQUENCYSTATUS_NAME,
-              BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM,
-              BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM,
-              BC_ACCOUNT.PUBLICID,
-              BC_ACCOUNT.ID,
-              BC_ACCOUNT.BEANVERSION,
-              BC_ACCOUNT.RETIRED,
-              BC_ACCOUNT.UPDATETIME,
-              BC_PARENTACCT.FOREIGNENTITYID AS PARENTACCT_FOREIGNENTITYID,
-              BC_CONTACT.FIRSTNAME AS INSURED_FIRSTNAME,
-              BC_CONTACT.LASTNAME AS INSURED_LASTNAME,
-              BC_ADDRESS.ADDRESSLINE1 AS INSURED_ADDRESSLINE1,
-              BC_ADDRESS.ADDRESSLINE2 AS INSURED_ADDRESSLINE2,
-              BC_ADDRESS.ADDRESSLINE3 AS INSURED_ADDRESSLINE3,
-              BC_ADDRESS.CITY AS INSURED_CITY,
-              BC_ADDRESS.POSTALCODE AS INSURED_POSTALCODE,
-              BCTL_STATE.NAME AS INSURED_STATE_NAME
-            FROM {{ ref('SRC', 'SRC_BC_ACCOUNT') }} BC_ACCOUNT
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
-              ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BC_PARENTACCT') }} BC_PARENTACCT
-              ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
-              ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
-              ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BC_SECURITYZONE') }} BC_SECURITYZONE
-              ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
-              ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
-              ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
-            LEFT JOIN (
-              SELECT DISTINCT
-                BC_ACCOUNTCONTACT.INSUREDACCOUNTID AS ACCOUNTID,
-                BC_CONTACT.FIRSTNAME,
-                BC_CONTACT.LASTNAME,
-                BC_ADDRESS.ADDRESSLINE1,
-                BC_ADDRESS.ADDRESSLINE2,
-                BC_ADDRESS.ADDRESSLINE3,
-                BC_ADDRESS.CITY,
-                BC_ADDRESS.POSTALCODE,
-                BCTL_STATE.NAME AS STATE_NAME
-              FROM {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
-              INNER JOIN {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
-                ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
-              INNER JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
-                ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE
-                AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
-              LEFT JOIN {{ ref('SRC', 'SRC_BC_CONTACT') }} BC_CONTACT
-                ON BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
-              LEFT JOIN {{ ref('SRC', 'SRC_BC_ADDRESS') }} BC_ADDRESS
-                ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
-              LEFT JOIN {{ ref('SRC', 'SRC_BCTL_STATE') }} BCTL_STATE
-                ON BCTL_STATE.ID = BC_ADDRESS.STATE
-            ) INSUREDINFO
-              ON INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+      - aliases:
+          BC_ACCOUNT: S1
+          BCTL_ACCOUNTTYPE: S2
+          BC_PARENTACCT: S3
+          BCTL_BILLINGLEVEL: S4
+          BCTL_CUSTOMERSERVICETIER: S5
+          BC_SECURITYZONE: S6
+          BCTL_DELINQUENCYSTATUS: S7
+          BCTL_ACCOUNTSEGMENT: S8
+          BC_ACCOUNTCONTACT: S9
+          BC_ACCOUNTCONTACTROLE: S10
+          BCTL_ACCOUNTROLE: S11
+          BC_CONTACT: S12
+          BC_ADDRESS: S13
+          BCTL_STATE: S14
+        customSQL:
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: SRC_BC_ACCOUNT
@@ -248,6 +66,43 @@ operation:
             nodeName: SRC_BC_ADDRESS
           - locationName: SRC
             nodeName: SRC_BCTL_STATE
+        join: |
+          FROM {{ ref('SRC', 'SRC_BC_ACCOUNT') }} BC_ACCOUNT
+          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
+            ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+          LEFT JOIN {{ ref('SRC', 'SRC_BC_PARENTACCT') }} BC_PARENTACCT
+            ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
+            ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
+            ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+          LEFT JOIN {{ ref('SRC', 'SRC_BC_SECURITYZONE') }} BC_SECURITYZONE
+            ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
+            ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
+            ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+          LEFT JOIN (
+            SELECT 
+              BC_ACCOUNTCONTACT.INSUREDACCOUNTID AS ACCOUNTID,
+              BC_ACCOUNTCONTACT.ID AS ACCOUNTCONTACTID,
+              BC_ACCOUNTCONTACT.CONTACTID,
+              BC_ACCOUNTCONTACTROLE.ROLE,
+              BCTL_ACCOUNTROLE.TYPECODE
+            FROM {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
+            INNER JOIN {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
+              ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+            INNER JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
+              ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE
+              AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+          ) INSUREDINFO
+            ON INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+          LEFT JOIN {{ ref('SRC', 'SRC_BC_CONTACT') }} BC_CONTACT
+            ON BC_CONTACT.ID = INSUREDINFO.CONTACTID
+          LEFT JOIN {{ ref('SRC', 'SRC_BC_ADDRESS') }} BC_ADDRESS
+            ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_STATE') }} BCTL_STATE
+            ON BCTL_STATE.ID = BC_ADDRESS.STATE
         name: SRC_JOIN_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: SRC_JOIN_DIMBILLINGACCOUNT
