@@ -1,7 +1,7 @@
 name: SRC_BC_ADDRESS
 type: source
 config:
-  source_location: "DATABASE.SCHEMA"
+  source_location: "GUIDEWIRE.BC"
   columns:
     - name: ID
       data_type: INTEGER
