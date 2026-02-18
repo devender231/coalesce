@@ -1,0 +1,22 @@
+fileVersion: 1.0
+name: SRC_TRANSFORM_ROWCOUNT_SOURCE
+description: Counts source rows from OLE_SRC - GuideWire
+type: RowCount
+config:
+  transformation_type: ROW_COUNT
+  logic:
+    description: Counts source rows from OLE_SRC - GuideWire
+    variable: User::SourceCount
+    operation: COUNT_ROWS
+  input:
+    source: SRC_DIMBILLINGACCOUNT_JOINS
+    description: Joined dataset from all source tables
+  output:
+    variable_name: SourceCount
+    variable_type: Integer
+    scope: User
+
+execution_order: 2
+package: EDW_BC_Load_DimBillingAccount
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_JOINS
