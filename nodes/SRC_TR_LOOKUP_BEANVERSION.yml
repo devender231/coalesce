@@ -1,0 +1,31 @@
+name: SRC_TR_LOOKUP_BEANVERSION
+type: transformation
+config:
+  transformation_type: lookup
+  description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+  execution_order: 3
+input:
+  source: SRC_TR_DERIVED_BATCHID
+  description: Input after BatchID derivation
+lookup_config:
+  lookup_table: SRC_DIMBILLINGACCOUNT
+  lookup_query: "SELECT PUBLICID, BEANVERSION FROM DIMBILLINGACCOUNT"
+  join_condition:
+    - left_column: PUBLICID
+      right_column: PUBLICID
+      operator: "="
+  lookup_columns:
+    - source_column: BEANVERSION
+      target_column: EDWBeanVersion
+      data_type: STRING
+      nullable: true
+  match_behavior: LEFT_OUTER
+  cache_mode: full
+output:
+  columns_added:
+    - EDWBeanVersion
+  description: Dataset with EDWBeanVersion from lookup
+  no_match_handling: NULL
+dependencies:
+  - SRC_TR_DERIVED_BATCHID
+  - SRC_DIMBILLINGACCOUNT
