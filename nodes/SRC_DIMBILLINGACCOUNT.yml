@@ -1,0 +1,18 @@
+fileVersion: 1.0
+name: SRC_DIMBILLINGACCOUNT
+type: source
+description: Source table DIMBILLINGACCOUNT from Snowflake
+
+source:
+  location:
+    database: "EDW"
+    schema: "DIM"
+    table: "DIMBILLINGACCOUNT"
+
+columns:
+  - name: PUBLICID
+    dataType: STRING
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
