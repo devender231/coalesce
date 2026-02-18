@@ -3,6 +3,10 @@ type: source
 config:
   source_name: BCTL_CUSTOMERSERVICETIER
   source_type: table
+  location:
+    database: ""
+    schema: ""
+    table: BCTL_CUSTOMERSERVICETIER
   columns:
     - name: ID
       data_type: INTEGER
