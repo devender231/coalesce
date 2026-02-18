@@ -1,0 +1,279 @@
+fileVersion: 1.0
+name: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+type: ConditionalSplit
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion for SCD logic
+
+config:
+  clusterKey: false
+  downstreamOption: true
+  groupByAll: false
+  initialize: ON_CREATE
+  insertStrategy: UNION
+  orderby: false
+  postSQL: ''
+  preSQL: ''
+  testsEnabled: true
+  truncateBefore: true
+  warehouseName: DEV_WH
+
+transformation:
+  type: CONDITIONAL_SPLIT
+  defaultOutputName: DEFAULT_OUTPUT
+  
+  conditions:
+    - outputName: UNCHANGED_ROWS
+      condition: "BEANVERSION = EDW_BEANVERSION"
+      description: Rows where BeanVersion matches - no update needed
+      order: 1
+    
+    - outputName: UPDATE_ROWS
+      condition: "BEANVERSION != EDW_BEANVERSION AND EDW_BEANVERSION IS NOT NULL"
+      description: Rows where BeanVersion differs - needs update
+      order: 2
+    
+    - outputName: INSERT_ROWS
+      condition: "EDW_BEANVERSION IS NULL"
+      description: Rows with no match in EDW - needs insert
+      order: 3
+
+inputColumns:
+  - name: ACCOUNTNUMBER
+    dataType: INTEGER
+  - name: ACCOUNTNAME
+    dataType: STRING
+  - name: ACCOUNTTYPE_NAME
+    dataType: STRING
+  - name: BILLINGLEVEL_NAME
+    dataType: STRING
+  - name: SERVICETIER_NAME
+    dataType: STRING
+  - name: SECURITYZONE_NAME
+    dataType: STRING
+  - name: SEGMENT_NAME
+    dataType: STRING
+  - name: DELINQUENCYSTATUS_NAME
+    dataType: STRING
+  - name: CLOSEDATE
+    dataType: DATETIME
+  - name: CREATETIME
+    dataType: DATETIME
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: PUBLICID
+    dataType: STRING
+  - name: BEANVERSION
+    dataType: STRING
+  - name: RETIRED
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: DATETIME
+  - name: PARENT_FOREIGNENTITYID
+    dataType: INTEGER
+  - name: CONTACT_FIRSTNAME
+    dataType: STRING
+  - name: CONTACT_LASTNAME
+    dataType: STRING
+  - name: ADDRESS_LINE1
+    dataType: STRING
+  - name: ADDRESS_LINE2
+    dataType: STRING
+  - name: ADDRESS_LINE3
+    dataType: STRING
+  - name: CITY
+    dataType: STRING
+  - name: POSTALCODE
+    dataType: STRING
+  - name: STATE_NAME
+    dataType: STRING
+  - name: BatchID
+    dataType: INTEGER
+  - name: EDW_BEANVERSION
+    dataType: STRING
+
+outputStreams:
+  - streamName: UNCHANGED_ROWS
+    description: Records with matching BeanVersion
+    columns:
+      - name: ACCOUNTNUMBER
+        dataType: INTEGER
+      - name: ACCOUNTNAME
+        dataType: STRING
+      - name: ACCOUNTTYPE_NAME
+        dataType: STRING
+      - name: BILLINGLEVEL_NAME
+        dataType: STRING
+      - name: SERVICETIER_NAME
+        dataType: STRING
+      - name: SECURITYZONE_NAME
+        dataType: STRING
+      - name: SEGMENT_NAME
+        dataType: STRING
+      - name: DELINQUENCYSTATUS_NAME
+        dataType: STRING
+      - name: CLOSEDATE
+        dataType: DATETIME
+      - name: CREATETIME
+        dataType: DATETIME
+      - name: FIRSTTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+      - name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+      - name: PUBLICID
+        dataType: STRING
+      - name: BEANVERSION
+        dataType: STRING
+      - name: RETIRED
+        dataType: INTEGER
+      - name: UPDATETIME
+        dataType: DATETIME
+      - name: PARENT_FOREIGNENTITYID
+        dataType: INTEGER
+      - name: CONTACT_FIRSTNAME
+        dataType: STRING
+      - name: CONTACT_LASTNAME
+        dataType: STRING
+      - name: ADDRESS_LINE1
+        dataType: STRING
+      - name: ADDRESS_LINE2
+        dataType: STRING
+      - name: ADDRESS_LINE3
+        dataType: STRING
+      - name: CITY
+        dataType: STRING
+      - name: POSTALCODE
+        dataType: STRING
+      - name: STATE_NAME
+        dataType: STRING
+      - name: BatchID
+        dataType: INTEGER
+      - name: EDW_BEANVERSION
+        dataType: STRING
+  
+  - streamName: UPDATE_ROWS
+    description: Records needing update
+    columns:
+      - name: ACCOUNTNUMBER
+        dataType: INTEGER
+      - name: ACCOUNTNAME
+        dataType: STRING
+      - name: ACCOUNTTYPE_NAME
+        dataType: STRING
+      - name: BILLINGLEVEL_NAME
+        dataType: STRING
+      - name: SERVICETIER_NAME
+        dataType: STRING
+      - name: SECURITYZONE_NAME
+        dataType: STRING
+      - name: SEGMENT_NAME
+        dataType: STRING
+      - name: DELINQUENCYSTATUS_NAME
+        dataType: STRING
+      - name: CLOSEDATE
+        dataType: DATETIME
+      - name: CREATETIME
+        dataType: DATETIME
+      - name: FIRSTTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+      - name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+      - name: PUBLICID
+        dataType: STRING
+      - name: BEANVERSION
+        dataType: STRING
+      - name: RETIRED
+        dataType: INTEGER
+      - name: UPDATETIME
+        dataType: DATETIME
+      - name: PARENT_FOREIGNENTITYID
+        dataType: INTEGER
+      - name: CONTACT_FIRSTNAME
+        dataType: STRING
+      - name: CONTACT_LASTNAME
+        dataType: STRING
+      - name: ADDRESS_LINE1
+        dataType: STRING
+      - name: ADDRESS_LINE2
+        dataType: STRING
+      - name: ADDRESS_LINE3
+        dataType: STRING
+      - name: CITY
+        dataType: STRING
+      - name: POSTALCODE
+        dataType: STRING
+      - name: STATE_NAME
+        dataType: STRING
+      - name: BatchID
+        dataType: INTEGER
+      - name: EDW_BEANVERSION
+        dataType: STRING
+  
+  - streamName: INSERT_ROWS
+    description: New records for insert
+    columns:
+      - name: ACCOUNTNUMBER
+        dataType: INTEGER
+      - name: ACCOUNTNAME
+        dataType: STRING
+      - name: ACCOUNTTYPE_NAME
+        dataType: STRING
+      - name: BILLINGLEVEL_NAME
+        dataType: STRING
+      - name: SERVICETIER_NAME
+        dataType: STRING
+      - name: SECURITYZONE_NAME
+        dataType: STRING
+      - name: SEGMENT_NAME
+        dataType: STRING
+      - name: DELINQUENCYSTATUS_NAME
+        dataType: STRING
+      - name: CLOSEDATE
+        dataType: DATETIME
+      - name: CREATETIME
+        dataType: DATETIME
+      - name: FIRSTTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+      - name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+      - name: PUBLICID
+        dataType: STRING
+      - name: BEANVERSION
+        dataType: STRING
+      - name: RETIRED
+        dataType: INTEGER
+      - name: UPDATETIME
+        dataType: DATETIME
+      - name: PARENT_FOREIGNENTITYID
+        dataType: INTEGER
+      - name: CONTACT_FIRSTNAME
+        dataType: STRING
+      - name: CONTACT_LASTNAME
+        dataType: STRING
+      - name: ADDRESS_LINE1
+        dataType: STRING
+      - name: ADDRESS_LINE2
+        dataType: STRING
+      - name: ADDRESS_LINE3
+        dataType: STRING
+      - name: CITY
+        dataType: STRING
+      - name: POSTALCODE
+        dataType: STRING
+      - name: STATE_NAME
+        dataType: STRING
+      - name: BatchID
+        dataType: INTEGER
+      - name: EDW_BEANVERSION
+        dataType: STRING
+
+dependencies:
+  - SRC_TR_LOOKUP_BEANVERSION
+
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  component_type: CONDITIONAL_SPLIT
+  execution_order: 5
+  ssis_condition: "BeanVersion == EDWBeanVersion"
+  created_from: SSIS_Package_Migration
+  migration_date: 2025-01-20
