@@ -1,0 +1,19 @@
+fileVersion: 1
+id: SRC_DIMBILLINGACCOUNT
+name: SRC_DIMBILLINGACCOUNT
+nodeType: source
+database: ""
+schema: ""
+type: sourceInput
+sources: []
+parameters:
+  loadType: Reload
+columns:
+  - name: PUBLICID
+    dataType: VARCHAR
+    nullable: true
+    description: Public ID
+  - name: BEANVERSION
+    dataType: INTEGER
+    nullable: true
+    description: Bean Version
