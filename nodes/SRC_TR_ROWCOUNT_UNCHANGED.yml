@@ -1,0 +1,13 @@
+name: SRC_TR_ROWCOUNT_UNCHANGED
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts unchanged rows (BeanVersion matches)
+source: SRC_TR_CONDITIONALSPLIT_SCD.UNCHANGED_OUTPUT
+execution_order: 5
+logic:
+  operation: COUNT_ROWS
+  variable_name: User::UnChangeCount
+  description: Captures the count of records that have not changed between source and target
+output:
+  pass_through: true
+  row_count_variable: User::UnChangeCount
