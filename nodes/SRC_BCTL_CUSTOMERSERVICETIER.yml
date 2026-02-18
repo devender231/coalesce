@@ -1,76 +1,57 @@
 fileVersion: 1
-id: SRC_BCTL_CUSTOMERSERVICETIER
-name: SRC_BCTL_CUSTOMERSERVICETIER
+id: S11
+name: BCTL_CUSTOMERSERVICETIER
 operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: ""
   database: ""
   deployEnabled: true
-  description: Source table BCTL_CUSTOMERSERVICETIER
-  isDataVault: false
-  isMultisource: false
+  description: ""
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
+          columnCounter: C1
+          stepCounter: S11
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
+          - columnReferences: []
             transform: ""
-      - appliedColumnTests: {}
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
+          columnCounter: C2
+          stepCounter: S11
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
+        defaultValue: ""
         description: ""
         name: NAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
+          - columnReferences: []
             transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_CUSTOMERSERVICETIER
-        join:
-          joinCondition: ""
-        name: SRC_BCTL_CUSTOMERSERVICETIER
-        noLinkRefs: []
-  name: SRC_BCTL_CUSTOMERSERVICETIER
-  overrideSQL: false
+        transform: ""
+        uniqueKey: false
+
+  name: BCTL_CUSTOMERSERVICETIER
   schema: ""
   sqlType: Source
-  type: sql
+  type: sourceInput
   version: 1
+
+type: Node
