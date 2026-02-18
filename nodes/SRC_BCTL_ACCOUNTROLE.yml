@@ -3,9 +3,21 @@ id: SRC_BCTL_ACCOUNTROLE
 name: SRC_BCTL_ACCOUNTROLE
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: ""
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
   deployEnabled: true
   description: Source table BCTL_ACCOUNTROLE
   isMultisource: false
@@ -14,57 +26,59 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_ACCOUNTROLE
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_ACCOUNTROLE
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: TYPECODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1
+        stepCounter: SRC_BCTL_ACCOUNTROLE
+      config: {}
+      dataType: INTEGER
+      description: ''
+      hashColumns: []
+      hashDetails: null
+      name: ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: null
+          stepCounter: null
+        transform: ''
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2
+        stepCounter: SRC_BCTL_ACCOUNTROLE
+      config: {}
+      dataType: STRING
+      description: ''
+      hashColumns: []
+      hashDetails: null
+      name: TYPECODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: null
+          stepCounter: null
+        transform: ''
+    cteString: ''
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BCTL_ACCOUNTROLE: BCTL_ACCOUNTROLE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTROLE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "SRC_BCTL_ACCOUNTROLE"
-        name: SRC_BCTL_ACCOUNTROLE
-        noLinkRefs: []
+    - customSQL:
+        customSQL: ''
+      dependencies:
+      - locationName: SRC
+        nodeName: BCTL_ACCOUNTROLE
+      join:
+        joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
+      name: SRC_BCTL_ACCOUNTROLE
+      noLinkRefs: []
   name: SRC_BCTL_ACCOUNTROLE
   overrideSQL: false
-  schema: ""
+  schema: ''
   sqlType: Source
   type: sql
   version: 1
