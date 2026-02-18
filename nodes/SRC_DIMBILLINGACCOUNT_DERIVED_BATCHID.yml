@@ -1,69 +1,75 @@
-fileVersion: 1.0
-name: SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID
-type: transformation
-description: |
-  Derived Column transformation for DimBillingAccount package
-  Adds or overwrites BatchID column with package variable value
-  Execution Order: Step 3 - After row count, add BatchID
-
-sources:
-  - name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE
-    type: transformation
-
-transformation_type: DERIVED_COLUMN
-
-transformation_logic:
-  operation: ADD_COLUMN
-  description: Adds BatchID column from package variable
-  
-  derived_columns:
-    - column_name: BatchID
-      data_type: INTEGER
-      expression: "@[User::BatchID]"
-      replace_existing: true
-      description: Batch identifier from package variable for tracking data lineage
-      
-output_columns:
-  # All previous columns plus new BatchID
-  - BC_ACCOUNT.ACCOUNTNUMBER
-  - BC_ACCOUNT.ACCOUNTNAME
-  - BC_ACCOUNT.ACCOUNTTYPE
-  - BC_ACCOUNT.BILLINGLEVEL
-  - BC_ACCOUNT.SERVICETIER
-  - BC_ACCOUNT.SECURITYZONEID
-  - BC_ACCOUNT.SEGMENT
-  - BC_ACCOUNT.CLOSEDATE
-  - BC_ACCOUNT.CREATETIME
-  - BC_ACCOUNT.DELINQUENCYSTATUS
-  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.PUBLICID
-  - BC_ACCOUNT.ID
-  - BC_ACCOUNT.BEANVERSION
-  - BC_ACCOUNT.RETIRED
-  - BC_ACCOUNT.UPDATETIME
-  - ACCOUNTTYPE_NAME
-  - BILLINGLEVEL_NAME
-  - SERVICETIER_NAME
-  - SECURITYZONE_NAME
-  - DELINQUENCYSTATUS_NAME
-  - SEGMENT_NAME
-  - PARENT_ACCOUNT_ID
-  - INSURED_FIRSTNAME
-  - INSURED_LASTNAME
-  - INSURED_ADDRESS1
-  - INSURED_ADDRESS2
-  - INSURED_ADDRESS3
-  - INSURED_CITY
-  - INSURED_POSTALCODE
-  - INSURED_STATE
-  - BatchID  # NEW COLUMN
-
-execution_order: 3
-dependencies:
-  - SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE
-
-metadata:
-  ssis_component_type: DERIVED_COLUMN
-  ssis_expression: "@[User::BatchID]"
-  purpose: Add batch tracking identifier for data lineage and audit
+fileVersion: 1
+id: "SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID"
+name: "SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID"
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Derived Column transformation - Adds BatchID column from User::BatchID variable"
+  isMultisource: false
+  locationName: "WORK"
+  materializationType: "view"
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: "SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID"
+        config: {}
+        dataType: "VARCHAR(16777216)"
+        description: "All columns from previous transformation"
+        name: "*"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE"
+            transform: "*"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: "SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID"
+        config: {}
+        dataType: "INTEGER"
+        description: "Batch ID from User variable"
+        name: "BATCHID"
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "{{ var('User::BatchID') }}"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE"
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: "WORK"
+            nodeName: "SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE"
+        join:
+          joinCondition: |
+            FROM {{ ref('WORK', 'SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE') }} SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE
+        name: "SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID"
+        noLinkRefs: []
+  name: "SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID"
+  overrideSQL: false
+  schema: ""
+  sqlType: "DT113:::156"
+  transformationType: "derivedcolumn"
+  type: "sql"
+  variables:
+    - name: "User::BatchID"
+      description: "Batch ID variable for tracking data load batches"
+      dataType: "INTEGER"
+      defaultValue: "0"
+  version: 1
