@@ -1,14 +1,13 @@
 fileVersion: 1
 id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
-nodeType: Source
 operation:
   config:
     insertStrategy: INSERT
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_CONTACT from SSIS package EDW_BC_Load_DimBillingAccount
+  description: Source table BC_CONTACT
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -25,8 +24,6 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -44,8 +41,6 @@ operation:
         config: {}
         dataType: STRING
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: FIRSTNAME
         nullable: true
         sourceColumnReferences:
@@ -63,8 +58,6 @@ operation:
         config: {}
         dataType: STRING
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: LASTNAME
         nullable: true
         sourceColumnReferences:
@@ -82,8 +75,6 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: PRIMARYADDRESSID
         nullable: true
         sourceColumnReferences:
@@ -101,8 +92,6 @@ operation:
         config: {}
         dataType: STRING
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -120,8 +109,6 @@ operation:
         config: {}
         dataType: DATETIME
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -129,17 +116,14 @@ operation:
               - columnCounter: 6
                 stepCounter: SRC_BC_CONTACT
             transform: ""
-    cteString: ""
+    codeGenerated: false
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
-        customSQL:
+      - customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
