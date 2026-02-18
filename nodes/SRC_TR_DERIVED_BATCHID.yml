@@ -1,239 +1,52 @@
 fileVersion: 1
 id: T2
-name: TR_DERIVED_BATCHID
+name: SRC_TR_DERIVED_BATCHID
 operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
   database: ""
   deployEnabled: true
-  description: "Derived column transformation - adds BatchID column from User::BatchID variable"
+  description: "Adds or overwrites BatchID column"
+  isMultisource: false
   locationName: SRC
+  materializationType: view
   metadata:
+    appliedNodeTests: []
     columns:
-      - columnReference:
-          columnCounter: C1
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
           stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C1
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C2
-          stepCounter: T2
-        dataType: VARCHAR(256)
-        description: ""
-        name: ACCOUNTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C2
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C3
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: ACCOUNTTYPE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C3
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C4
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: BILLINGLEVEL
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C4
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C5
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: SERVICETIER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C5
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C6
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: SECURITYZONEID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C6
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C7
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: SEGMENT
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C7
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C8
-          stepCounter: T2
-        dataType: TIMESTAMP
-        description: ""
-        name: CLOSEDATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C8
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C9
-          stepCounter: T2
-        dataType: TIMESTAMP
-        description: ""
-        name: CREATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C9
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C10
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: DELINQUENCYSTATUS
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C10
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C11
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: FIRSTTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C11
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C12
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C12
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C13
-          stepCounter: T2
-        dataType: VARCHAR(256)
-        description: ""
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C13
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C14
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: ACCOUNT_ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C14
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C15
-          stepCounter: T2
-        dataType: VARCHAR(256)
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C15
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C16
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: ""
-        name: RETIRED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C16
-                stepCounter: T1
-            transform: ""
-      - columnReference:
-          columnCounter: C17
-          stepCounter: T2
-        dataType: TIMESTAMP
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C17
-                stepCounter: T1
-            transform: ""
-      # New derived column - BatchID
-      - columnReference:
-          columnCounter: C18
-          stepCounter: T2
-        dataType: NUMBER(38,0)
-        description: "Batch ID from SSIS variable User::BatchID"
+        config: {}
+        dataType: VARCHAR
+        description: "Batch ID from parameter"
         name: BATCHID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: "@[User::BatchID]"
-        transform: "@[User::BatchID]"
-    transformation:
-      type: derivedColumn
-      derivedColumns:
-        - name: BATCHID
-          expression: "@[User::BatchID]"
-          dataType: NUMBER(38,0)
-          description: "Adds BatchID from SSIS variable"
-  name: TR_DERIVED_BATCHID
+            transform: "'{{ var(\"BatchID\") }}'"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_JOINS_DIMBILLINGACCOUNT: J1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_JOINS_DIMBILLINGACCOUNT
+        join: |
+          FROM {{ ref('SRC', 'SRC_JOINS_DIMBILLINGACCOUNT') }} SRC_JOINS_DIMBILLINGACCOUNT
+        name: SRC_TR_DERIVED_BATCHID
+        noLinkRefs: []
+  name: SRC_TR_DERIVED_BATCHID
+  overrideSQL: false
   schema: ""
-  sqlType: Transformation
-  type: derivedColumn
+  sqlType: Stage
+  type: sql
   version: 1
 type: Node
