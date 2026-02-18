@@ -3,6 +3,10 @@ type: source
 config:
   source_name: BC_ACCOUNTCONTACT
   source_type: table
+  location:
+    database: ""
+    schema: ""
+    table: BC_ACCOUNTCONTACT
   columns:
     - name: INSUREDACCOUNTID
       data_type: INTEGER
