@@ -1,33 +1,26 @@
-# Row Count Transformation - Insert Rows
-# Counts new insert rows (lookup no match)
-
 name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_INSERT
-type: transformation
-transformation_type: ROW_COUNT
-description: Counts new insert rows where no match found in EDW (EDWBeanVersion IS NULL)
+type: row_count
+description: Counts new insert rows (lookup no match)
+variable: User::InsertCount
+input_dependency: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT_BEANVERSION
+input_path: insert_rows
+execution_order: 6
 
-source:
-  name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
-  type: transformation
-  output_path: InsertRows
-
-transformation:
-  operation: ROW_COUNT
-  variable_name: User::InsertCount
-  description: Captures count of new rows to be inserted into DIMBILLINGACCOUNT
+transformation_logic:
+  operation: count_rows
+  counter_variable: User::InsertCount
+  input_source:
+    component: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT_BEANVERSION
+    output_path: insert_rows
   
-logic: |
-  -- Count rows with no EDW match
-  COUNT(*) AS InsertCount
-  WHERE EDWBeanVersion IS NULL
+metadata:
+  source_system: SSIS
+  transformation_type: ROW_COUNT
+  purpose: Track count of new insert records where lookup had no match
+  parallel_execution: true
   
-output:
-  pass_through: true
-  row_count_variable: User::InsertCount
-  action: INSERT
-  target_table: DIMBILLINGACCOUNT
-  description: These rows will be inserted as new records
-  
-execution_order: 7
-dependencies:
-  - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+validation:
+  required_inputs:
+    - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT_BEANVERSION
+  output_variable: User::InsertCount
+  variable_type: integer
