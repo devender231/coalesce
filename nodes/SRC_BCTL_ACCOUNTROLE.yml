@@ -2,13 +2,13 @@ name: SRC_BCTL_ACCOUNTROLE
 type: source
 config:
   source_type: table
-  source_name: BCTL_ACCOUNTROLE
   database: ""
   schema: ""
-  columns:
-    - name: ID
-      data_type: INTEGER
-      nullable: true
-    - name: TYPECODE
-      data_type: STRING
-      nullable: true
+  table: BCTL_ACCOUNTROLE
+columns:
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: TYPECODE
+    data_type: STRING
+    nullable: true
