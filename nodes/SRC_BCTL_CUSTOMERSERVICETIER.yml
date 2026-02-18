@@ -1,0 +1,14 @@
+name: SRC_BCTL_CUSTOMERSERVICETIER
+type: source
+config:
+  source_type: table
+  source_name: BCTL_CUSTOMERSERVICETIER
+  database: ""
+  schema: ""
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: NAME
+      data_type: STRING
+      nullable: true
