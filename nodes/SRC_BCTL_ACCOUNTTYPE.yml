@@ -1,62 +1,15 @@
-fileVersion: 1.0.0
-id: SRC_BCTL_ACCOUNTTYPE
+fileVersion: 1.0
 name: SRC_BCTL_ACCOUNTTYPE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
+type: source
+description: Source table BCTL_ACCOUNTTYPE from GuideWire
+location:
   database: ""
-  deployEnabled: true
-  description: Source table BCTL_ACCOUNTTYPE from GuideWire
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_ACCOUNTTYPE
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_ACCOUNTTYPE
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_ACCOUNTTYPE
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_ACCOUNTTYPE
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTTYPE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }}
-        name: SRC_BCTL_ACCOUNTTYPE
-        noLinkRefs: []
-  name: SRC_BCTL_ACCOUNTTYPE
-  overrideSQL: false
   schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+  table: BCTL_ACCOUNTTYPE
+columns:
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: NAME
+    dataType: STRING
+    nullable: true
