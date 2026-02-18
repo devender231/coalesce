@@ -1,0 +1,18 @@
+fileVersion: 1.0
+name: SRC_BCTL_ACCOUNTROLE
+type: source
+description: Source table BCTL_ACCOUNTROLE from GuideWire
+
+source:
+  location:
+    database: "GUIDEWIRE"
+    schema: "BCTL"
+    table: "BCTL_ACCOUNTROLE"
+
+columns:
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: TYPECODE
+    dataType: STRING
+    nullable: true
