@@ -1,114 +1,170 @@
-fileVersion: 1
-id: J1
+# Join Configuration for DimBillingAccount
+# Package: EDW_BC_Load_DimBillingAccount
+# Description: All joins required to load DimBillingAccount from GuideWire sources
+
 name: SRC_JOIN_DIMBILLINGACCOUNT
-operation:
-  config:
-    insertStrategy: INSERT
-    postSQL: ""
-    preSQL: ""
-    testsEnabled: true
-    truncateBefore: true
-  database: ""
-  deployEnabled: true
-  description: "Joins all source tables for DimBillingAccount ETL"
-  isMultisource: true
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns: []
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          BC_ACCOUNT: S1
-          BCTL_ACCOUNTTYPE: S2
-          BC_PARENTACCT: S3
-          BCTL_BILLINGLEVEL: S4
-          BCTL_CUSTOMERSERVICETIER: S5
-          BC_SECURITYZONE: S6
-          BCTL_DELINQUENCYSTATUS: S7
-          BCTL_ACCOUNTSEGMENT: S8
-          BC_ACCOUNTCONTACT: S9
-          BC_ACCOUNTCONTACTROLE: S10
-          BCTL_ACCOUNTROLE: S11
-          BC_CONTACT: S12
-          BC_ADDRESS: S13
-          BCTL_STATE: S14
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_BC_ACCOUNT
-          - locationName: SRC
-            nodeName: SRC_BCTL_ACCOUNTTYPE
-          - locationName: SRC
-            nodeName: SRC_BC_PARENTACCT
-          - locationName: SRC
-            nodeName: SRC_BCTL_BILLINGLEVEL
-          - locationName: SRC
-            nodeName: SRC_BCTL_CUSTOMERSERVICETIER
-          - locationName: SRC
-            nodeName: SRC_BC_SECURITYZONE
-          - locationName: SRC
-            nodeName: SRC_BCTL_DELINQUENCYSTATUS
-          - locationName: SRC
-            nodeName: SRC_BCTL_ACCOUNTSEGMENT
-          - locationName: SRC
-            nodeName: SRC_BC_ACCOUNTCONTACT
-          - locationName: SRC
-            nodeName: SRC_BC_ACCOUNTCONTACTROLE
-          - locationName: SRC
-            nodeName: SRC_BCTL_ACCOUNTROLE
-          - locationName: SRC
-            nodeName: SRC_BC_CONTACT
-          - locationName: SRC
-            nodeName: SRC_BC_ADDRESS
-          - locationName: SRC
-            nodeName: SRC_BCTL_STATE
-        join: |
-          FROM {{ ref('SRC', 'SRC_BC_ACCOUNT') }} BC_ACCOUNT
-          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
-            ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
-          LEFT JOIN {{ ref('SRC', 'SRC_BC_PARENTACCT') }} BC_PARENTACCT
-            ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
-          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
-            ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
-          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
-            ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
-          LEFT JOIN {{ ref('SRC', 'SRC_BC_SECURITYZONE') }} BC_SECURITYZONE
-            ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
-          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
-            ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
-          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
-            ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
-          LEFT JOIN (
-            SELECT 
-              BC_ACCOUNTCONTACT.INSUREDACCOUNTID AS ACCOUNTID,
-              BC_ACCOUNTCONTACT.ID AS ACCOUNTCONTACTID,
-              BC_ACCOUNTCONTACT.CONTACTID,
-              BC_ACCOUNTCONTACTROLE.ROLE,
-              BCTL_ACCOUNTROLE.TYPECODE
-            FROM {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
-            INNER JOIN {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
-              ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
-            INNER JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
-              ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE
-              AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
-          ) INSUREDINFO
-            ON INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
-          LEFT JOIN {{ ref('SRC', 'SRC_BC_CONTACT') }} BC_CONTACT
-            ON BC_CONTACT.ID = INSUREDINFO.CONTACTID
-          LEFT JOIN {{ ref('SRC', 'SRC_BC_ADDRESS') }} BC_ADDRESS
-            ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
-          LEFT JOIN {{ ref('SRC', 'SRC_BCTL_STATE') }} BCTL_STATE
-            ON BCTL_STATE.ID = BC_ADDRESS.STATE
-        name: SRC_JOIN_DIMBILLINGACCOUNT
-        noLinkRefs: []
-  name: SRC_JOIN_DIMBILLINGACCOUNT
-  overrideSQL: false
-  schema: ""
-  sqlType: Stage
-  type: sql
-  version: 1
-type: Node
+type: join
+version: 1.0
+
+sources:
+  - BC_ACCOUNT
+  - BCTL_ACCOUNTTYPE
+  - BC_PARENTACCT
+  - BCTL_BILLINGLEVEL
+  - BCTL_CUSTOMERSERVICETIER
+  - BC_SECURITYZONE
+  - BCTL_DELINQUENCYSTATUS
+  - BCTL_ACCOUNTSEGMENT
+  - BC_ACCOUNTCONTACT
+  - BC_ACCOUNTCONTACTROLE
+  - BCTL_ACCOUNTROLE
+  - BC_CONTACT
+  - BC_ADDRESS
+  - BCTL_STATE
+  - DIMBILLINGACCOUNT
+
+joins:
+  # Join 1: BC_ACCOUNT to BCTL_ACCOUNTTYPE
+  - join_id: 1
+    left_table: BC_ACCOUNT
+    right_table: BCTL_ACCOUNTTYPE
+    join_type: LEFT
+    condition: BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+    execution_order: 1
+    description: "Lookup account type description"
+    
+  # Join 2: BC_ACCOUNT to BC_PARENTACCT
+  - join_id: 2
+    left_table: BC_ACCOUNT
+    right_table: BC_PARENTACCT
+    join_type: LEFT
+    condition: BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+    execution_order: 2
+    description: "Lookup parent account relationship"
+    
+  # Join 3: BC_ACCOUNT to BCTL_BILLINGLEVEL
+  - join_id: 3
+    left_table: BC_ACCOUNT
+    right_table: BCTL_BILLINGLEVEL
+    join_type: LEFT
+    condition: BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+    execution_order: 3
+    description: "Lookup billing level description"
+    
+  # Join 4: BC_ACCOUNT to BCTL_CUSTOMERSERVICETIER
+  - join_id: 4
+    left_table: BC_ACCOUNT
+    right_table: BCTL_CUSTOMERSERVICETIER
+    join_type: LEFT
+    condition: BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+    execution_order: 4
+    description: "Lookup customer service tier description"
+    
+  # Join 5: BC_ACCOUNT to BC_SECURITYZONE
+  - join_id: 5
+    left_table: BC_ACCOUNT
+    right_table: BC_SECURITYZONE
+    join_type: LEFT
+    condition: BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+    execution_order: 5
+    description: "Lookup security zone information"
+    
+  # Join 6: BC_ACCOUNT to BCTL_DELINQUENCYSTATUS
+  - join_id: 6
+    left_table: BC_ACCOUNT
+    right_table: BCTL_DELINQUENCYSTATUS
+    join_type: LEFT
+    condition: BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+    execution_order: 6
+    description: "Lookup delinquency status description"
+    
+  # Join 7: BC_ACCOUNT to BCTL_ACCOUNTSEGMENT
+  - join_id: 7
+    left_table: BC_ACCOUNT
+    right_table: BCTL_ACCOUNTSEGMENT
+    join_type: LEFT
+    condition: BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+    execution_order: 7
+    description: "Lookup account segment description"
+    
+  # Join 8: BC_ACCOUNT to INSUREDINFO (derived from BC_ACCOUNTCONTACT)
+  - join_id: 8
+    left_table: BC_ACCOUNT
+    right_table: INSUREDINFO
+    join_type: LEFT
+    condition: INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+    execution_order: 8
+    description: "Link to insured information"
+    
+  # Join 9: INSUREDINFO to BC_ACCOUNTCONTACT
+  - join_id: 9
+    left_table: INSUREDINFO
+    right_table: BC_ACCOUNTCONTACT
+    join_type: INNER
+    condition: BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
+    execution_order: 9
+    description: "Get account contact information"
+    
+  # Join 10: INSUREDINFO to BC_ACCOUNTCONTACTROLE
+  - join_id: 10
+    left_table: INSUREDINFO
+    right_table: BC_ACCOUNTCONTACTROLE
+    join_type: INNER
+    condition: BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+    execution_order: 10
+    description: "Get account contact role"
+    
+  # Join 11: INSUREDINFO to BCTL_ACCOUNTROLE
+  - join_id: 11
+    left_table: INSUREDINFO
+    right_table: BCTL_ACCOUNTROLE
+    join_type: INNER
+    condition: BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+    execution_order: 11
+    description: "Filter for insured role type"
+    
+  # Join 12: INSUREDINFO to BC_CONTACT
+  - join_id: 12
+    left_table: INSUREDINFO
+    right_table: BC_CONTACT
+    join_type: LEFT
+    condition: BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+    execution_order: 12
+    description: "Get contact details"
+    
+  # Join 13: INSUREDINFO to BC_ADDRESS
+  - join_id: 13
+    left_table: INSUREDINFO
+    right_table: BC_ADDRESS
+    join_type: LEFT
+    condition: BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+    execution_order: 13
+    description: "Get primary address information"
+    
+  # Join 14: INSUREDINFO to BCTL_STATE
+  - join_id: 14
+    left_table: INSUREDINFO
+    right_table: BCTL_STATE
+    join_type: LEFT
+    condition: BCTL_STATE.ID = BC_ADDRESS.STATE
+    execution_order: 14
+    description: "Get state name from address"
+    
+  # Join 15: LOOKUP_INPUT to DIMBILLINGACCOUNT (for SCD lookup)
+  - join_id: 15
+    left_table: LOOKUP_INPUT
+    right_table: DIMBILLINGACCOUNT
+    join_type: INNER
+    condition: LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
+    execution_order: 15
+    description: "Lookup existing records for SCD comparison"
+
+output:
+  name: JOINED_DATASET
+  description: "All tables joined and ready for transformations"
+  
+metadata:
+  created_by: "Data Engineering Automation Agent"
+  source_package: "EDW_BC_Load_DimBillingAccount"
+  target_table: "DIMBILLINGACCOUNT"
+  load_type: "SCD Type 1 (INSERT/UPDATE)"
