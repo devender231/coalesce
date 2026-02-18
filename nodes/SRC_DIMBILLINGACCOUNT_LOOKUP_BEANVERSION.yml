@@ -1,90 +1,83 @@
-fileVersion: 1.0
-name: SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION
-type: transformation
-description: |
-  Lookup transformation for DimBillingAccount package
-  Looks up BeanVersion from DIMBILLINGACCOUNT by PUBLICID
-  Execution Order: Step 4 - After BatchID derivation, lookup existing BeanVersion
-
-sources:
-  - name: SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID
-    type: transformation
-  - name: DIMBILLINGACCOUNT
-    type: source
-    description: Target dimension table for lookup
-
-transformation_type: LOOKUP
-
-transformation_logic:
-  operation: LOOKUP_MATCH
-  description: Lookup BeanVersion from existing dimension records
-  
-  lookup_source:
-    table: DIMBILLINGACCOUNT
-    query: "SELECT PUBLICID, BEANVERSION FROM DIMBILLINGACCOUNT"
-    cache_mode: FULL
-    
-  lookup_join:
-    join_type: LEFT_OUTER
-    match_columns:
-      - input_column: PUBLICID
-        lookup_column: PUBLICID
-        data_type: STRING
-    
-  lookup_output_columns:
-    - column_name: EDWBeanVersion
-      source_column: BEANVERSION
-      data_type: STRING
-      description: Existing BeanVersion from dimension table
-      no_match_behavior: NULL
-      
-  match_behavior:
-    on_match: RETURN_LOOKUP_VALUE
-    on_no_match: RETURN_NULL
-    
-output_columns:
-  # All previous columns plus lookup result
-  - BC_ACCOUNT.ACCOUNTNUMBER
-  - BC_ACCOUNT.ACCOUNTNAME
-  - BC_ACCOUNT.ACCOUNTTYPE
-  - BC_ACCOUNT.BILLINGLEVEL
-  - BC_ACCOUNT.SERVICETIER
-  - BC_ACCOUNT.SECURITYZONEID
-  - BC_ACCOUNT.SEGMENT
-  - BC_ACCOUNT.CLOSEDATE
-  - BC_ACCOUNT.CREATETIME
-  - BC_ACCOUNT.DELINQUENCYSTATUS
-  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.PUBLICID
-  - BC_ACCOUNT.ID
-  - BC_ACCOUNT.BEANVERSION
-  - BC_ACCOUNT.RETIRED
-  - BC_ACCOUNT.UPDATETIME
-  - ACCOUNTTYPE_NAME
-  - BILLINGLEVEL_NAME
-  - SERVICETIER_NAME
-  - SECURITYZONE_NAME
-  - DELINQUENCYSTATUS_NAME
-  - SEGMENT_NAME
-  - PARENT_ACCOUNT_ID
-  - INSURED_FIRSTNAME
-  - INSURED_LASTNAME
-  - INSURED_ADDRESS1
-  - INSURED_ADDRESS2
-  - INSURED_ADDRESS3
-  - INSURED_CITY
-  - INSURED_POSTALCODE
-  - INSURED_STATE
-  - BatchID
-  - EDWBeanVersion  # NEW LOOKUP COLUMN
-
-execution_order: 4
-dependencies:
-  - SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID
-
-metadata:
-  ssis_component_type: LOOKUP
-  ssis_lookup_table: DIMBILLINGACCOUNT
-  ssis_join_key: PUBLICID
-  purpose: Retrieve existing BeanVersion for SCD Type 1 comparison
+fileVersion: 1
+id: "SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION"
+name: "SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION"
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Lookup transformation - Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
+  isMultisource: true
+  locationName: "WORK"
+  materializationType: "view"
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: "SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION"
+        config: {}
+        dataType: "VARCHAR(16777216)"
+        description: "All columns from derived transformation"
+        name: "*"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: "SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID"
+            transform: "*"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: "SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION"
+        config: {}
+        dataType: "INTEGER"
+        description: "Bean Version from lookup table"
+        name: "LOOKUP_BEANVERSION"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: "SRC_DIMBILLINGACCOUNT"
+            transform: "DIMBILLINGACCOUNT.BEANVERSION"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID: "DERIVED"
+          SRC_DIMBILLINGACCOUNT: "LOOKUP_TABLE"
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: "WORK"
+            nodeName: "SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID"
+          - locationName: "WORK"
+            nodeName: "SRC_DIMBILLINGACCOUNT"
+        join:
+          joinCondition: |
+            FROM {{ ref('WORK', 'SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID') }} DERIVED
+            LEFT JOIN {{ ref('WORK', 'SRC_DIMBILLINGACCOUNT') }} LOOKUP_TABLE
+              ON DERIVED.PUBLICID = LOOKUP_TABLE.PUBLICID
+        name: "SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION"
+        noLinkRefs: []
+  name: "SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION"
+  overrideSQL: false
+  schema: ""
+  sqlType: "DT113:::156"
+  transformationType: "lookup"
+  type: "sql"
+  lookupConfig:
+    lookupKey: "PUBLICID"
+    lookupTable: "SRC_DIMBILLINGACCOUNT"
+    lookupColumns:
+      - "BEANVERSION"
+    noMatchBehavior: "NULL"
+  version: 1
