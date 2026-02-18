@@ -1,0 +1,165 @@
+fileVersion: 1.0
+name: SRC_TR_LOOKUP_BEANVERSION
+type: Lookup
+description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID for SCD comparison
+
+config:
+  clusterKey: false
+  downstreamOption: true
+  groupByAll: false
+  initialize: ON_CREATE
+  insertStrategy: UNION
+  orderby: false
+  postSQL: ''
+  preSQL: ''
+  testsEnabled: true
+  truncateBefore: true
+  warehouseName: DEV_WH
+
+transformation:
+  type: LOOKUP
+  lookupTable:
+    name: SRC_DIMBILLINGACCOUNT
+    alias: DIMBILLINGACCOUNT
+  
+  lookupColumns:
+    - name: PUBLICID
+      dataType: STRING
+    - name: BEANVERSION
+      dataType: STRING
+  
+  joinCondition:
+    type: LEFT
+    expression: "INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID"
+  
+  outputMapping:
+    - sourceColumn: DIMBILLINGACCOUNT.BEANVERSION
+      targetColumn: EDW_BEANVERSION
+      dataType: STRING
+      description: Existing BeanVersion from EDW for comparison
+  
+  noMatchBehavior: RETURN_NULL
+  cacheMode: FULL
+
+inputColumns:
+  - name: ACCOUNTNUMBER
+    dataType: INTEGER
+  - name: ACCOUNTNAME
+    dataType: STRING
+  - name: ACCOUNTTYPE_NAME
+    dataType: STRING
+  - name: BILLINGLEVEL_NAME
+    dataType: STRING
+  - name: SERVICETIER_NAME
+    dataType: STRING
+  - name: SECURITYZONE_NAME
+    dataType: STRING
+  - name: SEGMENT_NAME
+    dataType: STRING
+  - name: DELINQUENCYSTATUS_NAME
+    dataType: STRING
+  - name: CLOSEDATE
+    dataType: DATETIME
+  - name: CREATETIME
+    dataType: DATETIME
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: PUBLICID
+    dataType: STRING
+  - name: BEANVERSION
+    dataType: STRING
+  - name: RETIRED
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: DATETIME
+  - name: PARENT_FOREIGNENTITYID
+    dataType: INTEGER
+  - name: CONTACT_FIRSTNAME
+    dataType: STRING
+  - name: CONTACT_LASTNAME
+    dataType: STRING
+  - name: ADDRESS_LINE1
+    dataType: STRING
+  - name: ADDRESS_LINE2
+    dataType: STRING
+  - name: ADDRESS_LINE3
+    dataType: STRING
+  - name: CITY
+    dataType: STRING
+  - name: POSTALCODE
+    dataType: STRING
+  - name: STATE_NAME
+    dataType: STRING
+  - name: BatchID
+    dataType: INTEGER
+
+outputColumns:
+  - name: ACCOUNTNUMBER
+    dataType: INTEGER
+  - name: ACCOUNTNAME
+    dataType: STRING
+  - name: ACCOUNTTYPE_NAME
+    dataType: STRING
+  - name: BILLINGLEVEL_NAME
+    dataType: STRING
+  - name: SERVICETIER_NAME
+    dataType: STRING
+  - name: SECURITYZONE_NAME
+    dataType: STRING
+  - name: SEGMENT_NAME
+    dataType: STRING
+  - name: DELINQUENCYSTATUS_NAME
+    dataType: STRING
+  - name: CLOSEDATE
+    dataType: DATETIME
+  - name: CREATETIME
+    dataType: DATETIME
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: PUBLICID
+    dataType: STRING
+  - name: BEANVERSION
+    dataType: STRING
+  - name: RETIRED
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: DATETIME
+  - name: PARENT_FOREIGNENTITYID
+    dataType: INTEGER
+  - name: CONTACT_FIRSTNAME
+    dataType: STRING
+  - name: CONTACT_LASTNAME
+    dataType: STRING
+  - name: ADDRESS_LINE1
+    dataType: STRING
+  - name: ADDRESS_LINE2
+    dataType: STRING
+  - name: ADDRESS_LINE3
+    dataType: STRING
+  - name: CITY
+    dataType: STRING
+  - name: POSTALCODE
+    dataType: STRING
+  - name: STATE_NAME
+    dataType: STRING
+  - name: BatchID
+    dataType: INTEGER
+  - name: EDW_BEANVERSION
+    dataType: STRING
+    description: BeanVersion from existing EDW record
+
+dependencies:
+  - SRC_TR_DERIVED_BATCHID
+  - SRC_DIMBILLINGACCOUNT
+
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  component_type: LOOKUP
+  execution_order: 4
+  lookup_sql: "Select Publicid, BeanVersion from DimBillingAccount"
+  created_from: SSIS_Package_Migration
+  migration_date: 2025-01-20
