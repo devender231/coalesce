@@ -1,0 +1,18 @@
+fileVersion: 1.0
+name: SRC_BCTL_STATE
+type: source
+description: Source table BCTL_STATE from GuideWire
+
+source:
+  location:
+    database: "GUIDEWIRE"
+    schema: "BCTL"
+    table: "BCTL_STATE"
+
+columns:
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: NAME
+    dataType: STRING
+    nullable: true
