@@ -1,0 +1,28 @@
+name: SRC_ROWCOUNT_UNCHANGED
+type: row_count
+description: Counts unchanged rows (BeanVersion matches)
+
+source:
+  name: SRC_CONDITIONAL_SPLIT
+  type: conditional_split
+  output_path: UnchangedRows
+
+transformation:
+  type: ROW_COUNT
+  operation: count_rows
+  output_variable: User::UnChangeCount
+  
+logic:
+  description: Counts rows where BeanVersion matches EDWBeanVersion (no changes needed)
+  variable_assignment: User::UnChangeCount = COUNT(*)
+  filter: BEANVERSION == EDWBeanVersion
+
+execution_order: 5
+
+dependencies:
+  - SRC_CONDITIONAL_SPLIT
+
+output:
+  pass_through: false
+  row_count_variable: User::UnChangeCount
+  description: Count of unchanged records
