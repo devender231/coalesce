@@ -1,0 +1,17 @@
+fileVersion: 1.0.0
+id: SRC_BCTL_ACCOUNTSEGMENT
+name: SRC_BCTL_ACCOUNTSEGMENT
+type: source
+description: Source table BCTL_ACCOUNTSEGMENT from GuideWire
+
+sources:
+  - name: BCTL_ACCOUNTSEGMENT
+    database: ""
+    schema: ""
+    columns:
+      - name: ID
+        dataType: INTEGER
+        nullable: true
+      - name: NAME
+        dataType: STRING
+        nullable: true
