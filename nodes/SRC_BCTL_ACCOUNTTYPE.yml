@@ -1,14 +1,13 @@
 fileVersion: 1
 id: SRC_BCTL_ACCOUNTTYPE
 name: SRC_BCTL_ACCOUNTTYPE
-nodeType: Source
 operation:
   config:
     insertStrategy: INSERT
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BCTL_ACCOUNTTYPE from SSIS package EDW_BC_Load_DimBillingAccount
+  description: Source table BCTL_ACCOUNTTYPE
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -25,8 +24,6 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -44,8 +41,6 @@ operation:
         config: {}
         dataType: STRING
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
@@ -53,17 +48,14 @@ operation:
               - columnCounter: 2
                 stepCounter: SRC_BCTL_ACCOUNTTYPE
             transform: ""
-    cteString: ""
+    codeGenerated: false
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
-        customSQL:
+      - customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTTYPE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }}
         name: SRC_BCTL_ACCOUNTTYPE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTTYPE
