@@ -3,6 +3,10 @@ type: source
 config:
   source_name: BCTL_ACCOUNTSEGMENT
   source_type: table
+  location:
+    database: ""
+    schema: ""
+    table: BCTL_ACCOUNTSEGMENT
   columns:
     - name: ID
       data_type: INTEGER
