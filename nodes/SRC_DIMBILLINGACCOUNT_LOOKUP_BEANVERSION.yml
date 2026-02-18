@@ -1,0 +1,54 @@
+# Lookup Transformation - BeanVersion
+# Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+
+name: SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION
+type: transformation
+transformation_type: LOOKUP
+description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID to identify existing records
+
+source:
+  name: SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID
+  type: transformation
+
+lookup_table:
+  name: DIMBILLINGACCOUNT
+  type: target_table
+  columns:
+    - PUBLICID
+    - BEANVERSION
+
+transformation:
+  operation: LOOKUP
+  lookup_type: LEFT_OUTER
+  join_condition:
+    source_column: PUBLICID
+    lookup_column: PUBLICID
+  lookup_columns:
+    - column_name: BEANVERSION
+      alias: EDWBeanVersion
+      description: Existing BeanVersion from EDW for comparison
+      
+logic: |
+  -- Lookup existing BeanVersion from DIMBILLINGACCOUNT
+  SELECT 
+    source.*,
+    lookup.BEANVERSION AS EDWBeanVersion
+  FROM source
+  LEFT OUTER JOIN DIMBILLINGACCOUNT lookup
+    ON source.PUBLICID = lookup.PUBLICID
+  
+output_columns:
+  - all_source_columns: true
+  - EDWBeanVersion:
+      data_type: STRING
+      nullable: true
+      source: lookup
+      description: BeanVersion from existing EDW record
+      
+cache_mode: FULL
+no_match_behavior: OUTPUT_ROW
+
+execution_order: 4
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID
+  - DIMBILLINGACCOUNT
