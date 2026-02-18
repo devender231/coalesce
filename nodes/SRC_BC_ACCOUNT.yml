@@ -1,27 +1,17 @@
 fileVersion: 1
 id: SRC_BC_ACCOUNT
 name: SRC_BC_ACCOUNT
+nodeType: Source
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV ENVIRONMENT
   database: ""
   deployEnabled: true
-  description: Source table for BC_ACCOUNT
+  description: Source table BC_ACCOUNT from SSIS package EDW_BC_Load_DimBillingAccount
   isMultisource: false
-  locationName: SOURCE
-  materializationType: source
+  locationName: SRC
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -33,8 +23,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -53,8 +42,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
@@ -73,8 +61,7 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -93,8 +80,7 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -113,8 +99,7 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -133,8 +118,7 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -153,8 +137,7 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -173,8 +156,7 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
+        dataType: DATETIME
         description: ""
         hashColumns: []
         hashDetails: null
@@ -193,8 +175,7 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
+        dataType: DATETIME
         description: ""
         hashColumns: []
         hashDetails: null
@@ -213,8 +194,7 @@ operation:
           columnCounter: 10
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -233,8 +213,7 @@ operation:
           columnCounter: 11
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -253,8 +232,7 @@ operation:
           columnCounter: 12
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -273,8 +251,7 @@ operation:
           columnCounter: 13
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
@@ -293,8 +270,7 @@ operation:
           columnCounter: 14
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -313,8 +289,7 @@ operation:
           columnCounter: 15
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
@@ -333,8 +308,7 @@ operation:
           columnCounter: 16
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -353,8 +327,7 @@ operation:
           columnCounter: 17
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
+        dataType: DATETIME
         description: ""
         hashColumns: []
         hashDetails: null
@@ -368,15 +341,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_ACCOUNT: SRC_BC_ACCOUNT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SOURCE
+          - locationName: SRC
             nodeName: BC_ACCOUNT
         join:
-          joinCondition: FROM {{ ref('SOURCE', 'BC_ACCOUNT') }} SRC_BC_ACCOUNT
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }}
         name: SRC_BC_ACCOUNT
         noLinkRefs: []
   name: SRC_BC_ACCOUNT
@@ -385,4 +357,3 @@ operation:
   sqlType: Source
   type: sql
   version: 1
-type: Node
