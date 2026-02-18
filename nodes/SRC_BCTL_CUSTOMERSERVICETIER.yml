@@ -1,17 +1,87 @@
 fileVersion: 1.0.0
 id: SRC_BCTL_CUSTOMERSERVICETIER
 name: SRC_BCTL_CUSTOMERSERVICETIER
-type: source
-description: Source table BCTL_CUSTOMERSERVICETIER from GuideWire
-
-sources:
-  - name: BCTL_CUSTOMERSERVICETIER
-    database: ""
-    schema: ""
+operation:
+  config:
+    clusterKey: false
+    clusterKeyConfig: null
+    clusterKeyConfigExpressions:
+    - null
+    clusterKeyExpressions: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    lagSpecification:
+      lag: 1 days
+    orderby: false
+    orderbycolumn: null
+    postSQL: null
+    preSQL: null
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: null
+  database: ""
+  deployEnabled: true
+  description: Source table BCTL_CUSTOMERSERVICETIER from GuideWire
+  isDataVault: false
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
     columns:
-      - name: ID
-        dataType: INTEGER
-        nullable: true
-      - name: NAME
-        dataType: STRING
-        nullable: true
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1
+        stepCounter: 1
+      config: {}
+      dataType: NUMBER(38,0)
+      defaultValue: ""
+      description: Record ID
+      isBusinessKey: false
+      name: ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR(16777216)
+      defaultValue: ""
+      description: Customer Service Tier Name
+      isBusinessKey: false
+      name: NAME
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+    - aliases: {}
+      customSQL:
+        customSQL: ""
+      dependencies:
+      - locationName: SRC
+        nodeName: BCTL_CUSTOMERSERVICETIER
+      join: null
+      name: SRC_BCTL_CUSTOMERSERVICETIER
+      noLinkRefs: []
+  name: SRC_BCTL_CUSTOMERSERVICETIER
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
