@@ -1,255 +1,197 @@
 fileVersion: 1
-id: SRC_BC_ADDRESS
-name: SRC_BC_ADDRESS
+id: S7
+name: BC_ADDRESS
 operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
-  description: Source table BC_ADDRESS
-  isDataVault: false
-  isMultisource: false
+  description: ""
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: 1
+          columnCounter: C1
+          stepCounter: S7
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: 1
+          columnCounter: C2
+          stepCounter: S7
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: ADDRESSLINE1
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 3
-          stepCounter: 1
+          columnCounter: C3
+          stepCounter: S7
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: ADDRESSLINE2
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4
-          stepCounter: 1
+          columnCounter: C4
+          stepCounter: S7
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: ADDRESSLINE3
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5
-          stepCounter: 1
+          columnCounter: C5
+          stepCounter: S7
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: CITY
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 6
-          stepCounter: 1
+          columnCounter: C6
+          stepCounter: S7
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: POSTALCODE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7
-          stepCounter: 1
+          columnCounter: C7
+          stepCounter: S7
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: STATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8
-          stepCounter: 1
+          columnCounter: C8
+          stepCounter: S7
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9
-          stepCounter: 1
+          columnCounter: C9
+          stepCounter: S7
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: UPDATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_ADDRESS
-        join:
-          joinCondition: ""
-        name: SRC_BC_ADDRESS
-        noLinkRefs: []
-  name: SRC_BC_ADDRESS
-  overrideSQL: false
+        transform: ""
+        uniqueKey: false
+
+  name: BC_ADDRESS
   schema: ""
   sqlType: Source
-  type: sql
+  type: sourceInput
   version: 1
+
+type: Node
