@@ -1,0 +1,33 @@
+# Row Count Transformation - Insert Rows
+# Counts new insert rows (lookup no match)
+
+name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_INSERT
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts new insert rows where no match found in EDW (EDWBeanVersion IS NULL)
+
+source:
+  name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+  type: transformation
+  output_path: InsertRows
+
+transformation:
+  operation: ROW_COUNT
+  variable_name: User::InsertCount
+  description: Captures count of new rows to be inserted into DIMBILLINGACCOUNT
+  
+logic: |
+  -- Count rows with no EDW match
+  COUNT(*) AS InsertCount
+  WHERE EDWBeanVersion IS NULL
+  
+output:
+  pass_through: true
+  row_count_variable: User::InsertCount
+  action: INSERT
+  target_table: DIMBILLINGACCOUNT
+  description: These rows will be inserted as new records
+  
+execution_order: 7
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
