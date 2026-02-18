@@ -1,0 +1,77 @@
+fileVersion: 1.0
+name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_UPDATE
+type: transformation
+description: |
+  Row Count transformation for DimBillingAccount package
+  Counts update rows (BeanVersion different from EDWBeanVersion)
+  Execution Order: Step 6c - After conditional split, count update rows
+
+sources:
+  - name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+    type: transformation
+    output_path: UPDATE_ROWS
+
+transformation_type: ROW_COUNT
+
+transformation_logic:
+  operation: COUNT_ROWS
+  description: Counts rows where BeanVersion changed requiring update
+  variable_assignment:
+    variable_name: User::UpdateCount
+    variable_type: INT32
+    scope: PACKAGE
+  
+  count_logic:
+    count_all_rows: true
+    filter_condition: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+    source_output: UPDATE_ROWS
+    
+output_columns:
+  # Pass through all columns from conditional split update output
+  - BC_ACCOUNT.ACCOUNTNUMBER
+  - BC_ACCOUNT.ACCOUNTNAME
+  - BC_ACCOUNT.ACCOUNTTYPE
+  - BC_ACCOUNT.BILLINGLEVEL
+  - BC_ACCOUNT.SERVICETIER
+  - BC_ACCOUNT.SECURITYZONEID
+  - BC_ACCOUNT.SEGMENT
+  - BC_ACCOUNT.CLOSEDATE
+  - BC_ACCOUNT.CREATETIME
+  - BC_ACCOUNT.DELINQUENCYSTATUS
+  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
+  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
+  - BC_ACCOUNT.PUBLICID
+  - BC_ACCOUNT.ID
+  - BC_ACCOUNT.BEANVERSION
+  - BC_ACCOUNT.RETIRED
+  - BC_ACCOUNT.UPDATETIME
+  - ACCOUNTTYPE_NAME
+  - BILLINGLEVEL_NAME
+  - SERVICETIER_NAME
+  - SECURITYZONE_NAME
+  - DELINQUENCYSTATUS_NAME
+  - SEGMENT_NAME
+  - PARENT_ACCOUNT_ID
+  - INSURED_FIRSTNAME
+  - INSURED_LASTNAME
+  - INSURED_ADDRESS1
+  - INSURED_ADDRESS2
+  - INSURED_ADDRESS3
+  - INSURED_CITY
+  - INSURED_POSTALCODE
+  - INSURED_STATE
+  - BatchID
+  - EDWBeanVersion
+
+execution_order: 6
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+
+metadata:
+  ssis_component_type: ROW_COUNT
+  ssis_variable: User::UpdateCount
+  conditional_split_output: UPDATE_ROWS
+  purpose: Track number of update rows for audit and reconciliation
+  action: UPDATE_TARGET
+  target_table: DIMBILLINGACCOUNT
+  scd_type: TYPE_1
