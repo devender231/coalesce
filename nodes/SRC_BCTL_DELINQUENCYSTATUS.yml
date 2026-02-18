@@ -3,6 +3,10 @@ type: source
 config:
   source_name: BCTL_DELINQUENCYSTATUS
   source_type: table
+  location:
+    database: ""
+    schema: ""
+    table: BCTL_DELINQUENCYSTATUS
   columns:
     - name: ID
       data_type: INTEGER
