@@ -1,104 +1,97 @@
 fileVersion: 1
-id: SRC_BC_SECURITYZONE
-name: SRC_BC_SECURITYZONE
+id: S12
+name: BC_SECURITYZONE
 operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: ""
   database: ""
   deployEnabled: true
-  description: Source table BC_SECURITYZONE
-  isDataVault: false
-  isMultisource: false
+  description: ""
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_SECURITYZONE
+          columnCounter: C1
+          stepCounter: S12
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_SECURITYZONE
+          - columnReferences: []
             transform: ""
-      - appliedColumnTests: {}
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_SECURITYZONE
+          columnCounter: C2
+          stepCounter: S12
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
+        defaultValue: ""
         description: ""
         name: NAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_SECURITYZONE
+          - columnReferences: []
             transform: ""
-      - appliedColumnTests: {}
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_SECURITYZONE
+          columnCounter: C3
+          stepCounter: S12
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
+        defaultValue: ""
         description: ""
         name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_SECURITYZONE
+          - columnReferences: []
             transform: ""
-      - appliedColumnTests: {}
+        transform: ""
+        uniqueKey: false
+
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_SECURITYZONE
+          columnCounter: C4
+          stepCounter: S12
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
+        defaultValue: ""
         description: ""
         name: UPDATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_SECURITYZONE
+          - columnReferences: []
             transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_SECURITYZONE
-        join:
-          joinCondition: ""
-        name: SRC_BC_SECURITYZONE
-        noLinkRefs: []
-  name: SRC_BC_SECURITYZONE
-  overrideSQL: false
+        transform: ""
+        uniqueKey: false
+
+  name: BC_SECURITYZONE
   schema: ""
   sqlType: Source
-  type: sql
+  type: sourceInput
   version: 1
+
+type: Node
