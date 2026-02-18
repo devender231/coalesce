@@ -1,94 +1,57 @@
 fileVersion: 1
-id: SRC_BCTL_STATE
-name: SRC_BCTL_STATE
+id: S8
+name: BCTL_STATE
 operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
-  description: Source table BCTL_STATE
-  isDataVault: false
-  isMultisource: false
+  description: ""
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: 1
+          columnCounter: C1
+          stepCounter: S8
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: 1
+          columnCounter: C2
+          stepCounter: S8
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isNullable: true
         name: NAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
+          - columnReferences: []
             transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_STATE
-        join:
-          joinCondition: ""
-        name: SRC_BCTL_STATE
-        noLinkRefs: []
-  name: SRC_BCTL_STATE
-  overrideSQL: false
+        transform: ""
+        uniqueKey: false
+
+  name: BCTL_STATE
   schema: ""
   sqlType: Source
-  type: sql
+  type: sourceInput
   version: 1
+
+type: Node
