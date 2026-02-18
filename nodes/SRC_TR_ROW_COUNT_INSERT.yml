@@ -1,0 +1,158 @@
+fileVersion: 1.0
+name: SRC_TR_ROW_COUNT_INSERT
+type: RowCount
+description: Counts new insert rows where lookup found no match (EDW_BEANVERSION IS NULL)
+
+config:
+  clusterKey: false
+  downstreamOption: true
+  groupByAll: false
+  initialize: ON_CREATE
+  insertStrategy: UNION
+  orderby: false
+  postSQL: ''
+  preSQL: ''
+  testsEnabled: true
+  truncateBefore: true
+  warehouseName: DEV_WH
+
+transformation:
+  type: ROW_COUNT
+  logic: |
+    -- Count rows from INSERT_ROWS output stream
+    SELECT COUNT(*) AS InsertCount
+    FROM {{ ref('SRC_TR_CONDITIONAL_SPLIT_BEANVERSION') }}
+    WHERE EDW_BEANVERSION IS NULL
+  
+  variableMapping:
+    targetVariable: User::InsertCount
+    description: Stores the count of new insert rows for audit purposes
+  
+  inputStream: INSERT_ROWS
+
+inputColumns:
+  - name: ACCOUNTNUMBER
+    dataType: INTEGER
+  - name: ACCOUNTNAME
+    dataType: STRING
+  - name: ACCOUNTTYPE_NAME
+    dataType: STRING
+  - name: BILLINGLEVEL_NAME
+    dataType: STRING
+  - name: SERVICETIER_NAME
+    dataType: STRING
+  - name: SECURITYZONE_NAME
+    dataType: STRING
+  - name: SEGMENT_NAME
+    dataType: STRING
+  - name: DELINQUENCYSTATUS_NAME
+    dataType: STRING
+  - name: CLOSEDATE
+    dataType: DATETIME
+  - name: CREATETIME
+    dataType: DATETIME
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: PUBLICID
+    dataType: STRING
+  - name: BEANVERSION
+    dataType: STRING
+  - name: RETIRED
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: DATETIME
+  - name: PARENT_FOREIGNENTITYID
+    dataType: INTEGER
+  - name: CONTACT_FIRSTNAME
+    dataType: STRING
+  - name: CONTACT_LASTNAME
+    dataType: STRING
+  - name: ADDRESS_LINE1
+    dataType: STRING
+  - name: ADDRESS_LINE2
+    dataType: STRING
+  - name: ADDRESS_LINE3
+    dataType: STRING
+  - name: CITY
+    dataType: STRING
+  - name: POSTALCODE
+    dataType: STRING
+  - name: STATE_NAME
+    dataType: STRING
+  - name: BatchID
+    dataType: INTEGER
+  - name: EDW_BEANVERSION
+    dataType: STRING
+
+outputColumns:
+  - name: ACCOUNTNUMBER
+    dataType: INTEGER
+  - name: ACCOUNTNAME
+    dataType: STRING
+  - name: ACCOUNTTYPE_NAME
+    dataType: STRING
+  - name: BILLINGLEVEL_NAME
+    dataType: STRING
+  - name: SERVICETIER_NAME
+    dataType: STRING
+  - name: SECURITYZONE_NAME
+    dataType: STRING
+  - name: SEGMENT_NAME
+    dataType: STRING
+  - name: DELINQUENCYSTATUS_NAME
+    dataType: STRING
+  - name: CLOSEDATE
+    dataType: DATETIME
+  - name: CREATETIME
+    dataType: DATETIME
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+  - name: PUBLICID
+    dataType: STRING
+  - name: BEANVERSION
+    dataType: STRING
+  - name: RETIRED
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: DATETIME
+  - name: PARENT_FOREIGNENTITYID
+    dataType: INTEGER
+  - name: CONTACT_FIRSTNAME
+    dataType: STRING
+  - name: CONTACT_LASTNAME
+    dataType: STRING
+  - name: ADDRESS_LINE1
+    dataType: STRING
+  - name: ADDRESS_LINE2
+    dataType: STRING
+  - name: ADDRESS_LINE3
+    dataType: STRING
+  - name: CITY
+    dataType: STRING
+  - name: POSTALCODE
+    dataType: STRING
+  - name: STATE_NAME
+    dataType: STRING
+  - name: BatchID
+    dataType: INTEGER
+  - name: EDW_BEANVERSION
+    dataType: STRING
+  - name: InsertCount
+    dataType: INTEGER
+    description: Count of new insert rows
+
+dependencies:
+  - SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  component_type: ROW_COUNT
+  execution_order: 7
+  ssis_variable: User::InsertCount
+  input_stream: INSERT_ROWS
+  created_from: SSIS_Package_Migration
+  migration_date: 2025-01-20
