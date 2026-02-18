@@ -3,62 +3,59 @@ id: SRC_BCTL_STATE
 name: SRC_BCTL_STATE
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH
   database: ""
   deployEnabled: true
   description: Source table BCTL_STATE
-  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BCTL_STATE
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BCTL_STATE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BCTL_STATE
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BCTL_STATE
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          BCTL_STATE: 1
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
