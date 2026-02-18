@@ -1,358 +1,357 @@
 fileVersion: 1
-id: SRC_BC_ACCOUNT
-name: SRC_BC_ACCOUNT
+id: S1
+name: BC_ACCOUNT
 operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_ACCOUNT
-  isMultisource: false
+  description: ""
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C1
+          stepCounter: S1
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ACCOUNTNUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C2
+          stepCounter: S1
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ACCOUNTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C3
+          stepCounter: S1
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ACCOUNTTYPE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C4
+          stepCounter: S1
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BILLINGLEVEL
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C5
+          stepCounter: S1
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: SERVICETIER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 6
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C6
+          stepCounter: S1
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: SECURITYZONEID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C7
+          stepCounter: S1
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: SEGMENT
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C8
+          stepCounter: S1
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: CLOSEDATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C9
+          stepCounter: S1
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: CREATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 10
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C10
+          stepCounter: S1
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: DELINQUENCYSTATUS
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 10
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 11
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C11
+          stepCounter: S1
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 11
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 12
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C12
+          stepCounter: S1
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 12
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 13
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C13
+          stepCounter: S1
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: PUBLICID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 13
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 14
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C14
+          stepCounter: S1
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 14
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 15
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C15
+          stepCounter: S1
         config: {}
-        dataType: NUMBER
+        dataType: STRING
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 15
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 16
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C16
+          stepCounter: S1
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: RETIRED
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 16
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
+        transform: ""
+        uniqueKey: false
+
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 17
-          stepCounter: SRC_BC_ACCOUNT
+          columnCounter: C17
+          stepCounter: S1
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
+        defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: UPDATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 17
-                stepCounter: SRC_BC_ACCOUNT
+          - columnReferences: []
             transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_ACCOUNT
-        join:
-          joinCondition: ""
-        name: SRC_BC_ACCOUNT
-        noLinkRefs: []
-  name: SRC_BC_ACCOUNT
-  overrideSQL: false
+        transform: ""
+        uniqueKey: false
+
+  name: BC_ACCOUNT
   schema: ""
   sqlType: Source
-  type: sql
+  type: sourceInput
   version: 1
+
+type: Node
