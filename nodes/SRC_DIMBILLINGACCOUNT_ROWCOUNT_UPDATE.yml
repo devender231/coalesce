@@ -1,0 +1,34 @@
+# Row Count Transformation - Update Rows
+# Counts update rows (BeanVersion different)
+
+name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_UPDATE
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts update rows where BeanVersion differs from EDW BeanVersion
+
+source:
+  name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+  type: transformation
+  output_path: UpdateRows
+
+transformation:
+  operation: ROW_COUNT
+  variable_name: User::UpdateCount
+  description: Captures count of rows requiring updates in DIMBILLINGACCOUNT
+  
+logic: |
+  -- Count rows with different BeanVersion
+  COUNT(*) AS UpdateCount
+  WHERE BEANVERSION != EDWBeanVersion 
+    AND EDWBeanVersion IS NOT NULL
+  
+output:
+  pass_through: true
+  row_count_variable: User::UpdateCount
+  action: UPDATE
+  target_table: DIMBILLINGACCOUNT
+  description: These rows will be updated in the target table
+  
+execution_order: 8
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
