@@ -1,225 +1,398 @@
 fileVersion: 1
-id: "SRC_JOIN_DIMBILLINGACCOUNT"
-name: "SRC_JOIN_DIMBILLINGACCOUNT"
-description: "Join all source tables for DimBillingAccount ETL"
-type: "Join"
-config:
-  database: "${database}"
-  schema: "${schema}"
-  tags:
-    - "SSIS_MIGRATION"
-    - "JOIN"
-    - "DIMBILLINGACCOUNT"
-sources:
-  - name: "BC_ACCOUNT"
-    type: "source"
-  - name: "BCTL_ACCOUNTTYPE"
-    type: "source"
-  - name: "BC_PARENTACCT"
-    type: "source"
-  - name: "BCTL_BILLINGLEVEL"
-    type: "source"
-  - name: "BCTL_CUSTOMERSERVICETIER"
-    type: "source"
-  - name: "BC_SECURITYZONE"
-    type: "source"
-  - name: "BCTL_DELINQUENCYSTATUS"
-    type: "source"
-  - name: "BCTL_ACCOUNTSEGMENT"
-    type: "source"
-  - name: "BC_ACCOUNTCONTACT"
-    type: "source"
-  - name: "BC_ACCOUNTCONTACTROLE"
-    type: "source"
-  - name: "BCTL_ACCOUNTROLE"
-    type: "source"
-  - name: "BC_CONTACT"
-    type: "source"
-  - name: "BC_ADDRESS"
-    type: "source"
-  - name: "BCTL_STATE"
-    type: "source"
-  - name: "DIMBILLINGACCOUNT"
-    type: "source"
-joinLogic: |
-  -- Join 1: BC_ACCOUNT with BCTL_ACCOUNTTYPE
-  SELECT
-    BC_ACCOUNT.*,
-    BCTL_ACCOUNTTYPE.NAME AS ACCOUNTTYPE_NAME
-  FROM BC_ACCOUNT
-  LEFT JOIN BCTL_ACCOUNTTYPE
-    ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
-  
-  -- Join 2: BC_ACCOUNT with BC_PARENTACCT
-  LEFT JOIN BC_PARENTACCT
-    ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
-  
-  -- Join 3: BC_ACCOUNT with BCTL_BILLINGLEVEL
-  LEFT JOIN BCTL_BILLINGLEVEL
-    ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
-  
-  -- Join 4: BC_ACCOUNT with BCTL_CUSTOMERSERVICETIER
-  LEFT JOIN BCTL_CUSTOMERSERVICETIER
-    ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
-  
-  -- Join 5: BC_ACCOUNT with BC_SECURITYZONE
-  LEFT JOIN BC_SECURITYZONE
-    ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
-  
-  -- Join 6: BC_ACCOUNT with BCTL_DELINQUENCYSTATUS
-  LEFT JOIN BCTL_DELINQUENCYSTATUS
-    ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
-  
-  -- Join 7: BC_ACCOUNT with BCTL_ACCOUNTSEGMENT
-  LEFT JOIN BCTL_ACCOUNTSEGMENT
-    ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
-  
-  -- Join 8: BC_ACCOUNT with INSUREDINFO (derived from BC_ACCOUNTCONTACT)
-  LEFT JOIN (
-    SELECT
-      BC_ACCOUNTCONTACT.INSUREDACCOUNTID AS ACCOUNTID,
-      BC_ACCOUNTCONTACT.ID AS ACCOUNTCONTACT_ID,
-      BC_ACCOUNTCONTACT.CONTACTID
-    FROM BC_ACCOUNTCONTACT
-  ) AS INSUREDINFO
-    ON INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
-  
-  -- Join 9: INSUREDINFO with BC_ACCOUNTCONTACT (INNER)
-  INNER JOIN BC_ACCOUNTCONTACT
-    ON BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
-  
-  -- Join 10: INSUREDINFO with BC_ACCOUNTCONTACTROLE (INNER)
-  INNER JOIN BC_ACCOUNTCONTACTROLE
-    ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
-  
-  -- Join 11: INSUREDINFO with BCTL_ACCOUNTROLE (INNER)
-  INNER JOIN BCTL_ACCOUNTROLE
-    ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE
-    AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
-  
-  -- Join 12: INSUREDINFO with BC_CONTACT (LEFT)
-  LEFT JOIN BC_CONTACT
-    ON BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
-  
-  -- Join 13: INSUREDINFO with BC_ADDRESS (LEFT)
-  LEFT JOIN BC_ADDRESS
-    ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
-  
-  -- Join 14: INSUREDINFO with BCTL_STATE (LEFT)
-  LEFT JOIN BCTL_STATE
-    ON BCTL_STATE.ID = BC_ADDRESS.STATE
-columns:
-  - name: "ACCOUNTNUMBER"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.ACCOUNTNUMBER"
-  - name: "ACCOUNTNAME"
-    dataType: "STRING"
-    source: "BC_ACCOUNT.ACCOUNTNAME"
-  - name: "ACCOUNTTYPE"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.ACCOUNTTYPE"
-  - name: "ACCOUNTTYPE_NAME"
-    dataType: "STRING"
-    source: "BCTL_ACCOUNTTYPE.NAME"
-  - name: "BILLINGLEVEL"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.BILLINGLEVEL"
-  - name: "BILLINGLEVEL_NAME"
-    dataType: "STRING"
-    source: "BCTL_BILLINGLEVEL.NAME"
-  - name: "SERVICETIER"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.SERVICETIER"
-  - name: "SERVICETIER_NAME"
-    dataType: "STRING"
-    source: "BCTL_CUSTOMERSERVICETIER.NAME"
-  - name: "SECURITYZONEID"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.SECURITYZONEID"
-  - name: "SECURITYZONE_NAME"
-    dataType: "STRING"
-    source: "BC_SECURITYZONE.NAME"
-  - name: "SEGMENT"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.SEGMENT"
-  - name: "SEGMENT_NAME"
-    dataType: "STRING"
-    source: "BCTL_ACCOUNTSEGMENT.NAME"
-  - name: "CLOSEDATE"
-    dataType: "DATETIME"
-    source: "BC_ACCOUNT.CLOSEDATE"
-  - name: "CREATETIME"
-    dataType: "DATETIME"
-    source: "BC_ACCOUNT.CREATETIME"
-  - name: "DELINQUENCYSTATUS"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.DELINQUENCYSTATUS"
-  - name: "DELINQUENCYSTATUS_NAME"
-    dataType: "STRING"
-    source: "BCTL_DELINQUENCYSTATUS.NAME"
-  - name: "FIRSTTWICEPERMTHINVOICEDOM"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM"
-  - name: "SECONDTWICEPERMTHINVOICEDOM"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM"
-  - name: "PUBLICID"
-    dataType: "STRING"
-    source: "BC_ACCOUNT.PUBLICID"
-  - name: "ID"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.ID"
-  - name: "BEANVERSION"
-    dataType: "STRING"
-    source: "BC_ACCOUNT.BEANVERSION"
-  - name: "RETIRED"
-    dataType: "INTEGER"
-    source: "BC_ACCOUNT.RETIRED"
-  - name: "UPDATETIME"
-    dataType: "DATETIME"
-    source: "BC_ACCOUNT.UPDATETIME"
-  - name: "CONTACT_FIRSTNAME"
-    dataType: "STRING"
-    source: "BC_CONTACT.FIRSTNAME"
-  - name: "CONTACT_LASTNAME"
-    dataType: "STRING"
-    source: "BC_CONTACT.LASTNAME"
-  - name: "ADDRESS_LINE1"
-    dataType: "STRING"
-    source: "BC_ADDRESS.ADDRESSLINE1"
-  - name: "ADDRESS_LINE2"
-    dataType: "STRING"
-    source: "BC_ADDRESS.ADDRESSLINE2"
-  - name: "ADDRESS_LINE3"
-    dataType: "STRING"
-    source: "BC_ADDRESS.ADDRESSLINE3"
-  - name: "CITY"
-    dataType: "STRING"
-    source: "BC_ADDRESS.CITY"
-  - name: "POSTALCODE"
-    dataType: "STRING"
-    source: "BC_ADDRESS.POSTALCODE"
-  - name: "STATE"
-    dataType: "INTEGER"
-    source: "BC_ADDRESS.STATE"
-  - name: "STATE_NAME"
-    dataType: "STRING"
-    source: "BCTL_STATE.NAME"
-  - name: "PARENT_FOREIGNENTITYID"
-    dataType: "INTEGER"
-    source: "BC_PARENTACCT.FOREIGNENTITYID"
-dependencies:
-  - "BC_ACCOUNT"
-  - "BCTL_ACCOUNTTYPE"
-  - "BC_PARENTACCT"
-  - "BCTL_BILLINGLEVEL"
-  - "BCTL_CUSTOMERSERVICETIER"
-  - "BC_SECURITYZONE"
-  - "BCTL_DELINQUENCYSTATUS"
-  - "BCTL_ACCOUNTSEGMENT"
-  - "BC_ACCOUNTCONTACT"
-  - "BC_ACCOUNTCONTACTROLE"
-  - "BCTL_ACCOUNTROLE"
-  - "BC_CONTACT"
-  - "BC_ADDRESS"
-  - "BCTL_STATE"
+id: J1
+name: JOIN_DIMBILLINGACCOUNT
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Comprehensive join of all 15 source tables for DIMBILLINGACCOUNT"
+  locationName: SRC
+  metadata:
+    columns:
+      # BC_ACCOUNT columns
+      - columnReference:
+          columnCounter: C1
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C2
+          stepCounter: J1
+        dataType: VARCHAR(256)
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C3
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C4
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C5
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C6
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C7
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C8
+          stepCounter: J1
+        dataType: TIMESTAMP
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C9
+          stepCounter: J1
+        dataType: TIMESTAMP
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C10
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C11
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C12
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C13
+          stepCounter: J1
+        dataType: VARCHAR(256)
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C14
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACCOUNT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C15
+          stepCounter: J1
+        dataType: VARCHAR(256)
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C16
+          stepCounter: J1
+        dataType: NUMBER(38,0)
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: S1
+            transform: ""
+      - columnReference:
+          columnCounter: C17
+          stepCounter: J1
+        dataType: TIMESTAMP
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: S1
+            transform: ""
+      # BCTL_ACCOUNTTYPE columns
+      - columnReference:
+          columnCounter: C18
+          stepCounter: J1
+        dataType: STRING
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S9
+            transform: ""
+      # BC_PARENTACCT columns
+      - columnReference:
+          columnCounter: C19
+          stepCounter: J1
+        dataType: INTEGER
+        description: ""
+        name: PARENT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S2
+            transform: ""
+    joins:
+      # Join 1: BC_ACCOUNT LEFT JOIN BCTL_ACCOUNTTYPE
+      - joinCondition: |
+          BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+        joinType: LEFT
+        leftTable:
+          name: BC_ACCOUNT
+          stepCounter: S1
+        rightTable:
+          name: BCTL_ACCOUNTTYPE
+          stepCounter: S9
+      # Join 2: BC_ACCOUNT LEFT JOIN BC_PARENTACCT
+      - joinCondition: |
+          BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+        joinType: LEFT
+        leftTable:
+          name: BC_ACCOUNT
+          stepCounter: S1
+        rightTable:
+          name: BC_PARENTACCT
+          stepCounter: S2
+      # Join 3: BC_ACCOUNT LEFT JOIN BCTL_BILLINGLEVEL
+      - joinCondition: |
+          BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+        joinType: LEFT
+        leftTable:
+          name: BC_ACCOUNT
+          stepCounter: S1
+        rightTable:
+          name: BCTL_BILLINGLEVEL
+          stepCounter: S10
+      # Join 4: BC_ACCOUNT LEFT JOIN BCTL_CUSTOMERSERVICETIER
+      - joinCondition: |
+          BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+        joinType: LEFT
+        leftTable:
+          name: BC_ACCOUNT
+          stepCounter: S1
+        rightTable:
+          name: BCTL_CUSTOMERSERVICETIER
+          stepCounter: S11
+      # Join 5: BC_ACCOUNT LEFT JOIN BC_SECURITYZONE
+      - joinCondition: |
+          BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+        joinType: LEFT
+        leftTable:
+          name: BC_ACCOUNT
+          stepCounter: S1
+        rightTable:
+          name: BC_SECURITYZONE
+          stepCounter: S12
+      # Join 6: BC_ACCOUNT LEFT JOIN BCTL_DELINQUENCYSTATUS
+      - joinCondition: |
+          BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+        joinType: LEFT
+        leftTable:
+          name: BC_ACCOUNT
+          stepCounter: S1
+        rightTable:
+          name: BCTL_DELINQUENCYSTATUS
+          stepCounter: S13
+      # Join 7: BC_ACCOUNT LEFT JOIN BCTL_ACCOUNTSEGMENT
+      - joinCondition: |
+          BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+        joinType: LEFT
+        leftTable:
+          name: BC_ACCOUNT
+          stepCounter: S1
+        rightTable:
+          name: BCTL_ACCOUNTSEGMENT
+          stepCounter: S14
+      # Join 8: BC_ACCOUNT LEFT JOIN INSUREDINFO (derived from BC_ACCOUNTCONTACT)
+      - joinCondition: |
+          INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+        joinType: LEFT
+        leftTable:
+          name: BC_ACCOUNT
+          stepCounter: S1
+        rightTable:
+          name: INSUREDINFO
+          stepCounter: S3
+      # Join 9: INSUREDINFO INNER JOIN BC_ACCOUNTCONTACT
+      - joinCondition: |
+          BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
+        joinType: INNER
+        leftTable:
+          name: INSUREDINFO
+          stepCounter: S3
+        rightTable:
+          name: BC_ACCOUNTCONTACT
+          stepCounter: S3
+      # Join 10: INSUREDINFO INNER JOIN BC_ACCOUNTCONTACTROLE
+      - joinCondition: |
+          BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+        joinType: INNER
+        leftTable:
+          name: INSUREDINFO
+          stepCounter: S3
+        rightTable:
+          name: BC_ACCOUNTCONTACTROLE
+          stepCounter: S4
+      # Join 11: INSUREDINFO INNER JOIN BCTL_ACCOUNTROLE
+      - joinCondition: |
+          BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+        joinType: INNER
+        leftTable:
+          name: INSUREDINFO
+          stepCounter: S3
+        rightTable:
+          name: BCTL_ACCOUNTROLE
+          stepCounter: S5
+      # Join 12: INSUREDINFO LEFT JOIN BC_CONTACT
+      - joinCondition: |
+          BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+        joinType: LEFT
+        leftTable:
+          name: INSUREDINFO
+          stepCounter: S3
+        rightTable:
+          name: BC_CONTACT
+          stepCounter: S6
+      # Join 13: INSUREDINFO LEFT JOIN BC_ADDRESS
+      - joinCondition: |
+          BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+        joinType: LEFT
+        leftTable:
+          name: INSUREDINFO
+          stepCounter: S3
+        rightTable:
+          name: BC_ADDRESS
+          stepCounter: S7
+      # Join 14: INSUREDINFO LEFT JOIN BCTL_STATE
+      - joinCondition: |
+          BCTL_STATE.ID = BC_ADDRESS.STATE
+        joinType: LEFT
+        leftTable:
+          name: INSUREDINFO
+          stepCounter: S3
+        rightTable:
+          name: BCTL_STATE
+          stepCounter: S8
+      # Join 15: LOOKUP_INPUT INNER JOIN DIMBILLINGACCOUNT
+      - joinCondition: |
+          LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
+        joinType: INNER
+        leftTable:
+          name: LOOKUP_INPUT
+          stepCounter: J1
+        rightTable:
+          name: DIMBILLINGACCOUNT
+          stepCounter: S15
+  name: JOIN_DIMBILLINGACCOUNT
+  schema: ""
+  sqlType: Join
+  type: join
+  version: 1
+type: Node
