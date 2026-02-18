@@ -1,0 +1,158 @@
+fileVersion: 1.0
+name: SRC_DIMBILLINGACCOUNT_JOINS
+type: sql
+description: |
+  Join component for DimBillingAccount package
+  Combines all source tables with appropriate join logic
+  Execution Order: Step 1 - Join all source tables
+
+sources:
+  - name: BC_ACCOUNT
+    type: source
+  - name: BCTL_ACCOUNTTYPE
+    type: source
+  - name: BC_PARENTACCT
+    type: source
+  - name: BCTL_BILLINGLEVEL
+    type: source
+  - name: BCTL_CUSTOMERSERVICETIER
+    type: source
+  - name: BC_SECURITYZONE
+    type: source
+  - name: BCTL_DELINQUENCYSTATUS
+    type: source
+  - name: BCTL_ACCOUNTSEGMENT
+    type: source
+  - name: BC_ACCOUNTCONTACT
+    type: source
+  - name: BC_ACCOUNTCONTACTROLE
+    type: source
+  - name: BCTL_ACCOUNTROLE
+    type: source
+  - name: BC_CONTACT
+    type: source
+  - name: BC_ADDRESS
+    type: source
+  - name: BCTL_STATE
+    type: source
+
+transformations:
+  - name: JOIN_ALL_SOURCES
+    type: join
+    description: |
+      Joins all source tables following SSIS execution order
+      Creates base dataset with all required columns for transformations
+    
+    join_logic:
+      # Step 1: Base table
+      base_table: BC_ACCOUNT
+      
+      # Step 2: Join account type lookup
+      - join_type: LEFT
+        table: BCTL_ACCOUNTTYPE
+        condition: BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+        alias: ACCT_TYPE
+      
+      # Step 3: Join parent account
+      - join_type: LEFT
+        table: BC_PARENTACCT
+        condition: BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+        alias: PARENT_ACCT
+      
+      # Step 4: Join billing level
+      - join_type: LEFT
+        table: BCTL_BILLINGLEVEL
+        condition: BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+        alias: BILL_LEVEL
+      
+      # Step 5: Join service tier
+      - join_type: LEFT
+        table: BCTL_CUSTOMERSERVICETIER
+        condition: BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+        alias: SVC_TIER
+      
+      # Step 6: Join security zone
+      - join_type: LEFT
+        table: BC_SECURITYZONE
+        condition: BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+        alias: SEC_ZONE
+      
+      # Step 7: Join delinquency status
+      - join_type: LEFT
+        table: BCTL_DELINQUENCYSTATUS
+        condition: BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+        alias: DELINQ_STATUS
+      
+      # Step 8: Join account segment
+      - join_type: LEFT
+        table: BCTL_ACCOUNTSEGMENT
+        condition: BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+        alias: ACCT_SEGMENT
+      
+      # Step 9: Create INSUREDINFO subquery (LEFT JOIN)
+      - join_type: LEFT
+        subquery:
+          name: INSUREDINFO
+          base_table: BC_ACCOUNTCONTACT
+          joins:
+            - join_type: INNER
+              table: BC_ACCOUNTCONTACTROLE
+              condition: BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+            - join_type: INNER
+              table: BCTL_ACCOUNTROLE
+              condition: BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+            - join_type: LEFT
+              table: BC_CONTACT
+              condition: BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+            - join_type: LEFT
+              table: BC_ADDRESS
+              condition: BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+            - join_type: LEFT
+              table: BCTL_STATE
+              condition: BCTL_STATE.ID = BC_ADDRESS.STATE
+        condition: INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+        alias: INSURED
+
+output_columns:
+  # BC_ACCOUNT columns
+  - BC_ACCOUNT.ACCOUNTNUMBER
+  - BC_ACCOUNT.ACCOUNTNAME
+  - BC_ACCOUNT.ACCOUNTTYPE
+  - BC_ACCOUNT.BILLINGLEVEL
+  - BC_ACCOUNT.SERVICETIER
+  - BC_ACCOUNT.SECURITYZONEID
+  - BC_ACCOUNT.SEGMENT
+  - BC_ACCOUNT.CLOSEDATE
+  - BC_ACCOUNT.CREATETIME
+  - BC_ACCOUNT.DELINQUENCYSTATUS
+  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
+  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
+  - BC_ACCOUNT.PUBLICID
+  - BC_ACCOUNT.ID
+  - BC_ACCOUNT.BEANVERSION
+  - BC_ACCOUNT.RETIRED
+  - BC_ACCOUNT.UPDATETIME
+  
+  # Lookup table names
+  - ACCT_TYPE.NAME as ACCOUNTTYPE_NAME
+  - BILL_LEVEL.NAME as BILLINGLEVEL_NAME
+  - SVC_TIER.NAME as SERVICETIER_NAME
+  - SEC_ZONE.NAME as SECURITYZONE_NAME
+  - DELINQ_STATUS.NAME as DELINQUENCYSTATUS_NAME
+  - ACCT_SEGMENT.NAME as SEGMENT_NAME
+  
+  # Parent account
+  - PARENT_ACCT.FOREIGNENTITYID as PARENT_ACCOUNT_ID
+  
+  # Insured info
+  - INSURED.FIRSTNAME as INSURED_FIRSTNAME
+  - INSURED.LASTNAME as INSURED_LASTNAME
+  - INSURED.ADDRESSLINE1 as INSURED_ADDRESS1
+  - INSURED.ADDRESSLINE2 as INSURED_ADDRESS2
+  - INSURED.ADDRESSLINE3 as INSURED_ADDRESS3
+  - INSURED.CITY as INSURED_CITY
+  - INSURED.POSTALCODE as INSURED_POSTALCODE
+  - INSURED.STATE_NAME as INSURED_STATE
+
+execution_order: 1
+dependencies: []
