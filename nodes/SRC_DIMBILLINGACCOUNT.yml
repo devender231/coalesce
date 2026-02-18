@@ -1,15 +1,27 @@
+fileVersion: 1
+id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
-type: source
-config:
-  source_type: table
-  source_location:
-    database: ""
-    schema: ""
-    table: DIMBILLINGACCOUNT
-columns:
-  - name: PUBLICID
-    data_type: STRING
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
+nodeType: source
+type: Node
+operation:
+  type: sourceInput
+  database: GUIDEWIRE
+  schema: dbo
+  locationName: SRC
+  deployEnabled: true
+  metadata:
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        name: PUBLICID
+        dataType: VARCHAR(256)
+        nullable: true
+        primaryKey: false
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        name: BEANVERSION
+        dataType: VARCHAR(256)
+        nullable: true
+        primaryKey: false
