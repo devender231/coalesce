@@ -1,40 +1,48 @@
 fileVersion: 1
-id: SRC_TR_ROW_COUNT_UPDATE
-name: SRC_TR_ROW_COUNT_UPDATE
+id: "SRC_TR_ROW_COUNT_UPDATE"
+name: "SRC_TR_ROW_COUNT_UPDATE"
 operation:
   config:
     insertStrategy: INSERT
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Row count transformation for update rows (BeanVersion different)
+  description: "Row count transformation - Counts update rows (BeanVersion different)"
   isMultisource: false
-  locationName: SRC
+  locationName: "WORK"
   materializationType: view
   metadata:
     appliedNodeTests: []
-    columns: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: "1"
+        dataType: NUMBER
+        name: "UPDATE_ROW_COUNT"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_TR_CONDITIONAL_SPLIT_BEANVERSION: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+          SRC_TR_CONDITIONAL_SPLIT_BEANVERSION: "SPLIT_DATA"
         customSQL:
-          customSQL: |
-            SELECT *,
-                   COUNT(*) OVER() as UpdateCount
-            FROM {{ ref('SRC', 'SRC_TR_CONDITIONAL_SPLIT_BEANVERSION') }}
-            WHERE ROUTE_TYPE = 'UPDATE'
+          customSQL: ""
         dependencies:
-          - locationName: SRC
-            nodeName: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+          - locationName: "WORK"
+            nodeName: "SRC_TR_CONDITIONAL_SPLIT_BEANVERSION"
         join:
-          joinCondition: ""
-        name: SRC_TR_ROW_COUNT_UPDATE
+          joinCondition: |-
+            FROM {{ ref('WORK', 'SRC_TR_CONDITIONAL_SPLIT_BEANVERSION') }} "SPLIT_DATA"
+            WHERE "SPLIT_DATA"."RECORD_STATUS" = 'UPDATE'
+        name: "SRC_TR_ROW_COUNT_UPDATE"
         noLinkRefs: []
-  name: SRC_TR_ROW_COUNT_UPDATE
+  name: "SRC_TR_ROW_COUNT_UPDATE"
   overrideSQL: false
   schema: ""
-  sqlType: Transformation
-  type: sql
+  sqlType: "DT113:::156"
+  type: "sql"
   version: 1
+type: "Node"
