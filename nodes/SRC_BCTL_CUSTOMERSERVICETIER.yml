@@ -1,14 +1,72 @@
+fileVersion: 1.0.0
+id: SRC_BCTL_CUSTOMERSERVICETIER
 name: SRC_BCTL_CUSTOMERSERVICETIER
-type: source
-config:
-  source_type: table
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
   database: ""
+  deployEnabled: true
+  description: Source table BCTL_CUSTOMERSERVICETIER
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        isBusinessKey: false
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        isBusinessKey: false
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BCTL_CUSTOMERSERVICETIER: SRC_BCTL_CUSTOMERSERVICETIER
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_CUSTOMERSERVICETIER
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} "BCTL_CUSTOMERSERVICETIER"
+        name: SRC_BCTL_CUSTOMERSERVICETIER
+        noLinkRefs: []
+  name: SRC_BCTL_CUSTOMERSERVICETIER
+  overrideSQL: false
   schema: ""
-  table: BCTL_CUSTOMERSERVICETIER
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: NAME
-    data_type: STRING
-    nullable: true
+  sqlType: Source
+  type: sql
+  version: 1
