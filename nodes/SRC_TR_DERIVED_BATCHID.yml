@@ -1,0 +1,25 @@
+name: SRC_TR_DERIVED_BATCHID
+type: transformation
+transformation_type: DERIVED_COLUMN
+config:
+  description: "Adds or overwrites BatchID column"
+  input_source: "SRC_JOIN_DIMBILLINGACCOUNT"
+  derived_columns:
+    - column_name: "BatchID"
+      expression: "@[User::BatchID]"
+      data_type: "INTEGER"
+      operation: "ADD_OR_REPLACE"
+      nullable: false
+  output:
+    pass_through: true
+    include_derived_columns: true
+  execution_order: 2
+  
+dependencies:
+  - "SRC_JOIN_DIMBILLINGACCOUNT"
+  - "SRC_TR_ROWCOUNT_SOURCE"
+
+metadata:
+  purpose: "Add BatchID for ETL tracking and auditing"
+  variable_reference: "User::BatchID"
+  ssis_component: "Derived Column Transformation"
