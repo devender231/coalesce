@@ -1,0 +1,64 @@
+# Conditional Split Transformation - SCD Logic
+# Package: EDW_BC_Load_DimBillingAccount
+# Description: Routes rows based on whether BeanVersion matches EDWBeanVersion
+
+name: SRC_CONDITIONALSPLIT_SCD
+type: TRANSFORMATION
+transformation_type: CONDITIONAL_SPLIT
+version: 1.0
+
+source:
+  name: DATASET_WITH_LOOKUP
+  description: Dataset with EDWBeanVersion lookup column
+  upstream_dependency: SRC_LOOKUP_BEANVERSION
+
+transformation_logic:
+  operation: SPLIT_ROWS
+  description: Route rows based on SCD Type 1 logic - compare source and target BeanVersion
+  
+  split_conditions:
+    - condition_name: UNCHANGED_ROWS
+      condition_expression: "BeanVersion == EDWBeanVersion"
+      description: Records where BeanVersion matches - no changes needed
+      output_name: UNCHANGED_OUTPUT
+      priority: 1
+      
+    - condition_name: UPDATE_ROWS
+      condition_expression: "BeanVersion != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+      description: Records where BeanVersion differs - updates required
+      output_name: UPDATE_OUTPUT
+      priority: 2
+      
+    - condition_name: INSERT_ROWS
+      condition_expression: "EDWBeanVersion IS NULL"
+      description: Records with no match in lookup - new inserts
+      output_name: INSERT_OUTPUT
+      priority: 3
+      
+  default_output:
+    name: DEFAULT_OUTPUT
+    description: Catch-all for any unmatched conditions
+
+outputs:
+  - name: UNCHANGED_OUTPUT
+    description: Rows with matching BeanVersion - no action needed
+    route_to: SRC_ROWCOUNT_UNCHANGED
+    
+  - name: UPDATE_OUTPUT
+    description: Rows requiring updates
+    route_to: SRC_ROWCOUNT_UPDATE
+    
+  - name: INSERT_OUTPUT
+    description: New rows requiring inserts
+    route_to: SRC_ROWCOUNT_INSERT
+
+execution_order: 4
+
+metadata:
+  created_from: SSIS_Documentation/EDW_BC_Load_DimBillingAccount.json
+  transformation_sequence: 4
+  purpose: SCD Type 1 routing logic
+  next_transformations:
+    - SRC_ROWCOUNT_UNCHANGED
+    - SRC_ROWCOUNT_INSERT
+    - SRC_ROWCOUNT_UPDATE
