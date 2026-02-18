@@ -1,37 +1,377 @@
 fileVersion: 1
-id: "node_bc_accountcontact_1003"
-isDisabled: false
+id: "node_bc_accountcontact_003"
 name: "SRC_BC_ACCOUNTCONTACT"
-description: "Source node for BC_ACCOUNTCONTACT table"
+description: "Source node for BC_ACCOUNTCONTACT"
 database: "GUIDEWIRE_BC"
 schema: "PUBLIC"
 type: "sql"
+sources: []
+parameters:
+  loadType: "Full"
+deployEnabled: true
+version: 1
+isMultisource: false
 locationName: "SRC"
+materializationType: "source"
+metadata:
+  appliedNodeTests: []
+  columns:
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1
+        stepCounter: "node_bc_accountcontact_003"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "INSUREDACCOUNTID"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 1
+              stepCounter: "node_bc_accountcontact_003"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2
+        stepCounter: "node_bc_accountcontact_003"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "CONTACTID"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 2
+              stepCounter: "node_bc_accountcontact_003"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 3
+        stepCounter: "node_bc_accountcontact_003"
+      config: {}
+      dataType: "INTEGER"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "ID"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 3
+              stepCounter: "node_bc_accountcontact_003"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4
+        stepCounter: "node_bc_accountcontact_003"
+      config: {}
+      dataType: "VARCHAR(255)"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "BEANVERSION"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 4
+              stepCounter: "node_bc_accountcontact_003"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5
+        stepCounter: "node_bc_accountcontact_003"
+      config: {}
+      dataType: "TIMESTAMP"
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isSystemCreateDate: false
+      isSystemUpdateDate: false
+      isSystemVersion: false
+      name: "UPDATETIME"
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+        - columnReferences:
+            - columnCounter: 5
+              stepCounter: "node_bc_accountcontact_003"
+          transform: ""
+      systemCreateDate: false
+      systemUpdateDate: false
+      systemVersion: false
+  codeGeneration:
+    imports: []
+    macros: []
+    postSQL: ""
+    preSQL: ""
+  enabledColumnTestIDs: []
+  sourceMapping:
+    - customSQL:
+        customSQL: ""
+      dependencies:
+        - locationName: "SRC"
+          nodeName: "BC_ACCOUNTCONTACT"
+      name: "SRC_BC_ACCOUNTCONTACT"
+      noLinkRefs: []
 nodeType: "source"
 operation:
-  type: "sql"
+  config:
+    clusterKey: false
+    downstreamOption: "true"
+    groupByAll: false
+    initialize: "ON_CREATE"
+    insertStrategy: "INSERT"
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: false
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: true
+    warehouseName: "DEV_WH_SMALL"
   database: "GUIDEWIRE_BC"
+  deployEnabled: true
+  description: "Source node for BC_ACCOUNTCONTACT"
+  isMultisource: false
+  locationName: "SRC"
+  materializationType: "source"
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: "node_bc_accountcontact_003"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "INSUREDACCOUNTID"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: "node_bc_accountcontact_003"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: "node_bc_accountcontact_003"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "CONTACTID"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "node_bc_accountcontact_003"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: "node_bc_accountcontact_003"
+        config: {}
+        dataType: "INTEGER"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "ID"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: "node_bc_accountcontact_003"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: "node_bc_accountcontact_003"
+        config: {}
+        dataType: "VARCHAR(255)"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "BEANVERSION"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: "node_bc_accountcontact_003"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: "node_bc_accountcontact_003"
+        config: {}
+        dataType: "TIMESTAMP"
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isSystemCreateDate: false
+        isSystemUpdateDate: false
+        isSystemVersion: false
+        name: "UPDATETIME"
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: "node_bc_accountcontact_003"
+            transform: ""
+        systemCreateDate: false
+        systemUpdateDate: false
+        systemVersion: false
+    codeGeneration:
+      imports: []
+      macros: []
+      postSQL: ""
+      preSQL: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: "SRC"
+            nodeName: "BC_ACCOUNTCONTACT"
+        name: "SRC_BC_ACCOUNTCONTACT"
+        noLinkRefs: []
+  name: "SRC_BC_ACCOUNTCONTACT"
   schema: "PUBLIC"
-  sqlType: "Source"
-materializationType: "source"
-columns:
-  - columnCounter: 1
-    name: "INSUREDACCOUNTID"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 2
-    name: "CONTACTID"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 3
-    name: "ID"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 4
-    name: "BEANVERSION"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 5
-    name: "UPDATETIME"
-    dataType: "TIMESTAMP"
-    nullable: true
+  sqlType: "source"
+  type: "sql"
+systemColumns: []
