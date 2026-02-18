@@ -3,6 +3,10 @@ type: source
 config:
   source_name: DIMBILLINGACCOUNT
   source_type: table
+  location:
+    database: ""
+    schema: ""
+    table: DIMBILLINGACCOUNT
   columns:
     - name: PUBLICID
       data_type: STRING
