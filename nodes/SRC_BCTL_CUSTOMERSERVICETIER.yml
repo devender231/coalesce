@@ -1,0 +1,17 @@
+fileVersion: 1.0.0
+id: SRC_BCTL_CUSTOMERSERVICETIER
+name: SRC_BCTL_CUSTOMERSERVICETIER
+type: source
+description: Source table BCTL_CUSTOMERSERVICETIER from GuideWire
+
+sources:
+  - name: BCTL_CUSTOMERSERVICETIER
+    database: ""
+    schema: ""
+    columns:
+      - name: ID
+        dataType: INTEGER
+        nullable: true
+      - name: NAME
+        dataType: STRING
+        nullable: true
