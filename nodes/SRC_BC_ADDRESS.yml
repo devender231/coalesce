@@ -1,25 +1,14 @@
 fileVersion: 1
 id: SRC_BC_ADDRESS
 name: SRC_BC_ADDRESS
+nodeType: Source
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: ''
-  database: SRC
+  database: ""
   deployEnabled: true
-  description: Source table for BC_ADDRESS
+  description: Source table BC_ADDRESS from SSIS package EDW_BC_Load_DimBillingAccount
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -34,20 +23,17 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isClustered: false
-        isNullable: true
-        isPrimaryKey: false
-        isSystemVersion: false
         name: ID
-        ordinalPosition: 1
-        primaryKeyPosition: 0
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -56,20 +42,17 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isClustered: false
-        isNullable: true
-        isPrimaryKey: false
-        isSystemVersion: false
         name: ADDRESSLINE1
-        ordinalPosition: 2
-        primaryKeyPosition: 0
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -78,20 +61,17 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isClustered: false
-        isNullable: true
-        isPrimaryKey: false
-        isSystemVersion: false
         name: ADDRESSLINE2
-        ordinalPosition: 3
-        primaryKeyPosition: 0
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -100,20 +80,17 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isClustered: false
-        isNullable: true
-        isPrimaryKey: false
-        isSystemVersion: false
         name: ADDRESSLINE3
-        ordinalPosition: 4
-        primaryKeyPosition: 0
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -122,20 +99,17 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isClustered: false
-        isNullable: true
-        isPrimaryKey: false
-        isSystemVersion: false
         name: CITY
-        ordinalPosition: 5
-        primaryKeyPosition: 0
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -144,20 +118,17 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isClustered: false
-        isNullable: true
-        isPrimaryKey: false
-        isSystemVersion: false
         name: POSTALCODE
-        ordinalPosition: 6
-        primaryKeyPosition: 0
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -166,20 +137,17 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isClustered: false
-        isNullable: true
-        isPrimaryKey: false
-        isSystemVersion: false
         name: STATE
-        ordinalPosition: 7
-        primaryKeyPosition: 0
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -188,20 +156,17 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isClustered: false
-        isNullable: true
-        isPrimaryKey: false
-        isSystemVersion: false
         name: BEANVERSION
-        ordinalPosition: 8
-        primaryKeyPosition: 0
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
@@ -210,33 +175,21 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
+        dataType: DATETIME
         description: ""
         hashColumns: []
         hashDetails: null
-        isBusinessKey: false
-        isChangeTracking: false
-        isClustered: false
-        isNullable: true
-        isPrimaryKey: false
-        isSystemVersion: false
         name: UPDATETIME
-        ordinalPosition: 9
-        primaryKeyPosition: 0
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: SRC_BC_ADDRESS
+            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          ID: ID
-          ADDRESSLINE1: ADDRESSLINE1
-          ADDRESSLINE2: ADDRESSLINE2
-          ADDRESSLINE3: ADDRESSLINE3
-          CITY: CITY
-          POSTALCODE: POSTALCODE
-          STATE: STATE
-          BEANVERSION: BEANVERSION
-          UPDATETIME: UPDATETIME
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
@@ -247,9 +200,8 @@ operation:
         name: SRC_BC_ADDRESS
         noLinkRefs: []
   name: SRC_BC_ADDRESS
-  nodeType: source
-  objectStatus: ''
-  schema: ''
+  overrideSQL: false
+  schema: ""
   sqlType: Source
   type: sql
-type: Node
+  version: 1
