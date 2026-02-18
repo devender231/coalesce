@@ -1,7 +1,7 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
 config:
-  source_location: "DATABASE.SCHEMA"
+  source_location: "EDW.DIM"
   columns:
     - name: PUBLICID
       data_type: STRING
