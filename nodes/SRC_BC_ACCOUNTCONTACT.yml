@@ -3,9 +3,20 @@ id: SRC_BC_ACCOUNTCONTACT
 name: SRC_BC_ACCOUNTCONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
-  database: ""
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: '{{ parameters.DEV_WAREHOUSE }}'
+  database: '{{ parameters.SOURCE_DATABASE }}'
   deployEnabled: true
   description: Source table BC_ACCOUNTCONTACT
   isMultisource: false
@@ -22,14 +33,15 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
+        defaultValue: ""
         description: ""
         name: INSUREDACCOUNTID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BC_ACCOUNTCONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,14 +51,15 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
+        defaultValue: ""
         description: ""
         name: CONTACTID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BC_ACCOUNTCONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -56,14 +69,15 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
+        defaultValue: ""
         description: ""
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: SRC_BC_ACCOUNTCONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -73,14 +87,15 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
         description: ""
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: SRC_BC_ACCOUNTCONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -90,32 +105,33 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
         description: ""
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: SRC_BC_ACCOUNTCONTACT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_BC_ACCOUNTCONTACT: BC_ACCOUNTCONTACT
+          SRC_BC_ACCOUNTCONTACT: '{{ parameters.SOURCE_DATABASE }}.{{ parameters.SOURCE_SCHEMA }}.BC_ACCOUNTCONTACT'
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNTCONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} "SRC_BC_ACCOUNTCONTACT"
+          joinCondition: FROM {{ ref_no_link('SRC', 'BC_ACCOUNTCONTACT') }} "SRC_BC_ACCOUNTCONTACT"
         name: SRC_BC_ACCOUNTCONTACT
         noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACT
   overrideSQL: false
-  schema: ""
+  schema: '{{ parameters.TARGET_SCHEMA }}'
   sqlType: Source
   type: sql
   version: 1
