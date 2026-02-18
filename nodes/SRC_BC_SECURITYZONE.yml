@@ -1,0 +1,23 @@
+fileVersion: 1.0.0
+id: SRC_BC_SECURITYZONE
+name: SRC_BC_SECURITYZONE
+type: source
+description: Source table BC_SECURITYZONE from GuideWire
+
+sources:
+  - name: BC_SECURITYZONE
+    database: ""
+    schema: ""
+    columns:
+      - name: ID
+        dataType: INTEGER
+        nullable: true
+      - name: NAME
+        dataType: STRING
+        nullable: true
+      - name: BEANVERSION
+        dataType: STRING
+        nullable: true
+      - name: UPDATETIME
+        dataType: DATETIME
+        nullable: true
