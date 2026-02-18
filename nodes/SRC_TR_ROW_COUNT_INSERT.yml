@@ -1,0 +1,26 @@
+# Transformation: Row Count Insert Records
+name: SRC_TR_ROW_COUNT_INSERT
+type: ROW_COUNT
+description: Counts new insert rows where lookup found no match
+execution_order: 7
+
+input:
+  source: SRC_TR_CONDITIONAL_SPLIT_SCD
+  source_output: INSERT_ROWS
+  description: Records with no match in dimension table - new records
+
+transformation_logic:
+  operation: COUNT_ROWS
+  count_variable: User::InsertCount
+  description: Captures count of new records to be inserted for audit reporting
+
+output:
+  pass_through: true
+  audit_variable: User::InsertCount
+  description: New insert rows counted and ready for load
+  destination: INSERT_TO_DIMBILLINGACCOUNT
+
+metadata:
+  ssis_component: Row Count
+  purpose: Audit count of new insert records for ETL monitoring
+  scd_action: INSERT
