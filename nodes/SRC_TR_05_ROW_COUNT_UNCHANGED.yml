@@ -1,0 +1,33 @@
+fileVersion: 1
+id: "SRC_TR_05_ROW_COUNT_UNCHANGED"
+name: "SRC_TR_05_ROW_COUNT_UNCHANGED"
+description: "Counts unchanged rows (BeanVersion matches)"
+type: "Transformation"
+transformationType: "ROW_COUNT"
+executionOrder: 5
+config:
+  database: "${database}"
+  schema: "${schema}"
+  tags:
+    - "SSIS_MIGRATION"
+    - "ROW_COUNT"
+    - "UNCHANGED"
+sources:
+  - name: "SRC_TR_04_CONDITIONAL_SPLIT"
+    type: "transformation"
+transformationLogic: |
+  SELECT
+    *,
+    COUNT(*) OVER () AS UNCHANGED_ROW_COUNT
+  FROM {{ ref('SRC_TR_04_CONDITIONAL_SPLIT') }}
+  WHERE SPLIT_CONDITION = 'UNCHANGED'
+variables:
+  - name: "UnChangeCount"
+    type: "INTEGER"
+    calculation: "COUNT(*)"
+dependencies:
+  - "SRC_TR_04_CONDITIONAL_SPLIT"
+metadata:
+  ssis_component: "Row Count"
+  ssis_variable: "User::UnChangeCount"
+  execution_sequence: 5
