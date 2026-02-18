@@ -1,0 +1,249 @@
+fileVersion: 1
+id: T5
+name: TR_ROWCOUNT_UNCHANGED
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Row count transformation for unchanged rows - stores count in User::UnChangeCount variable"
+  locationName: SRC
+  metadata:
+    columns:
+      - columnReference:
+          columnCounter: C1
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C2
+          stepCounter: T5
+        dataType: VARCHAR(256)
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C3
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C4
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C5
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C6
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C7
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C8
+          stepCounter: T5
+        dataType: TIMESTAMP
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C9
+          stepCounter: T5
+        dataType: TIMESTAMP
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C10
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C11
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C12
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C13
+          stepCounter: T5
+        dataType: VARCHAR(256)
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C14
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACCOUNT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C15
+          stepCounter: T5
+        dataType: VARCHAR(256)
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C16
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C17
+          stepCounter: T5
+        dataType: TIMESTAMP
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C18
+          stepCounter: T5
+        dataType: NUMBER(38,0)
+        description: ""
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C18
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: C19
+          stepCounter: T5
+        dataType: VARCHAR(256)
+        description: ""
+        name: EDWBEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C19
+                stepCounter: T4
+            transform: ""
+    transformation:
+      type: rowCount
+      variableName: "User::UnChangeCount"
+      sourceOutput: "Unchanged_Output"
+      description: "Counts unchanged rows from conditional split (BeanVersion == EDWBeanVersion)"
+  name: TR_ROWCOUNT_UNCHANGED
+  schema: ""
+  sqlType: Transformation
+  type: rowCount
+  version: 1
+type: Node
