@@ -1,18 +1,14 @@
-fileVersion: 1.0
 name: SRC_BCTL_ACCOUNTTYPE
 type: source
-description: Source table BCTL_ACCOUNTTYPE from GuideWire
-
-source:
-  location:
-    database: "GUIDEWIRE"
-    schema: "BCTL"
-    table: "BCTL_ACCOUNTTYPE"
-
-columns:
-  - name: ID
-    dataType: INTEGER
-    nullable: true
-  - name: NAME
-    dataType: STRING
-    nullable: true
+config:
+  source_type: table
+  source_name: BCTL_ACCOUNTTYPE
+  database: ""
+  schema: ""
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: NAME
+      data_type: STRING
+      nullable: true
