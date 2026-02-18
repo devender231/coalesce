@@ -1,0 +1,30 @@
+fileVersion: 1.0
+name: SRC_BC_CONTACT
+type: source
+description: Source table BC_CONTACT from GuideWire
+
+source:
+  location:
+    database: "GUIDEWIRE"
+    schema: "BC"
+    table: "BC_CONTACT"
+
+columns:
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: FIRSTNAME
+    dataType: STRING
+    nullable: true
+  - name: LASTNAME
+    dataType: STRING
+    nullable: true
+  - name: PRIMARYADDRESSID
+    dataType: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
