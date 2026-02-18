@@ -1,40 +1,48 @@
 fileVersion: 1
-id: SRC_TR_ROW_COUNT_UNCHANGED
-name: SRC_TR_ROW_COUNT_UNCHANGED
+id: "SRC_TR_ROW_COUNT_UNCHANGED"
+name: "SRC_TR_ROW_COUNT_UNCHANGED"
 operation:
   config:
     insertStrategy: INSERT
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Row count transformation for unchanged rows (BeanVersion matches)
+  description: "Row count transformation - Counts unchanged rows (BeanVersion matches)"
   isMultisource: false
-  locationName: SRC
+  locationName: "WORK"
   materializationType: view
   metadata:
     appliedNodeTests: []
-    columns: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: "1"
+        dataType: NUMBER
+        name: "UNCHANGED_ROW_COUNT"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_TR_CONDITIONAL_SPLIT_BEANVERSION: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+          SRC_TR_CONDITIONAL_SPLIT_BEANVERSION: "SPLIT_DATA"
         customSQL:
-          customSQL: |
-            SELECT *,
-                   COUNT(*) OVER() as UnChangeCount
-            FROM {{ ref('SRC', 'SRC_TR_CONDITIONAL_SPLIT_BEANVERSION') }}
-            WHERE ROUTE_TYPE = 'UNCHANGED'
+          customSQL: ""
         dependencies:
-          - locationName: SRC
-            nodeName: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+          - locationName: "WORK"
+            nodeName: "SRC_TR_CONDITIONAL_SPLIT_BEANVERSION"
         join:
-          joinCondition: ""
-        name: SRC_TR_ROW_COUNT_UNCHANGED
+          joinCondition: |-
+            FROM {{ ref('WORK', 'SRC_TR_CONDITIONAL_SPLIT_BEANVERSION') }} "SPLIT_DATA"
+            WHERE "SPLIT_DATA"."RECORD_STATUS" = 'UNCHANGED'
+        name: "SRC_TR_ROW_COUNT_UNCHANGED"
         noLinkRefs: []
-  name: SRC_TR_ROW_COUNT_UNCHANGED
+  name: "SRC_TR_ROW_COUNT_UNCHANGED"
   overrideSQL: false
   schema: ""
-  sqlType: Transformation
-  type: sql
+  sqlType: "DT113:::156"
+  type: "sql"
   version: 1
+type: "Node"
