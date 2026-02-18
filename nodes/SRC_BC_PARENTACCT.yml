@@ -1,23 +1,22 @@
-fileVersion: 1.0.0
+fileVersion: 1.0
 id: SRC_BC_PARENTACCT
 name: SRC_BC_PARENTACCT
 type: source
-description: Source table BC_PARENTACCT from GuideWire
-
-sources:
-  - name: BC_PARENTACCT
-    database: ""
-    schema: ""
-    columns:
-      - name: OWNERID
-        dataType: INTEGER
-        nullable: true
-      - name: FOREIGNENTITYID
-        dataType: INTEGER
-        nullable: true
-      - name: BEANVERSION
-        dataType: STRING
-        nullable: true
-      - name: UPDATETIME
-        dataType: DATETIME
-        nullable: true
+description: Source node for BC_PARENTACCT table
+location:
+  database: ""
+  schema: ""
+  table: BC_PARENTACCT
+columns:
+  - name: OWNERID
+    dataType: INTEGER
+    nullable: true
+  - name: FOREIGNENTITYID
+    dataType: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
