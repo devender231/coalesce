@@ -1,0 +1,261 @@
+fileVersion: 1
+id: T4
+name: TR_CONDITIONAL_SPLIT
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Conditional split transformation - routes rows based on BeanVersion == EDWBeanVersion comparison"
+  locationName: SRC
+  metadata:
+    columns:
+      - columnReference:
+          columnCounter: C1
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C2
+          stepCounter: T4
+        dataType: VARCHAR(256)
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C3
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C4
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C5
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C6
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C7
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C8
+          stepCounter: T4
+        dataType: TIMESTAMP
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C9
+          stepCounter: T4
+        dataType: TIMESTAMP
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C10
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C11
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C12
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C13
+          stepCounter: T4
+        dataType: VARCHAR(256)
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C14
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACCOUNT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C15
+          stepCounter: T4
+        dataType: VARCHAR(256)
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C16
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C17
+          stepCounter: T4
+        dataType: TIMESTAMP
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C18
+          stepCounter: T4
+        dataType: NUMBER(38,0)
+        description: ""
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C18
+                stepCounter: T3
+            transform: ""
+      - columnReference:
+          columnCounter: C19
+          stepCounter: T4
+        dataType: VARCHAR(256)
+        description: ""
+        name: EDWBEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C19
+                stepCounter: T3
+            transform: ""
+    transformation:
+      type: conditionalSplit
+      conditions:
+        - name: UnchangedRows
+          expression: "BEANVERSION == EDWBEANVERSION"
+          outputName: "Unchanged_Output"
+          description: "Rows where BeanVersion matches EDWBeanVersion (no changes)"
+        - name: NewInsertRows
+          expression: "ISNULL(EDWBEANVERSION)"
+          outputName: "Insert_Output"
+          description: "Rows where EDWBeanVersion is NULL (new records to insert)"
+        - name: UpdateRows
+          expression: "BEANVERSION != EDWBEANVERSION AND !ISNULL(EDWBEANVERSION)"
+          outputName: "Update_Output"
+          description: "Rows where BeanVersion differs from EDWBeanVersion (records to update)"
+      defaultOutput: "Default_Output"
+      description: "Routes rows based on BeanVersion comparison for CDC logic"
+  name: TR_CONDITIONAL_SPLIT
+  schema: ""
+  sqlType: Transformation
+  type: conditionalSplit
+  version: 1
+type: Node
