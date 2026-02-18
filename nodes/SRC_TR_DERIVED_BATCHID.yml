@@ -1,39 +1,27 @@
 # Transformation: Derived Column - BatchID
-# Package: EDW_BC_Load_DimBillingAccount
-# Description: Adds or overwrites BatchID column with current batch identifier
-
 name: SRC_TR_DERIVED_BATCHID
-type: transformation
-transformation_type: DERIVED_COLUMN
-version: 1.0
-execution_order: 2
+type: DERIVED_COLUMN
+description: Adds or overwrites BatchID column with current batch execution ID
+execution_order: 3
 
 input:
   source: SRC_TR_ROW_COUNT_SOURCE
-  description: "Dataset after source row count"
+  description: Source data with row count captured
 
 transformation_logic:
-  operation: ADD_DERIVED_COLUMN
-  description: "Adds BatchID column from SSIS variable"
-  columns:
+  operation: ADD_COLUMN
+  derived_columns:
     - column_name: BatchID
       expression: "@[User::BatchID]"
       data_type: INTEGER
-      nullable: false
-      description: "Batch identifier for tracking data load batches"
-      operation_type: "ADD_OR_REPLACE"
+      description: Current batch execution identifier from SSIS variable
+      action: ADD_OR_REPLACE
 
 output:
-  name: BATCHID_ADDED
-  description: "Dataset with BatchID column added"
-  includes_all_input_columns: true
-  new_columns:
-    - BatchID
+  description: Dataset with BatchID column added for audit tracking
+  next_step: SRC_TR_LOOKUP_BEANVERSION
 
 metadata:
-  created_by: "Data Engineering Automation Agent"
-  source_package: "EDW_BC_Load_DimBillingAccount"
-  component_type: "Derived Column"
-  purpose: "Add batch tracking identifier"
-  execution_sequence: 2
-  variable_reference: "User::BatchID"
+  ssis_component: Derived Column
+  purpose: Tag all rows with current batch ID for lineage and audit
+  variable_source: SSIS User Variable
