@@ -1,173 +1,101 @@
-# Join Component for EDW_BC_Load_DimBillingAccount
-# This file contains all join operations from the SSIS package
-
 name: SRC_DIMBILLINGACCOUNT_JOINS
 type: join
-description: Joins all source tables for DimBillingAccount load
-
-sources:
-  - name: BC_ACCOUNT
-    type: source_table
-  - name: BCTL_ACCOUNTTYPE
-    type: source_table
-  - name: BC_PARENTACCT
-    type: source_table
-  - name: BCTL_BILLINGLEVEL
-    type: source_table
-  - name: BCTL_CUSTOMERSERVICETIER
-    type: source_table
-  - name: BC_SECURITYZONE
-    type: source_table
-  - name: BCTL_DELINQUENCYSTATUS
-    type: source_table
-  - name: BCTL_ACCOUNTSEGMENT
-    type: source_table
-  - name: BC_ACCOUNTCONTACT
-    type: source_table
-  - name: BC_ACCOUNTCONTACTROLE
-    type: source_table
-  - name: BCTL_ACCOUNTROLE
-    type: source_table
-  - name: BC_CONTACT
-    type: source_table
-  - name: BC_ADDRESS
-    type: source_table
-  - name: BCTL_STATE
-    type: source_table
-
+description: All join operations for DimBillingAccount package from SSIS
 joins:
-  # Join 1: BC_ACCOUNT with BCTL_ACCOUNTTYPE
-  - join_type: LEFT
+  - join_id: 1
     left_table: BC_ACCOUNT
     right_table: BCTL_ACCOUNTTYPE
+    join_type: LEFT
     condition: BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
-    description: Lookup account type description
     
-  # Join 2: BC_ACCOUNT with BC_PARENTACCT
-  - join_type: LEFT
+  - join_id: 2
     left_table: BC_ACCOUNT
     right_table: BC_PARENTACCT
+    join_type: LEFT
     condition: BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
-    description: Get parent account information
     
-  # Join 3: BC_ACCOUNT with BCTL_BILLINGLEVEL
-  - join_type: LEFT
+  - join_id: 3
     left_table: BC_ACCOUNT
     right_table: BCTL_BILLINGLEVEL
+    join_type: LEFT
     condition: BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
-    description: Lookup billing level description
     
-  # Join 4: BC_ACCOUNT with BCTL_CUSTOMERSERVICETIER
-  - join_type: LEFT
+  - join_id: 4
     left_table: BC_ACCOUNT
     right_table: BCTL_CUSTOMERSERVICETIER
+    join_type: LEFT
     condition: BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
-    description: Lookup service tier description
     
-  # Join 5: BC_ACCOUNT with BC_SECURITYZONE
-  - join_type: LEFT
+  - join_id: 5
     left_table: BC_ACCOUNT
     right_table: BC_SECURITYZONE
+    join_type: LEFT
     condition: BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
-    description: Get security zone information
     
-  # Join 6: BC_ACCOUNT with BCTL_DELINQUENCYSTATUS
-  - join_type: LEFT
+  - join_id: 6
     left_table: BC_ACCOUNT
     right_table: BCTL_DELINQUENCYSTATUS
+    join_type: LEFT
     condition: BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
-    description: Lookup delinquency status description
     
-  # Join 7: BC_ACCOUNT with BCTL_ACCOUNTSEGMENT
-  - join_type: LEFT
+  - join_id: 7
     left_table: BC_ACCOUNT
     right_table: BCTL_ACCOUNTSEGMENT
+    join_type: LEFT
     condition: BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
-    description: Lookup account segment description
     
-  # Join 8: BC_ACCOUNT with INSUREDINFO (derived from subsequent joins)
-  - join_type: LEFT
+  - join_id: 8
     left_table: BC_ACCOUNT
     right_table: INSUREDINFO
+    join_type: LEFT
     condition: INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
-    description: Get insured information
     
-  # Join 9: INSUREDINFO with BC_ACCOUNTCONTACT
-  - join_type: INNER
+  - join_id: 9
     left_table: INSUREDINFO
     right_table: BC_ACCOUNTCONTACT
+    join_type: INNER
     condition: BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
-    description: Get account contact information
     
-  # Join 10: INSUREDINFO with BC_ACCOUNTCONTACTROLE
-  - join_type: INNER
+  - join_id: 10
     left_table: INSUREDINFO
     right_table: BC_ACCOUNTCONTACTROLE
+    join_type: INNER
     condition: BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
-    description: Get account contact role
     
-  # Join 11: INSUREDINFO with BCTL_ACCOUNTROLE
-  - join_type: INNER
+  - join_id: 11
     left_table: INSUREDINFO
     right_table: BCTL_ACCOUNTROLE
+    join_type: INNER
     condition: BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
-    description: Filter for insured role type
     
-  # Join 12: INSUREDINFO with BC_CONTACT
-  - join_type: LEFT
+  - join_id: 12
     left_table: INSUREDINFO
     right_table: BC_CONTACT
+    join_type: LEFT
     condition: BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
-    description: Get contact details
     
-  # Join 13: INSUREDINFO with BC_ADDRESS
-  - join_type: LEFT
+  - join_id: 13
     left_table: INSUREDINFO
     right_table: BC_ADDRESS
+    join_type: LEFT
     condition: BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
-    description: Get primary address information
     
-  # Join 14: INSUREDINFO with BCTL_STATE
-  - join_type: LEFT
+  - join_id: 14
     left_table: INSUREDINFO
     right_table: BCTL_STATE
+    join_type: LEFT
     condition: BCTL_STATE.ID = BC_ADDRESS.STATE
-    description: Lookup state name
-
-output_columns:
-  - BC_ACCOUNT.ACCOUNTNUMBER
-  - BC_ACCOUNT.ACCOUNTNAME
-  - BC_ACCOUNT.ACCOUNTTYPE
-  - BCTL_ACCOUNTTYPE.NAME as ACCOUNTTYPE_NAME
-  - BC_ACCOUNT.BILLINGLEVEL
-  - BCTL_BILLINGLEVEL.NAME as BILLINGLEVEL_NAME
-  - BC_ACCOUNT.SERVICETIER
-  - BCTL_CUSTOMERSERVICETIER.NAME as SERVICETIER_NAME
-  - BC_ACCOUNT.SECURITYZONEID
-  - BC_SECURITYZONE.NAME as SECURITYZONE_NAME
-  - BC_ACCOUNT.SEGMENT
-  - BCTL_ACCOUNTSEGMENT.NAME as SEGMENT_NAME
-  - BC_ACCOUNT.CLOSEDATE
-  - BC_ACCOUNT.CREATETIME
-  - BC_ACCOUNT.DELINQUENCYSTATUS
-  - BCTL_DELINQUENCYSTATUS.NAME as DELINQUENCYSTATUS_NAME
-  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
-  - BC_ACCOUNT.PUBLICID
-  - BC_ACCOUNT.ID
-  - BC_ACCOUNT.BEANVERSION
-  - BC_ACCOUNT.RETIRED
-  - BC_ACCOUNT.UPDATETIME
-  - BC_PARENTACCT.FOREIGNENTITYID as PARENT_ACCOUNT_ID
-  - BC_CONTACT.FIRSTNAME as INSURED_FIRSTNAME
-  - BC_CONTACT.LASTNAME as INSURED_LASTNAME
-  - BC_ADDRESS.ADDRESSLINE1
-  - BC_ADDRESS.ADDRESSLINE2
-  - BC_ADDRESS.ADDRESSLINE3
-  - BC_ADDRESS.CITY
-  - BC_ADDRESS.POSTALCODE
-  - BC_ADDRESS.STATE
-  - BCTL_STATE.NAME as STATE_NAME
+    
+  - join_id: 15
+    left_table: LOOKUP_INPUT
+    right_table: DIMBILLINGACCOUNT
+    join_type: INNER
+    condition: LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
 
 execution_order: 1
 dependencies: []
+metadata:
+  source_system: SSIS
+  package_name: EDW_BC_Load_DimBillingAccount
+  total_joins: 15
+  generated_date: 2024-01-01
