@@ -3,6 +3,10 @@ type: source
 config:
   source_name: BC_ADDRESS
   source_type: table
+  location:
+    database: ""
+    schema: ""
+    table: BC_ADDRESS
   columns:
     - name: ID
       data_type: INTEGER
