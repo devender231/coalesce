@@ -3,6 +3,10 @@ type: source
 config:
   source_name: BC_ACCOUNT
   source_type: table
+  location:
+    database: ""
+    schema: ""
+    table: BC_ACCOUNT
   columns:
     - name: ACCOUNTNUMBER
       data_type: INTEGER
