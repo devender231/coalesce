@@ -1,19 +1,94 @@
 fileVersion: 1
 id: SRC_BCTL_ACCOUNTROLE
 name: SRC_BCTL_ACCOUNTROLE
-nodeType: source
-database: ""
-schema: ""
-type: sourceInput
-sources: []
-parameters:
-  loadType: Reload
-columns:
-  - name: ID
-    dataType: VARCHAR
-    nullable: true
-    description: ID
-  - name: TYPECODE
-    dataType: VARCHAR
-    nullable: true
-    description: Type Code
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: ''
+  database: SRC
+  deployEnabled: true
+  description: Source table for BCTL_ACCOUNTROLE
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTROLE
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isNullable: true
+        isPrimaryKey: false
+        isSystemVersion: false
+        name: ID
+        ordinalPosition: 1
+        primaryKeyPosition: 0
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BCTL_ACCOUNTROLE
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        isBusinessKey: false
+        isChangeTracking: false
+        isClustered: false
+        isNullable: true
+        isPrimaryKey: false
+        isSystemVersion: false
+        name: TYPECODE
+        ordinalPosition: 2
+        primaryKeyPosition: 0
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          ID: ID
+          TYPECODE: TYPECODE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTROLE
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
+        name: SRC_BCTL_ACCOUNTROLE
+        noLinkRefs: []
+  name: SRC_BCTL_ACCOUNTROLE
+  nodeType: source
+  objectStatus: ''
+  schema: ''
+  sqlType: Source
+  type: sql
+type: Node
