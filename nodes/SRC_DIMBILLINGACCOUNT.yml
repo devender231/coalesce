@@ -1,16 +1,87 @@
-fileVersion: 1.0
+fileVersion: 1.0.0
 id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
-type: source
-description: Source node for DIMBILLINGACCOUNT table
-location:
+operation:
+  config:
+    clusterKey: false
+    clusterKeyConfig: null
+    clusterKeyConfigExpressions:
+    - null
+    clusterKeyExpressions: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    lagSpecification:
+      lag: 1 days
+    orderby: false
+    orderbycolumn: null
+    postSQL: null
+    preSQL: null
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: null
   database: ""
+  deployEnabled: true
+  description: Source table DIMBILLINGACCOUNT from GuideWire
+  isDataVault: false
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR(16777216)
+      defaultValue: ""
+      description: Public ID
+      isBusinessKey: false
+      name: PUBLICID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR(16777216)
+      defaultValue: ""
+      description: Bean Version
+      isBusinessKey: false
+      name: BEANVERSION
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+    - aliases: {}
+      customSQL:
+        customSQL: ""
+      dependencies:
+      - locationName: SRC
+        nodeName: DIMBILLINGACCOUNT
+      join: null
+      name: SRC_DIMBILLINGACCOUNT
+      noLinkRefs: []
+  name: SRC_DIMBILLINGACCOUNT
+  overrideSQL: false
   schema: ""
-  table: DIMBILLINGACCOUNT
-columns:
-  - name: PUBLICID
-    dataType: STRING
-    nullable: true
-  - name: BEANVERSION
-    dataType: STRING
-    nullable: true
+  sqlType: Source
+  type: sql
+  version: 1
