@@ -1,84 +1,14 @@
-fileVersion: 1
-id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: ''
-  database: ''
-  deployEnabled: true
-  description: Source table DIMBILLINGACCOUNT
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-    - acceptedValues:
-        strictMatch: true
-        values: []
-      appliedColumnTests: {}
-      columnReference:
-        columnCounter: 1
-        stepCounter: SRC_DIMBILLINGACCOUNT
-      config: {}
-      dataType: STRING
-      description: ''
-      hashColumns: []
-      hashDetails: null
-      name: PUBLICID
-      nullable: true
-      sourceColumnReferences:
-      - columnReferences:
-        - columnCounter: null
-          stepCounter: null
-        transform: ''
-    - acceptedValues:
-        strictMatch: true
-        values: []
-      appliedColumnTests: {}
-      columnReference:
-        columnCounter: 2
-        stepCounter: SRC_DIMBILLINGACCOUNT
-      config: {}
-      dataType: STRING
-      description: ''
-      hashColumns: []
-      hashDetails: null
-      name: BEANVERSION
-      nullable: true
-      sourceColumnReferences:
-      - columnReferences:
-        - columnCounter: null
-          stepCounter: null
-        transform: ''
-    cteString: ''
-    enabledColumnTestIDs: []
-    sourceMapping:
-    - customSQL:
-        customSQL: ''
-      dependencies:
-      - locationName: SRC
-        nodeName: DIMBILLINGACCOUNT
-      join:
-        joinCondition: FROM {{ ref('SRC', 'DIMBILLINGACCOUNT') }}
-      name: SRC_DIMBILLINGACCOUNT
-      noLinkRefs: []
-  name: SRC_DIMBILLINGACCOUNT
-  overrideSQL: false
-  schema: ''
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  source_type: table
+  database: ""
+  schema: ""
+  table: DIMBILLINGACCOUNT
+columns:
+  - name: PUBLICID
+    data_type: STRING
+    nullable: true
+  - name: BEANVERSION
+    data_type: STRING
+    nullable: true
