@@ -1,0 +1,56 @@
+# Lookup Transformation - BeanVersion
+# Package: EDW_BC_Load_DimBillingAccount
+# Description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+
+name: SRC_LOOKUP_BEANVERSION
+type: TRANSFORMATION
+transformation_type: LOOKUP
+version: 1.0
+
+source:
+  name: DATASET_WITH_BATCHID
+  description: Dataset with BatchID added
+  upstream_dependency: SRC_DERIVED_BATCHID
+
+lookup_configuration:
+  lookup_table: DIMBILLINGACCOUNT
+  lookup_query: |
+    SELECT 
+      PUBLICID,
+      BEANVERSION
+    FROM DIMBILLINGACCOUNT
+  
+  join_conditions:
+    - source_column: PUBLICID
+      lookup_column: PUBLICID
+      match_type: EXACT
+  
+  lookup_columns:
+    - column_name: BEANVERSION
+      alias: EDWBeanVersion
+      data_type: STRING
+      nullable: true
+      description: Existing BeanVersion from dimension table
+  
+  no_match_behavior: PASS_THROUGH
+  cache_mode: FULL
+  
+transformation_logic:
+  operation: LOOKUP_JOIN
+  description: Retrieve existing BeanVersion to compare with source BeanVersion for SCD logic
+  match_output: EDWBeanVersion column added to dataset
+  no_match_output: EDWBeanVersion set to NULL for new records
+
+output:
+  name: DATASET_WITH_LOOKUP
+  description: Dataset with EDWBeanVersion lookup column
+  columns_added:
+    - EDWBeanVersion
+
+execution_order: 3
+
+metadata:
+  created_from: SSIS_Documentation/EDW_BC_Load_DimBillingAccount.json
+  transformation_sequence: 3
+  purpose: Lookup existing BeanVersion for SCD comparison
+  next_transformation: SRC_CONDITIONALSPLIT_SCD
