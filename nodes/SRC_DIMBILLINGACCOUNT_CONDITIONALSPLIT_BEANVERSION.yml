@@ -1,0 +1,73 @@
+# CONDITIONAL_SPLIT Transformation YAML
+# Generated for DimBillingAccount SSIS Package
+# Routes rows based on BeanVersion comparison with EDWBeanVersion
+
+name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT_BEANVERSION
+type: conditional_split
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion from lookup operation
+
+# Transformation Configuration
+transformation:
+  condition: BeanVersion == EDWBeanVersion
+  condition_type: equality_check
+  
+  # Output Paths Configuration
+  output_paths:
+    - path_name: unchanged_rows
+      condition: BeanVersion == EDWBeanVersion
+      description: Rows where BeanVersion matches EDWBeanVersion (no changes detected)
+      action: skip_update
+      
+    - path_name: update_rows
+      condition: BeanVersion != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
+      description: Rows where BeanVersion differs from EDWBeanVersion (changes detected)
+      action: update_existing
+      
+    - path_name: insert_rows
+      condition: EDWBeanVersion IS NULL
+      description: Rows with no lookup match (new records to insert)
+      action: insert_new
+
+# Dependencies
+input_dependency: SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION
+execution_order: 5
+
+# Metadata
+metadata:
+  source_system: SSIS
+  transformation_type: CONDITIONAL_SPLIT
+  business_logic: Routes rows to appropriate processing path based on version comparison
+  created_date: 2025-01-23
+  
+# Column Mapping (all columns pass through)
+columns:
+  - BillingAccountKey
+  - BillingAccountID
+  - BillingAccountName
+  - BeanVersion
+  - EDWBeanVersion
+  - EffectiveDate
+  - ExpirationDate
+  - CurrentFlag
+  - CreatedDate
+  - ModifiedDate
+
+# Processing Rules
+processing_rules:
+  - rule: If BeanVersion == EDWBeanVersion, route to unchanged_rows path
+  - rule: If BeanVersion != EDWBeanVersion AND EDWBeanVersion IS NOT NULL, route to update_rows path
+  - rule: If EDWBeanVersion IS NULL, route to insert_rows path
+  - rule: Maintain all source columns in output
+  - rule: Preserve data types and precision
+
+# Error Handling
+error_handling:
+  on_null_comparison: treat_as_not_equal
+  on_type_mismatch: raise_error
+  log_split_counts: true
+
+# Performance Configuration
+performance:
+  buffer_size: 10000
+  enable_parallel_processing: true
+  log_row_counts: true
