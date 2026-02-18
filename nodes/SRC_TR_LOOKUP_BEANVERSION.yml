@@ -1,61 +1,26 @@
-fileVersion: 1
-id: SRC_TR_LOOKUP_BEANVERSION
 name: SRC_TR_LOOKUP_BEANVERSION
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Lookup transformation to get BeanVersion from DIMBILLINGACCOUNT by PUBLICID
-  isMultisource: true
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_TR_LOOKUP_BEANVERSION
-        config: {}
-        dataType: STRING
-        description: "BeanVersion from DIMBILLINGACCOUNT lookup"
-        name: EDWBEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: SRC_DIMBILLINGACCOUNT
-            transform: "DIMBILLINGACCOUNT.BEANVERSION"
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_TR_DERIVED_BATCHID: SRC_TR_DERIVED_BATCHID
-          DIMBILLINGACCOUNT: DIMBILLINGACCOUNT
-        customSQL:
-          customSQL: |
-            SELECT SRC_TR_DERIVED_BATCHID.*,
-                   DIMBILLINGACCOUNT.BEANVERSION as EDWBEANVERSION
-            FROM {{ ref('SRC', 'SRC_TR_DERIVED_BATCHID') }} SRC_TR_DERIVED_BATCHID
-            LEFT JOIN {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT') }} DIMBILLINGACCOUNT
-              ON SRC_TR_DERIVED_BATCHID.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_TR_DERIVED_BATCHID
-          - locationName: SRC
-            nodeName: SRC_DIMBILLINGACCOUNT
-        join:
-          joinCondition: ""
-        name: SRC_TR_LOOKUP_BEANVERSION
-        noLinkRefs: []
-  name: SRC_TR_LOOKUP_BEANVERSION
-  overrideSQL: false
-  schema: ""
-  sqlType: Transformation
-  type: sql
-  version: 1
+type: transformation
+transformation_type: LOOKUP
+description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+source: SRC_TR_DERIVED_BATCHID
+execution_order: 3
+logic:
+  lookup_source: SRC_DIMBILLINGACCOUNT
+  lookup_query: |
+    SELECT 
+      PUBLICID,
+      BEANVERSION AS EDW_BEANVERSION
+    FROM DIMBILLINGACCOUNT
+  join_condition:
+    - input_column: PUBLICID
+      lookup_column: PUBLICID
+  lookup_columns:
+    - column_name: EDW_BEANVERSION
+      source_column: BEANVERSION
+      data_type: STRING
+      on_no_match: NULL
+  description: Retrieves existing BeanVersion from target table to determine if record needs update
+output:
+  all_input_columns: true
+  lookup_columns:
+    - EDW_BEANVERSION
