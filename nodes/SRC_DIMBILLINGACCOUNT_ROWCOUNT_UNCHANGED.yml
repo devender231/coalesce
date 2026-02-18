@@ -1,0 +1,32 @@
+# Row Count Transformation - Unchanged Rows
+# Counts unchanged rows (BeanVersion matches)
+
+name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_UNCHANGED
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts unchanged rows where BeanVersion matches EDW BeanVersion
+
+source:
+  name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+  type: transformation
+  output_path: UnchangedRows
+
+transformation:
+  operation: ROW_COUNT
+  variable_name: User::UnChangeCount
+  description: Captures count of rows with matching BeanVersion - no action needed
+  
+logic: |
+  -- Count rows where BeanVersion matches
+  COUNT(*) AS UnChangeCount
+  WHERE BEANVERSION = EDWBeanVersion
+  
+output:
+  pass_through: true
+  row_count_variable: User::UnChangeCount
+  action: NONE
+  description: These rows are not loaded to target as they are unchanged
+  
+execution_order: 6
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
