@@ -1,0 +1,185 @@
+name: SRC_DIMBILLINGACCOUNT_JOINS
+type: join
+description: All joins for DimBillingAccount from BC_ACCOUNT and related tables
+
+sources:
+  - name: BC_ACCOUNT
+    alias: acct
+  - name: BCTL_ACCOUNTTYPE
+    alias: accttype
+  - name: BC_PARENTACCT
+    alias: parent
+  - name: BCTL_BILLINGLEVEL
+    alias: blvl
+  - name: BCTL_CUSTOMERSERVICETIER
+    alias: tier
+  - name: BC_SECURITYZONE
+    alias: zone
+  - name: BCTL_DELINQUENCYSTATUS
+    alias: delin
+  - name: BCTL_ACCOUNTSEGMENT
+    alias: seg
+  - name: BC_ACCOUNTCONTACT
+    alias: acctcontact
+  - name: BC_ACCOUNTCONTACTROLE
+    alias: role
+  - name: BCTL_ACCOUNTROLE
+    alias: rolelkp
+  - name: BC_CONTACT
+    alias: contact
+  - name: BC_ADDRESS
+    alias: addr
+  - name: BCTL_STATE
+    alias: state
+  - name: DIMBILLINGACCOUNT
+    alias: dim
+
+joins:
+  # Join 1: BC_ACCOUNT to BCTL_ACCOUNTTYPE
+  - type: LEFT
+    left_table: acct
+    right_table: accttype
+    condition: acct.ACCOUNTTYPE = accttype.ID
+    execution_order: 1
+
+  # Join 2: BC_ACCOUNT to BC_PARENTACCT
+  - type: LEFT
+    left_table: acct
+    right_table: parent
+    condition: parent.OWNERID = acct.ID
+    execution_order: 2
+
+  # Join 3: BC_ACCOUNT to BCTL_BILLINGLEVEL
+  - type: LEFT
+    left_table: acct
+    right_table: blvl
+    condition: acct.BILLINGLEVEL = blvl.ID
+    execution_order: 3
+
+  # Join 4: BC_ACCOUNT to BCTL_CUSTOMERSERVICETIER
+  - type: LEFT
+    left_table: acct
+    right_table: tier
+    condition: acct.SERVICETIER = tier.ID
+    execution_order: 4
+
+  # Join 5: BC_ACCOUNT to BC_SECURITYZONE
+  - type: LEFT
+    left_table: acct
+    right_table: zone
+    condition: acct.SECURITYZONEID = zone.ID
+    execution_order: 5
+
+  # Join 6: BC_ACCOUNT to BCTL_DELINQUENCYSTATUS
+  - type: LEFT
+    left_table: acct
+    right_table: delin
+    condition: acct.DELINQUENCYSTATUS = delin.ID
+    execution_order: 6
+
+  # Join 7: BC_ACCOUNT to BCTL_ACCOUNTSEGMENT
+  - type: LEFT
+    left_table: acct
+    right_table: seg
+    condition: acct.SEGMENT = seg.ID
+    execution_order: 7
+
+  # Join 8: BC_ACCOUNT to INSUREDINFO (derived from BC_ACCOUNTCONTACT)
+  - type: LEFT
+    left_table: acct
+    right_table: acctcontact
+    condition: acctcontact.INSUREDACCOUNTID = acct.ID
+    execution_order: 8
+
+  # Join 9: BC_ACCOUNTCONTACT to BC_ACCOUNTCONTACTROLE
+  - type: INNER
+    left_table: acctcontact
+    right_table: role
+    condition: role.ACCOUNTCONTACTID = acctcontact.ID
+    execution_order: 9
+
+  # Join 10: BC_ACCOUNTCONTACTROLE to BCTL_ACCOUNTROLE
+  - type: INNER
+    left_table: role
+    right_table: rolelkp
+    condition: rolelkp.ID = role.ROLE AND rolelkp.TYPECODE = 'insured'
+    execution_order: 10
+
+  # Join 11: BC_ACCOUNTCONTACT to BC_CONTACT
+  - type: LEFT
+    left_table: acctcontact
+    right_table: contact
+    condition: contact.ID = acctcontact.CONTACTID
+    execution_order: 11
+
+  # Join 12: BC_CONTACT to BC_ADDRESS
+  - type: LEFT
+    left_table: contact
+    right_table: addr
+    condition: addr.ID = contact.PRIMARYADDRESSID
+    execution_order: 12
+
+  # Join 13: BC_ADDRESS to BCTL_STATE
+  - type: LEFT
+    left_table: addr
+    right_table: state
+    condition: state.ID = addr.STATE
+    execution_order: 13
+
+  # Join 14: LOOKUP_INPUT to DIMBILLINGACCOUNT (for lookup)
+  - type: INNER
+    left_table: lookup_input
+    right_table: dim
+    condition: lookup_input.PUBLICID = dim.PUBLICID
+    execution_order: 14
+
+output_columns:
+  - acct.ACCOUNTNUMBER
+  - acct.ACCOUNTNAME
+  - acct.ACCOUNTTYPE
+  - accttype.NAME as ACCOUNTTYPE_NAME
+  - acct.BILLINGLEVEL
+  - blvl.NAME as BILLINGLEVEL_NAME
+  - acct.SERVICETIER
+  - tier.NAME as SERVICETIER_NAME
+  - acct.SECURITYZONEID
+  - zone.NAME as SECURITYZONE_NAME
+  - acct.SEGMENT
+  - seg.NAME as SEGMENT_NAME
+  - acct.CLOSEDATE
+  - acct.CREATETIME
+  - acct.DELINQUENCYSTATUS
+  - delin.NAME as DELINQUENCYSTATUS_NAME
+  - acct.FIRSTTWICEPERMTHINVOICEDOM
+  - acct.SECONDTWICEPERMTHINVOICEDOM
+  - acct.PUBLICID
+  - acct.ID
+  - acct.BEANVERSION
+  - acct.RETIRED
+  - acct.UPDATETIME
+  - parent.FOREIGNENTITYID as PARENT_ACCOUNT_ID
+  - contact.FIRSTNAME
+  - contact.LASTNAME
+  - addr.ADDRESSLINE1
+  - addr.ADDRESSLINE2
+  - addr.ADDRESSLINE3
+  - addr.CITY
+  - addr.POSTALCODE
+  - state.NAME as STATE_NAME
+
+dependencies:
+  - SRC_BC_ACCOUNT
+  - SRC_BCTL_ACCOUNTTYPE
+  - SRC_BC_PARENTACCT
+  - SRC_BCTL_BILLINGLEVEL
+  - SRC_BCTL_CUSTOMERSERVICETIER
+  - SRC_BC_SECURITYZONE
+  - SRC_BCTL_DELINQUENCYSTATUS
+  - SRC_BCTL_ACCOUNTSEGMENT
+  - SRC_BC_ACCOUNTCONTACT
+  - SRC_BC_ACCOUNTCONTACTROLE
+  - SRC_BCTL_ACCOUNTROLE
+  - SRC_BC_CONTACT
+  - SRC_BC_ADDRESS
+  - SRC_BCTL_STATE
+  - SRC_DIMBILLINGACCOUNT
