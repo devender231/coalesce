@@ -1,0 +1,19 @@
+name: SRC_TR_ROW_COUNT_SOURCE
+type: transformation
+config:
+  transformation_type: row_count
+  description: Counts source rows from OLE_SRC - GuideWire
+  execution_order: 1
+input:
+  source: SRC_JOIN_ALL_TABLES
+  description: Input from joined tables
+logic:
+  operation: COUNT
+  variable_name: User::SourceCount
+  count_type: all_rows
+output:
+  variable: SourceCount
+  data_type: INTEGER
+  description: Total count of source rows from GuideWire
+dependencies:
+  - SRC_JOIN_ALL_TABLES
