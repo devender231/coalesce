@@ -1,0 +1,38 @@
+# Derived Column Transformation - BatchID
+# Adds or overwrites BatchID column
+
+name: SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID
+type: transformation
+transformation_type: DERIVED_COLUMN
+description: Adds or overwrites BatchID column with the current batch identifier
+
+source:
+  name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE
+  type: transformation
+
+transformation:
+  operation: DERIVED_COLUMN
+  derived_columns:
+    - column_name: BatchID
+      expression: "@[User::BatchID]"
+      data_type: INTEGER
+      description: Current batch execution identifier
+      overwrite: true
+      
+logic: |
+  -- Add BatchID column from SSIS variable
+  SELECT 
+    *,
+    @BatchID AS BatchID
+  FROM source
+  
+output_columns:
+  - all_source_columns: true
+  - BatchID:
+      data_type: INTEGER
+      nullable: false
+      source: variable
+      
+execution_order: 3
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_ROWCOUNT_SOURCE
