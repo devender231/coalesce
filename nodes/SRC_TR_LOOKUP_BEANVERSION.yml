@@ -1,0 +1,35 @@
+name: SRC_TR_LOOKUP_BEANVERSION
+type: transformation
+transformation_type: LOOKUP
+config:
+  description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
+  input_source: "SRC_TR_DERIVED_BATCHID"
+  lookup_source: "SRC_DIMBILLINGACCOUNT"
+  lookup_query:
+    sql: "SELECT PUBLICID, BEANVERSION FROM DIMBILLINGACCOUNT"
+    cache_mode: "FULL"
+  join_conditions:
+    - input_column: "PUBLICID"
+      lookup_column: "PUBLICID"
+      comparison: "EQUAL"
+  lookup_columns:
+    - lookup_column: "BEANVERSION"
+      output_alias: "EDWBeanVersion"
+      data_type: "STRING"
+  match_behavior:
+    no_match_output: "REDIRECT_TO_NO_MATCH"
+    match_output: "PASS_THROUGH_WITH_LOOKUP_COLUMNS"
+  output:
+    matched_rows: true
+    unmatched_rows: true
+  execution_order: 3
+  
+dependencies:
+  - "SRC_TR_DERIVED_BATCHID"
+  - "SRC_DIMBILLINGACCOUNT"
+
+metadata:
+  purpose: "Retrieve existing BeanVersion from target table for SCD comparison"
+  lookup_type: "INNER_JOIN"
+  ssis_component: "Lookup Transformation"
+  cache_strategy: "Full Cache"
