@@ -7,312 +7,36 @@ operation:
     postSQL: ""
     preSQL: ""
     testsEnabled: true
-    truncateBefore: false
+    truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Lookup transformation - Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
+  description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID. SQL: Select Publicid, BeanVersion from DimBillingAccount; Join: PUBLICID = DIMBILLINGACCOUNT.PUBLICID"
   isMultisource: true
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - columnCounter: 1
-        dataType: INTEGER
-        description: "Account Number"
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 2
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: T3
+        config: {}
         dataType: STRING
-        description: "Account Name"
-        name: ACCOUNTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 3
-        dataType: STRING
-        description: "Account Type Name"
-        name: ACCOUNTTYPE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 4
-        dataType: STRING
-        description: "Billing Level Name"
-        name: BILLINGLEVEL_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 5
-        dataType: STRING
-        description: "Service Tier Name"
-        name: SERVICETIER_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 6
-        dataType: STRING
-        description: "Security Zone Name"
-        name: SECURITYZONE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 7
-        dataType: STRING
-        description: "Segment Name"
-        name: SEGMENT_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 8
-        dataType: DATETIME
-        description: "Close Date"
-        name: CLOSEDATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 9
-        dataType: DATETIME
-        description: "Create Time"
-        name: CREATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 10
-        dataType: STRING
-        description: "Delinquency Status Name"
-        name: DELINQUENCYSTATUS_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 10
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 11
-        dataType: INTEGER
-        description: "First Twice Per Month Invoice DOM"
-        name: FIRSTTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 11
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 12
-        dataType: INTEGER
-        description: "Second Twice Per Month Invoice DOM"
-        name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 12
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 13
-        dataType: STRING
-        description: "Public ID"
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 13
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 14
-        dataType: INTEGER
-        description: "Account ID"
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 14
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 15
-        dataType: STRING
-        description: "Bean Version from Source"
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 15
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 16
-        dataType: INTEGER
-        description: "Retired Flag"
-        name: RETIRED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 16
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 17
-        dataType: DATETIME
-        description: "Update Time"
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 17
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 18
-        dataType: INTEGER
-        description: "Parent Account Foreign Entity ID"
-        name: PARENTACCT_FOREIGNENTITYID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 18
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 19
-        dataType: STRING
-        description: "Insured First Name"
-        name: INSURED_FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 19
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 20
-        dataType: STRING
-        description: "Insured Last Name"
-        name: INSURED_LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 20
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 21
-        dataType: STRING
-        description: "Insured Address Line 1"
-        name: INSURED_ADDRESSLINE1
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 21
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 22
-        dataType: STRING
-        description: "Insured Address Line 2"
-        name: INSURED_ADDRESSLINE2
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 22
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 23
-        dataType: STRING
-        description: "Insured Address Line 3"
-        name: INSURED_ADDRESSLINE3
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 23
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 24
-        dataType: STRING
-        description: "Insured City"
-        name: INSURED_CITY
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 24
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 25
-        dataType: STRING
-        description: "Insured Postal Code"
-        name: INSURED_POSTALCODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 25
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 26
-        dataType: STRING
-        description: "Insured State Name"
-        name: INSURED_STATE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 26
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 27
-        dataType: INTEGER
-        description: "Source Row Count"
-        name: SOURCE_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 27
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 28
-        dataType: INTEGER
-        description: "Batch ID"
-        name: BATCHID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 28
-                stepCounter: T2
-            transform: ""
-      - columnCounter: 29
-        dataType: STRING
-        description: "EDW Bean Version from DIMBILLINGACCOUNT lookup"
+        description: "EDW BeanVersion from lookup"
         name: EDW_BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: DIMBA
-            transform: ""
+                stepCounter: S15
+            transform: "DIMBILLINGACCOUNT.BEANVERSION"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
           SRC_TR_DERIVED_BATCHID: T2
-          SRC_DIMBILLINGACCOUNT: DIMBA
+          SRC_DIMBILLINGACCOUNT: S15
         customSQL:
           customSQL: ""
         dependencies:
@@ -320,11 +44,10 @@ operation:
             nodeName: SRC_TR_DERIVED_BATCHID
           - locationName: SRC
             nodeName: SRC_DIMBILLINGACCOUNT
-        join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_TR_DERIVED_BATCHID') }} SRC_TR_DERIVED_BATCHID
-            LEFT JOIN {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT') }} SRC_DIMBILLINGACCOUNT
-              ON SRC_TR_DERIVED_BATCHID.PUBLICID = SRC_DIMBILLINGACCOUNT.PUBLICID
+        join: |
+          FROM {{ ref('SRC', 'SRC_TR_DERIVED_BATCHID') }} SRC_TR_DERIVED_BATCHID
+          LEFT JOIN {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT') }} DIMBILLINGACCOUNT
+            ON SRC_TR_DERIVED_BATCHID.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
         name: SRC_TR_LOOKUP_BEANVERSION
         noLinkRefs: []
   name: SRC_TR_LOOKUP_BEANVERSION
