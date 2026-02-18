@@ -1,0 +1,27 @@
+name: SRC_TR_ROWCOUNT_UPDATE
+type: transformation
+transformation_type: ROW_COUNT
+config:
+  description: "Counts update rows (BeanVersion different)"
+  input_source: "SRC_TR_CONDITIONALSPLIT_BEANVERSION.UPDATE_OUTPUT"
+  logic:
+    count_variable: "User::UpdateCount"
+    count_type: "ALL_ROWS"
+    filter_condition: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+  output:
+    pass_through: true
+    add_count_column: false
+    terminal_node: false
+    next_step: "TARGET_DIMBILLINGACCOUNT_UPDATE"
+  execution_order: 7
+  
+dependencies:
+  - "SRC_TR_CONDITIONALSPLIT_BEANVERSION"
+
+metadata:
+  purpose: "Audit count of rows to be updated in target table"
+  variable_scope: "Package"
+  variable_type: "Integer"
+  ssis_component: "Row Count Transformation"
+  output_path: "UPDATE_OUTPUT"
+  target_operation: "UPDATE"
