@@ -1,0 +1,23 @@
+fileVersion: 1.0
+name: SRC_TRANSFORM_ROWCOUNT_UNCHANGED
+description: Counts unchanged rows (BeanVersion matches)
+type: RowCount
+config:
+  transformation_type: ROW_COUNT
+  logic:
+    description: Counts unchanged rows where BeanVersion matches EDWBeanVersion
+    variable: User::UnChangeCount
+    operation: COUNT_ROWS
+  input:
+    source: SRC_TRANSFORM_CONDITIONAL_SPLIT
+    output_name: UnchangedOutput
+    description: Rows from conditional split where BeanVersion matches
+  output:
+    variable_name: UnChangeCount
+    variable_type: Integer
+    scope: User
+
+execution_order: 6
+package: EDW_BC_Load_DimBillingAccount
+dependencies:
+  - SRC_TRANSFORM_CONDITIONAL_SPLIT
