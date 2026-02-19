@@ -1,0 +1,483 @@
+fileVersion: 1
+id: T7
+name: SRC_TR_ROW_COUNT_UPDATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: "Counts update rows (BeanVersion different)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: T7
+        dataType: DATETIME
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 9
+          stepCounter: T7
+        dataType: DATETIME
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 10
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 11
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 12
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 14
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 15
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 16
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 17
+          stepCounter: T7
+        dataType: DATETIME
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 18
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 19
+          stepCounter: T7
+        dataType: INTEGER
+        description: ""
+        name: PARENTACCT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 20
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 21
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 22
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 23
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 24
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 25
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: CONTACT_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 26
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: CONTACT_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 27
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 27
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 28
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 29
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 30
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 30
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 31
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 32
+          stepCounter: T7
+        dataType: STRING
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 33
+          stepCounter: T7
+        dataType: INTEGER
+        description: "Row count variable for source"
+        name: SOURCE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 34
+          stepCounter: T7
+        dataType: INTEGER
+        description: "Batch ID from SSIS variable"
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 35
+          stepCounter: T7
+        dataType: STRING
+        description: "BeanVersion from EDW DimBillingAccount"
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 35
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 36
+          stepCounter: T7
+        dataType: STRING
+        description: "Row type: UNCHANGED, INSERT, or UPDATE"
+        name: ROW_TYPE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 36
+                stepCounter: T4
+            transform: ""
+      - columnReference:
+          columnCounter: 37
+          stepCounter: T7
+        dataType: INTEGER
+        description: "Count of update rows"
+        name: UPDATE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*) OVER ()"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONAL_SPLIT: T4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_CONDITIONAL_SPLIT
+        join: |
+          FROM {{ ref('SRC', 'SRC_TR_CONDITIONAL_SPLIT') }} SRC_TR_CONDITIONAL_SPLIT
+          WHERE ROW_TYPE = 'UPDATE'
+        name: SRC_TR_ROW_COUNT_UPDATE
+        noLinkRefs: []
+  name: SRC_TR_ROW_COUNT_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
