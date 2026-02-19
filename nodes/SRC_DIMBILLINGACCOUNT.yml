@@ -7,18 +7,17 @@ operation:
     downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
-    insertStrategy: INSERT
     orderby: false
     postSQL: ""
     preSQL: ""
     refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: false
+    testsEnabled: true
     truncateBefore: false
-    warehouseName: DEV_WH_XS
+    warehouseName: DEV_WH
   database: ""
   deployEnabled: true
-  description: Source table DIMBILLINGACCOUNT
+  description: Source table for DIMBILLINGACCOUNT
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -33,14 +32,12 @@ operation:
           columnCounter: 1
           stepCounter: SRC_DIMBILLINGACCOUNT
         config: {}
-        dataType: VARCHAR
-        defaultValue: ""
+        dataType: VARCHAR(16777216)
         description: ""
         hashColumns: []
         hashDetails: null
-        name: BILLINGACCOUNTKEY
+        name: PUBLICID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
@@ -54,14 +51,12 @@ operation:
           columnCounter: 2
           stepCounter: SRC_DIMBILLINGACCOUNT
         config: {}
-        dataType: VARCHAR
-        defaultValue: ""
+        dataType: VARCHAR(16777216)
         description: ""
         hashColumns: []
         hashDetails: null
-        name: BILLINGACCOUNT
+        name: BEANVERSION
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
