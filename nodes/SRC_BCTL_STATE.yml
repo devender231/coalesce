@@ -1,57 +1,70 @@
 fileVersion: 1
-id: S8
-name: BCTL_STATE
+id: SRC_BCTL_STATE
+name: SRC_BCTL_STATE
 operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
   database: ""
   deployEnabled: true
-  description: ""
+  description: Source table BCTL_STATE
+  isMultisource: false
   locationName: SRC
+  materializationType: view
   metadata:
+    appliedNodeTests: []
     columns:
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C1
-          stepCounter: S8
+          columnCounter: 1
+          stepCounter: SRC_BCTL_STATE
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
         name: ID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
             transform: ""
-        transform: ""
-        uniqueKey: false
-
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C2
-          stepCounter: S8
+          columnCounter: 2
+          stepCounter: SRC_BCTL_STATE
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
         name: NAME
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-  name: BCTL_STATE
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BCTL_STATE: SRC_BCTL_STATE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_STATE
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }} "BCTL_STATE"
+        name: SRC_BCTL_STATE
+        noLinkRefs: []
+  name: SRC_BCTL_STATE
+  overrideSQL: false
   schema: ""
   sqlType: Source
-  type: sourceInput
+  type: sql
   version: 1
-
-type: Node
