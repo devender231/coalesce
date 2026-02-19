@@ -16,7 +16,7 @@ operation:
           columnCounter: C1
           stepCounter: S3
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         name: INSUREDACCOUNTID
@@ -36,7 +36,7 @@ operation:
           columnCounter: C2
           stepCounter: S3
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         name: CONTACTID
@@ -56,7 +56,7 @@ operation:
           columnCounter: C3
           stepCounter: S3
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         name: ID
@@ -76,7 +76,7 @@ operation:
           columnCounter: C4
           stepCounter: S3
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         defaultValue: ""
         description: ""
         name: BEANVERSION
@@ -96,7 +96,7 @@ operation:
           columnCounter: C5
           stepCounter: S3
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: UPDATETIME
