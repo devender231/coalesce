@@ -8,18 +8,15 @@ operation:
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
+    lagSpecification:
+      lag: 1 days
     refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
     warehouseName: DEV_WH_SMALL
   database: ""
   deployEnabled: true
-  description: Source table BCTL_ACCOUNTROLE from GuideWire
-  isDataVault: false
+  description: Source table BCTL_ACCOUNTROLE
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -32,20 +29,18 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: SRC_BCTL_ACCOUNTROLE
+          stepCounter: 1
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
+        isSurrogateKey: false
         name: ID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: SRC_BCTL_ACCOUNTROLE
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -53,20 +48,18 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: SRC_BCTL_ACCOUNTROLE
+          stepCounter: 1
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: STRING
         defaultValue: ""
         description: ""
-        hashColumns: []
-        hashDetails: null
+        isSurrogateKey: false
         name: TYPECODE
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: SRC_BCTL_ACCOUNTROLE
+                stepCounter: 1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -78,7 +71,7 @@ operation:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "BCTL_ACCOUNTROLE"
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
         name: SRC_BCTL_ACCOUNTROLE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTROLE
@@ -87,3 +80,4 @@ operation:
   sqlType: Source
   type: sql
   version: 1
+type: Node
