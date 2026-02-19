@@ -36,7 +36,7 @@ operation:
           columnCounter: C2
           stepCounter: S1
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         name: ACCOUNTNAME
@@ -156,7 +156,7 @@ operation:
           columnCounter: C8
           stepCounter: S1
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: TIMESTAMP_NTZ
         defaultValue: ""
         description: ""
         name: CLOSEDATE
@@ -176,7 +176,7 @@ operation:
           columnCounter: C9
           stepCounter: S1
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: TIMESTAMP_NTZ
         defaultValue: ""
         description: ""
         name: CREATETIME
@@ -256,7 +256,7 @@ operation:
           columnCounter: C13
           stepCounter: S1
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         name: PUBLICID
@@ -296,7 +296,7 @@ operation:
           columnCounter: C15
           stepCounter: S1
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         name: BEANVERSION
@@ -336,7 +336,7 @@ operation:
           columnCounter: C17
           stepCounter: S1
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: TIMESTAMP_NTZ
         defaultValue: ""
         description: ""
         name: UPDATETIME
