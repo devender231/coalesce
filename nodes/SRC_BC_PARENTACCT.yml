@@ -8,93 +8,116 @@ operation:
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: INSERT
-    lagSpecification:
-      minutes: 1440
+    orderby: false
+    postSQL: ""
+    preSQL: ""
     refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    warehouseName: ''
-  database: ''
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: ""
+  database: ""
   deployEnabled: true
-  description: Source table BC_PARENTACCT from GuideWire
+  description: Source table BC_PARENTACCT
+  isDataVault: false
   isMultisource: false
   locationName: SRC
-  materializationType: source
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: OWNERID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_PARENTACCT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_PARENTACCT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: STRING
-        description: ''
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_PARENTACCT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: DATETIME
-        description: ''
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_PARENTACCT
-            transform: ''
-    cteString: ''
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+    cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases: {}
         customSQL:
-          customSQL: ''
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_PARENTACCT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }} "BC_PARENTACCT"
         name: SRC_BC_PARENTACCT
         noLinkRefs: []
   name: SRC_BC_PARENTACCT
   overrideSQL: false
-  schema: ''
-  sqlType: SOURCE
+  schema: ""
+  sqlType: Source
   type: sql
   version: 1
