@@ -16,7 +16,7 @@ operation:
           columnCounter: C1
           stepCounter: S2
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         defaultValue: ""
         description: ""
         name: OWNERID
@@ -36,7 +36,7 @@ operation:
           columnCounter: C2
           stepCounter: S2
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         defaultValue: ""
         description: ""
         name: FOREIGNENTITYID
@@ -56,7 +56,7 @@ operation:
           columnCounter: C3
           stepCounter: S2
         config: {}
-        dataType: VARCHAR(256)
+        dataType: STRING
         defaultValue: ""
         description: ""
         name: BEANVERSION
@@ -76,7 +76,7 @@ operation:
           columnCounter: C4
           stepCounter: S2
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         defaultValue: ""
         description: ""
         name: UPDATETIME
