@@ -1,22 +1,17 @@
 name: SRC_BC_ACCOUNTCONTACTROLE
 type: source
 location:
-  name: SRC_BC_ACCOUNTCONTACTROLE
-  database: "{{DATABASE}}"
-  schema: "{{SCHEMA}}"
+  database: BC
+  schema: DBO
+  table: BC_ACCOUNTCONTACTROLE
 columns:
   - name: ACCOUNTCONTACTID
-    data_type: INTEGER
-    nullable: true
+    dataType: INTEGER
   - name: ROLE
-    data_type: INTEGER
-    nullable: true
+    dataType: VARCHAR
   - name: ID
-    data_type: INTEGER
-    nullable: true
+    dataType: INTEGER
   - name: BEANVERSION
-    data_type: STRING
-    nullable: true
+    dataType: INTEGER
   - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+    dataType: DATETIME
