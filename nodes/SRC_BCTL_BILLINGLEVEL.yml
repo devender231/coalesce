@@ -1,18 +1,11 @@
 name: SRC_BCTL_BILLINGLEVEL
 type: source
-database: EDW_BC
-schema: dbo
-location: SRC ("EDW_BC"."dbo")
+config:
+  database: ""
+  schema: ""
+  table: BCTL_BILLINGLEVEL
 columns:
-  - name: BILLINGLEVELID
-    dataType: INT
-  - name: BILLINGLEVELNAME
+  - name: ID
     dataType: VARCHAR
-  - name: BILLINGLEVELDESCRIPTION
+  - name: NAME
     dataType: VARCHAR
-  - name: ISACTIVE
-    dataType: BIT
-  - name: CREATEDDATE
-    dataType: DATETIME
-  - name: MODIFIEDDATE
-    dataType: DATETIME
