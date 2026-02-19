@@ -1,0 +1,10 @@
+name: SRC_BCTL_ACCOUNTROLE
+type: source
+location: SRC ("GUIDEWIRE"."BCTL")
+columns:
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: TYPECODE
+    dataType: STRING
+    nullable: true
