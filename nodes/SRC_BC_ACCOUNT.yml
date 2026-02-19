@@ -8,275 +8,363 @@ operation:
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: INSERT
-    lagSpecification:
-      minutes: 1440
+    orderby: false
+    postSQL: ""
+    preSQL: ""
     refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    warehouseName: ''
-  database: ''
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: ""
+  database: ""
   deployEnabled: true
-  description: Source table BC_ACCOUNT from GuideWire
+  description: Source table BC_ACCOUNT
+  isDataVault: false
   isMultisource: false
   locationName: SRC
-  materializationType: source
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: STRING
-        description: ''
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: SERVICETIER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 6
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: SECURITYZONEID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 7
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: SEGMENT
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 7
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 8
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: DATETIME
-        description: ''
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: CLOSEDATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 8
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 9
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: DATETIME
-        description: ''
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: CREATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 9
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 10
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 10
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 11
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 11
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 12
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 12
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 13
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: STRING
-        description: ''
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 13
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 14
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 14
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 15
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: STRING
-        description: ''
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 15
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 16
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
-        description: ''
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: RETIRED
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 16
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-      - appliedColumnTests: {}
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 17
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: DATETIME
-        description: ''
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        isBusinessKey: false
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 17
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ''
-    cteString: ''
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+    cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases: {}
         customSQL:
-          customSQL: ''
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }} "BC_ACCOUNT"
         name: SRC_BC_ACCOUNT
         noLinkRefs: []
   name: SRC_BC_ACCOUNT
   overrideSQL: false
-  schema: ''
-  sqlType: SOURCE
+  schema: ""
+  sqlType: Source
   type: sql
   version: 1
