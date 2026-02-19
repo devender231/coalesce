@@ -1,0 +1,19 @@
+name: SRC_BC_ACCOUNTCONTACT
+type: source
+location: SRC ("GUIDEWIRE"."BC")
+columns:
+  - name: INSUREDACCOUNTID
+    dataType: INTEGER
+    nullable: true
+  - name: CONTACTID
+    dataType: INTEGER
+    nullable: true
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
