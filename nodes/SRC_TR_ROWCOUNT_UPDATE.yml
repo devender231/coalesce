@@ -1,0 +1,56 @@
+fileVersion: 1
+id: T7
+name: SRC_TR_ROWCOUNT_UPDATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: "Counts update rows (BeanVersion different)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: T7
+        dataType: INTEGER
+        description: "Update row count"
+        name: UPDATE_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: T4
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONALSPLIT_BEANVERSION: T4
+        customSQL:
+          customSQL: |
+            SELECT
+              COUNT(*) AS UPDATE_COUNT
+            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT_BEANVERSION') }} SRC_TR_CONDITIONALSPLIT_BEANVERSION
+            WHERE ROW_TYPE = 'UPDATE'
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+        join:
+          joinCondition: ""
+        name: SRC_TR_ROWCOUNT_UPDATE
+        noLinkRefs: []
+  name: SRC_TR_ROWCOUNT_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
