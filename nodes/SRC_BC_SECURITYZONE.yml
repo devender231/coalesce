@@ -1,131 +1,48 @@
 fileVersion: 1
 id: SRC_BC_SECURITYZONE
 name: SRC_BC_SECURITYZONE
+nodeType: Source
+database: GUIDEWIRE
+schema: BILLINGCENTER
+location: SRC ("GUIDEWIRE"."BILLINGCENTER")
+
+config:
+  sourceType: table
+  tableName: BC_SECURITYZONE
+
+columns:
+  - name: ID
+    dataType: NUMBER(38,0)
+    nullable: true
+    description: "ID column"
+    sourceColumnName: ID
+    
+  - name: NAME
+    dataType: VARCHAR(16777216)
+    nullable: true
+    description: "NAME column"
+    sourceColumnName: NAME
+    
+  - name: BEANVERSION
+    dataType: VARCHAR(16777216)
+    nullable: true
+    description: "BEANVERSION column"
+    sourceColumnName: BEANVERSION
+    
+  - name: UPDATETIME
+    dataType: TIMESTAMP_NTZ(9)
+    nullable: true
+    description: "UPDATETIME column"
+    sourceColumnName: UPDATETIME
+
+metadata:
+  extractionDate: "{{ current_timestamp }}"
+  sourceSystem: SSIS
+  sourceTable: BC_SECURITYZONE
+  columnCount: 4
+
 operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
-  database: ""
-  deployEnabled: true
-  description: Source table BC_SECURITYZONE
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_SECURITYZONE
-        config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: SECURITYZONEKEY
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_SECURITYZONE
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_SECURITYZONE
-        config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: SECURITYZONE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_SECURITYZONE
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_SECURITYZONE
-        config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: SECURITYZONEDESCRIPTION
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_SECURITYZONE
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_SECURITYZONE
-        config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ISACTIVE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_SECURITYZONE
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_SECURITYZONE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_SECURITYZONE') }}
-        name: SRC_BC_SECURITYZONE
-        noLinkRefs: []
-  name: SRC_BC_SECURITYZONE
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
-type: Node
+  type: sourceLoad
+  database: GUIDEWIRE
+  schema: BILLINGCENTER
+  tableName: BC_SECURITYZONE
