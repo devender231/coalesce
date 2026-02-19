@@ -1,13 +1,11 @@
 name: SRC_BCTL_ACCOUNTROLE
 type: source
 location:
-  name: SRC_BCTL_ACCOUNTROLE
-  database: "{{DATABASE}}"
-  schema: "{{SCHEMA}}"
+  database: BC
+  schema: DBO
+  table: BCTL_ACCOUNTROLE
 columns:
   - name: ID
-    data_type: INTEGER
-    nullable: true
+    dataType: INTEGER
   - name: TYPECODE
-    data_type: STRING
-    nullable: true
+    dataType: VARCHAR
