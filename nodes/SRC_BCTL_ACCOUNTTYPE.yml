@@ -3,14 +3,26 @@ id: SRC_BCTL_ACCOUNTTYPE
 name: SRC_BCTL_ACCOUNTTYPE
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: '{{ parameters.DEV_WAREHOUSE }}'
   database: ""
   deployEnabled: true
   description: Source table BCTL_ACCOUNTTYPE
   isMultisource: false
   locationName: SRC
-  materializationType: view
+  materializationType: source
   metadata:
     appliedNodeTests: []
     columns:
@@ -19,8 +31,9 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
+        isSystemVersion: false
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -33,8 +46,9 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
         description: ""
+        isSystemVersion: false
         name: NAME
         nullable: true
         sourceColumnReferences:
@@ -52,7 +66,7 @@ operation:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTTYPE
         join:
-          joinCondition: ""
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} "BCTL_ACCOUNTTYPE"
         name: SRC_BCTL_ACCOUNTTYPE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTTYPE
