@@ -1,11 +1,12 @@
 name: SRC_BCTL_STATE
 type: source
-location:
-  database: BC
-  schema: DBO
-  table: BCTL_STATE
-columns:
-  - name: ID
-    dataType: INTEGER
-  - name: NAME
-    dataType: VARCHAR
+config:
+  source_location: SRC (GUIDEWIRE.BCTL)
+  source_table: BCTL_STATE
+  columns:
+    - name: ID
+      data_type: INTEGER
+      nullable: true
+    - name: NAME
+      data_type: STRING
+      nullable: true
