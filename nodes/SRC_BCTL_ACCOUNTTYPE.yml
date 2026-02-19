@@ -1,73 +1,13 @@
-fileVersion: 1
-id: SRC_BCTL_ACCOUNTTYPE
 name: SRC_BCTL_ACCOUNTTYPE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table for BCTL_ACCOUNTTYPE
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ID column
-        hashColumns: []
-        hashDetails: null
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: NAME column
-        hashColumns: []
-        hashDetails: null
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTTYPE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }}
-        name: SRC_BCTL_ACCOUNTTYPE
-        noLinkRefs: []
+type: source
+location:
   name: SRC_BCTL_ACCOUNTTYPE
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+  database: "{{DATABASE}}"
+  schema: "{{SCHEMA}}"
+columns:
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: NAME
+    data_type: STRING
+    nullable: true
