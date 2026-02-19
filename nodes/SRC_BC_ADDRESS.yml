@@ -1,53 +1,170 @@
 fileVersion: 1
-id: "node_bc_address_1007"
-isDisabled: false
-name: "SRC_BC_ADDRESS"
-description: "Source node for BC_ADDRESS table"
-database: "GUIDEWIRE_BC"
-schema: "PUBLIC"
-type: "sql"
-locationName: "SRC"
-nodeType: "source"
+id: SRC_BC_ADDRESS
+name: SRC_BC_ADDRESS
 operation:
-  type: "sql"
-  database: "GUIDEWIRE_BC"
-  schema: "PUBLIC"
-  sqlType: "Source"
-materializationType: "source"
-columns:
-  - columnCounter: 1
-    name: "ID"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 2
-    name: "ADDRESSLINE1"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 3
-    name: "ADDRESSLINE2"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 4
-    name: "ADDRESSLINE3"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 5
-    name: "CITY"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 6
-    name: "POSTALCODE"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 7
-    name: "STATE"
-    dataType: "INTEGER"
-    nullable: true
-  - columnCounter: 8
-    name: "BEANVERSION"
-    dataType: "VARCHAR(255)"
-    nullable: true
-  - columnCounter: 9
-    name: "UPDATETIME"
-    dataType: "TIMESTAMP"
-    nullable: true
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    lagSpecification:
+      minutes: 1440
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    warehouseName: ''
+  database: ''
+  deployEnabled: true
+  description: Source table BC_ADDRESS from GuideWire
+  isMultisource: false
+  locationName: SRC
+  materializationType: source
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BC_ADDRESS
+        config: {}
+        dataType: INTEGER
+        description: ''
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_BC_ADDRESS
+            transform: ''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BC_ADDRESS
+        config: {}
+        dataType: STRING
+        description: ''
+        name: ADDRESSLINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_BC_ADDRESS
+            transform: ''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_BC_ADDRESS
+        config: {}
+        dataType: STRING
+        description: ''
+        name: ADDRESSLINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_BC_ADDRESS
+            transform: ''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_BC_ADDRESS
+        config: {}
+        dataType: STRING
+        description: ''
+        name: ADDRESSLINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_BC_ADDRESS
+            transform: ''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: SRC_BC_ADDRESS
+        config: {}
+        dataType: STRING
+        description: ''
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: SRC_BC_ADDRESS
+            transform: ''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: SRC_BC_ADDRESS
+        config: {}
+        dataType: STRING
+        description: ''
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: SRC_BC_ADDRESS
+            transform: ''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: SRC_BC_ADDRESS
+        config: {}
+        dataType: INTEGER
+        description: ''
+        name: STATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: SRC_BC_ADDRESS
+            transform: ''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: SRC_BC_ADDRESS
+        config: {}
+        dataType: STRING
+        description: ''
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_BC_ADDRESS
+            transform: ''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: SRC_BC_ADDRESS
+        config: {}
+        dataType: DATETIME
+        description: ''
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: SRC_BC_ADDRESS
+            transform: ''
+    cteString: ''
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ''
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ADDRESS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }}
+        name: SRC_BC_ADDRESS
+        noLinkRefs: []
+  name: SRC_BC_ADDRESS
+  overrideSQL: false
+  schema: ''
+  sqlType: SOURCE
+  type: sql
+  version: 1
