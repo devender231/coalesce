@@ -3,171 +3,33 @@ id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH_SMALL
-  database: ""
+  database: GUIDEWIRE
   deployEnabled: true
-  description: Source table BC_CONTACT from GuideWire
-  isDataVault: false
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
+  locationName: SOURCE
   metadata:
-    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: FIRSTNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: LASTNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: PRIMARYADDRESSID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: BEANVERSION
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: UPDATETIME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_CONTACT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "BC_CONTACT"
-        name: SRC_BC_CONTACT
-        noLinkRefs: []
+      - name: ID
+        ordinalPosition: 1
+        dataType: VARCHAR
+      - name: FIRSTNAME
+        ordinalPosition: 2
+        dataType: VARCHAR
+      - name: LASTNAME
+        ordinalPosition: 3
+        dataType: VARCHAR
+      - name: PRIMARYADDRESSID
+        ordinalPosition: 4
+        dataType: VARCHAR
+      - name: BEANVERSION
+        ordinalPosition: 5
+        dataType: INTEGER
+      - name: UPDATETIME
+        ordinalPosition: 6
+        dataType: TIMESTAMP
   name: SRC_BC_CONTACT
-  overrideSQL: false
-  schema: ""
+  schema: BILLINGCENTER
   sqlType: Source
-  type: sql
-  version: 1
+  type: sourceInput
+type: Node
