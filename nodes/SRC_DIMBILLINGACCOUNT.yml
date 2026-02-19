@@ -3,12 +3,12 @@ steps:
     operation:
       config:
         insertStrategy: INSERT
-        selectDistinct: false
-      database: '{{DATABASE}}'
+      database: ""
       deployEnabled: true
-      description: Source table for DIMBILLINGACCOUNT
+      description: Source table for Billing Account Dimension
+      isDataVault: false
       isMultisource: false
-      locationName: SRC_DIMBILLINGACCOUNT
+      locationName: SRC
       materializationType: view
       metadata:
         appliedNodeTests: []
@@ -21,17 +21,17 @@ steps:
               columnCounter: 1
               stepCounter: 1
             config: {}
-            dataType: VARCHAR(256)
-            description: PUBLICID column
+            dataType: VARCHAR
+            description: Billing Account Key
             hashColumns: []
             hashDetails: null
-            name: PUBLICID
-            nullable: true
+            name: BILLINGACCOUNT_KEY
+            nullable: false
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: 1
                     stepCounter: 1
-                transform: ''
+                transform: ""
           - acceptedValues:
               strictMatch: true
               values: []
@@ -40,33 +40,374 @@ steps:
               columnCounter: 2
               stepCounter: 1
             config: {}
-            dataType: NUMBER(38,0)
-            description: BEANVERSION column
+            dataType: VARCHAR
+            description: Billing Account ID
             hashColumns: []
             hashDetails: null
-            name: BEANVERSION
+            name: BILLINGACCOUNT_ID
             nullable: true
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: 2
                     stepCounter: 1
-                transform: ''
-        cteString: ''
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 3
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Account Number
+            hashColumns: []
+            hashDetails: null
+            name: ACCOUNT_NUMBER
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 4
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Account Name
+            hashColumns: []
+            hashDetails: null
+            name: ACCOUNT_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Account Type ID
+            hashColumns: []
+            hashDetails: null
+            name: ACCOUNTTYPE_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 5
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 6
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Billing Level ID
+            hashColumns: []
+            hashDetails: null
+            name: BILLINGLEVEL_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 6
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 7
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Customer Service Tier ID
+            hashColumns: []
+            hashDetails: null
+            name: CUSTOMERSERVICETIER_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 7
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 8
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Security Zone ID
+            hashColumns: []
+            hashDetails: null
+            name: SECURITYZONE_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 8
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 9
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Delinquency Status ID
+            hashColumns: []
+            hashDetails: null
+            name: DELINQUENCYSTATUS_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 9
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 10
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Account Segment ID
+            hashColumns: []
+            hashDetails: null
+            name: ACCOUNTSEGMENT_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 10
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 11
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Account Status
+            hashColumns: []
+            hashDetails: null
+            name: ACCOUNT_STATUS
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 11
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 12
+              stepCounter: 1
+            config: {}
+            dataType: DATE
+            description: Account Open Date
+            hashColumns: []
+            hashDetails: null
+            name: ACCOUNT_OPEN_DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 12
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 13
+              stepCounter: 1
+            config: {}
+            dataType: DATE
+            description: Account Close Date
+            hashColumns: []
+            hashDetails: null
+            name: ACCOUNT_CLOSE_DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 13
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 14
+              stepCounter: 1
+            config: {}
+            dataType: DECIMAL
+            description: Current Balance
+            hashColumns: []
+            hashDetails: null
+            name: CURRENT_BALANCE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 15
+              stepCounter: 1
+            config: {}
+            dataType: DECIMAL
+            description: Credit Limit
+            hashColumns: []
+            hashDetails: null
+            name: CREDIT_LIMIT
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 15
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 16
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Currency Code
+            hashColumns: []
+            hashDetails: null
+            name: CURRENCY_CODE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 16
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 17
+              stepCounter: 1
+            config: {}
+            dataType: TIMESTAMP
+            description: Record Create Date
+            hashColumns: []
+            hashDetails: null
+            name: CREATE_DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 17
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 18
+              stepCounter: 1
+            config: {}
+            dataType: TIMESTAMP
+            description: Record Update Date
+            hashColumns: []
+            hashDetails: null
+            name: UPDATE_DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 18
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 19
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Source System
+            hashColumns: []
+            hashDetails: null
+            name: SOURCE_SYSTEM
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 19
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 20
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Record Active Flag
+            hashColumns: []
+            hashDetails: null
+            name: ACTIVE_FLAG
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 20
+                    stepCounter: 1
+                transform: ""
+        cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
-          - aliases: {}
-            customSQL:
-              customSQL: ''
+          - customSQL:
+              customSQL: ""
             dependencies:
-              - locationName: DIMBILLINGACCOUNT
+              - locationName: SRC
                 nodeName: DIMBILLINGACCOUNT
             join:
-              joinCondition: FROM {{ref('DIMBILLINGACCOUNT')}}
+              joinCondition: FROM {{ ref('SRC', 'DIMBILLINGACCOUNT') }}
             name: SRC_DIMBILLINGACCOUNT
             noLinkRefs: []
       name: SRC_DIMBILLINGACCOUNT
       overrideSQL: false
-      schema: '{{SCHEMA}}'
+      schema: ""
       sqlType: Source
       type: sql
       version: 1
