@@ -76,7 +76,7 @@ operation:
           columnCounter: C4
           stepCounter: S4
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: VARCHAR(256)
         defaultValue: ""
         description: ""
         name: BEANVERSION
@@ -96,7 +96,7 @@ operation:
           columnCounter: C5
           stepCounter: S4
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: TIMESTAMP
         defaultValue: ""
         description: ""
         name: UPDATETIME
