@@ -3,113 +3,85 @@ id: SRC_BC_PARENTACCT
 name: SRC_BC_PARENTACCT
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    lagSpecification:
-      lag: 1 days
-    refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    warehouseName: DEV_WH_SMALL
   database: ""
   deployEnabled: true
-  description: Source table BC_PARENTACCT
+  description: Source table BC_PARENTACCT from BillingCenter
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
-        isSurrogateKey: false
         name: OWNERID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BC_PARENTACCT
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
-        isSurrogateKey: false
         name: FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BC_PARENTACCT
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: 1
+          stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
-        isSurrogateKey: false
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: 1
+                stepCounter: SRC_BC_PARENTACCT
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: 1
+          stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: DATETIME
-        defaultValue: ""
+        dataType: TIMESTAMP
         description: ""
-        isSurrogateKey: false
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: 1
+                stepCounter: SRC_BC_PARENTACCT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BC_PARENTACCT: SRC_BC_PARENTACCT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_PARENTACCT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }} "BC_PARENTACCT"
         name: SRC_BC_PARENTACCT
         noLinkRefs: []
   name: SRC_BC_PARENTACCT
@@ -118,4 +90,3 @@ operation:
   sqlType: Source
   type: sql
   version: 1
-type: Node
