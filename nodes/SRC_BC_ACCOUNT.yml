@@ -156,7 +156,7 @@ operation:
           columnCounter: C8
           stepCounter: S1
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP
         defaultValue: ""
         description: ""
         name: CLOSEDATE
@@ -176,7 +176,7 @@ operation:
           columnCounter: C9
           stepCounter: S1
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP
         defaultValue: ""
         description: ""
         name: CREATETIME
@@ -336,7 +336,7 @@ operation:
           columnCounter: C17
           stepCounter: S1
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP
         defaultValue: ""
         description: ""
         name: UPDATETIME
