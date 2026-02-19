@@ -3,8 +3,19 @@ id: SRC_BCTL_ACCOUNTSEGMENT
 name: SRC_BCTL_ACCOUNTSEGMENT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BCTL_ACCOUNTSEGMENT
@@ -22,10 +33,14 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
+        defaultValue: ""
         description: ""
-        name: ID
+        hashColumns: []
+        hashDetails: null
+        name: ACCOUNTSEGMENTKEY
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
@@ -39,23 +54,30 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
+        defaultValue: ""
         description: ""
-        name: NAME
+        hashColumns: []
+        hashDetails: null
+        name: ACCOUNTSEGMENT
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
                 stepCounter: SRC_BCTL_ACCOUNTSEGMENT
             transform: ""
-    codeGenerated: false
+    cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - customSQL:
+      - aliases: {}
+        customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTSEGMENT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }}
         name: SRC_BCTL_ACCOUNTSEGMENT
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTSEGMENT
@@ -64,3 +86,4 @@ operation:
   sqlType: Source
   type: sql
   version: 1
+type: Node
