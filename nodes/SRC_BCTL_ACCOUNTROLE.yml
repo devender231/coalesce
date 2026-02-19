@@ -12,8 +12,9 @@ operation:
     postSQL: ""
     preSQL: ""
     refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-    testsEnabled: false
+    testsEnabled: true
     truncateBefore: false
     warehouseName: '{{ parameters.DEV_WAREHOUSE }}'
   database: ""
@@ -21,47 +22,39 @@ operation:
   description: Source table BCTL_ACCOUNTROLE
   isMultisource: false
   locationName: SRC
-  materializationType: view
+  materializationType: source
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        hashColumns: []
-        hashDetails: null
+        isSystemVersion: false
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_ACCOUNTROLE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
-        hashColumns: []
-        hashDetails: null
+        isSystemVersion: false
         name: TYPECODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_ACCOUNTROLE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -73,7 +66,7 @@ operation:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "BCTL_ACCOUNTROLE"
         name: SRC_BCTL_ACCOUNTROLE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTROLE
