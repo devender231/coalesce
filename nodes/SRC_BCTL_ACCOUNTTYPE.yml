@@ -1,128 +1,18 @@
-steps:
-  SRC_BCTL_ACCOUNTTYPE:
-    operation:
-      config:
-        insertStrategy: INSERT
-      database: ""
-      deployEnabled: true
-      description: Source table for Account Type reference data
-      isDataVault: false
-      isMultisource: false
-      locationName: SRC
-      materializationType: view
-      metadata:
-        appliedNodeTests: []
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 1
-              stepCounter: 1
-            config: {}
-            dataType: VARCHAR
-            description: Account Type ID
-            hashColumns: []
-            hashDetails: null
-            name: ACCOUNTTYPE_ID
-            nullable: false
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 1
-                    stepCounter: 1
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 2
-              stepCounter: 1
-            config: {}
-            dataType: VARCHAR
-            description: Account Type Code
-            hashColumns: []
-            hashDetails: null
-            name: ACCOUNTTYPE_CODE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 2
-                    stepCounter: 1
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 3
-              stepCounter: 1
-            config: {}
-            dataType: VARCHAR
-            description: Account Type Description
-            hashColumns: []
-            hashDetails: null
-            name: ACCOUNTTYPE_DESC
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 3
-                    stepCounter: 1
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 4
-              stepCounter: 1
-            config: {}
-            dataType: TIMESTAMP
-            description: Record Create Date
-            hashColumns: []
-            hashDetails: null
-            name: CREATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 4
-                    stepCounter: 1
-                transform: ""
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 5
-              stepCounter: 1
-            config: {}
-            dataType: TIMESTAMP
-            description: Record Update Date
-            hashColumns: []
-            hashDetails: null
-            name: UPDATE_DATE
-            nullable: true
-            sourceColumnReferences:
-              - columnReferences:
-                  - columnCounter: 5
-                    stepCounter: 1
-                transform: ""
-        cteString: ""
-        enabledColumnTestIDs: []
-        sourceMapping:
-          - customSQL:
-              customSQL: ""
-            dependencies:
-              - locationName: SRC
-                nodeName: BCTL_ACCOUNTTYPE
-            join:
-              joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }}
-            name: SRC_BCTL_ACCOUNTTYPE
-            noLinkRefs: []
-      name: SRC_BCTL_ACCOUNTTYPE
-      overrideSQL: false
-      schema: ""
-      sqlType: Source
-      type: sql
-      version: 1
+name: SRC_BCTL_ACCOUNTTYPE
+type: source
+database: EDW_BC
+schema: dbo
+location: SRC ("EDW_BC"."dbo")
+columns:
+  - name: ACCOUNTTYPEID
+    dataType: INT
+  - name: ACCOUNTTYPENAME
+    dataType: VARCHAR
+  - name: ACCOUNTTYPEDESCRIPTION
+    dataType: VARCHAR
+  - name: ISACTIVE
+    dataType: BIT
+  - name: CREATEDDATE
+    dataType: DATETIME
+  - name: MODIFIEDDATE
+    dataType: DATETIME
