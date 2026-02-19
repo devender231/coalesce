@@ -3,75 +3,57 @@ id: SRC_BCTL_ACCOUNTROLE
 name: SRC_BCTL_ACCOUNTROLE
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    lagSpecification:
-      lag: 1 days
-    refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    warehouseName: DEV_WH_SMALL
   database: ""
   deployEnabled: true
-  description: Source table BCTL_ACCOUNTROLE
+  description: Source table BCTL_ACCOUNTROLE from BillingCenter
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
-        isSurrogateKey: false
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTROLE
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
-        isSurrogateKey: false
         name: TYPECODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTROLE
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BCTL_ACCOUNTROLE: SRC_BCTL_ACCOUNTROLE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "BCTL_ACCOUNTROLE"
         name: SRC_BCTL_ACCOUNTROLE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTROLE
@@ -80,4 +62,3 @@ operation:
   sqlType: Source
   type: sql
   version: 1
-type: Node
