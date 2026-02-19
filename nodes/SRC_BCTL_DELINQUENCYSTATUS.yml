@@ -3,12 +3,12 @@ steps:
     operation:
       config:
         insertStrategy: INSERT
-        selectDistinct: false
-      database: '{{DATABASE}}'
+      database: ""
       deployEnabled: true
-      description: Source table for BCTL_DELINQUENCYSTATUS
+      description: Source table for Delinquency Status reference data
+      isDataVault: false
       isMultisource: false
-      locationName: SRC_BCTL_DELINQUENCYSTATUS
+      locationName: SRC
       materializationType: view
       metadata:
         appliedNodeTests: []
@@ -21,17 +21,17 @@ steps:
               columnCounter: 1
               stepCounter: 1
             config: {}
-            dataType: NUMBER(38,0)
-            description: ID column
+            dataType: VARCHAR
+            description: Delinquency Status ID
             hashColumns: []
             hashDetails: null
-            name: ID
-            nullable: true
+            name: DELINQUENCYSTATUS_ID
+            nullable: false
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: 1
                     stepCounter: 1
-                transform: ''
+                transform: ""
           - acceptedValues:
               strictMatch: true
               values: []
@@ -40,33 +40,89 @@ steps:
               columnCounter: 2
               stepCounter: 1
             config: {}
-            dataType: VARCHAR(256)
-            description: NAME column
+            dataType: VARCHAR
+            description: Delinquency Status Code
             hashColumns: []
             hashDetails: null
-            name: NAME
+            name: DELINQUENCYSTATUS_CODE
             nullable: true
             sourceColumnReferences:
               - columnReferences:
                   - columnCounter: 2
                     stepCounter: 1
-                transform: ''
-        cteString: ''
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 3
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR
+            description: Delinquency Status Description
+            hashColumns: []
+            hashDetails: null
+            name: DELINQUENCYSTATUS_DESC
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 4
+              stepCounter: 1
+            config: {}
+            dataType: TIMESTAMP
+            description: Record Create Date
+            hashColumns: []
+            hashDetails: null
+            name: CREATE_DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 4
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 5
+              stepCounter: 1
+            config: {}
+            dataType: TIMESTAMP
+            description: Record Update Date
+            hashColumns: []
+            hashDetails: null
+            name: UPDATE_DATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 5
+                    stepCounter: 1
+                transform: ""
+        cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
-          - aliases: {}
-            customSQL:
-              customSQL: ''
+          - customSQL:
+              customSQL: ""
             dependencies:
-              - locationName: BCTL_DELINQUENCYSTATUS
+              - locationName: SRC
                 nodeName: BCTL_DELINQUENCYSTATUS
             join:
-              joinCondition: FROM {{ref('BCTL_DELINQUENCYSTATUS')}}
+              joinCondition: FROM {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }}
             name: SRC_BCTL_DELINQUENCYSTATUS
             noLinkRefs: []
       name: SRC_BCTL_DELINQUENCYSTATUS
       overrideSQL: false
-      schema: '{{SCHEMA}}'
+      schema: ""
       sqlType: Source
       type: sql
       version: 1
