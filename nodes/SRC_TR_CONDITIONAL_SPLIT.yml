@@ -1,0 +1,113 @@
+fileVersion: 1
+id: SRC_TR_CONDITIONAL_SPLIT
+name: SRC_TR_CONDITIONAL_SPLIT
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
+  deployEnabled: true
+  description: Conditional Split transformation - Routes rows based on whether BeanVersion matches EDWBeanVersion
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: PUBLICID
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: BeanVersion from lookup
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: EDWBeanVersion from source
+        name: EDWBEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Row routing flag - UNCHANGED, INSERT, or UPDATE
+        name: ROW_TYPE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "CASE WHEN BEANVERSION = EDWBEANVERSION THEN 'UNCHANGED' WHEN BEANVERSION IS NULL THEN 'INSERT' ELSE 'UPDATE' END"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_LOOKUP_BEANVERSION: SRC_TR_LOOKUP_BEANVERSION
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_LOOKUP_BEANVERSION
+        join:
+          joinCondition: ""
+        name: SRC_TR_CONDITIONAL_SPLIT
+        noLinkRefs: []
+  name: SRC_TR_CONDITIONAL_SPLIT
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
