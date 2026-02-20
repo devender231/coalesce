@@ -1,19 +1,23 @@
+fileVersion: 1
+id: SRC_BC_PARENTACCT
 name: SRC_BC_PARENTACCT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  locationName: SRC
+  metadata:
+    columns:
+      - name: OWNERID
+        dataType: INTEGER
+      - name: FOREIGNENTITYID
+        dataType: INTEGER
+      - name: BEANVERSION
+        dataType: STRING
+      - name: UPDATETIME
+        dataType: DATETIME
+  schema: ""
+  tableName: BC_PARENTACCT
 type: source
-location:
-  database: BC
-  schema: DBO
-  table: BC_PARENTACCT
-columns:
-  - name: OWNERID
-    dataType: INTEGER
-    columnOrder: 1
-  - name: FOREIGNENTITYID
-    dataType: INTEGER
-    columnOrder: 2
-  - name: BEANVERSION
-    dataType: STRING
-    columnOrder: 3
-  - name: UPDATETIME
-    dataType: DATETIME
-    columnOrder: 4
