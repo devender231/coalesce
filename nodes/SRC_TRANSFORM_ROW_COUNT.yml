@@ -1,0 +1,75 @@
+fileVersion: 1
+id: SRC_TRANSFORM_ROW_COUNT
+name: SRC_TRANSFORM_ROW_COUNT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Row Count Transformation - Counts total rows from joined dataset
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TRANSFORM_ROW_COUNT
+        config: {}
+        dataType: INTEGER
+        description: "Total row count"
+        name: ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_TRANSFORM_ROW_COUNT
+        config: {}
+        dataType: INTEGER
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_JOINS_ALL
+            transform: "ACCOUNTNUMBER"
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_TRANSFORM_ROW_COUNT
+        config: {}
+        dataType: STRING
+        description: "Account Name"
+        name: ACCOUNTNAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_JOINS_ALL
+            transform: "ACCOUNTNAME"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_JOINS_ALL: SRC_JOINS_ALL
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: SRC_JOINS_ALL
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'SRC_JOINS_ALL') }} "SRC_JOINS_ALL"
+        name: SRC_JOINS_ALL
+        noLinkRefs: []
+  name: SRC_TRANSFORM_ROW_COUNT
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
+type: Node
