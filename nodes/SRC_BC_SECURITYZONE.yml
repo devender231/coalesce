@@ -1,0 +1,13 @@
+name: SRC_BC_SECURITYZONE
+type: source
+config:
+  location: BC.DBO.BC_SECURITYZONE
+  columns:
+    - name: SECURITYZONEID
+      datatype: VARCHAR
+    - name: SECURITYZONENAME
+      datatype: VARCHAR
+    - name: SECURITYZONEDESCRIPTION
+      datatype: VARCHAR
+    - name: ISACTIVE
+      datatype: BOOLEAN
