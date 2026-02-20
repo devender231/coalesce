@@ -1,0 +1,13 @@
+source:
+  name: DIMBILLINGACCOUNT
+  type: table
+  location:
+    database: BC
+    schema: DBO
+    table: DIMBILLINGACCOUNT
+  connection_string: 'SRC ("BC"."DBO")'
+  columns:
+    - name: PUBLICID
+      order: 1
+    - name: BEANVERSION
+      order: 2
