@@ -22,12 +22,10 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
-        dataType: VARCHAR
-        description: ID column
-        hashColumns: []
-        hashDetails: null
+        dataType: NUMBER
+        description: ""
         name: ID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
@@ -42,9 +40,7 @@ operation:
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
         dataType: VARCHAR
-        description: NAME column
-        hashColumns: []
-        hashDetails: null
+        description: ""
         name: NAME
         nullable: true
         sourceColumnReferences:
@@ -55,14 +51,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BCTL_BILLINGLEVEL: BCTL_BILLINGLEVEL
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_BILLINGLEVEL
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} "SRC_BCTL_BILLINGLEVEL"
         name: SRC_BCTL_BILLINGLEVEL
         noLinkRefs: []
   name: SRC_BCTL_BILLINGLEVEL
