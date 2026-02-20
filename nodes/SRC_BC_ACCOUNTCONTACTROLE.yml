@@ -1,17 +1,12 @@
 name: SRC_BC_ACCOUNTCONTACTROLE
 type: source
-database: ""
-schema: ""
-tables:
-  - name: BC_ACCOUNTCONTACTROLE
-    columns:
-      - name: ACCOUNTCONTACTID
-        dataType: INTEGER
-      - name: ROLE
-        dataType: INTEGER
-      - name: ID
-        dataType: INTEGER
-      - name: BEANVERSION
-        dataType: STRING
-      - name: UPDATETIME
-        dataType: DATETIME
+location:
+  database: BILLINGCENTER
+  schema: DBO
+  table: BC_ACCOUNTCONTACTROLE
+columns:
+  - name: ACCOUNTCONTACTID
+  - name: ROLE
+  - name: ID
+  - name: BEANVERSION
+  - name: UPDATETIME
