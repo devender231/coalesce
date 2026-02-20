@@ -1,11 +1,19 @@
+fileVersion: 1.0
 name: SRC_BCTL_ACCOUNTROLE
-type: source
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+type: sourceInput
+version: 1
 config:
-  location: SRC ("BC"."dbo")
-  columns:
-    - name: ID
-      dataType: INTEGER
-      nullable: true
-    - name: TYPECODE
-      dataType: STRING
-      nullable: true
+  database: ""
+  schema: ""
+  table: BCTL_ACCOUNTROLE
+columns:
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: TYPECODE
+    dataType: STRING
+    nullable: true
