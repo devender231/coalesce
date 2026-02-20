@@ -1,21 +1,19 @@
-fileVersion: 1.0.0
-id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
 type: source
-config:
-  database: ""
-  schema: ""
-  table: BC_CONTACT
+location:
+  database: BC
+  schema: dbo
+  table: CONTACT
 columns:
   - name: ID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: FIRSTNAME
     dataType: VARCHAR
   - name: LASTNAME
     dataType: VARCHAR
   - name: PRIMARYADDRESSID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: BEANVERSION
     dataType: INTEGER
   - name: UPDATETIME
-    dataType: TIMESTAMP
+    dataType: DATETIME
