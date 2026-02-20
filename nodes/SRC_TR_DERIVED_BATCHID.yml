@@ -1,0 +1,55 @@
+name: SRC_TR_DERIVED_BATCHID
+type: transformation
+transformation_type: DERIVED_COLUMN
+description: Adds or overwrites BatchID column
+execution_order: 2
+dependencies:
+  - SRC_TR_ROWCOUNT_SOURCE
+
+logic:
+  operation: ADD_COLUMN
+  derived_columns:
+    - column_name: BatchID
+      expression: '@[User::BatchID]'
+      data_type: INTEGER
+      description: Batch identifier for ETL process tracking
+      operation_type: ADD_OR_REPLACE
+
+input:
+  source: SRC_TR_ROWCOUNT_SOURCE
+  
+output:
+  columns:
+    - ACCOUNTNUMBER
+    - ACCOUNTNAME
+    - ACCOUNTTYPE_NAME
+    - BILLINGLEVEL_NAME
+    - SERVICETIER_NAME
+    - SECURITYZONE_NAME
+    - SEGMENT_NAME
+    - CLOSEDATE
+    - CREATETIME
+    - DELINQUENCYSTATUS_NAME
+    - FIRSTTWICEPERMTHINVOICEDOM
+    - SECONDTWICEPERMTHINVOICEDOM
+    - PUBLICID
+    - ACCOUNT_ID
+    - BEANVERSION
+    - RETIRED
+    - UPDATETIME
+    - PARENT_FOREIGNENTITYID
+    - INSURED_FIRSTNAME
+    - INSURED_LASTNAME
+    - ADDRESS_LINE1
+    - ADDRESS_LINE2
+    - ADDRESS_LINE3
+    - CITY
+    - POSTALCODE
+    - STATE_NAME
+    - EDW_BEANVERSION
+    - BatchID
+  
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  component_name: Derived Column - BatchID
+  purpose: Add batch tracking identifier to each row
