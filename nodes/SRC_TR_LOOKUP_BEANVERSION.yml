@@ -1,18 +1,13 @@
 name: SRC_TR_LOOKUP_BEANVERSION
 type: transformation
-transformation_type: LOOKUP
-description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID to identify existing records
+transformation_type: lookup
+description: Lookup BeanVersion from DIMBILLINGACCOUNT to determine if record exists and needs update
+source: SRC_TR_DERIVED_BATCHID
 
-source:
-  - SRC_TR_DERIVED_BATCHID
-
-lookup_configuration:
-  lookup_table: DIMBILLINGACCOUNT
-  lookup_query: |
-    SELECT 
-      PUBLICID,
-      BEANVERSION as EDWBeanVersion
-    FROM DIMBILLINGACCOUNT
+operation:
+  type: LOOKUP
+  lookup_table: SRC_DIMBILLINGACCOUNT
+  lookup_type: LEFT_OUTER
   
   join_conditions:
     - source_column: PUBLICID
@@ -20,21 +15,21 @@ lookup_configuration:
       match_type: EXACT
   
   lookup_columns:
-    - column_name: EDWBeanVersion
-      source_column: BEANVERSION
-      data_type: STRING
-      on_no_match: NULL
+    - column_name: BEANVERSION
+      alias: LKP_BEANVERSION
+      description: Bean version from existing dimension table for change detection
   
   cache_mode: FULL
-  no_match_behavior: PASS_THROUGH
-  description: Retrieves existing BeanVersion from target table to compare with source
-
-execution_order: 4
-dependencies:
-  - SRC_TR_DERIVED_BATCHID
+  no_match_behavior: PASS_NULL
 
 output:
-  all_input_columns: true
-  additional_columns:
-    - EDWBeanVersion
-  description: All input columns plus EDWBeanVersion from lookup (NULL if no match)
+  pass_through: true
+  all_source_columns: true
+  lookup_columns:
+    - LKP_BEANVERSION
+
+metadata:
+  execution_order: 3
+  purpose: Retrieve existing BeanVersion to determine if record is new, unchanged, or updated
+  previous_step: SRC_TR_DERIVED_BATCHID
+  next_step: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
