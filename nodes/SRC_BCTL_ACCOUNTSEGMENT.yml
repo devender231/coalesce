@@ -1,14 +1,12 @@
 name: SRC_BCTL_ACCOUNTSEGMENT
 type: source
-source:
-  database: GUIDEWIRE
-  schema: BCTL
-  table: BCTL_ACCOUNTSEGMENT
-  location: SRC (GUIDEWIRE.BCTL.BCTL_ACCOUNTSEGMENT)
+database: ''
+schema: ''
+table: BCTL_ACCOUNTSEGMENT
 columns:
   - name: ID
-    data_type: INTEGER
-    nullable: true
+    dataType: INTEGER
+    order: 1
   - name: NAME
-    data_type: STRING
-    nullable: true
+    dataType: STRING
+    order: 2
