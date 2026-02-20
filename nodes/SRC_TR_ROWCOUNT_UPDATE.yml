@@ -1,50 +1,28 @@
-fileVersion: 1
-id: SRC_TR_ROWCOUNT_UPDATE
 name: SRC_TR_ROWCOUNT_UPDATE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Row Count transformation - Counts update rows where BeanVersion differs from EDW (Variable User::UpdateCount)
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - columnReference:
-          columnCounter: 1
-          stepCounter: SRC_TR_ROWCOUNT_UPDATE
-        dataType: INTEGER
-        description: Count of update rows
-        name: UPDATE_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: COUNT(*)
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_TR_CONDITIONALSPLIT_SCD: SPLIT_DATA
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_TR_CONDITIONALSPLIT_SCD
-        join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT_SCD') }} SPLIT_DATA
-            WHERE SCD_ROUTE = 'UPDATE'
-        name: SRC_TR_ROWCOUNT_UPDATE
-        noLinkRefs: []
-  name: SRC_TR_ROWCOUNT_UPDATE
-  overrideSQL: false
-  schema: ""
-  sqlType: Transform
-  type: sql
-  version: 1
+type: transformation
+config:
+  transformation_type: ROW_COUNT
+  description: "Counts update rows (BeanVersion different)"
+  execution_order: 7
+  logic:
+    operation: COUNT_ROWS
+    variable: "User::UpdateCount"
+    count_type: "update_rows"
+    filter: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+    
+  input:
+    source: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+    output_name: UPDATE_OUTPUT
+    
+  output:
+    row_count_variable: "User::UpdateCount"
+    pass_through: true
+    action: SEND_TO_TARGET
+    
+  audit:
+    capture_count: true
+    log_to_variable: true
+    log_message: "Existing rows to be updated"
+    
+dependencies:
+  - SRC_TR_CONDITIONALSPLIT_BEANVERSION
