@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_ADDRESS
+  description: Source table BC_ADDRESS from GuideWire
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,8 +22,10 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -39,8 +41,10 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
@@ -56,8 +60,10 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
@@ -73,8 +79,10 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ADDRESSLINE3
         nullable: true
         sourceColumnReferences:
@@ -90,8 +98,10 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: CITY
         nullable: true
         sourceColumnReferences:
@@ -107,8 +117,10 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: POSTALCODE
         nullable: true
         sourceColumnReferences:
@@ -124,8 +136,10 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: STATE
         nullable: true
         sourceColumnReferences:
@@ -141,8 +155,10 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: NUMBER
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -158,8 +174,10 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
