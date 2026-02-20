@@ -1,29 +1,76 @@
+fileVersion: 1
+id: SRC_TR_ROW_COUNT_UPDATE
 name: SRC_TR_ROW_COUNT_UPDATE
-type: transformation
-transformation_type: ROW_COUNT
-execution_order: 7
-description: Counts update rows where BeanVersion differs from EDWBeanVersion
-
-input:
-  source: SRC_TR_CONDITIONAL_SPLIT
-  output_path: UPDATE_ROWS
-  description: Input from conditional split - update rows path
-
-transformation_logic:
-  operation: COUNT_ROWS
-  variable_name: User::UpdateCount
-  description: Stores the count of rows to be updated (BeanVersion different from EDWBeanVersion)
-  filter_condition: "!ISNULL(EDWBeanVersion) && BeanVersion != EDWBeanVersion"
-  
-output:
-  type: pass_through_to_target
-  description: All changed rows are passed to target for UPDATE operation
-  row_count_variable: User::UpdateCount
-  destination: DIMBILLINGACCOUNT
-  load_action: UPDATE
-  
-metadata:
-  purpose: Audit and tracking of update row count
-  variable_scope: Package
-  variable_type: Integer
-  scd_action: UPDATE
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV_WH
+  database: ""
+  deployEnabled: true
+  description: "Row Count Transformation - Counts update rows where BeanVersion is different (Variable: User::UpdateCount)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: "Split condition result"
+        name: SPLIT_CONDITION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 41
+                stepCounter: SRC_TR_CONDITIONAL_SPLIT
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: "Count of update rows"
+        name: UPDATE_ROW_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*) OVER ()"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONAL_SPLIT: SRC_TR_CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_CONDITIONAL_SPLIT') }} SRC_TR_CONDITIONAL_SPLIT
+            WHERE SPLIT_CONDITION = 'UPDATE'
+        name: SRC_TR_ROW_COUNT_UPDATE
+        noLinkRefs: []
+  name: SRC_TR_ROW_COUNT_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
