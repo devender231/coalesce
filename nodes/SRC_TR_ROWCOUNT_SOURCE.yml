@@ -1,0 +1,21 @@
+name: SRC_TR_ROWCOUNT_SOURCE
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts source rows from OLE_SRC - GuideWire
+
+source:
+  - SRC_JOIN_DIMBILLINGACCOUNT
+
+logic:
+  operation: COUNT_ROWS
+  output_variable: User::SourceCount
+  description: Counts all rows from the joined source data before any transformations
+
+execution_order: 2
+dependencies:
+  - SRC_JOIN_DIMBILLINGACCOUNT
+
+output:
+  row_count_variable: SourceCount
+  pass_through: true
+  description: All input rows are passed through to next transformation
