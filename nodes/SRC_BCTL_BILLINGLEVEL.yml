@@ -1,14 +1,16 @@
 name: SRC_BCTL_BILLINGLEVEL
+description: Source definition for BCTL_BILLINGLEVEL lookup table
 type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BCTL_BILLINGLEVEL
+source:
+  database: "BILLING"
+  schema: "DBO"
+  identifier: BCTL_BILLINGLEVEL
 columns:
   - name: ID
     data_type: INTEGER
-    nullable: true
+    description: Billing level ID
+    ordinal_position: 1
   - name: NAME
     data_type: STRING
-    nullable: true
+    description: Billing level name
+    ordinal_position: 2
