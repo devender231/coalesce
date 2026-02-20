@@ -1,62 +1,70 @@
-fileVersion: 1
-id: SRC_BCTL_BILLINGLEVEL
-name: SRC_BCTL_BILLINGLEVEL
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: GUIDEWIRE
-  deployEnabled: true
-  locationName: SRC
-  locationID: SRC_LOCATION
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_BILLINGLEVEL
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }}
-        name: SRC_BCTL_BILLINGLEVEL
-        noLinkRefs: []
-  name: SRC_BCTL_BILLINGLEVEL
-  overrideSQL: false
-  schema: DBO
-  sqlType: Source
-  type: sql
-  version: 1
+steps:
+  SRC_BCTL_BILLINGLEVEL:
+    operation:
+      config:
+        insertStrategy: INSERT
+        selectDistinct: false
+      database: ""
+      dataset: SRC
+      deployEnabled: true
+      description: Source table for BCTL_BILLINGLEVEL
+      isMultisource: false
+      locationName: SRC
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 1
+              stepCounter: 1
+            config: {}
+            dataType: INTEGER
+            description: ID column
+            hashColumns: []
+            hashDetails: null
+            name: ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 2
+              stepCounter: 1
+            config: {}
+            dataType: STRING
+            description: NAME column
+            hashColumns: []
+            hashDetails: null
+            name: NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 1
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: SRC
+                nodeName: BCTL_BILLINGLEVEL
+            name: SRC_BCTL_BILLINGLEVEL
+            noLinkRefs: []
+      name: SRC_BCTL_BILLINGLEVEL
+      overrideSQL: false
+      schema: ""
+      sqlType: Source
+      type: sql
+      version: 1
