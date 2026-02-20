@@ -14,10 +14,7 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_STATE
@@ -31,10 +28,7 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_STATE
@@ -51,15 +45,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          BCTL_STATE: SRC_BCTL_STATE
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_STATE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }} "BCTL_STATE"
+          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }}
         name: SRC_BCTL_STATE
         noLinkRefs: []
   name: SRC_BCTL_STATE
