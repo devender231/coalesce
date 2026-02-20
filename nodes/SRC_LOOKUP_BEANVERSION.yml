@@ -7,8 +7,8 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Lookup transformation - Looks up BeanVersion from DIMBILLINGACCOUNT by PUBLICID to determine if record exists and has changed
-  isMultisource: false
+  description: "Lookup transformation - Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID. SQL: Select Publicid, BeanVersion from DimBillingAccount; Join: PUBLICID = DIMBILLINGACCOUNT.PUBLICID"
+  isMultisource: true
   locationName: SRC
   materializationType: view
   metadata:
@@ -17,9 +17,8 @@ operation:
       - columnReference:
           columnCounter: 1
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Account Number
+        description: "Account Number"
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
@@ -30,9 +29,8 @@ operation:
       - columnReference:
           columnCounter: 2
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Account Name
+        description: "Account Name"
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
@@ -43,9 +41,8 @@ operation:
       - columnReference:
           columnCounter: 3
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Account Type ID
+        description: "Account Type ID"
         name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
@@ -56,9 +53,8 @@ operation:
       - columnReference:
           columnCounter: 4
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Account Type Name
+        description: "Account Type Name"
         name: ACCOUNTTYPE_NAME
         nullable: true
         sourceColumnReferences:
@@ -69,9 +65,8 @@ operation:
       - columnReference:
           columnCounter: 5
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Billing Level ID
+        description: "Billing Level ID"
         name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
@@ -82,9 +77,8 @@ operation:
       - columnReference:
           columnCounter: 6
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Billing Level Name
+        description: "Billing Level Name"
         name: BILLINGLEVEL_NAME
         nullable: true
         sourceColumnReferences:
@@ -95,9 +89,8 @@ operation:
       - columnReference:
           columnCounter: 7
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Service Tier ID
+        description: "Service Tier"
         name: SERVICETIER
         nullable: true
         sourceColumnReferences:
@@ -108,9 +101,8 @@ operation:
       - columnReference:
           columnCounter: 8
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Service Tier Name
+        description: "Service Tier Name"
         name: SERVICETIER_NAME
         nullable: true
         sourceColumnReferences:
@@ -121,9 +113,8 @@ operation:
       - columnReference:
           columnCounter: 9
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Security Zone ID
+        description: "Security Zone ID"
         name: SECURITYZONEID
         nullable: true
         sourceColumnReferences:
@@ -134,9 +125,8 @@ operation:
       - columnReference:
           columnCounter: 10
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Security Zone Name
+        description: "Security Zone Name"
         name: SECURITYZONE_NAME
         nullable: true
         sourceColumnReferences:
@@ -147,9 +137,8 @@ operation:
       - columnReference:
           columnCounter: 11
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Segment ID
+        description: "Segment"
         name: SEGMENT
         nullable: true
         sourceColumnReferences:
@@ -160,9 +149,8 @@ operation:
       - columnReference:
           columnCounter: 12
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Segment Name
+        description: "Segment Name"
         name: SEGMENT_NAME
         nullable: true
         sourceColumnReferences:
@@ -173,10 +161,9 @@ operation:
       - columnReference:
           columnCounter: 13
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
-        dataType: INTEGER
-        description: Delinquency Status ID
-        name: DELINQUENCYSTATUS
+        dataType: DATETIME
+        description: "Close Date"
+        name: CLOSEDATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -186,10 +173,9 @@ operation:
       - columnReference:
           columnCounter: 14
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
-        dataType: STRING
-        description: Delinquency Status Name
-        name: DELINQUENCYSTATUS_NAME
+        dataType: DATETIME
+        description: "Create Time"
+        name: CREATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -199,10 +185,9 @@ operation:
       - columnReference:
           columnCounter: 15
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
-        dataType: DATETIME
-        description: Close Date
-        name: CLOSEDATE
+        dataType: INTEGER
+        description: "Delinquency Status ID"
+        name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -212,10 +197,9 @@ operation:
       - columnReference:
           columnCounter: 16
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
-        dataType: DATETIME
-        description: Create Time
-        name: CREATETIME
+        dataType: STRING
+        description: "Delinquency Status Name"
+        name: DELINQUENCYSTATUS_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -225,9 +209,8 @@ operation:
       - columnReference:
           columnCounter: 17
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: First Twice Per Month Invoice DOM
+        description: "First Twice Per Month Invoice DOM"
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -238,9 +221,8 @@ operation:
       - columnReference:
           columnCounter: 18
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Second Twice Per Month Invoice DOM
+        description: "Second Twice Per Month Invoice DOM"
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -251,9 +233,8 @@ operation:
       - columnReference:
           columnCounter: 19
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Public ID
+        description: "Public ID"
         name: PUBLICID
         nullable: true
         sourceColumnReferences:
@@ -264,10 +245,9 @@ operation:
       - columnReference:
           columnCounter: 20
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Account ID
-        name: ACCOUNT_ID
+        description: "ID"
+        name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -277,9 +257,8 @@ operation:
       - columnReference:
           columnCounter: 21
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Bean Version from source
+        description: "Bean Version from source"
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -290,9 +269,8 @@ operation:
       - columnReference:
           columnCounter: 22
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Retired flag
+        description: "Retired flag"
         name: RETIRED
         nullable: true
         sourceColumnReferences:
@@ -303,9 +281,8 @@ operation:
       - columnReference:
           columnCounter: 23
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: DATETIME
-        description: Update Time
+        description: "Update Time"
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -316,10 +293,9 @@ operation:
       - columnReference:
           columnCounter: 24
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: Parent Account Foreign Entity ID
-        name: PARENT_FOREIGNENTITYID
+        description: "Parent Account Foreign Entity ID"
+        name: PARENTACCT_FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -329,9 +305,8 @@ operation:
       - columnReference:
           columnCounter: 25
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Contact First Name
+        description: "Contact First Name"
         name: CONTACT_FIRSTNAME
         nullable: true
         sourceColumnReferences:
@@ -342,9 +317,8 @@ operation:
       - columnReference:
           columnCounter: 26
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Contact Last Name
+        description: "Contact Last Name"
         name: CONTACT_LASTNAME
         nullable: true
         sourceColumnReferences:
@@ -355,10 +329,9 @@ operation:
       - columnReference:
           columnCounter: 27
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Address Line 1
-        name: ADDRESSLINE1
+        description: "Address Line 1"
+        name: ADDRESS_LINE1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -368,10 +341,9 @@ operation:
       - columnReference:
           columnCounter: 28
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Address Line 2
-        name: ADDRESSLINE2
+        description: "Address Line 2"
+        name: ADDRESS_LINE2
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -381,10 +353,9 @@ operation:
       - columnReference:
           columnCounter: 29
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Address Line 3
-        name: ADDRESSLINE3
+        description: "Address Line 3"
+        name: ADDRESS_LINE3
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -394,9 +365,8 @@ operation:
       - columnReference:
           columnCounter: 30
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: City
+        description: "City"
         name: CITY
         nullable: true
         sourceColumnReferences:
@@ -407,9 +377,8 @@ operation:
       - columnReference:
           columnCounter: 31
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: Postal Code
+        description: "Postal Code"
         name: POSTALCODE
         nullable: true
         sourceColumnReferences:
@@ -420,9 +389,8 @@ operation:
       - columnReference:
           columnCounter: 32
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: STRING
-        description: State Name
+        description: "State Name"
         name: STATE_NAME
         nullable: true
         sourceColumnReferences:
@@ -433,10 +401,9 @@ operation:
       - columnReference:
           columnCounter: 33
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
         dataType: INTEGER
-        description: BatchID
-        name: BATCHID
+        description: "Row count from source"
+        name: SOURCE_ROW_COUNT
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -446,9 +413,20 @@ operation:
       - columnReference:
           columnCounter: 34
           stepCounter: SRC_LOOKUP_BEANVERSION
-        config: {}
+        dataType: INTEGER
+        description: "Batch ID"
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34
+                stepCounter: SRC_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 35
+          stepCounter: SRC_LOOKUP_BEANVERSION
         dataType: STRING
-        description: EDW BeanVersion from DIMBILLINGACCOUNT lookup
+        description: "EDW Bean Version from DIMBILLINGACCOUNT lookup"
         name: EDW_BEANVERSION
         nullable: true
         sourceColumnReferences:
