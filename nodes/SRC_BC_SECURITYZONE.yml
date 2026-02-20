@@ -1,0 +1,15 @@
+name: SRC_BC_SECURITYZONE
+type: source
+location:
+  database: GUIDEWIRE
+  schema: DBO
+  table: BC_SECURITYZONE
+columns:
+  - name: ID
+    dataType: INTEGER
+  - name: NAME
+    dataType: STRING
+  - name: BEANVERSION
+    dataType: STRING
+  - name: UPDATETIME
+    dataType: DATETIME
