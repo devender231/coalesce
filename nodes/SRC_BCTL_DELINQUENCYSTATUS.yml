@@ -1,13 +1,11 @@
-source:
-  name: BCTL_DELINQUENCYSTATUS
-  type: table
-  location:
-    database: BC
-    schema: DBO
-    table: BCTL_DELINQUENCYSTATUS
-  connection_string: 'SRC ("BC"."DBO")'
-  columns:
-    - name: ID
-      order: 1
-    - name: NAME
-      order: 2
+name: SRC_BCTL_DELINQUENCYSTATUS
+type: source
+location:
+  database: BCTL
+  schema: dbo
+  table: DELINQUENCYSTATUS
+columns:
+  - name: ID
+    dataType: INTEGER
+  - name: NAME
+    dataType: VARCHAR
