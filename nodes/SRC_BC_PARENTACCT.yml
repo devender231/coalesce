@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_PARENTACCT
+  description: Source table BC_PARENTACCT from GuideWire
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,8 +22,10 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: OWNERID
         nullable: true
         sourceColumnReferences:
@@ -39,8 +41,10 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
@@ -56,8 +60,10 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: NUMBER
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -73,8 +79,10 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
