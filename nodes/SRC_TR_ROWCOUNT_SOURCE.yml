@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Row Count transformation - Counts source rows from GuideWire (Variable User::SourceCount)
+  description: "Transformation 1: Row Count for source rows from joined data - tracks User::SourceCount variable"
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -17,9 +17,8 @@ operation:
       - columnReference:
           columnCounter: 1
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
         dataType: NUMBER(38,0)
-        description: Account ID
+        description: "Account ID"
         name: ACCOUNTID
         nullable: false
         sourceColumnReferences:
@@ -30,9 +29,8 @@ operation:
       - columnReference:
           columnCounter: 2
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
         dataType: VARCHAR(100)
-        description: Account Number
+        description: "Account Number"
         name: ACCOUNTNUMBER
         nullable: false
         sourceColumnReferences:
@@ -43,10 +41,9 @@ operation:
       - columnReference:
           columnCounter: 3
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: Account Type Name
-        name: ACCOUNTTYPENAME
+        dataType: VARCHAR(255)
+        description: "Account Type"
+        name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -56,9 +53,8 @@ operation:
       - columnReference:
           columnCounter: 4
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
         dataType: NUMBER(38,0)
-        description: Parent Account ID
+        description: "Parent Account ID"
         name: PARENTACCOUNTID
         nullable: true
         sourceColumnReferences:
@@ -69,10 +65,9 @@ operation:
       - columnReference:
           columnCounter: 5
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: Billing Level Name
-        name: BILLINGLEVELNAME
+        dataType: VARCHAR(255)
+        description: "Billing Level"
+        name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -82,10 +77,9 @@ operation:
       - columnReference:
           columnCounter: 6
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: Customer Service Tier Name
-        name: CUSTOMERSERVICETIERNAME
+        dataType: VARCHAR(255)
+        description: "Service Tier"
+        name: SERVICETIER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -95,10 +89,9 @@ operation:
       - columnReference:
           columnCounter: 7
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: Security Zone Name
-        name: SECURITYZONENAME
+        dataType: VARCHAR(255)
+        description: "Security Zone"
+        name: SECURITYZONE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -108,10 +101,9 @@ operation:
       - columnReference:
           columnCounter: 8
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: Delinquency Status Name
-        name: DELINQUENCYSTATUSNAME
+        dataType: VARCHAR(255)
+        description: "Delinquency Status"
+        name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -121,10 +113,9 @@ operation:
       - columnReference:
           columnCounter: 9
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: Account Segment Name
-        name: ACCOUNTSEGMENTNAME
+        dataType: VARCHAR(255)
+        description: "Account Segment"
+        name: ACCOUNTSEGMENT
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -134,10 +125,9 @@ operation:
       - columnReference:
           columnCounter: 10
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: Insured First Name
-        name: INSUREDFIRSTNAME
+        dataType: VARCHAR(255)
+        description: "Insured First Name"
+        name: INSURED_FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -147,10 +137,9 @@ operation:
       - columnReference:
           columnCounter: 11
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: Insured Last Name
-        name: INSUREDLASTNAME
+        dataType: VARCHAR(255)
+        description: "Insured Last Name"
+        name: INSURED_LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -160,9 +149,8 @@ operation:
       - columnReference:
           columnCounter: 12
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(500)
-        description: Address Line 1
+        dataType: VARCHAR(255)
+        description: "Address Line 1"
         name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
@@ -173,9 +161,8 @@ operation:
       - columnReference:
           columnCounter: 13
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(500)
-        description: Address Line 2
+        dataType: VARCHAR(255)
+        description: "Address Line 2"
         name: ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
@@ -186,10 +173,9 @@ operation:
       - columnReference:
           columnCounter: 14
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(500)
-        description: Address Line 3
-        name: ADDRESSLINE3
+        dataType: VARCHAR(255)
+        description: "City"
+        name: CITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -199,10 +185,9 @@ operation:
       - columnReference:
           columnCounter: 15
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: City
-        name: CITY
+        dataType: VARCHAR(255)
+        description: "State"
+        name: STATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -212,10 +197,9 @@ operation:
       - columnReference:
           columnCounter: 16
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(200)
-        description: State Name
-        name: STATENAME
+        dataType: VARCHAR(20)
+        description: "Postal Code"
+        name: POSTALCODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -225,11 +209,10 @@ operation:
       - columnReference:
           columnCounter: 17
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(20)
-        description: Postal Code
-        name: POSTALCODE
-        nullable: true
+        dataType: TIMESTAMP_NTZ(9)
+        description: "Create Date"
+        name: CREATEDATE
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 17
@@ -238,11 +221,10 @@ operation:
       - columnReference:
           columnCounter: 18
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: VARCHAR(100)
-        description: Public ID
-        name: PUBLICID
-        nullable: true
+        dataType: TIMESTAMP_NTZ(9)
+        description: "Update Date"
+        name: UPDATEDATE
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 18
@@ -251,10 +233,9 @@ operation:
       - columnReference:
           columnCounter: 19
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
         dataType: VARCHAR(100)
-        description: Bean Version
-        name: BEANVERSION
+        description: "Public ID"
+        name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -264,10 +245,9 @@ operation:
       - columnReference:
           columnCounter: 20
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: Update Time
-        name: UPDATETIME
+        dataType: VARCHAR(100)
+        description: "Bean Version"
+        name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -277,26 +257,24 @@ operation:
       - columnReference:
           columnCounter: 21
           stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
         dataType: NUMBER(38,0)
-        description: Row count for source records (User::SourceCount)
+        description: "Row count for source tracking (User::SourceCount)"
         name: SOURCE_ROW_COUNT
         nullable: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: COUNT(*) OVER ()
+            transform: "COUNT(*) OVER ()"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_JOIN_DIMBILLINGACCOUNT: SRC_JOIN_DIMBILLINGACCOUNT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: JOIN_DIMBILLINGACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'JOIN_DIMBILLINGACCOUNT') }} SRC_JOIN_DIMBILLINGACCOUNT
+          joinCondition: FROM {{ ref('SRC', 'JOIN_DIMBILLINGACCOUNT') }}
         name: SRC_TR_ROWCOUNT_SOURCE
         noLinkRefs: []
   name: SRC_TR_ROWCOUNT_SOURCE
@@ -305,4 +283,3 @@ operation:
   sqlType: Transform
   type: sql
   version: 1
-type: Node
