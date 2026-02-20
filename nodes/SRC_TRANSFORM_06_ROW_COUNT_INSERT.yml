@@ -1,0 +1,114 @@
+fileVersion: 1
+id: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+name: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Transformation 6: Row Count - Counts new insert rows (lookup no match) (Variable: User::InsertCount)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+        config: {}
+        dataType: INTEGER
+        description: "Count of insert rows where ROUTE_TYPE = INSERT"
+        name: INSERT_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+        config: {}
+        dataType: INTEGER
+        description: "From previous transformation"
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_TRANSFORM_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+        config: {}
+        dataType: INTEGER
+        description: "From previous transformation"
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_TRANSFORM_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+        config: {}
+        dataType: STRING
+        description: "From previous transformation"
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_TRANSFORM_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+        config: {}
+        dataType: STRING
+        description: "From previous transformation"
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_TRANSFORM_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+        config: {}
+        dataType: STRING
+        description: "From previous transformation"
+        name: ROUTE_TYPE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_TRANSFORM_04_CONDITIONAL_SPLIT
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TRANSFORM_04_CONDITIONAL_SPLIT: CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: TRANSFORM_04_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'TRANSFORM_04_CONDITIONAL_SPLIT') }} "SRC_TRANSFORM_04_CONDITIONAL_SPLIT"
+            WHERE "SRC_TRANSFORM_04_CONDITIONAL_SPLIT".ROUTE_TYPE = 'INSERT'
+        name: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+        noLinkRefs: []
+  name: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
