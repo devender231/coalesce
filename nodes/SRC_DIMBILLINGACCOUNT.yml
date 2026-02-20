@@ -1,70 +1,14 @@
-fileVersion: 1
-id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table for DIMBILLINGACCOUNT
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_DIMBILLINGACCOUNT
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_DIMBILLINGACCOUNT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_DIMBILLINGACCOUNT: EDW.DBO.DIMBILLINGACCOUNT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: DIMBILLINGACCOUNT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'DIMBILLINGACCOUNT') }} "SRC_DIMBILLINGACCOUNT"
-        name: SRC_DIMBILLINGACCOUNT
-        noLinkRefs: []
-  name: SRC_DIMBILLINGACCOUNT
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+location:
+  name: SRC
+  database: EDW
+  schema: DBO
+  table: DIMBILLINGACCOUNT
+columns:
+  - name: PUBLICID
+    dataType: STRING
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
