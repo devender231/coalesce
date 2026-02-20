@@ -1,0 +1,60 @@
+# Transformation YAML - Conditional Split
+version: 1.0
+
+name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion
+transformation_type: CONDITIONAL_SPLIT
+
+sources:
+  - name: LOOKUP_OUTPUT
+    type: transformation
+    source_ref: SRC_DIMBILLINGACCOUNT_LOOKUP
+
+transformation:
+  type: CONDITIONAL_SPLIT
+  logic:
+    description: Split data into three paths based on BeanVersion comparison
+    conditions:
+      - condition_name: UNCHANGED_ROWS
+        expression: "BEANVERSION == EDWBeanVersion"
+        description: Rows where BeanVersion matches existing dimension record
+        output_path: UNCHANGED
+        priority: 1
+      
+      - condition_name: UPDATE_ROWS
+        expression: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+        description: Rows where BeanVersion differs from existing dimension record
+        output_path: UPDATE
+        priority: 2
+      
+      - condition_name: INSERT_ROWS
+        expression: "EDWBeanVersion IS NULL"
+        description: Rows with no match in dimension table (new records)
+        output_path: INSERT
+        priority: 3
+
+outputs:
+  - name: UNCHANGED_OUTPUT
+    description: Rows with matching BeanVersion (no changes needed)
+    condition: UNCHANGED_ROWS
+    columns:
+      - name: ALL_COLUMNS
+        source: LOOKUP_OUTPUT.*
+  
+  - name: UPDATE_OUTPUT
+    description: Rows with different BeanVersion (updates needed)
+    condition: UPDATE_ROWS
+    columns:
+      - name: ALL_COLUMNS
+        source: LOOKUP_OUTPUT.*
+  
+  - name: INSERT_OUTPUT
+    description: Rows with no dimension match (inserts needed)
+    condition: INSERT_ROWS
+    columns:
+      - name: ALL_COLUMNS
+        source: LOOKUP_OUTPUT.*
+
+execution_order: 5
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_LOOKUP
