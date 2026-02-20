@@ -1,144 +1,137 @@
-fileVersion: 1
+fileVersion: 1.0
 id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ''
+    preSQL: ''
+    refresh_mode: AUTO
     selectDistinct: false
-  database: ""
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
   deployEnabled: true
   description: Source table BC_CONTACT
+  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: INTEGER
-        defaultValue: ""
-        description: ""
+        description: ''
+        isBusinessKey: false
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
                 stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+            transform: ''
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: STRING
-        defaultValue: ""
-        description: ""
+        description: ''
+        isBusinessKey: false
         name: FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
                 stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+            transform: ''
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: STRING
-        defaultValue: ""
-        description: ""
+        description: ''
+        isBusinessKey: false
         name: LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
                 stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+            transform: ''
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: INTEGER
-        defaultValue: ""
-        description: ""
+        description: ''
+        isBusinessKey: false
         name: PRIMARYADDRESSID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
                 stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+            transform: ''
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 5
           stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: STRING
-        defaultValue: ""
-        description: ""
+        description: ''
+        isBusinessKey: false
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
                 stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+            transform: ''
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 6
           stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: DATETIME
-        defaultValue: ""
-        description: ""
+        description: ''
+        isBusinessKey: false
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
                 stepCounter: null
-            transform: ""
-    cteString: ""
+            transform: ''
+    cteString: ''
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_CONTACT: BC_CONTACT
+      - aliases: {}
         customSQL:
-          customSQL: ""
+          customSQL: ''
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "SRC_BC_CONTACT"
+          joinCondition: ''
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
   overrideSQL: false
-  schema: ""
+  schema: ''
   sqlType: Source
   type: sql
   version: 1
