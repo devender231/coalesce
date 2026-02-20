@@ -1,80 +1,11 @@
-fileVersion: 1
-id: SRC_BCTL_DELINQUENCYSTATUS
 name: SRC_BCTL_DELINQUENCYSTATUS
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
-  database: ""
-  deployEnabled: true
-  description: Source table for BCTL_DELINQUENCYSTATUS
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_DELINQUENCYSTATUS
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }}
-        name: SRC_BCTL_DELINQUENCYSTATUS
-        noLinkRefs: []
-  name: SRC_BCTL_DELINQUENCYSTATUS
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  location: SRC ("BC"."dbo")
+  columns:
+    - name: ID
+      dataType: INTEGER
+      nullable: true
+    - name: NAME
+      dataType: STRING
+      nullable: true
