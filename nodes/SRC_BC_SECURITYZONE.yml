@@ -1,0 +1,149 @@
+fileVersion: 1
+id: SRC_BC_SECURITYZONE
+name: SRC_BC_SECURITYZONE
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
+  deployEnabled: true
+  description: Source table BC_SECURITYZONE
+  isDataVault: false
+  isMultisource: false
+  locationID: SRC
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isNullable: true
+      name: ID
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: 1
+          stepCounter: 1
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isNullable: true
+      name: NAME
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: 2
+          stepCounter: 1
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 3
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isNullable: true
+      name: BEANVERSION
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: 3
+          stepCounter: 1
+        transform: ""
+    - acceptedValues:
+        strictMatch: true
+        values: []
+      appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4
+        stepCounter: 1
+      config: {}
+      dataType: VARCHAR
+      defaultValue: ""
+      description: ""
+      hashColumns: []
+      hashDetails: null
+      isBusinessKey: false
+      isChangeTracking: false
+      isClustered: false
+      isNullable: true
+      name: UPDATETIME
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: 4
+          stepCounter: 1
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+    - aliases: {}
+      customSQL:
+        customSQL: ""
+      dependencies:
+      - locationName: SRC
+        nodeName: BC_SECURITYZONE
+      join:
+        joinCondition: ""
+      name: SRC_BC_SECURITYZONE
+      noLinkRefs: []
+  name: SRC_BC_SECURITYZONE
+  overrideSQL: false
+  schema: ''
+  sqlType: Source
+  type: sql
+  version: 1
