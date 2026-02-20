@@ -3,97 +3,71 @@ id: SRC_BCTL_ACCOUNTSEGMENT
 name: SRC_BCTL_ACCOUNTSEGMENT
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: ''
-  database: ''
+  database: ""
   deployEnabled: true
-  description: Source table BCTL_ACCOUNTSEGMENT
-  isDataVault: false
+  description: Source table for BCTL_ACCOUNTSEGMENT
   isMultisource: false
-  locationID: SRC
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-    - acceptedValues:
-        strictMatch: true
-        values: []
-      appliedColumnTests: {}
-      columnReference:
-        columnCounter: 1
-        stepCounter: 1
-      config: {}
-      dataType: VARCHAR
-      defaultValue: ""
-      description: ""
-      hashColumns: []
-      hashDetails: null
-      isBusinessKey: false
-      isChangeTracking: false
-      isClustered: false
-      isNullable: true
-      name: ID
-      nullable: true
-      primaryKey: false
-      sourceColumnReferences:
-      - columnReferences:
-        - columnCounter: 1
-          stepCounter: 1
-        transform: ""
-    - acceptedValues:
-        strictMatch: true
-        values: []
-      appliedColumnTests: {}
-      columnReference:
-        columnCounter: 2
-        stepCounter: 1
-      config: {}
-      dataType: VARCHAR
-      defaultValue: ""
-      description: ""
-      hashColumns: []
-      hashDetails: null
-      isBusinessKey: false
-      isChangeTracking: false
-      isClustered: false
-      isNullable: true
-      name: NAME
-      nullable: true
-      primaryKey: false
-      sourceColumnReferences:
-      - columnReferences:
-        - columnCounter: 2
-          stepCounter: 1
-        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+        config: {}
+        dataType: INTEGER
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+        config: {}
+        dataType: STRING
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-    - aliases: {}
-      customSQL:
-        customSQL: ""
-      dependencies:
-      - locationName: SRC
-        nodeName: BCTL_ACCOUNTSEGMENT
-      join:
-        joinCondition: ""
-      name: SRC_BCTL_ACCOUNTSEGMENT
-      noLinkRefs: []
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTSEGMENT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }}
+        name: SRC_BCTL_ACCOUNTSEGMENT
+        noLinkRefs: []
   name: SRC_BCTL_ACCOUNTSEGMENT
   overrideSQL: false
-  schema: ''
+  schema: ""
   sqlType: Source
   type: sql
   version: 1
