@@ -1,0 +1,33 @@
+name: SRC_ROWCOUNT_UNCHANGED
+type: row_count
+description: Counts unchanged rows where BeanVersion matches EDWBeanVersion
+
+source:
+  name: UNCHANGED_ROWS
+  type: conditional_split_output
+  upstream_dependency: SRC_CONDITIONALSPLIT_BEANVERSION
+  split_output_path: UNCHANGED_ROWS
+
+transformation_logic:
+  operation: COUNT
+  count_type: UNCHANGED_ROWS
+  description: Counts rows where BeanVersion matches existing EDW BeanVersion (no changes)
+  filter_condition: BeanVersion == EDWBeanVersion
+  
+output:
+  variable_name: User::UnChangeCount
+  variable_type: INTEGER
+  description: Total count of unchanged rows (no update needed)
+  
+metadata:
+  execution_order: 5
+  package_name: EDW_BC_Load_DimBillingAccount
+  transformation_type: ROW_COUNT
+  created_from: SSIS_Documentation
+  upstream_dependency_validated: true
+  depends_on:
+    - SRC_DIMBILLINGACCOUNT_JOINS
+    - SRC_ROWCOUNT_SOURCE
+    - SRC_DERIVED_BATCHID
+    - SRC_LOOKUP_BEANVERSION
+    - SRC_CONDITIONALSPLIT_BEANVERSION
