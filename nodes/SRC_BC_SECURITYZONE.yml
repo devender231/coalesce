@@ -3,23 +3,37 @@ id: SRC_BC_SECURITYZONE
 name: SRC_BC_SECURITYZONE
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
-  description: Source table BC_SECURITYZONE
+  description: Source table for BC_SECURITYZONE
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR
         description: ""
         name: ID
         nullable: true
@@ -28,12 +42,15 @@ operation:
               - columnCounter: 1
                 stepCounter: SRC_BC_SECURITYZONE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: VARCHAR(256)
+        dataType: VARCHAR
         description: ""
         name: NAME
         nullable: true
@@ -42,12 +59,15 @@ operation:
               - columnCounter: 2
                 stepCounter: SRC_BC_SECURITYZONE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR
         description: ""
         name: BEANVERSION
         nullable: true
@@ -56,12 +76,15 @@ operation:
               - columnCounter: 3
                 stepCounter: SRC_BC_SECURITYZONE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: VARCHAR
         description: ""
         name: UPDATETIME
         nullable: true
@@ -73,15 +96,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_SECURITYZONE: BC_SECURITYZONE
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_SECURITYZONE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_SECURITYZONE') }} SRC_BC_SECURITYZONE
+          joinCondition: FROM {{ ref('SRC', 'BC_SECURITYZONE') }}
         name: SRC_BC_SECURITYZONE
         noLinkRefs: []
   name: SRC_BC_SECURITYZONE
