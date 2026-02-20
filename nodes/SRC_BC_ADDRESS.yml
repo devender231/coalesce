@@ -1,27 +1,27 @@
-source:
-  name: BC_ADDRESS
-  type: table
-  location:
-    database: BC
-    schema: DBO
-    table: BC_ADDRESS
-  connection_string: 'SRC ("BC"."DBO")'
-  columns:
-    - name: ID
-      order: 1
-    - name: ADDRESSLINE1
-      order: 2
-    - name: ADDRESSLINE2
-      order: 3
-    - name: ADDRESSLINE3
-      order: 4
-    - name: CITY
-      order: 5
-    - name: POSTALCODE
-      order: 6
-    - name: STATE
-      order: 7
-    - name: BEANVERSION
-      order: 8
-    - name: UPDATETIME
-      order: 9
+fileVersion: 1.0.0
+id: SRC_BC_ADDRESS
+name: SRC_BC_ADDRESS
+type: source
+config:
+  database: ""
+  schema: ""
+  table: BC_ADDRESS
+columns:
+  - name: ID
+    dataType: VARCHAR
+  - name: ADDRESSLINE1
+    dataType: VARCHAR
+  - name: ADDRESSLINE2
+    dataType: VARCHAR
+  - name: ADDRESSLINE3
+    dataType: VARCHAR
+  - name: CITY
+    dataType: VARCHAR
+  - name: POSTALCODE
+    dataType: VARCHAR
+  - name: STATE
+    dataType: VARCHAR
+  - name: BEANVERSION
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: TIMESTAMP
