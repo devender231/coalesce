@@ -14,31 +14,39 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_BILLINGLEVEL
-        dataType: INTEGER
+        config: {}
+        dataType: NUMBER
         description: ""
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_BILLINGLEVEL
+              - columnCounter: null
+                stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_BILLINGLEVEL
-        dataType: STRING
+        config: {}
+        dataType: VARCHAR
         description: ""
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_BILLINGLEVEL
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
