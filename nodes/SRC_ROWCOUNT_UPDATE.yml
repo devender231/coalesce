@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Counts update rows where BeanVersion differs from EDWBeanVersion"
+  description: "ROW_COUNT Transformation - Counts update rows where BeanVersion differs from EDW_BEANVERSION and stores in Variable User::UpdateCount"
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,99 +22,28 @@ operation:
           columnCounter: 1
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: Account Number
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Public ID
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Bean Version (new value)
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: EDW Bean Version (old value)
-        name: EDWBEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: Row count of update records
-        name: UPDATE_COUNT
-        nullable: true
+        name: UPDATE_ROW_COUNT
+        nullable: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
-            transform: "COUNT(*)"
+          - columnReferences: []
+            transform: COUNT(*)
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          CONDITIONAL_SPLIT: CONDITIONAL_SPLIT
+          SPLIT: SPLIT
         customSQL:
-          customSQL: |
-            SELECT *
-            FROM {{ ref('SRC', 'SRC_CONDITIONAL_SPLIT_BEANVERSION') }}
-            WHERE ROUTE_TYPE = 'UPDATE'
+          customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
         join:
-          joinCondition: ""
-        name: SRC_CONDITIONAL_SPLIT_BEANVERSION
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} SPLIT
+            WHERE SPLIT.SPLIT_CATEGORY = 'UPDATE'
+        name: SRC_CONDITIONALSPLIT_BEANVERSION
         noLinkRefs: []
   name: SRC_ROWCOUNT_UPDATE
   overrideSQL: false
@@ -123,31 +52,3 @@ operation:
   type: sql
   version: 1
 type: Node
-
-transformation_logic:
-  operation: ROW_COUNT
-  count_type: UPDATE_ROWS
-  description: |
-    Counts all rows where BeanVersion differs from EDWBeanVersion.
-    These are existing records in EDW that have changed and need to be updated.
-  
-  filter_condition: "ROUTE_TYPE = 'UPDATE'"
-  count_source: CONDITIONAL_SPLIT_UPDATE_OUTPUT
-  
-output:
-  variable_name: User::UpdateCount
-  variable_type: INTEGER
-  description: Total count of update rows (BeanVersion different from EDWBeanVersion)
-  
-metadata:
-  execution_order: 7
-  package_name: EDW_BC_Load_DimBillingAccount
-  transformation_type: ROW_COUNT
-  created_from: SSIS_Documentation
-  upstream_dependency_validated: true
-  depends_on:
-    - SRC_DIMBILLINGACCOUNT_JOINS
-    - SRC_ROWCOUNT_SOURCE
-    - SRC_DERIVED_BATCHID
-    - SRC_LOOKUP_BEANVERSION
-    - SRC_CONDITIONAL_SPLIT_BEANVERSION
