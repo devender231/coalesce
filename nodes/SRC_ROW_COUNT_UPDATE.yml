@@ -1,0 +1,31 @@
+name: SRC_ROW_COUNT_UPDATE
+type: Row Count
+description: Counts update rows (BeanVersion different)
+
+transformation_type: ROW_COUNT
+execution_order: 7
+
+input:
+  source: SRC_CONDITIONAL_SPLIT_SCD
+  output_path: UPDATE_ROWS
+  description: Rows where BeanVersion differs from EDWBeanVersion
+
+logic:
+  operation: COUNT
+  target_variable: User::UpdateCount
+  description: Counts rows that have changed and need update in dimension table
+
+output:
+  row_count_variable: User::UpdateCount
+  pass_through: true
+  description: Counts and passes update rows to target for UPDATE operation
+  destination: TARGET_DIMBILLINGACCOUNT
+  load_type: UPDATE
+
+upstream_dependencies:
+  - SRC_CONDITIONAL_SPLIT_SCD.yml
+
+metadata:
+  purpose: Audit and tracking of update row counts
+  usage: Variable User::UpdateCount is used for ETL audit logging
+  load_action: UPDATE
