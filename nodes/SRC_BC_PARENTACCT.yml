@@ -14,8 +14,8 @@ operation:
     refresh_mode: AUTO
     selectDistinct: false
     testsEnabled: false
-    truncateBefore: true
-    warehouseName: DEV_WH_XS
+    truncateBefore: false
+    warehouseName: DEV ENVIRONMENT
   database: ""
   deployEnabled: true
   description: Source table BC_PARENTACCT
@@ -25,61 +25,77 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_PARENTACCT
         config: {}
         dataType: INTEGER
         description: ""
+        isBusinessKey: false
         name: OWNERID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_PARENTACCT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_PARENTACCT
         config: {}
         dataType: INTEGER
         description: ""
+        isBusinessKey: false
         name: FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_PARENTACCT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_PARENTACCT
         config: {}
         dataType: STRING
         description: ""
+        isBusinessKey: false
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_PARENTACCT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_PARENTACCT
         config: {}
         dataType: DATETIME
         description: ""
+        isBusinessKey: false
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_PARENTACCT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
