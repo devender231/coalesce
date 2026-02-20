@@ -1,14 +1,12 @@
-fileVersion: 1.0.0
-id: SRC_BC_ADDRESS
 name: SRC_BC_ADDRESS
 type: source
-config:
-  database: ""
-  schema: ""
-  table: BC_ADDRESS
+location:
+  database: BC
+  schema: dbo
+  table: ADDRESS
 columns:
   - name: ID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: ADDRESSLINE1
     dataType: VARCHAR
   - name: ADDRESSLINE2
@@ -24,4 +22,4 @@ columns:
   - name: BEANVERSION
     dataType: INTEGER
   - name: UPDATETIME
-    dataType: TIMESTAMP
+    dataType: DATETIME
