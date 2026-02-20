@@ -3,19 +3,8 @@ id: SRC_BCTL_STATE
 name: SRC_BCTL_STATE
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV ENVIRONMENT
   database: ""
   deployEnabled: true
   description: Source table BCTL_STATE
@@ -25,41 +14,33 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_STATE
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        isBusinessKey: false
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_STATE
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_STATE
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
-        isBusinessKey: false
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_STATE
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
