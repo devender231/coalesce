@@ -1,23 +1,143 @@
+fileVersion: 1
+id: SRC_ROWCOUNT_INSERT
 name: SRC_ROWCOUNT_INSERT
-type: row_count
-description: Counts new insert rows where lookup found no match
-
-source:
-  name: INSERT_ROWS
-  type: conditional_split_output
-  upstream_dependency: SRC_CONDITIONALSPLIT_BEANVERSION
-  split_output_path: INSERT_ROWS
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Counts new insert rows where lookup found no match (EDWBeanVersion IS NULL)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Account Number
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Public ID
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Bean Version
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: EDW Bean Version (NULL for new records)
+        name: EDWBEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Row count of new insert records
+        name: INSERT_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 1
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          CONDITIONAL_SPLIT: CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: |
+            SELECT *
+            FROM {{ ref('SRC', 'SRC_CONDITIONAL_SPLIT_BEANVERSION') }}
+            WHERE ROUTE_TYPE = 'INSERT'
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_CONDITIONAL_SPLIT_BEANVERSION
+        join:
+          joinCondition: ""
+        name: SRC_CONDITIONAL_SPLIT_BEANVERSION
+        noLinkRefs: []
+  name: SRC_ROWCOUNT_INSERT
+  overrideSQL: false
+  schema: ""
+  sqlType: DT113:::156
+  type: sql
+  version: 1
+type: Node
 
 transformation_logic:
-  operation: COUNT
+  operation: ROW_COUNT
   count_type: INSERT_ROWS
-  description: Counts rows with no match in lookup (new records to insert)
-  filter_condition: EDWBeanVersion IS NULL
+  description: |
+    Counts all rows where EDWBeanVersion IS NULL (lookup found no match).
+    These are new records that will be inserted into DIMBILLINGACCOUNT.
+  
+  filter_condition: "ROUTE_TYPE = 'INSERT'"
+  count_source: CONDITIONAL_SPLIT_INSERT_OUTPUT
   
 output:
   variable_name: User::InsertCount
   variable_type: INTEGER
-  description: Total count of new rows to be inserted
+  description: Total count of new insert rows (lookup no match)
   
 metadata:
   execution_order: 6
@@ -30,4 +150,4 @@ metadata:
     - SRC_ROWCOUNT_SOURCE
     - SRC_DERIVED_BATCHID
     - SRC_LOOKUP_BEANVERSION
-    - SRC_CONDITIONALSPLIT_BEANVERSION
+    - SRC_CONDITIONAL_SPLIT_BEANVERSION
