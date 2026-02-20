@@ -24,6 +24,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ACCOUNTCONTACTID
         nullable: true
         sourceColumnReferences:
@@ -41,6 +43,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ROLE
         nullable: true
         sourceColumnReferences:
@@ -58,6 +62,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -75,6 +81,8 @@ operation:
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -92,6 +100,8 @@ operation:
         config: {}
         dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -102,15 +112,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_ACCOUNTCONTACTROLE: BC_ACCOUNTCONTACTROLE
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNTCONTACTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} "SRC_BC_ACCOUNTCONTACTROLE"
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }}
         name: SRC_BC_ACCOUNTCONTACTROLE
         noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACTROLE
