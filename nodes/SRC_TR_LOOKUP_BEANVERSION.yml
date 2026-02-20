@@ -3,12 +3,24 @@ id: SRC_TR_LOOKUP_BEANVERSION
 name: SRC_TR_LOOKUP_BEANVERSION
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_SMALL
   database: ""
   deployEnabled: true
-  description: Lookup transformation - retrieves BeanVersion from DimBillingAccount by PUBLICID
-  isMultisource: true
+  description: "Lookup transformation - Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID (SQL: Select Publicid, BeanVersion from DimBillingAccount; Join: PUBLICID = DIMBILLINGACCOUNT.PUBLICID)"
+  isDataVault: false
+  isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
@@ -18,9 +30,9 @@ operation:
           columnCounter: 1
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: INTEGER
-        description: Account Number
-        name: ACCOUNTNUMBER
+        dataType: NUMBER(38,0)
+        description: "Batch ID"
+        name: BATCHID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -31,10 +43,10 @@ operation:
           columnCounter: 2
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Account Name
-        name: ACCOUNTNAME
-        nullable: false
+        dataType: NUMBER(38,0)
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
@@ -44,9 +56,9 @@ operation:
           columnCounter: 3
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Account Type Description
-        name: ACCOUNTTYPE_DESC
+        dataType: VARCHAR(16777216)
+        description: "Account Name"
+        name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -57,9 +69,9 @@ operation:
           columnCounter: 4
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Parent Account Owner ID
-        name: PARENTACCT_OWNERID
+        dataType: VARCHAR(16777216)
+        description: "Account Type Name"
+        name: ACCOUNTTYPE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -70,9 +82,9 @@ operation:
           columnCounter: 5
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Billing Level Description
-        name: BILLINGLEVEL_DESC
+        dataType: VARCHAR(16777216)
+        description: "Public ID"
+        name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -83,9 +95,9 @@ operation:
           columnCounter: 6
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Customer Service Tier Description
-        name: SERVICETIER_DESC
+        dataType: VARCHAR(16777216)
+        description: "Bean Version from source"
+        name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -96,9 +108,22 @@ operation:
           columnCounter: 7
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Security Zone Name
-        name: SECURITYZONE_NAME
+        dataType: VARCHAR(16777216)
+        description: "EDW Bean Version from DIMBILLINGACCOUNT lookup"
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_DIMBILLINGACCOUNT
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: "Billing Level Name"
+        name: BILLINGLEVEL_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -106,12 +131,12 @@ operation:
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
-          columnCounter: 8
+          columnCounter: 9
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Delinquency Status Description
-        name: DELINQUENCYSTATUS_DESC
+        dataType: VARCHAR(16777216)
+        description: "Service Tier Name"
+        name: SERVICETIER_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -119,12 +144,12 @@ operation:
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
-          columnCounter: 9
+          columnCounter: 10
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Account Segment Description
-        name: SEGMENT_DESC
+        dataType: VARCHAR(16777216)
+        description: "Security Zone Name"
+        name: SECURITYZONE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -132,12 +157,12 @@ operation:
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
-          columnCounter: 10
+          columnCounter: 11
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Contact Name
-        name: CONTACT_NAME
+        dataType: VARCHAR(16777216)
+        description: "Delinquency Status Name"
+        name: DELINQUENCYSTATUS_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -145,12 +170,12 @@ operation:
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
-          columnCounter: 11
+          columnCounter: 12
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Address Line
-        name: ADDRESS_LINE
+        dataType: VARCHAR(16777216)
+        description: "Account Segment Name"
+        name: ACCOUNTSEGMENT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -158,12 +183,12 @@ operation:
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
-          columnCounter: 12
+          columnCounter: 13
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: State Name
-        name: STATE_NAME
+        dataType: VARCHAR(16777216)
+        description: "Contact First Name"
+        name: CONTACT_FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -171,128 +196,141 @@ operation:
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
-          columnCounter: 13
+          columnCounter: 14
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Public ID
-        name: PUBLICID
-        nullable: false
+        dataType: VARCHAR(16777216)
+        description: "Contact Last Name"
+        name: CONTACT_LASTNAME
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 13
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
-          columnCounter: 14
-          stepCounter: SRC_TR_LOOKUP_BEANVERSION
-        config: {}
-        dataType: STRING
-        description: Bean Version from BC_ACCOUNT
-        name: BEANVERSION
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 15
-                stepCounter: SRC_TR_DERIVED_BATCHID
-            transform: ""
-      - columnReference:
           columnCounter: 15
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: INTEGER
-        description: Account ID
-        name: ID
-        nullable: false
+        dataType: VARCHAR(16777216)
+        description: "Address Line 1"
+        name: ADDRESS_LINE1
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 16
+              - columnCounter: 14
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
           columnCounter: 16
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: DATETIME
-        description: Close Date
-        name: CLOSEDATE
-        nullable: false
+        dataType: VARCHAR(16777216)
+        description: "City"
+        name: ADDRESS_CITY
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 17
+              - columnCounter: 15
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
           columnCounter: 17
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: DATETIME
-        description: Create Time
-        name: CREATETIME
-        nullable: false
+        dataType: VARCHAR(16777216)
+        description: "State Name"
+        name: STATE_NAME
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 18
+              - columnCounter: 16
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
           columnCounter: 18
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: DATETIME
-        description: Update Time
-        name: UPDATETIME
-        nullable: false
+        dataType: TIMESTAMP_NTZ(9)
+        description: "Close Date"
+        name: CLOSEDATE
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 19
+              - columnCounter: 17
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
           columnCounter: 19
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: INTEGER
-        description: Retired Flag
-        name: RETIRED
-        nullable: false
+        dataType: TIMESTAMP_NTZ(9)
+        description: "Create Time"
+        name: CREATETIME
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 20
+              - columnCounter: 18
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
           columnCounter: 20
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: INTEGER
-        description: Batch ID
-        name: BATCHID
-        nullable: false
+        dataType: NUMBER(38,0)
+        description: "First Twice Per Month Invoice DOM"
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 21
+              - columnCounter: 19
                 stepCounter: SRC_TR_DERIVED_BATCHID
             transform: ""
       - columnReference:
           columnCounter: 21
           stepCounter: SRC_TR_LOOKUP_BEANVERSION
         config: {}
-        dataType: STRING
-        description: Bean Version from DimBillingAccount lookup
-        name: EDWBEANVERSION
+        dataType: NUMBER(38,0)
+        description: "Second Twice Per Month Invoice DOM"
+        name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: SRC_DIMBILLINGACCOUNT
-            transform: "LOOKUP_BEANVERSION"
+              - columnCounter: 20
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 22
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        config: {}
+        dataType: NUMBER(38,0)
+        description: "Retired Flag"
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 23
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: "Update Time"
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_TR_DERIVED_BATCHID: DERIVED_INPUT
-          SRC_DIMBILLINGACCOUNT: LOOKUP_TABLE
+          SRC_TR_DERIVED_BATCHID: DERIVED_DATA
+          SRC_DIMBILLINGACCOUNT: DIM_LOOKUP
         customSQL:
           customSQL: ""
         dependencies:
@@ -304,18 +342,12 @@ operation:
           joinCondition: |
             FROM {{ ref('SRC', 'TR_DERIVED_BATCHID') }} "SRC_TR_DERIVED_BATCHID"
             LEFT JOIN {{ ref('SRC', 'DIMBILLINGACCOUNT') }} "SRC_DIMBILLINGACCOUNT"
-              ON "SRC_TR_DERIVED_BATCHID".PUBLICID = "SRC_DIMBILLINGACCOUNT".PUBLICID
+              ON "SRC_TR_DERIVED_BATCHID"."PUBLICID" = "SRC_DIMBILLINGACCOUNT"."PUBLICID"
         name: SRC_TR_LOOKUP_BEANVERSION
         noLinkRefs: []
   name: SRC_TR_LOOKUP_BEANVERSION
   overrideSQL: false
   schema: ""
-  sqlType: Transformation
+  sqlType: Transform
   type: sql
   version: 1
-  lookupConfig:
-    lookupTable: DIMBILLINGACCOUNT
-    lookupColumns:
-      - PUBLICID
-      - BEANVERSION
-    joinCondition: PUBLICID = DIMBILLINGACCOUNT.PUBLICID
