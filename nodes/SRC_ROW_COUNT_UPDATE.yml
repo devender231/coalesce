@@ -1,0 +1,139 @@
+fileVersion: 1
+id: SRC_ROW_COUNT_UPDATE
+name: SRC_ROW_COUNT_UPDATE
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Row Count transformation - Counts update rows where BeanVersion differs from EDWBeanVersion and stores in User::UpdateCount variable
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_ROW_COUNT_UPDATE
+        config: {}
+        dataType: NUMBER
+        description: Count of update rows
+        name: UPDATE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: COUNT(*)
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_ROW_COUNT_UPDATE
+        config: {}
+        dataType: NUMBER
+        description: Account Number
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_ROW_COUNT_UPDATE
+        config: {}
+        dataType: VARCHAR
+        description: Account Name
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_ROW_COUNT_UPDATE
+        config: {}
+        dataType: VARCHAR
+        description: Public ID
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_ROW_COUNT_UPDATE
+        config: {}
+        dataType: NUMBER
+        description: Bean Version from source
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_ROW_COUNT_UPDATE
+        config: {}
+        dataType: NUMBER
+        description: EDW Bean Version from lookup
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: SRC_ROW_COUNT_UPDATE
+        config: {}
+        dataType: NUMBER
+        description: Batch ID
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: SRC_ROW_COUNT_UPDATE
+        config: {}
+        dataType: VARCHAR
+        description: Row Type
+        name: ROW_TYPE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_CONDITIONAL_SPLIT_BEANVERSION
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_CONDITIONAL_SPLIT_BEANVERSION') }}
+            WHERE ROW_TYPE = 'UPDATE'
+        name: SRC_ROW_COUNT_UPDATE
+        noLinkRefs: []
+  name: SRC_ROW_COUNT_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
