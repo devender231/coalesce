@@ -1,9 +1,14 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
-location:
-  database: GUIDEWIRE
-  schema: DBO
-  table: DIMBILLINGACCOUNT
+config:
+  sourceLocation:
+    database: "DATABASE"
+    schema: "SCHEMA"
+    table: "DIMBILLINGACCOUNT"
 columns:
   - name: PUBLICID
+    dataType: STRING
+    columnOrder: 1
   - name: BEANVERSION
+    dataType: STRING
+    columnOrder: 2
