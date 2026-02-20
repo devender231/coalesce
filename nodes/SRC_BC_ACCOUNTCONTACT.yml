@@ -1,18 +1,19 @@
 name: SRC_BC_ACCOUNTCONTACT
 type: source
-config:
-  source_type: table
-  database: EDWDEV
-  schema: BC
-  table: BC_ACCOUNTCONTACT
+database: ""
+schema: ""
+location:
+  name: BC_ACCOUNTCONTACT
+  database: ""
+  schema: ""
 columns:
-  - name: ACCOUNTCONTACTID
-    datatype: VARCHAR
-  - name: ACCOUNTID
-    datatype: VARCHAR
+  - name: INSUREDACCOUNTID
+    datatype: NUMBER
   - name: CONTACTID
-    datatype: VARCHAR
-  - name: ISACTIVE
-    datatype: BIT
-  - name: ETLINSERTDATE
-    datatype: DATETIME
+    datatype: NUMBER
+  - name: ID
+    datatype: NUMBER
+  - name: BEANVERSION
+    datatype: NUMBER
+  - name: UPDATETIME
+    datatype: TIMESTAMP
