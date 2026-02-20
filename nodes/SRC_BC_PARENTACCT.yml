@@ -5,104 +5,86 @@ operation:
   config:
     insertStrategy: INSERT
     selectDistinct: false
-  database: SRC
+  database: GUIDEWIRE
   deployEnabled: true
   locationName: SRC
+  locationID: SRC_LOCATION
+  materializationType: view
   metadata:
+    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: SRC_BC_PARENTACCT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: OWNERID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: 1
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: SRC_BC_PARENTACCT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: 1
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: SRC_BC_PARENTACCT
+          stepCounter: 1
         config: {}
-        dataType: STRING
+        dataType: INTEGER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: 1
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: SRC_BC_PARENTACCT
+          stepCounter: 1
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: 1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_PARENTACCT: SRC.SRC.BC_PARENTACCT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_PARENTACCT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }} "SRC_BC_PARENTACCT"
+          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }}
         name: SRC_BC_PARENTACCT
         noLinkRefs: []
   name: SRC_BC_PARENTACCT
   overrideSQL: false
-  schema: SRC
+  schema: DBO
   sqlType: Source
   type: sql
   version: 1
