@@ -22,16 +22,14 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -43,14 +41,12 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -62,14 +58,12 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -79,16 +73,14 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: PRIMARYADDRESSID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -98,16 +90,14 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -117,28 +107,27 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR
+        dataType: TIMESTAMP
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 6
+                stepCounter: SRC_BC_CONTACT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BC_CONTACT: BC_CONTACT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "SRC_BC_CONTACT"
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
