@@ -1,0 +1,125 @@
+fileVersion: 1
+id: SRC_TRANSFORM_LOOKUP
+name: SRC_TRANSFORM_LOOKUP
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Lookup Transformation - Performs lookup operations to enrich data
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TRANSFORM_LOOKUP
+        config: {}
+        dataType: INTEGER
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+            transform: "ACCOUNTNUMBER"
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_TRANSFORM_LOOKUP
+        config: {}
+        dataType: STRING
+        description: "Account Name"
+        name: ACCOUNTNAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+            transform: "ACCOUNTNAME"
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_TRANSFORM_LOOKUP
+        config: {}
+        dataType: STRING
+        description: "Full Account Name"
+        name: FULL_ACCOUNT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+            transform: "FULL_ACCOUNT_NAME"
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_TRANSFORM_LOOKUP
+        config: {}
+        dataType: INTEGER
+        description: "Lookup Billing Account Key"
+        name: BILLING_ACCOUNT_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COALESCE(LOOKUP_DIM.BILLINGACCOUNT_KEY, -1)"
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_TRANSFORM_LOOKUP
+        config: {}
+        dataType: STRING
+        description: "Lookup Account Status"
+        name: ACCOUNT_STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COALESCE(LOOKUP_DIM.ACCOUNT_STATUS, 'UNKNOWN')"
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_TRANSFORM_LOOKUP
+        config: {}
+        dataType: DATETIME
+        description: "Load Timestamp"
+        name: LOAD_TIMESTAMP
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+            transform: "LOAD_TIMESTAMP"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TRANSFORM_DERIVED_COLUMN: SRC_TRANSFORM_DERIVED_COLUMN
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: SRC_TRANSFORM_DERIVED_COLUMN
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'SRC_TRANSFORM_DERIVED_COLUMN') }} "SRC_TRANSFORM_DERIVED_COLUMN"
+        name: SRC_TRANSFORM_DERIVED_COLUMN
+        noLinkRefs: []
+      - aliases:
+          LOOKUP_DIM: SRC_DIMBILLINGACCOUNT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: DIMBILLINGACCOUNT
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'DIMBILLINGACCOUNT') }} "LOOKUP_DIM"
+            ON SRC_TRANSFORM_DERIVED_COLUMN.ACCOUNTNUMBER = LOOKUP_DIM.ACCOUNTNUMBER
+        name: LOOKUP_DIM
+        noLinkRefs: []
+  name: SRC_TRANSFORM_LOOKUP
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
+type: Node
