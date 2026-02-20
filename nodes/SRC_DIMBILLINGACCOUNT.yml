@@ -1,13 +1,42 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
-location:
+config:
+  source_name: DIMBILLINGACCOUNT
+  source_type: table
   database: ""
   schema: ""
-  table: DIMBILLINGACCOUNT
+  location: SRC ("."."")
 columns:
-  - name: PUBLICID
-    data_type: STRING
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
+  - name: BILLINGACCOUNTKEY
+    datatype: NUMBER(38,0)
+    description: Primary key for billing account dimension
+  - name: ACCOUNTNUMBER
+    datatype: VARCHAR2(100)
+    description: Account number
+  - name: ACCOUNTNAME
+    datatype: VARCHAR2(200)
+    description: Account name
+  - name: ACCOUNTTYPEKEY
+    datatype: NUMBER(38,0)
+    description: Foreign key to account type
+  - name: BILLINGLEVELKEY
+    datatype: NUMBER(38,0)
+    description: Foreign key to billing level
+  - name: CUSTOMERSERVICETIERKEY
+    datatype: NUMBER(38,0)
+    description: Foreign key to customer service tier
+  - name: SECURITYZONEKEY
+    datatype: NUMBER(38,0)
+    description: Foreign key to security zone
+  - name: DELINQUENCYSTATUSKEY
+    datatype: NUMBER(38,0)
+    description: Foreign key to delinquency status
+  - name: ACCOUNTSEGMENTKEY
+    datatype: NUMBER(38,0)
+    description: Foreign key to account segment
+  - name: ADDRESSKEY
+    datatype: NUMBER(38,0)
+    description: Foreign key to address
+  - name: STATEKEY
+    datatype: NUMBER(38,0)
+    description: Foreign key to state
