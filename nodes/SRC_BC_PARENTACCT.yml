@@ -3,8 +3,19 @@ id: SRC_BC_PARENTACCT
 name: SRC_BC_PARENTACCT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BC_PARENTACCT
@@ -14,10 +25,7 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_PARENTACCT
@@ -31,10 +39,7 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_PARENTACCT
@@ -48,10 +53,7 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_PARENTACCT
@@ -65,10 +67,7 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_PARENTACCT
@@ -85,15 +84,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          BC_PARENTACCT: SRC_BC_PARENTACCT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_PARENTACCT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }} "BC_PARENTACCT"
+          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }}
         name: SRC_BC_PARENTACCT
         noLinkRefs: []
   name: SRC_BC_PARENTACCT
