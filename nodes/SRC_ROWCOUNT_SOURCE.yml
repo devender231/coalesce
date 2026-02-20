@@ -1,0 +1,51 @@
+fileVersion: 1
+id: SRC_ROWCOUNT_SOURCE
+name: SRC_ROWCOUNT_SOURCE
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts source rows from GuideWire (Variable: User::SourceCount)"
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_ROWCOUNT_SOURCE
+        config: {}
+        dataType: NUMBER
+        description: "Total count of source rows"
+        name: SOURCE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          JOINS: SRC_DIMBILLINGACCOUNT_JOINS
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: SRC_DIMBILLINGACCOUNT_JOINS
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'SRC_DIMBILLINGACCOUNT_JOINS') }} JOINS
+        name: SRC_ROWCOUNT_SOURCE
+        noLinkRefs: []
+name: SRC_ROWCOUNT_SOURCE
+overrideSQLStep:
+  name: ""
+  overrideSQL: false
+schema: ""
+sqlType: Transform
+type: sql
+version: 1
