@@ -3,23 +3,11 @@ id: SRC_TR_DERIVED_BATCHID
 name: SRC_TR_DERIVED_BATCHID
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_SMALL
   database: ""
   deployEnabled: true
-  description: Derived Column transformation - Adds or overwrites BatchID column
-  isDataVault: false
+  description: Derived column transformation - adds BatchID column from User::BatchID variable
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -30,459 +18,295 @@ operation:
           columnCounter: 1
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
+        dataType: INTEGER
+        description: Account Number
         name: ACCOUNTNUMBER
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 2
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
+        dataType: STRING
+        description: Account Name
         name: ACCOUNTNAME
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 3
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: ACCOUNTTYPE
+        dataType: STRING
+        description: Account Type Description
+        name: ACCOUNTTYPE_DESC
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 4
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: BILLINGLEVEL
+        dataType: STRING
+        description: Parent Account Owner ID
+        name: PARENTACCT_OWNERID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 5
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: SERVICETIER
+        dataType: STRING
+        description: Billing Level Description
+        name: BILLINGLEVEL_DESC
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 5
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 6
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: SECURITYZONEID
+        dataType: STRING
+        description: Customer Service Tier Description
+        name: SERVICETIER_DESC
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 6
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 7
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: SEGMENT
+        dataType: STRING
+        description: Security Zone Name
+        name: SECURITYZONE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 7
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 8
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        name: CLOSEDATE
+        dataType: STRING
+        description: Delinquency Status Description
+        name: DELINQUENCYSTATUS_DESC
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 8
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 9
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        name: CREATETIME
+        dataType: STRING
+        description: Account Segment Description
+        name: SEGMENT_DESC
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 9
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 10
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: DELINQUENCYSTATUS
+        dataType: STRING
+        description: Contact Name
+        name: CONTACT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 10
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 11
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: FIRSTTWICEPERMTHINVOICEDOM
+        dataType: STRING
+        description: Address Line
+        name: ADDRESS_LINE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 11
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 12
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: STRING
+        description: State Name
+        name: STATE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 12
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 13
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
+        dataType: STRING
+        description: Public ID
         name: PUBLICID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 13
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 14
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: BC_ACCOUNT_ID
+        dataType: STRING
+        description: Bean Version from DimBillingAccount
+        name: EDWBEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 14
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 15
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
+        dataType: STRING
+        description: Bean Version from BC_ACCOUNT
         name: BEANVERSION
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 15
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 16
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: RETIRED
-        nullable: true
+        dataType: INTEGER
+        description: Account ID
+        name: ID
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 16
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 17
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        name: UPDATETIME
-        nullable: true
+        dataType: DATETIME
+        description: Close Date
+        name: CLOSEDATE
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 17
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 18
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: ACCOUNTTYPE_NAME
-        nullable: true
+        dataType: DATETIME
+        description: Create Time
+        name: CREATETIME
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 18
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 19
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: PARENTACCT_FOREIGNENTITYID
-        nullable: true
+        dataType: DATETIME
+        description: Update Time
+        name: UPDATETIME
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 19
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 20
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: BILLINGLEVEL_NAME
-        nullable: true
+        dataType: INTEGER
+        description: Retired Flag
+        name: RETIRED
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 20
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
+                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 21
           stepCounter: SRC_TR_DERIVED_BATCHID
         config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: SERVICETIER_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 21
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 22
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: SECURITYZONE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 22
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 23
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: DELINQUENCYSTATUS_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 23
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 24
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: ACCOUNTSEGMENT_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 24
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 25
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: CONTACT_FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 25
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 26
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: CONTACT_LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 26
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 27
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: ADDRESS_LINE1
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 27
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 28
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: ADDRESS_LINE2
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 28
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 29
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: ADDRESS_LINE3
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 29
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 30
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: ADDRESS_CITY
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 30
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 31
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: ADDRESS_POSTALCODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 31
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 32
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: STATE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 32
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 33
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: SOURCE_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 33
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - columnReference:
-          columnCounter: 34
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: NUMBER(38,0)
-        description: Derived BatchID from User variable
+        dataType: INTEGER
+        description: Batch ID derived from User::BatchID variable
         name: BATCHID
         nullable: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: "{{ var('BatchID') }}"
+            transform: "@[User::BatchID]"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_TR_ROW_COUNT_SOURCE: SRC_TR_ROW_COUNT_SOURCE
+          SRC_JOIN_DIMBILLINGACCOUNT: JOIN_INPUT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: TR_ROW_COUNT_SOURCE
+            nodeName: JOIN_DIMBILLINGACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'TR_ROW_COUNT_SOURCE') }} "SRC_TR_ROW_COUNT_SOURCE"
+          joinCondition: |
+            FROM {{ ref('SRC', 'JOIN_DIMBILLINGACCOUNT') }} "SRC_JOIN_DIMBILLINGACCOUNT"
         name: SRC_TR_DERIVED_BATCHID
         noLinkRefs: []
   name: SRC_TR_DERIVED_BATCHID
   overrideSQL: false
   schema: ""
-  sqlType: Transform
+  sqlType: Transformation
   type: sql
   version: 1
+  variables:
+    - name: User::BatchID
+      type: INTEGER
+      description: Batch ID variable for ETL tracking
