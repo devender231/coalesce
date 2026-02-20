@@ -1,13 +1,13 @@
-source:
-  name: BCTL_STATE
-  type: table
-  location:
-    database: BC
-    schema: DBO
-    table: BCTL_STATE
-  connection_string: 'SRC ("BC"."DBO")'
-  columns:
-    - name: ID
-      order: 1
-    - name: NAME
-      order: 2
+fileVersion: 1.0.0
+id: SRC_BCTL_STATE
+name: SRC_BCTL_STATE
+type: source
+config:
+  database: ""
+  schema: ""
+  table: BCTL_STATE
+columns:
+  - name: ID
+    dataType: VARCHAR
+  - name: NAME
+    dataType: VARCHAR
