@@ -1,0 +1,131 @@
+name: SRC_TR_CONDITIONALSPLIT_SCD
+type: transformation
+transformation_type: CONDITIONAL_SPLIT
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion
+execution_order: 4
+dependencies:
+  - SRC_TR_LOOKUP_BEANVERSION
+
+logic:
+  operation: CONDITIONAL_SPLIT
+  conditions:
+    - condition_name: UNCHANGED_ROWS
+      expression: BEANVERSION == EDW_BEANVERSION
+      priority: 1
+      description: Rows where source BeanVersion matches existing EDW BeanVersion (no changes)
+      
+    - condition_name: UPDATE_ROWS
+      expression: BEANVERSION != EDW_BEANVERSION AND EDW_BEANVERSION IS NOT NULL
+      priority: 2
+      description: Rows where BeanVersion differs from EDW (updates required)
+      
+    - condition_name: INSERT_ROWS
+      expression: EDW_BEANVERSION IS NULL
+      priority: 3
+      description: Rows with no match in lookup (new inserts)
+  
+  default_output: ERROR_ROWS
+
+input:
+  source: SRC_TR_LOOKUP_BEANVERSION
+  
+output:
+  unchanged_rows:
+    condition: UNCHANGED_ROWS
+    columns:
+      - ACCOUNTNUMBER
+      - ACCOUNTNAME
+      - ACCOUNTTYPE_NAME
+      - BILLINGLEVEL_NAME
+      - SERVICETIER_NAME
+      - SECURITYZONE_NAME
+      - SEGMENT_NAME
+      - CLOSEDATE
+      - CREATETIME
+      - DELINQUENCYSTATUS_NAME
+      - FIRSTTWICEPERMTHINVOICEDOM
+      - SECONDTWICEPERMTHINVOICEDOM
+      - PUBLICID
+      - ACCOUNT_ID
+      - BEANVERSION
+      - RETIRED
+      - UPDATETIME
+      - PARENT_FOREIGNENTITYID
+      - INSURED_FIRSTNAME
+      - INSURED_LASTNAME
+      - ADDRESS_LINE1
+      - ADDRESS_LINE2
+      - ADDRESS_LINE3
+      - CITY
+      - POSTALCODE
+      - STATE_NAME
+      - EDW_BEANVERSION
+      - BatchID
+  
+  update_rows:
+    condition: UPDATE_ROWS
+    columns:
+      - ACCOUNTNUMBER
+      - ACCOUNTNAME
+      - ACCOUNTTYPE_NAME
+      - BILLINGLEVEL_NAME
+      - SERVICETIER_NAME
+      - SECURITYZONE_NAME
+      - SEGMENT_NAME
+      - CLOSEDATE
+      - CREATETIME
+      - DELINQUENCYSTATUS_NAME
+      - FIRSTTWICEPERMTHINVOICEDOM
+      - SECONDTWICEPERMTHINVOICEDOM
+      - PUBLICID
+      - ACCOUNT_ID
+      - BEANVERSION
+      - RETIRED
+      - UPDATETIME
+      - PARENT_FOREIGNENTITYID
+      - INSURED_FIRSTNAME
+      - INSURED_LASTNAME
+      - ADDRESS_LINE1
+      - ADDRESS_LINE2
+      - ADDRESS_LINE3
+      - CITY
+      - POSTALCODE
+      - STATE_NAME
+      - EDW_BEANVERSION
+      - BatchID
+  
+  insert_rows:
+    condition: INSERT_ROWS
+    columns:
+      - ACCOUNTNUMBER
+      - ACCOUNTNAME
+      - ACCOUNTTYPE_NAME
+      - BILLINGLEVEL_NAME
+      - SERVICETIER_NAME
+      - SECURITYZONE_NAME
+      - SEGMENT_NAME
+      - CLOSEDATE
+      - CREATETIME
+      - DELINQUENCYSTATUS_NAME
+      - FIRSTTWICEPERMTHINVOICEDOM
+      - SECONDTWICEPERMTHINVOICEDOM
+      - PUBLICID
+      - ACCOUNT_ID
+      - BEANVERSION
+      - RETIRED
+      - UPDATETIME
+      - PARENT_FOREIGNENTITYID
+      - INSURED_FIRSTNAME
+      - INSURED_LASTNAME
+      - ADDRESS_LINE1
+      - ADDRESS_LINE2
+      - ADDRESS_LINE3
+      - CITY
+      - POSTALCODE
+      - STATE_NAME
+      - BatchID
+  
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  component_name: Conditional Split - SCD Logic
+  purpose: Implement SCD Type 1 logic by routing rows to insert, update, or unchanged paths
