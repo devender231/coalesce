@@ -3,8 +3,20 @@ id: SRC_BC_ADDRESS
 name: SRC_BC_ADDRESS
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: ''
   database: ""
   deployEnabled: true
   description: Source table BC_ADDRESS
@@ -22,11 +34,11 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
-        name: ADDRESSID
+        name: ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -41,12 +53,12 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(100)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
         name: ADDRESSLINE1
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -60,12 +72,12 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(100)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
         name: ADDRESSLINE2
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -79,12 +91,12 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(100)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        name: CITY
-        nullable: true
+        name: ADDRESSLINE3
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -98,12 +110,12 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        name: STATEID
-        nullable: true
+        name: CITY
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -117,12 +129,12 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(100)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
         name: POSTALCODE
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -136,12 +148,12 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(100)
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
-        name: COUNTRY
-        nullable: true
+        name: STATE
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -155,11 +167,11 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        name: ISDELETED
+        name: BEANVERSION
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -174,12 +186,12 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR(100)
+        dataType: DATETIME
         description: ""
         hashColumns: []
         hashDetails: null
-        name: COUNTY
-        nullable: true
+        name: UPDATETIME
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -188,14 +200,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BC_ADDRESS: SRC_BC_ADDRESS
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ADDRESS
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }} "BC_ADDRESS"
         name: SRC_BC_ADDRESS
         noLinkRefs: []
   name: SRC_BC_ADDRESS
