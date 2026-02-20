@@ -1,9 +1,14 @@
 name: SRC_BCTL_CUSTOMERSERVICETIER
 type: source
-location:
-  database: GUIDEWIRE
-  schema: DBO
-  table: BCTL_CUSTOMERSERVICETIER
+config:
+  sourceLocation:
+    database: "DATABASE"
+    schema: "SCHEMA"
+    table: "BCTL_CUSTOMERSERVICETIER"
 columns:
   - name: ID
+    dataType: INTEGER
+    columnOrder: 1
   - name: NAME
+    dataType: STRING
+    columnOrder: 2
