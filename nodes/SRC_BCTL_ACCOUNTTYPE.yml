@@ -1,14 +1,16 @@
 name: SRC_BCTL_ACCOUNTTYPE
+description: Source definition for BCTL_ACCOUNTTYPE lookup table
 type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BCTL_ACCOUNTTYPE
+source:
+  database: "BILLING"
+  schema: "DBO"
+  identifier: BCTL_ACCOUNTTYPE
 columns:
   - name: ID
     data_type: INTEGER
-    nullable: true
+    description: Account type ID
+    ordinal_position: 1
   - name: NAME
     data_type: STRING
-    nullable: true
+    description: Account type name
+    ordinal_position: 2
