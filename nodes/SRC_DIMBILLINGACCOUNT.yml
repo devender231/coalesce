@@ -1,14 +1,12 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
-source:
-  database: GUIDEWIRE
-  schema: DW
-  table: DIMBILLINGACCOUNT
-  location: SRC (GUIDEWIRE.DW.DIMBILLINGACCOUNT)
+database: ''
+schema: ''
+table: DIMBILLINGACCOUNT
 columns:
   - name: PUBLICID
-    data_type: STRING
-    nullable: true
+    dataType: STRING
+    order: 1
   - name: BEANVERSION
-    data_type: STRING
-    nullable: true
+    dataType: STRING
+    order: 2
