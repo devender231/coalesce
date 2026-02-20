@@ -1,7 +1,0 @@
-name: SRC_DIMBILLINGACCOUNT
-type: source
-source:
-  location: BC_DATABASE.BC_SCHEMA.DIMBILLINGACCOUNT
-  columns:
-    - PUBLICID
-    - BEANVERSION

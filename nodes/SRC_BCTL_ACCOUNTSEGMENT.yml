@@ -1,7 +1,0 @@
-name: SRC_BCTL_ACCOUNTSEGMENT
-type: source
-source:
-  location: BC_DATABASE.BC_SCHEMA.BCTL_ACCOUNTSEGMENT
-  columns:
-    - ID
-    - NAME

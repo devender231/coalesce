@@ -1,9 +1,0 @@
-name: SRC_BC_SECURITYZONE
-type: source
-source:
-  location: BC_DATABASE.BC_SCHEMA.BC_SECURITYZONE
-  columns:
-    - ID
-    - NAME
-    - BEANVERSION
-    - UPDATETIME
