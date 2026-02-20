@@ -1,0 +1,24 @@
+name: SRC_TR_ROW_COUNT_UNCHANGED
+type: transformation
+transformation_type: row_count
+description: Count the number of unchanged rows that don't require processing
+source: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+source_output: UNCHANGED_ROWS
+
+operation:
+  type: ROW_COUNT
+  counter_variable: UnchangedRowCount
+  description: Counts rows where BeanVersion matches existing dimension records
+
+output:
+  row_count_variable: UnchangedRowCount
+  pass_through: false
+  action: DISCARD
+  reason: Unchanged records don't need to be loaded to dimension table
+
+metadata:
+  execution_order: 5
+  purpose: Track unchanged records for ETL monitoring and performance metrics
+  previous_step: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+  branch: UNCHANGED_ROWS
+  load_action: SKIP
