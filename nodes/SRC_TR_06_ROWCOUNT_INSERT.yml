@@ -1,0 +1,111 @@
+fileVersion: 1
+id: SRC_TR_06_ROWCOUNT_INSERT
+name: SRC_TR_06_ROWCOUNT_INSERT
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: |
+      -- Store insert row count in variable User::InsertCount
+      SET InsertCount = (SELECT COUNT(*) FROM {{ ref('TGT', 'SRC_TR_06_ROWCOUNT_INSERT') }});
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
+  deployEnabled: true
+  description: "Transformation 6: ROW_COUNT - Counts new insert rows (lookup no match) and stores in User::InsertCount"
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TR_06_ROWCOUNT_INSERT
+        config: {}
+        dataType: INTEGER
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_TR_06_ROWCOUNT_INSERT
+        config: {}
+        dataType: STRING
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: SRC_TR_06_ROWCOUNT_INSERT
+        config: {}
+        dataType: STRING
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 33
+          stepCounter: SRC_TR_06_ROWCOUNT_INSERT
+        config: {}
+        dataType: INTEGER
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 35
+          stepCounter: SRC_TR_06_ROWCOUNT_INSERT
+        config: {}
+        dataType: STRING
+        name: ROW_TYPE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 35
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_04_CONDITIONAL_SPLIT: SPLIT_DATA
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: SRC_TR_04_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'SRC_TR_04_CONDITIONAL_SPLIT') }} "SPLIT_DATA"
+            WHERE "SPLIT_DATA"."ROW_TYPE" = 'INSERT'
+        name: SRC_TR_06_ROWCOUNT_INSERT
+        noLinkRefs: []
+  name: SRC_TR_06_ROWCOUNT_INSERT
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
