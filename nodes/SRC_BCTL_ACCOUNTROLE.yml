@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BCTL_ACCOUNTROLE
+  description: Source table BCTL_ACCOUNTROLE from GuideWire
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,8 +22,10 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -39,8 +41,10 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: TYPECODE
         nullable: true
         sourceColumnReferences:
