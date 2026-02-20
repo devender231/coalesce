@@ -1,42 +1,43 @@
 name: SRC_BC_ACCOUNT
 type: source
-config:
-  source_type: table
-  database: EDWDEV
-  schema: BC
-  table: BC_ACCOUNT
+database: ""
+schema: ""
+location:
+  name: BC_ACCOUNT
+  database: ""
+  schema: ""
 columns:
-  - name: ACCOUNTID
-    datatype: VARCHAR
   - name: ACCOUNTNUMBER
     datatype: VARCHAR
   - name: ACCOUNTNAME
     datatype: VARCHAR
-  - name: PARENTACCOUNTID
+  - name: ACCOUNTTYPE
     datatype: VARCHAR
-  - name: ACCOUNTTYPEID
+  - name: BILLINGLEVEL
     datatype: VARCHAR
-  - name: BILLINGLEVELID
-    datatype: VARCHAR
-  - name: CUSTOMERSERVICETIERID
+  - name: SERVICETIER
     datatype: VARCHAR
   - name: SECURITYZONEID
     datatype: VARCHAR
-  - name: DELINQUENCYSTATUSID
+  - name: SEGMENT
     datatype: VARCHAR
-  - name: ACCOUNTSEGMENTID
-    datatype: VARCHAR
-  - name: CREATEDATE
-    datatype: DATETIME
-  - name: MODIFIEDDATE
-    datatype: DATETIME
-  - name: ISACTIVE
-    datatype: BIT
-  - name: STARTDATE
-    datatype: DATE
-  - name: ENDDATE
-    datatype: DATE
-  - name: ROWVERSION
+  - name: CLOSEDATE
     datatype: TIMESTAMP
-  - name: ETLINSERTDATE
-    datatype: DATETIME
+  - name: CREATETIME
+    datatype: TIMESTAMP
+  - name: DELINQUENCYSTATUS
+    datatype: VARCHAR
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    datatype: VARCHAR
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    datatype: VARCHAR
+  - name: PUBLICID
+    datatype: VARCHAR
+  - name: ID
+    datatype: NUMBER
+  - name: BEANVERSION
+    datatype: NUMBER
+  - name: RETIRED
+    datatype: NUMBER
+  - name: UPDATETIME
+    datatype: TIMESTAMP
