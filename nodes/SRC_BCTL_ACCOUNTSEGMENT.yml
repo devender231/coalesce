@@ -1,63 +1,13 @@
-fileVersion: 1
-id: SRC_BCTL_ACCOUNTSEGMENT
 name: SRC_BCTL_ACCOUNTSEGMENT
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
+type: source
+location:
   database: ""
-  deployEnabled: true
-  description: Source table BCTL_ACCOUNTSEGMENT
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTSEGMENT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }}
-        name: SRC_BCTL_ACCOUNTSEGMENT
-        noLinkRefs: []
-  name: SRC_BCTL_ACCOUNTSEGMENT
-  overrideSQL: false
   schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+  table: BCTL_ACCOUNTSEGMENT
+columns:
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: NAME
+    data_type: STRING
+    nullable: true
