@@ -1,13 +1,80 @@
+fileVersion: 1
+id: SRC_BCTL_DELINQUENCYSTATUS
 name: SRC_BCTL_DELINQUENCYSTATUS
-type: source
-location:
-  database: BC
-  schema: DBO
-  table: BCTL_DELINQUENCYSTATUS
-columns:
-  - name: ID
-    dataType: INTEGER
-    columnOrder: 1
-  - name: NAME
-    dataType: STRING
-    columnOrder: 2
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
+  deployEnabled: true
+  description: Source table for BCTL_DELINQUENCYSTATUS
+  isDataVault: false
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_DELINQUENCYSTATUS
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_DELINQUENCYSTATUS
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_BCTL_DELINQUENCYSTATUS: SRC_BCTL_DELINQUENCYSTATUS
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: BCTL_DELINQUENCYSTATUS
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'BCTL_DELINQUENCYSTATUS') }} "SRC_BCTL_DELINQUENCYSTATUS"
+        name: SRC_BCTL_DELINQUENCYSTATUS
+        noLinkRefs: []
+  name: SRC_BCTL_DELINQUENCYSTATUS
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
