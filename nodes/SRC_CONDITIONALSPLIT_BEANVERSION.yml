@@ -1,0 +1,51 @@
+name: SRC_CONDITIONALSPLIT_BEANVERSION
+type: conditional_split
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion for SCD logic
+
+source:
+  name: LOOKUP_WITH_BEANVERSION
+  type: lookup_output
+  upstream_dependency: SRC_LOOKUP_BEANVERSION
+
+split_logic:
+  conditions:
+    - output_name: UNCHANGED_ROWS
+      condition: BeanVersion == EDWBeanVersion
+      description: Rows where source BeanVersion matches existing EDW BeanVersion (no update needed)
+      execution_order: 1
+      
+    - output_name: UPDATE_ROWS
+      condition: BeanVersion != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
+      description: Rows where BeanVersion differs from EDW (update required)
+      execution_order: 2
+      
+    - output_name: INSERT_ROWS
+      condition: EDWBeanVersion IS NULL
+      description: Rows with no match in lookup (new insert required)
+      execution_order: 3
+      default: true
+
+outputs:
+  - name: UNCHANGED_ROWS
+    description: Records that have not changed
+    action: AUDIT_ONLY
+    
+  - name: UPDATE_ROWS
+    description: Records requiring update in target
+    action: UPDATE_TARGET
+    
+  - name: INSERT_ROWS
+    description: New records requiring insert to target
+    action: INSERT_TARGET
+  
+metadata:
+  execution_order: 4
+  package_name: EDW_BC_Load_DimBillingAccount
+  transformation_type: CONDITIONAL_SPLIT
+  created_from: SSIS_Documentation
+  upstream_dependency_validated: true
+  depends_on:
+    - SRC_DIMBILLINGACCOUNT_JOINS
+    - SRC_ROWCOUNT_SOURCE
+    - SRC_DERIVED_BATCHID
+    - SRC_LOOKUP_BEANVERSION
