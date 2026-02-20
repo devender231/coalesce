@@ -1,10 +1,6 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
-config:
-  source_type: table
-  source_location: SRC (DATABASE.SCHEMA)
-  columns:
-    - name: PUBLICID
-      data_type: VARCHAR
-    - name: BEANVERSION
-      data_type: INTEGER
+location: SRC (EDW.DBO.DIMBILLINGACCOUNT)
+columns:
+  - name: PUBLICID
+  - name: BEANVERSION
