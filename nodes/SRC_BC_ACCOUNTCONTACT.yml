@@ -3,8 +3,19 @@ id: SRC_BC_ACCOUNTCONTACT
 name: SRC_BC_ACCOUNTCONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNTCONTACT
@@ -14,10 +25,7 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACT
@@ -31,10 +39,7 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACT
@@ -48,10 +53,7 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACT
@@ -65,10 +67,7 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACT
@@ -82,10 +81,7 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACT
@@ -102,15 +98,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          BC_ACCOUNTCONTACT: SRC_BC_ACCOUNTCONTACT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNTCONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} "BC_ACCOUNTCONTACT"
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }}
         name: SRC_BC_ACCOUNTCONTACT
         noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACT
