@@ -1,0 +1,48 @@
+fileVersion: 1
+id: SRC_ROWCOUNT_INSERT
+name: SRC_ROWCOUNT_INSERT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts new insert rows where lookup found no match and stores in User::InsertCount variable"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Insert row count stored in User::InsertCount variable"
+        name: INSERT_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*) FILTER (WHERE ROW_TYPE = 'INSERT')"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_CONDITIONALSPLIT_BEANVERSION: SRC_CONDITIONALSPLIT_BEANVERSION
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: CONDITIONALSPLIT_BEANVERSION
+        join:
+          joinCondition: |-
+            FROM {{ ref('SRC', 'CONDITIONALSPLIT_BEANVERSION') }} SRC_CONDITIONALSPLIT_BEANVERSION
+            WHERE ROW_TYPE = 'INSERT'
+        name: SRC_ROWCOUNT_INSERT
+        noLinkRefs: []
+  name: SRC_ROWCOUNT_INSERT
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
