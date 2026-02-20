@@ -1,0 +1,95 @@
+fileVersion: 1
+id: SRC_JOINS_DIMBILLINGACCOUNT
+name: SRC_JOINS_DIMBILLINGACCOUNT
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: "All joins for DimBillingAccount ETL pipeline"
+  isMultisource: true
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_JOINS_DIMBILLINGACCOUNT
+        dataType: INTEGER
+        name: ACCOUNTNUMBER
+        nullable: true
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_JOINS_DIMBILLINGACCOUNT
+        dataType: STRING
+        name: ACCOUNTNAME
+        nullable: true
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_JOINS_DIMBILLINGACCOUNT
+        dataType: STRING
+        name: PUBLICID
+        nullable: true
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_JOINS_DIMBILLINGACCOUNT
+        dataType: STRING
+        name: BEANVERSION
+        nullable: true
+    sourceMapping:
+      - customSQL:
+          customSQL: |
+            SELECT 
+              BC_ACCOUNT.ACCOUNTNUMBER,
+              BC_ACCOUNT.ACCOUNTNAME,
+              BC_ACCOUNT.PUBLICID,
+              BC_ACCOUNT.BEANVERSION
+            FROM {{ ref('SRC_BC_ACCOUNT') }} BC_ACCOUNT
+            LEFT JOIN {{ ref('SRC_BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
+              ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+            LEFT JOIN {{ ref('SRC_BC_PARENTACCT') }} BC_PARENTACCT
+              ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+            LEFT JOIN {{ ref('SRC_BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
+              ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+            LEFT JOIN {{ ref('SRC_BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
+              ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+            LEFT JOIN {{ ref('SRC_BC_SECURITYZONE') }} BC_SECURITYZONE
+              ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+            LEFT JOIN {{ ref('SRC_BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
+              ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+            LEFT JOIN {{ ref('SRC_BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
+              ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BC_ACCOUNT
+          - locationName: SRC
+            nodeName: SRC_BCTL_ACCOUNTTYPE
+          - locationName: SRC
+            nodeName: SRC_BC_PARENTACCT
+          - locationName: SRC
+            nodeName: SRC_BCTL_BILLINGLEVEL
+          - locationName: SRC
+            nodeName: SRC_BCTL_CUSTOMERSERVICETIER
+          - locationName: SRC
+            nodeName: SRC_BC_SECURITYZONE
+          - locationName: SRC
+            nodeName: SRC_BCTL_DELINQUENCYSTATUS
+          - locationName: SRC
+            nodeName: SRC_BCTL_ACCOUNTSEGMENT
+        name: SRC_JOINS_DIMBILLINGACCOUNT
+  name: SRC_JOINS_DIMBILLINGACCOUNT
+  overrideSQL: true
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
