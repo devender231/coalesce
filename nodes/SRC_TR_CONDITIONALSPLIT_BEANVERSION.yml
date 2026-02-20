@@ -1,0 +1,43 @@
+name: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+type: transformation
+transformation_type: CONDITIONAL_SPLIT
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion to determine INSERT vs UPDATE vs UNCHANGED
+
+source:
+  - SRC_TR_LOOKUP_BEANVERSION
+
+split_conditions:
+  - output_name: UNCHANGED_ROWS
+    condition: BEANVERSION == EDWBeanVersion
+    order: 1
+    description: Rows where source BeanVersion matches target BeanVersion (no changes needed)
+    route_to: SRC_TR_ROWCOUNT_UNCHANGED
+  
+  - output_name: UPDATE_ROWS
+    condition: BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
+    order: 2
+    description: Rows where BeanVersion differs and record exists in target (UPDATE)
+    route_to: SRC_TR_ROWCOUNT_UPDATE
+  
+  - output_name: INSERT_ROWS
+    condition: EDWBeanVersion IS NULL
+    order: 3
+    description: Rows where no match found in lookup (INSERT new records)
+    route_to: SRC_TR_ROWCOUNT_INSERT
+
+default_output:
+  name: DEFAULT_ROWS
+  description: Any rows not matching above conditions
+  route_to: ERROR_HANDLER
+
+execution_order: 5
+dependencies:
+  - SRC_TR_LOOKUP_BEANVERSION
+
+output:
+  multiple_outputs: true
+  outputs:
+    - UNCHANGED_ROWS
+    - UPDATE_ROWS
+    - INSERT_ROWS
+    - DEFAULT_ROWS
