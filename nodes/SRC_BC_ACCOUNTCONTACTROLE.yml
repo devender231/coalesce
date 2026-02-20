@@ -1,0 +1,15 @@
+name: SRC_BC_ACCOUNTCONTACTROLE
+type: source
+config:
+  location: BC.DBO.BC_ACCOUNTCONTACTROLE
+  columns:
+    - name: ROLEID
+      datatype: VARCHAR
+    - name: ROLENAME
+      datatype: VARCHAR
+    - name: ROLEDESCRIPTION
+      datatype: VARCHAR
+    - name: ISPRIMARY
+      datatype: BOOLEAN
+    - name: ISACTIVE
+      datatype: BOOLEAN
