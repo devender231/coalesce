@@ -3,71 +3,113 @@ id: SRC_BC_SECURITYZONE
 name: SRC_BC_SECURITYZONE
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: GUIDEWIRE
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
   deployEnabled: true
+  description: Source table BC_SECURITYZONE
+  isDataVault: false
+  isMultisource: false
   locationName: SRC
-  locationID: SRC_LOCATION
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BC_SECURITYZONE
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BC_SECURITYZONE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
+        defaultValue: ""
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BC_SECURITYZONE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: 1
+          stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: INTEGER
+        dataType: STRING
+        defaultValue: ""
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: 1
+                stepCounter: SRC_BC_SECURITYZONE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: 1
+          stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
+        defaultValue: ""
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: 1
+                stepCounter: SRC_BC_SECURITYZONE
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -84,7 +126,7 @@ operation:
         noLinkRefs: []
   name: SRC_BC_SECURITYZONE
   overrideSQL: false
-  schema: DBO
+  schema: ""
   sqlType: Source
   type: sql
   version: 1
