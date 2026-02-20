@@ -1,0 +1,246 @@
+fileVersion: 1
+id: SRC_JOIN_ALL
+name: SRC_JOIN_ALL
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
+  deployEnabled: true
+  description: All joins for EDW_BC_Load_DimBillingAccount package
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns: []
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BC_ACCOUNT: SRC_BC_ACCOUNT
+          BCTL_ACCOUNTTYPE: SRC_BCTL_ACCOUNTTYPE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTTYPE
+        join:
+          joinCondition: "BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID"
+        name: JOIN_1_ACCOUNTTYPE
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNT: SRC_BC_ACCOUNT
+          BC_PARENTACCT: SRC_BC_PARENTACCT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+          - locationName: SRC
+            nodeName: BC_PARENTACCT
+        join:
+          joinCondition: "BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID"
+        name: JOIN_2_PARENTACCT
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNT: SRC_BC_ACCOUNT
+          BCTL_BILLINGLEVEL: SRC_BCTL_BILLINGLEVEL
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+          - locationName: SRC
+            nodeName: BCTL_BILLINGLEVEL
+        join:
+          joinCondition: "BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID"
+        name: JOIN_3_BILLINGLEVEL
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNT: SRC_BC_ACCOUNT
+          BCTL_CUSTOMERSERVICETIER: SRC_BCTL_CUSTOMERSERVICETIER
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+          - locationName: SRC
+            nodeName: BCTL_CUSTOMERSERVICETIER
+        join:
+          joinCondition: "BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID"
+        name: JOIN_4_CUSTOMERSERVICETIER
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNT: SRC_BC_ACCOUNT
+          BC_SECURITYZONE: SRC_BC_SECURITYZONE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+          - locationName: SRC
+            nodeName: BC_SECURITYZONE
+        join:
+          joinCondition: "BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID"
+        name: JOIN_5_SECURITYZONE
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNT: SRC_BC_ACCOUNT
+          BCTL_DELINQUENCYSTATUS: SRC_BCTL_DELINQUENCYSTATUS
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+          - locationName: SRC
+            nodeName: BCTL_DELINQUENCYSTATUS
+        join:
+          joinCondition: "BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID"
+        name: JOIN_6_DELINQUENCYSTATUS
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNT: SRC_BC_ACCOUNT
+          BCTL_ACCOUNTSEGMENT: SRC_BCTL_ACCOUNTSEGMENT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTSEGMENT
+        join:
+          joinCondition: "BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID"
+        name: JOIN_7_ACCOUNTSEGMENT
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNT: SRC_BC_ACCOUNT
+          INSUREDINFO: INSUREDINFO
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+          - locationName: SRC
+            nodeName: INSUREDINFO
+        join:
+          joinCondition: "INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID"
+        name: JOIN_8_INSUREDINFO
+        noLinkRefs: []
+      - aliases:
+          INSUREDINFO: INSUREDINFO
+          BC_ACCOUNTCONTACT: SRC_BC_ACCOUNTCONTACT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: INSUREDINFO
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACT
+        join:
+          joinCondition: "BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID"
+        name: JOIN_9_ACCOUNTCONTACT
+        noLinkRefs: []
+      - aliases:
+          INSUREDINFO: INSUREDINFO
+          BC_ACCOUNTCONTACTROLE: SRC_BC_ACCOUNTCONTACTROLE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: INSUREDINFO
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACTROLE
+        join:
+          joinCondition: "BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID"
+        name: JOIN_10_ACCOUNTCONTACTROLE
+        noLinkRefs: []
+      - aliases:
+          INSUREDINFO: INSUREDINFO
+          BCTL_ACCOUNTROLE: SRC_BCTL_ACCOUNTROLE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: INSUREDINFO
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTROLE
+        join:
+          joinCondition: "BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'"
+        name: JOIN_11_ACCOUNTROLE
+        noLinkRefs: []
+      - aliases:
+          INSUREDINFO: INSUREDINFO
+          BC_CONTACT: SRC_BC_CONTACT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: INSUREDINFO
+          - locationName: SRC
+            nodeName: BC_CONTACT
+        join:
+          joinCondition: "BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID"
+        name: JOIN_12_CONTACT
+        noLinkRefs: []
+      - aliases:
+          INSUREDINFO: INSUREDINFO
+          BC_ADDRESS: SRC_BC_ADDRESS
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: INSUREDINFO
+          - locationName: SRC
+            nodeName: BC_ADDRESS
+        join:
+          joinCondition: "BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID"
+        name: JOIN_13_ADDRESS
+        noLinkRefs: []
+      - aliases:
+          INSUREDINFO: INSUREDINFO
+          BCTL_STATE: SRC_BCTL_STATE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: INSUREDINFO
+          - locationName: SRC
+            nodeName: BCTL_STATE
+        join:
+          joinCondition: "BCTL_STATE.ID = BC_ADDRESS.STATE"
+        name: JOIN_14_STATE
+        noLinkRefs: []
+      - aliases:
+          LOOKUP_INPUT: LOOKUP_INPUT
+          DIMBILLINGACCOUNT: SRC_DIMBILLINGACCOUNT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: LOOKUP_INPUT
+          - locationName: SRC
+            nodeName: DIMBILLINGACCOUNT
+        join:
+          joinCondition: "LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID"
+        name: JOIN_15_DIMBILLINGACCOUNT
+        noLinkRefs: []
+  name: SRC_JOIN_ALL
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
