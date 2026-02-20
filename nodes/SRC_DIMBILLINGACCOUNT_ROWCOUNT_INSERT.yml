@@ -1,0 +1,15 @@
+name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_INSERT
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts new insert rows (lookup no match)
+source:
+  - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+  - output: INSERT_ROWS
+logic:
+  operation: COUNT
+  output_variable: User::InsertCount
+  description: Counts rows with no match in lookup (new records to insert)
+output:
+  row_count_variable: InsertCount
+  pass_through: true
+  destination: INSERT
