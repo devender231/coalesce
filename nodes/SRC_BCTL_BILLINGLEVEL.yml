@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BCTL_BILLINGLEVEL
+  description: Source table BCTL_BILLINGLEVEL from BillingCenter
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,16 +22,14 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: NUMBER
+        description: ID
         name: ID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_BILLINGLEVEL
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -41,29 +39,27 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: Name
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_BILLINGLEVEL
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          BCTL_BILLINGLEVEL: SRC_BCTL_BILLINGLEVEL
+          SRC_BCTL_BILLINGLEVEL: GUIDEWIRE.DBO.BCTL_BILLINGLEVEL
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_BILLINGLEVEL
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} "BCTL_BILLINGLEVEL"
+          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} "SRC_BCTL_BILLINGLEVEL"
         name: SRC_BCTL_BILLINGLEVEL
         noLinkRefs: []
   name: SRC_BCTL_BILLINGLEVEL
