@@ -7,20 +7,19 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Row Count transformation - Counts source rows from GuideWire (Variable: User::SourceCount)"
+  description: Row Count transformation - Counts source rows from joined data (Variable User::SourceCount)
   isMultisource: false
-  locationName: TGT
+  locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 1
           stepCounter: SRC_ROWCOUNT_SOURCE
         config: {}
-        dataType: NUMBER
-        description: "Total count of source rows"
+        dataType: INTEGER
+        description: Row count of source records
         name: SOURCE_ROW_COUNT
         nullable: false
         sourceColumnReferences:
@@ -30,22 +29,20 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          JOINS: SRC_DIMBILLINGACCOUNT_JOINS
+          SRC_JOINED_BILLING_ACCOUNT: SRC_JOINED_BILLING_ACCOUNT
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TGT
-            nodeName: SRC_DIMBILLINGACCOUNT_JOINS
+          - locationName: SRC
+            nodeName: JOINED_BILLING_ACCOUNT
         join:
-          joinCondition: |
-            FROM {{ ref('TGT', 'SRC_DIMBILLINGACCOUNT_JOINS') }} JOINS
+          joinCondition: |-
+            FROM {{ ref('SRC', 'JOINED_BILLING_ACCOUNT') }} SRC_JOINED_BILLING_ACCOUNT
         name: SRC_ROWCOUNT_SOURCE
         noLinkRefs: []
-name: SRC_ROWCOUNT_SOURCE
-overrideSQLStep:
-  name: ""
+  name: SRC_ROWCOUNT_SOURCE
   overrideSQL: false
-schema: ""
-sqlType: Transform
-type: sql
-version: 1
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
