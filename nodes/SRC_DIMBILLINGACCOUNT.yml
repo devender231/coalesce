@@ -1,9 +1,15 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
 config:
-  location: BC.DBO.DIMBILLINGACCOUNT
-  columns:
-    - name: BILLINGACCOUNTKEY
-      datatype: VARCHAR
-    - name: BILLINGACCOUNTID
-      datatype: VARCHAR
+  source_type: table
+  source_location:
+    database: GUIDEWIRE
+    schema: EDW
+    table: DIMBILLINGACCOUNT
+columns:
+  - name: PUBLICID
+    data_type: STRING
+    nullable: true
+  - name: BEANVERSION
+    data_type: STRING
+    nullable: true
