@@ -1,0 +1,13 @@
+name: SRC_BC_PARENTACCT
+type: source
+config:
+  location: BC.DBO.BC_PARENTACCT
+  columns:
+    - name: PARENTACCOUNTID
+      datatype: VARCHAR
+    - name: PARENTACCOUNTNAME
+      datatype: VARCHAR
+    - name: PARENTACCOUNTNUMBER
+      datatype: VARCHAR
+    - name: ISACTIVE
+      datatype: BOOLEAN
