@@ -3,11 +3,23 @@ id: SRC_BC_ACCOUNT
 name: SRC_BC_ACCOUNT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNT
+  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -19,7 +31,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: ACCOUNTNUMBER
         nullable: true
@@ -33,7 +45,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         description: ""
         name: ACCOUNTNAME
         nullable: true
@@ -47,7 +59,7 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: ACCOUNTTYPE
         nullable: true
@@ -61,7 +73,7 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: BILLINGLEVEL
         nullable: true
@@ -75,7 +87,7 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: SERVICETIER
         nullable: true
@@ -89,7 +101,7 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: SECURITYZONEID
         nullable: true
@@ -103,7 +115,7 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: SEGMENT
         nullable: true
@@ -117,7 +129,7 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP_NTZ(9)
         description: ""
         name: CLOSEDATE
         nullable: true
@@ -131,7 +143,7 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP_NTZ(9)
         description: ""
         name: CREATETIME
         nullable: true
@@ -145,7 +157,7 @@ operation:
           columnCounter: 10
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: DELINQUENCYSTATUS
         nullable: true
@@ -159,7 +171,7 @@ operation:
           columnCounter: 11
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
@@ -173,7 +185,7 @@ operation:
           columnCounter: 12
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
@@ -187,7 +199,7 @@ operation:
           columnCounter: 13
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         description: ""
         name: PUBLICID
         nullable: true
@@ -201,7 +213,7 @@ operation:
           columnCounter: 14
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: ID
         nullable: true
@@ -215,7 +227,7 @@ operation:
           columnCounter: 15
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         description: ""
         name: BEANVERSION
         nullable: true
@@ -229,7 +241,7 @@ operation:
           columnCounter: 16
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         name: RETIRED
         nullable: true
@@ -243,7 +255,7 @@ operation:
           columnCounter: 17
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP_NTZ(9)
         description: ""
         name: UPDATETIME
         nullable: true
