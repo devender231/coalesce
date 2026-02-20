@@ -1,0 +1,9 @@
+name: SRC_DIMBILLINGACCOUNT
+type: source
+config:
+  location: BC.DBO.DIMBILLINGACCOUNT
+  columns:
+    - name: BILLINGACCOUNTKEY
+      datatype: VARCHAR
+    - name: BILLINGACCOUNTID
+      datatype: VARCHAR
