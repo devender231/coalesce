@@ -1,0 +1,48 @@
+fileVersion: 1
+id: SRC_ROWCOUNT_UPDATE
+name: SRC_ROWCOUNT_UPDATE
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts update rows where BeanVersion is different from EDWBeanVersion and stores in User::UpdateCount variable"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_ROWCOUNT_UPDATE
+        dataType: INTEGER
+        description: "Update row count stored in User::UpdateCount variable"
+        name: UPDATE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*) FILTER (WHERE ROW_TYPE = 'UPDATE')"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_CONDITIONALSPLIT_BEANVERSION: SRC_CONDITIONALSPLIT_BEANVERSION
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: CONDITIONALSPLIT_BEANVERSION
+        join:
+          joinCondition: |-
+            FROM {{ ref('SRC', 'CONDITIONALSPLIT_BEANVERSION') }} SRC_CONDITIONALSPLIT_BEANVERSION
+            WHERE ROW_TYPE = 'UPDATE'
+        name: SRC_ROWCOUNT_UPDATE
+        noLinkRefs: []
+  name: SRC_ROWCOUNT_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
