@@ -1,107 +1,25 @@
-fileVersion: 1
-id: SRC_TR_DERIVED_BATCHID
 name: SRC_TR_DERIVED_BATCHID
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: "Transformation 2: Derived Column - Adds BatchID column from User::BatchID variable"
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: INTEGER
-        description: "Derived BatchID from User::BatchID variable"
-        name: BATCHID
+type: transformation
+config:
+  transformation_type: DERIVED_COLUMN
+  description: "Adds or overwrites BatchID column"
+  execution_order: 2
+  logic:
+    operation: ADD_COLUMN
+    derived_columns:
+      - column_name: BatchID
+        expression: "@[User::BatchID]"
+        data_type: INTEGER
         nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: "@[User::BatchID]"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: INTEGER
-        description: "From previous transformation"
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: STRING
-        description: "From previous transformation"
-        name: ACCOUNTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: STRING
-        description: "From previous transformation"
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: SRC_TR_DERIVED_BATCHID
-        config: {}
-        dataType: STRING
-        description: "From previous transformation"
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_TR_ROW_COUNT_SOURCE
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_TR_ROW_COUNT_SOURCE: SRC_TR_ROW_COUNT_SOURCE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: TR_ROW_COUNT_SOURCE
-        join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'TR_ROW_COUNT_SOURCE') }} SRC_TR_ROW_COUNT_SOURCE
-        name: SRC_TR_DERIVED_BATCHID
-        noLinkRefs: []
-  name: SRC_TR_DERIVED_BATCHID
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+        description: "Batch identifier from SSIS variable"
+        
+  input:
+    source: SRC_JOIN_DIMBILLINGACCOUNT
+    
+  output:
+    columns:
+      - all_input_columns: true
+      - BatchID
+    
+dependencies:
+  - SRC_JOIN_DIMBILLINGACCOUNT
