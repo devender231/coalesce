@@ -1,24 +1,13 @@
 name: SRC_BC_ADDRESS
 type: source
-config:
-  source_type: table
-  source_location: SRC (DATABASE.SCHEMA)
-  columns:
-    - name: ID
-      data_type: VARCHAR
-    - name: ADDRESSLINE1
-      data_type: VARCHAR
-    - name: ADDRESSLINE2
-      data_type: VARCHAR
-    - name: ADDRESSLINE3
-      data_type: VARCHAR
-    - name: CITY
-      data_type: VARCHAR
-    - name: POSTALCODE
-      data_type: VARCHAR
-    - name: STATE
-      data_type: VARCHAR
-    - name: BEANVERSION
-      data_type: INTEGER
-    - name: UPDATETIME
-      data_type: TIMESTAMP
+location: SRC (BRIGHTCOVE.DBO.BC_ADDRESS)
+columns:
+  - name: ID
+  - name: ADDRESSLINE1
+  - name: ADDRESSLINE2
+  - name: ADDRESSLINE3
+  - name: CITY
+  - name: POSTALCODE
+  - name: STATE
+  - name: BEANVERSION
+  - name: UPDATETIME
