@@ -1,6 +1,74 @@
+fileVersion: 1
+id: SRC_BCTL_ACCOUNTROLE
 name: SRC_BCTL_ACCOUNTROLE
-type: source
-location: SRC (BRIGHTCOVE.DBO.BCTL_ACCOUNTROLE)
-columns:
-  - name: ID
-  - name: TYPECODE
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: true
+    warehouseName: DEV_WH_SMALL
+  database: ""
+  deployEnabled: true
+  description: Source table BCTL_ACCOUNTROLE
+  isMultisource: false
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTROLE
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTROLE
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BCTL_ACCOUNTROLE
+        config: {}
+        dataType: STRING
+        description: ""
+        name: TYPECODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_ACCOUNTROLE
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTROLE
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
+        name: SRC_BCTL_ACCOUNTROLE
+        noLinkRefs: []
+  name: SRC_BCTL_ACCOUNTROLE
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
