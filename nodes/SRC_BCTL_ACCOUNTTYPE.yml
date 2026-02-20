@@ -6,8 +6,6 @@ location:
   table: BCTL_ACCOUNTTYPE
 columns:
   - name: ID
-    data_type: INTEGER
-    nullable: true
+    dataType: INTEGER
   - name: NAME
-    data_type: STRING
-    nullable: true
+    dataType: STRING
