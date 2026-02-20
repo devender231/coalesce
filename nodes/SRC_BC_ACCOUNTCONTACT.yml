@@ -3,8 +3,16 @@ id: SRC_BC_ACCOUNTCONTACT
 name: SRC_BC_ACCOUNTCONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
     selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
   database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNTCONTACT
@@ -14,89 +22,48 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACT
-        config: {}
         dataType: INTEGER
         description: ""
         name: INSUREDACCOUNTID
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACT
-        config: {}
         dataType: INTEGER
         description: ""
         name: CONTACTID
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACT
-        config: {}
         dataType: INTEGER
         description: ""
         name: ID
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACT
-        config: {}
         dataType: STRING
         description: ""
         name: BEANVERSION
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACT
-        config: {}
         dataType: DATETIME
         description: ""
         name: UPDATETIME
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
-        customSQL:
+      - customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNTCONTACT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }}
         name: SRC_BC_ACCOUNTCONTACT
-        noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACT
   overrideSQL: false
   schema: ""
