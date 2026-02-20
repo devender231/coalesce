@@ -1,0 +1,29 @@
+name: SRC_TR_ROW_COUNT_INSERT
+type: transformation
+transformation_type: ROW_COUNT
+execution_order: 6
+description: Counts new insert rows where lookup found no match (EDWBeanVersion is NULL)
+
+input:
+  source: SRC_TR_CONDITIONAL_SPLIT
+  output_path: INSERT_ROWS
+  description: Input from conditional split - insert rows path
+
+transformation_logic:
+  operation: COUNT_ROWS
+  variable_name: User::InsertCount
+  description: Stores the count of new rows to be inserted (no match in dimension)
+  filter_condition: ISNULL(EDWBeanVersion)
+  
+output:
+  type: pass_through_to_target
+  description: All new rows are passed to target for INSERT operation
+  row_count_variable: User::InsertCount
+  destination: DIMBILLINGACCOUNT
+  load_action: INSERT
+  
+metadata:
+  purpose: Audit and tracking of new insert row count
+  variable_scope: Package
+  variable_type: Integer
+  scd_action: INSERT
