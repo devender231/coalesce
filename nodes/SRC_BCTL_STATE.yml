@@ -1,13 +1,11 @@
-fileVersion: 1.0.0
-id: SRC_BCTL_STATE
 name: SRC_BCTL_STATE
 type: source
-config:
-  database: ""
-  schema: ""
-  table: BCTL_STATE
+location:
+  database: BCTL
+  schema: dbo
+  table: STATE
 columns:
   - name: ID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: NAME
     dataType: VARCHAR
