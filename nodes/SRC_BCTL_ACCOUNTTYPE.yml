@@ -3,9 +3,21 @@ id: SRC_BCTL_ACCOUNTTYPE
 name: SRC_BCTL_ACCOUNTTYPE
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: ""
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
   deployEnabled: true
   description: Source table BCTL_ACCOUNTTYPE
   isMultisource: false
@@ -14,12 +26,17 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTTYPE
-        dataType: INTEGER
+        config: {}
+        dataType: NUMBER(38,0)
         description: ""
+        isBusinessKey: false
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -27,12 +44,17 @@ operation:
               - columnCounter: 1
                 stepCounter: SRC_BCTL_ACCOUNTTYPE
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTTYPE
-        dataType: STRING
+        config: {}
+        dataType: VARCHAR(256)
         description: ""
+        isBusinessKey: false
         name: NAME
         nullable: true
         sourceColumnReferences:
@@ -55,7 +77,7 @@ operation:
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTTYPE
   overrideSQL: false
-  schema: ""
+  schema: ''
   sqlType: Source
   type: sql
   version: 1
