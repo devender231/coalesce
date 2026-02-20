@@ -14,8 +14,8 @@ operation:
     refresh_mode: AUTO
     selectDistinct: false
     testsEnabled: false
-    truncateBefore: true
-    warehouseName: DEV_WH_XS
+    truncateBefore: false
+    warehouseName: DEV ENVIRONMENT
   database: ""
   deployEnabled: true
   description: Source table BCTL_ACCOUNTTYPE
@@ -25,33 +25,41 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
         dataType: INTEGER
         description: ""
+        isBusinessKey: false
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_ACCOUNTTYPE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
         dataType: STRING
         description: ""
+        isBusinessKey: false
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_ACCOUNTTYPE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
