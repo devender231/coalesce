@@ -3,8 +3,19 @@ id: SRC_BC_ACCOUNT
 name: SRC_BC_ACCOUNT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNT
@@ -20,7 +31,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -28,8 +39,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -37,7 +48,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: STRING
         description: ""
@@ -45,8 +56,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -54,7 +65,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -62,8 +73,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -71,7 +82,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -79,8 +90,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -88,7 +99,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 5
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -96,8 +107,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -105,7 +116,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 6
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -113,8 +124,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 6
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -122,7 +133,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 7
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -130,8 +141,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 7
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -139,7 +150,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 8
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: DATETIME
         description: ""
@@ -147,8 +158,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 8
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -156,7 +167,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 9
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: DATETIME
         description: ""
@@ -164,8 +175,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 9
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -173,7 +184,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 10
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -181,8 +192,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 10
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -190,7 +201,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 11
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -198,8 +209,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 11
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -207,7 +218,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 12
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -215,8 +226,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 12
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -224,7 +235,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 13
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: STRING
         description: ""
@@ -232,8 +243,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 13
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -241,7 +252,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 14
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -249,8 +260,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 14
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -258,7 +269,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 15
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: STRING
         description: ""
@@ -266,8 +277,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 15
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -275,7 +286,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 16
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
@@ -283,8 +294,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 16
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -292,7 +303,7 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 17
-          stepCounter: SRC_BC_ACCOUNT
+          stepCounter: 1
         config: {}
         dataType: DATETIME
         description: ""
@@ -300,21 +311,20 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 17
+                stepCounter: 1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_ACCOUNT: BC_ACCOUNT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }} "SRC_BC_ACCOUNT"
+          joinCondition: ""
         name: SRC_BC_ACCOUNT
         noLinkRefs: []
   name: SRC_BC_ACCOUNT
