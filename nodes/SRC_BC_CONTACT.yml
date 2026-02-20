@@ -1,0 +1,17 @@
+name: SRC_BC_CONTACT
+type: source
+config:
+  location: BC.DBO.BC_CONTACT
+  columns:
+    - name: CONTACTID
+      datatype: VARCHAR
+    - name: FIRSTNAME
+      datatype: VARCHAR
+    - name: LASTNAME
+      datatype: VARCHAR
+    - name: EMAIL
+      datatype: VARCHAR
+    - name: PHONE
+      datatype: VARCHAR
+    - name: ISACTIVE
+      datatype: BOOLEAN
