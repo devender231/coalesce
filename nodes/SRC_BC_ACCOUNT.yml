@@ -1,0 +1,43 @@
+fileVersion: 1.0.0
+id: SRC_BC_ACCOUNT
+name: SRC_BC_ACCOUNT
+type: source
+config:
+  database: ""
+  schema: ""
+  table: BC_ACCOUNT
+columns:
+  - name: ACCOUNTNUMBER
+    dataType: VARCHAR
+  - name: ACCOUNTNAME
+    dataType: VARCHAR
+  - name: ACCOUNTTYPE
+    dataType: VARCHAR
+  - name: BILLINGLEVEL
+    dataType: VARCHAR
+  - name: SERVICETIER
+    dataType: VARCHAR
+  - name: SECURITYZONEID
+    dataType: VARCHAR
+  - name: SEGMENT
+    dataType: VARCHAR
+  - name: CLOSEDATE
+    dataType: TIMESTAMP
+  - name: CREATETIME
+    dataType: TIMESTAMP
+  - name: DELINQUENCYSTATUS
+    dataType: VARCHAR
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: VARCHAR
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: VARCHAR
+  - name: PUBLICID
+    dataType: VARCHAR
+  - name: ID
+    dataType: VARCHAR
+  - name: BEANVERSION
+    dataType: INTEGER
+  - name: RETIRED
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: TIMESTAMP
