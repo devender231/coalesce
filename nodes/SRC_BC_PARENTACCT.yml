@@ -1,19 +1,12 @@
 name: SRC_BC_PARENTACCT
 type: source
-location:
-  database: ""
-  schema: ""
-  table: BC_PARENTACCT
+location: SRC (BILLINGCENTER.BC)
 columns:
   - name: OWNERID
-    data_type: INTEGER
-    nullable: true
+    datatype: BIGINT
   - name: FOREIGNENTITYID
-    data_type: INTEGER
-    nullable: true
+    datatype: BIGINT
   - name: BEANVERSION
-    data_type: STRING
-    nullable: true
+    datatype: INT
   - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+    datatype: TIMESTAMP
