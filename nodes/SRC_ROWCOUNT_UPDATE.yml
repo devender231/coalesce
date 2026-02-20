@@ -1,347 +1,43 @@
-fileVersion: 1
-id: SRC_ROWCOUNT_UPDATE
 name: SRC_ROWCOUNT_UPDATE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Row Count transformation - Counts update rows where BeanVersion is different (Variable User::UpdateCount)
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - columnReference:
-          columnCounter: 1
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: INTEGER
-        description: Account Number
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 2
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Account Name
-        name: ACCOUNTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 3
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Account Type Name
-        name: ACCOUNTTYPE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 4
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: INTEGER
-        description: Parent Account ID
-        name: PARENTACCOUNT_ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 5
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Billing Level Name
-        name: BILLINGLEVEL_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 6
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Service Tier Name
-        name: SERVICETIER_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 7
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Security Zone Name
-        name: SECURITYZONE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 8
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Delinquency Status Name
-        name: DELINQUENCYSTATUS_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 9
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Account Segment Name
-        name: ACCOUNTSEGMENT_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 10
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Insured First Name
-        name: INSURED_FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 10
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 11
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Insured Last Name
-        name: INSURED_LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 11
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 12
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Address Line 1
-        name: ADDRESSLINE1
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 12
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 13
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: City
-        name: CITY
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 13
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 14
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: State Name
-        name: STATE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 14
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 15
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Postal Code
-        name: POSTALCODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 15
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 16
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Public ID
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 16
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 17
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Bean Version
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 17
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 18
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: DATETIME
-        description: Close Date
-        name: CLOSEDATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 18
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 19
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: DATETIME
-        description: Create Time
-        name: CREATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 19
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 20
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: INTEGER
-        description: First Twice Per Month Invoice DOM
-        name: FIRSTTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 20
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 21
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: INTEGER
-        description: Second Twice Per Month Invoice DOM
-        name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 21
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 22
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: INTEGER
-        description: Source Row Count
-        name: SOURCE_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 22
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 23
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: INTEGER
-        description: Batch ID
-        name: BATCHID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 23
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 24
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: EDW Bean Version
-        name: EDW_BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 24
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 25
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: STRING
-        description: Row Type
-        name: ROW_TYPE
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 25
-                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 26
-          stepCounter: SRC_ROWCOUNT_UPDATE
-        dataType: INTEGER
-        description: Update row count (User::UpdateCount)
-        name: UPDATE_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: COUNT(*)
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
-        join:
-          joinCondition: |-
-            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }}
-            WHERE ROW_TYPE = 'UPDATE'
-        name: SRC_ROWCOUNT_UPDATE
-        noLinkRefs: []
-  name: SRC_ROWCOUNT_UPDATE
-  overrideSQL: false
-  schema: ""
-  sqlType: Transform
-  type: sql
-  version: 1
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts update rows where BeanVersion differs from EDWBeanVersion
+execution_order: 7
+
+source:
+  upstream_component: SRC_CONDITIONAL_SPLIT_SCD
+  output_path: UPDATE_RECORDS
+  description: Receives records where BeanVersion differs from EDWBeanVersion
+
+logic:
+  operation: COUNT
+  variable_name: User::UpdateCount
+  count_type: ALL_ROWS
+  description: Captures count of existing records requiring updates in EDW
+
+output:
+  variable: User::UpdateCount
+  data_type: INTEGER
+  description: Total count of records requiring updates
+  action: UPDATE_TARGET
+  target_table: DIMBILLINGACCOUNT
+  update_key: PUBLICID
+
+validation:
+  - rule: COUNT_NON_NEGATIVE
+    condition: User::UpdateCount >= 0
+    error_message: Update count cannot be negative
+  
+  - rule: BEANVERSION_DIFFERENT
+    condition: BEANVERSION != EDWBeanVersion
+    error_message: Update records must have different BeanVersion values
+  
+  - rule: PUBLICID_EXISTS
+    condition: EDWBeanVersion IS NOT NULL
+    error_message: Update records must have existing EDWBeanVersion (PUBLICID must exist in EDW)
+
+dependencies:
+  - SRC_CONDITIONAL_SPLIT_SCD
+  - Variable: User::UpdateCount
+
+next_component: TARGET_DIMBILLINGACCOUNT_UPDATE
