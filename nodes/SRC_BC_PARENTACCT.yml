@@ -24,6 +24,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: OWNERID
         nullable: true
         sourceColumnReferences:
@@ -41,6 +43,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
@@ -58,6 +62,8 @@ operation:
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -75,6 +81,8 @@ operation:
         config: {}
         dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -85,15 +93,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_PARENTACCT: BC_PARENTACCT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_PARENTACCT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }} "SRC_BC_PARENTACCT"
+          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }}
         name: SRC_BC_PARENTACCT
         noLinkRefs: []
   name: SRC_BC_PARENTACCT
