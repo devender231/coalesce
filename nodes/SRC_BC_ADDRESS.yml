@@ -3,9 +3,20 @@ id: SRC_BC_ADDRESS
 name: SRC_BC_ADDRESS
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
-  database: ""
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: '{{ parameters.WarehouseName }}'
+  database: '{{ parameters.SourceDatabase }}'
   deployEnabled: true
   description: Source table BC_ADDRESS
   isMultisource: false
@@ -22,7 +33,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         hashColumns: []
         hashDetails: null
@@ -41,7 +52,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         description: ""
         hashColumns: []
         hashDetails: null
@@ -60,7 +71,7 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         description: ""
         hashColumns: []
         hashDetails: null
@@ -79,7 +90,7 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         description: ""
         hashColumns: []
         hashDetails: null
@@ -98,7 +109,7 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         description: ""
         hashColumns: []
         hashDetails: null
@@ -117,7 +128,7 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         description: ""
         hashColumns: []
         hashDetails: null
@@ -136,7 +147,7 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER(38,0)
         description: ""
         hashColumns: []
         hashDetails: null
@@ -155,7 +166,7 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(256)
         description: ""
         hashColumns: []
         hashDetails: null
@@ -174,7 +185,7 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP_NTZ(9)
         description: ""
         hashColumns: []
         hashDetails: null
@@ -200,7 +211,7 @@ operation:
         noLinkRefs: []
   name: SRC_BC_ADDRESS
   overrideSQL: false
-  schema: ""
+  schema: '{{ parameters.SourceSchema }}'
   sqlType: Source
   type: sql
   version: 1
