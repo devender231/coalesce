@@ -1,0 +1,108 @@
+fileVersion: 1
+id: SRC_TRANSFORM_DERIVED_COLUMN
+name: SRC_TRANSFORM_DERIVED_COLUMN
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Derived Column Transformation - Creates computed columns and transformations
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+        config: {}
+        dataType: INTEGER
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_TRANSFORM_ROW_COUNT
+            transform: "ACCOUNTNUMBER"
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+        config: {}
+        dataType: STRING
+        description: "Account Name"
+        name: ACCOUNTNAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_TRANSFORM_ROW_COUNT
+            transform: "ACCOUNTNAME"
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+        config: {}
+        dataType: STRING
+        description: "Derived Full Account Name"
+        name: FULL_ACCOUNT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "CONCAT(CAST(ACCOUNTNUMBER AS STRING), ' - ', ACCOUNTNAME)"
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+        config: {}
+        dataType: DATETIME
+        description: "Current Timestamp"
+        name: LOAD_TIMESTAMP
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "CURRENT_TIMESTAMP()"
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+        config: {}
+        dataType: STRING
+        description: "Record Status Flag"
+        name: RECORD_STATUS
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'ACTIVE'"
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_TRANSFORM_DERIVED_COLUMN
+        config: {}
+        dataType: INTEGER
+        description: "Source System ID"
+        name: SOURCE_SYSTEM_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "1"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TRANSFORM_ROW_COUNT: SRC_TRANSFORM_ROW_COUNT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: SRC_TRANSFORM_ROW_COUNT
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'SRC_TRANSFORM_ROW_COUNT') }} "SRC_TRANSFORM_ROW_COUNT"
+        name: SRC_TRANSFORM_ROW_COUNT
+        noLinkRefs: []
+  name: SRC_TRANSFORM_DERIVED_COLUMN
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
+type: Node
