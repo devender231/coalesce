@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Row Count transformation - Counts source rows from OLE_SRC GuideWire and stores in User::SourceCount variable"
+  description: Row Count transformation - Counts source rows from GuideWire (Variable User::SourceCount)
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -18,7 +18,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_ROWCOUNT_SOURCE
         dataType: INTEGER
-        description: "Account Number"
+        description: Account Number
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
@@ -30,7 +30,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_ROWCOUNT_SOURCE
         dataType: STRING
-        description: "Account Name"
+        description: Account Name
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
@@ -41,9 +41,9 @@ operation:
       - columnReference:
           columnCounter: 3
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "Account Type ID"
-        name: ACCOUNTTYPE
+        dataType: STRING
+        description: Account Type Name
+        name: ACCOUNTTYPE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -53,9 +53,9 @@ operation:
       - columnReference:
           columnCounter: 4
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "Account Type Name"
-        name: ACCOUNTTYPE_NAME
+        dataType: INTEGER
+        description: Parent Account ID
+        name: PARENTACCOUNT_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -65,9 +65,9 @@ operation:
       - columnReference:
           columnCounter: 5
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "Billing Level ID"
-        name: BILLINGLEVEL
+        dataType: STRING
+        description: Billing Level Name
+        name: BILLINGLEVEL_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -78,8 +78,8 @@ operation:
           columnCounter: 6
           stepCounter: SRC_ROWCOUNT_SOURCE
         dataType: STRING
-        description: "Billing Level Name"
-        name: BILLINGLEVEL_NAME
+        description: Service Tier Name
+        name: SERVICETIER_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -89,9 +89,9 @@ operation:
       - columnReference:
           columnCounter: 7
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "Service Tier ID"
-        name: SERVICETIER
+        dataType: STRING
+        description: Security Zone Name
+        name: SECURITYZONE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -102,8 +102,8 @@ operation:
           columnCounter: 8
           stepCounter: SRC_ROWCOUNT_SOURCE
         dataType: STRING
-        description: "Service Tier Name"
-        name: SERVICETIER_NAME
+        description: Delinquency Status Name
+        name: DELINQUENCYSTATUS_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -113,9 +113,9 @@ operation:
       - columnReference:
           columnCounter: 9
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "Security Zone ID"
-        name: SECURITYZONEID
+        dataType: STRING
+        description: Account Segment Name
+        name: ACCOUNTSEGMENT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -126,8 +126,8 @@ operation:
           columnCounter: 10
           stepCounter: SRC_ROWCOUNT_SOURCE
         dataType: STRING
-        description: "Security Zone Name"
-        name: SECURITYZONE_NAME
+        description: Insured First Name
+        name: INSURED_FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -137,9 +137,9 @@ operation:
       - columnReference:
           columnCounter: 11
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "Segment ID"
-        name: SEGMENT
+        dataType: STRING
+        description: Insured Last Name
+        name: INSURED_LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -150,8 +150,8 @@ operation:
           columnCounter: 12
           stepCounter: SRC_ROWCOUNT_SOURCE
         dataType: STRING
-        description: "Segment Name"
-        name: SEGMENT_NAME
+        description: Address Line 1
+        name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -161,9 +161,9 @@ operation:
       - columnReference:
           columnCounter: 13
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "Delinquency Status ID"
-        name: DELINQUENCYSTATUS
+        dataType: STRING
+        description: City
+        name: CITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -174,8 +174,8 @@ operation:
           columnCounter: 14
           stepCounter: SRC_ROWCOUNT_SOURCE
         dataType: STRING
-        description: "Delinquency Status Name"
-        name: DELINQUENCYSTATUS_NAME
+        description: State Name
+        name: STATE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -185,9 +185,9 @@ operation:
       - columnReference:
           columnCounter: 15
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: DATETIME
-        description: "Close Date"
-        name: CLOSEDATE
+        dataType: STRING
+        description: Postal Code
+        name: POSTALCODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -197,9 +197,9 @@ operation:
       - columnReference:
           columnCounter: 16
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: DATETIME
-        description: "Create Time"
-        name: CREATETIME
+        dataType: STRING
+        description: Public ID
+        name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -209,9 +209,9 @@ operation:
       - columnReference:
           columnCounter: 17
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "First Twice Per Month Invoice DOM"
-        name: FIRSTTWICEPERMTHINVOICEDOM
+        dataType: STRING
+        description: Bean Version
+        name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -221,9 +221,9 @@ operation:
       - columnReference:
           columnCounter: 18
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "Second Twice Per Month Invoice DOM"
-        name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: DATETIME
+        description: Close Date
+        name: CLOSEDATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -233,9 +233,9 @@ operation:
       - columnReference:
           columnCounter: 19
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "Public ID"
-        name: PUBLICID
+        dataType: DATETIME
+        description: Create Time
+        name: CREATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -246,8 +246,8 @@ operation:
           columnCounter: 20
           stepCounter: SRC_ROWCOUNT_SOURCE
         dataType: INTEGER
-        description: "Account ID"
-        name: ACCOUNT_ID
+        description: First Twice Per Month Invoice DOM
+        name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -257,9 +257,9 @@ operation:
       - columnReference:
           columnCounter: 21
           stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "Bean Version"
-        name: BEANVERSION
+        dataType: INTEGER
+        description: Second Twice Per Month Invoice DOM
+        name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -270,162 +270,28 @@ operation:
           columnCounter: 22
           stepCounter: SRC_ROWCOUNT_SOURCE
         dataType: INTEGER
-        description: "Retired flag"
-        name: RETIRED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 22
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 23
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: DATETIME
-        description: "Update Time"
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 23
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 24
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "Parent Account Foreign Entity ID"
-        name: PARENT_FOREIGNENTITYID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 24
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 25
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "Contact First Name"
-        name: CONTACT_FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 25
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 26
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "Contact Last Name"
-        name: CONTACT_LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 26
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 27
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "Address Line 1"
-        name: ADDRESSLINE1
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 27
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 28
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "Address Line 2"
-        name: ADDRESSLINE2
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 28
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 29
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "Address Line 3"
-        name: ADDRESSLINE3
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 29
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 30
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "City"
-        name: CITY
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 30
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 31
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "Postal Code"
-        name: POSTALCODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 31
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 32
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: STRING
-        description: "State Name"
-        name: STATE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 32
-                stepCounter: SRC_DIMBILLINGACCOUNT_JOINS
-            transform: ""
-      - columnReference:
-          columnCounter: 33
-          stepCounter: SRC_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: "Row count stored in User::SourceCount variable"
+        description: Row count for source tracking (User::SourceCount)
         name: SOURCE_ROW_COUNT
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: "COUNT(*)"
+            transform: COUNT(*)
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_DIMBILLINGACCOUNT_JOINS: SRC_DIMBILLINGACCOUNT_JOINS
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: SRC_DIMBILLINGACCOUNT_JOINS
         join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT_JOINS') }} "SRC_DIMBILLINGACCOUNT_JOINS"
-        name: SRC_DIMBILLINGACCOUNT_JOINS
+          joinCondition: FROM {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT_JOINS') }}
+        name: SRC_ROWCOUNT_SOURCE
         noLinkRefs: []
   name: SRC_ROWCOUNT_SOURCE
   overrideSQL: false
   schema: ""
-  sqlType: Source
+  sqlType: Transform
   type: sql
   version: 1
