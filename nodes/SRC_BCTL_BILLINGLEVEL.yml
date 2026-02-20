@@ -1,18 +1,14 @@
 name: SRC_BCTL_BILLINGLEVEL
 type: source
-config:
-  source_name: BCTL_BILLINGLEVEL
-  source_type: table
-  database: ""
-  schema: ""
-  location: SRC ("."."")
+location:
+  name: SRC
+  database: BILLINGCENTER
+  schema: BCTL
+  table: BILLINGLEVEL
 columns:
-  - name: BILLINGLEVELKEY
-    datatype: NUMBER(38,0)
-    description: Primary key for billing level
-  - name: BILLINGLEVELCODE
-    datatype: VARCHAR2(50)
-    description: Billing level code
-  - name: BILLINGLEVELDESCRIPTION
-    datatype: VARCHAR2(200)
-    description: Billing level description
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: NAME
+    dataType: STRING
+    nullable: true
