@@ -1,10 +1,6 @@
 name: SRC_BCTL_ACCOUNTSEGMENT
 type: source
-config:
-  source_type: table
-  source_location: SRC (DATABASE.SCHEMA)
-  columns:
-    - name: ID
-      data_type: VARCHAR
-    - name: NAME
-      data_type: VARCHAR
+location: SRC (BRIGHTCOVE.DBO.BCTL_ACCOUNTSEGMENT)
+columns:
+  - name: ID
+  - name: NAME
