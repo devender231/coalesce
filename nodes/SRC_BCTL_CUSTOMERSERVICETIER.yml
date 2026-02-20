@@ -1,73 +1,71 @@
-fileVersion: 1
-id: SRC_BCTL_CUSTOMERSERVICETIER
-name: SRC_BCTL_CUSTOMERSERVICETIER
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BCTL_CUSTOMERSERVICETIER
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-        config: {}
-        dataType: VARCHAR
-        description: ID column
-        hashColumns: []
-        hashDetails: null
-        name: ID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-        config: {}
-        dataType: VARCHAR
-        description: NAME column
-        hashColumns: []
-        hashDetails: null
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_CUSTOMERSERVICETIER
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }}
-        name: SRC_BCTL_CUSTOMERSERVICETIER
-        noLinkRefs: []
-  name: SRC_BCTL_CUSTOMERSERVICETIER
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+steps:
+  SRC_BCTL_CUSTOMERSERVICETIER:
+    operation:
+      config:
+        insertStrategy: INSERT
+      database: ""
+      deployEnabled: true
+      description: Source table for BCTL_CUSTOMERSERVICETIER
+      isMultisource: false
+      locationName: SRC
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 1
+              stepCounter: 1
+            config: {}
+            dataType: NUMBER(38,0)
+            description: ID column
+            hashColumns: []
+            hashDetails: null
+            name: ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1
+                    stepCounter: 1
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 2
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(256)
+            description: NAME column
+            hashColumns: []
+            hashDetails: null
+            name: NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 1
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: SRC
+                nodeName: BCTL_CUSTOMERSERVICETIER
+            join:
+              joinCondition: FROM {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }}
+            name: SRC_BCTL_CUSTOMERSERVICETIER
+            noLinkRefs: []
+      name: SRC_BCTL_CUSTOMERSERVICETIER
+      overrideSQL: false
+      schema: ""
+      sqlType: Source
+      type: sql
+      version: 1
