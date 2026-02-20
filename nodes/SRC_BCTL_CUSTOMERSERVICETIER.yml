@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BCTL_CUSTOMERSERVICETIER from GuideWire
+  description: Source table BCTL_CUSTOMERSERVICETIER
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,14 +22,16 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
         config: {}
-        dataType: INTEGER
-        description: ""
+        dataType: VARCHAR
+        description: ID column
+        hashColumns: []
+        hashDetails: null
         name: ID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,14 +41,16 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
         config: {}
-        dataType: STRING
-        description: ""
+        dataType: VARCHAR
+        description: NAME column
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
