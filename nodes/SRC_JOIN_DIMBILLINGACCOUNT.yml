@@ -7,8 +7,8 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Joins all source tables for DimBillingAccount ETL - includes BC_ACCOUNT with lookup tables and INSUREDINFO subquery joins"
-  isMultisource: true
+  description: Join operations for DimBillingAccount ETL process
+  isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
@@ -17,22 +17,24 @@ operation:
       - columnReference:
           columnCounter: 1
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: NUMBER(38,0)
-        description: "Account ID from BC_ACCOUNT"
-        name: ACCOUNTID
-        nullable: false
+        config: {}
+        dataType: INTEGER
+        description: Account Number from BC_ACCOUNT
+        name: ACCOUNTNUMBER
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
+              - columnCounter: 14
                 stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - columnReference:
           columnCounter: 2
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(100)
-        description: "Account Number"
-        name: ACCOUNTNUMBER
-        nullable: false
+        config: {}
+        dataType: STRING
+        description: Account Name from BC_ACCOUNT
+        name: ACCOUNTNAME
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
@@ -41,9 +43,10 @@ operation:
       - columnReference:
           columnCounter: 3
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Account Type Name"
-        name: ACCOUNTTYPE
+        config: {}
+        dataType: STRING
+        description: Account Type Name from BCTL_ACCOUNTTYPE
+        name: ACCOUNTTYPE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -53,21 +56,23 @@ operation:
       - columnReference:
           columnCounter: 4
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: NUMBER(38,0)
-        description: "Parent Account ID"
-        name: PARENTACCOUNTID
+        config: {}
+        dataType: INTEGER
+        description: Parent Account ID from BC_PARENTACCT
+        name: PARENT_ACCOUNT_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
+              - columnCounter: 2
                 stepCounter: SRC_BC_PARENTACCT
             transform: ""
       - columnReference:
           columnCounter: 5
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Billing Level Name"
-        name: BILLINGLEVEL
+        config: {}
+        dataType: STRING
+        description: Billing Level Name from BCTL_BILLINGLEVEL
+        name: BILLINGLEVEL_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -77,9 +82,10 @@ operation:
       - columnReference:
           columnCounter: 6
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Customer Service Tier Name"
-        name: SERVICETIER
+        config: {}
+        dataType: STRING
+        description: Customer Service Tier Name from BCTL_CUSTOMERSERVICETIER
+        name: SERVICETIER_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -89,9 +95,10 @@ operation:
       - columnReference:
           columnCounter: 7
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Security Zone Name"
-        name: SECURITYZONE
+        config: {}
+        dataType: STRING
+        description: Security Zone Name from BC_SECURITYZONE
+        name: SECURITYZONE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -101,9 +108,10 @@ operation:
       - columnReference:
           columnCounter: 8
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Delinquency Status Name"
-        name: DELINQUENCYSTATUS
+        config: {}
+        dataType: STRING
+        description: Delinquency Status Name from BCTL_DELINQUENCYSTATUS
+        name: DELINQUENCYSTATUS_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -113,9 +121,10 @@ operation:
       - columnReference:
           columnCounter: 9
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Account Segment Name"
-        name: ACCOUNTSEGMENT
+        config: {}
+        dataType: STRING
+        description: Account Segment Name from BCTL_ACCOUNTSEGMENT
+        name: SEGMENT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -125,9 +134,10 @@ operation:
       - columnReference:
           columnCounter: 10
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Insured First Name"
-        name: INSURED_FIRSTNAME
+        config: {}
+        dataType: STRING
+        description: Contact First Name from BC_CONTACT
+        name: FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -137,9 +147,10 @@ operation:
       - columnReference:
           columnCounter: 11
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Insured Last Name"
-        name: INSURED_LASTNAME
+        config: {}
+        dataType: STRING
+        description: Contact Last Name from BC_CONTACT
+        name: LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -149,8 +160,9 @@ operation:
       - columnReference:
           columnCounter: 12
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Address Line 1"
+        config: {}
+        dataType: STRING
+        description: Address Line 1 from BC_ADDRESS
         name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
@@ -161,20 +173,9 @@ operation:
       - columnReference:
           columnCounter: 13
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "Address Line 2"
-        name: ADDRESSLINE2
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_ADDRESS
-            transform: ""
-      - columnReference:
-          columnCounter: 14
-          stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "City"
+        config: {}
+        dataType: STRING
+        description: City from BC_ADDRESS
         name: CITY
         nullable: true
         sourceColumnReferences:
@@ -183,11 +184,12 @@ operation:
                 stepCounter: SRC_BC_ADDRESS
             transform: ""
       - columnReference:
-          columnCounter: 15
+          columnCounter: 14
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(255)
-        description: "State Name"
-        name: STATE
+        config: {}
+        dataType: STRING
+        description: State Name from BCTL_STATE
+        name: STATE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -195,83 +197,49 @@ operation:
                 stepCounter: SRC_BCTL_STATE
             transform: ""
       - columnReference:
-          columnCounter: 16
+          columnCounter: 15
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(20)
-        description: "Postal Code"
-        name: POSTALCODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_BC_ADDRESS
-            transform: ""
-      - columnReference:
-          columnCounter: 17
-          stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: TIMESTAMP_NTZ(9)
-        description: "Create Date"
-        name: CREATEDATE
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 10
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 18
-          stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: TIMESTAMP_NTZ(9)
-        description: "Update Date"
-        name: UPDATEDATE
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 12
-                stepCounter: SRC_BC_ACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 19
-          stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(100)
-        description: "Public ID for lookup"
+        config: {}
+        dataType: STRING
+        description: Public ID from BC_ACCOUNT
         name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: "BC_ACCOUNT.PUBLICID"
+              - columnCounter: 13
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
       - columnReference:
-          columnCounter: 20
+          columnCounter: 16
           stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-        dataType: VARCHAR(100)
-        description: "Bean Version for SCD comparison"
+        config: {}
+        dataType: STRING
+        description: Bean Version from BC_ACCOUNT
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: "BC_ACCOUNT.BEANVERSION"
+              - columnCounter: 15
+                stepCounter: SRC_BC_ACCOUNT
+            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_BC_ACCOUNT: ACC
-          SRC_BCTL_ACCOUNTTYPE: ACCT
-          SRC_BC_PARENTACCT: PARENT
-          SRC_BCTL_BILLINGLEVEL: BILL
-          SRC_BCTL_CUSTOMERSERVICETIER: CST
-          SRC_BC_SECURITYZONE: SZ
-          SRC_BCTL_DELINQUENCYSTATUS: DS
-          SRC_BCTL_ACCOUNTSEGMENT: ASEG
-          SRC_BC_ACCOUNTCONTACT: ACCTC
-          SRC_BC_ACCOUNTCONTACTROLE: ACCTR
-          SRC_BCTL_ACCOUNTROLE: AR
-          SRC_BC_CONTACT: CONT
-          SRC_BC_ADDRESS: ADDR
-          SRC_BCTL_STATE: ST
+          BC_ACCOUNT: SRC_BC_ACCOUNT
+          BCTL_ACCOUNTTYPE: SRC_BCTL_ACCOUNTTYPE
+          BC_PARENTACCT: SRC_BC_PARENTACCT
+          BCTL_BILLINGLEVEL: SRC_BCTL_BILLINGLEVEL
+          BCTL_CUSTOMERSERVICETIER: SRC_BCTL_CUSTOMERSERVICETIER
+          BC_SECURITYZONE: SRC_BC_SECURITYZONE
+          BCTL_DELINQUENCYSTATUS: SRC_BCTL_DELINQUENCYSTATUS
+          BCTL_ACCOUNTSEGMENT: SRC_BCTL_ACCOUNTSEGMENT
+          BC_ACCOUNTCONTACT: SRC_BC_ACCOUNTCONTACT
+          BC_ACCOUNTCONTACTROLE: SRC_BC_ACCOUNTCONTACTROLE
+          BCTL_ACCOUNTROLE: SRC_BCTL_ACCOUNTROLE
+          BC_CONTACT: SRC_BC_CONTACT
+          BC_ADDRESS: SRC_BC_ADDRESS
+          BCTL_STATE: SRC_BCTL_STATE
         customSQL:
           customSQL: ""
         dependencies:
@@ -304,59 +272,35 @@ operation:
           - locationName: SRC
             nodeName: BCTL_STATE
         join:
-          joinCondition: |-
-            FROM {{ ref('SRC', 'BC_ACCOUNT') }} ACC
-            -- Join 1: BC_ACCOUNT to BCTL_ACCOUNTTYPE (LEFT)
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} ACCT
-              ON ACC.ACCOUNTTYPEID = ACCT.ID
-            -- Join 2: BC_ACCOUNT to BC_PARENTACCT (LEFT)
-            LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} PARENT
-              ON PARENT.ACCOUNTID = ACC.ACCOUNTID
-            -- Join 3: BC_ACCOUNT to BCTL_BILLINGLEVEL (LEFT)
-            LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BILL
-              ON ACC.BILLINGLEVELID = BILL.ID
-            -- Join 4: BC_ACCOUNT to BCTL_CUSTOMERSERVICETIER (LEFT)
-            LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST
-              ON ACC.CUSTOMERSERVICETIERID = CST.ID
-            -- Join 5: BC_ACCOUNT to BC_SECURITYZONE (LEFT)
-            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} SZ
-              ON ACC.SECURITYZONEID = SZ.ID
-            -- Join 6: BC_ACCOUNT to BCTL_DELINQUENCYSTATUS (LEFT)
-            LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} DS
-              ON ACC.DELINQUENCYSTATUSID = DS.ID
-            -- Join 7: BC_ACCOUNT to BCTL_ACCOUNTSEGMENT (LEFT)
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ASEG
-              ON ACC.ACCOUNTSEGMENTID = ASEG.ID
-            -- Join 8-14: INSUREDINFO subquery joins (LEFT JOIN to get insured contact info)
-            LEFT JOIN (
-              SELECT 
-                ACCTC.INSUREDACCOUNTID,
-                CONT.FIRSTNAME,
-                CONT.LASTNAME,
-                ADDR.ADDRESSLINE1,
-                ADDR.ADDRESSLINE2,
-                ADDR.CITY,
-                ADDR.POSTALCODE,
-                ST.NAME AS STATE
-              FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACCTC
-              -- Join 9: BC_ACCOUNTCONTACT to BC_ACCOUNTCONTACTROLE (INNER)
-              INNER JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACCTR
-                ON ACCTR.ACCOUNTCONTACTID = ACCTC.ID
-              -- Join 10: BC_ACCOUNTCONTACTROLE to BCTL_ACCOUNTROLE (INNER)
-              INNER JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} AR
-                ON AR.ID = ACCTR.ROLE
-                AND AR.TYPECODE = 'insured'
-              -- Join 11: BC_ACCOUNTCONTACT to BC_CONTACT (LEFT)
-              LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CONT
-                ON CONT.ID = ACCTC.CONTACTID
-              -- Join 12: BC_CONTACT to BC_ADDRESS (LEFT)
-              LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} ADDR
-                ON ADDR.ID = CONT.PRIMARYADDRESSID
-              -- Join 13: BC_ADDRESS to BCTL_STATE (LEFT)
-              LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} ST
-                ON ST.ID = ADDR.STATE
-            ) INSUREDINFO
-              ON INSUREDINFO.INSUREDACCOUNTID = ACC.ACCOUNTID
+          joinCondition: |
+            FROM {{ ref('SRC', 'BC_ACCOUNT') }} "BC_ACCOUNT"
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} "BCTL_ACCOUNTTYPE"
+              ON "BC_ACCOUNT"."ACCOUNTTYPE" = "BCTL_ACCOUNTTYPE"."ID"
+            LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} "BC_PARENTACCT"
+              ON "BC_PARENTACCT"."OWNERID" = "BC_ACCOUNT"."ID"
+            LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} "BCTL_BILLINGLEVEL"
+              ON "BC_ACCOUNT"."BILLINGLEVEL" = "BCTL_BILLINGLEVEL"."ID"
+            LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} "BCTL_CUSTOMERSERVICETIER"
+              ON "BC_ACCOUNT"."SERVICETIER" = "BCTL_CUSTOMERSERVICETIER"."ID"
+            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} "BC_SECURITYZONE"
+              ON "BC_ACCOUNT"."SECURITYZONEID" = "BC_SECURITYZONE"."ID"
+            LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} "BCTL_DELINQUENCYSTATUS"
+              ON "BC_ACCOUNT"."DELINQUENCYSTATUS" = "BCTL_DELINQUENCYSTATUS"."ID"
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} "BCTL_ACCOUNTSEGMENT"
+              ON "BC_ACCOUNT"."SEGMENT" = "BCTL_ACCOUNTSEGMENT"."ID"
+            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} "BC_ACCOUNTCONTACT"
+              ON "BC_ACCOUNTCONTACT"."INSUREDACCOUNTID" = "BC_ACCOUNT"."ID"
+            INNER JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} "BC_ACCOUNTCONTACTROLE"
+              ON "BC_ACCOUNTCONTACTROLE"."ACCOUNTCONTACTID" = "BC_ACCOUNTCONTACT"."ID"
+            INNER JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "BCTL_ACCOUNTROLE"
+              ON "BCTL_ACCOUNTROLE"."ID" = "BC_ACCOUNTCONTACTROLE"."ROLE" 
+              AND "BCTL_ACCOUNTROLE"."TYPECODE" = 'insured'
+            LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} "BC_CONTACT"
+              ON "BC_CONTACT"."ID" = "BC_ACCOUNTCONTACT"."CONTACTID"
+            LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} "BC_ADDRESS"
+              ON "BC_ADDRESS"."ID" = "BC_CONTACT"."PRIMARYADDRESSID"
+            LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} "BCTL_STATE"
+              ON "BCTL_STATE"."ID" = "BC_ADDRESS"."STATE"
         name: SRC_JOIN_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: SRC_JOIN_DIMBILLINGACCOUNT
