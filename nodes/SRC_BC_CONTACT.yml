@@ -1,18 +1,10 @@
 name: SRC_BC_CONTACT
 type: source
-config:
-  source_type: table
-  source_location: SRC (DATABASE.SCHEMA)
-  columns:
-    - name: ID
-      data_type: VARCHAR
-    - name: FIRSTNAME
-      data_type: VARCHAR
-    - name: LASTNAME
-      data_type: VARCHAR
-    - name: PRIMARYADDRESSID
-      data_type: VARCHAR
-    - name: BEANVERSION
-      data_type: INTEGER
-    - name: UPDATETIME
-      data_type: TIMESTAMP
+location: SRC (BRIGHTCOVE.DBO.BC_CONTACT)
+columns:
+  - name: ID
+  - name: FIRSTNAME
+  - name: LASTNAME
+  - name: PRIMARYADDRESSID
+  - name: BEANVERSION
+  - name: UPDATETIME
