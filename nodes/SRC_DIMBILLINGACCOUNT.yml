@@ -2,14 +2,9 @@ name: SRC_DIMBILLINGACCOUNT
 type: source
 config:
   source_type: table
-location:
-  database: EDW
-  schema: DBO
-  table: DIMBILLINGACCOUNT
-columns:
-  - name: PUBLICID
-    data_type: STRING
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
+  source_location: SRC (DATABASE.SCHEMA)
+  columns:
+    - name: PUBLICID
+      data_type: VARCHAR
+    - name: BEANVERSION
+      data_type: INTEGER
