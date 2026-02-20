@@ -1,0 +1,168 @@
+name: SRC_DIMBILLINGACCOUNT_JOINS
+type: join
+description: All joins for DimBillingAccount ETL pipeline from GuideWire sources
+
+sources:
+  - name: BC_ACCOUNT
+    type: source
+  - name: BCTL_ACCOUNTTYPE
+    type: source
+  - name: BC_PARENTACCT
+    type: source
+  - name: BCTL_BILLINGLEVEL
+    type: source
+  - name: BCTL_CUSTOMERSERVICETIER
+    type: source
+  - name: BC_SECURITYZONE
+    type: source
+  - name: BCTL_DELINQUENCYSTATUS
+    type: source
+  - name: BCTL_ACCOUNTSEGMENT
+    type: source
+  - name: BC_ACCOUNTCONTACT
+    type: source
+  - name: BC_ACCOUNTCONTACTROLE
+    type: source
+  - name: BCTL_ACCOUNTROLE
+    type: source
+  - name: BC_CONTACT
+    type: source
+  - name: BC_ADDRESS
+    type: source
+  - name: BCTL_STATE
+    type: source
+  - name: DIMBILLINGACCOUNT
+    type: source
+
+join_logic:
+  # Join 1: BC_ACCOUNT with BCTL_ACCOUNTTYPE
+  - join_name: JOIN_ACCOUNTTYPE
+    join_type: LEFT
+    left_source: BC_ACCOUNT
+    right_source: BCTL_ACCOUNTTYPE
+    join_condition: BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+    execution_order: 1
+    
+  # Join 2: BC_ACCOUNT with BC_PARENTACCT
+  - join_name: JOIN_PARENTACCT
+    join_type: LEFT
+    left_source: BC_ACCOUNT
+    right_source: BC_PARENTACCT
+    join_condition: BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+    execution_order: 2
+    
+  # Join 3: BC_ACCOUNT with BCTL_BILLINGLEVEL
+  - join_name: JOIN_BILLINGLEVEL
+    join_type: LEFT
+    left_source: BC_ACCOUNT
+    right_source: BCTL_BILLINGLEVEL
+    join_condition: BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+    execution_order: 3
+    
+  # Join 4: BC_ACCOUNT with BCTL_CUSTOMERSERVICETIER
+  - join_name: JOIN_SERVICETIER
+    join_type: LEFT
+    left_source: BC_ACCOUNT
+    right_source: BCTL_CUSTOMERSERVICETIER
+    join_condition: BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+    execution_order: 4
+    
+  # Join 5: BC_ACCOUNT with BC_SECURITYZONE
+  - join_name: JOIN_SECURITYZONE
+    join_type: LEFT
+    left_source: BC_ACCOUNT
+    right_source: BC_SECURITYZONE
+    join_condition: BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+    execution_order: 5
+    
+  # Join 6: BC_ACCOUNT with BCTL_DELINQUENCYSTATUS
+  - join_name: JOIN_DELINQUENCYSTATUS
+    join_type: LEFT
+    left_source: BC_ACCOUNT
+    right_source: BCTL_DELINQUENCYSTATUS
+    join_condition: BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+    execution_order: 6
+    
+  # Join 7: BC_ACCOUNT with BCTL_ACCOUNTSEGMENT
+  - join_name: JOIN_ACCOUNTSEGMENT
+    join_type: LEFT
+    left_source: BC_ACCOUNT
+    right_source: BCTL_ACCOUNTSEGMENT
+    join_condition: BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+    execution_order: 7
+    
+  # Join 8: BC_ACCOUNT with INSUREDINFO (derived)
+  - join_name: JOIN_INSUREDINFO
+    join_type: LEFT
+    left_source: BC_ACCOUNT
+    right_source: INSUREDINFO
+    join_condition: INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+    execution_order: 8
+    notes: INSUREDINFO is a derived table from subsequent joins
+    
+  # Join 9: INSUREDINFO with BC_ACCOUNTCONTACT
+  - join_name: JOIN_ACCOUNTCONTACT
+    join_type: INNER
+    left_source: INSUREDINFO
+    right_source: BC_ACCOUNTCONTACT
+    join_condition: BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
+    execution_order: 9
+    
+  # Join 10: INSUREDINFO with BC_ACCOUNTCONTACTROLE
+  - join_name: JOIN_ACCOUNTCONTACTROLE
+    join_type: INNER
+    left_source: INSUREDINFO
+    right_source: BC_ACCOUNTCONTACTROLE
+    join_condition: BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+    execution_order: 10
+    
+  # Join 11: INSUREDINFO with BCTL_ACCOUNTROLE
+  - join_name: JOIN_ACCOUNTROLE
+    join_type: INNER
+    left_source: INSUREDINFO
+    right_source: BCTL_ACCOUNTROLE
+    join_condition: BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+    execution_order: 11
+    
+  # Join 12: INSUREDINFO with BC_CONTACT
+  - join_name: JOIN_CONTACT
+    join_type: LEFT
+    left_source: INSUREDINFO
+    right_source: BC_CONTACT
+    join_condition: BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+    execution_order: 12
+    
+  # Join 13: INSUREDINFO with BC_ADDRESS
+  - join_name: JOIN_ADDRESS
+    join_type: LEFT
+    left_source: INSUREDINFO
+    right_source: BC_ADDRESS
+    join_condition: BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+    execution_order: 13
+    
+  # Join 14: INSUREDINFO with BCTL_STATE
+  - join_name: JOIN_STATE
+    join_type: LEFT
+    left_source: INSUREDINFO
+    right_source: BCTL_STATE
+    join_condition: BCTL_STATE.ID = BC_ADDRESS.STATE
+    execution_order: 14
+    
+  # Join 15: LOOKUP_INPUT with DIMBILLINGACCOUNT
+  - join_name: JOIN_LOOKUP_DIMBILLINGACCOUNT
+    join_type: INNER
+    left_source: LOOKUP_INPUT
+    right_source: DIMBILLINGACCOUNT
+    join_condition: LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
+    execution_order: 15
+    notes: Used for lookup validation in transformation phase
+
+output:
+  name: JOINED_DIMBILLINGACCOUNT_DATA
+  description: Fully joined dataset ready for transformations
+  
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  created_from: SSIS_Documentation
+  total_joins: 15
+  execution_preserved: true
