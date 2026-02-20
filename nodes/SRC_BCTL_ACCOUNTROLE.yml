@@ -1,14 +1,17 @@
+fileVersion: 1.0.0
 name: SRC_BCTL_ACCOUNTROLE
-type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BCTL_ACCOUNTROLE
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: TYPECODE
-    data_type: STRING
-    nullable: true
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+type: sourceInput
+version: 1
+sources:
+  - name: BCTL_ACCOUNTROLE
+    database: ""
+    schema: ""
+    columns:
+      - name: ID
+        dataType: VARCHAR
+      - name: TYPECODE
+        dataType: VARCHAR
