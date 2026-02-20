@@ -3,8 +3,19 @@ id: SRC_BCTL_ACCOUNTTYPE
 name: SRC_BCTL_ACCOUNTTYPE
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BCTL_ACCOUNTTYPE
@@ -14,10 +25,7 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTTYPE
@@ -31,10 +39,7 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTTYPE
@@ -51,15 +56,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          BCTL_ACCOUNTTYPE: SRC_BCTL_ACCOUNTTYPE
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTTYPE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} "BCTL_ACCOUNTTYPE"
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }}
         name: SRC_BCTL_ACCOUNTTYPE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTTYPE
