@@ -1,74 +1,11 @@
-fileVersion: 1
-id: SRC_BCTL_BILLINGLEVEL
 name: SRC_BCTL_BILLINGLEVEL
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BCTL_BILLINGLEVEL
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_BILLINGLEVEL
-        config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_BILLINGLEVEL
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_BILLINGLEVEL
-        config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: NAME
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_BILLINGLEVEL
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_BCTL_BILLINGLEVEL: BCTL_BILLINGLEVEL
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_BILLINGLEVEL
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} "SRC_BCTL_BILLINGLEVEL"
-        name: SRC_BCTL_BILLINGLEVEL
-        noLinkRefs: []
-  name: SRC_BCTL_BILLINGLEVEL
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  location: SRC ("BC"."dbo")
+  columns:
+    - name: ID
+      dataType: INTEGER
+      nullable: true
+    - name: NAME
+      dataType: STRING
+      nullable: true
