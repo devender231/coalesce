@@ -7,20 +7,19 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Row Count transformation - Counts update rows where BeanVersion is different from EDWBeanVersion (Variable: User::UpdateCount)"
+  description: Row Count transformation - Counts update rows where BeanVersion is different from EDW_BEANVERSION (Variable User::UpdateCount)
   isMultisource: false
-  locationName: TGT
+  locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 1
           stepCounter: SRC_ROWCOUNT_UPDATE
         config: {}
-        dataType: NUMBER
-        description: "Count of update rows"
+        dataType: INTEGER
+        description: Count of update records
         name: UPDATE_ROW_COUNT
         nullable: false
         sourceColumnReferences:
@@ -30,23 +29,21 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SPLIT: SRC_CONDITIONALSPLIT_BEANVERSION
+          SRC_CONDITIONALSPLIT_BEANVERSION: SRC_CONDITIONALSPLIT_BEANVERSION
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TGT
-            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
+          - locationName: SRC
+            nodeName: CONDITIONALSPLIT_BEANVERSION
         join:
-          joinCondition: |
-            FROM {{ ref('TGT', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} SPLIT
-            WHERE SPLIT.ROUTE_FLAG = 'UPDATE'
+          joinCondition: |-
+            FROM {{ ref('SRC', 'CONDITIONALSPLIT_BEANVERSION') }} SRC_CONDITIONALSPLIT_BEANVERSION
+            WHERE SRC_CONDITIONALSPLIT_BEANVERSION.RECORD_STATUS = 'UPDATE'
         name: SRC_ROWCOUNT_UPDATE
         noLinkRefs: []
-name: SRC_ROWCOUNT_UPDATE
-overrideSQLStep:
-  name: ""
+  name: SRC_ROWCOUNT_UPDATE
   overrideSQL: false
-schema: ""
-sqlType: Transform
-type: sql
-version: 1
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
