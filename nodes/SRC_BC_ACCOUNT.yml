@@ -1,357 +1,43 @@
-fileVersion: 1
-id: S1
-name: BC_ACCOUNT
-operation:
-  database: ""
-  deployEnabled: true
-  description: ""
-  locationName: SRC
-  metadata:
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C1
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: ACCOUNTNUMBER
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C2
-          stepCounter: S1
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: ACCOUNTNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C3
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: ACCOUNTTYPE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C4
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: BILLINGLEVEL
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C5
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: SERVICETIER
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C6
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: SECURITYZONEID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C7
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: SEGMENT
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C8
-          stepCounter: S1
-        config: {}
-        dataType: DATETIME
-        defaultValue: ""
-        description: ""
-        name: CLOSEDATE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C9
-          stepCounter: S1
-        config: {}
-        dataType: DATETIME
-        defaultValue: ""
-        description: ""
-        name: CREATETIME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C10
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: DELINQUENCYSTATUS
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C11
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: FIRSTTWICEPERMTHINVOICEDOM
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C12
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C13
-          stepCounter: S1
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: PUBLICID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C14
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: ID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C15
-          stepCounter: S1
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C16
-          stepCounter: S1
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: RETIRED
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C17
-          stepCounter: S1
-        config: {}
-        dataType: DATETIME
-        defaultValue: ""
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-  name: BC_ACCOUNT
-  schema: ""
-  sqlType: Source
-  type: sourceInput
-  version: 1
-
-type: Node
+name: SRC_BC_ACCOUNT
+type: source
+config:
+  source_type: table
+  source_location:
+    database: ""
+    schema: ""
+    table: BC_ACCOUNT
+columns:
+  - name: ACCOUNTNUMBER
+    data_type: INTEGER
+  - name: ACCOUNTNAME
+    data_type: STRING
+  - name: ACCOUNTTYPE
+    data_type: INTEGER
+  - name: BILLINGLEVEL
+    data_type: INTEGER
+  - name: SERVICETIER
+    data_type: INTEGER
+  - name: SECURITYZONEID
+    data_type: INTEGER
+  - name: SEGMENT
+    data_type: INTEGER
+  - name: CLOSEDATE
+    data_type: DATETIME
+  - name: CREATETIME
+    data_type: DATETIME
+  - name: DELINQUENCYSTATUS
+    data_type: INTEGER
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    data_type: INTEGER
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    data_type: INTEGER
+  - name: PUBLICID
+    data_type: STRING
+  - name: ID
+    data_type: INTEGER
+  - name: BEANVERSION
+    data_type: STRING
+  - name: RETIRED
+    data_type: INTEGER
+  - name: UPDATETIME
+    data_type: DATETIME
