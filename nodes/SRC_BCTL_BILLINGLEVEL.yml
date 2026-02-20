@@ -1,0 +1,9 @@
+name: SRC_BCTL_BILLINGLEVEL
+type: source
+config:
+  location: BC.DBO.BCTL_BILLINGLEVEL
+  columns:
+    - name: BILLINGLEVELID
+      datatype: VARCHAR
+    - name: BILLINGLEVELNAME
+      datatype: VARCHAR
