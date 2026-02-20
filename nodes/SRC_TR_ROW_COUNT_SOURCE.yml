@@ -1,0 +1,20 @@
+name: SRC_TR_ROW_COUNT_SOURCE
+type: transformation
+transformation_type: row_count
+description: Count the number of source rows from the joined dataset
+source: SRC_JOIN_DIMBILLINGACCOUNT
+
+operation:
+  type: ROW_COUNT
+  counter_variable: SourceRowCount
+  description: Counts all rows from the source join operation
+
+output:
+  row_count_variable: SourceRowCount
+  pass_through: true
+  all_columns: true
+
+metadata:
+  execution_order: 1
+  purpose: Track the total number of source rows for auditing and validation
+  next_step: SRC_TR_DERIVED_BATCHID
