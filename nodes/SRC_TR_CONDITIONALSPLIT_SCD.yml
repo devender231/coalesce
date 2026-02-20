@@ -5,19 +5,22 @@ operation:
   config:
     insertStrategy: INSERT
     selectDistinct: false
-  database: SRC
+  database: ""
   deployEnabled: true
+  description: "Transformation 4: Conditional Split - Routes rows based on BeanVersion match for SCD logic (UNCHANGED, INSERT, UPDATE)"
+  isMultisource: false
   locationName: SRC
+  materializationType: view
   metadata:
+    appliedNodeTests: []
     columns:
-      # All columns from previous transformation passed through
       - columnReference:
           columnCounter: 1
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Account Number from BC_ACCOUNT"
-        name: ACCOUNTNUMBER
-        nullable: true
+        dataType: NUMBER(38,0)
+        description: "Account ID"
+        name: ACCOUNTID
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
@@ -26,10 +29,10 @@ operation:
       - columnReference:
           columnCounter: 2
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Account Name from BC_ACCOUNT"
-        name: ACCOUNTNAME
-        nullable: true
+        dataType: VARCHAR(100)
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
@@ -38,8 +41,8 @@ operation:
       - columnReference:
           columnCounter: 3
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Account Type from BC_ACCOUNT"
+        dataType: VARCHAR(255)
+        description: "Account Type"
         name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
@@ -50,9 +53,9 @@ operation:
       - columnReference:
           columnCounter: 4
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Billing Level from BC_ACCOUNT"
-        name: BILLINGLEVEL
+        dataType: NUMBER(38,0)
+        description: "Parent Account ID"
+        name: PARENTACCOUNTID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -62,9 +65,9 @@ operation:
       - columnReference:
           columnCounter: 5
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Service Tier from BC_ACCOUNT"
-        name: SERVICETIER
+        dataType: VARCHAR(255)
+        description: "Billing Level"
+        name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -74,9 +77,9 @@ operation:
       - columnReference:
           columnCounter: 6
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Security Zone ID from BC_ACCOUNT"
-        name: SECURITYZONEID
+        dataType: VARCHAR(255)
+        description: "Service Tier"
+        name: SERVICETIER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -86,9 +89,9 @@ operation:
       - columnReference:
           columnCounter: 7
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Segment from BC_ACCOUNT"
-        name: SEGMENT
+        dataType: VARCHAR(255)
+        description: "Security Zone"
+        name: SECURITYZONE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -98,9 +101,9 @@ operation:
       - columnReference:
           columnCounter: 8
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: DATETIME
-        description: "Close Date from BC_ACCOUNT"
-        name: CLOSEDATE
+        dataType: VARCHAR(255)
+        description: "Delinquency Status"
+        name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -110,9 +113,9 @@ operation:
       - columnReference:
           columnCounter: 9
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: DATETIME
-        description: "Create Time from BC_ACCOUNT"
-        name: CREATETIME
+        dataType: VARCHAR(255)
+        description: "Account Segment"
+        name: ACCOUNTSEGMENT
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -122,9 +125,9 @@ operation:
       - columnReference:
           columnCounter: 10
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Delinquency Status from BC_ACCOUNT"
-        name: DELINQUENCYSTATUS
+        dataType: VARCHAR(255)
+        description: "Insured First Name"
+        name: INSURED_FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -134,9 +137,9 @@ operation:
       - columnReference:
           columnCounter: 11
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "First Twice Per Month Invoice DOM from BC_ACCOUNT"
-        name: FIRSTTWICEPERMTHINVOICEDOM
+        dataType: VARCHAR(255)
+        description: "Insured Last Name"
+        name: INSURED_LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -146,9 +149,9 @@ operation:
       - columnReference:
           columnCounter: 12
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Second Twice Per Month Invoice DOM from BC_ACCOUNT"
-        name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: VARCHAR(255)
+        description: "Address Line 1"
+        name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -158,9 +161,9 @@ operation:
       - columnReference:
           columnCounter: 13
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Public ID from BC_ACCOUNT"
-        name: PUBLICID
+        dataType: VARCHAR(255)
+        description: "Address Line 2"
+        name: ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -170,9 +173,9 @@ operation:
       - columnReference:
           columnCounter: 14
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "ID from BC_ACCOUNT"
-        name: BC_ACCOUNT_ID
+        dataType: VARCHAR(255)
+        description: "City"
+        name: CITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -182,9 +185,9 @@ operation:
       - columnReference:
           columnCounter: 15
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Bean Version from BC_ACCOUNT"
-        name: BEANVERSION
+        dataType: VARCHAR(255)
+        description: "State"
+        name: STATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -194,9 +197,9 @@ operation:
       - columnReference:
           columnCounter: 16
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Retired from BC_ACCOUNT"
-        name: RETIRED
+        dataType: VARCHAR(20)
+        description: "Postal Code"
+        name: POSTALCODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -206,10 +209,10 @@ operation:
       - columnReference:
           columnCounter: 17
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: DATETIME
-        description: "Update Time from BC_ACCOUNT"
-        name: UPDATETIME
-        nullable: true
+        dataType: TIMESTAMP_NTZ(9)
+        description: "Create Date"
+        name: CREATEDATE
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 17
@@ -218,10 +221,10 @@ operation:
       - columnReference:
           columnCounter: 18
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Account Type Name from BCTL_ACCOUNTTYPE"
-        name: ACCOUNTTYPE_NAME
-        nullable: true
+        dataType: TIMESTAMP_NTZ(9)
+        description: "Update Date"
+        name: UPDATEDATE
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 18
@@ -230,9 +233,9 @@ operation:
       - columnReference:
           columnCounter: 19
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Foreign Entity ID from BC_PARENTACCT"
-        name: PARENTACCT_FOREIGNENTITYID
+        dataType: VARCHAR(100)
+        description: "Public ID"
+        name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -242,9 +245,9 @@ operation:
       - columnReference:
           columnCounter: 20
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Billing Level Name from BCTL_BILLINGLEVEL"
-        name: BILLINGLEVEL_NAME
+        dataType: VARCHAR(100)
+        description: "Bean Version"
+        name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -254,10 +257,10 @@ operation:
       - columnReference:
           columnCounter: 21
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Customer Service Tier Name from BCTL_CUSTOMERSERVICETIER"
-        name: SERVICETIER_NAME
-        nullable: true
+        dataType: NUMBER(38,0)
+        description: "Source Row Count"
+        name: SOURCE_ROW_COUNT
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 21
@@ -266,10 +269,10 @@ operation:
       - columnReference:
           columnCounter: 22
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Security Zone Name from BC_SECURITYZONE"
-        name: SECURITYZONE_NAME
-        nullable: true
+        dataType: NUMBER(38,0)
+        description: "Batch ID"
+        name: BATCHID
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 22
@@ -278,9 +281,9 @@ operation:
       - columnReference:
           columnCounter: 23
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Delinquency Status Name from BCTL_DELINQUENCYSTATUS"
-        name: DELINQUENCYSTATUS_NAME
+        dataType: VARCHAR(100)
+        description: "EDW Bean Version"
+        name: EDW_BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -290,258 +293,34 @@ operation:
       - columnReference:
           columnCounter: 24
           stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Account Segment Name from BCTL_ACCOUNTSEGMENT"
-        name: SEGMENT_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 24
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 25
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Account Contact ID from BC_ACCOUNTCONTACT"
-        name: ACCOUNTCONTACT_ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 25
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 26
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Contact ID from BC_ACCOUNTCONTACT"
-        name: CONTACTID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 26
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 27
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Role from BC_ACCOUNTCONTACTROLE"
-        name: ROLE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 27
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 28
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Type Code from BCTL_ACCOUNTROLE"
-        name: ROLE_TYPECODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 28
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 29
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "First Name from BC_CONTACT"
-        name: FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 29
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 30
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Last Name from BC_CONTACT"
-        name: LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 30
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 31
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Primary Address ID from BC_CONTACT"
-        name: PRIMARYADDRESSID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 31
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 32
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Address Line 1 from BC_ADDRESS"
-        name: ADDRESSLINE1
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 32
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 33
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Address Line 2 from BC_ADDRESS"
-        name: ADDRESSLINE2
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 33
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 34
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Address Line 3 from BC_ADDRESS"
-        name: ADDRESSLINE3
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 34
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 35
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "City from BC_ADDRESS"
-        name: CITY
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 35
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 36
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Postal Code from BC_ADDRESS"
-        name: POSTALCODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 36
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 37
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "State from BC_ADDRESS"
-        name: STATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 37
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 38
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "State Name from BCTL_STATE"
-        name: STATE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 38
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 39
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Row count for source records"
-        name: SOURCE_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 39
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 40
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: INTEGER
-        description: "Batch ID for ETL tracking"
-        name: BATCHID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 40
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 41
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "Bean Version from EDW DIMBILLINGACCOUNT"
-        name: EDWBEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 41
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: ""
-      # Conditional split routing column
-      - columnReference:
-          columnCounter: 42
-          stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-        dataType: STRING
-        description: "SCD routing flag: UNCHANGED (versions match), INSERT (no EDW match), UPDATE (versions differ)"
+        dataType: VARCHAR(20)
+        description: "SCD Route Type: UNCHANGED, INSERT, or UPDATE"
         name: SCD_ROUTE
         nullable: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 15
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-              - columnCounter: 41
-                stepCounter: SRC_TR_LOOKUP_BEANVERSION
-            transform: |
+          - columnReferences: []
+            transform: |-
               CASE 
-                WHEN EDWBEANVERSION IS NULL THEN 'INSERT'
-                WHEN BEANVERSION = EDWBEANVERSION THEN 'UNCHANGED'
+                WHEN EDW_BEANVERSION IS NULL THEN 'INSERT'
+                WHEN BEANVERSION = EDW_BEANVERSION THEN 'UNCHANGED'
                 ELSE 'UPDATE'
               END
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_TR_LOOKUP_BEANVERSION: SRC.SRC.SRC_TR_LOOKUP_BEANVERSION
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_TR_LOOKUP_BEANVERSION
+            nodeName: TR_LOOKUP_BEANVERSION
         join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_TR_LOOKUP_BEANVERSION') }} SRC_TR_LOOKUP_BEANVERSION
+          joinCondition: FROM {{ ref('SRC', 'TR_LOOKUP_BEANVERSION') }}
         name: SRC_TR_CONDITIONALSPLIT_SCD
         noLinkRefs: []
   name: SRC_TR_CONDITIONALSPLIT_SCD
   overrideSQL: false
-  schema: SRC
+  schema: ""
   sqlType: Transform
   type: sql
   version: 1
-  description: "CONDITIONAL_SPLIT Transformation: Routes rows based on whether BeanVersion matches EDWBeanVersion. This transformation evaluates SCD Type 2 logic by comparing BEANVERSION (from source) with EDWBEANVERSION (from lookup). It adds an SCD_ROUTE column with three possible values: 'INSERT' (no match in EDW - new records), 'UNCHANGED' (versions match - no update needed), 'UPDATE' (versions differ - record has changed). This routing enables separate downstream processing for inserts, updates, and unchanged records with corresponding row count tracking."
