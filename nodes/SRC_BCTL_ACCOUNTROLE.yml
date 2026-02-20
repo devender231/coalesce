@@ -14,7 +14,10 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTROLE
@@ -28,7 +31,10 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTROLE
@@ -45,14 +51,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BCTL_ACCOUNTROLE: SRC_BCTL_ACCOUNTROLE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "BCTL_ACCOUNTROLE"
         name: SRC_BCTL_ACCOUNTROLE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTROLE
