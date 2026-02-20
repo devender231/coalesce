@@ -1,17 +1,25 @@
+fileVersion: 1.0
 name: SRC_BC_PARENTACCT
-type: source
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+type: sourceInput
+version: 1
 config:
-  location: SRC ("BC"."dbo")
-  columns:
-    - name: OWNERID
-      dataType: INTEGER
-      nullable: true
-    - name: FOREIGNENTITYID
-      dataType: INTEGER
-      nullable: true
-    - name: BEANVERSION
-      dataType: STRING
-      nullable: true
-    - name: UPDATETIME
-      dataType: DATETIME
-      nullable: true
+  database: ""
+  schema: ""
+  table: BC_PARENTACCT
+columns:
+  - name: OWNERID
+    dataType: INTEGER
+    nullable: true
+  - name: FOREIGNENTITYID
+    dataType: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
