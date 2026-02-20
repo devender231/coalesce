@@ -1,0 +1,101 @@
+fileVersion: 1
+id: SRC_TR_LOOKUP_BEANVERSION
+name: SRC_TR_LOOKUP_BEANVERSION
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
+  deployEnabled: true
+  description: Lookup transformation - Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: PUBLICID from source
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: BeanVersion from DIMBILLINGACCOUNT lookup
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: EDWBeanVersion from source data
+        name: EDWBEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_DERIVED_BATCHID: SRC_TR_DERIVED_BATCHID
+          SRC_DIMBILLINGACCOUNT: SRC_DIMBILLINGACCOUNT
+        customSQL:
+          customSQL: "SELECT SRC_TR_DERIVED_BATCHID.PUBLICID, SRC_DIMBILLINGACCOUNT.BEANVERSION, SRC_TR_DERIVED_BATCHID.BEANVERSION AS EDWBEANVERSION FROM SRC_TR_DERIVED_BATCHID LEFT JOIN SRC_DIMBILLINGACCOUNT ON SRC_TR_DERIVED_BATCHID.PUBLICID = SRC_DIMBILLINGACCOUNT.PUBLICID"
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_DERIVED_BATCHID
+          - locationName: SRC
+            nodeName: SRC_DIMBILLINGACCOUNT
+        join:
+          joinCondition: "SRC_TR_DERIVED_BATCHID.PUBLICID = SRC_DIMBILLINGACCOUNT.PUBLICID"
+        name: SRC_TR_LOOKUP_BEANVERSION
+        noLinkRefs: []
+  name: SRC_TR_LOOKUP_BEANVERSION
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
