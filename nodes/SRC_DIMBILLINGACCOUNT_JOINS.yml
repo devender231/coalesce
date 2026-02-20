@@ -1,0 +1,116 @@
+name: SRC_DIMBILLINGACCOUNT_JOINS
+type: join
+config:
+  description: "Joins all source tables for DimBillingAccount ETL process"
+  joins:
+    - join_name: JOIN_BC_ACCOUNT_TO_BCTL_ACCOUNTTYPE
+      left_table: SRC_BC_ACCOUNT
+      right_table: SRC_BCTL_ACCOUNTTYPE
+      join_type: LEFT
+      condition: "BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID"
+      
+    - join_name: JOIN_BC_ACCOUNT_TO_BC_PARENTACCT
+      left_table: SRC_BC_ACCOUNT
+      right_table: SRC_BC_PARENTACCT
+      join_type: LEFT
+      condition: "BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID"
+      
+    - join_name: JOIN_BC_ACCOUNT_TO_BCTL_BILLINGLEVEL
+      left_table: SRC_BC_ACCOUNT
+      right_table: SRC_BCTL_BILLINGLEVEL
+      join_type: LEFT
+      condition: "BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID"
+      
+    - join_name: JOIN_BC_ACCOUNT_TO_BCTL_CUSTOMERSERVICETIER
+      left_table: SRC_BC_ACCOUNT
+      right_table: SRC_BCTL_CUSTOMERSERVICETIER
+      join_type: LEFT
+      condition: "BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID"
+      
+    - join_name: JOIN_BC_ACCOUNT_TO_BC_SECURITYZONE
+      left_table: SRC_BC_ACCOUNT
+      right_table: SRC_BC_SECURITYZONE
+      join_type: LEFT
+      condition: "BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID"
+      
+    - join_name: JOIN_BC_ACCOUNT_TO_BCTL_DELINQUENCYSTATUS
+      left_table: SRC_BC_ACCOUNT
+      right_table: SRC_BCTL_DELINQUENCYSTATUS
+      join_type: LEFT
+      condition: "BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID"
+      
+    - join_name: JOIN_BC_ACCOUNT_TO_BCTL_ACCOUNTSEGMENT
+      left_table: SRC_BC_ACCOUNT
+      right_table: SRC_BCTL_ACCOUNTSEGMENT
+      join_type: LEFT
+      condition: "BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID"
+      
+    - join_name: JOIN_BC_ACCOUNT_TO_INSUREDINFO
+      left_table: SRC_BC_ACCOUNT
+      right_table: INSUREDINFO
+      join_type: LEFT
+      condition: "INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID"
+      description: "Creates intermediate INSUREDINFO dataset"
+      
+    - join_name: JOIN_INSUREDINFO_TO_BC_ACCOUNTCONTACT
+      left_table: INSUREDINFO
+      right_table: SRC_BC_ACCOUNTCONTACT
+      join_type: INNER
+      condition: "BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID"
+      
+    - join_name: JOIN_INSUREDINFO_TO_BC_ACCOUNTCONTACTROLE
+      left_table: INSUREDINFO
+      right_table: SRC_BC_ACCOUNTCONTACTROLE
+      join_type: INNER
+      condition: "BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID"
+      
+    - join_name: JOIN_INSUREDINFO_TO_BCTL_ACCOUNTROLE
+      left_table: INSUREDINFO
+      right_table: SRC_BCTL_ACCOUNTROLE
+      join_type: INNER
+      condition: "BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'"
+      
+    - join_name: JOIN_INSUREDINFO_TO_BC_CONTACT
+      left_table: INSUREDINFO
+      right_table: SRC_BC_CONTACT
+      join_type: LEFT
+      condition: "BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID"
+      
+    - join_name: JOIN_INSUREDINFO_TO_BC_ADDRESS
+      left_table: INSUREDINFO
+      right_table: SRC_BC_ADDRESS
+      join_type: LEFT
+      condition: "BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID"
+      
+    - join_name: JOIN_INSUREDINFO_TO_BCTL_STATE
+      left_table: INSUREDINFO
+      right_table: SRC_BCTL_STATE
+      join_type: LEFT
+      condition: "BCTL_STATE.ID = BC_ADDRESS.STATE"
+      
+    - join_name: JOIN_LOOKUP_INPUT_TO_DIMBILLINGACCOUNT
+      left_table: LOOKUP_INPUT
+      right_table: SRC_DIMBILLINGACCOUNT
+      join_type: INNER
+      condition: "LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID"
+      description: "Used for lookup validation in downstream transformations"
+  
+  execution_order:
+    - "First join BC_ACCOUNT to all lookup tables (ACCOUNTTYPE, PARENTACCT, BILLINGLEVEL, CUSTOMERSERVICETIER, SECURITYZONE, DELINQUENCYSTATUS, ACCOUNTSEGMENT)"
+    - "Then create INSUREDINFO intermediate dataset"
+    - "Join INSUREDINFO to contact-related tables (ACCOUNTCONTACT, ACCOUNTCONTACTROLE, ACCOUNTROLE, CONTACT, ADDRESS, STATE)"
+    - "Finally prepare LOOKUP_INPUT for downstream lookup transformation"
+  
+  output_columns:
+    - "All columns from BC_ACCOUNT"
+    - "NAME as ACCOUNTTYPE_NAME from BCTL_ACCOUNTTYPE"
+    - "FOREIGNENTITYID as PARENTACCOUNT_ID from BC_PARENTACCT"
+    - "NAME as BILLINGLEVEL_NAME from BCTL_BILLINGLEVEL"
+    - "NAME as SERVICETIER_NAME from BCTL_CUSTOMERSERVICETIER"
+    - "NAME as SECURITYZONE_NAME from BC_SECURITYZONE"
+    - "NAME as DELINQUENCYSTATUS_NAME from BCTL_DELINQUENCYSTATUS"
+    - "NAME as ACCOUNTSEGMENT_NAME from BCTL_ACCOUNTSEGMENT"
+    - "FIRSTNAME, LASTNAME from BC_CONTACT"
+    - "ADDRESSLINE1, ADDRESSLINE2, ADDRESSLINE3, CITY, POSTALCODE from BC_ADDRESS"
+    - "NAME as STATE_NAME from BCTL_STATE"
+    - "BEANVERSION as EDWBeanVersion from DIMBILLINGACCOUNT (for lookup)"
