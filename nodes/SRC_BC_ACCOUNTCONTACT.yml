@@ -1,17 +1,24 @@
 name: SRC_BC_ACCOUNTCONTACT
 type: source
+config:
+  source_type: table
 location:
-  database: BC
-  schema: dbo
-  table: ACCOUNTCONTACT
+  database: GUIDEWIRE
+  schema: BC
+  table: BC_ACCOUNTCONTACT
 columns:
   - name: INSUREDACCOUNTID
-    dataType: INTEGER
+    data_type: INTEGER
+    nullable: true
   - name: CONTACTID
-    dataType: INTEGER
+    data_type: INTEGER
+    nullable: true
   - name: ID
-    dataType: INTEGER
+    data_type: INTEGER
+    nullable: true
   - name: BEANVERSION
-    dataType: INTEGER
+    data_type: STRING
+    nullable: true
   - name: UPDATETIME
-    dataType: DATETIME
+    data_type: DATETIME
+    nullable: true
