@@ -1,11 +1,70 @@
+fileVersion: 1
+id: SRC_BCTL_ACCOUNTTYPE
 name: SRC_BCTL_ACCOUNTTYPE
-type: source
-config:
-  location: SRC ("BC"."dbo")
-  columns:
-    - name: ID
-      dataType: INTEGER
-      nullable: true
-    - name: NAME
-      dataType: STRING
-      nullable: true
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Source table BCTL_ACCOUNTTYPE
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTTYPE
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BCTL_ACCOUNTTYPE
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BCTL_ACCOUNTTYPE: SRC_BCTL_ACCOUNTTYPE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTTYPE
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} "BCTL_ACCOUNTTYPE"
+        name: SRC_BCTL_ACCOUNTTYPE
+        noLinkRefs: []
+  name: SRC_BCTL_ACCOUNTTYPE
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
