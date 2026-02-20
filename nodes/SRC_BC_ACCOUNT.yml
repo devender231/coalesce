@@ -1,8 +1,8 @@
 name: SRC_BC_ACCOUNT
 type: source
-database: ""
-schema: ""
-location: SRC (".""."")
+config:
+  source_type: table
+  source_location: SRC ("GUIDEWIRE"."BC"."BC_ACCOUNT")
 columns:
   - name: ACCOUNTNUMBER
     data_type: INTEGER
