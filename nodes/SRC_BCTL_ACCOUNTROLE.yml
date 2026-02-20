@@ -1,13 +1,19 @@
+fileVersion: 1
+id: SRC_BCTL_ACCOUNTROLE
 name: SRC_BCTL_ACCOUNTROLE
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  locationName: SRC
+  metadata:
+    columns:
+      - name: ID
+        dataType: INTEGER
+      - name: TYPECODE
+        dataType: STRING
+  schema: ""
+  tableName: BCTL_ACCOUNTROLE
 type: source
-location:
-  database: BC
-  schema: DBO
-  table: BCTL_ACCOUNTROLE
-columns:
-  - name: ID
-    dataType: INTEGER
-    columnOrder: 1
-  - name: TYPECODE
-    dataType: STRING
-    columnOrder: 2
