@@ -9,123 +9,104 @@ operation:
     initialize: ON_CREATE
     insertStrategy: INSERT
     orderby: false
-    postSQL: ""
-    preSQL: ""
+    postSQL: ''
+    preSQL: ''
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
     testsEnabled: true
     truncateBefore: false
-    warehouseName: '{{ parameters.DEV_WAREHOUSE }}'
-  database: ""
+    warehouseName: ''
+  database: ''
   deployEnabled: true
   description: Source table for BC_SECURITYZONE
+  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
+        dataType: VARCHAR
+        description: ''
         hashColumns: []
         hashDetails: null
         name: ID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
                 stepCounter: SRC_BC_SECURITYZONE
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+            transform: ''
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
+        dataType: VARCHAR
+        description: ''
         hashColumns: []
         hashDetails: null
         name: NAME
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
                 stepCounter: SRC_BC_SECURITYZONE
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+            transform: ''
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
+        dataType: VARCHAR
+        description: ''
         hashColumns: []
         hashDetails: null
         name: BEANVERSION
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
                 stepCounter: SRC_BC_SECURITYZONE
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+            transform: ''
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
-        dataType: DATETIME
-        defaultValue: ""
-        description: ""
+        dataType: VARCHAR
+        description: ''
         hashColumns: []
         hashDetails: null
         name: UPDATETIME
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
                 stepCounter: SRC_BC_SECURITYZONE
-            transform: ""
-    cteString: ""
+            transform: ''
+    cteString: ''
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases: {}
         customSQL:
-          customSQL: ""
+          customSQL: ''
         dependencies:
           - locationName: SRC
             nodeName: BC_SECURITYZONE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_SECURITYZONE') }}
+          joinCondition: ''
         name: SRC_BC_SECURITYZONE
         noLinkRefs: []
   name: SRC_BC_SECURITYZONE
   overrideSQL: false
-  schema: ""
+  schema: ''
   sqlType: Source
   type: sql
   version: 1
