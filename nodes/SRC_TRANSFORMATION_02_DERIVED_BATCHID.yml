@@ -1,0 +1,37 @@
+---
+name: SRC_TRANSFORMATION_02_DERIVED_BATCHID
+type: transformation
+transformation_type: DERIVED_COLUMN
+execution_order: 2
+description: Adds or overwrites BatchID column
+
+source:
+  type: upstream_transformation
+  name: SRC_TRANSFORMATION_01_ROW_COUNT_SOURCE
+  description: Output from row count transformation
+
+transformation_logic:
+  operation: ADD_OR_REPLACE_COLUMN
+  derived_columns:
+    - column_name: BatchID
+      expression: "@[User::BatchID]"
+      data_type: Integer
+      operation: ADD_OR_OVERWRITE
+      description: Batch identifier for tracking data loads
+
+output:
+  columns:
+    - name: BatchID
+      source: DERIVED
+      expression: "@[User::BatchID]"
+  description: All source columns plus BatchID column
+
+upstream_dependencies:
+  - SRC_TRANSFORMATION_01_ROW_COUNT_SOURCE
+  - SRC_JOINS_DIMBILLINGACCOUNT
+
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  component_type: Derived Column
+  execution_sequence: 2
+  purpose: Add batch tracking identifier to each row
