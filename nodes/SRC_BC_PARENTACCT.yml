@@ -1,97 +1,17 @@
-fileVersion: 1
-id: S2
-name: BC_PARENTACCT
-operation:
-  database: ""
-  deployEnabled: true
-  description: ""
-  locationName: SRC
-  metadata:
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C1
-          stepCounter: S2
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: OWNERID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C2
-          stepCounter: S2
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: FOREIGNENTITYID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C3
-          stepCounter: S2
-        config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C4
-          stepCounter: S2
-        config: {}
-        dataType: TIMESTAMP_NTZ
-        defaultValue: ""
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-  name: BC_PARENTACCT
-  schema: ""
-  sqlType: Source
-  type: sourceInput
-  version: 1
-
-type: Node
+name: SRC_BC_PARENTACCT
+type: source
+config:
+  source_type: table
+  source_location:
+    database: ""
+    schema: ""
+    table: BC_PARENTACCT
+columns:
+  - name: OWNERID
+    data_type: INTEGER
+  - name: FOREIGNENTITYID
+    data_type: INTEGER
+  - name: BEANVERSION
+    data_type: STRING
+  - name: UPDATETIME
+    data_type: DATETIME
