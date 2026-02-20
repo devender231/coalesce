@@ -1,17 +1,21 @@
-fileVersion: 1.0.0
-id: SRC_BC_SECURITYZONE
 name: SRC_BC_SECURITYZONE
 type: source
 config:
-  database: ""
-  schema: ""
+  source_type: table
+location:
+  database: GUIDEWIRE
+  schema: BC
   table: BC_SECURITYZONE
 columns:
   - name: ID
-    dataType: VARCHAR
+    data_type: INTEGER
+    nullable: true
   - name: NAME
-    dataType: VARCHAR
+    data_type: STRING
+    nullable: true
   - name: BEANVERSION
-    dataType: INTEGER
+    data_type: STRING
+    nullable: true
   - name: UPDATETIME
-    dataType: TIMESTAMP
+    data_type: DATETIME
+    nullable: true
