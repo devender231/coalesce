@@ -1,8 +1,15 @@
 name: SRC_BC_SECURITYZONE
 type: source
-location: SRC (BRIGHTCOVE.DBO.BC_SECURITYZONE)
+location:
+  database: ""
+  schema: ""
+  table: BC_SECURITYZONE
 columns:
   - name: ID
+    dataType: VARCHAR
   - name: NAME
+    dataType: VARCHAR
   - name: BEANVERSION
+    dataType: INTEGER
   - name: UPDATETIME
+    dataType: TIMESTAMP
