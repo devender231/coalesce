@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_CONTACT
+  description: Source table BC_CONTACT from BillingCenter
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,16 +22,14 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: NUMBER
+        description: ID
         name: ID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_CONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -41,16 +39,14 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: First Name
         name: FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_CONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -60,16 +56,14 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: Last Name
         name: LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_CONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -79,16 +73,14 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: NUMBER
+        description: Primary Address ID
         name: PRIMARYADDRESSID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_CONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -98,16 +90,14 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: NUMBER
+        description: Bean Version
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_CONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -117,29 +107,27 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: DATETIME
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: TIMESTAMP
+        description: Update Time
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_BC_CONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          BC_CONTACT: SRC_BC_CONTACT
+          SRC_BC_CONTACT: GUIDEWIRE.DBO.BC_CONTACT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "BC_CONTACT"
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "SRC_BC_CONTACT"
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
