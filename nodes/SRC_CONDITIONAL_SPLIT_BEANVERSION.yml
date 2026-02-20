@@ -1,205 +1,41 @@
-fileVersion: 1
-id: SRC_CONDITIONAL_SPLIT_BEANVERSION
 name: SRC_CONDITIONAL_SPLIT_BEANVERSION
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: "Routes rows based on whether BeanVersion matches EDWBeanVersion - determines INSERT vs UPDATE vs UNCHANGED"
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: Account Number
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Account Name
-        name: ACCOUNTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Public ID
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Bean Version from source
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Bean Version from EDW lookup
-        name: EDWBEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: Batch ID
-        name: BATCHID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: "Route classification: UNCHANGED, INSERT, or UPDATE"
-        name: ROUTE_TYPE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: 1
-            transform: |
-              CASE 
-                WHEN BEANVERSION = EDWBEANVERSION THEN 'UNCHANGED'
-                WHEN EDWBEANVERSION IS NULL THEN 'INSERT'
-                WHEN BEANVERSION != EDWBEANVERSION THEN 'UPDATE'
-                ELSE 'UNKNOWN'
-              END
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          LOOKUP_WITH_BEANVERSION: LOOKUP_WITH_BEANVERSION
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_LOOKUP_BEANVERSION
-        join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_LOOKUP_BEANVERSION') }} LOOKUP_WITH_BEANVERSION
-        name: SRC_LOOKUP_BEANVERSION
-        noLinkRefs: []
-  name: SRC_CONDITIONAL_SPLIT_BEANVERSION
-  overrideSQL: false
-  schema: ""
-  sqlType: DT113:::156
-  type: sql
-  version: 1
-type: Node
+type: transformation
+transformation_type: CONDITIONAL_SPLIT
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion
+execution_order: 5
 
-transformation_logic:
-  operation: CONDITIONAL_SPLIT
-  split_type: MULTI_OUTPUT
-  description: |
-    Routes rows based on BeanVersion comparison:
-    - UNCHANGED: BeanVersion == EDWBeanVersion (no action needed)
-    - INSERT: EDWBeanVersion IS NULL (new record)
-    - UPDATE: BeanVersion != EDWBeanVersion (existing record needs update)
-  
-  conditions:
-    - condition_name: UNCHANGED
-      expression: "BEANVERSION = EDWBEANVERSION"
-      description: "Records where BeanVersion matches EDW - no changes needed"
-      output_name: UNCHANGED_ROWS
-      
-    - condition_name: INSERT
-      expression: "EDWBEANVERSION IS NULL"
-      description: "New records not found in EDW - will be inserted"
-      output_name: INSERT_ROWS
-      
-    - condition_name: UPDATE
-      expression: "BEANVERSION != EDWBEANVERSION AND EDWBEANVERSION IS NOT NULL"
-      description: "Existing records with different BeanVersion - will be updated"
-      output_name: UPDATE_ROWS
-      
-    - condition_name: DEFAULT
-      expression: "TRUE"
-      description: "Default output for any unmatched conditions"
-      output_name: DEFAULT_ROWS
+source:
+  - SRC_LOOKUP_BEANVERSION
 
-metadata:
-  execution_order: 4
-  package_name: EDW_BC_Load_DimBillingAccount
-  transformation_type: CONDITIONAL_SPLIT
-  created_from: SSIS_Documentation
-  upstream_dependency_validated: true
-  depends_on:
-    - SRC_DIMBILLINGACCOUNT_JOINS
-    - SRC_ROWCOUNT_SOURCE
-    - SRC_DERIVED_BATCHID
-    - SRC_LOOKUP_BEANVERSION
+split_conditions:
+  - condition_name: UNCHANGED_ROWS
+    condition_order: 1
+    expression: "BEANVERSION == EDWBeanVersion"
+    description: Rows where source BeanVersion matches existing dimension BeanVersion
+    output_destination: SRC_ROWCOUNT_UNCHANGED
+    
+  - condition_name: UPDATE_ROWS
+    condition_order: 2
+    expression: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+    description: Rows where BeanVersion differs (requires update)
+    output_destination: SRC_ROWCOUNT_UPDATE
+    
+  - condition_name: INSERT_ROWS
+    condition_order: 3
+    expression: "EDWBeanVersion IS NULL"
+    description: Rows with no lookup match (new inserts)
+    output_destination: SRC_ROWCOUNT_INSERT
+
+default_output:
+  name: DEFAULT_OUTPUT
+  description: Rows that don't match any condition (should not occur)
+  destination: ERROR_HANDLER
+
+output:
+  split_outputs:
+    - name: UNCHANGED_ROWS
+      row_count_tracking: true
+    - name: UPDATE_ROWS
+      row_count_tracking: true
+    - name: INSERT_ROWS
+      row_count_tracking: true
