@@ -7,23 +7,20 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_PARENTACCT from BillingCenter
+  description: Source table BC_PARENTACCT
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: NUMBER
-        description: Owner ID
+        dataType: INTEGER
+        description: ""
         name: OWNERID
         nullable: true
         sourceColumnReferences:
@@ -31,16 +28,13 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: NUMBER
-        description: Foreign Entity ID
+        dataType: INTEGER
+        description: ""
         name: FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
@@ -48,16 +42,13 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: NUMBER
-        description: Bean Version
+        dataType: STRING
+        description: ""
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -65,16 +56,13 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: TIMESTAMP
-        description: Update Time
+        dataType: DATETIME
+        description: ""
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -85,15 +73,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_PARENTACCT: GUIDEWIRE.DBO.BC_PARENTACCT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_PARENTACCT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }} "SRC_BC_PARENTACCT"
+          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }}
         name: SRC_BC_PARENTACCT
         noLinkRefs: []
   name: SRC_BC_PARENTACCT
