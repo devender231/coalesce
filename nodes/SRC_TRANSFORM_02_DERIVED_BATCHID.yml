@@ -1,0 +1,218 @@
+fileVersion: 1
+id: SRC_TRANSFORM_02_DERIVED_BATCHID
+name: SRC_TRANSFORM_02_DERIVED_BATCHID
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Transformation 2: DERIVED - Adds or overwrites BatchID column (BatchID = @[User::BatchID])"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 9
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 10
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CONTACT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 11
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 12
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: SRC_ALL_JOINS
+            transform: ""
+      - columnReference:
+          columnCounter: 14
+          stepCounter: SRC_TRANSFORM_02_DERIVED_BATCHID
+        config: {}
+        dataType: INTEGER
+        description: "Derived column - BatchID from User variable"
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "{{ var('BatchID') }}"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          ALL_JOINS: SRC_ALL_JOINS
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: ALL_JOINS
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_ALL_JOINS') }} ALL_JOINS
+        name: SRC_TRANSFORM_02_DERIVED_BATCHID
+        noLinkRefs: []
+  name: SRC_TRANSFORM_02_DERIVED_BATCHID
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
+type: Node
