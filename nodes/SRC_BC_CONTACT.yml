@@ -1,138 +1,32 @@
-fileVersion: 1
-id: SRC_BC_CONTACT
+fileVersion: 1.0
 name: SRC_BC_CONTACT
 operation:
   config:
-    insertStrategy: INSERT
-    selectDistinct: false
+    OverrideSQLCreate: false
   database: ""
   deployEnabled: true
-  description: Source table BC_CONTACT
-  isMultisource: false
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: ID
+      - name: ID
+        dataType: INTEGER
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: FIRSTNAME
+      - name: FIRSTNAME
+        dataType: STRING
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: LASTNAME
+      - name: LASTNAME
+        dataType: STRING
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: PRIMARYADDRESSID
+      - name: PRIMARYADDRESSID
+        dataType: INTEGER
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: BEANVERSION
+      - name: BEANVERSION
+        dataType: STRING
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: TIMESTAMP
-        description: ""
-        name: UPDATETIME
+      - name: UPDATETIME
+        dataType: DATETIME
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          BC_CONTACT: SRC_BC_CONTACT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_CONTACT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "BC_CONTACT"
-        name: SRC_BC_CONTACT
-        noLinkRefs: []
-  name: SRC_BC_CONTACT
-  overrideSQL: false
   schema: ""
   sqlType: Source
-  type: sql
-  version: 1
+  type: sourceInput
+type: Node
