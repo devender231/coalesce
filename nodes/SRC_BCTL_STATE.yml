@@ -1,4 +1,4 @@
-fileVersion: 1.0
+fileVersion: 1
 id: SRC_BCTL_STATE
 name: SRC_BCTL_STATE
 operation:
@@ -9,17 +9,17 @@ operation:
     initialize: ON_CREATE
     insertStrategy: INSERT
     orderby: false
-    postSQL: ''
-    preSQL: ''
+    postSQL: ""
+    preSQL: ""
     refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-    testsEnabled: false
+    testsEnabled: true
     truncateBefore: false
-    warehouseName: ''
-  database: ''
+    warehouseName: DEV_WH
+  database: ""
   deployEnabled: true
   description: Source table BCTL_STATE
-  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -29,49 +29,47 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: SRC_BCTL_STATE
+          stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: ''
-        isBusinessKey: false
+        description: ""
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ''
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: SRC_BCTL_STATE
+          stepCounter: 1
         config: {}
         dataType: STRING
-        description: ''
-        isBusinessKey: false
+        description: ""
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ''
-    cteString: ''
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+    cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases: {}
         customSQL:
-          customSQL: ''
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_STATE
         join:
-          joinCondition: ''
+          joinCondition: ""
         name: SRC_BCTL_STATE
         noLinkRefs: []
   name: SRC_BCTL_STATE
   overrideSQL: false
-  schema: ''
+  schema: ""
   sqlType: Source
   type: sql
   version: 1
