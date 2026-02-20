@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_ADDRESS
+  description: Source table BC_ADDRESS from BillingCenter
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,16 +22,14 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: NUMBER
+        description: ID
         name: ID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_ADDRESS
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -41,16 +39,14 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: Address Line 1
         name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_ADDRESS
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -60,16 +56,14 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: Address Line 2
         name: ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_ADDRESS
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -79,16 +73,14 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: Address Line 3
         name: ADDRESSLINE3
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_ADDRESS
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -98,16 +90,14 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: City
         name: CITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_ADDRESS
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -117,16 +107,14 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: Postal Code
         name: POSTALCODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_BC_ADDRESS
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -136,16 +124,14 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: State
         name: STATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 7
-                stepCounter: SRC_BC_ADDRESS
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -155,16 +141,14 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: NUMBER
+        description: Bean Version
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 8
-                stepCounter: SRC_BC_ADDRESS
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -174,29 +158,27 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: DATETIME
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: TIMESTAMP
+        description: Update Time
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 9
-                stepCounter: SRC_BC_ADDRESS
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          BC_ADDRESS: SRC_BC_ADDRESS
+          SRC_BC_ADDRESS: GUIDEWIRE.DBO.BC_ADDRESS
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ADDRESS
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }} "BC_ADDRESS"
+          joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }} "SRC_BC_ADDRESS"
         name: SRC_BC_ADDRESS
         noLinkRefs: []
   name: SRC_BC_ADDRESS
