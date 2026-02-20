@@ -5,547 +5,358 @@ operation:
   config:
     insertStrategy: INSERT
     selectDistinct: false
-  database: SRC
+  database: ""
   deployEnabled: true
+  description: Row Count transformation - Counts unchanged rows where BeanVersion matches (Variable User::UnChangeCount)
+  isMultisource: false
   locationName: SRC
+  materializationType: view
   metadata:
+    appliedNodeTests: []
     columns:
-      # All columns from previous transformation passed through
       - columnReference:
           columnCounter: 1
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Account Number from BC_ACCOUNT"
-        name: ACCOUNTNUMBER
-        nullable: true
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Account ID
+        name: ACCOUNTID
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 2
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Account Name from BC_ACCOUNT"
-        name: ACCOUNTNAME
-        nullable: true
+        config: {}
+        dataType: VARCHAR(100)
+        description: Account Number
+        name: ACCOUNTNUMBER
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 3
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Account Type from BC_ACCOUNT"
-        name: ACCOUNTTYPE
+        config: {}
+        dataType: VARCHAR(200)
+        description: Account Type Name
+        name: ACCOUNTTYPENAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 4
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Billing Level from BC_ACCOUNT"
-        name: BILLINGLEVEL
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Parent Account ID
+        name: PARENTACCOUNTID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 5
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Service Tier from BC_ACCOUNT"
-        name: SERVICETIER
+        config: {}
+        dataType: VARCHAR(200)
+        description: Billing Level Name
+        name: BILLINGLEVELNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 5
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 6
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Security Zone ID from BC_ACCOUNT"
-        name: SECURITYZONEID
+        config: {}
+        dataType: VARCHAR(200)
+        description: Customer Service Tier Name
+        name: CUSTOMERSERVICETIERNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 6
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 7
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Segment from BC_ACCOUNT"
-        name: SEGMENT
+        config: {}
+        dataType: VARCHAR(200)
+        description: Security Zone Name
+        name: SECURITYZONENAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 7
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 8
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: DATETIME
-        description: "Close Date from BC_ACCOUNT"
-        name: CLOSEDATE
+        config: {}
+        dataType: VARCHAR(200)
+        description: Delinquency Status Name
+        name: DELINQUENCYSTATUSNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 8
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 9
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: DATETIME
-        description: "Create Time from BC_ACCOUNT"
-        name: CREATETIME
+        config: {}
+        dataType: VARCHAR(200)
+        description: Account Segment Name
+        name: ACCOUNTSEGMENTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 9
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 10
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Delinquency Status from BC_ACCOUNT"
-        name: DELINQUENCYSTATUS
+        config: {}
+        dataType: VARCHAR(200)
+        description: Insured First Name
+        name: INSUREDFIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 10
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 11
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "First Twice Per Month Invoice DOM from BC_ACCOUNT"
-        name: FIRSTTWICEPERMTHINVOICEDOM
+        config: {}
+        dataType: VARCHAR(200)
+        description: Insured Last Name
+        name: INSUREDLASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 11
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
           columnCounter: 12
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Second Twice Per Month Invoice DOM from BC_ACCOUNT"
-        name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 12
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 13
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Public ID from BC_ACCOUNT"
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 13
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 14
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "ID from BC_ACCOUNT"
-        name: BC_ACCOUNT_ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 14
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 15
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Bean Version from BC_ACCOUNT"
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 15
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 16
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Retired from BC_ACCOUNT"
-        name: RETIRED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 16
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 17
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: DATETIME
-        description: "Update Time from BC_ACCOUNT"
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 17
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 18
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Account Type Name from BCTL_ACCOUNTTYPE"
-        name: ACCOUNTTYPE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 18
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 19
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Foreign Entity ID from BC_PARENTACCT"
-        name: PARENTACCT_FOREIGNENTITYID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 19
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 20
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Billing Level Name from BCTL_BILLINGLEVEL"
-        name: BILLINGLEVEL_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 20
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 21
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Customer Service Tier Name from BCTL_CUSTOMERSERVICETIER"
-        name: SERVICETIER_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 21
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 22
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Security Zone Name from BC_SECURITYZONE"
-        name: SECURITYZONE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 22
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 23
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Delinquency Status Name from BCTL_DELINQUENCYSTATUS"
-        name: DELINQUENCYSTATUS_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 23
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 24
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Account Segment Name from BCTL_ACCOUNTSEGMENT"
-        name: SEGMENT_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 24
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 25
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Account Contact ID from BC_ACCOUNTCONTACT"
-        name: ACCOUNTCONTACT_ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 25
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 26
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Contact ID from BC_ACCOUNTCONTACT"
-        name: CONTACTID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 26
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 27
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Role from BC_ACCOUNTCONTACTROLE"
-        name: ROLE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 27
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 28
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Type Code from BCTL_ACCOUNTROLE"
-        name: ROLE_TYPECODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 28
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 29
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "First Name from BC_CONTACT"
-        name: FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 29
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 30
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Last Name from BC_CONTACT"
-        name: LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 30
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 31
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Primary Address ID from BC_CONTACT"
-        name: PRIMARYADDRESSID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 31
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
-            transform: ""
-      - columnReference:
-          columnCounter: 32
-          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Address Line 1 from BC_ADDRESS"
+        config: {}
+        dataType: VARCHAR(500)
+        description: Address Line 1
         name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 32
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 12
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 33
+          columnCounter: 13
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Address Line 2 from BC_ADDRESS"
+        config: {}
+        dataType: VARCHAR(500)
+        description: Address Line 2
         name: ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 33
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 13
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 34
+          columnCounter: 14
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Address Line 3 from BC_ADDRESS"
+        config: {}
+        dataType: VARCHAR(500)
+        description: Address Line 3
         name: ADDRESSLINE3
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 34
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 14
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 35
+          columnCounter: 15
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "City from BC_ADDRESS"
+        config: {}
+        dataType: VARCHAR(200)
+        description: City
         name: CITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 35
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 15
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 36
+          columnCounter: 16
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Postal Code from BC_ADDRESS"
+        config: {}
+        dataType: VARCHAR(200)
+        description: State Name
+        name: STATENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 17
+          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
+        config: {}
+        dataType: VARCHAR(20)
+        description: Postal Code
         name: POSTALCODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 36
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 17
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 37
+          columnCounter: 18
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "State from BC_ADDRESS"
-        name: STATE
+        config: {}
+        dataType: VARCHAR(100)
+        description: Public ID
+        name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 37
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 18
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 38
+          columnCounter: 19
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "State Name from BCTL_STATE"
-        name: STATE_NAME
+        config: {}
+        dataType: VARCHAR(100)
+        description: Bean Version
+        name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 38
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 19
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 39
+          columnCounter: 20
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Row count for source records"
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: Update Time
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 21
+          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Source Row Count
         name: SOURCE_ROW_COUNT
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 39
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 21
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 40
+          columnCounter: 22
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Batch ID for ETL tracking"
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Batch ID
         name: BATCHID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 40
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 22
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 41
+          columnCounter: 23
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Bean Version from EDW DIMBILLINGACCOUNT"
-        name: EDWBEANVERSION
+        config: {}
+        dataType: VARCHAR(100)
+        description: EDW Bean Version
+        name: EDW_BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 41
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 23
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 42
+          columnCounter: 24
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "SCD routing flag"
-        name: SCD_ROUTE
+        config: {}
+        dataType: VARCHAR(20)
+        description: Row Type
+        name: ROW_TYPE
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 42
-                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+              - columnCounter: 24
+                stepCounter: SRC_TR_CONDITIONALSPLIT_BEANVERSION
             transform: ""
-      # Row count metric for unchanged records
       - columnReference:
-          columnCounter: 43
+          columnCounter: 25
           stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
-        dataType: INTEGER
-        description: "Row count for unchanged records - stored in User::UnChangeCount variable"
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Unchanged row count (User::UnChangeCount)
         name: UNCHANGED_ROW_COUNT
         nullable: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: "COUNT(*)"
+            transform: COUNT(*) OVER ()
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_TR_CONDITIONALSPLIT_SCD: SRC.SRC.SRC_TR_CONDITIONALSPLIT_SCD
+          SRC_TR_CONDITIONALSPLIT_BEANVERSION: SRC_TR_CONDITIONALSPLIT_BEANVERSION
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_TR_CONDITIONALSPLIT_SCD
+            nodeName: TR_CONDITIONALSPLIT_BEANVERSION
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT_SCD') }} SRC_TR_CONDITIONALSPLIT_SCD
-            WHERE SCD_ROUTE = 'UNCHANGED'
+            FROM {{ ref('SRC', 'TR_CONDITIONALSPLIT_BEANVERSION') }} SRC_TR_CONDITIONALSPLIT_BEANVERSION
+            WHERE ROW_TYPE = 'UNCHANGED'
         name: SRC_TR_ROWCOUNT_UNCHANGED
         noLinkRefs: []
   name: SRC_TR_ROWCOUNT_UNCHANGED
   overrideSQL: false
-  schema: SRC
+  schema: ""
   sqlType: Transform
   type: sql
   version: 1
-  description: "ROW_COUNT Transformation 2: Counts unchanged rows where BeanVersion matches EDWBeanVersion. This transformation filters records where SCD_ROUTE = 'UNCHANGED' (indicating no changes between source and EDW) and counts them for the User::UnChangeCount variable. These records require no update in the target table."
+type: Node
