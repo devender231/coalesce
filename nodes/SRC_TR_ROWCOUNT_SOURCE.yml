@@ -1,0 +1,62 @@
+steps:
+  SRC_TR_ROWCOUNT_SOURCE:
+    operation:
+      config:
+        insertStrategy: INSERT
+        selectDistinct: false
+      database: ""
+      deployEnabled: true
+      description: "Row Count transformation - Counts source rows from OLE_SRC GuideWire (Variable: User::SourceCount)"
+      isDataVault: false
+      isMultisource: false
+      locationName: TRG
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 1
+              stepCounter: 1
+            config: {}
+            dataType: NUMBER(38,0)
+            description: "Row count of source records"
+            name: SOURCE_ROW_COUNT
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: "COUNT(*)"
+          - columnReference:
+              columnCounter: 2
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Transformation type identifier"
+            name: TRANSFORMATION_TYPE
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: "'SOURCE_COUNT'"
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases:
+              JOINED_DATA: SRC_JOIN_DIMBILLINGACCOUNT_ALL
+            customSQL:
+              customSQL: |
+                SELECT
+                  COUNT(*) AS SOURCE_ROW_COUNT,
+                  'SOURCE_COUNT' AS TRANSFORMATION_TYPE
+                FROM {{ ref('TRG', 'SRC_JOIN_DIMBILLINGACCOUNT_ALL') }} JOINED_DATA
+            dependencies:
+              - locationName: TRG
+                nodeName: SRC_JOIN_DIMBILLINGACCOUNT_ALL
+            join:
+              joinCondition: "FROM {{ ref('TRG', 'SRC_JOIN_DIMBILLINGACCOUNT_ALL') }} JOINED_DATA"
+            name: SRC_TR_ROWCOUNT_SOURCE
+            noLinkRefs: []
+      name: SRC_TR_ROWCOUNT_SOURCE
+      overrideSQL: false
+      schema: ""
+      sqlType: Transform
+      type: sql
+      version: 1
