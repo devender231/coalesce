@@ -1,0 +1,62 @@
+fileVersion: 1
+id: SRC_TR_ROW_COUNT_UPDATE
+name: SRC_TR_ROW_COUNT_UPDATE
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
+  deployEnabled: true
+  description: Row Count transformation - Counts update rows where BeanVersion is different from EDWBeanVersion
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Count of update rows stored in User::UpdateCount variable
+        name: UPDATE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONAL_SPLIT: SRC_TR_CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: "SELECT COUNT(*) AS UPDATE_ROW_COUNT FROM SRC_TR_CONDITIONAL_SPLIT WHERE ROW_TYPE = 'UPDATE'"
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_CONDITIONAL_SPLIT
+        join:
+          joinCondition: ""
+        name: SRC_TR_ROW_COUNT_UPDATE
+        noLinkRefs: []
+  name: SRC_TR_ROW_COUNT_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
