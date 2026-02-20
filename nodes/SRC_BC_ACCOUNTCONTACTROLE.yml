@@ -3,19 +3,8 @@ id: SRC_BC_ACCOUNTCONTACTROLE
 name: SRC_BC_ACCOUNTCONTACTROLE
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNTCONTACTROLE
@@ -25,12 +14,15 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
         name: ACCOUNTCONTACTID
         nullable: true
@@ -39,12 +31,15 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         description: ""
         name: ROLE
         nullable: true
@@ -53,12 +48,15 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
         name: ID
         nullable: true
@@ -67,12 +65,15 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: NUMBER
+        dataType: STRING
         description: ""
         name: BEANVERSION
         nullable: true
@@ -81,12 +82,15 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         description: ""
         name: UPDATETIME
         nullable: true
@@ -98,7 +102,8 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BC_ACCOUNTCONTACTROLE: SRC_BC_ACCOUNTCONTACTROLE
         customSQL:
           customSQL: ""
         dependencies:
