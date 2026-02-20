@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source node for BC_PARENTACCT table
+  description: Source table BC_PARENTACCT
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,14 +22,16 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: OWNERID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BC_PARENTACCT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,14 +41,16 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: FOREIGNENTITYID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BC_PARENTACCT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -56,14 +60,16 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: NUMBER
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: SRC_BC_PARENTACCT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -73,26 +79,29 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_PARENTACCT
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: SRC_BC_PARENTACCT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BC_PARENTACCT: BC_PARENTACCT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_PARENTACCT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_PARENTACCT') }} "SRC_BC_PARENTACCT"
         name: SRC_BC_PARENTACCT
         noLinkRefs: []
   name: SRC_BC_PARENTACCT
