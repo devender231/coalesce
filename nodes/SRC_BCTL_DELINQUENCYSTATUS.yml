@@ -1,6 +1,11 @@
 name: SRC_BCTL_DELINQUENCYSTATUS
 type: source
-location: SRC (BRIGHTCOVE.DBO.BCTL_DELINQUENCYSTATUS)
+location:
+  database: ""
+  schema: ""
+  table: BCTL_DELINQUENCYSTATUS
 columns:
   - name: ID
+    dataType: VARCHAR
   - name: NAME
+    dataType: VARCHAR
