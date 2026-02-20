@@ -1,0 +1,9 @@
+name: SRC_BCTL_ACCOUNTSEGMENT
+type: source
+config:
+  location: BC.DBO.BCTL_ACCOUNTSEGMENT
+  columns:
+    - name: ACCOUNTSEGMENTID
+      datatype: VARCHAR
+    - name: ACCOUNTSEGMENTNAME
+      datatype: VARCHAR
