@@ -2,20 +2,20 @@ name: SRC_BC_SECURITYZONE
 type: source
 config:
   source_type: table
-  source_location:
-    database: "EDW"
-    schema: "BC"
-    table: "BC_SECURITYZONE"
-  columns:
-    - name: ID
-      data_type: INTEGER
-      order: 1
-    - name: NAME
-      data_type: STRING
-      order: 2
-    - name: BEANVERSION
-      data_type: STRING
-      order: 3
-    - name: UPDATETIME
-      data_type: DATETIME
-      order: 4
+  location:
+    database: ""
+    schema: ""
+    table: BC_SECURITYZONE
+columns:
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: NAME
+    data_type: STRING
+    nullable: true
+  - name: BEANVERSION
+    data_type: STRING
+    nullable: true
+  - name: UPDATETIME
+    data_type: DATETIME
+    nullable: true
