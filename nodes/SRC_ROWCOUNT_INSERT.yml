@@ -1,54 +1,27 @@
-fileVersion: 1
-id: SRC_ROWCOUNT_INSERT
 name: SRC_ROWCOUNT_INSERT
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: "ROW_COUNT Transformation - Counts new insert rows where lookup had no match (EDW_BEANVERSION IS NULL) and stores in Variable User::InsertCount"
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER
-        description: Row count of new insert records
-        name: INSERT_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: COUNT(*)
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SPLIT: SPLIT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
-        join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} SPLIT
-            WHERE SPLIT.SPLIT_CATEGORY = 'NEW_INSERT'
-        name: SRC_CONDITIONALSPLIT_BEANVERSION
-        noLinkRefs: []
-  name: SRC_ROWCOUNT_INSERT
-  overrideSQL: false
-  schema: ""
-  sqlType: DT113:::156
-  type: sql
-  version: 1
-type: Node
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts new insert rows (lookup no match)
+execution_order: 7
+
+source:
+  - SRC_CONDITIONAL_SPLIT_BEANVERSION
+  source_output: INSERT_ROWS
+
+transformation_logic:
+  operation: COUNT_ROWS
+  output_variable: User::InsertCount
+  description: Counts rows with no lookup match (new records to insert)
+
+output:
+  columns:
+    - name: ROW_COUNT
+      dataType: INTEGER
+      description: Count of new insert rows
+  variable_assignment:
+    variable_name: User::InsertCount
+    variable_type: INTEGER
+    description: Stores the count of new insert rows for audit purposes
+  action: LOAD_TO_TARGET
+  target_table: DIMBILLINGACCOUNT
+  load_type: INSERT
