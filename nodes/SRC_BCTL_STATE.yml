@@ -22,7 +22,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_STATE
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
         name: ID
         nullable: true
@@ -39,7 +39,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_STATE
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
         name: NAME
         nullable: true
@@ -59,7 +59,7 @@ operation:
           - locationName: SRC
             nodeName: BCTL_STATE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }} "BCTL_STATE"
+          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }}
         name: SRC_BCTL_STATE
         noLinkRefs: []
   name: SRC_BCTL_STATE
