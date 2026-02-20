@@ -1,0 +1,31 @@
+name: SRC_ROW_COUNT_INSERT
+type: Row Count
+description: Counts new insert rows (lookup no match)
+
+transformation_type: ROW_COUNT
+execution_order: 6
+
+input:
+  source: SRC_CONDITIONAL_SPLIT_SCD
+  output_path: INSERT_ROWS
+  description: Rows where EDWBeanVersion is NULL (new records)
+
+logic:
+  operation: COUNT
+  target_variable: User::InsertCount
+  description: Counts new rows that will be inserted into dimension table
+
+output:
+  row_count_variable: User::InsertCount
+  pass_through: true
+  description: Counts and passes insert rows to target for INSERT operation
+  destination: TARGET_DIMBILLINGACCOUNT
+  load_type: INSERT
+
+upstream_dependencies:
+  - SRC_CONDITIONAL_SPLIT_SCD.yml
+
+metadata:
+  purpose: Audit and tracking of new insert row counts
+  usage: Variable User::InsertCount is used for ETL audit logging
+  load_action: INSERT
