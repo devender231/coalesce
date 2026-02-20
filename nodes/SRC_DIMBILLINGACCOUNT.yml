@@ -1,80 +1,15 @@
-fileVersion: 1
-id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
-  database: ""
-  deployEnabled: true
-  description: Source table for DIMBILLINGACCOUNT
-  isDataVault: false
-  isMultisource: false
-  locationName: SOURCE
-  materializationType: table
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_DIMBILLINGACCOUNT
-        config: {}
-        dataType: VARCHAR(256)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_DIMBILLINGACCOUNT
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_DIMBILLINGACCOUNT
-        config: {}
-        dataType: VARCHAR(256)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_DIMBILLINGACCOUNT
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_DIMBILLINGACCOUNT: SRC_DIMBILLINGACCOUNT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SOURCE
-            nodeName: DIMBILLINGACCOUNT
-        join:
-          joinCondition: FROM {{ ref('SOURCE', 'DIMBILLINGACCOUNT') }} "SRC_DIMBILLINGACCOUNT"
-        name: SRC_DIMBILLINGACCOUNT
-        noLinkRefs: []
-  name: SRC_DIMBILLINGACCOUNT
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  source_type: table
+  source_location:
+    database: "EDW"
+    schema: "BC"
+    table: "DIMBILLINGACCOUNT"
+  columns:
+    - name: PUBLICID
+      data_type: STRING
+      order: 1
+    - name: BEANVERSION
+      data_type: STRING
+      order: 2
