@@ -1,0 +1,39 @@
+name: SRC_BC_ACCOUNT
+type: source
+config:
+  location: BC.DBO.BC_ACCOUNT
+  columns:
+    - name: ACCOUNTID
+      datatype: VARCHAR
+    - name: ACCOUNTNUMBER
+      datatype: VARCHAR
+    - name: ACCOUNTNAME
+      datatype: VARCHAR
+    - name: ACCOUNTTYPE
+      datatype: VARCHAR
+    - name: PARENTACCOUNTID
+      datatype: VARCHAR
+    - name: BILLINGLEVEL
+      datatype: VARCHAR
+    - name: CUSTOMERSERVICETIER
+      datatype: VARCHAR
+    - name: SECURITYZONEID
+      datatype: VARCHAR
+    - name: DELINQUENCYSTATUS
+      datatype: VARCHAR
+    - name: ACCOUNTSEGMENT
+      datatype: VARCHAR
+    - name: CREATEDATE
+      datatype: TIMESTAMP
+    - name: MODIFIEDDATE
+      datatype: TIMESTAMP
+    - name: ISACTIVE
+      datatype: BOOLEAN
+    - name: TAXID
+      datatype: VARCHAR
+    - name: CREDITLIMIT
+      datatype: DECIMAL
+    - name: CURRENTBALANCE
+      datatype: DECIMAL
+    - name: LASTPAYMENTDATE
+      datatype: TIMESTAMP
