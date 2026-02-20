@@ -1,0 +1,26 @@
+fileVersion: 1.0
+name: SRC_BC_ADDRESS
+type: source
+location:
+  database: GUIDEWIRE
+  schema: BC
+  table: BC_ADDRESS
+columns:
+  - name: ID
+    dataType: INTEGER
+  - name: ADDRESSLINE1
+    dataType: STRING
+  - name: ADDRESSLINE2
+    dataType: STRING
+  - name: ADDRESSLINE3
+    dataType: STRING
+  - name: CITY
+    dataType: STRING
+  - name: POSTALCODE
+    dataType: STRING
+  - name: STATE
+    dataType: INTEGER
+  - name: BEANVERSION
+    dataType: STRING
+  - name: UPDATETIME
+    dataType: DATETIME
