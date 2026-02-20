@@ -1,29 +1,76 @@
+fileVersion: 1
+id: SRC_TR_ROW_COUNT_INSERT
 name: SRC_TR_ROW_COUNT_INSERT
-type: transformation
-transformation_type: ROW_COUNT
-execution_order: 6
-description: Counts new insert rows where lookup found no match (EDWBeanVersion is NULL)
-
-input:
-  source: SRC_TR_CONDITIONAL_SPLIT
-  output_path: INSERT_ROWS
-  description: Input from conditional split - insert rows path
-
-transformation_logic:
-  operation: COUNT_ROWS
-  variable_name: User::InsertCount
-  description: Stores the count of new rows to be inserted (no match in dimension)
-  filter_condition: ISNULL(EDWBeanVersion)
-  
-output:
-  type: pass_through_to_target
-  description: All new rows are passed to target for INSERT operation
-  row_count_variable: User::InsertCount
-  destination: DIMBILLINGACCOUNT
-  load_action: INSERT
-  
-metadata:
-  purpose: Audit and tracking of new insert row count
-  variable_scope: Package
-  variable_type: Integer
-  scd_action: INSERT
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV_WH
+  database: ""
+  deployEnabled: true
+  description: "Row Count Transformation - Counts new insert rows where lookup has no match (Variable: User::InsertCount)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: "Split condition result"
+        name: SPLIT_CONDITION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 41
+                stepCounter: SRC_TR_CONDITIONAL_SPLIT
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: "Count of insert rows"
+        name: INSERT_ROW_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*) OVER ()"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONAL_SPLIT: SRC_TR_CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_CONDITIONAL_SPLIT') }} SRC_TR_CONDITIONAL_SPLIT
+            WHERE SPLIT_CONDITION = 'INSERT'
+        name: SRC_TR_ROW_COUNT_INSERT
+        noLinkRefs: []
+  name: SRC_TR_ROW_COUNT_INSERT
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
