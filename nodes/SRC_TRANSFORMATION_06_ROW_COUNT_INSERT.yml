@@ -1,0 +1,61 @@
+fileVersion: 1
+id: SRC_TRANSFORMATION_06_ROW_COUNT_INSERT
+name: SRC_TRANSFORMATION_06_ROW_COUNT_INSERT
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
+  deployEnabled: true
+  description: 'Transformation 6: ROW_COUNT - Counts new insert rows (lookup no match) (Variable: User::InsertCount)'
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TRANSFORMATION_06_ROW_COUNT_INSERT
+        config: {}
+        dataType: NUMBER(38,0)
+        description: "Count of new insert rows where lookup found no match"
+        name: INSERT_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TRANSFORMATION_04_CONDITIONAL_SPLIT: SRC_TRANSFORMATION_04_CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: TRANSFORMATION_04_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'TRANSFORMATION_04_CONDITIONAL_SPLIT') }} SRC_TRANSFORMATION_04_CONDITIONAL_SPLIT
+            WHERE ROUTE_TYPE = 'INSERT'
+        name: SRC_TRANSFORMATION_06_ROW_COUNT_INSERT
+        noLinkRefs: []
+  name: SRC_TRANSFORMATION_06_ROW_COUNT_INSERT
+  overrideSQL: false
+  schema: ''
+  sqlType: Transform
+  type: sql
+  version: 1
