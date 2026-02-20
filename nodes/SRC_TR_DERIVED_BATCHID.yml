@@ -1,0 +1,23 @@
+name: SRC_TR_DERIVED_BATCHID
+type: transformation
+transformation_type: DERIVED_COLUMN
+description: Adds or overwrites BatchID column from package variable
+
+source:
+  - SRC_TR_ROWCOUNT_SOURCE
+
+derived_columns:
+  - column_name: BatchID
+    data_type: INTEGER
+    expression: "@[User::BatchID]"
+    operation: ADD_OR_REPLACE
+    description: Adds BatchID from package variable for audit tracking
+
+execution_order: 3
+dependencies:
+  - SRC_TR_ROWCOUNT_SOURCE
+
+output:
+  all_input_columns: true
+  additional_columns:
+    - BatchID
