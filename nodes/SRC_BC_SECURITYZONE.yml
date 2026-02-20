@@ -1,104 +1,21 @@
-fileVersion: 1
-id: SRC_BC_SECURITYZONE
 name: SRC_BC_SECURITYZONE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BC_SECURITYZONE
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_SECURITYZONE
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_SECURITYZONE
-        config: {}
-        dataType: STRING
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_SECURITYZONE
-        config: {}
-        dataType: STRING
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_SECURITYZONE
-        config: {}
-        dataType: DATETIME
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_BC_SECURITYZONE: BC_SECURITYZONE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_SECURITYZONE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_SECURITYZONE') }} "SRC_BC_SECURITYZONE"
-        name: SRC_BC_SECURITYZONE
-        noLinkRefs: []
-  name: SRC_BC_SECURITYZONE
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  source_type: table
+  source_location:
+    database: "DATABASE"
+    schema: "SCHEMA"
+    table: "BC_SECURITYZONE"
+columns:
+  - name: ID
+    data_type: INTEGER
+    description: ""
+  - name: NAME
+    data_type: STRING
+    description: ""
+  - name: BEANVERSION
+    data_type: STRING
+    description: ""
+  - name: UPDATETIME
+    data_type: DATETIME
+    description: ""
