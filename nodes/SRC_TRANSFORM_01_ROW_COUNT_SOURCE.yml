@@ -1,0 +1,113 @@
+fileVersion: 1
+id: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+name: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Transformation 1: Row Count - Counts source rows from OLE_SRC GuideWire (Variable: User::SourceCount)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+        config: {}
+        dataType: INTEGER
+        description: "Row count from source"
+        name: SOURCE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+        config: {}
+        dataType: INTEGER
+        description: "From joined tables"
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_JOIN_ALL_TABLES
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+        config: {}
+        dataType: STRING
+        description: "From joined tables"
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_JOIN_ALL_TABLES
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+        config: {}
+        dataType: STRING
+        description: "From joined tables"
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: SRC_JOIN_ALL_TABLES
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+        config: {}
+        dataType: STRING
+        description: "From joined tables"
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: SRC_JOIN_ALL_TABLES
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+        config: {}
+        dataType: INTEGER
+        description: "From joined tables"
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_JOIN_ALL_TABLES
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_JOIN_ALL_TABLES: JOIN_ALL_TABLES
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: JOIN_ALL_TABLES
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'JOIN_ALL_TABLES') }} "SRC_JOIN_ALL_TABLES"
+        name: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+        noLinkRefs: []
+  name: SRC_TRANSFORM_01_ROW_COUNT_SOURCE
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
