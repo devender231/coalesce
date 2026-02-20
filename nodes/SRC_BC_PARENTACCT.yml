@@ -1,16 +1,17 @@
 name: SRC_BC_PARENTACCT
 type: source
-config:
-  source_type: table
-  database: EDWDEV
-  schema: BC
-  table: BC_PARENTACCT
+database: ""
+schema: ""
+location:
+  name: BC_PARENTACCT
+  database: ""
+  schema: ""
 columns:
-  - name: PARENTACCOUNTID
-    datatype: VARCHAR
-  - name: PARENTACCOUNTNAME
-    datatype: VARCHAR
-  - name: ISACTIVE
-    datatype: BIT
-  - name: ETLINSERTDATE
-    datatype: DATETIME
+  - name: OWNERID
+    datatype: NUMBER
+  - name: FOREIGNENTITYID
+    datatype: NUMBER
+  - name: BEANVERSION
+    datatype: NUMBER
+  - name: UPDATETIME
+    datatype: TIMESTAMP
