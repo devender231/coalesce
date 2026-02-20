@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BCTL_BILLINGLEVEL from GuideWire
+  description: Source table BCTL_BILLINGLEVEL
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,14 +22,16 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
-        dataType: INTEGER
-        description: ""
+        dataType: VARCHAR
+        description: ID column
+        hashColumns: []
+        hashDetails: null
         name: ID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_BILLINGLEVEL
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,14 +41,16 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
-        dataType: STRING
-        description: ""
+        dataType: VARCHAR
+        description: NAME column
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_BILLINGLEVEL
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
