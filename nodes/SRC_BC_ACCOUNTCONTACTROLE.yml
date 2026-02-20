@@ -1,23 +1,29 @@
-name: SRC_BC_ACCOUNTCONTACTROLE
-type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BC_ACCOUNTCONTACTROLE
-columns:
-  - name: ACCOUNTCONTACTID
-    data_type: INTEGER
-    nullable: true
-  - name: ROLE
-    data_type: INTEGER
-    nullable: true
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
-  - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+version: 1
+
+sources:
+  - name: SRC_BC_ACCOUNTCONTACTROLE
+    description: Source table for BC_ACCOUNTCONTACTROLE
+    database: "<database>"
+    schema: "<schema>"
+    identifier: BC_ACCOUNTCONTACTROLE
+    
+    columns:
+      - name: ACCOUNTCONTACTID
+        data_type: INTEGER
+        description: Account contact ID
+        
+      - name: ROLE
+        data_type: INTEGER
+        description: Role
+        
+      - name: ID
+        data_type: INTEGER
+        description: ID
+        
+      - name: BEANVERSION
+        data_type: STRING
+        description: Bean version
+        
+      - name: UPDATETIME
+        data_type: DATETIME
+        description: Update time
