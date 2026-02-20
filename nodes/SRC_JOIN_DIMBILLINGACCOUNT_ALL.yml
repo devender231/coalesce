@@ -1,0 +1,472 @@
+steps:
+  SRC_JOIN_DIMBILLINGACCOUNT_ALL:
+    operation:
+      config:
+        insertStrategy: INSERT
+        selectDistinct: false
+      database: ""
+      deployEnabled: true
+      description: "All joins for DimBillingAccount - combines BC_ACCOUNT with lookup tables and creates INSUREDINFO subquery"
+      isDataVault: false
+      isMultisource: false
+      locationName: TRG
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 1
+              stepCounter: 1
+            config: {}
+            dataType: NUMBER(38,0)
+            description: "Account Number from BC_ACCOUNT"
+            name: ACCOUNTNUMBER
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.ACCOUNTNUMBER"
+          - columnReference:
+              columnCounter: 2
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Account Name from BC_ACCOUNT"
+            name: ACCOUNTNAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.ACCOUNTNAME"
+          - columnReference:
+              columnCounter: 3
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Account Type Name from BCTL_ACCOUNTTYPE"
+            name: ACCOUNTTYPE_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 2
+                transform: "BCTL_ACCOUNTTYPE.NAME"
+          - columnReference:
+              columnCounter: 4
+              stepCounter: 1
+            config: {}
+            dataType: NUMBER(38,0)
+            description: "Parent Account ID from BC_PARENTACCT"
+            name: PARENTACCOUNT_ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 3
+                transform: "BC_PARENTACCT.FOREIGNENTITYID"
+          - columnReference:
+              columnCounter: 5
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Billing Level Name from BCTL_BILLINGLEVEL"
+            name: BILLINGLEVEL_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 4
+                transform: "BCTL_BILLINGLEVEL.NAME"
+          - columnReference:
+              columnCounter: 6
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Service Tier Name from BCTL_CUSTOMERSERVICETIER"
+            name: SERVICETIER_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 5
+                transform: "BCTL_CUSTOMERSERVICETIER.NAME"
+          - columnReference:
+              columnCounter: 7
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Security Zone Name from BC_SECURITYZONE"
+            name: SECURITYZONE_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 6
+                transform: "BC_SECURITYZONE.NAME"
+          - columnReference:
+              columnCounter: 8
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Delinquency Status Name from BCTL_DELINQUENCYSTATUS"
+            name: DELINQUENCYSTATUS_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 7
+                transform: "BCTL_DELINQUENCYSTATUS.NAME"
+          - columnReference:
+              columnCounter: 9
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Account Segment Name from BCTL_ACCOUNTSEGMENT"
+            name: SEGMENT_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 8
+                transform: "BCTL_ACCOUNTSEGMENT.NAME"
+          - columnReference:
+              columnCounter: 10
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Insured First Name from BC_CONTACT"
+            name: INSURED_FIRSTNAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 12
+                transform: "BC_CONTACT.FIRSTNAME"
+          - columnReference:
+              columnCounter: 11
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Insured Last Name from BC_CONTACT"
+            name: INSURED_LASTNAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3
+                    stepCounter: 12
+                transform: "BC_CONTACT.LASTNAME"
+          - columnReference:
+              columnCounter: 12
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Address Line 1 from BC_ADDRESS"
+            name: ADDRESS_LINE1
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 13
+                transform: "BC_ADDRESS.ADDRESSLINE1"
+          - columnReference:
+              columnCounter: 13
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "City from BC_ADDRESS"
+            name: CITY
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 5
+                    stepCounter: 13
+                transform: "BC_ADDRESS.CITY"
+          - columnReference:
+              columnCounter: 14
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "State Name from BCTL_STATE"
+            name: STATE_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 14
+                transform: "BCTL_STATE.NAME"
+          - columnReference:
+              columnCounter: 15
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Postal Code from BC_ADDRESS"
+            name: POSTALCODE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 6
+                    stepCounter: 13
+                transform: "BC_ADDRESS.POSTALCODE"
+          - columnReference:
+              columnCounter: 16
+              stepCounter: 1
+            config: {}
+            dataType: TIMESTAMP_NTZ(9)
+            description: "Close Date from BC_ACCOUNT"
+            name: CLOSEDATE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 8
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.CLOSEDATE"
+          - columnReference:
+              columnCounter: 17
+              stepCounter: 1
+            config: {}
+            dataType: TIMESTAMP_NTZ(9)
+            description: "Create Time from BC_ACCOUNT"
+            name: CREATETIME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 9
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.CREATETIME"
+          - columnReference:
+              columnCounter: 18
+              stepCounter: 1
+            config: {}
+            dataType: NUMBER(38,0)
+            description: "First Twice Per Month Invoice DOM from BC_ACCOUNT"
+            name: FIRSTTWICEPERMTHINVOICEDOM
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 11
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM"
+          - columnReference:
+              columnCounter: 19
+              stepCounter: 1
+            config: {}
+            dataType: NUMBER(38,0)
+            description: "Second Twice Per Month Invoice DOM from BC_ACCOUNT"
+            name: SECONDTWICEPERMTHINVOICEDOM
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 12
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM"
+          - columnReference:
+              columnCounter: 20
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Public ID from BC_ACCOUNT"
+            name: PUBLICID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 13
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.PUBLICID"
+          - columnReference:
+              columnCounter: 21
+              stepCounter: 1
+            config: {}
+            dataType: NUMBER(38,0)
+            description: "Account ID from BC_ACCOUNT"
+            name: ID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 14
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.ID"
+          - columnReference:
+              columnCounter: 22
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Bean Version from BC_ACCOUNT"
+            name: BEANVERSION
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 15
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.BEANVERSION"
+          - columnReference:
+              columnCounter: 23
+              stepCounter: 1
+            config: {}
+            dataType: NUMBER(38,0)
+            description: "Retired flag from BC_ACCOUNT"
+            name: RETIRED
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 16
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.RETIRED"
+          - columnReference:
+              columnCounter: 24
+              stepCounter: 1
+            config: {}
+            dataType: TIMESTAMP_NTZ(9)
+            description: "Update Time from BC_ACCOUNT"
+            name: UPDATETIME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 17
+                    stepCounter: 1
+                transform: "BC_ACCOUNT.UPDATETIME"
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases:
+              BC_ACCOUNT: SRC_BC_ACCOUNT
+              BCTL_ACCOUNTTYPE: SRC_BCTL_ACCOUNTTYPE
+              BC_PARENTACCT: SRC_BC_PARENTACCT
+              BCTL_BILLINGLEVEL: SRC_BCTL_BILLINGLEVEL
+              BCTL_CUSTOMERSERVICETIER: SRC_BCTL_CUSTOMERSERVICETIER
+              BC_SECURITYZONE: SRC_BC_SECURITYZONE
+              BCTL_DELINQUENCYSTATUS: SRC_BCTL_DELINQUENCYSTATUS
+              BCTL_ACCOUNTSEGMENT: SRC_BCTL_ACCOUNTSEGMENT
+              BC_ACCOUNTCONTACT: SRC_BC_ACCOUNTCONTACT
+              BC_ACCOUNTCONTACTROLE: SRC_BC_ACCOUNTCONTACTROLE
+              BCTL_ACCOUNTROLE: SRC_BCTL_ACCOUNTROLE
+              BC_CONTACT: SRC_BC_CONTACT
+              BC_ADDRESS: SRC_BC_ADDRESS
+              BCTL_STATE: SRC_BCTL_STATE
+            customSQL:
+              customSQL: |
+                SELECT
+                  BC_ACCOUNT.ACCOUNTNUMBER,
+                  BC_ACCOUNT.ACCOUNTNAME,
+                  BCTL_ACCOUNTTYPE.NAME AS ACCOUNTTYPE_NAME,
+                  BC_PARENTACCT.FOREIGNENTITYID AS PARENTACCOUNT_ID,
+                  BCTL_BILLINGLEVEL.NAME AS BILLINGLEVEL_NAME,
+                  BCTL_CUSTOMERSERVICETIER.NAME AS SERVICETIER_NAME,
+                  BC_SECURITYZONE.NAME AS SECURITYZONE_NAME,
+                  BCTL_DELINQUENCYSTATUS.NAME AS DELINQUENCYSTATUS_NAME,
+                  BCTL_ACCOUNTSEGMENT.NAME AS SEGMENT_NAME,
+                  BC_CONTACT.FIRSTNAME AS INSURED_FIRSTNAME,
+                  BC_CONTACT.LASTNAME AS INSURED_LASTNAME,
+                  BC_ADDRESS.ADDRESSLINE1 AS ADDRESS_LINE1,
+                  BC_ADDRESS.CITY,
+                  BCTL_STATE.NAME AS STATE_NAME,
+                  BC_ADDRESS.POSTALCODE,
+                  BC_ACCOUNT.CLOSEDATE,
+                  BC_ACCOUNT.CREATETIME,
+                  BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM,
+                  BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM,
+                  BC_ACCOUNT.PUBLICID,
+                  BC_ACCOUNT.ID,
+                  BC_ACCOUNT.BEANVERSION,
+                  BC_ACCOUNT.RETIRED,
+                  BC_ACCOUNT.UPDATETIME
+                FROM {{ ref('SRC', 'BC_ACCOUNT') }} BC_ACCOUNT
+                -- Join 1: BC_ACCOUNT to BCTL_ACCOUNTTYPE (LEFT)
+                LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
+                  ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+                -- Join 2: BC_ACCOUNT to BC_PARENTACCT (LEFT)
+                LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} BC_PARENTACCT
+                  ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+                -- Join 3: BC_ACCOUNT to BCTL_BILLINGLEVEL (LEFT)
+                LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
+                  ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+                -- Join 4: BC_ACCOUNT to BCTL_CUSTOMERSERVICETIER (LEFT)
+                LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
+                  ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+                -- Join 5: BC_ACCOUNT to BC_SECURITYZONE (LEFT)
+                LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} BC_SECURITYZONE
+                  ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+                -- Join 6: BC_ACCOUNT to BCTL_DELINQUENCYSTATUS (LEFT)
+                LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
+                  ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+                -- Join 7: BC_ACCOUNT to BCTL_ACCOUNTSEGMENT (LEFT)
+                LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
+                  ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+                -- Join 8-14: INSUREDINFO subquery joins (LEFT to get insured contact information)
+                LEFT JOIN (
+                  SELECT
+                    BC_ACCOUNTCONTACT.INSUREDACCOUNTID AS ACCOUNTID,
+                    BC_CONTACT.FIRSTNAME,
+                    BC_CONTACT.LASTNAME,
+                    BC_ADDRESS.ADDRESSLINE1,
+                    BC_ADDRESS.CITY,
+                    BC_ADDRESS.POSTALCODE,
+                    BCTL_STATE.NAME AS STATE_NAME
+                  FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
+                  -- Join 9: BC_ACCOUNTCONTACT to BC_ACCOUNTCONTACTROLE (INNER)
+                  INNER JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
+                    ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+                  -- Join 10: BC_ACCOUNTCONTACTROLE to BCTL_ACCOUNTROLE (INNER) - filter for 'insured' role
+                  INNER JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
+                    ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE
+                    AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+                  -- Join 11: BC_ACCOUNTCONTACT to BC_CONTACT (LEFT)
+                  LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} BC_CONTACT
+                    ON BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+                  -- Join 12: BC_CONTACT to BC_ADDRESS (LEFT)
+                  LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} BC_ADDRESS
+                    ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+                  -- Join 13: BC_ADDRESS to BCTL_STATE (LEFT)
+                  LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} BCTL_STATE
+                    ON BCTL_STATE.ID = BC_ADDRESS.STATE
+                ) INSUREDINFO
+                  ON INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+            dependencies:
+              - locationName: SRC
+                nodeName: BC_ACCOUNT
+              - locationName: SRC
+                nodeName: BCTL_ACCOUNTTYPE
+              - locationName: SRC
+                nodeName: BC_PARENTACCT
+              - locationName: SRC
+                nodeName: BCTL_BILLINGLEVEL
+              - locationName: SRC
+                nodeName: BCTL_CUSTOMERSERVICETIER
+              - locationName: SRC
+                nodeName: BC_SECURITYZONE
+              - locationName: SRC
+                nodeName: BCTL_DELINQUENCYSTATUS
+              - locationName: SRC
+                nodeName: BCTL_ACCOUNTSEGMENT
+              - locationName: SRC
+                nodeName: BC_ACCOUNTCONTACT
+              - locationName: SRC
+                nodeName: BC_ACCOUNTCONTACTROLE
+              - locationName: SRC
+                nodeName: BCTL_ACCOUNTROLE
+              - locationName: SRC
+                nodeName: BC_CONTACT
+              - locationName: SRC
+                nodeName: BC_ADDRESS
+              - locationName: SRC
+                nodeName: BCTL_STATE
+            join:
+              joinCondition: |
+                FROM {{ ref('SRC', 'BC_ACCOUNT') }} BC_ACCOUNT
+                LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+                LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} BC_PARENTACCT ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+                LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+                LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+                LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} BC_SECURITYZONE ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+                LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+                LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+                LEFT JOIN (INSUREDINFO subquery) ON INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+            name: SRC_JOIN_DIMBILLINGACCOUNT_ALL
+            noLinkRefs: []
+      name: SRC_JOIN_DIMBILLINGACCOUNT_ALL
+      overrideSQL: false
+      schema: ""
+      sqlType: Transform
+      type: sql
+      version: 1
