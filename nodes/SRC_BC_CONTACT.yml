@@ -3,133 +3,161 @@ id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ''
+    preSQL: ''
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: ""
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
   deployEnabled: true
+  description: Source table BC_CONTACT
+  isMultisource: false
   locationName: SRC
+  materializationType: source
   metadata:
+    appliedNodeTests: []
     columns:
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0
-          stepCounter: 0
+          columnCounter: 1
+          stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: NUMBER(38,0)
-        description: ""
+        defaultValue: ''
+        description: ''
         hashColumns: []
         hashDetails: null
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
+              - columnCounter: 1
+                stepCounter: SRC_BC_CONTACT
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0
-          stepCounter: 0
+          columnCounter: 2
+          stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: VARCHAR(256)
-        description: ""
+        defaultValue: ''
+        description: ''
         hashColumns: []
         hashDetails: null
         name: FIRSTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
+              - columnCounter: 2
+                stepCounter: SRC_BC_CONTACT
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0
-          stepCounter: 0
+          columnCounter: 3
+          stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: VARCHAR(256)
-        description: ""
+        defaultValue: ''
+        description: ''
         hashColumns: []
         hashDetails: null
         name: LASTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
+              - columnCounter: 3
+                stepCounter: SRC_BC_CONTACT
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0
-          stepCounter: 0
+          columnCounter: 4
+          stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: NUMBER(38,0)
-        description: ""
+        defaultValue: ''
+        description: ''
         hashColumns: []
         hashDetails: null
         name: PRIMARYADDRESSID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
+              - columnCounter: 4
+                stepCounter: SRC_BC_CONTACT
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0
-          stepCounter: 0
+          columnCounter: 5
+          stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: VARCHAR(256)
-        description: ""
+        defaultValue: ''
+        description: ''
         hashColumns: []
         hashDetails: null
         name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
+              - columnCounter: 5
+                stepCounter: SRC_BC_CONTACT
+            transform: ''
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0
-          stepCounter: 0
+          columnCounter: 6
+          stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: TIMESTAMP_NTZ(9)
-        description: ""
+        defaultValue: ''
+        description: ''
         hashColumns: []
         hashDetails: null
         name: UPDATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
+              - columnCounter: 6
+                stepCounter: SRC_BC_CONTACT
+            transform: ''
+    cteString: ''
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases: {}
         customSQL:
-          customSQL: ""
+          customSQL: ''
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
@@ -139,7 +167,7 @@ operation:
         noLinkRefs: []
   name: SRC_BC_CONTACT
   overrideSQL: false
-  schema: ""
-  sqlType: Source
+  schema: ''
+  sqlType: SOURCE
   type: sql
   version: 1
