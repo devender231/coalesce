@@ -1,12 +1,9 @@
 name: SRC_BCTL_DELINQUENCYSTATUS
 type: source
-database: ''
-schema: ''
-table: BCTL_DELINQUENCYSTATUS
+location:
+  database: BILLINGCENTER
+  schema: DBO
+  table: BCTL_DELINQUENCYSTATUS
 columns:
   - name: ID
-    dataType: INTEGER
-    order: 1
   - name: NAME
-    dataType: STRING
-    order: 2
