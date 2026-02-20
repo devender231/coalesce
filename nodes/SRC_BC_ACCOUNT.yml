@@ -1,65 +1,273 @@
-fileVersion: 1.0
+fileVersion: 1
+id: SRC_BC_ACCOUNT
 name: SRC_BC_ACCOUNT
 operation:
   config:
-    OverrideSQLCreate: false
+    insertStrategy: INSERT
+    selectDistinct: false
   database: ""
   deployEnabled: true
+  description: Source table BC_ACCOUNT
+  isMultisource: false
   locationName: SRC
+  materializationType: view
   metadata:
+    appliedNodeTests: []
     columns:
-      - name: ACCOUNTNUMBER
-        dataType: INTEGER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACCOUNTNUMBER
         nullable: true
-      - name: ACCOUNTNAME
-        dataType: STRING
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACCOUNTNAME
         nullable: true
-      - name: ACCOUNTTYPE
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACCOUNTTYPE
         nullable: true
-      - name: BILLINGLEVEL
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: BILLINGLEVEL
         nullable: true
-      - name: SERVICETIER
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SERVICETIER
         nullable: true
-      - name: SECURITYZONEID
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SECURITYZONEID
         nullable: true
-      - name: SEGMENT
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SEGMENT
         nullable: true
-      - name: CLOSEDATE
-        dataType: DATETIME
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: CLOSEDATE
         nullable: true
-      - name: CREATETIME
-        dataType: DATETIME
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: CREATETIME
         nullable: true
-      - name: DELINQUENCYSTATUS
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DELINQUENCYSTATUS
         nullable: true
-      - name: FIRSTTWICEPERMTHINVOICEDOM
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
-      - name: SECONDTWICEPERMTHINVOICEDOM
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
-      - name: PUBLICID
-        dataType: STRING
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PUBLICID
         nullable: true
-      - name: ID
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: ID
         nullable: true
-      - name: BEANVERSION
-        dataType: STRING
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: BEANVERSION
         nullable: true
-      - name: RETIRED
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: RETIRED
         nullable: true
-      - name: UPDATETIME
-        dataType: DATETIME
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17
+          stepCounter: SRC_BC_ACCOUNT
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: UPDATETIME
         nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }}
+        name: SRC_BC_ACCOUNT
+        noLinkRefs: []
+  name: SRC_BC_ACCOUNT
+  overrideSQL: false
   schema: ""
   sqlType: Source
-  type: sourceInput
-type: Node
+  type: sql
+  version: 1
