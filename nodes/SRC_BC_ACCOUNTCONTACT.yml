@@ -1,9 +1,116 @@
+fileVersion: 1
+id: SRC_BC_ACCOUNTCONTACT
 name: SRC_BC_ACCOUNTCONTACT
-type: source
-location: SRC (BRIGHTCOVE.DBO.BC_ACCOUNTCONTACT)
-columns:
-  - name: INSUREDACCOUNTID
-  - name: CONTACTID
-  - name: ID
-  - name: BEANVERSION
-  - name: UPDATETIME
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: true
+    warehouseName: DEV_WH_SMALL
+  database: ""
+  deployEnabled: true
+  description: Source table BC_ACCOUNTCONTACT
+  isMultisource: false
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BC_ACCOUNTCONTACT
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: INSUREDACCOUNTID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_BC_ACCOUNTCONTACT
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BC_ACCOUNTCONTACT
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: CONTACTID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_BC_ACCOUNTCONTACT
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_BC_ACCOUNTCONTACT
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_BC_ACCOUNTCONTACT
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_BC_ACCOUNTCONTACT
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_BC_ACCOUNTCONTACT
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: SRC_BC_ACCOUNTCONTACT
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: SRC_BC_ACCOUNTCONTACT
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }}
+        name: SRC_BC_ACCOUNTCONTACT
+        noLinkRefs: []
+  name: SRC_BC_ACCOUNTCONTACT
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
