@@ -1,0 +1,33 @@
+name: SRC_ROWCOUNT_INSERT
+type: row_count
+description: Counts new insert rows where lookup found no match
+
+source:
+  name: INSERT_ROWS
+  type: conditional_split_output
+  upstream_dependency: SRC_CONDITIONALSPLIT_BEANVERSION
+  split_output_path: INSERT_ROWS
+
+transformation_logic:
+  operation: COUNT
+  count_type: INSERT_ROWS
+  description: Counts rows with no match in lookup (new records to insert)
+  filter_condition: EDWBeanVersion IS NULL
+  
+output:
+  variable_name: User::InsertCount
+  variable_type: INTEGER
+  description: Total count of new rows to be inserted
+  
+metadata:
+  execution_order: 6
+  package_name: EDW_BC_Load_DimBillingAccount
+  transformation_type: ROW_COUNT
+  created_from: SSIS_Documentation
+  upstream_dependency_validated: true
+  depends_on:
+    - SRC_DIMBILLINGACCOUNT_JOINS
+    - SRC_ROWCOUNT_SOURCE
+    - SRC_DERIVED_BATCHID
+    - SRC_LOOKUP_BEANVERSION
+    - SRC_CONDITIONALSPLIT_BEANVERSION
