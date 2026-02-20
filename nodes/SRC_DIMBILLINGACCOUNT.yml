@@ -1,9 +1,13 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
 location:
-  database: BILLINGCENTER
+  database: BC
   schema: DBO
   table: DIMBILLINGACCOUNT
 columns:
   - name: PUBLICID
+    dataType: STRING
+    columnOrder: 1
   - name: BEANVERSION
+    dataType: STRING
+    columnOrder: 2
