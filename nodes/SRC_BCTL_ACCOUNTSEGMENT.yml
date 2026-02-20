@@ -1,19 +1,71 @@
-version: 1
-
-sources:
-  - name: SRC_BCTL_ACCOUNTSEGMENT
-    description: Source extraction for BCTL_ACCOUNTSEGMENT table
-    source_type: table
-    location:
-      database: "BILLING"
-      schema: "DBO"
-      identifier: "BCTL_ACCOUNTSEGMENT"
-    
+fileVersion: 1
+id: SRC_BCTL_ACCOUNTSEGMENT
+name: SRC_BCTL_ACCOUNTSEGMENT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Source table BCTL_ACCOUNTSEGMENT
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
     columns:
-      - name: ID
-        data_type: INTEGER
-        description: ID column from BCTL_ACCOUNTSEGMENT
-        
-      - name: NAME
-        data_type: STRING
-        description: NAME column from BCTL_ACCOUNTSEGMENT
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        isSystemVersion: false
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        isSystemVersion: false
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTSEGMENT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }}
+        name: SRC_BCTL_ACCOUNTSEGMENT
+        noLinkRefs: []
+  name: SRC_BCTL_ACCOUNTSEGMENT
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
