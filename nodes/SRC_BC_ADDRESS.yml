@@ -1,25 +1,36 @@
 name: SRC_BC_ADDRESS
 type: source
+config:
+  source_type: table
 location:
-  database: BC
-  schema: dbo
-  table: ADDRESS
+  database: GUIDEWIRE
+  schema: BC
+  table: BC_ADDRESS
 columns:
   - name: ID
-    dataType: INTEGER
+    data_type: INTEGER
+    nullable: true
   - name: ADDRESSLINE1
-    dataType: VARCHAR
+    data_type: STRING
+    nullable: true
   - name: ADDRESSLINE2
-    dataType: VARCHAR
+    data_type: STRING
+    nullable: true
   - name: ADDRESSLINE3
-    dataType: VARCHAR
+    data_type: STRING
+    nullable: true
   - name: CITY
-    dataType: VARCHAR
+    data_type: STRING
+    nullable: true
   - name: POSTALCODE
-    dataType: VARCHAR
+    data_type: STRING
+    nullable: true
   - name: STATE
-    dataType: VARCHAR
+    data_type: INTEGER
+    nullable: true
   - name: BEANVERSION
-    dataType: INTEGER
+    data_type: STRING
+    nullable: true
   - name: UPDATETIME
-    dataType: DATETIME
+    data_type: DATETIME
+    nullable: true
