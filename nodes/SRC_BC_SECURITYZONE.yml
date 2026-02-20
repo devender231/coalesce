@@ -1,18 +1,11 @@
 name: SRC_BC_SECURITYZONE
 type: source
-database: ''
-schema: ''
-table: BC_SECURITYZONE
+location:
+  database: BILLINGCENTER
+  schema: DBO
+  table: BC_SECURITYZONE
 columns:
   - name: ID
-    dataType: INTEGER
-    order: 1
   - name: NAME
-    dataType: STRING
-    order: 2
   - name: BEANVERSION
-    dataType: STRING
-    order: 3
   - name: UPDATETIME
-    dataType: DATETIME
-    order: 4
