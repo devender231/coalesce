@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_CONTACT
+  description: Source table BC_CONTACT from GuideWire
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -20,18 +20,16 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,18 +37,16 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: FIRSTNAME
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -58,18 +54,16 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: LASTNAME
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -77,18 +71,16 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: PRIMARYADDRESSID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -96,18 +88,16 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 5
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
-        dataType: STRING
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BEANVERSION
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -115,30 +105,29 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 6
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: UPDATETIME
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 6
+                stepCounter: 1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BC_CONTACT: 1
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "BC_CONTACT"
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
@@ -147,3 +136,4 @@ operation:
   sqlType: Source
   type: sql
   version: 1
+type: Node
