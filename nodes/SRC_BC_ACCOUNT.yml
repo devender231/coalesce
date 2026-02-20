@@ -1,56 +1,64 @@
+fileVersion: 1.0
 name: SRC_BC_ACCOUNT
-type: source
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+type: sourceInput
+version: 1
 config:
-  location: SRC ("BC"."dbo")
-  columns:
-    - name: ACCOUNTNUMBER
-      dataType: INTEGER
-      nullable: true
-    - name: ACCOUNTNAME
-      dataType: STRING
-      nullable: true
-    - name: ACCOUNTTYPE
-      dataType: INTEGER
-      nullable: true
-    - name: BILLINGLEVEL
-      dataType: INTEGER
-      nullable: true
-    - name: SERVICETIER
-      dataType: INTEGER
-      nullable: true
-    - name: SECURITYZONEID
-      dataType: INTEGER
-      nullable: true
-    - name: SEGMENT
-      dataType: INTEGER
-      nullable: true
-    - name: CLOSEDATE
-      dataType: DATETIME
-      nullable: true
-    - name: CREATETIME
-      dataType: DATETIME
-      nullable: true
-    - name: DELINQUENCYSTATUS
-      dataType: INTEGER
-      nullable: true
-    - name: FIRSTTWICEPERMTHINVOICEDOM
-      dataType: INTEGER
-      nullable: true
-    - name: SECONDTWICEPERMTHINVOICEDOM
-      dataType: INTEGER
-      nullable: true
-    - name: PUBLICID
-      dataType: STRING
-      nullable: true
-    - name: ID
-      dataType: INTEGER
-      nullable: true
-    - name: BEANVERSION
-      dataType: STRING
-      nullable: true
-    - name: RETIRED
-      dataType: INTEGER
-      nullable: true
-    - name: UPDATETIME
-      dataType: DATETIME
-      nullable: true
+  database: ""
+  schema: ""
+  table: BC_ACCOUNT
+columns:
+  - name: ACCOUNTNUMBER
+    dataType: INTEGER
+    nullable: true
+  - name: ACCOUNTNAME
+    dataType: STRING
+    nullable: true
+  - name: ACCOUNTTYPE
+    dataType: INTEGER
+    nullable: true
+  - name: BILLINGLEVEL
+    dataType: INTEGER
+    nullable: true
+  - name: SERVICETIER
+    dataType: INTEGER
+    nullable: true
+  - name: SECURITYZONEID
+    dataType: INTEGER
+    nullable: true
+  - name: SEGMENT
+    dataType: INTEGER
+    nullable: true
+  - name: CLOSEDATE
+    dataType: DATETIME
+    nullable: true
+  - name: CREATETIME
+    dataType: DATETIME
+    nullable: true
+  - name: DELINQUENCYSTATUS
+    dataType: INTEGER
+    nullable: true
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+    nullable: true
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: INTEGER
+    nullable: true
+  - name: PUBLICID
+    dataType: STRING
+    nullable: true
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: RETIRED
+    dataType: INTEGER
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
