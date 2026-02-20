@@ -1,0 +1,156 @@
+name: SRC_JOIN_DIMBILLINGACCOUNT
+type: join
+description: Joins all source tables for DimBillingAccount ETL process
+sources:
+  - SRC_BC_ACCOUNT
+  - SRC_BCTL_ACCOUNTTYPE
+  - SRC_BC_PARENTACCT
+  - SRC_BCTL_BILLINGLEVEL
+  - SRC_BCTL_CUSTOMERSERVICETIER
+  - SRC_BC_SECURITYZONE
+  - SRC_BCTL_DELINQUENCYSTATUS
+  - SRC_BCTL_ACCOUNTSEGMENT
+  - SRC_BC_ACCOUNTCONTACT
+  - SRC_BC_ACCOUNTCONTACTROLE
+  - SRC_BCTL_ACCOUNTROLE
+  - SRC_BC_CONTACT
+  - SRC_BC_ADDRESS
+  - SRC_BCTL_STATE
+  - SRC_DIMBILLINGACCOUNT
+
+joins:
+  - join_order: 1
+    left_table: BC_ACCOUNT
+    right_table: BCTL_ACCOUNTTYPE
+    join_type: LEFT
+    condition: BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+    description: Join account with account type lookup
+
+  - join_order: 2
+    left_table: BC_ACCOUNT
+    right_table: BC_PARENTACCT
+    join_type: LEFT
+    condition: BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+    description: Join account with parent account relationship
+
+  - join_order: 3
+    left_table: BC_ACCOUNT
+    right_table: BCTL_BILLINGLEVEL
+    join_type: LEFT
+    condition: BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+    description: Join account with billing level lookup
+
+  - join_order: 4
+    left_table: BC_ACCOUNT
+    right_table: BCTL_CUSTOMERSERVICETIER
+    join_type: LEFT
+    condition: BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+    description: Join account with customer service tier lookup
+
+  - join_order: 5
+    left_table: BC_ACCOUNT
+    right_table: BC_SECURITYZONE
+    join_type: LEFT
+    condition: BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+    description: Join account with security zone
+
+  - join_order: 6
+    left_table: BC_ACCOUNT
+    right_table: BCTL_DELINQUENCYSTATUS
+    join_type: LEFT
+    condition: BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+    description: Join account with delinquency status lookup
+
+  - join_order: 7
+    left_table: BC_ACCOUNT
+    right_table: BCTL_ACCOUNTSEGMENT
+    join_type: LEFT
+    condition: BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+    description: Join account with account segment lookup
+
+  - join_order: 8
+    left_table: BC_ACCOUNT
+    right_table: INSUREDINFO
+    join_type: LEFT
+    condition: INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+    description: Join account with insured information (derived table)
+
+  - join_order: 9
+    left_table: INSUREDINFO
+    right_table: BC_ACCOUNTCONTACT
+    join_type: INNER
+    condition: BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
+    description: Join insured info with account contact
+
+  - join_order: 10
+    left_table: INSUREDINFO
+    right_table: BC_ACCOUNTCONTACTROLE
+    join_type: INNER
+    condition: BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+    description: Join insured info with account contact role
+
+  - join_order: 11
+    left_table: INSUREDINFO
+    right_table: BCTL_ACCOUNTROLE
+    join_type: INNER
+    condition: BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+    description: Join insured info with account role lookup filtered by insured type
+
+  - join_order: 12
+    left_table: INSUREDINFO
+    right_table: BC_CONTACT
+    join_type: LEFT
+    condition: BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+    description: Join insured info with contact details
+
+  - join_order: 13
+    left_table: INSUREDINFO
+    right_table: BC_ADDRESS
+    join_type: LEFT
+    condition: BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+    description: Join insured info with primary address
+
+  - join_order: 14
+    left_table: INSUREDINFO
+    right_table: BCTL_STATE
+    join_type: LEFT
+    condition: BCTL_STATE.ID = BC_ADDRESS.STATE
+    description: Join insured info with state lookup
+
+  - join_order: 15
+    left_table: LOOKUP_INPUT
+    right_table: DIMBILLINGACCOUNT
+    join_type: INNER
+    condition: LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
+    description: Lookup join for existing billing account records
+
+output_columns:
+  - BC_ACCOUNT.ACCOUNTNUMBER
+  - BC_ACCOUNT.ACCOUNTNAME
+  - BC_ACCOUNT.PUBLICID
+  - BC_ACCOUNT.ID
+  - BC_ACCOUNT.BEANVERSION
+  - BC_ACCOUNT.RETIRED
+  - BC_ACCOUNT.UPDATETIME
+  - BC_ACCOUNT.CLOSEDATE
+  - BC_ACCOUNT.CREATETIME
+  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
+  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
+  - BCTL_ACCOUNTTYPE.NAME as ACCOUNTTYPE_NAME
+  - BCTL_BILLINGLEVEL.NAME as BILLINGLEVEL_NAME
+  - BCTL_CUSTOMERSERVICETIER.NAME as SERVICETIER_NAME
+  - BC_SECURITYZONE.NAME as SECURITYZONE_NAME
+  - BCTL_DELINQUENCYSTATUS.NAME as DELINQUENCYSTATUS_NAME
+  - BCTL_ACCOUNTSEGMENT.NAME as SEGMENT_NAME
+  - BC_CONTACT.FIRSTNAME
+  - BC_CONTACT.LASTNAME
+  - BC_ADDRESS.ADDRESSLINE1
+  - BC_ADDRESS.ADDRESSLINE2
+  - BC_ADDRESS.ADDRESSLINE3
+  - BC_ADDRESS.CITY
+  - BC_ADDRESS.POSTALCODE
+  - BCTL_STATE.NAME as STATE_NAME
+  - DIMBILLINGACCOUNT.BEANVERSION as EDWBeanVersion
+
+execution_order: 1
+dependencies: []
