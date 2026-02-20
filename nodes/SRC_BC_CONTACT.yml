@@ -6,20 +6,14 @@ location:
   table: BC_CONTACT
 columns:
   - name: ID
-    data_type: INTEGER
-    nullable: true
+    dataType: INTEGER
   - name: FIRSTNAME
-    data_type: STRING
-    nullable: true
+    dataType: STRING
   - name: LASTNAME
-    data_type: STRING
-    nullable: true
+    dataType: STRING
   - name: PRIMARYADDRESSID
-    data_type: INTEGER
-    nullable: true
+    dataType: INTEGER
   - name: BEANVERSION
-    data_type: STRING
-    nullable: true
+    dataType: STRING
   - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+    dataType: DATETIME
