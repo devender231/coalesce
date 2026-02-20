@@ -1,20 +1,28 @@
+fileVersion: 1.0
 name: SRC_BC_ACCOUNTCONTACT
-type: source
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+type: sourceInput
+version: 1
 config:
-  location: SRC ("BC"."dbo")
-  columns:
-    - name: INSUREDACCOUNTID
-      dataType: INTEGER
-      nullable: true
-    - name: CONTACTID
-      dataType: INTEGER
-      nullable: true
-    - name: ID
-      dataType: INTEGER
-      nullable: true
-    - name: BEANVERSION
-      dataType: STRING
-      nullable: true
-    - name: UPDATETIME
-      dataType: DATETIME
-      nullable: true
+  database: ""
+  schema: ""
+  table: BC_ACCOUNTCONTACT
+columns:
+  - name: INSUREDACCOUNTID
+    dataType: INTEGER
+    nullable: true
+  - name: CONTACTID
+    dataType: INTEGER
+    nullable: true
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
