@@ -22,16 +22,14 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BC_ADDRESS
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -43,14 +41,12 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BC_ADDRESS
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -62,14 +58,12 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: SRC_BC_ADDRESS
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -81,14 +75,12 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ADDRESSLINE3
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: SRC_BC_ADDRESS
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -100,14 +92,12 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: CITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: SRC_BC_ADDRESS
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -119,14 +109,12 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: POSTALCODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 6
+                stepCounter: SRC_BC_ADDRESS
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -138,14 +126,12 @@ operation:
         config: {}
         dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: STATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 7
+                stepCounter: SRC_BC_ADDRESS
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -155,16 +141,14 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 8
+                stepCounter: SRC_BC_ADDRESS
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -174,28 +158,27 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: TIMESTAMP
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 9
+                stepCounter: SRC_BC_ADDRESS
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BC_ADDRESS: BC_ADDRESS
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ADDRESS
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }} "SRC_BC_ADDRESS"
         name: SRC_BC_ADDRESS
         noLinkRefs: []
   name: SRC_BC_ADDRESS
