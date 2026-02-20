@@ -1,19 +1,27 @@
 name: SRC_BC_CONTACT
 type: source
+config:
+  source_type: table
 location:
-  database: BC
-  schema: dbo
-  table: CONTACT
+  database: GUIDEWIRE
+  schema: BC
+  table: BC_CONTACT
 columns:
   - name: ID
-    dataType: INTEGER
+    data_type: INTEGER
+    nullable: true
   - name: FIRSTNAME
-    dataType: VARCHAR
+    data_type: STRING
+    nullable: true
   - name: LASTNAME
-    dataType: VARCHAR
+    data_type: STRING
+    nullable: true
   - name: PRIMARYADDRESSID
-    dataType: INTEGER
+    data_type: INTEGER
+    nullable: true
   - name: BEANVERSION
-    dataType: INTEGER
+    data_type: STRING
+    nullable: true
   - name: UPDATETIME
-    dataType: DATETIME
+    data_type: DATETIME
+    nullable: true
