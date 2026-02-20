@@ -3,264 +3,606 @@ id: SRC_TR_CONDITIONAL_SPLIT
 name: SRC_TR_CONDITIONAL_SPLIT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV_WH
   database: ""
   deployEnabled: true
-  description: Conditional split transformation - Routes rows based on whether BeanVersion matches EDWBeanVersion
+  description: "Conditional Split Transformation - Routes rows based on whether BeanVersion matches EDWBeanVersion (Logic: BeanVersion == EDWBeanVersion)"
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 1
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: Batch ID
-        name: BATCHID
+        description: ""
+        name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 2
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: Account Number
-        name: ACCOUNTNUMBER
+        dataType: STRING
+        description: ""
+        name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 3
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Account Name
-        name: ACCOUNTNAME
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 4
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Account Type Name
-        name: ACCOUNTTYPE_NAME
+        dataType: INTEGER
+        description: ""
+        name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 5
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: Parent Account ID
-        name: PARENT_ACCOUNT_ID
+        description: ""
+        name: SERVICETIER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 5
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 6
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Billing Level Name
-        name: BILLINGLEVEL_NAME
+        dataType: INTEGER
+        description: ""
+        name: SECURITYZONEID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 6
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 7
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Service Tier Name
-        name: SERVICETIER_NAME
+        dataType: INTEGER
+        description: ""
+        name: SEGMENT
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 7
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 8
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Security Zone Name
-        name: SECURITYZONE_NAME
+        dataType: DATETIME
+        description: ""
+        name: CLOSEDATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 8
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 9
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Delinquency Status Name
-        name: DELINQUENCYSTATUS_NAME
+        dataType: DATETIME
+        description: ""
+        name: CREATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 9
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 10
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Segment Name
-        name: SEGMENT_NAME
+        dataType: INTEGER
+        description: ""
+        name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 10
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 11
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Contact First Name
-        name: FIRSTNAME
+        dataType: INTEGER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 11
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 12
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Contact Last Name
-        name: LASTNAME
+        dataType: INTEGER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 12
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 13
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
         dataType: STRING
-        description: Address Line 1
-        name: ADDRESSLINE1
+        description: ""
+        name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 13
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 14
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: City
-        name: CITY
+        dataType: INTEGER
+        description: ""
+        name: BC_ACCOUNT_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 14
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 15
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
         dataType: STRING
-        description: State Name
-        name: STATE_NAME
+        description: ""
+        name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 15
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 16
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Public ID
-        name: PUBLICID
+        dataType: INTEGER
+        description: ""
+        name: RETIRED
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 16
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 17
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Bean Version
-        name: BEANVERSION
+        dataType: DATETIME
+        description: ""
+        name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 17
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 18
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
         dataType: STRING
-        description: EDW Bean Version
-        name: EDW_BEANVERSION
+        description: ""
+        name: ACCOUNTTYPE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 18
                 stepCounter: SRC_TR_LOOKUP_BEANVERSION
             transform: ""
-      - columnReference:
+      - appliedColumnTests: {}
+        columnReference:
           columnCounter: 19
-          stepCounter: SRC_TR_CONDITIONAL_SPLIT
+          stepCounter: 1
         config: {}
-        dataType: STRING
-        description: Split output - UNCHANGED if BeanVersion matches, NEW_OR_UPDATED otherwise
-        name: SPLIT_OUTPUT
+        dataType: INTEGER
+        description: ""
+        name: PARENTACCT_FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: "CASE WHEN BEANVERSION = EDW_BEANVERSION THEN 'UNCHANGED' WHEN EDW_BEANVERSION IS NULL THEN 'NEW' ELSE 'UPDATED' END"
+              - columnCounter: 19
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 21
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 25
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTCONTACT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: CONTACTID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTCONTACTROLE_ROLE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 27
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTROLE_TYPECODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CONTACT_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CONTACT_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 30
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: CONTACT_PRIMARYADDRESSID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 35
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 35
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 36
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 36
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 37
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 37
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 38
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: "Row count for source records"
+        name: SOURCE_ROW_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 39
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: "Derived column - BatchID from User variable"
+        name: BATCHID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 39
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: "Looked up BeanVersion from DimBillingAccount"
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 40
+                stepCounter: SRC_TR_LOOKUP_BEANVERSION
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 41
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: "Split condition result"
+        name: SPLIT_CONDITION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: |
+              CASE 
+                WHEN BEANVERSION = EDW_BEANVERSION THEN 'UNCHANGED'
+                WHEN EDW_BEANVERSION IS NULL THEN 'INSERT'
+                ELSE 'UPDATE'
+              END
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -272,7 +614,7 @@ operation:
           - locationName: SRC
             nodeName: SRC_TR_LOOKUP_BEANVERSION
         join:
-          joinCondition: FROM {{ ref('SRC', 'SRC_TR_LOOKUP_BEANVERSION') }} "SRC_TR_LOOKUP_BEANVERSION"
+          joinCondition: FROM {{ ref('SRC', 'SRC_TR_LOOKUP_BEANVERSION') }} SRC_TR_LOOKUP_BEANVERSION
         name: SRC_TR_CONDITIONAL_SPLIT
         noLinkRefs: []
   name: SRC_TR_CONDITIONAL_SPLIT
