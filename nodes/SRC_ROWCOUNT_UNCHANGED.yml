@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Row Count transformation - Counts unchanged rows (BeanVersion matches) and stores in User::UnChangeCount variable"
+  description: Row Count transformation - Counts unchanged rows where BeanVersion matches (Variable User::UnChangeCount)
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -18,7 +18,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_ROWCOUNT_UNCHANGED
         dataType: INTEGER
-        description: "Account Number"
+        description: Account Number
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
@@ -30,7 +30,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_ROWCOUNT_UNCHANGED
         dataType: STRING
-        description: "Account Name"
+        description: Account Name
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
@@ -42,8 +42,200 @@ operation:
           columnCounter: 3
           stepCounter: SRC_ROWCOUNT_UNCHANGED
         dataType: STRING
-        description: "Public ID"
+        description: Account Type Name
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: INTEGER
+        description: Parent Account ID
+        name: PARENTACCOUNT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Billing Level Name
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Service Tier Name
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Security Zone Name
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Delinquency Status Name
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 9
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Account Segment Name
+        name: ACCOUNTSEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 10
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Insured First Name
+        name: INSURED_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 11
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Insured Last Name
+        name: INSURED_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 12
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Address Line 1
+        name: ADDRESSLINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: City
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 14
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: State Name
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 15
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Postal Code
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 16
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Public ID
         name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 17
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: Bean Version
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 18
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: DATETIME
+        description: Close Date
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 19
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: DATETIME
+        description: Create Time
+        name: CREATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -51,11 +243,23 @@ operation:
                 stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 4
+          columnCounter: 20
           stepCounter: SRC_ROWCOUNT_UNCHANGED
-        dataType: STRING
-        description: "Bean Version"
-        name: BEANVERSION
+        dataType: INTEGER
+        description: First Twice Per Month Invoice DOM
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 21
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: INTEGER
+        description: Second Twice Per Month Invoice DOM
+        name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -63,58 +267,81 @@ operation:
                 stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 5
+          columnCounter: 22
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: INTEGER
+        description: Source Row Count
+        name: SOURCE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 23
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: INTEGER
+        description: Batch ID
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 24
           stepCounter: SRC_ROWCOUNT_UNCHANGED
         dataType: STRING
-        description: "EDW Bean Version"
+        description: EDW Bean Version
         name: EDW_BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 35
+              - columnCounter: 24
                 stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 6
+          columnCounter: 25
           stepCounter: SRC_ROWCOUNT_UNCHANGED
         dataType: STRING
-        description: "Split Flag"
-        name: SPLIT_FLAG
+        description: Row Type
+        name: ROW_TYPE
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 36
+              - columnCounter: 25
                 stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 7
+          columnCounter: 26
           stepCounter: SRC_ROWCOUNT_UNCHANGED
         dataType: INTEGER
-        description: "Count of unchanged rows stored in User::UnChangeCount"
+        description: Unchanged row count (User::UnChangeCount)
         name: UNCHANGED_ROW_COUNT
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: "COUNT(*)"
+            transform: COUNT(*)
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_CONDITIONALSPLIT_BEANVERSION: SRC_CONDITIONALSPLIT_BEANVERSION
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
         join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} "SRC_CONDITIONALSPLIT_BEANVERSION"
-            WHERE "SRC_CONDITIONALSPLIT_BEANVERSION"."SPLIT_FLAG" = 'UNCHANGED'
-        name: SRC_CONDITIONALSPLIT_BEANVERSION
+          joinCondition: |-
+            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }}
+            WHERE ROW_TYPE = 'UNCHANGED'
+        name: SRC_ROWCOUNT_UNCHANGED
         noLinkRefs: []
   name: SRC_ROWCOUNT_UNCHANGED
   overrideSQL: false
   schema: ""
-  sqlType: Source
+  sqlType: Transform
   type: sql
   version: 1
