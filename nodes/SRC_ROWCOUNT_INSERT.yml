@@ -1,17 +1,25 @@
 name: SRC_ROWCOUNT_INSERT
-type: transformation
+type: source
 config:
-  transformation_type: row_count
+  source_type: transformation
+  transformation_type: ROW_COUNT
   description: "Counts new insert rows (lookup no match)"
   execution_order: 6
-dependencies:
-  - SRC_CONDITIONALSPLIT_BEANVERSION
-logic:
-  operation: count_rows
-  variable_name: "User::InsertCount"
-  input_branch: InsertRows
-  description: "Captures count of rows where EDWBeanVersion is NULL (new records)"
+  depends_on:
+    - SRC_CONDITIONALSPLIT_BEANVERSION
+transformation_logic:
+  operation: COUNT_ROWS
+  input_stream: INSERT_ROWS
+  variable_assignment:
+    variable_name: "User::InsertCount"
+    variable_type: INTEGER
+    description: "Count of new rows to be inserted (no match in lookup)"
+input_source:
+  - SRC_CONDITIONALSPLIT_BEANVERSION.INSERT_ROWS
 output:
-  row_count_variable: "User::InsertCount"
-  pass_through_data: true
-  description: "Counts rows and passes data to target for INSERT operation"
+  pass_through: true
+  add_columns:
+    - name: INSERT_ROW_COUNT
+      data_type: INTEGER
+      expression: "COUNT(*)"
+      nullable: false
