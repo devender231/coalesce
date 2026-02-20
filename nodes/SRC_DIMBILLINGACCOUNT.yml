@@ -1,42 +1,70 @@
+fileVersion: 1
+id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
-type: source
-config:
-  source_name: DIMBILLINGACCOUNT
-  source_type: table
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
   database: ""
+  deployEnabled: true
+  description: Source table for DIMBILLINGACCOUNT
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_DIMBILLINGACCOUNT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_DIMBILLINGACCOUNT: EDW.DBO.DIMBILLINGACCOUNT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: DIMBILLINGACCOUNT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'DIMBILLINGACCOUNT') }} "SRC_DIMBILLINGACCOUNT"
+        name: SRC_DIMBILLINGACCOUNT
+        noLinkRefs: []
+  name: SRC_DIMBILLINGACCOUNT
+  overrideSQL: false
   schema: ""
-  location: SRC ("."."")
-columns:
-  - name: BILLINGACCOUNTKEY
-    datatype: NUMBER(38,0)
-    description: Primary key for billing account dimension
-  - name: ACCOUNTNUMBER
-    datatype: VARCHAR2(100)
-    description: Account number
-  - name: ACCOUNTNAME
-    datatype: VARCHAR2(200)
-    description: Account name
-  - name: ACCOUNTTYPEKEY
-    datatype: NUMBER(38,0)
-    description: Foreign key to account type
-  - name: BILLINGLEVELKEY
-    datatype: NUMBER(38,0)
-    description: Foreign key to billing level
-  - name: CUSTOMERSERVICETIERKEY
-    datatype: NUMBER(38,0)
-    description: Foreign key to customer service tier
-  - name: SECURITYZONEKEY
-    datatype: NUMBER(38,0)
-    description: Foreign key to security zone
-  - name: DELINQUENCYSTATUSKEY
-    datatype: NUMBER(38,0)
-    description: Foreign key to delinquency status
-  - name: ACCOUNTSEGMENTKEY
-    datatype: NUMBER(38,0)
-    description: Foreign key to account segment
-  - name: ADDRESSKEY
-    datatype: NUMBER(38,0)
-    description: Foreign key to address
-  - name: STATEKEY
-    datatype: NUMBER(38,0)
-    description: Foreign key to state
+  sqlType: Source
+  type: sql
+  version: 1
