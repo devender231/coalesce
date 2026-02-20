@@ -1,0 +1,33 @@
+---
+name: SRC_TRANSFORMATION_07_ROW_COUNT_UPDATE
+type: transformation
+transformation_type: ROW_COUNT
+execution_order: 7
+description: Counts update rows where BeanVersion is different
+
+source:
+  type: upstream_transformation
+  name: SRC_TRANSFORMATION_04_CONDITIONAL_SPLIT
+  output_branch: UPDATE_ROWS
+  description: Rows where BeanVersion differs from EDWBeanVersion
+
+transformation_logic:
+  operation: COUNT_ROWS
+  count_variable: User::UpdateCount
+  filter_condition: BeanVersion != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
+  description: Count rows that will be updated in dimension table
+
+output:
+  variable_name: User::UpdateCount
+  variable_type: Integer
+  description: Total count of rows requiring updates
+  row_disposition: UPDATE_DIMENSION
+
+upstream_dependencies:
+  - SRC_TRANSFORMATION_04_CONDITIONAL_SPLIT
+
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  component_type: Row Count
+  execution_sequence: 7
+  purpose: Track count of changed records for monitoring and validation
