@@ -1,13 +1,21 @@
 name: SRC_BC_SECURITYZONE
 type: source
 config:
-  location: BC.DBO.BC_SECURITYZONE
-  columns:
-    - name: SECURITYZONEID
-      datatype: VARCHAR
-    - name: SECURITYZONENAME
-      datatype: VARCHAR
-    - name: SECURITYZONEDESCRIPTION
-      datatype: VARCHAR
-    - name: ISACTIVE
-      datatype: BOOLEAN
+  source_type: table
+  source_location:
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_SECURITYZONE
+columns:
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: NAME
+    data_type: STRING
+    nullable: true
+  - name: BEANVERSION
+    data_type: STRING
+    nullable: true
+  - name: UPDATETIME
+    data_type: DATETIME
+    nullable: true
