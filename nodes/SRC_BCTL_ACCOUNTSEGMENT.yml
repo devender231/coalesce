@@ -1,15 +1,64 @@
+fileVersion: 1
+id: SRC_BCTL_ACCOUNTSEGMENT
 name: SRC_BCTL_ACCOUNTSEGMENT
-type: source
-config:
-  source_type: table
-  source_location:
-    database: SRC
-    schema: ""
-    table: BCTL_ACCOUNTSEGMENT
-  columns:
-    - name: ID
-      data_type: VARCHAR
-      description: "Unique identifier"
-    - name: NAME
-      data_type: VARCHAR
-      description: "Account segment name"
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Source table BCTL_ACCOUNTSEGMENT
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_BCTL_ACCOUNTSEGMENT: BCTL_ACCOUNTSEGMENT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTSEGMENT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} SRC_BCTL_ACCOUNTSEGMENT
+        name: SRC_BCTL_ACCOUNTSEGMENT
+        noLinkRefs: []
+  name: SRC_BCTL_ACCOUNTSEGMENT
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
