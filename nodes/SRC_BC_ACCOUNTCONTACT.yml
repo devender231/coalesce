@@ -1,19 +1,19 @@
-source:
-  name: BC_ACCOUNTCONTACT
-  type: table
-  location:
-    database: BC
-    schema: DBO
-    table: BC_ACCOUNTCONTACT
-  connection_string: 'SRC ("BC"."DBO")'
-  columns:
-    - name: INSUREDACCOUNTID
-      order: 1
-    - name: CONTACTID
-      order: 2
-    - name: ID
-      order: 3
-    - name: BEANVERSION
-      order: 4
-    - name: UPDATETIME
-      order: 5
+fileVersion: 1.0.0
+id: SRC_BC_ACCOUNTCONTACT
+name: SRC_BC_ACCOUNTCONTACT
+type: source
+config:
+  database: ""
+  schema: ""
+  table: BC_ACCOUNTCONTACT
+columns:
+  - name: INSUREDACCOUNTID
+    dataType: VARCHAR
+  - name: CONTACTID
+    dataType: VARCHAR
+  - name: ID
+    dataType: VARCHAR
+  - name: BEANVERSION
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: TIMESTAMP
