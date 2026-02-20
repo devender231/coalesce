@@ -1,0 +1,33 @@
+name: SRC_ROWCOUNT_UPDATE
+type: row_count
+description: Counts update rows where BeanVersion differs from EDWBeanVersion
+
+source:
+  name: UPDATE_ROWS
+  type: conditional_split_output
+  upstream_dependency: SRC_CONDITIONALSPLIT_BEANVERSION
+  split_output_path: UPDATE_ROWS
+
+transformation_logic:
+  operation: COUNT
+  count_type: UPDATE_ROWS
+  description: Counts rows where BeanVersion differs from existing EDW BeanVersion (updates required)
+  filter_condition: BeanVersion != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
+  
+output:
+  variable_name: User::UpdateCount
+  variable_type: INTEGER
+  description: Total count of rows requiring update
+  
+metadata:
+  execution_order: 7
+  package_name: EDW_BC_Load_DimBillingAccount
+  transformation_type: ROW_COUNT
+  created_from: SSIS_Documentation
+  upstream_dependency_validated: true
+  depends_on:
+    - SRC_DIMBILLINGACCOUNT_JOINS
+    - SRC_ROWCOUNT_SOURCE
+    - SRC_DERIVED_BATCHID
+    - SRC_LOOKUP_BEANVERSION
+    - SRC_CONDITIONALSPLIT_BEANVERSION
