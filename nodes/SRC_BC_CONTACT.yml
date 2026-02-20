@@ -1,32 +1,119 @@
-fileVersion: 1.0
+fileVersion: 1
+id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
 operation:
   config:
-    OverrideSQLCreate: false
+    insertStrategy: INSERT
+    selectDistinct: false
   database: ""
   deployEnabled: true
+  description: Source table BC_CONTACT
+  isMultisource: false
   locationName: SRC
+  materializationType: view
   metadata:
+    appliedNodeTests: []
     columns:
-      - name: ID
-        dataType: INTEGER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: ID
         nullable: true
-      - name: FIRSTNAME
-        dataType: STRING
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: FIRSTNAME
         nullable: true
-      - name: LASTNAME
-        dataType: STRING
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: LASTNAME
         nullable: true
-      - name: PRIMARYADDRESSID
-        dataType: INTEGER
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: PRIMARYADDRESSID
         nullable: true
-      - name: BEANVERSION
-        dataType: STRING
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: BEANVERSION
         nullable: true
-      - name: UPDATETIME
-        dataType: DATETIME
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: UPDATETIME
         nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_CONTACT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
+        name: SRC_BC_CONTACT
+        noLinkRefs: []
+  name: SRC_BC_CONTACT
+  overrideSQL: false
   schema: ""
   sqlType: Source
-  type: sourceInput
-type: Node
+  type: sql
+  version: 1
