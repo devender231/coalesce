@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Row Count transformation - Counts new insert rows (lookup no match) and stores in User::InsertCount variable"
+  description: Row Count transformation - Counts new insert rows where lookup had no match (Variable User::InsertCount)
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -18,7 +18,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: INTEGER
-        description: "Account Number"
+        description: Account Number
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
@@ -30,7 +30,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: STRING
-        description: "Account Name"
+        description: Account Name
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
@@ -41,9 +41,9 @@ operation:
       - columnReference:
           columnCounter: 3
           stepCounter: SRC_ROWCOUNT_INSERT
-        dataType: INTEGER
-        description: "Account Type ID"
-        name: ACCOUNTTYPE
+        dataType: STRING
+        description: Account Type Name
+        name: ACCOUNTTYPE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -53,9 +53,9 @@ operation:
       - columnReference:
           columnCounter: 4
           stepCounter: SRC_ROWCOUNT_INSERT
-        dataType: STRING
-        description: "Account Type Name"
-        name: ACCOUNTTYPE_NAME
+        dataType: INTEGER
+        description: Parent Account ID
+        name: PARENTACCOUNT_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -65,9 +65,9 @@ operation:
       - columnReference:
           columnCounter: 5
           stepCounter: SRC_ROWCOUNT_INSERT
-        dataType: INTEGER
-        description: "Billing Level ID"
-        name: BILLINGLEVEL
+        dataType: STRING
+        description: Billing Level Name
+        name: BILLINGLEVEL_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -78,8 +78,8 @@ operation:
           columnCounter: 6
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: STRING
-        description: "Billing Level Name"
-        name: BILLINGLEVEL_NAME
+        description: Service Tier Name
+        name: SERVICETIER_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -89,9 +89,9 @@ operation:
       - columnReference:
           columnCounter: 7
           stepCounter: SRC_ROWCOUNT_INSERT
-        dataType: INTEGER
-        description: "Service Tier ID"
-        name: SERVICETIER
+        dataType: STRING
+        description: Security Zone Name
+        name: SECURITYZONE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -102,8 +102,8 @@ operation:
           columnCounter: 8
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: STRING
-        description: "Service Tier Name"
-        name: SERVICETIER_NAME
+        description: Delinquency Status Name
+        name: DELINQUENCYSTATUS_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -113,9 +113,9 @@ operation:
       - columnReference:
           columnCounter: 9
           stepCounter: SRC_ROWCOUNT_INSERT
-        dataType: INTEGER
-        description: "Security Zone ID"
-        name: SECURITYZONEID
+        dataType: STRING
+        description: Account Segment Name
+        name: ACCOUNTSEGMENT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -126,8 +126,8 @@ operation:
           columnCounter: 10
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: STRING
-        description: "Security Zone Name"
-        name: SECURITYZONE_NAME
+        description: Insured First Name
+        name: INSURED_FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -137,9 +137,9 @@ operation:
       - columnReference:
           columnCounter: 11
           stepCounter: SRC_ROWCOUNT_INSERT
-        dataType: INTEGER
-        description: "Segment ID"
-        name: SEGMENT
+        dataType: STRING
+        description: Insured Last Name
+        name: INSURED_LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -150,8 +150,8 @@ operation:
           columnCounter: 12
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: STRING
-        description: "Segment Name"
-        name: SEGMENT_NAME
+        description: Address Line 1
+        name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -161,9 +161,9 @@ operation:
       - columnReference:
           columnCounter: 13
           stepCounter: SRC_ROWCOUNT_INSERT
-        dataType: INTEGER
-        description: "Delinquency Status ID"
-        name: DELINQUENCYSTATUS
+        dataType: STRING
+        description: City
+        name: CITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -174,8 +174,8 @@ operation:
           columnCounter: 14
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: STRING
-        description: "Delinquency Status Name"
-        name: DELINQUENCYSTATUS_NAME
+        description: State Name
+        name: STATE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -186,8 +186,56 @@ operation:
           columnCounter: 15
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: STRING
-        description: "Public ID"
+        description: Postal Code
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 16
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: Public ID
         name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 17
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: Bean Version
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 18
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: DATETIME
+        description: Close Date
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 19
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: DATETIME
+        description: Create Time
+        name: CREATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -195,11 +243,23 @@ operation:
                 stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 16
+          columnCounter: 20
           stepCounter: SRC_ROWCOUNT_INSERT
-        dataType: STRING
-        description: "Bean Version"
-        name: BEANVERSION
+        dataType: INTEGER
+        description: First Twice Per Month Invoice DOM
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 21
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: Second Twice Per Month Invoice DOM
+        name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -207,58 +267,81 @@ operation:
                 stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 17
+          columnCounter: 22
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: INTEGER
-        description: "Batch ID"
+        description: Source Row Count
+        name: SOURCE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 23
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: Batch ID
         name: BATCHID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 34
+              - columnCounter: 23
                 stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 18
+          columnCounter: 24
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: STRING
-        description: "Split Flag"
-        name: SPLIT_FLAG
+        description: EDW Bean Version
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 25
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: Row Type
+        name: ROW_TYPE
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 36
+              - columnCounter: 25
                 stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
             transform: ""
       - columnReference:
-          columnCounter: 19
+          columnCounter: 26
           stepCounter: SRC_ROWCOUNT_INSERT
         dataType: INTEGER
-        description: "Count of insert rows stored in User::InsertCount"
+        description: Insert row count (User::InsertCount)
         name: INSERT_ROW_COUNT
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: "COUNT(*)"
+            transform: COUNT(*)
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_CONDITIONALSPLIT_BEANVERSION: SRC_CONDITIONALSPLIT_BEANVERSION
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
         join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} "SRC_CONDITIONALSPLIT_BEANVERSION"
-            WHERE "SRC_CONDITIONALSPLIT_BEANVERSION"."SPLIT_FLAG" = 'INSERT'
-        name: SRC_CONDITIONALSPLIT_BEANVERSION
+          joinCondition: |-
+            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }}
+            WHERE ROW_TYPE = 'INSERT'
+        name: SRC_ROWCOUNT_INSERT
         noLinkRefs: []
   name: SRC_ROWCOUNT_INSERT
   overrideSQL: false
   schema: ""
-  sqlType: Source
+  sqlType: Transform
   type: sql
   version: 1
