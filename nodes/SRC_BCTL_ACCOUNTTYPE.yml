@@ -1,0 +1,9 @@
+name: SRC_BCTL_ACCOUNTTYPE
+type: source
+config:
+  location: BC.DBO.BCTL_ACCOUNTTYPE
+  columns:
+    - name: ACCOUNTTYPEID
+      datatype: VARCHAR
+    - name: ACCOUNTTYPENAME
+      datatype: VARCHAR
