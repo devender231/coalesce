@@ -1,0 +1,54 @@
+# Transformation YAML - Lookup BeanVersion
+version: 1.0
+
+name: SRC_DIMBILLINGACCOUNT_LOOKUP
+description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+transformation_type: LOOKUP
+
+sources:
+  - name: DERIVED_BATCHID_OUTPUT
+    type: transformation
+    source_ref: SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID
+  
+  - name: DIMBILLINGACCOUNT
+    type: source
+    source_ref: SRC_DIMBILLINGACCOUNT
+
+transformation:
+  type: LOOKUP
+  logic:
+    description: Lookup existing BeanVersion from target dimension table
+    lookup_source: DIMBILLINGACCOUNT
+    lookup_query: |
+      SELECT 
+        PUBLICID,
+        BEANVERSION as EDWBeanVersion
+      FROM DIMBILLINGACCOUNT
+    join_condition:
+      - left_column: PUBLICID
+        right_column: PUBLICID
+        operator: "="
+    lookup_columns:
+      - column_name: EDWBeanVersion
+        source_column: BEANVERSION
+        data_type: STRING
+        on_no_match: NULL
+    match_behavior: LEFT_OUTER
+
+output:
+  name: LOOKUP_OUTPUT
+  description: Data with EDWBeanVersion from dimension table
+  columns:
+    - name: ALL_PREVIOUS_COLUMNS
+      source: DERIVED_BATCHID_OUTPUT.*
+      description: All columns from previous step
+    - name: EDWBeanVersion
+      source: DIMBILLINGACCOUNT.BEANVERSION
+      data_type: STRING
+      nullable: true
+      description: BeanVersion from existing dimension record (NULL if no match)
+
+execution_order: 4
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID
+  - SRC_DIMBILLINGACCOUNT
