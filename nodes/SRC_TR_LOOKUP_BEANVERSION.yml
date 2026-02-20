@@ -1,0 +1,99 @@
+name: SRC_TR_LOOKUP_BEANVERSION
+type: transformation
+transformation_type: LOOKUP
+description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+execution_order: 3
+dependencies:
+  - SRC_TR_DERIVED_BATCHID
+  - SRC_DIMBILLINGACCOUNT
+
+logic:
+  operation: LOOKUP
+  lookup_table: SRC_DIMBILLINGACCOUNT
+  lookup_query: |
+    SELECT 
+      PUBLICID,
+      BEANVERSION as EDWBeanVersion
+    FROM DIMBILLINGACCOUNT
+  join_condition:
+    - left_column: PUBLICID
+      right_column: PUBLICID
+      match_type: EXACT
+  
+  lookup_columns:
+    - source_column: BEANVERSION
+      alias: EDWBeanVersion
+      data_type: INTEGER
+  
+  no_match_behavior: OUTPUT_TO_NO_MATCH
+  cache_mode: FULL_CACHE
+
+input:
+  source: SRC_TR_DERIVED_BATCHID
+  
+output:
+  matched_rows:
+    columns:
+      - ACCOUNTNUMBER
+      - ACCOUNTNAME
+      - ACCOUNTTYPE_NAME
+      - BILLINGLEVEL_NAME
+      - SERVICETIER_NAME
+      - SECURITYZONE_NAME
+      - SEGMENT_NAME
+      - CLOSEDATE
+      - CREATETIME
+      - DELINQUENCYSTATUS_NAME
+      - FIRSTTWICEPERMTHINVOICEDOM
+      - SECONDTWICEPERMTHINVOICEDOM
+      - PUBLICID
+      - ACCOUNT_ID
+      - BEANVERSION
+      - RETIRED
+      - UPDATETIME
+      - PARENT_FOREIGNENTITYID
+      - INSURED_FIRSTNAME
+      - INSURED_LASTNAME
+      - ADDRESS_LINE1
+      - ADDRESS_LINE2
+      - ADDRESS_LINE3
+      - CITY
+      - POSTALCODE
+      - STATE_NAME
+      - EDW_BEANVERSION
+      - BatchID
+  
+  no_match_rows:
+    columns:
+      - ACCOUNTNUMBER
+      - ACCOUNTNAME
+      - ACCOUNTTYPE_NAME
+      - BILLINGLEVEL_NAME
+      - SERVICETIER_NAME
+      - SECURITYZONE_NAME
+      - SEGMENT_NAME
+      - CLOSEDATE
+      - CREATETIME
+      - DELINQUENCYSTATUS_NAME
+      - FIRSTTWICEPERMTHINVOICEDOM
+      - SECONDTWICEPERMTHINVOICEDOM
+      - PUBLICID
+      - ACCOUNT_ID
+      - BEANVERSION
+      - RETIRED
+      - UPDATETIME
+      - PARENT_FOREIGNENTITYID
+      - INSURED_FIRSTNAME
+      - INSURED_LASTNAME
+      - ADDRESS_LINE1
+      - ADDRESS_LINE2
+      - ADDRESS_LINE3
+      - CITY
+      - POSTALCODE
+      - STATE_NAME
+      - BatchID
+  
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  component_name: Lookup - BeanVersion
+  purpose: Retrieve existing BeanVersion from dimension table for SCD comparison
