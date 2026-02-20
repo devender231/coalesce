@@ -3,141 +3,119 @@ id: SRC_BC_ACCOUNTCONTACTROLE
 name: SRC_BC_ACCOUNTCONTACTROLE
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ''
-    preSQL: ''
-    refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: ''
-  database: ''
+  database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNTCONTACTROLE
-  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-    - acceptedValues:
-        strictMatch: true
-        values: []
-      appliedColumnTests: {}
-      columnReference:
-        columnCounter: 1
-        stepCounter: 1
-      config: {}
-      dataType: VARCHAR
-      defaultValue: ''
-      description: ''
-      isBusinessKey: false
-      name: ACCOUNTCONTACTID
-      nullable: true
-      sourceColumnReferences:
-      - columnReferences:
-        - columnCounter: 1
-          stepCounter: 1
-        transform: ''
-    - acceptedValues:
-        strictMatch: true
-        values: []
-      appliedColumnTests: {}
-      columnReference:
-        columnCounter: 2
-        stepCounter: 1
-      config: {}
-      dataType: VARCHAR
-      defaultValue: ''
-      description: ''
-      isBusinessKey: false
-      name: ROLE
-      nullable: true
-      sourceColumnReferences:
-      - columnReferences:
-        - columnCounter: 2
-          stepCounter: 1
-        transform: ''
-    - acceptedValues:
-        strictMatch: true
-        values: []
-      appliedColumnTests: {}
-      columnReference:
-        columnCounter: 3
-        stepCounter: 1
-      config: {}
-      dataType: VARCHAR
-      defaultValue: ''
-      description: ''
-      isBusinessKey: false
-      name: ID
-      nullable: true
-      sourceColumnReferences:
-      - columnReferences:
-        - columnCounter: 3
-          stepCounter: 1
-        transform: ''
-    - acceptedValues:
-        strictMatch: true
-        values: []
-      appliedColumnTests: {}
-      columnReference:
-        columnCounter: 4
-        stepCounter: 1
-      config: {}
-      dataType: NUMBER
-      defaultValue: ''
-      description: ''
-      isBusinessKey: false
-      name: BEANVERSION
-      nullable: true
-      sourceColumnReferences:
-      - columnReferences:
-        - columnCounter: 4
-          stepCounter: 1
-        transform: ''
-    - acceptedValues:
-        strictMatch: true
-        values: []
-      appliedColumnTests: {}
-      columnReference:
-        columnCounter: 5
-        stepCounter: 1
-      config: {}
-      dataType: TIMESTAMP
-      defaultValue: ''
-      description: ''
-      isBusinessKey: false
-      name: UPDATETIME
-      nullable: true
-      sourceColumnReferences:
-      - columnReferences:
-        - columnCounter: 5
-          stepCounter: 1
-        transform: ''
-    cteString: ''
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: ACCOUNTCONTACTID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ROLE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: null
+            transform: ""
+    cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-    - aliases:
-        SRC_BC_ACCOUNTCONTACTROLE: 1
-      customSQL:
-        customSQL: ''
-      dependencies:
-      - locationName: SRC
-        nodeName: BC_ACCOUNTCONTACTROLE
-      join:
-        joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} SRC_BC_ACCOUNTCONTACTROLE
-      name: SRC_BC_ACCOUNTCONTACTROLE
-      noLinkRefs: []
+      - aliases:
+          BC_ACCOUNTCONTACTROLE: SRC_BC_ACCOUNTCONTACTROLE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACTROLE
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} "BC_ACCOUNTCONTACTROLE"
+        name: SRC_BC_ACCOUNTCONTACTROLE
+        noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACTROLE
   overrideSQL: false
-  schema: ''
+  schema: ""
   sqlType: Source
   type: sql
   version: 1
