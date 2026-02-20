@@ -1,0 +1,495 @@
+fileVersion: 1
+id: SRC_CONDITIONAL_SPLIT
+name: SRC_CONDITIONAL_SPLIT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Conditional Split transformation - Routes rows based on whether BeanVersion matches EDWBeanVersion
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PARENTACCT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 9
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 10
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 11
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 12
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 14
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 15
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 16
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 17
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 18
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ADDRESSLINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 19
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ADDRESSLINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 20
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ADDRESSLINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 21
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 22
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 23
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 24
+          stepCounter: 1
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 25
+          stepCounter: 1
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 26
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 27
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 27
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 28
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 29
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 30
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 30
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 31
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 32
+          stepCounter: 1
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 33
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: BATCHID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 34
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34
+                stepCounter: 1
+            transform: ""
+      - columnReference:
+          columnCounter: 35
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: "Split condition result - UNCHANGED, INSERT, or UPDATE"
+        name: SPLIT_CONDITION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: |
+              CASE 
+                WHEN "BEANVERSION" = "EDW_BEANVERSION" THEN 'UNCHANGED'
+                WHEN "EDW_BEANVERSION" IS NULL THEN 'INSERT'
+                ELSE 'UPDATE'
+              END
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_LOOKUP_BEANVERSION: 1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_LOOKUP_BEANVERSION
+        join:
+          joinCondition: FROM {{ ref('SRC', 'SRC_LOOKUP_BEANVERSION') }} "SRC_LOOKUP_BEANVERSION"
+        name: SRC_CONDITIONAL_SPLIT
+        noLinkRefs: []
+  name: SRC_CONDITIONAL_SPLIT
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
+type: Node
