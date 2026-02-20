@@ -1,22 +1,25 @@
+fileVersion: 1
+id: SRC_BC_ACCOUNTCONTACT
 name: SRC_BC_ACCOUNTCONTACT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  locationName: SRC
+  metadata:
+    columns:
+      - name: INSUREDACCOUNTID
+        dataType: INTEGER
+      - name: CONTACTID
+        dataType: INTEGER
+      - name: ID
+        dataType: INTEGER
+      - name: BEANVERSION
+        dataType: STRING
+      - name: UPDATETIME
+        dataType: DATETIME
+  schema: ""
+  tableName: BC_ACCOUNTCONTACT
 type: source
-location:
-  database: BC
-  schema: DBO
-  table: BC_ACCOUNTCONTACT
-columns:
-  - name: INSUREDACCOUNTID
-    dataType: INTEGER
-    columnOrder: 1
-  - name: CONTACTID
-    dataType: INTEGER
-    columnOrder: 2
-  - name: ID
-    dataType: INTEGER
-    columnOrder: 3
-  - name: BEANVERSION
-    dataType: STRING
-    columnOrder: 4
-  - name: UPDATETIME
-    dataType: DATETIME
-    columnOrder: 5
