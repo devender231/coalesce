@@ -1,0 +1,13 @@
+name: SRC_BCTL_ACCOUNTROLE
+type: source
+config:
+  source_type: table
+  source_location:
+    database: ""
+    schema: ""
+    table: BCTL_ACCOUNTROLE
+  columns:
+    - name: ID
+      data_type: string
+    - name: TYPECODE
+      data_type: string
