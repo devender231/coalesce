@@ -12,146 +12,115 @@ operation:
     postSQL: ""
     preSQL: ""
     refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
     testsEnabled: false
     truncateBefore: false
-    warehouseName: ''
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BC_CONTACT
+  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: 1
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
         dataType: STRING
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: FIRSTNAME
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: 1
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
         dataType: STRING
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: LASTNAME
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: 1
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
         dataType: INTEGER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: PRIMARYADDRESSID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: 1
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 5
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
         dataType: STRING
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BEANVERSION
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: 1
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 6
-          stepCounter: SRC_BC_CONTACT
+          stepCounter: 1
         config: {}
         dataType: DATETIME
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: UPDATETIME
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 6
+                stepCounter: 1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          BC_CONTACT: SRC_BC_CONTACT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "BC_CONTACT"
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
