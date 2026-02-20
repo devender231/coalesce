@@ -1,36 +1,35 @@
 name: SRC_CONDITIONALSPLIT_BEANVERSION
-type: transformation
+type: source
 config:
-  transformation_type: conditional_split
+  source_type: transformation
+  transformation_type: CONDITIONAL_SPLIT
   description: "Routes rows based on whether BeanVersion matches EDWBeanVersion"
   execution_order: 4
-dependencies:
-  - SRC_LOOKUP_BEANVERSION
-logic:
-  operation: split
+  depends_on:
+    - SRC_LOOKUP_BEANVERSION
+transformation_logic:
+  operation: CONDITIONAL_SPLIT
   split_conditions:
-    - condition_name: UnchangedRows
-      expression: "BEANVERSION == EDWBeanVersion"
-      output_path: SRC_ROWCOUNT_UNCHANGED
-      description: "Rows where BeanVersion matches - no update needed"
+    - output_name: UNCHANGED_ROWS
+      condition: "BEANVERSION == EDWBeanVersion"
+      description: "Rows where BeanVersion matches (no changes needed)"
       priority: 1
-    
-    - condition_name: UpdateRows
-      expression: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
-      output_path: SRC_ROWCOUNT_UPDATE
-      description: "Rows where BeanVersion differs - needs update"
+    - output_name: UPDATE_ROWS
+      condition: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+      description: "Rows where BeanVersion differs (updates needed)"
       priority: 2
-    
-    - condition_name: InsertRows
-      expression: "EDWBeanVersion IS NULL"
-      output_path: SRC_ROWCOUNT_INSERT
-      description: "Rows with no match in lookup - needs insert"
+    - output_name: INSERT_ROWS
+      condition: "EDWBeanVersion IS NULL"
+      description: "Rows with no match in lookup (new inserts)"
       priority: 3
-  default_output: SRC_ROWCOUNT_INSERT
-  description: "Routes data to appropriate paths based on SCD logic"
+  default_output: INSERT_ROWS
+input_source:
+  - SRC_LOOKUP_BEANVERSION
 output:
-  branches:
-    - UnchangedRows
-    - UpdateRows
-    - InsertRows
-  description: "Three output branches for different row types"
+  split_outputs:
+    - name: UNCHANGED_ROWS
+      pass_through: true
+    - name: UPDATE_ROWS
+      pass_through: true
+    - name: INSERT_ROWS
+      pass_through: true
