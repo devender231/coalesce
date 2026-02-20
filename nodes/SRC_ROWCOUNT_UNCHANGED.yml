@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Counts unchanged rows where BeanVersion matches EDWBeanVersion"
+  description: "ROW_COUNT Transformation - Counts unchanged rows where BeanVersion matches EDW_BEANVERSION and stores in Variable User::UnChangeCount"
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,99 +22,28 @@ operation:
           columnCounter: 1
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: Account Number
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Public ID
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Bean Version
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: EDW Bean Version
-        name: EDWBEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: Row count of unchanged records
-        name: UNCHANGED_COUNT
-        nullable: true
+        name: UNCHANGED_ROW_COUNT
+        nullable: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
-            transform: "COUNT(*)"
+          - columnReferences: []
+            transform: COUNT(*)
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          CONDITIONAL_SPLIT: CONDITIONAL_SPLIT
+          SPLIT: SPLIT
         customSQL:
-          customSQL: |
-            SELECT *
-            FROM {{ ref('SRC', 'SRC_CONDITIONAL_SPLIT_BEANVERSION') }}
-            WHERE ROUTE_TYPE = 'UNCHANGED'
+          customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
         join:
-          joinCondition: ""
-        name: SRC_CONDITIONAL_SPLIT_BEANVERSION
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} SPLIT
+            WHERE SPLIT.SPLIT_CATEGORY = 'UNCHANGED'
+        name: SRC_CONDITIONALSPLIT_BEANVERSION
         noLinkRefs: []
   name: SRC_ROWCOUNT_UNCHANGED
   overrideSQL: false
@@ -123,31 +52,3 @@ operation:
   type: sql
   version: 1
 type: Node
-
-transformation_logic:
-  operation: ROW_COUNT
-  count_type: UNCHANGED_ROWS
-  description: |
-    Counts all rows where BeanVersion matches EDWBeanVersion.
-    These records exist in EDW and have not changed, so no action is needed.
-  
-  filter_condition: "ROUTE_TYPE = 'UNCHANGED'"
-  count_source: CONDITIONAL_SPLIT_UNCHANGED_OUTPUT
-  
-output:
-  variable_name: User::UnChangeCount
-  variable_type: INTEGER
-  description: Total count of unchanged rows (BeanVersion matches EDWBeanVersion)
-  
-metadata:
-  execution_order: 5
-  package_name: EDW_BC_Load_DimBillingAccount
-  transformation_type: ROW_COUNT
-  created_from: SSIS_Documentation
-  upstream_dependency_validated: true
-  depends_on:
-    - SRC_DIMBILLINGACCOUNT_JOINS
-    - SRC_ROWCOUNT_SOURCE
-    - SRC_DERIVED_BATCHID
-    - SRC_LOOKUP_BEANVERSION
-    - SRC_CONDITIONAL_SPLIT_BEANVERSION
