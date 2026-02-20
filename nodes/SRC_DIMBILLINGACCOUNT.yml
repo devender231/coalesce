@@ -1,6 +1,11 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
-location: SRC (EDW.DBO.DIMBILLINGACCOUNT)
+location:
+  database: ""
+  schema: ""
+  table: DIMBILLINGACCOUNT
 columns:
   - name: PUBLICID
+    dataType: VARCHAR
   - name: BEANVERSION
+    dataType: INTEGER
