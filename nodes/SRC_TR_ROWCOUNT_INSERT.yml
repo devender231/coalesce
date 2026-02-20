@@ -1,0 +1,23 @@
+name: SRC_TR_ROWCOUNT_INSERT
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts new insert rows where lookup found no match
+
+source:
+  - SRC_TR_CONDITIONALSPLIT_BEANVERSION.INSERT_ROWS
+
+logic:
+  operation: COUNT_ROWS
+  output_variable: User::InsertCount
+  description: Counts rows that are new records to be inserted into target table
+
+execution_order: 7
+dependencies:
+  - SRC_TR_CONDITIONALSPLIT_BEANVERSION
+
+output:
+  row_count_variable: InsertCount
+  pass_through: true
+  description: Rows are counted and passed to target for INSERT operation
+  action: INSERT
+  target_table: DIMBILLINGACCOUNT
