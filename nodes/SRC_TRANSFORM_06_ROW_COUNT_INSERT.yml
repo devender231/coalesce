@@ -1,0 +1,50 @@
+fileVersion: 1
+id: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+name: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Transformation 6: ROW_COUNT - Counts new insert rows (lookup no match) (Variable: User::InsertCount)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+        config: {}
+        dataType: INTEGER
+        description: "Count of new insert rows where lookup found no match (EDWBeanVersion IS NULL)"
+        name: INSERT_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SPLIT: SRC_TRANSFORM_04_CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: TRANSFORM_04_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TRANSFORM_04_CONDITIONAL_SPLIT') }} SPLIT
+            WHERE SPLIT.SPLIT_CONDITION = 'INSERT'
+        name: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+        noLinkRefs: []
+  name: SRC_TRANSFORM_06_ROW_COUNT_INSERT
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
+type: Node
