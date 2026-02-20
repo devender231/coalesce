@@ -1,63 +1,14 @@
-fileVersion: 1
-id: SRC_BCTL_STATE
 name: SRC_BCTL_STATE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BCTL_STATE
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_STATE
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_STATE
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_STATE
-        config: {}
-        dataType: STRING
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_STATE
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_STATE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_STATE') }}
-        name: SRC_BCTL_STATE
-        noLinkRefs: []
-  name: SRC_BCTL_STATE
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+source:
+  database: GUIDEWIRE
+  schema: BCTL
+  table: BCTL_STATE
+  location: SRC (GUIDEWIRE.BCTL.BCTL_STATE)
+columns:
+  - name: ID
+    data_type: INTEGER
+    nullable: true
+  - name: NAME
+    data_type: STRING
+    nullable: true
