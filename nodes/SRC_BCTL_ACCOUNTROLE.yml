@@ -6,8 +6,6 @@ location:
   table: BCTL_ACCOUNTROLE
 columns:
   - name: ID
-    data_type: INTEGER
-    nullable: true
+    dataType: INTEGER
   - name: TYPECODE
-    data_type: STRING
-    nullable: true
+    dataType: STRING
