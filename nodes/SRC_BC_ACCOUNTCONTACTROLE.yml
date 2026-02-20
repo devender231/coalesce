@@ -1,19 +1,17 @@
-fileVersion: 1.0.0
-id: SRC_BC_ACCOUNTCONTACTROLE
 name: SRC_BC_ACCOUNTCONTACTROLE
 type: source
-config:
-  database: ""
-  schema: ""
-  table: BC_ACCOUNTCONTACTROLE
+location:
+  database: BC
+  schema: dbo
+  table: ACCOUNTCONTACTROLE
 columns:
   - name: ACCOUNTCONTACTID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: ROLE
     dataType: VARCHAR
   - name: ID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: BEANVERSION
     dataType: INTEGER
   - name: UPDATETIME
-    dataType: TIMESTAMP
+    dataType: DATETIME
