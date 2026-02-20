@@ -1,4 +1,4 @@
-fileVersion: 1
+fileVersion: 1.0.0
 id: SRC_BC_SECURITYZONE
 name: SRC_BC_SECURITYZONE
 operation:
@@ -23,7 +23,9 @@ operation:
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
         dataType: INTEGER
-        description: ID column
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -40,7 +42,9 @@ operation:
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
         dataType: STRING
-        description: NAME column
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
@@ -57,7 +61,9 @@ operation:
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
         dataType: STRING
-        description: BEANVERSION column
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -74,7 +80,9 @@ operation:
           stepCounter: SRC_BC_SECURITYZONE
         config: {}
         dataType: DATETIME
-        description: UPDATETIME column
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -92,7 +100,7 @@ operation:
           - locationName: SRC
             nodeName: BC_SECURITYZONE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_SECURITYZONE') }}
+          joinCondition: ""
         name: SRC_BC_SECURITYZONE
         noLinkRefs: []
   name: SRC_BC_SECURITYZONE
