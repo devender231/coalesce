@@ -1,22 +1,14 @@
 name: SRC_BC_ACCOUNTCONTACTROLE
 type: source
-location:
-  database: ""
-  schema: ""
-  table: BC_ACCOUNTCONTACTROLE
+location: SRC (BILLINGCENTER.BC)
 columns:
   - name: ACCOUNTCONTACTID
-    data_type: INTEGER
-    nullable: true
+    datatype: BIGINT
   - name: ROLE
-    data_type: INTEGER
-    nullable: true
+    datatype: VARCHAR
   - name: ID
-    data_type: INTEGER
-    nullable: true
+    datatype: BIGINT
   - name: BEANVERSION
-    data_type: STRING
-    nullable: true
+    datatype: INT
   - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+    datatype: TIMESTAMP
