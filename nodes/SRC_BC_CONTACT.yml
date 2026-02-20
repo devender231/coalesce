@@ -22,7 +22,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
         name: ID
         nullable: true
@@ -39,7 +39,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
         name: FIRSTNAME
         nullable: true
@@ -56,7 +56,7 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
         name: LASTNAME
         nullable: true
@@ -73,7 +73,7 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
         name: PRIMARYADDRESSID
         nullable: true
@@ -90,7 +90,7 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: NUMBER
+        dataType: STRING
         description: ""
         name: BEANVERSION
         nullable: true
@@ -107,7 +107,7 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         description: ""
         name: UPDATETIME
         nullable: true
@@ -127,7 +127,7 @@ operation:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "BC_CONTACT"
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
