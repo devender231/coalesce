@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Counts new insert rows where lookup found no match (EDWBeanVersion IS NULL)"
+  description: "ROW_COUNT Transformation - Counts new insert rows where lookup had no match (EDW_BEANVERSION IS NULL) and stores in Variable User::InsertCount"
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,99 +22,28 @@ operation:
           columnCounter: 1
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: Account Number
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Public ID
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: Bean Version
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: EDW Bean Version (NULL for new records)
-        name: EDWBEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: Row count of new insert records
-        name: INSERT_COUNT
-        nullable: true
+        name: INSERT_ROW_COUNT
+        nullable: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
-            transform: "COUNT(*)"
+          - columnReferences: []
+            transform: COUNT(*)
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          CONDITIONAL_SPLIT: CONDITIONAL_SPLIT
+          SPLIT: SPLIT
         customSQL:
-          customSQL: |
-            SELECT *
-            FROM {{ ref('SRC', 'SRC_CONDITIONAL_SPLIT_BEANVERSION') }}
-            WHERE ROUTE_TYPE = 'INSERT'
+          customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_CONDITIONAL_SPLIT_BEANVERSION
+            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
         join:
-          joinCondition: ""
-        name: SRC_CONDITIONAL_SPLIT_BEANVERSION
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} SPLIT
+            WHERE SPLIT.SPLIT_CATEGORY = 'NEW_INSERT'
+        name: SRC_CONDITIONALSPLIT_BEANVERSION
         noLinkRefs: []
   name: SRC_ROWCOUNT_INSERT
   overrideSQL: false
@@ -123,31 +52,3 @@ operation:
   type: sql
   version: 1
 type: Node
-
-transformation_logic:
-  operation: ROW_COUNT
-  count_type: INSERT_ROWS
-  description: |
-    Counts all rows where EDWBeanVersion IS NULL (lookup found no match).
-    These are new records that will be inserted into DIMBILLINGACCOUNT.
-  
-  filter_condition: "ROUTE_TYPE = 'INSERT'"
-  count_source: CONDITIONAL_SPLIT_INSERT_OUTPUT
-  
-output:
-  variable_name: User::InsertCount
-  variable_type: INTEGER
-  description: Total count of new insert rows (lookup no match)
-  
-metadata:
-  execution_order: 6
-  package_name: EDW_BC_Load_DimBillingAccount
-  transformation_type: ROW_COUNT
-  created_from: SSIS_Documentation
-  upstream_dependency_validated: true
-  depends_on:
-    - SRC_DIMBILLINGACCOUNT_JOINS
-    - SRC_ROWCOUNT_SOURCE
-    - SRC_DERIVED_BATCHID
-    - SRC_LOOKUP_BEANVERSION
-    - SRC_CONDITIONAL_SPLIT_BEANVERSION
