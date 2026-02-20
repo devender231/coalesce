@@ -1,80 +1,15 @@
-fileVersion: 1
-id: SRC_BCTL_CUSTOMERSERVICETIER
 name: SRC_BCTL_CUSTOMERSERVICETIER
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
-  database: ""
-  deployEnabled: true
-  description: Source table for BCTL_CUSTOMERSERVICETIER
-  isDataVault: false
-  isMultisource: false
-  locationName: SOURCE
-  materializationType: table
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-        config: {}
-        dataType: VARCHAR(256)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_BCTL_CUSTOMERSERVICETIER: SRC_BCTL_CUSTOMERSERVICETIER
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SOURCE
-            nodeName: BCTL_CUSTOMERSERVICETIER
-        join:
-          joinCondition: FROM {{ ref('SOURCE', 'BCTL_CUSTOMERSERVICETIER') }} "SRC_BCTL_CUSTOMERSERVICETIER"
-        name: SRC_BCTL_CUSTOMERSERVICETIER
-        noLinkRefs: []
-  name: SRC_BCTL_CUSTOMERSERVICETIER
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  source_type: table
+  source_location:
+    database: "EDW"
+    schema: "BC"
+    table: "BCTL_CUSTOMERSERVICETIER"
+  columns:
+    - name: ID
+      data_type: INTEGER
+      order: 1
+    - name: NAME
+      data_type: STRING
+      order: 2
