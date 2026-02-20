@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_ACCOUNTCONTACTROLE
+  description: Source table BC_ACCOUNTCONTACTROLE from GuideWire
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -20,18 +20,16 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ACCOUNTCONTACTID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,18 +37,16 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ROLE
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -58,18 +54,16 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -77,18 +71,16 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+          stepCounter: 1
         config: {}
-        dataType: STRING
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BEANVERSION
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: 1
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -96,30 +88,29 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 5
-          stepCounter: SRC_BC_ACCOUNTCONTACTROLE
+          stepCounter: 1
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: UPDATETIME
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: 1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BC_ACCOUNTCONTACTROLE: 1
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNTCONTACTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} "BC_ACCOUNTCONTACTROLE"
         name: SRC_BC_ACCOUNTCONTACTROLE
         noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACTROLE
@@ -128,3 +119,4 @@ operation:
   sqlType: Source
   type: sql
   version: 1
+type: Node
