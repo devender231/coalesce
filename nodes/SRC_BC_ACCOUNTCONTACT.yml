@@ -1,8 +1,8 @@
 name: SRC_BC_ACCOUNTCONTACT
 type: source
-database: ""
-schema: ""
-location: SRC (".""."")
+config:
+  source_type: table
+  source_location: SRC ("GUIDEWIRE"."BC"."BC_ACCOUNTCONTACT")
 columns:
   - name: INSUREDACCOUNTID
     data_type: INTEGER
