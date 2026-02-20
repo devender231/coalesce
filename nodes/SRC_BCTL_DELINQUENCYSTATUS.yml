@@ -9,81 +9,72 @@ operation:
     initialize: ON_CREATE
     insertStrategy: INSERT
     orderby: false
-    postSQL: ""
-    preSQL: ""
+    postSQL: ''
+    preSQL: ''
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
     testsEnabled: true
     truncateBefore: false
-    warehouseName: '{{ parameters.DEV_WAREHOUSE }}'
-  database: ""
+    warehouseName: ''
+  database: ''
   deployEnabled: true
   description: Source table for BCTL_DELINQUENCYSTATUS
+  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_DELINQUENCYSTATUS
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
+        dataType: VARCHAR
+        description: ''
         hashColumns: []
         hashDetails: null
         name: ID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
                 stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+            transform: ''
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_DELINQUENCYSTATUS
         config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
+        dataType: VARCHAR
+        description: ''
         hashColumns: []
         hashDetails: null
         name: NAME
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
                 stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-            transform: ""
-    cteString: ""
+            transform: ''
+    cteString: ''
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases: {}
         customSQL:
-          customSQL: ""
+          customSQL: ''
         dependencies:
           - locationName: SRC
             nodeName: BCTL_DELINQUENCYSTATUS
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }}
+          joinCondition: ''
         name: SRC_BCTL_DELINQUENCYSTATUS
         noLinkRefs: []
   name: SRC_BCTL_DELINQUENCYSTATUS
   overrideSQL: false
-  schema: ""
+  schema: ''
   sqlType: Source
   type: sql
   version: 1
