@@ -1,21 +1,9 @@
 name: SRC_BC_SECURITYZONE
 type: source
-config:
-  source_type: table
-  source_location:
-    database: "DATABASE"
-    schema: "SCHEMA"
-    table: "BC_SECURITYZONE"
-columns:
-  - name: ID
-    data_type: INTEGER
-    description: ""
-  - name: NAME
-    data_type: STRING
-    description: ""
-  - name: BEANVERSION
-    data_type: STRING
-    description: ""
-  - name: UPDATETIME
-    data_type: DATETIME
-    description: ""
+source:
+  location: BC_DATABASE.BC_SCHEMA.BC_SECURITYZONE
+  columns:
+    - ID
+    - NAME
+    - BEANVERSION
+    - UPDATETIME
