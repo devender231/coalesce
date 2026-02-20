@@ -1,14 +1,11 @@
 name: SRC_BCTL_ACCOUNTROLE
 type: source
-source:
-  database: GUIDEWIRE
-  schema: BCTL
-  table: BCTL_ACCOUNTROLE
-  location: SRC (GUIDEWIRE.BCTL.BCTL_ACCOUNTROLE)
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: TYPECODE
-    data_type: STRING
-    nullable: true
+database: ""
+schema: ""
+tables:
+  - name: BCTL_ACCOUNTROLE
+    columns:
+      - name: ID
+        dataType: INTEGER
+      - name: TYPECODE
+        dataType: STRING
