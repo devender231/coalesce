@@ -1,0 +1,23 @@
+name: SRC_BC_ADDRESS
+type: source
+config:
+  location: BC.DBO.BC_ADDRESS
+  columns:
+    - name: ADDRESSID
+      datatype: VARCHAR
+    - name: ACCOUNTID
+      datatype: VARCHAR
+    - name: ADDRESSLINE1
+      datatype: VARCHAR
+    - name: ADDRESSLINE2
+      datatype: VARCHAR
+    - name: CITY
+      datatype: VARCHAR
+    - name: STATE
+      datatype: VARCHAR
+    - name: ZIPCODE
+      datatype: VARCHAR
+    - name: COUNTRY
+      datatype: VARCHAR
+    - name: ISACTIVE
+      datatype: BOOLEAN
