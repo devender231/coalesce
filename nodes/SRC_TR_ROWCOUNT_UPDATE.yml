@@ -1,0 +1,63 @@
+steps:
+  SRC_TR_ROWCOUNT_UPDATE:
+    operation:
+      config:
+        insertStrategy: INSERT
+        selectDistinct: false
+      database: ""
+      deployEnabled: true
+      description: "Row Count transformation - Counts update rows where BeanVersion is different (Variable: User::UpdateCount)"
+      isDataVault: false
+      isMultisource: false
+      locationName: TRG
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 1
+              stepCounter: 1
+            config: {}
+            dataType: NUMBER(38,0)
+            description: "Count of update rows"
+            name: UPDATE_ROW_COUNT
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: "COUNT(*)"
+          - columnReference:
+              columnCounter: 2
+              stepCounter: 1
+            config: {}
+            dataType: VARCHAR(16777216)
+            description: "Transformation type identifier"
+            name: TRANSFORMATION_TYPE
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences: []
+                transform: "'UPDATE_COUNT'"
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases:
+              SPLIT_DATA: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+            customSQL:
+              customSQL: |
+                SELECT
+                  COUNT(*) AS UPDATE_ROW_COUNT,
+                  'UPDATE_COUNT' AS TRANSFORMATION_TYPE
+                FROM {{ ref('TRG', 'SRC_TR_CONDITIONALSPLIT_BEANVERSION') }} SPLIT_DATA
+                WHERE SPLIT_DATA.ROW_CATEGORY = 'UPDATE'
+            dependencies:
+              - locationName: TRG
+                nodeName: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+            join:
+              joinCondition: "FROM {{ ref('TRG', 'SRC_TR_CONDITIONALSPLIT_BEANVERSION') }} SPLIT_DATA WHERE SPLIT_DATA.ROW_CATEGORY = 'UPDATE'"
+            name: SRC_TR_ROWCOUNT_UPDATE
+            noLinkRefs: []
+      name: SRC_TR_ROWCOUNT_UPDATE
+      overrideSQL: false
+      schema: ""
+      sqlType: Transform
+      type: sql
+      version: 1
