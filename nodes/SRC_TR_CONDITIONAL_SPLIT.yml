@@ -1,0 +1,47 @@
+name: SRC_TR_CONDITIONAL_SPLIT
+type: transformation
+transformation_type: CONDITIONAL_SPLIT
+execution_order: 4
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion for SCD logic
+
+input:
+  source: SRC_TR_LOOKUP_BEANVERSION
+  description: Input from lookup transformation with EDWBeanVersion
+
+split_logic:
+  conditions:
+    - output_name: UNCHANGED_ROWS
+      condition: "BeanVersion == EDWBeanVersion"
+      description: Rows where source BeanVersion matches dimension BeanVersion (no change needed)
+      priority: 1
+      
+    - output_name: UPDATE_ROWS
+      condition: "!ISNULL(EDWBeanVersion) && BeanVersion != EDWBeanVersion"
+      description: Rows where BeanVersion differs from EDWBeanVersion (update needed)
+      priority: 2
+      
+    - output_name: INSERT_ROWS
+      condition: "ISNULL(EDWBeanVersion)"
+      description: Rows with no match in dimension table (new insert needed)
+      priority: 3
+      default_output: true
+
+output:
+  type: multiple_outputs
+  outputs:
+    - name: UNCHANGED_ROWS
+      description: Records that have not changed
+      destination: SRC_TR_ROW_COUNT_UNCHANGED
+      
+    - name: UPDATE_ROWS
+      description: Records that need to be updated
+      destination: SRC_TR_ROW_COUNT_UPDATE
+      
+    - name: INSERT_ROWS
+      description: New records that need to be inserted
+      destination: SRC_TR_ROW_COUNT_INSERT
+  
+metadata:
+  purpose: Implement SCD Type 1 logic by routing rows to appropriate paths
+  scd_type: TYPE_1
+  evaluation_order: SEQUENTIAL
