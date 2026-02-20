@@ -7,8 +7,12 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
+  description: Source table BC_CONTACT
+  isMultisource: false
   locationName: SRC
+  materializationType: view
   metadata:
+    appliedNodeTests: []
     columns:
       - acceptedValues:
           strictMatch: true
@@ -18,12 +22,12 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
         name: ID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -37,7 +41,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR(256)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
@@ -56,7 +60,7 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR(256)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
@@ -75,7 +79,7 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -94,7 +98,7 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR(256)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
@@ -113,7 +117,7 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: DATETIME
         description: ""
         hashColumns: []
         hashDetails: null
@@ -124,8 +128,22 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_CONTACT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
+        name: SRC_BC_CONTACT
+        noLinkRefs: []
   name: SRC_BC_CONTACT
+  overrideSQL: false
   schema: ""
   sqlType: Source
-  type: sourceInput
-version: 1
+  type: sql
+  version: 1
