@@ -1,13 +1,11 @@
-source:
-  name: BCTL_CUSTOMERSERVICETIER
-  type: table
-  location:
-    database: BC
-    schema: DBO
-    table: BCTL_CUSTOMERSERVICETIER
-  connection_string: 'SRC ("BC"."DBO")'
-  columns:
-    - name: ID
-      order: 1
-    - name: NAME
-      order: 2
+name: SRC_BCTL_CUSTOMERSERVICETIER
+type: source
+location:
+  database: BCTL
+  schema: dbo
+  table: CUSTOMERSERVICETIER
+columns:
+  - name: ID
+    dataType: INTEGER
+  - name: NAME
+    dataType: VARCHAR
