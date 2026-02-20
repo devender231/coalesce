@@ -24,6 +24,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
@@ -41,6 +43,8 @@ operation:
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
@@ -58,6 +62,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
@@ -75,6 +81,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
@@ -92,6 +100,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: SERVICETIER
         nullable: true
         sourceColumnReferences:
@@ -109,6 +119,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: SECURITYZONEID
         nullable: true
         sourceColumnReferences:
@@ -126,6 +138,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: SEGMENT
         nullable: true
         sourceColumnReferences:
@@ -143,6 +157,8 @@ operation:
         config: {}
         dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: CLOSEDATE
         nullable: true
         sourceColumnReferences:
@@ -160,6 +176,8 @@ operation:
         config: {}
         dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: CREATETIME
         nullable: true
         sourceColumnReferences:
@@ -177,6 +195,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
@@ -194,6 +214,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -211,6 +233,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -228,6 +252,8 @@ operation:
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: PUBLICID
         nullable: true
         sourceColumnReferences:
@@ -245,6 +271,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -262,6 +290,8 @@ operation:
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -279,6 +309,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: RETIRED
         nullable: true
         sourceColumnReferences:
@@ -296,6 +328,8 @@ operation:
         config: {}
         dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -306,15 +340,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_ACCOUNT: BC_ACCOUNT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }} "SRC_BC_ACCOUNT"
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }}
         name: SRC_BC_ACCOUNT
         noLinkRefs: []
   name: SRC_BC_ACCOUNT
