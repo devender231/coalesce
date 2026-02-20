@@ -1,0 +1,38 @@
+# Transformation YAML - Row Count Unchanged
+version: 1.0
+
+name: SRC_DIMBILLINGACCOUNT_ROWCOUNT_UNCHANGED
+description: Counts unchanged rows (BeanVersion matches)
+transformation_type: ROW_COUNT
+
+sources:
+  - name: UNCHANGED_OUTPUT
+    type: transformation
+    source_ref: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+    output_path: UNCHANGED_OUTPUT
+
+transformation:
+  type: ROW_COUNT
+  logic:
+    description: Counts rows where BeanVersion matches existing dimension record
+    variable: User::UnChangeCount
+    operation: COUNT(*)
+    filter: BEANVERSION == EDWBeanVersion
+
+output:
+  name: ROWCOUNT_UNCHANGED_OUTPUT
+  description: Pass-through unchanged data with row count captured
+  columns:
+    - name: ALL_COLUMNS
+      source: UNCHANGED_OUTPUT.*
+      description: All columns from unchanged rows passed through
+
+metadata:
+  row_count_variable: User::UnChangeCount
+  capture_point: After conditional split - unchanged path
+  action: NO_LOAD
+  description: These rows are not loaded to target as they are unchanged
+
+execution_order: 6
+dependencies:
+  - SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
