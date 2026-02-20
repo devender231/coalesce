@@ -1,85 +1,19 @@
-fileVersion: 1
-id: SRC_DIMBILLINGACCOUNT
-name: SRC_DIMBILLINGACCOUNT
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
-  database: ""
-  deployEnabled: true
-  description: Source table for DIMBILLINGACCOUNT
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
+version: 1
+
+sources:
+  - name: SRC_DIMBILLINGACCOUNT
+    description: Source extraction for DIMBILLINGACCOUNT table
+    source_type: table
+    location:
+      database: "BILLING"
+      schema: "DBO"
+      identifier: "DIMBILLINGACCOUNT"
+    
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: DIMBILLINGACCOUNT
-        join:
-          joinCondition: ""
-        name: SRC_DIMBILLINGACCOUNT
-        noLinkRefs: []
-  name: SRC_DIMBILLINGACCOUNT
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
-type: Node
+      - name: PUBLICID
+        data_type: STRING
+        description: PUBLICID column from DIMBILLINGACCOUNT
+        
+      - name: BEANVERSION
+        data_type: STRING
+        description: BEANVERSION column from DIMBILLINGACCOUNT
