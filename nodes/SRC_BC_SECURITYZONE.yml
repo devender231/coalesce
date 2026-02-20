@@ -1,19 +1,112 @@
+fileVersion: 1
+id: SRC_BC_SECURITYZONE
 name: SRC_BC_SECURITYZONE
-type: source
-location:
-  database: BC
-  schema: DBO
-  table: BC_SECURITYZONE
-columns:
-  - name: ID
-    dataType: INTEGER
-    columnOrder: 1
-  - name: NAME
-    dataType: STRING
-    columnOrder: 2
-  - name: BEANVERSION
-    dataType: STRING
-    columnOrder: 3
-  - name: UPDATETIME
-    dataType: DATETIME
-    columnOrder: 4
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
+  deployEnabled: true
+  description: Source table for BC_SECURITYZONE
+  isDataVault: false
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BC_SECURITYZONE
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_BC_SECURITYZONE
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BC_SECURITYZONE
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_BC_SECURITYZONE
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_BC_SECURITYZONE
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_BC_SECURITYZONE
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_BC_SECURITYZONE
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_BC_SECURITYZONE
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_BC_SECURITYZONE: SRC_BC_SECURITYZONE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: BC_SECURITYZONE
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'BC_SECURITYZONE') }} "SRC_BC_SECURITYZONE"
+        name: SRC_BC_SECURITYZONE
+        noLinkRefs: []
+  name: SRC_BC_SECURITYZONE
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
