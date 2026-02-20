@@ -1,13 +1,13 @@
-source:
-  name: BCTL_ACCOUNTROLE
-  type: table
-  location:
-    database: BC
-    schema: DBO
-    table: BCTL_ACCOUNTROLE
-  connection_string: 'SRC ("BC"."DBO")'
-  columns:
-    - name: ID
-      order: 1
-    - name: TYPECODE
-      order: 2
+fileVersion: 1.0.0
+id: SRC_BCTL_ACCOUNTROLE
+name: SRC_BCTL_ACCOUNTROLE
+type: source
+config:
+  database: ""
+  schema: ""
+  table: BCTL_ACCOUNTROLE
+columns:
+  - name: ID
+    dataType: VARCHAR
+  - name: TYPECODE
+    dataType: VARCHAR
