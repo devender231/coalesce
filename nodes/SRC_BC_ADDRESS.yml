@@ -1,16 +1,34 @@
 name: SRC_BC_ADDRESS
 type: source
 location:
-  database: BILLINGCENTER
+  database: BC
   schema: DBO
   table: BC_ADDRESS
 columns:
   - name: ID
+    dataType: INTEGER
+    columnOrder: 1
   - name: ADDRESSLINE1
+    dataType: STRING
+    columnOrder: 2
   - name: ADDRESSLINE2
+    dataType: STRING
+    columnOrder: 3
   - name: ADDRESSLINE3
+    dataType: STRING
+    columnOrder: 4
   - name: CITY
+    dataType: STRING
+    columnOrder: 5
   - name: POSTALCODE
+    dataType: STRING
+    columnOrder: 6
   - name: STATE
+    dataType: INTEGER
+    columnOrder: 7
   - name: BEANVERSION
+    dataType: STRING
+    columnOrder: 8
   - name: UPDATETIME
+    dataType: DATETIME
+    columnOrder: 9
