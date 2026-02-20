@@ -1,6 +1,11 @@
 name: SRC_BCTL_CUSTOMERSERVICETIER
 type: source
-location: SRC (BRIGHTCOVE.DBO.BCTL_CUSTOMERSERVICETIER)
+location:
+  database: ""
+  schema: ""
+  table: BCTL_CUSTOMERSERVICETIER
 columns:
   - name: ID
+    dataType: VARCHAR
   - name: NAME
+    dataType: VARCHAR
