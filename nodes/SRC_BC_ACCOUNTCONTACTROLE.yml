@@ -1,17 +1,24 @@
 name: SRC_BC_ACCOUNTCONTACTROLE
 type: source
+config:
+  source_type: table
 location:
-  database: BC
-  schema: dbo
-  table: ACCOUNTCONTACTROLE
+  database: GUIDEWIRE
+  schema: BC
+  table: BC_ACCOUNTCONTACTROLE
 columns:
   - name: ACCOUNTCONTACTID
-    dataType: INTEGER
+    data_type: INTEGER
+    nullable: true
   - name: ROLE
-    dataType: VARCHAR
+    data_type: INTEGER
+    nullable: true
   - name: ID
-    dataType: INTEGER
+    data_type: INTEGER
+    nullable: true
   - name: BEANVERSION
-    dataType: INTEGER
+    data_type: STRING
+    nullable: true
   - name: UPDATETIME
-    dataType: DATETIME
+    data_type: DATETIME
+    nullable: true
