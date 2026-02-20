@@ -1,17 +1,25 @@
 name: SRC_ROWCOUNT_UNCHANGED
-type: transformation
+type: source
 config:
-  transformation_type: row_count
+  source_type: transformation
+  transformation_type: ROW_COUNT
   description: "Counts unchanged rows (BeanVersion matches)"
   execution_order: 5
-dependencies:
-  - SRC_CONDITIONALSPLIT_BEANVERSION
-logic:
-  operation: count_rows
-  variable_name: "User::UnChangeCount"
-  input_branch: UnchangedRows
-  description: "Captures count of rows where BeanVersion matches EDWBeanVersion"
+  depends_on:
+    - SRC_CONDITIONALSPLIT_BEANVERSION
+transformation_logic:
+  operation: COUNT_ROWS
+  input_stream: UNCHANGED_ROWS
+  variable_assignment:
+    variable_name: "User::UnChangeCount"
+    variable_type: INTEGER
+    description: "Count of rows with matching BeanVersion (no changes)"
+input_source:
+  - SRC_CONDITIONALSPLIT_BEANVERSION.UNCHANGED_ROWS
 output:
-  row_count_variable: "User::UnChangeCount"
-  pass_through_data: false
-  description: "Counts rows and terminates this branch (no further processing needed)"
+  pass_through: true
+  add_columns:
+    - name: UNCHANGED_ROW_COUNT
+      data_type: INTEGER
+      expression: "COUNT(*)"
+      nullable: false
