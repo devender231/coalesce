@@ -1,0 +1,26 @@
+name: SRC_TR_ROW_COUNT_INSERT
+type: transformation
+transformation_type: row_count
+description: Count the number of new insert rows to be loaded into dimension table
+source: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+source_output: INSERT_ROWS
+
+operation:
+  type: ROW_COUNT
+  counter_variable: InsertRowCount
+  description: Counts new records that don't exist in dimension table
+
+output:
+  row_count_variable: InsertRowCount
+  pass_through: true
+  all_columns: true
+  destination: DIMBILLINGACCOUNT_INSERT
+  load_type: INSERT
+
+metadata:
+  execution_order: 6
+  purpose: Track and route new records for insertion into dimension table
+  previous_step: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+  branch: INSERT_ROWS
+  load_action: INSERT
+  target_table: DIMBILLINGACCOUNT
