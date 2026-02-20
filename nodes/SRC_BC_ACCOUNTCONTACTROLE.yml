@@ -1,22 +1,23 @@
+fileVersion: 1.0.0
 name: SRC_BC_ACCOUNTCONTACTROLE
-type: source
-config:
-  database: ""
-  schema: ""
-  table: BC_ACCOUNTCONTACTROLE
-columns:
-  - name: ACCOUNTCONTACTID
-    data_type: INTEGER
-    nullable: true
-  - name: ROLE
-    data_type: INTEGER
-    nullable: true
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
-  - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+type: sourceInput
+version: 1
+sources:
+  - name: BC_ACCOUNTCONTACTROLE
+    database: ""
+    schema: ""
+    columns:
+      - name: ACCOUNTCONTACTID
+        dataType: VARCHAR
+      - name: ROLE
+        dataType: VARCHAR
+      - name: ID
+        dataType: VARCHAR
+      - name: BEANVERSION
+        dataType: VARCHAR
+      - name: UPDATETIME
+        dataType: TIMESTAMP
