@@ -1,14 +1,19 @@
-name: SRC_BCTL_DELINQUENCYSTATUS
-type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BCTL_DELINQUENCYSTATUS
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: NAME
-    data_type: STRING
-    nullable: true
+version: 1
+
+sources:
+  - name: SRC_BCTL_DELINQUENCYSTATUS
+    description: Source extraction for BCTL_DELINQUENCYSTATUS table
+    source_type: table
+    location:
+      database: "BILLING"
+      schema: "DBO"
+      identifier: "BCTL_DELINQUENCYSTATUS"
+    
+    columns:
+      - name: ID
+        data_type: INTEGER
+        description: ID column from BCTL_DELINQUENCYSTATUS
+        
+      - name: NAME
+        data_type: STRING
+        description: NAME column from BCTL_DELINQUENCYSTATUS
