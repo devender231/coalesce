@@ -1,14 +1,16 @@
 name: SRC_BCTL_STATE
+description: Source definition for BCTL_STATE lookup table
 type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BCTL_STATE
+source:
+  database: "BILLING"
+  schema: "DBO"
+  identifier: BCTL_STATE
 columns:
   - name: ID
     data_type: INTEGER
-    nullable: true
+    description: State ID
+    ordinal_position: 1
   - name: NAME
     data_type: STRING
-    nullable: true
+    description: State name
+    ordinal_position: 2
