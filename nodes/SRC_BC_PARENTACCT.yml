@@ -1,20 +1,21 @@
+fileVersion: 1.0.0
 name: SRC_BC_PARENTACCT
-type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BC_PARENTACCT
-columns:
-  - name: OWNERID
-    data_type: INTEGER
-    nullable: true
-  - name: FOREIGNENTITYID
-    data_type: INTEGER
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
-  - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+type: sourceInput
+version: 1
+sources:
+  - name: BC_PARENTACCT
+    database: ""
+    schema: ""
+    columns:
+      - name: OWNERID
+        dataType: VARCHAR
+      - name: FOREIGNENTITYID
+        dataType: VARCHAR
+      - name: BEANVERSION
+        dataType: VARCHAR
+      - name: UPDATETIME
+        dataType: TIMESTAMP
