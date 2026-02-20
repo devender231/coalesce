@@ -1,150 +1,23 @@
-fileVersion: 1
-id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BC_CONTACT
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: FIRSTNAME
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: LASTNAME
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: PRIMARYADDRESSID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: BEANVERSION
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: DATETIME
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: UPDATETIME
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_BC_CONTACT: BC_CONTACT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_CONTACT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "SRC_BC_CONTACT"
-        name: SRC_BC_CONTACT
-        noLinkRefs: []
-  name: SRC_BC_CONTACT
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  location: SRC ("BC"."dbo")
+  columns:
+    - name: ID
+      dataType: INTEGER
+      nullable: true
+    - name: FIRSTNAME
+      dataType: STRING
+      nullable: true
+    - name: LASTNAME
+      dataType: STRING
+      nullable: true
+    - name: PRIMARYADDRESSID
+      dataType: INTEGER
+      nullable: true
+    - name: BEANVERSION
+      dataType: STRING
+      nullable: true
+    - name: UPDATETIME
+      dataType: DATETIME
+      nullable: true
