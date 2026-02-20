@@ -3,9 +3,21 @@ id: SRC_BC_ADDRESS
 name: SRC_BC_ADDRESS
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: ""
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
   deployEnabled: true
   description: Source table BC_ADDRESS
   isMultisource: false
@@ -14,12 +26,17 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
-        dataType: INTEGER
+        config: {}
+        dataType: NUMBER(38,0)
         description: ""
+        isBusinessKey: false
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -27,12 +44,17 @@ operation:
               - columnCounter: 1
                 stepCounter: SRC_BC_ADDRESS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_ADDRESS
-        dataType: STRING
+        config: {}
+        dataType: VARCHAR(256)
         description: ""
+        isBusinessKey: false
         name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
@@ -40,12 +62,17 @@ operation:
               - columnCounter: 2
                 stepCounter: SRC_BC_ADDRESS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_ADDRESS
-        dataType: STRING
+        config: {}
+        dataType: VARCHAR(256)
         description: ""
+        isBusinessKey: false
         name: ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
@@ -53,12 +80,17 @@ operation:
               - columnCounter: 3
                 stepCounter: SRC_BC_ADDRESS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_ADDRESS
-        dataType: STRING
+        config: {}
+        dataType: VARCHAR(256)
         description: ""
+        isBusinessKey: false
         name: ADDRESSLINE3
         nullable: true
         sourceColumnReferences:
@@ -66,12 +98,17 @@ operation:
               - columnCounter: 4
                 stepCounter: SRC_BC_ADDRESS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 5
           stepCounter: SRC_BC_ADDRESS
-        dataType: STRING
+        config: {}
+        dataType: VARCHAR(256)
         description: ""
+        isBusinessKey: false
         name: CITY
         nullable: true
         sourceColumnReferences:
@@ -79,12 +116,17 @@ operation:
               - columnCounter: 5
                 stepCounter: SRC_BC_ADDRESS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 6
           stepCounter: SRC_BC_ADDRESS
-        dataType: STRING
+        config: {}
+        dataType: VARCHAR(256)
         description: ""
+        isBusinessKey: false
         name: POSTALCODE
         nullable: true
         sourceColumnReferences:
@@ -92,12 +134,17 @@ operation:
               - columnCounter: 6
                 stepCounter: SRC_BC_ADDRESS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 7
           stepCounter: SRC_BC_ADDRESS
-        dataType: INTEGER
+        config: {}
+        dataType: NUMBER(38,0)
         description: ""
+        isBusinessKey: false
         name: STATE
         nullable: true
         sourceColumnReferences:
@@ -105,12 +152,17 @@ operation:
               - columnCounter: 7
                 stepCounter: SRC_BC_ADDRESS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
-        dataType: STRING
+        config: {}
+        dataType: VARCHAR(256)
         description: ""
+        isBusinessKey: false
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -118,12 +170,17 @@ operation:
               - columnCounter: 8
                 stepCounter: SRC_BC_ADDRESS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
-        dataType: DATETIME
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
         description: ""
+        isBusinessKey: false
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -146,7 +203,7 @@ operation:
         noLinkRefs: []
   name: SRC_BC_ADDRESS
   overrideSQL: false
-  schema: ""
+  schema: ''
   sqlType: Source
   type: sql
   version: 1
