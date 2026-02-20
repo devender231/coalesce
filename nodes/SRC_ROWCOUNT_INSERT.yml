@@ -7,20 +7,19 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Row Count transformation - Counts new insert rows where lookup found no match (Variable: User::InsertCount)"
+  description: Row Count transformation - Counts new insert rows where lookup found no match (Variable User::InsertCount)
   isMultisource: false
-  locationName: TGT
+  locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 1
           stepCounter: SRC_ROWCOUNT_INSERT
         config: {}
-        dataType: NUMBER
-        description: "Count of new insert rows"
+        dataType: INTEGER
+        description: Count of new insert records
         name: INSERT_ROW_COUNT
         nullable: false
         sourceColumnReferences:
@@ -30,23 +29,21 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SPLIT: SRC_CONDITIONALSPLIT_BEANVERSION
+          SRC_CONDITIONALSPLIT_BEANVERSION: SRC_CONDITIONALSPLIT_BEANVERSION
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TGT
-            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
+          - locationName: SRC
+            nodeName: CONDITIONALSPLIT_BEANVERSION
         join:
-          joinCondition: |
-            FROM {{ ref('TGT', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} SPLIT
-            WHERE SPLIT.ROUTE_FLAG = 'NEW_INSERT'
+          joinCondition: |-
+            FROM {{ ref('SRC', 'CONDITIONALSPLIT_BEANVERSION') }} SRC_CONDITIONALSPLIT_BEANVERSION
+            WHERE SRC_CONDITIONALSPLIT_BEANVERSION.RECORD_STATUS = 'INSERT'
         name: SRC_ROWCOUNT_INSERT
         noLinkRefs: []
-name: SRC_ROWCOUNT_INSERT
-overrideSQLStep:
-  name: ""
+  name: SRC_ROWCOUNT_INSERT
   overrideSQL: false
-schema: ""
-sqlType: Transform
-type: sql
-version: 1
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
