@@ -1,0 +1,24 @@
+name: SRC_TR_ROWCOUNT_UPDATE
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts update rows where BeanVersion differs from EDWBeanVersion
+
+source:
+  - SRC_TR_CONDITIONALSPLIT_BEANVERSION.UPDATE_ROWS
+
+logic:
+  operation: COUNT_ROWS
+  output_variable: User::UpdateCount
+  description: Counts rows that have changed and need to be updated in target table
+
+execution_order: 8
+dependencies:
+  - SRC_TR_CONDITIONALSPLIT_BEANVERSION
+
+output:
+  row_count_variable: UpdateCount
+  pass_through: true
+  description: Rows are counted and passed to target for UPDATE operation
+  action: UPDATE
+  target_table: DIMBILLINGACCOUNT
+  update_key: PUBLICID
