@@ -1,12 +1,9 @@
 name: SRC_DIMBILLINGACCOUNT
 type: source
-database: ''
-schema: ''
-table: DIMBILLINGACCOUNT
+location:
+  database: BILLINGCENTER
+  schema: DBO
+  table: DIMBILLINGACCOUNT
 columns:
   - name: PUBLICID
-    dataType: STRING
-    order: 1
   - name: BEANVERSION
-    dataType: STRING
-    order: 2
