@@ -1,11 +1,18 @@
 name: SRC_BC_PARENTACCT
 type: source
-location:
-  database: GUIDEWIRE
-  schema: DBO
-  table: BC_PARENTACCT
-columns:
-  - name: OWNERID
-  - name: FOREIGNENTITYID
-  - name: BEANVERSION
-  - name: UPDATETIME
+config:
+  source_location: SRC (GUIDEWIRE.BC)
+  table_name: BC_PARENTACCT
+  columns:
+    - name: OWNERID
+      data_type: INTEGER
+      nullable: true
+    - name: FOREIGNENTITYID
+      data_type: INTEGER
+      nullable: true
+    - name: BEANVERSION
+      data_type: STRING
+      nullable: true
+    - name: UPDATETIME
+      data_type: DATETIME
+      nullable: true
