@@ -1,11 +1,9 @@
 name: SRC_BCTL_STATE
 type: source
-database: ""
-schema: ""
-tables:
-  - name: BCTL_STATE
-    columns:
-      - name: ID
-        dataType: INTEGER
-      - name: NAME
-        dataType: STRING
+location:
+  database: BILLINGCENTER
+  schema: DBO
+  table: BCTL_STATE
+columns:
+  - name: ID
+  - name: NAME
