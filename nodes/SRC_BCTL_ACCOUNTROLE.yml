@@ -3,25 +3,14 @@ id: SRC_BCTL_ACCOUNTROLE
 name: SRC_BCTL_ACCOUNTROLE
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
+    insertStrategy: INSERT
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: ''
-  database: ''
+  database: ""
   deployEnabled: true
   description: Source table BCTL_ACCOUNTROLE
   isMultisource: false
   locationName: SRC
-  materializationType: source
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -33,10 +22,8 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -52,10 +39,8 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: TYPECODE
         nullable: true
         sourceColumnReferences:
@@ -66,19 +51,20 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BCTL_ACCOUNTROLE: BCTL_ACCOUNTROLE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "SRC_BCTL_ACCOUNTROLE"
         name: SRC_BCTL_ACCOUNTROLE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTROLE
   overrideSQL: false
-  schema: ''
+  schema: ""
   sqlType: Source
   type: sql
   version: 1
