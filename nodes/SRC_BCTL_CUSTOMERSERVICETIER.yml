@@ -1,0 +1,9 @@
+name: SRC_BCTL_CUSTOMERSERVICETIER
+type: source
+config:
+  location: BC.DBO.BCTL_CUSTOMERSERVICETIER
+  columns:
+    - name: CUSTOMERSERVICETIERID
+      datatype: VARCHAR
+    - name: CUSTOMERSERVICETIERNAME
+      datatype: VARCHAR
