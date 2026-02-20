@@ -1,0 +1,27 @@
+name: SRC_TR_ROW_COUNT_UPDATE
+type: transformation
+transformation_type: row_count
+description: Count the number of update rows to be modified in dimension table
+source: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+source_output: UPDATE_ROWS
+
+operation:
+  type: ROW_COUNT
+  counter_variable: UpdateRowCount
+  description: Counts existing records with changed BeanVersion requiring updates
+
+output:
+  row_count_variable: UpdateRowCount
+  pass_through: true
+  all_columns: true
+  destination: DIMBILLINGACCOUNT_UPDATE
+  load_type: UPDATE
+
+metadata:
+  execution_order: 7
+  purpose: Track and route changed records for update in dimension table
+  previous_step: SRC_TR_CONDITIONAL_SPLIT_BEANVERSION
+  branch: UPDATE_ROWS
+  load_action: UPDATE
+  target_table: DIMBILLINGACCOUNT
+  update_key: PUBLICID
