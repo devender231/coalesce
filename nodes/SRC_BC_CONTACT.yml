@@ -1,21 +1,21 @@
-source:
-  name: BC_CONTACT
-  type: table
-  location:
-    database: BC
-    schema: DBO
-    table: BC_CONTACT
-  connection_string: 'SRC ("BC"."DBO")'
-  columns:
-    - name: ID
-      order: 1
-    - name: FIRSTNAME
-      order: 2
-    - name: LASTNAME
-      order: 3
-    - name: PRIMARYADDRESSID
-      order: 4
-    - name: BEANVERSION
-      order: 5
-    - name: UPDATETIME
-      order: 6
+fileVersion: 1.0.0
+id: SRC_BC_CONTACT
+name: SRC_BC_CONTACT
+type: source
+config:
+  database: ""
+  schema: ""
+  table: BC_CONTACT
+columns:
+  - name: ID
+    dataType: VARCHAR
+  - name: FIRSTNAME
+    dataType: VARCHAR
+  - name: LASTNAME
+    dataType: VARCHAR
+  - name: PRIMARYADDRESSID
+    dataType: VARCHAR
+  - name: BEANVERSION
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: TIMESTAMP
