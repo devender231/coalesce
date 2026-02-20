@@ -1,371 +1,42 @@
-fileVersion: 1
-id: SRC_BC_ACCOUNT
 name: SRC_BC_ACCOUNT
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_SMALL
-  database: ""
-  deployEnabled: true
-  description: Source table BC_ACCOUNT
-  isDataVault: false
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ACCOUNTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ACCOUNTTYPE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: BILLINGLEVEL
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: SERVICETIER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: SECURITYZONEID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: SEGMENT
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: CLOSEDATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: CREATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 10
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: DELINQUENCYSTATUS
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 11
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: FIRSTTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 12
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: SECONDTWICEPERMTHINVOICEDOM
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 13
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 14
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 15
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 16
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: RETIRED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 17
-          stepCounter: SRC_BC_ACCOUNT
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        description: ""
-        hashColumns: []
-        hashDetails: null
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_BC_ACCOUNT: BC_ACCOUNT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_ACCOUNT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }} "SRC_BC_ACCOUNT"
-        name: SRC_BC_ACCOUNT
-        noLinkRefs: []
-  name: SRC_BC_ACCOUNT
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  source_type: table
+  database: EDWDEV
+  schema: BC
+  table: BC_ACCOUNT
+columns:
+  - name: ACCOUNTID
+    datatype: VARCHAR
+  - name: ACCOUNTNUMBER
+    datatype: VARCHAR
+  - name: ACCOUNTNAME
+    datatype: VARCHAR
+  - name: PARENTACCOUNTID
+    datatype: VARCHAR
+  - name: ACCOUNTTYPEID
+    datatype: VARCHAR
+  - name: BILLINGLEVELID
+    datatype: VARCHAR
+  - name: CUSTOMERSERVICETIERID
+    datatype: VARCHAR
+  - name: SECURITYZONEID
+    datatype: VARCHAR
+  - name: DELINQUENCYSTATUSID
+    datatype: VARCHAR
+  - name: ACCOUNTSEGMENTID
+    datatype: VARCHAR
+  - name: CREATEDATE
+    datatype: DATETIME
+  - name: MODIFIEDDATE
+    datatype: DATETIME
+  - name: ISACTIVE
+    datatype: BIT
+  - name: STARTDATE
+    datatype: DATE
+  - name: ENDDATE
+    datatype: DATE
+  - name: ROWVERSION
+    datatype: TIMESTAMP
+  - name: ETLINSERTDATE
+    datatype: DATETIME
