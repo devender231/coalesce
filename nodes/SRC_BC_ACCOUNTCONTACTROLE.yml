@@ -1,16 +1,9 @@
 name: SRC_BC_ACCOUNTCONTACTROLE
 type: source
-config:
-  source_type: table
-  source_location: SRC (DATABASE.SCHEMA)
-  columns:
-    - name: ACCOUNTCONTACTID
-      data_type: VARCHAR
-    - name: ROLE
-      data_type: VARCHAR
-    - name: ID
-      data_type: VARCHAR
-    - name: BEANVERSION
-      data_type: INTEGER
-    - name: UPDATETIME
-      data_type: TIMESTAMP
+location: SRC (BRIGHTCOVE.DBO.BC_ACCOUNTCONTACTROLE)
+columns:
+  - name: ACCOUNTCONTACTID
+  - name: ROLE
+  - name: ID
+  - name: BEANVERSION
+  - name: UPDATETIME
