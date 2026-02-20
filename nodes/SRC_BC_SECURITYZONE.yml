@@ -1,17 +1,15 @@
-source:
-  name: BC_SECURITYZONE
-  type: table
-  location:
-    database: BC
-    schema: DBO
-    table: BC_SECURITYZONE
-  connection_string: 'SRC ("BC"."DBO")'
-  columns:
-    - name: ID
-      order: 1
-    - name: NAME
-      order: 2
-    - name: BEANVERSION
-      order: 3
-    - name: UPDATETIME
-      order: 4
+name: SRC_BC_SECURITYZONE
+type: source
+location:
+  database: BC
+  schema: dbo
+  table: SECURITYZONE
+columns:
+  - name: ID
+    dataType: INTEGER
+  - name: NAME
+    dataType: VARCHAR
+  - name: BEANVERSION
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: DATETIME
