@@ -1,0 +1,52 @@
+fileVersion: 1
+id: SRC_ROWCOUNT_INSERT
+name: SRC_ROWCOUNT_INSERT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts new insert rows where lookup found no match (Variable: User::InsertCount)"
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_ROWCOUNT_INSERT
+        config: {}
+        dataType: NUMBER
+        description: "Count of new insert rows"
+        name: INSERT_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SPLIT: SRC_CONDITIONALSPLIT_BEANVERSION
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} SPLIT
+            WHERE SPLIT.ROUTE_FLAG = 'NEW_INSERT'
+        name: SRC_ROWCOUNT_INSERT
+        noLinkRefs: []
+name: SRC_ROWCOUNT_INSERT
+overrideSQLStep:
+  name: ""
+  overrideSQL: false
+schema: ""
+sqlType: Transform
+type: sql
+version: 1
