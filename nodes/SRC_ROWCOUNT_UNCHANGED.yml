@@ -7,20 +7,19 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Row Count transformation - Counts unchanged rows where BeanVersion matches EDWBeanVersion (Variable: User::UnChangeCount)"
+  description: Row Count transformation - Counts unchanged rows where BeanVersion matches EDW_BEANVERSION (Variable User::UnChangeCount)
   isMultisource: false
-  locationName: TGT
+  locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 1
           stepCounter: SRC_ROWCOUNT_UNCHANGED
         config: {}
-        dataType: NUMBER
-        description: "Count of unchanged rows"
+        dataType: INTEGER
+        description: Count of unchanged records
         name: UNCHANGED_ROW_COUNT
         nullable: false
         sourceColumnReferences:
@@ -30,23 +29,21 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SPLIT: SRC_CONDITIONALSPLIT_BEANVERSION
+          SRC_CONDITIONALSPLIT_BEANVERSION: SRC_CONDITIONALSPLIT_BEANVERSION
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TGT
-            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
+          - locationName: SRC
+            nodeName: CONDITIONALSPLIT_BEANVERSION
         join:
-          joinCondition: |
-            FROM {{ ref('TGT', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} SPLIT
-            WHERE SPLIT.ROUTE_FLAG = 'UNCHANGED'
+          joinCondition: |-
+            FROM {{ ref('SRC', 'CONDITIONALSPLIT_BEANVERSION') }} SRC_CONDITIONALSPLIT_BEANVERSION
+            WHERE SRC_CONDITIONALSPLIT_BEANVERSION.RECORD_STATUS = 'UNCHANGED'
         name: SRC_ROWCOUNT_UNCHANGED
         noLinkRefs: []
-name: SRC_ROWCOUNT_UNCHANGED
-overrideSQLStep:
-  name: ""
+  name: SRC_ROWCOUNT_UNCHANGED
   overrideSQL: false
-schema: ""
-sqlType: Transform
-type: sql
-version: 1
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
