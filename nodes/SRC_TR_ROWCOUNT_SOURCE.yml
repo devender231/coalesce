@@ -1,49 +1,24 @@
-fileVersion: 1
-id: SRC_TR_ROWCOUNT_SOURCE
 name: SRC_TR_ROWCOUNT_SOURCE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Row Count transformation - Counts source rows from joined tables (Variable User::SourceCount)
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - columnReference:
-          columnCounter: 1
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        dataType: INTEGER
-        description: Total count of source rows
-        name: SOURCE_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: SRC_JOIN_ALL_TABLES
-            transform: COUNT(*)
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_JOIN_ALL_TABLES: JOINED_DATA
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_JOIN_ALL_TABLES
-        join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_JOIN_ALL_TABLES') }} JOINED_DATA
-        name: SRC_TR_ROWCOUNT_SOURCE
-        noLinkRefs: []
-  name: SRC_TR_ROWCOUNT_SOURCE
-  overrideSQL: false
-  schema: ""
-  sqlType: Transform
-  type: sql
-  version: 1
+type: transformation
+config:
+  transformation_type: ROW_COUNT
+  description: "Counts source rows from OLE_SRC - GuideWire"
+  execution_order: 1
+  logic:
+    operation: COUNT_ROWS
+    variable: "User::SourceCount"
+    count_type: "source_rows"
+    
+  input:
+    source: SRC_BC_ACCOUNT
+    
+  output:
+    row_count_variable: "User::SourceCount"
+    pass_through: true
+    
+  audit:
+    capture_count: true
+    log_to_variable: true
+    
+dependencies:
+  - SRC_BC_ACCOUNT
