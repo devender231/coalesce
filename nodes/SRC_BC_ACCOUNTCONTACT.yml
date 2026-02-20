@@ -1,17 +1,12 @@
 name: SRC_BC_ACCOUNTCONTACT
 type: source
-database: ""
-schema: ""
-tables:
-  - name: BC_ACCOUNTCONTACT
-    columns:
-      - name: INSUREDACCOUNTID
-        dataType: INTEGER
-      - name: CONTACTID
-        dataType: INTEGER
-      - name: ID
-        dataType: INTEGER
-      - name: BEANVERSION
-        dataType: STRING
-      - name: UPDATETIME
-        dataType: DATETIME
+location:
+  database: BILLINGCENTER
+  schema: DBO
+  table: BC_ACCOUNTCONTACT
+columns:
+  - name: INSUREDACCOUNTID
+  - name: CONTACTID
+  - name: ID
+  - name: BEANVERSION
+  - name: UPDATETIME
