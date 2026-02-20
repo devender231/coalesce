@@ -1,23 +1,25 @@
 name: SRC_TR_DERIVED_BATCHID
 type: transformation
-transformation_type: DERIVED_COLUMN
-description: Adds or overwrites BatchID column from package variable
+transformation_type: derived_column
+description: Add BatchID column to the dataset for tracking batch processing
+source: SRC_TR_ROW_COUNT_SOURCE
 
-source:
-  - SRC_TR_ROWCOUNT_SOURCE
-
-derived_columns:
-  - column_name: BatchID
-    data_type: INTEGER
-    expression: "@[User::BatchID]"
-    operation: ADD_OR_REPLACE
-    description: Adds BatchID from package variable for audit tracking
-
-execution_order: 3
-dependencies:
-  - SRC_TR_ROWCOUNT_SOURCE
+operation:
+  type: DERIVED_COLUMN
+  derived_columns:
+    - column_name: BatchID
+      data_type: INTEGER
+      expression: "@[User::BatchID]"
+      description: Batch identifier from SSIS variable for tracking data load batches
 
 output:
-  all_input_columns: true
+  pass_through: true
+  all_source_columns: true
   additional_columns:
     - BatchID
+
+metadata:
+  execution_order: 2
+  purpose: Add batch tracking identifier for ETL process monitoring
+  previous_step: SRC_TR_ROW_COUNT_SOURCE
+  next_step: SRC_TR_LOOKUP_BEANVERSION
