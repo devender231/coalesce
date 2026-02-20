@@ -3,11 +3,23 @@ id: SRC_BC_ACCOUNTCONTACT
 name: SRC_BC_ACCOUNTCONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_SMALL
   database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNTCONTACT
+  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,14 +34,16 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(38,0)
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: INSUREDACCOUNTID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_ACCOUNTCONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,14 +53,16 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(38,0)
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: CONTACTID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_ACCOUNTCONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -56,14 +72,16 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(38,0)
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_ACCOUNTCONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -73,14 +91,16 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: NUMBER
+        dataType: VARCHAR(16777216)
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_ACCOUNTCONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -90,14 +110,16 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: TIMESTAMP
+        dataType: TIMESTAMP_NTZ(9)
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_ACCOUNTCONTACT
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
