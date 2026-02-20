@@ -1,21 +1,14 @@
 name: SRC_BCTL_CUSTOMERSERVICETIER
 type: source
-config:
-  source_name: BCTL_CUSTOMERSERVICETIER
-  source_type: table
-  database: ""
-  schema: ""
-  location: SRC ("."."")
+location:
+  name: SRC
+  database: BILLINGCENTER
+  schema: BCTL
+  table: CUSTOMERSERVICETIER
 columns:
-  - name: CUSTOMERSERVICETIERKEY
-    datatype: NUMBER(38,0)
-    description: Primary key for customer service tier
-  - name: CUSTOMERSERVICETIERCODE
-    datatype: VARCHAR2(50)
-    description: Customer service tier code
-  - name: CUSTOMERSERVICETIERNAME
-    datatype: VARCHAR2(200)
-    description: Customer service tier name
-  - name: CUSTOMERSERVICETIERDESCRIPTION
-    datatype: VARCHAR2(500)
-    description: Customer service tier description
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: NAME
+    dataType: STRING
+    nullable: true
