@@ -3,14 +3,25 @@ id: SRC_BC_ACCOUNTCONTACTROLE
 name: SRC_BC_ACCOUNTCONTACTROLE
 operation:
   config:
-    insertStrategy: INSERT
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: ""
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
   deployEnabled: true
   description: Source table BC_ACCOUNTCONTACTROLE
   isMultisource: false
   locationName: SRC
-  materializationType: view
+  materializationType: source
   metadata:
     appliedNodeTests: []
     columns:
@@ -22,7 +33,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -30,8 +41,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -41,7 +52,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -49,8 +60,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -60,7 +71,7 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
@@ -68,8 +79,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -79,7 +90,7 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
@@ -87,8 +98,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -98,7 +109,7 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: VARCHAR
+        dataType: DATETIME
         description: ""
         hashColumns: []
         hashDetails: null
@@ -106,8 +117,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -124,7 +135,7 @@ operation:
         noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACTROLE
   overrideSQL: false
-  schema: ""
+  schema: ''
   sqlType: Source
   type: sql
   version: 1
