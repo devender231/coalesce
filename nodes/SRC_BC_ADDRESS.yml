@@ -3,14 +3,25 @@ id: SRC_BC_ADDRESS
 name: SRC_BC_ADDRESS
 operation:
   config:
-    insertStrategy: INSERT
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: ""
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: ''
+  database: ''
   deployEnabled: true
   description: Source table BC_ADDRESS
   isMultisource: false
   locationName: SRC
-  materializationType: view
+  materializationType: source
   metadata:
     appliedNodeTests: []
     columns:
@@ -22,8 +33,10 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -39,8 +52,10 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
@@ -56,8 +71,10 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
@@ -73,8 +90,10 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ADDRESSLINE3
         nullable: true
         sourceColumnReferences:
@@ -90,8 +109,10 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: CITY
         nullable: true
         sourceColumnReferences:
@@ -107,8 +128,10 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: POSTALCODE
         nullable: true
         sourceColumnReferences:
@@ -124,8 +147,10 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: STATE
         nullable: true
         sourceColumnReferences:
@@ -141,8 +166,10 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: NUMBER
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -158,8 +185,10 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ADDRESS
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -170,20 +199,19 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_ADDRESS: BC_ADDRESS
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ADDRESS
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }} "SRC_BC_ADDRESS"
+          joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }}
         name: SRC_BC_ADDRESS
         noLinkRefs: []
   name: SRC_BC_ADDRESS
   overrideSQL: false
-  schema: ""
+  schema: ''
   sqlType: Source
   type: sql
   version: 1
