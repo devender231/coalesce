@@ -3,12 +3,24 @@ id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
-  database: GUIDEWIRE
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
   deployEnabled: true
+  description: Source table for BC_CONTACT
+  isMultisource: false
   locationName: SRC
-  locationID: SRC_LOCATION
   materializationType: view
   metadata:
     appliedNodeTests: []
@@ -16,7 +28,7 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: INTEGER
         description: ""
@@ -25,40 +37,40 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
         name: FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: 1
+          stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
         name: LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: 1
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: 1
+          stepCounter: SRC_BC_CONTACT
         config: {}
         dataType: INTEGER
         description: ""
@@ -67,52 +79,53 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: 1
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 5
-          stepCounter: 1
+          stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: INTEGER
+        dataType: STRING
         description: ""
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 5
-                stepCounter: 1
+                stepCounter: SRC_BC_CONTACT
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 6
-          stepCounter: 1
+          stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         description: ""
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 6
-                stepCounter: 1
+                stepCounter: SRC_BC_CONTACT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BC_CONTACT: SRC_BC_CONTACT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "SRC_BC_CONTACT"
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
   overrideSQL: false
-  schema: DBO
+  schema: ""
   sqlType: Source
   type: sql
   version: 1
