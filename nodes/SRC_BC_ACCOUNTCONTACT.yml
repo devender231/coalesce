@@ -1,23 +1,29 @@
-name: SRC_BC_ACCOUNTCONTACT
-type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BC_ACCOUNTCONTACT
-columns:
-  - name: INSUREDACCOUNTID
-    data_type: INTEGER
-    nullable: true
-  - name: CONTACTID
-    data_type: INTEGER
-    nullable: true
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
-  - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+version: 1
+
+sources:
+  - name: SRC_BC_ACCOUNTCONTACT
+    description: Source table for BC_ACCOUNTCONTACT
+    database: "<database>"
+    schema: "<schema>"
+    identifier: BC_ACCOUNTCONTACT
+    
+    columns:
+      - name: INSUREDACCOUNTID
+        data_type: INTEGER
+        description: Insured account ID
+        
+      - name: CONTACTID
+        data_type: INTEGER
+        description: Contact ID
+        
+      - name: ID
+        data_type: INTEGER
+        description: ID
+        
+      - name: BEANVERSION
+        data_type: STRING
+        description: Bean version
+        
+      - name: UPDATETIME
+        data_type: DATETIME
+        description: Update time
