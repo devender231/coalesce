@@ -1,0 +1,13 @@
+name: SRC_DIMBILLINGACCOUNT
+type: source
+config:
+  source_type: table
+  source_location:
+    database: ""
+    schema: ""
+    table: DIMBILLINGACCOUNT
+columns:
+  - name: PUBLICID
+    data_type: STRING
+  - name: BEANVERSION
+    data_type: STRING
