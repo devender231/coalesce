@@ -1,28 +1,76 @@
+fileVersion: 1
+id: SRC_TR_ROW_COUNT_UNCHANGED
 name: SRC_TR_ROW_COUNT_UNCHANGED
-type: transformation
-transformation_type: ROW_COUNT
-execution_order: 5
-description: Counts unchanged rows where BeanVersion matches EDWBeanVersion
-
-input:
-  source: SRC_TR_CONDITIONAL_SPLIT
-  output_path: UNCHANGED_ROWS
-  description: Input from conditional split - unchanged rows path
-
-transformation_logic:
-  operation: COUNT_ROWS
-  variable_name: User::UnChangeCount
-  description: Stores the count of rows that have not changed (BeanVersion matches)
-  filter_condition: BeanVersion == EDWBeanVersion
-  
-output:
-  type: pass_through
-  description: All unchanged rows are passed through
-  row_count_variable: User::UnChangeCount
-  destination: No further processing (audit only)
-  
-metadata:
-  purpose: Audit and tracking of unchanged row count
-  variable_scope: Package
-  variable_type: Integer
-  scd_action: NO_ACTION
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV_WH
+  database: ""
+  deployEnabled: true
+  description: "Row Count Transformation - Counts unchanged rows where BeanVersion matches (Variable: User::UnChangeCount)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: "Split condition result"
+        name: SPLIT_CONDITION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 41
+                stepCounter: SRC_TR_CONDITIONAL_SPLIT
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: "Count of unchanged rows"
+        name: UNCHANGED_ROW_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*) OVER ()"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONAL_SPLIT: SRC_TR_CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_CONDITIONAL_SPLIT') }} SRC_TR_CONDITIONAL_SPLIT
+            WHERE SPLIT_CONDITION = 'UNCHANGED'
+        name: SRC_TR_ROW_COUNT_UNCHANGED
+        noLinkRefs: []
+  name: SRC_TR_ROW_COUNT_UNCHANGED
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
