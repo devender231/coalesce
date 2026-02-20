@@ -1,26 +1,32 @@
 name: SRC_BC_CONTACT
+description: Source definition for BC_CONTACT table
 type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BC_CONTACT
+source:
+  database: "BILLING"
+  schema: "DBO"
+  identifier: BC_CONTACT
 columns:
   - name: ID
     data_type: INTEGER
-    nullable: true
+    description: Contact ID
+    ordinal_position: 1
   - name: FIRSTNAME
     data_type: STRING
-    nullable: true
+    description: First name of contact
+    ordinal_position: 2
   - name: LASTNAME
     data_type: STRING
-    nullable: true
+    description: Last name of contact
+    ordinal_position: 3
   - name: PRIMARYADDRESSID
     data_type: INTEGER
-    nullable: true
+    description: Primary address ID reference
+    ordinal_position: 4
   - name: BEANVERSION
     data_type: STRING
-    nullable: true
+    description: Bean version
+    ordinal_position: 5
   - name: UPDATETIME
     data_type: DATETIME
-    nullable: true
+    description: Last update timestamp
+    ordinal_position: 6
