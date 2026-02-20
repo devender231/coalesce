@@ -12,60 +12,64 @@ operation:
     postSQL: ""
     preSQL: ""
     refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    testsEnabled: false
+    testsEnabled: true
     truncateBefore: false
     warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
-  description: Source table BCTL_CUSTOMERSERVICETIER
+  description: Source table for BCTL_CUSTOMERSERVICETIER
+  isDataVault: false
   isMultisource: false
-  locationName: SRC
-  materializationType: view
+  locationName: SOURCE
+  materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
         config: {}
         dataType: NUMBER(38,0)
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
         config: {}
         dataType: VARCHAR(256)
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BCTL_CUSTOMERSERVICETIER
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          BCTL_CUSTOMERSERVICETIER: 1
+          SRC_BCTL_CUSTOMERSERVICETIER: SRC_BCTL_CUSTOMERSERVICETIER
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SRC
+          - locationName: SOURCE
             nodeName: BCTL_CUSTOMERSERVICETIER
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
+          joinCondition: FROM {{ ref('SOURCE', 'BCTL_CUSTOMERSERVICETIER') }} "SRC_BCTL_CUSTOMERSERVICETIER"
         name: SRC_BCTL_CUSTOMERSERVICETIER
         noLinkRefs: []
   name: SRC_BCTL_CUSTOMERSERVICETIER
