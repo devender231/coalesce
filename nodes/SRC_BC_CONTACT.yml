@@ -1,19 +1,16 @@
 name: SRC_BC_CONTACT
 type: source
-location:
-  database: ""
-  schema: ""
-  table: BC_CONTACT
+location: SRC (BILLINGCENTER.BC)
 columns:
   - name: ID
-    dataType: INTEGER
+    datatype: BIGINT
   - name: FIRSTNAME
-    dataType: STRING
+    datatype: VARCHAR
   - name: LASTNAME
-    dataType: STRING
+    datatype: VARCHAR
   - name: PRIMARYADDRESSID
-    dataType: INTEGER
+    datatype: BIGINT
   - name: BEANVERSION
-    dataType: STRING
+    datatype: INT
   - name: UPDATETIME
-    dataType: DATETIME
+    datatype: TIMESTAMP
