@@ -1,0 +1,56 @@
+name: SRC_TR_ROWCOUNT_INSERT
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts new insert rows (lookup no match)
+execution_order: 6
+dependencies:
+  - SRC_TR_CONDITIONALSPLIT_SCD
+
+logic:
+  operation: COUNT_ROWS
+  variable_name: User::InsertCount
+  description: Captures count of new rows to be inserted into dimension table
+  input_path: INSERT_ROWS
+
+input:
+  source: SRC_TR_CONDITIONALSPLIT_SCD
+  output_path: insert_rows
+  
+output:
+  row_count_variable: User::InsertCount
+  pass_through: true
+  target_destination: DIMBILLINGACCOUNT
+  load_type: INSERT
+  columns:
+    - ACCOUNTNUMBER
+    - ACCOUNTNAME
+    - ACCOUNTTYPE_NAME
+    - BILLINGLEVEL_NAME
+    - SERVICETIER_NAME
+    - SECURITYZONE_NAME
+    - SEGMENT_NAME
+    - CLOSEDATE
+    - CREATETIME
+    - DELINQUENCYSTATUS_NAME
+    - FIRSTTWICEPERMTHINVOICEDOM
+    - SECONDTWICEPERMTHINVOICEDOM
+    - PUBLICID
+    - ACCOUNT_ID
+    - BEANVERSION
+    - RETIRED
+    - UPDATETIME
+    - PARENT_FOREIGNENTITYID
+    - INSURED_FIRSTNAME
+    - INSURED_LASTNAME
+    - ADDRESS_LINE1
+    - ADDRESS_LINE2
+    - ADDRESS_LINE3
+    - CITY
+    - POSTALCODE
+    - STATE_NAME
+    - BatchID
+  
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  component_name: Row Count - Insert
+  purpose: Audit tracking and pass-through of new insert rows to target
