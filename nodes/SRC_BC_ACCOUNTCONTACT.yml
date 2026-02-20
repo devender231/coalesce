@@ -1,19 +1,17 @@
-fileVersion: 1.0.0
-id: SRC_BC_ACCOUNTCONTACT
 name: SRC_BC_ACCOUNTCONTACT
 type: source
-config:
-  database: ""
-  schema: ""
-  table: BC_ACCOUNTCONTACT
+location:
+  database: BC
+  schema: dbo
+  table: ACCOUNTCONTACT
 columns:
   - name: INSUREDACCOUNTID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: CONTACTID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: ID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: BEANVERSION
     dataType: INTEGER
   - name: UPDATETIME
-    dataType: TIMESTAMP
+    dataType: DATETIME
