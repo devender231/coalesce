@@ -3,8 +3,16 @@ id: SRC_BCTL_ACCOUNTROLE
 name: SRC_BCTL_ACCOUNTROLE
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
     selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
   database: ""
   deployEnabled: true
   description: Source table BCTL_ACCOUNTROLE
@@ -14,47 +22,27 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTROLE
-        config: {}
         dataType: INTEGER
         description: ""
         name: ID
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
+      - columnReference:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTROLE
-        config: {}
         dataType: STRING
         description: ""
         name: TYPECODE
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
-        customSQL:
+      - customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTROLE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
         name: SRC_BCTL_ACCOUNTROLE
-        noLinkRefs: []
   name: SRC_BCTL_ACCOUNTROLE
   overrideSQL: false
   schema: ""
