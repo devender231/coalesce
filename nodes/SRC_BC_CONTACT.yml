@@ -1,138 +1,19 @@
-fileVersion: 1
-id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
+type: source
+location:
   database: ""
-  deployEnabled: true
-  description: Source table BC_CONTACT
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: PRIMARYADDRESSID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: TIMESTAMP
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_BC_CONTACT
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_BC_CONTACT: BC_CONTACT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_CONTACT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "SRC_BC_CONTACT"
-        name: SRC_BC_CONTACT
-        noLinkRefs: []
-  name: SRC_BC_CONTACT
-  overrideSQL: false
   schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+  table: BC_CONTACT
+columns:
+  - name: ID
+    dataType: VARCHAR
+  - name: FIRSTNAME
+    dataType: VARCHAR
+  - name: LASTNAME
+    dataType: VARCHAR
+  - name: PRIMARYADDRESSID
+    dataType: VARCHAR
+  - name: BEANVERSION
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: TIMESTAMP
