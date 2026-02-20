@@ -1,27 +1,264 @@
+fileVersion: 1
+id: SRC_ROWCOUNT_INSERT
 name: SRC_ROWCOUNT_INSERT
-type: transformation
-transformation_type: ROW_COUNT
-description: Counts new insert rows (lookup no match)
-execution_order: 7
-
-source:
-  - SRC_CONDITIONAL_SPLIT_BEANVERSION
-  source_output: INSERT_ROWS
-
-transformation_logic:
-  operation: COUNT_ROWS
-  output_variable: User::InsertCount
-  description: Counts rows with no lookup match (new records to insert)
-
-output:
-  columns:
-    - name: ROW_COUNT
-      dataType: INTEGER
-      description: Count of new insert rows
-  variable_assignment:
-    variable_name: User::InsertCount
-    variable_type: INTEGER
-    description: Stores the count of new insert rows for audit purposes
-  action: LOAD_TO_TARGET
-  target_table: DIMBILLINGACCOUNT
-  load_type: INSERT
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts new insert rows (lookup no match) and stores in User::InsertCount variable"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Account Name"
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Account Type ID"
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Account Type Name"
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Billing Level ID"
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Billing Level Name"
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Service Tier ID"
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Service Tier Name"
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 9
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Security Zone ID"
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 10
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Security Zone Name"
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 11
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Segment ID"
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 12
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Segment Name"
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Delinquency Status ID"
+        name: DELINQUENCYSTATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 14
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Delinquency Status Name"
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 15
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Public ID"
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 16
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Bean Version"
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 17
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Batch ID"
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 18
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: STRING
+        description: "Split Flag"
+        name: SPLIT_FLAG
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 36
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 19
+          stepCounter: SRC_ROWCOUNT_INSERT
+        dataType: INTEGER
+        description: "Count of insert rows stored in User::InsertCount"
+        name: INSERT_ROW_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_CONDITIONALSPLIT_BEANVERSION: SRC_CONDITIONALSPLIT_BEANVERSION
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} "SRC_CONDITIONALSPLIT_BEANVERSION"
+            WHERE "SRC_CONDITIONALSPLIT_BEANVERSION"."SPLIT_FLAG" = 'INSERT'
+        name: SRC_CONDITIONALSPLIT_BEANVERSION
+        noLinkRefs: []
+  name: SRC_ROWCOUNT_INSERT
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
