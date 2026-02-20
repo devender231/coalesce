@@ -1,21 +1,20 @@
 name: SRC_BC_SECURITYZONE
 type: source
-config:
-  source_name: BC_SECURITYZONE
-  source_type: table
-  database: ""
-  schema: ""
-  location: SRC ("."."")
+location:
+  name: SRC
+  database: BILLINGCENTER
+  schema: BC
+  table: SECURITYZONE
 columns:
-  - name: SECURITYZONEKEY
-    datatype: NUMBER(38,0)
-    description: Primary key for security zone
-  - name: SECURITYZONECODE
-    datatype: VARCHAR2(50)
-    description: Security zone code
-  - name: SECURITYZONENAME
-    datatype: VARCHAR2(200)
-    description: Security zone name
-  - name: SECURITYZONEDESCRIPTION
-    datatype: VARCHAR2(500)
-    description: Security zone description
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: NAME
+    dataType: STRING
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
