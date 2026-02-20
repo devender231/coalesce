@@ -1,158 +1,25 @@
-fileVersion: 1
-id: SRC_ROWCOUNT_UPDATE
 name: SRC_ROWCOUNT_UPDATE
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
-    selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH
-  database: ""
-  deployEnabled: true
-  description: "Row Count transformation - Counts update rows where BeanVersion is different (Variable: User::UpdateCount)"
-  isMultisource: false
-  locationName: TGT
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: "Count of update rows"
-        name: UPDATE_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: "COUNT(*)"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: ""
-        name: SPLIT_CONDITION
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: BATCHID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: ""
-        name: ACCOUNTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: ""
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 26
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 28
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: ""
-        name: EDW_BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 29
-                stepCounter: 1
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_CONDITIONALSPLIT_BEANVERSION: 1
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: TGT
-            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
-        join:
-          joinCondition: "WHERE SPLIT_CONDITION = 'UPDATE'"
-        name: SRC_ROWCOUNT_UPDATE
-        noLinkRefs: []
-  name: SRC_ROWCOUNT_UPDATE
-  overrideSQL: false
-  schema: ""
-  sqlType: Transform
-  type: sql
-  version: 1
+type: source
+config:
+  source_type: transformation
+  transformation_type: ROW_COUNT
+  description: "Counts update rows (BeanVersion different)"
+  execution_order: 7
+  depends_on:
+    - SRC_CONDITIONALSPLIT_BEANVERSION
+transformation_logic:
+  operation: COUNT_ROWS
+  input_stream: UPDATE_ROWS
+  variable_assignment:
+    variable_name: "User::UpdateCount"
+    variable_type: INTEGER
+    description: "Count of rows to be updated (BeanVersion differs)"
+input_source:
+  - SRC_CONDITIONALSPLIT_BEANVERSION.UPDATE_ROWS
+output:
+  pass_through: true
+  add_columns:
+    - name: UPDATE_ROW_COUNT
+      data_type: INTEGER
+      expression: "COUNT(*)"
+      nullable: false
