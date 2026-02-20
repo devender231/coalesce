@@ -3,8 +3,20 @@ id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: ''
   database: ""
   deployEnabled: true
   description: Source table BC_CONTACT
@@ -22,11 +34,11 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
-        name: CONTACTID
+        name: ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -41,12 +53,12 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR(100)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
         name: FIRSTNAME
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -60,12 +72,12 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR(100)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
         name: LASTNAME
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -79,12 +91,12 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR(100)
+        dataType: INTEGER
         description: ""
         hashColumns: []
         hashDetails: null
-        name: EMAILADDRESS
-        nullable: true
+        name: PRIMARYADDRESSID
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -98,12 +110,12 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: VARCHAR(100)
+        dataType: STRING
         description: ""
         hashColumns: []
         hashDetails: null
-        name: PHONENUMBER
-        nullable: true
+        name: BEANVERSION
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -117,11 +129,11 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_CONTACT
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: DATETIME
         description: ""
         hashColumns: []
         hashDetails: null
-        name: ISDELETED
+        name: UPDATETIME
         nullable: false
         sourceColumnReferences:
           - columnReferences:
@@ -131,14 +143,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BC_CONTACT: SRC_BC_CONTACT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_CONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }} "BC_CONTACT"
         name: SRC_BC_CONTACT
         noLinkRefs: []
   name: SRC_BC_CONTACT
