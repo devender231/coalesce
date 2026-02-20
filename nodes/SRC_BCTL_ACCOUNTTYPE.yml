@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source node for BCTL_ACCOUNTTYPE table
+  description: Source table BCTL_ACCOUNTTYPE
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,14 +22,16 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTTYPE
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,26 +41,29 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: NAME
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BCTL_ACCOUNTTYPE
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BCTL_ACCOUNTTYPE: BCTL_ACCOUNTTYPE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTTYPE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} "SRC_BCTL_ACCOUNTTYPE"
         name: SRC_BCTL_ACCOUNTTYPE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTTYPE
