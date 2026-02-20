@@ -1,257 +1,30 @@
-fileVersion: 1
-id: SRC_TR_ROWCOUNT_SOURCE
 name: SRC_TR_ROWCOUNT_SOURCE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Row count transformation for source rows from GuideWire - Variable User::SourceCount
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - columnReference:
-          columnCounter: 1
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: INTEGER
-        description: Row count from source
-        name: SOURCE_ROW_COUNT
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: "COUNT(*)"
-      - columnReference:
-          columnCounter: 2
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: INTEGER
-        description: Account Number
-        name: ACCOUNTNUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 3
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Account Name
-        name: ACCOUNTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 4
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Account Type Name
-        name: ACCOUNTTYPE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 5
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: INTEGER
-        description: Parent Account ID
-        name: PARENT_ACCOUNT_ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 6
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Billing Level Name
-        name: BILLINGLEVEL_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 7
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Service Tier Name
-        name: SERVICETIER_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 8
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Security Zone Name
-        name: SECURITYZONE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 9
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Delinquency Status Name
-        name: DELINQUENCYSTATUS_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 10
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Segment Name
-        name: SEGMENT_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 11
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Contact First Name
-        name: FIRSTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 10
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 12
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Contact Last Name
-        name: LASTNAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 11
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 13
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Address Line 1
-        name: ADDRESSLINE1
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 12
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 14
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: City
-        name: CITY
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 13
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 15
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: State Name
-        name: STATE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 14
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 16
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Public ID
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 15
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-      - columnReference:
-          columnCounter: 17
-          stepCounter: SRC_TR_ROWCOUNT_SOURCE
-        config: {}
-        dataType: STRING
-        description: Bean Version
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 16
-                stepCounter: SRC_JOIN_DIMBILLINGACCOUNT
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_JOIN_DIMBILLINGACCOUNT: SRC_JOIN_DIMBILLINGACCOUNT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_JOIN_DIMBILLINGACCOUNT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'SRC_JOIN_DIMBILLINGACCOUNT') }} "SRC_JOIN_DIMBILLINGACCOUNT"
-        name: SRC_TR_ROWCOUNT_SOURCE
-        noLinkRefs: []
-  name: SRC_TR_ROWCOUNT_SOURCE
-  overrideSQL: false
-  schema: ""
-  sqlType: Transform
-  type: sql
-  version: 1
+type: transformation
+config:
+  transformation_type: row_count
+  description: "Counts source rows from OLE_SRC - GuideWire before any transformations"
+  audit_variable: "User::SourceCount"
+source:
+  - SRC_JOIN_DIMBILLINGACCOUNT_ALL
+transformation_logic:
+  operation: COUNT
+  count_type: ALL_ROWS
+  output_variable: "SourceCount"
+  scope: "Package"
+output:
+  pass_through: true
+  audit_column:
+    name: SOURCE_ROW_COUNT
+    data_type: INTEGER
+    value: "COUNT(*)"
+execution_order: 2
+dependencies:
+  upstream:
+    - SRC_JOIN_DIMBILLINGACCOUNT_ALL
+  downstream:
+    - SRC_TR_DERIVED_BATCHID
+metadata:
+  created_from: "SSIS Package: EDW_BC_Load_DimBillingAccount"
+  transformation_sequence: 1
+  ssis_component_type: "Row Count"
+  purpose: "Audit source row count for ETL monitoring and validation"
