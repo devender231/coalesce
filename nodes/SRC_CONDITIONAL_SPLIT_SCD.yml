@@ -1,0 +1,72 @@
+name: SRC_CONDITIONAL_SPLIT_SCD
+type: transformation
+transformation_type: CONDITIONAL_SPLIT
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion to determine INSERT vs UPDATE vs UNCHANGED
+execution_order: 4
+
+source:
+  upstream_component: SRC_LOOKUP_BEANVERSION
+  description: Receives dataset with EDWBeanVersion from lookup
+
+logic:
+  split_conditions:
+    # Output 1: Unchanged records (BeanVersion matches)
+    - output_name: UNCHANGED_RECORDS
+      condition: BEANVERSION == EDWBeanVersion
+      description: Records where source BeanVersion matches EDW BeanVersion - no update needed
+      priority: 1
+      next_component: SRC_ROWCOUNT_UNCHANGED
+    
+    # Output 2: New insert records (lookup returned no match)
+    - output_name: INSERT_RECORDS
+      condition: EDWBeanVersion IS NULL
+      description: Records with no match in EDW - new inserts
+      priority: 2
+      next_component: SRC_ROWCOUNT_INSERT
+    
+    # Output 3: Update records (BeanVersion different)
+    - output_name: UPDATE_RECORDS
+      condition: BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
+      description: Records where BeanVersion differs from EDW - updates required
+      priority: 3
+      next_component: SRC_ROWCOUNT_UPDATE
+    
+    # Default output: Error handling
+    - output_name: DEFAULT_OUTPUT
+      condition: DEFAULT
+      description: Records that don't match any condition - should not occur
+      priority: 4
+
+output_paths:
+  - path_name: UNCHANGED_RECORDS
+    columns: All columns from upstream
+    row_count_variable: User::UnChangeCount
+    target_action: SKIP
+  
+  - path_name: INSERT_RECORDS
+    columns: All columns from upstream
+    row_count_variable: User::InsertCount
+    target_action: INSERT
+  
+  - path_name: UPDATE_RECORDS
+    columns: All columns from upstream
+    row_count_variable: User::UpdateCount
+    target_action: UPDATE
+
+validation:
+  - rule: ALL_RECORDS_ROUTED
+    condition: SUM(all_output_counts) == input_count
+    error_message: Not all records were properly routed through conditional split
+  
+  - rule: NO_DEFAULT_OUTPUT
+    condition: DEFAULT_OUTPUT.count == 0
+    error_message: Records found in default output - review split logic
+
+dependencies:
+  - SRC_LOOKUP_BEANVERSION
+  - Variables: User::UnChangeCount, User::InsertCount, User::UpdateCount
+
+next_components:
+  - SRC_ROWCOUNT_UNCHANGED
+  - SRC_ROWCOUNT_INSERT
+  - SRC_ROWCOUNT_UPDATE
