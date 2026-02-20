@@ -1,25 +1,22 @@
 name: SRC_BC_ADDRESS
 type: source
-location:
-  database: ""
-  schema: ""
-  table: BC_ADDRESS
+location: SRC (BILLINGCENTER.BC)
 columns:
   - name: ID
-    dataType: INTEGER
+    datatype: BIGINT
   - name: ADDRESSLINE1
-    dataType: STRING
+    datatype: VARCHAR
   - name: ADDRESSLINE2
-    dataType: STRING
+    datatype: VARCHAR
   - name: ADDRESSLINE3
-    dataType: STRING
+    datatype: VARCHAR
   - name: CITY
-    dataType: STRING
+    datatype: VARCHAR
   - name: POSTALCODE
-    dataType: STRING
+    datatype: VARCHAR
   - name: STATE
-    dataType: INTEGER
+    datatype: VARCHAR
   - name: BEANVERSION
-    dataType: STRING
+    datatype: INT
   - name: UPDATETIME
-    dataType: DATETIME
+    datatype: TIMESTAMP
