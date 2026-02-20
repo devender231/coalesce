@@ -1,70 +1,21 @@
-fileVersion: 1
-id: SRC_BCTL_DELINQUENCYSTATUS
 name: SRC_BCTL_DELINQUENCYSTATUS
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
+type: source
+config:
+  source_name: BCTL_DELINQUENCYSTATUS
+  source_type: table
   database: ""
-  deployEnabled: true
-  description: Source table for BCTL_DELINQUENCYSTATUS
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_DELINQUENCYSTATUS
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_BCTL_DELINQUENCYSTATUS: BILLINGCENTER.BCTL.BCTL_DELINQUENCYSTATUS
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_DELINQUENCYSTATUS
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} "SRC_BCTL_DELINQUENCYSTATUS"
-        name: SRC_BCTL_DELINQUENCYSTATUS
-        noLinkRefs: []
-  name: SRC_BCTL_DELINQUENCYSTATUS
-  overrideSQL: false
   schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+  location: SRC ("."."")
+columns:
+  - name: DELINQUENCYSTATUSKEY
+    datatype: NUMBER(38,0)
+    description: Primary key for delinquency status
+  - name: DELINQUENCYSTATUSCODE
+    datatype: VARCHAR2(50)
+    description: Delinquency status code
+  - name: DELINQUENCYSTATUSNAME
+    datatype: VARCHAR2(200)
+    description: Delinquency status name
+  - name: DELINQUENCYSTATUSDESCRIPTION
+    datatype: VARCHAR2(500)
+    description: Delinquency status description
