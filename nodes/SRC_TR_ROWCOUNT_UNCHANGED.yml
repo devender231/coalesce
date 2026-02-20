@@ -1,35 +1,50 @@
+fileVersion: 1
+id: SRC_TR_ROWCOUNT_UNCHANGED
 name: SRC_TR_ROWCOUNT_UNCHANGED
-type: transformation
-config:
-  transformation_type: row_count
-  description: "Counts unchanged rows where BeanVersion matches EDWBeanVersion"
-  audit_variable: "User::UnChangeCount"
-source:
-  - SRC_TR_CONDITIONALSPLIT_SCD
-  input_stream: UNCHANGED_ROWS
-transformation_logic:
-  operation: COUNT
-  count_type: FILTERED_ROWS
-  filter_condition: "BEANVERSION == EDWBeanVersion"
-  output_variable: "UnChangeCount"
-  scope: "Package"
-output:
-  pass_through: false
-  action: EXCLUDE_FROM_LOAD
-  audit_column:
-    name: UNCHANGED_ROW_COUNT
-    data_type: INTEGER
-    value: "COUNT(*)"
-  reason: "No changes detected - exclude from target load"
-execution_order: 6
-dependencies:
-  upstream:
-    - SRC_TR_CONDITIONALSPLIT_SCD
-  downstream:
-    - NONE
-metadata:
-  created_from: "SSIS Package: EDW_BC_Load_DimBillingAccount"
-  transformation_sequence: 5
-  ssis_component_type: "Row Count"
-  purpose: "Audit unchanged row count for ETL monitoring and SCD tracking"
-  load_behavior: "Exclude from target"
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Row Count transformation - Counts unchanged rows where BeanVersion matches EDW (Variable User::UnChangeCount)
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TR_ROWCOUNT_UNCHANGED
+        dataType: INTEGER
+        description: Count of unchanged rows
+        name: UNCHANGED_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: null
+                stepCounter: SRC_TR_CONDITIONALSPLIT_SCD
+            transform: COUNT(*)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONALSPLIT_SCD: SPLIT_DATA
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_CONDITIONALSPLIT_SCD
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT_SCD') }} SPLIT_DATA
+            WHERE SCD_ROUTE = 'UNCHANGED'
+        name: SRC_TR_ROWCOUNT_UNCHANGED
+        noLinkRefs: []
+  name: SRC_TR_ROWCOUNT_UNCHANGED
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
