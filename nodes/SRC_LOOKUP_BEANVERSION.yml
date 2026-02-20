@@ -1,58 +1,159 @@
+fileVersion: 1
+id: SRC_LOOKUP_BEANVERSION
 name: SRC_LOOKUP_BEANVERSION
-type: transformation
-transformation_type: LOOKUP
-description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID to determine if record exists and needs update
-execution_order: 3
-
-source:
-  upstream_component: SRC_ALL_JOINS_DIMBILLINGACCOUNT
-  description: Receives joined dataset after all table joins are complete
-
-lookup_configuration:
-  lookup_table: SRC_DIMBILLINGACCOUNT
-  lookup_query: |
-    SELECT 
-      PUBLICID,
-      BEANVERSION AS EDWBeanVersion
-    FROM DIMBILLINGACCOUNT
-  
-  join_condition:
-    - left_column: PUBLICID
-      right_column: PUBLICID
-      match_type: EXACT
-  
-  lookup_columns:
-    - source_column: BEANVERSION
-      alias: EDWBeanVersion
-      data_type: STRING
-      description: Existing BeanVersion from EDW dimension table
-  
-  match_behavior:
-    on_match: RETURN_LOOKUP_VALUES
-    on_no_match: RETURN_NULL
-    cache_mode: FULL_CACHE
-    description: Returns EDWBeanVersion if PUBLICID matches, NULL otherwise
-
-output:
-  columns:
-    - All columns from upstream joined dataset
-    - EDWBeanVersion (from lookup)
-  description: Original dataset enriched with EDWBeanVersion for comparison
-
-logic:
-  operation: LEFT_OUTER_JOIN
-  join_key: PUBLICID
-  lookup_source: DIMBILLINGACCOUNT
-  return_columns:
-    - EDWBeanVersion
-
-validation:
-  - rule: PUBLICID_NOT_NULL
-    condition: PUBLICID IS NOT NULL
-    error_message: PUBLICID cannot be null for lookup operation
-
-dependencies:
-  - SRC_ALL_JOINS_DIMBILLINGACCOUNT
-  - SRC_DIMBILLINGACCOUNT
-
-next_component: SRC_CONDITIONAL_SPLIT_SCD
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Lookup transformation - Looks up BeanVersion from DIMBILLINGACCOUNT by PUBLICID to compare with source BeanVersion
+  isMultisource: true
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_LOOKUP_BEANVERSION
+        config: {}
+        dataType: NUMBER
+        description: Account Number from BC_ACCOUNT
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_LOOKUP_BEANVERSION
+        config: {}
+        dataType: VARCHAR
+        description: Account Name from BC_ACCOUNT
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_LOOKUP_BEANVERSION
+        config: {}
+        dataType: VARCHAR
+        description: Account Type ID
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_LOOKUP_BEANVERSION
+        config: {}
+        dataType: VARCHAR
+        description: Account Type Name
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_LOOKUP_BEANVERSION
+        config: {}
+        dataType: VARCHAR
+        description: Public ID
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: SRC_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_LOOKUP_BEANVERSION
+        config: {}
+        dataType: NUMBER
+        description: Bean Version from source
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: SRC_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: SRC_LOOKUP_BEANVERSION
+        config: {}
+        dataType: TIMESTAMP
+        description: Update Time
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: SRC_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: SRC_LOOKUP_BEANVERSION
+        config: {}
+        dataType: NUMBER
+        description: Batch ID
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 9
+          stepCounter: SRC_LOOKUP_BEANVERSION
+        config: {}
+        dataType: NUMBER
+        description: EDW Bean Version from DIMBILLINGACCOUNT lookup
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_DIMBILLINGACCOUNT
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_DERIVED_BATCHID: src
+          SRC_DIMBILLINGACCOUNT: dim
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_DERIVED_BATCHID
+          - locationName: SRC
+            nodeName: DIMBILLINGACCOUNT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_DERIVED_BATCHID') }} src
+            LEFT JOIN {{ ref('SRC', 'DIMBILLINGACCOUNT') }} dim
+              ON src.PUBLICID = dim.PUBLICID
+        name: SRC_LOOKUP_BEANVERSION
+        noLinkRefs: []
+  name: SRC_LOOKUP_BEANVERSION
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
