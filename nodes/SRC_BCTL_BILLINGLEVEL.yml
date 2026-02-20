@@ -19,7 +19,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
         name: ID
         nullable: true
@@ -33,7 +33,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: ""
         name: NAME
         nullable: true
