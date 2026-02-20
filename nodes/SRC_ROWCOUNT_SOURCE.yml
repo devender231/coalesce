@@ -1,0 +1,25 @@
+name: SRC_ROWCOUNT_SOURCE
+type: row_count
+description: Counts source rows from OLE_SRC - GuideWire
+
+source:
+  name: JOINED_DIMBILLINGACCOUNT_DATA
+  type: join_output
+  upstream_dependency: SRC_DIMBILLINGACCOUNT_JOINS
+
+transformation_logic:
+  operation: COUNT
+  count_type: SOURCE_ROWS
+  description: Counts all rows from the joined GuideWire source data
+  
+output:
+  variable_name: User::SourceCount
+  variable_type: INTEGER
+  description: Total count of source rows before any filtering or transformation
+  
+metadata:
+  execution_order: 1
+  package_name: EDW_BC_Load_DimBillingAccount
+  transformation_type: ROW_COUNT
+  created_from: SSIS_Documentation
+  upstream_dependency_validated: true
