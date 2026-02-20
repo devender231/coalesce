@@ -1,106 +1,18 @@
-fileVersion: 1
-id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table BC_CONTACT
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: ID
-        nullable: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: FIRSTNAME
-        nullable: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: LASTNAME
-        nullable: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: PRIMARYADDRESSID
-        nullable: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: NUMBER
-        description: ""
-        name: BEANVERSION
-        nullable: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: SRC_BC_CONTACT
-        config: {}
-        dataType: TIMESTAMP
-        description: ""
-        name: UPDATETIME
-        nullable: true
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_CONTACT
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
-        name: SRC_BC_CONTACT
-        noLinkRefs: []
-  name: SRC_BC_CONTACT
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+config:
+  source_type: table
+  source_location: SRC (DATABASE.SCHEMA)
+  columns:
+    - name: ID
+      data_type: VARCHAR
+    - name: FIRSTNAME
+      data_type: VARCHAR
+    - name: LASTNAME
+      data_type: VARCHAR
+    - name: PRIMARYADDRESSID
+      data_type: VARCHAR
+    - name: BEANVERSION
+      data_type: INTEGER
+    - name: UPDATETIME
+      data_type: TIMESTAMP
