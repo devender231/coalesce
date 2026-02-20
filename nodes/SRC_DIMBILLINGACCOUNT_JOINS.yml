@@ -1,0 +1,141 @@
+name: SRC_DIMBILLINGACCOUNT_JOINS
+type: join
+description: Consolidated joins for DimBillingAccount package
+sources:
+  - SRC_BC_ACCOUNT
+  - SRC_BCTL_ACCOUNTTYPE
+  - SRC_BC_PARENTACCT
+  - SRC_BCTL_BILLINGLEVEL
+  - SRC_BCTL_CUSTOMERSERVICETIER
+  - SRC_BC_SECURITYZONE
+  - SRC_BCTL_DELINQUENCYSTATUS
+  - SRC_BCTL_ACCOUNTSEGMENT
+  - SRC_BC_ACCOUNTCONTACT
+  - SRC_BC_ACCOUNTCONTACTROLE
+  - SRC_BCTL_ACCOUNTROLE
+  - SRC_BC_CONTACT
+  - SRC_BC_ADDRESS
+  - SRC_BCTL_STATE
+  - SRC_DIMBILLINGACCOUNT
+joins:
+  - join_type: LEFT
+    left_table: SRC_BC_ACCOUNT
+    right_table: SRC_BCTL_ACCOUNTTYPE
+    condition: SRC_BC_ACCOUNT.ACCOUNTTYPE = SRC_BCTL_ACCOUNTTYPE.ID
+    description: Join BC_ACCOUNT with BCTL_ACCOUNTTYPE
+  
+  - join_type: LEFT
+    left_table: SRC_BC_ACCOUNT
+    right_table: SRC_BC_PARENTACCT
+    condition: SRC_BC_PARENTACCT.OWNERID = SRC_BC_ACCOUNT.ID
+    description: Join BC_ACCOUNT with BC_PARENTACCT
+  
+  - join_type: LEFT
+    left_table: SRC_BC_ACCOUNT
+    right_table: SRC_BCTL_BILLINGLEVEL
+    condition: SRC_BC_ACCOUNT.BILLINGLEVEL = SRC_BCTL_BILLINGLEVEL.ID
+    description: Join BC_ACCOUNT with BCTL_BILLINGLEVEL
+  
+  - join_type: LEFT
+    left_table: SRC_BC_ACCOUNT
+    right_table: SRC_BCTL_CUSTOMERSERVICETIER
+    condition: SRC_BC_ACCOUNT.SERVICETIER = SRC_BCTL_CUSTOMERSERVICETIER.ID
+    description: Join BC_ACCOUNT with BCTL_CUSTOMERSERVICETIER
+  
+  - join_type: LEFT
+    left_table: SRC_BC_ACCOUNT
+    right_table: SRC_BC_SECURITYZONE
+    condition: SRC_BC_ACCOUNT.SECURITYZONEID = SRC_BC_SECURITYZONE.ID
+    description: Join BC_ACCOUNT with BC_SECURITYZONE
+  
+  - join_type: LEFT
+    left_table: SRC_BC_ACCOUNT
+    right_table: SRC_BCTL_DELINQUENCYSTATUS
+    condition: SRC_BC_ACCOUNT.DELINQUENCYSTATUS = SRC_BCTL_DELINQUENCYSTATUS.ID
+    description: Join BC_ACCOUNT with BCTL_DELINQUENCYSTATUS
+  
+  - join_type: LEFT
+    left_table: SRC_BC_ACCOUNT
+    right_table: SRC_BCTL_ACCOUNTSEGMENT
+    condition: SRC_BC_ACCOUNT.SEGMENT = SRC_BCTL_ACCOUNTSEGMENT.ID
+    description: Join BC_ACCOUNT with BCTL_ACCOUNTSEGMENT
+  
+  - join_type: LEFT
+    left_table: SRC_BC_ACCOUNT
+    right_table: INSUREDINFO
+    condition: INSUREDINFO.ACCOUNTID = SRC_BC_ACCOUNT.ID
+    description: Join BC_ACCOUNT with INSUREDINFO subquery
+  
+  - join_type: INNER
+    left_table: INSUREDINFO
+    right_table: SRC_BC_ACCOUNTCONTACT
+    condition: SRC_BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
+    description: Join INSUREDINFO with BC_ACCOUNTCONTACT
+  
+  - join_type: INNER
+    left_table: INSUREDINFO
+    right_table: SRC_BC_ACCOUNTCONTACTROLE
+    condition: SRC_BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = SRC_BC_ACCOUNTCONTACT.ID
+    description: Join INSUREDINFO with BC_ACCOUNTCONTACTROLE
+  
+  - join_type: INNER
+    left_table: INSUREDINFO
+    right_table: SRC_BCTL_ACCOUNTROLE
+    condition: SRC_BCTL_ACCOUNTROLE.ID = SRC_BC_ACCOUNTCONTACTROLE.ROLE AND SRC_BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+    description: Join INSUREDINFO with BCTL_ACCOUNTROLE with insured filter
+  
+  - join_type: LEFT
+    left_table: INSUREDINFO
+    right_table: SRC_BC_CONTACT
+    condition: SRC_BC_CONTACT.ID = SRC_BC_ACCOUNTCONTACT.CONTACTID
+    description: Join INSUREDINFO with BC_CONTACT
+  
+  - join_type: LEFT
+    left_table: INSUREDINFO
+    right_table: SRC_BC_ADDRESS
+    condition: SRC_BC_ADDRESS.ID = SRC_BC_CONTACT.PRIMARYADDRESSID
+    description: Join INSUREDINFO with BC_ADDRESS
+  
+  - join_type: LEFT
+    left_table: INSUREDINFO
+    right_table: SRC_BCTL_STATE
+    condition: SRC_BCTL_STATE.ID = SRC_BC_ADDRESS.STATE
+    description: Join INSUREDINFO with BCTL_STATE
+  
+  - join_type: INNER
+    left_table: LOOKUP_INPUT
+    right_table: SRC_DIMBILLINGACCOUNT
+    condition: LOOKUP_INPUT.PUBLICID = SRC_DIMBILLINGACCOUNT.PUBLICID
+    description: Lookup join for existing records
+output_columns:
+  - ACCOUNTNUMBER
+  - ACCOUNTNAME
+  - ACCOUNTTYPE
+  - BILLINGLEVEL
+  - SERVICETIER
+  - SECURITYZONEID
+  - SEGMENT
+  - CLOSEDATE
+  - CREATETIME
+  - DELINQUENCYSTATUS
+  - FIRSTTWICEPERMTHINVOICEDOM
+  - SECONDTWICEPERMTHINVOICEDOM
+  - PUBLICID
+  - ID
+  - BEANVERSION
+  - RETIRED
+  - UPDATETIME
+  - ACCOUNTTYPE_NAME
+  - BILLINGLEVEL_NAME
+  - SERVICETIER_NAME
+  - SECURITYZONE_NAME
+  - DELINQUENCYSTATUS_NAME
+  - ACCOUNTSEGMENT_NAME
+  - FIRSTNAME
+  - LASTNAME
+  - ADDRESSLINE1
+  - ADDRESSLINE2
+  - ADDRESSLINE3
+  - CITY
+  - POSTALCODE
+  - STATE_NAME
