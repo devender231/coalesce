@@ -1,27 +1,106 @@
+fileVersion: 1
+id: SRC_BC_CONTACT
 name: SRC_BC_CONTACT
-type: source
-config:
-  source_type: table
-location:
-  database: GUIDEWIRE
-  schema: BC
-  table: BC_CONTACT
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: FIRSTNAME
-    data_type: STRING
-    nullable: true
-  - name: LASTNAME
-    data_type: STRING
-    nullable: true
-  - name: PRIMARYADDRESSID
-    data_type: INTEGER
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
-  - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Source table BC_CONTACT
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: ID
+        nullable: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: FIRSTNAME
+        nullable: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: LASTNAME
+        nullable: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: PRIMARYADDRESSID
+        nullable: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: BEANVERSION
+        nullable: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: SRC_BC_CONTACT
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: UPDATETIME
+        nullable: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_CONTACT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BC_CONTACT') }}
+        name: SRC_BC_CONTACT
+        noLinkRefs: []
+  name: SRC_BC_CONTACT
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
