@@ -1,0 +1,135 @@
+fileVersion: 1
+id: SRC_TR_07_ROWCOUNT_UPDATE
+name: SRC_TR_07_ROWCOUNT_UPDATE
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: |
+      -- Store update row count in variable User::UpdateCount
+      SET UpdateCount = (SELECT COUNT(*) FROM {{ ref('TGT', 'SRC_TR_07_ROWCOUNT_UPDATE') }});
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
+  deployEnabled: true
+  description: "Transformation 7: ROW_COUNT - Counts update rows (BeanVersion different) and stores in User::UpdateCount"
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TR_07_ROWCOUNT_UPDATE
+        config: {}
+        dataType: INTEGER
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_TR_07_ROWCOUNT_UPDATE
+        config: {}
+        dataType: STRING
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: SRC_TR_07_ROWCOUNT_UPDATE
+        config: {}
+        dataType: STRING
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 15
+          stepCounter: SRC_TR_07_ROWCOUNT_UPDATE
+        config: {}
+        dataType: STRING
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 33
+          stepCounter: SRC_TR_07_ROWCOUNT_UPDATE
+        config: {}
+        dataType: INTEGER
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 34
+          stepCounter: SRC_TR_07_ROWCOUNT_UPDATE
+        config: {}
+        dataType: STRING
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+      - columnReference:
+          columnCounter: 35
+          stepCounter: SRC_TR_07_ROWCOUNT_UPDATE
+        config: {}
+        dataType: STRING
+        name: ROW_TYPE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 35
+                stepCounter: SRC_TR_04_CONDITIONAL_SPLIT
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_04_CONDITIONAL_SPLIT: SPLIT_DATA
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: SRC_TR_04_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'SRC_TR_04_CONDITIONAL_SPLIT') }} "SPLIT_DATA"
+            WHERE "SPLIT_DATA"."ROW_TYPE" = 'UPDATE'
+        name: SRC_TR_07_ROWCOUNT_UPDATE
+        noLinkRefs: []
+  name: SRC_TR_07_ROWCOUNT_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
