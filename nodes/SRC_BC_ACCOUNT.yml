@@ -28,8 +28,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -45,8 +45,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -62,8 +62,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -79,8 +79,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -96,8 +96,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -113,8 +113,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 6
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -130,8 +130,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 7
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -147,8 +147,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 8
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -164,8 +164,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 9
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -181,8 +181,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 10
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -198,8 +198,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 11
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -215,8 +215,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 12
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -232,8 +232,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 13
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -249,8 +249,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 14
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -266,8 +266,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 15
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -283,8 +283,8 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 16
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -300,21 +300,20 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 17
+                stepCounter: SRC_BC_ACCOUNT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BC_ACCOUNT: BC_ACCOUNT
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }} "SRC_BC_ACCOUNT"
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }}
         name: SRC_BC_ACCOUNT
         noLinkRefs: []
   name: SRC_BC_ACCOUNT
