@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BCTL_ACCOUNTROLE
+  description: Source table for BCTL_ACCOUNTROLE
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,12 +22,10 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -41,12 +39,10 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTROLE
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: TYPECODE
-        nullable: false
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: null
@@ -55,14 +51,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BCTL_ACCOUNTROLE: BILLINGCENTER.BCTL.BCTL_ACCOUNTROLE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "SRC_BCTL_ACCOUNTROLE"
         name: SRC_BCTL_ACCOUNTROLE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTROLE
