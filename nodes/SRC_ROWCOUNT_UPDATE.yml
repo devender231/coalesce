@@ -1,0 +1,52 @@
+fileVersion: 1
+id: SRC_ROWCOUNT_UPDATE
+name: SRC_ROWCOUNT_UPDATE
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts update rows where BeanVersion is different from EDWBeanVersion (Variable: User::UpdateCount)"
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_ROWCOUNT_UPDATE
+        config: {}
+        dataType: NUMBER
+        description: "Count of update rows"
+        name: UPDATE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SPLIT: SRC_CONDITIONALSPLIT_BEANVERSION
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} SPLIT
+            WHERE SPLIT.ROUTE_FLAG = 'UPDATE'
+        name: SRC_ROWCOUNT_UPDATE
+        noLinkRefs: []
+name: SRC_ROWCOUNT_UPDATE
+overrideSQLStep:
+  name: ""
+  overrideSQL: false
+schema: ""
+sqlType: Transform
+type: sql
+version: 1
