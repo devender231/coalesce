@@ -1,9 +1,13 @@
 name: SRC_BCTL_ACCOUNTROLE
 type: source
 location:
-  database: BILLINGCENTER
+  database: BC
   schema: DBO
   table: BCTL_ACCOUNTROLE
 columns:
   - name: ID
+    dataType: INTEGER
+    columnOrder: 1
   - name: TYPECODE
+    dataType: STRING
+    columnOrder: 2
