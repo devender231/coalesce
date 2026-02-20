@@ -1,8 +1,8 @@
 name: SRC_BC_CONTACT
 type: source
-database: ""
-schema: ""
-location: SRC (".""."")
+config:
+  source_type: table
+  source_location: SRC ("GUIDEWIRE"."BC"."BC_CONTACT")
 columns:
   - name: ID
     data_type: INTEGER
