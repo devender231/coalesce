@@ -1,15 +1,17 @@
+fileVersion: 1.0.0
+id: SRC_BC_SECURITYZONE
 name: SRC_BC_SECURITYZONE
 type: source
-location:
-  database: BC
-  schema: dbo
-  table: SECURITYZONE
+config:
+  database: ""
+  schema: ""
+  table: BC_SECURITYZONE
 columns:
   - name: ID
-    dataType: INTEGER
+    dataType: VARCHAR
   - name: NAME
     dataType: VARCHAR
   - name: BEANVERSION
     dataType: INTEGER
   - name: UPDATETIME
-    dataType: DATETIME
+    dataType: TIMESTAMP
