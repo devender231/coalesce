@@ -1,20 +1,27 @@
-name: SRC_BC_SECURITYZONE
-type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BC_SECURITYZONE
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: NAME
-    data_type: STRING
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
-  - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+version: 1
+
+sources:
+  - name: SRC_BC_SECURITYZONE
+    description: Source extraction for BC_SECURITYZONE table
+    source_type: table
+    location:
+      database: "BILLING"
+      schema: "DBO"
+      identifier: "BC_SECURITYZONE"
+    
+    columns:
+      - name: ID
+        data_type: INTEGER
+        description: ID column from BC_SECURITYZONE
+        
+      - name: NAME
+        data_type: STRING
+        description: NAME column from BC_SECURITYZONE
+        
+      - name: BEANVERSION
+        data_type: STRING
+        description: BEANVERSION column from BC_SECURITYZONE
+        
+      - name: UPDATETIME
+        data_type: DATETIME
+        description: UPDATETIME column from BC_SECURITYZONE
