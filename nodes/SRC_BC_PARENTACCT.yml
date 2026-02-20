@@ -1,17 +1,15 @@
-fileVersion: 1.0.0
-id: SRC_BC_PARENTACCT
 name: SRC_BC_PARENTACCT
 type: source
-config:
-  database: ""
-  schema: ""
-  table: BC_PARENTACCT
+location:
+  database: BC
+  schema: dbo
+  table: PARENTACCT
 columns:
   - name: OWNERID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: FOREIGNENTITYID
-    dataType: VARCHAR
+    dataType: INTEGER
   - name: BEANVERSION
     dataType: INTEGER
   - name: UPDATETIME
-    dataType: TIMESTAMP
+    dataType: DATETIME
