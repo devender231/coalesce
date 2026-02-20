@@ -1,19 +1,19 @@
-source:
-  name: BC_ACCOUNTCONTACTROLE
-  type: table
-  location:
-    database: BC
-    schema: DBO
-    table: BC_ACCOUNTCONTACTROLE
-  connection_string: 'SRC ("BC"."DBO")'
-  columns:
-    - name: ACCOUNTCONTACTID
-      order: 1
-    - name: ROLE
-      order: 2
-    - name: ID
-      order: 3
-    - name: BEANVERSION
-      order: 4
-    - name: UPDATETIME
-      order: 5
+fileVersion: 1.0.0
+id: SRC_BC_ACCOUNTCONTACTROLE
+name: SRC_BC_ACCOUNTCONTACTROLE
+type: source
+config:
+  database: ""
+  schema: ""
+  table: BC_ACCOUNTCONTACTROLE
+columns:
+  - name: ACCOUNTCONTACTID
+    dataType: VARCHAR
+  - name: ROLE
+    dataType: VARCHAR
+  - name: ID
+    dataType: VARCHAR
+  - name: BEANVERSION
+    dataType: INTEGER
+  - name: UPDATETIME
+    dataType: TIMESTAMP
