@@ -1,0 +1,34 @@
+name: SRC_DERIVED_BATCHID
+type: derived_column
+description: Adds or overwrites BatchID column with current batch identifier
+
+source:
+  name: JOINED_DIMBILLINGACCOUNT_DATA
+  type: join_output
+  upstream_dependency: SRC_DIMBILLINGACCOUNT_JOINS
+
+transformation_logic:
+  operation: ADD_COLUMN
+  derived_columns:
+    - column_name: BatchID
+      expression: "@[User::BatchID]"
+      data_type: INTEGER
+      nullable: false
+      description: Current batch execution identifier
+      action: ADD_OR_OVERWRITE
+      
+output:
+  name: DERIVED_WITH_BATCHID
+  description: Dataset with BatchID column added
+  columns_added:
+    - BatchID
+  
+metadata:
+  execution_order: 2
+  package_name: EDW_BC_Load_DimBillingAccount
+  transformation_type: DERIVED_COLUMN
+  created_from: SSIS_Documentation
+  upstream_dependency_validated: true
+  depends_on:
+    - SRC_DIMBILLINGACCOUNT_JOINS
+    - SRC_ROWCOUNT_SOURCE
