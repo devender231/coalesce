@@ -1,0 +1,9 @@
+name: SRC_BCTL_ACCOUNTROLE
+type: source
+config:
+  location: BC.DBO.BCTL_ACCOUNTROLE
+  columns:
+    - name: ACCOUNTROLEID
+      datatype: VARCHAR
+    - name: ACCOUNTROLENAME
+      datatype: VARCHAR
