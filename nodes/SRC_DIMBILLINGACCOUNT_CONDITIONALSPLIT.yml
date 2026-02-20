@@ -1,0 +1,31 @@
+name: SRC_DIMBILLINGACCOUNT_CONDITIONALSPLIT
+type: transformation
+transformation_type: CONDITIONAL_SPLIT
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion
+source:
+  - SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION
+logic:
+  conditions:
+    - condition_name: UNCHANGED_ROWS
+      expression: BEANVERSION == EDWBeanVersion
+      description: Rows where BeanVersion matches existing EDWBeanVersion (no update needed)
+      output_order: 1
+    
+    - condition_name: UPDATE_ROWS
+      expression: BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
+      description: Rows where BeanVersion differs from EDWBeanVersion (needs update)
+      output_order: 2
+    
+    - condition_name: INSERT_ROWS
+      expression: EDWBeanVersion IS NULL
+      description: Rows with no match in lookup (new inserts)
+      output_order: 3
+      is_default: true
+output:
+  outputs:
+    - output_name: UNCHANGED_ROWS
+      description: No action needed
+    - output_name: UPDATE_ROWS
+      description: Route to update destination
+    - output_name: INSERT_ROWS
+      description: Route to insert destination
