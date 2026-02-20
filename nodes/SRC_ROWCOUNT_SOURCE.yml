@@ -1,53 +1,23 @@
-fileVersion: 1
-id: SRC_ROWCOUNT_SOURCE
 name: SRC_ROWCOUNT_SOURCE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: "ROW_COUNT Transformation - Counts source rows from OLE_SRC GuideWire and stores in Variable User::SourceCount"
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER
-        description: Row count of source records
-        name: SOURCE_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: COUNT(*)
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          JOINS: JOINS
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_DIMBILLINGACCOUNT_JOINS
-        join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT_JOINS') }} JOINS
-        name: SRC_DIMBILLINGACCOUNT_JOINS
-        noLinkRefs: []
-  name: SRC_ROWCOUNT_SOURCE
-  overrideSQL: false
-  schema: ""
-  sqlType: DT113:::156
-  type: sql
-  version: 1
-type: Node
+type: transformation
+transformation_type: ROW_COUNT
+description: Counts source rows from OLE_SRC - GuideWire
+execution_order: 2
+
+source:
+  - SRC_DIMBILLINGACCOUNT_JOINS
+
+transformation_logic:
+  operation: COUNT_ROWS
+  output_variable: User::SourceCount
+  description: Counts all rows from the joined source data
+
+output:
+  columns:
+    - name: ROW_COUNT
+      dataType: INTEGER
+      description: Total count of source rows
+  variable_assignment:
+    variable_name: User::SourceCount
+    variable_type: INTEGER
+    description: Stores the count of source rows for audit purposes
