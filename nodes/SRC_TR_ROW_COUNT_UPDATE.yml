@@ -1,0 +1,61 @@
+fileVersion: 1
+id: SRC_TR_ROW_COUNT_UPDATE
+name: SRC_TR_ROW_COUNT_UPDATE
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_SMALL
+  database: ""
+  deployEnabled: true
+  description: Row Count transformation - Counts update rows (BeanVersion different)
+  isDataVault: false
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TR_ROW_COUNT_UPDATE
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Count of update rows where BeanVersion differs from EDW_BeanVersion
+        name: UPDATE_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: COUNT(*)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONAL_SPLIT: SRC_TR_CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: TR_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |-
+            FROM {{ ref('SRC', 'TR_CONDITIONAL_SPLIT') }} "SRC_TR_CONDITIONAL_SPLIT"
+            WHERE "SRC_TR_CONDITIONAL_SPLIT"."SPLIT_OUTPUT" = 'UPDATE'
+        name: SRC_TR_ROW_COUNT_UPDATE
+        noLinkRefs: []
+  name: SRC_TR_ROW_COUNT_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
