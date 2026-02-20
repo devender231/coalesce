@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BC_ACCOUNTCONTACTROLE from GuideWire
+  description: Source table BC_ACCOUNTCONTACTROLE
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,8 +22,10 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ACCOUNTCONTACTID
         nullable: true
         sourceColumnReferences:
@@ -39,8 +41,10 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ROLE
         nullable: true
         sourceColumnReferences:
@@ -56,8 +60,10 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -73,8 +79,10 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -90,8 +98,10 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: DATETIME
+        dataType: VARCHAR
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
