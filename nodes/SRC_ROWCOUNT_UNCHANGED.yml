@@ -1,100 +1,19 @@
-fileVersion: 1
-id: SRC_ROWCOUNT_UNCHANGED
 name: SRC_ROWCOUNT_UNCHANGED
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_SMALL
-  database: ""
-  deployEnabled: true
-  description: "Row Count transformation - Counts unchanged rows where BeanVersion matches EDWBeanVersion (Variable: User::UnChangeCount)"
-  isDataVault: false
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - columnReference:
-          columnCounter: 1
-          stepCounter: SRC_ROWCOUNT_UNCHANGED
-        config: {}
-        dataType: NUMBER(38,0)
-        description: "Count of unchanged rows"
-        name: UNCHANGED_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: "COUNT(*)"
-      - columnReference:
-          columnCounter: 2
-          stepCounter: SRC_ROWCOUNT_UNCHANGED
-        config: {}
-        dataType: NUMBER(38,0)
-        description: "Batch ID"
-        name: BATCHID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 3
-          stepCounter: SRC_ROWCOUNT_UNCHANGED
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: "Public ID"
-        name: PUBLICID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
-            transform: ""
-      - columnReference:
-          columnCounter: 4
-          stepCounter: SRC_ROWCOUNT_UNCHANGED
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: "Bean Version"
-        name: BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: SRC_CONDITIONAL_SPLIT_BEANVERSION
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_CONDITIONAL_SPLIT_BEANVERSION: SPLIT_DATA
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: CONDITIONAL_SPLIT_BEANVERSION
-        join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'CONDITIONAL_SPLIT_BEANVERSION') }} "SRC_CONDITIONAL_SPLIT_BEANVERSION"
-            WHERE "SRC_CONDITIONAL_SPLIT_BEANVERSION".ROUTE_TYPE = 'UNCHANGED'
-        name: SRC_ROWCOUNT_UNCHANGED
-        noLinkRefs: []
-  name: SRC_ROWCOUNT_UNCHANGED
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+type: transformation
+config:
+  transformation_type: ROW_COUNT
+  description: "Counts unchanged rows (BeanVersion matches)"
+  input_source: SRC_CONDITIONALSPLIT_BEANVERSION
+  input_branch: UNCHANGED_ROWS
+  logic:
+    operation: COUNT
+    variable_name: "User::UnChangeCount"
+    count_type: "UNCHANGED_ROWS"
+    description: "Tracks number of records that don't need updates"
+  execution_order: 5
+  output:
+    pass_through: true
+    add_columns:
+      - name: UNCHANGED_ROW_COUNT
+        dataType: INTEGER
+        expression: "COUNT(*)"
