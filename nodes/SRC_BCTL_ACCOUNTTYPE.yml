@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source table BCTL_ACCOUNTTYPE
+  description: Source table BCTL_ACCOUNTTYPE from BillingCenter
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,16 +22,14 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
-        dataType: INTEGER
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: NUMBER
+        description: ID
         name: ID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BCTL_ACCOUNTTYPE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -41,29 +39,27 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BCTL_ACCOUNTTYPE
         config: {}
-        dataType: STRING
-        description: ""
-        hashColumns: []
-        hashDetails: null
+        dataType: VARCHAR
+        description: Name
         name: NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BCTL_ACCOUNTTYPE
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          BCTL_ACCOUNTTYPE: SRC_BCTL_ACCOUNTTYPE
+          SRC_BCTL_ACCOUNTTYPE: GUIDEWIRE.DBO.BCTL_ACCOUNTTYPE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTTYPE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} "BCTL_ACCOUNTTYPE"
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} "SRC_BCTL_ACCOUNTTYPE"
         name: SRC_BCTL_ACCOUNTTYPE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTTYPE
