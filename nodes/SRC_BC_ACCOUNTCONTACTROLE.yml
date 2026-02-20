@@ -14,7 +14,10 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
@@ -28,7 +31,10 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
@@ -42,7 +48,10 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
@@ -56,7 +65,10 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
@@ -70,7 +82,10 @@ operation:
               - columnCounter: null
                 stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
@@ -87,14 +102,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BC_ACCOUNTCONTACTROLE: SRC_BC_ACCOUNTCONTACTROLE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNTCONTACTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} "BC_ACCOUNTCONTACTROLE"
         name: SRC_BC_ACCOUNTCONTACTROLE
         noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACTROLE
