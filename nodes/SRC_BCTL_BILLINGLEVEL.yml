@@ -3,33 +3,24 @@ id: SRC_BCTL_BILLINGLEVEL
 name: SRC_BCTL_BILLINGLEVEL
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
     selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BCTL_BILLINGLEVEL
-  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
         dataType: INTEGER
         description: ""
@@ -37,13 +28,16 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
+              - columnCounter: null
+                stepCounter: null
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BCTL_BILLINGLEVEL
         config: {}
         dataType: STRING
         description: ""
@@ -51,20 +45,21 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
+              - columnCounter: null
+                stepCounter: null
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          BCTL_BILLINGLEVEL: SRC_BCTL_BILLINGLEVEL
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_BILLINGLEVEL
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }}
+          joinCondition: FROM {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} "BCTL_BILLINGLEVEL"
         name: SRC_BCTL_BILLINGLEVEL
         noLinkRefs: []
   name: SRC_BCTL_BILLINGLEVEL
