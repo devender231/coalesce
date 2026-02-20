@@ -1,0 +1,48 @@
+name: SRC_LOOKUP_BEANVERSION
+type: lookup
+description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID to identify existing records
+
+source:
+  name: DERIVED_WITH_BATCHID
+  type: derived_output
+  upstream_dependency: SRC_DERIVED_BATCHID
+
+lookup_logic:
+  lookup_table: DIMBILLINGACCOUNT
+  lookup_type: LEFT_OUTER
+  lookup_query: |
+    SELECT 
+      PUBLICID,
+      BEANVERSION AS EDWBeanVersion
+    FROM DIMBILLINGACCOUNT
+  join_condition:
+    - source_column: PUBLICID
+      lookup_column: PUBLICID
+      comparison: EQUALS
+  
+  columns_returned:
+    - column_name: EDWBeanVersion
+      source_column: BEANVERSION
+      data_type: STRING
+      nullable: true
+      description: BeanVersion from existing DimBillingAccount record
+      
+  no_match_behavior: RETURN_NULL
+  cache_mode: FULL
+  
+output:
+  name: LOOKUP_WITH_BEANVERSION
+  description: Dataset with EDWBeanVersion column from lookup
+  columns_added:
+    - EDWBeanVersion
+  
+metadata:
+  execution_order: 3
+  package_name: EDW_BC_Load_DimBillingAccount
+  transformation_type: LOOKUP
+  created_from: SSIS_Documentation
+  upstream_dependency_validated: true
+  depends_on:
+    - SRC_DIMBILLINGACCOUNT_JOINS
+    - SRC_ROWCOUNT_SOURCE
+    - SRC_DERIVED_BATCHID
