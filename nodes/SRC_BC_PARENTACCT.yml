@@ -1,8 +1,8 @@
 name: SRC_BC_PARENTACCT
 type: source
-database: ""
-schema: ""
-location: SRC (".""."")
+config:
+  source_type: table
+  source_location: SRC ("GUIDEWIRE"."BC"."BC_PARENTACCT")
 columns:
   - name: OWNERID
     data_type: INTEGER
