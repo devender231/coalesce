@@ -1,70 +1,21 @@
-fileVersion: 1
-id: SRC_BCTL_ACCOUNTTYPE
 name: SRC_BCTL_ACCOUNTTYPE
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
+type: source
+config:
+  source_name: BCTL_ACCOUNTTYPE
+  source_type: table
   database: ""
-  deployEnabled: true
-  description: Source table for BCTL_ACCOUNTTYPE
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_BCTL_ACCOUNTTYPE
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_BCTL_ACCOUNTTYPE
-        config: {}
-        dataType: VARCHAR
-        description: ""
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: null
-                stepCounter: null
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_BCTL_ACCOUNTTYPE: BILLINGCENTER.BCTL.BCTL_ACCOUNTTYPE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTTYPE
-        join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} "SRC_BCTL_ACCOUNTTYPE"
-        name: SRC_BCTL_ACCOUNTTYPE
-        noLinkRefs: []
-  name: SRC_BCTL_ACCOUNTTYPE
-  overrideSQL: false
   schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+  location: SRC ("."."")
+columns:
+  - name: ACCOUNTTYPEKEY
+    datatype: NUMBER(38,0)
+    description: Primary key for account type
+  - name: ACCOUNTTYPECODE
+    datatype: VARCHAR2(50)
+    description: Account type code
+  - name: ACCOUNTTYPENAME
+    datatype: VARCHAR2(200)
+    description: Account type name
+  - name: ACCOUNTTYPEDESCRIPTION
+    datatype: VARCHAR2(500)
+    description: Account type description
