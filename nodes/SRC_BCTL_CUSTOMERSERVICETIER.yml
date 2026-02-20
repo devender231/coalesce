@@ -1,12 +1,9 @@
 name: SRC_BCTL_CUSTOMERSERVICETIER
 type: source
-database: ''
-schema: ''
-table: BCTL_CUSTOMERSERVICETIER
+location:
+  database: BILLINGCENTER
+  schema: DBO
+  table: BCTL_CUSTOMERSERVICETIER
 columns:
   - name: ID
-    dataType: INTEGER
-    order: 1
   - name: NAME
-    dataType: STRING
-    order: 2
