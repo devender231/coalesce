@@ -1,20 +1,25 @@
-name: SRC_BC_PARENTACCT
-type: source
-config:
-  source_type: table
-  database: ""
-  schema: ""
-  table: BC_PARENTACCT
-columns:
-  - name: OWNERID
-    data_type: INTEGER
-    nullable: true
-  - name: FOREIGNENTITYID
-    data_type: INTEGER
-    nullable: true
-  - name: BEANVERSION
-    data_type: STRING
-    nullable: true
-  - name: UPDATETIME
-    data_type: DATETIME
-    nullable: true
+version: 1
+
+sources:
+  - name: SRC_BC_PARENTACCT
+    description: Source table for BC_PARENTACCT
+    database: "<database>"
+    schema: "<schema>"
+    identifier: BC_PARENTACCT
+    
+    columns:
+      - name: OWNERID
+        data_type: INTEGER
+        description: Owner ID
+        
+      - name: FOREIGNENTITYID
+        data_type: INTEGER
+        description: Foreign entity ID
+        
+      - name: BEANVERSION
+        data_type: STRING
+        description: Bean version
+        
+      - name: UPDATETIME
+        data_type: DATETIME
+        description: Update time
