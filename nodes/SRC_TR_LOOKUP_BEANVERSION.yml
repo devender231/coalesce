@@ -1,54 +1,378 @@
+fileVersion: 1
+id: SRC_TR_LOOKUP_BEANVERSION
 name: SRC_TR_LOOKUP_BEANVERSION
-type: transformation
-config:
-  transformation_type: lookup
-  description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID for SCD Type 1 change detection"
-source:
-  - SRC_TR_DERIVED_BATCHID
-lookup_table:
-  source: SRC_DIMBILLINGACCOUNT
-  columns:
-    - PUBLICID
-    - BEANVERSION
-lookup_logic:
-  join_type: LEFT_OUTER
-  match_columns:
-    - source_column: PUBLICID
-      lookup_column: PUBLICID
-      match_type: EXACT
-  return_columns:
-    - lookup_column: BEANVERSION
-      output_alias: EDWBeanVersion
-      data_type: STRING
-      nullable: true
-  no_match_behavior: PASS_THROUGH
-  cache_mode: FULL
-transformation_logic:
-  sql_equivalent: |
-    SELECT 
-      input.*,
-      dim.BEANVERSION AS EDWBeanVersion
-    FROM input_stream input
-    LEFT JOIN DIMBILLINGACCOUNT dim
-      ON input.PUBLICID = dim.PUBLICID
-output:
-  pass_through: true
-  new_columns:
-    - EDWBeanVersion
-  match_indicator:
-    column_name: LOOKUP_MATCH
-    match_value: 1
-    no_match_value: 0
-execution_order: 4
-dependencies:
-  upstream:
-    - SRC_TR_DERIVED_BATCHID
-    - SRC_DIMBILLINGACCOUNT
-  downstream:
-    - SRC_TR_CONDITIONALSPLIT_SCD
-metadata:
-  created_from: "SSIS Package: EDW_BC_Load_DimBillingAccount"
-  transformation_sequence: 3
-  ssis_component_type: "Lookup"
-  purpose: "Identify existing records and detect changes for SCD logic"
-  scd_type: "Type 1 - Overwrite"
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Lookup transformation - Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID for SCD comparison
+  isMultisource: true
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: INTEGER
+        description: Account Number
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Account Name
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Account Type Name
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: INTEGER
+        description: Parent Account Foreign Entity ID
+        name: PARENTACCT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Billing Level Name
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Service Tier Name
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Security Zone Name
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 8
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Delinquency Status Name
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 9
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Account Segment Name
+        name: ACCOUNTSEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 10
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Insured First Name
+        name: INSURED_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 11
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Insured Last Name
+        name: INSURED_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 12
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Address Line 1
+        name: ADDRESSLINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 13
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Address Line 2
+        name: ADDRESSLINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 14
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Address Line 3
+        name: ADDRESSLINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 15
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: City
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 16
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Postal Code
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 17
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: State Name
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 18
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: DATETIME
+        description: Account Close Date
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 19
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: DATETIME
+        description: Account Create Time
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 20
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: INTEGER
+        description: First Twice Per Month Invoice Day of Month
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 21
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: INTEGER
+        description: Second Twice Per Month Invoice Day of Month
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 22
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Public ID
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 23
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: INTEGER
+        description: Account ID
+        name: ACCOUNT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 24
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: Bean Version from source
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 25
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: INTEGER
+        description: Retired flag
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 26
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: DATETIME
+        description: Update Time
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 27
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: INTEGER
+        description: Batch ID
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 27
+                stepCounter: SRC_TR_DERIVED_BATCHID
+            transform: ""
+      - columnReference:
+          columnCounter: 28
+          stepCounter: SRC_TR_LOOKUP_BEANVERSION
+        dataType: STRING
+        description: EDW Bean Version from DIMBILLINGACCOUNT lookup
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_DIMBILLINGACCOUNT
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_DERIVED_BATCHID: DERIVED_DATA
+          SRC_DIMBILLINGACCOUNT: DIM_BA
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_DERIVED_BATCHID
+          - locationName: SRC
+            nodeName: SRC_DIMBILLINGACCOUNT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_DERIVED_BATCHID') }} DERIVED_DATA
+            LEFT JOIN {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT') }} DIM_BA
+              ON DERIVED_DATA.PUBLICID = DIM_BA.PUBLICID
+        name: SRC_TR_LOOKUP_BEANVERSION
+        noLinkRefs: []
+  name: SRC_TR_LOOKUP_BEANVERSION
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
