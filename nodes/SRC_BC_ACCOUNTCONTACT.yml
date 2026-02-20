@@ -14,8 +14,8 @@ operation:
     refresh_mode: AUTO
     selectDistinct: false
     testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_SMALL
+    truncateBefore: true
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNTCONTACT
@@ -30,7 +30,7 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
         name: INSUREDACCOUNTID
         nullable: true
@@ -44,7 +44,7 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
         name: CONTACTID
         nullable: true
@@ -58,7 +58,7 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INTEGER
         description: ""
         name: ID
         nullable: true
@@ -72,7 +72,7 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: VARCHAR(256)
+        dataType: STRING
         description: ""
         name: BEANVERSION
         nullable: true
@@ -86,7 +86,7 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACT
         config: {}
-        dataType: TIMESTAMP_NTZ(9)
+        dataType: DATETIME
         description: ""
         name: UPDATETIME
         nullable: true
@@ -105,7 +105,7 @@ operation:
           - locationName: SRC
             nodeName: BC_ACCOUNTCONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} "BC_ACCOUNTCONTACT"
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }}
         name: SRC_BC_ACCOUNTCONTACT
         noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACT
