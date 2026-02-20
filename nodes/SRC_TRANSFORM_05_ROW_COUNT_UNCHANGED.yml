@@ -1,0 +1,50 @@
+fileVersion: 1
+id: SRC_TRANSFORM_05_ROW_COUNT_UNCHANGED
+name: SRC_TRANSFORM_05_ROW_COUNT_UNCHANGED
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Transformation 5: ROW_COUNT - Counts unchanged rows (BeanVersion matches) (Variable: User::UnChangeCount)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_TRANSFORM_05_ROW_COUNT_UNCHANGED
+        config: {}
+        dataType: INTEGER
+        description: "Count of unchanged rows where BeanVersion matches EDWBeanVersion"
+        name: UNCHANGED_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SPLIT: SRC_TRANSFORM_04_CONDITIONAL_SPLIT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: TRANSFORM_04_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TRANSFORM_04_CONDITIONAL_SPLIT') }} SPLIT
+            WHERE SPLIT.SPLIT_CONDITION = 'UNCHANGED'
+        name: SRC_TRANSFORM_05_ROW_COUNT_UNCHANGED
+        noLinkRefs: []
+  name: SRC_TRANSFORM_05_ROW_COUNT_UNCHANGED
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
+type: Node
