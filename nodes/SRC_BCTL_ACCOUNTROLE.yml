@@ -24,6 +24,8 @@ operation:
         config: {}
         dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -41,6 +43,8 @@ operation:
         config: {}
         dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: TYPECODE
         nullable: true
         sourceColumnReferences:
@@ -51,15 +55,14 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_BCTL_ACCOUNTROLE: BCTL_ACCOUNTROLE
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "SRC_BCTL_ACCOUNTROLE"
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }}
         name: SRC_BCTL_ACCOUNTROLE
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTROLE
