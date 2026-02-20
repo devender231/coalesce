@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Source node for BC_ACCOUNTCONTACTROLE table
+  description: Source table BC_ACCOUNTCONTACTROLE
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -22,14 +22,16 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ACCOUNTCONTACTID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 1
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -39,14 +41,16 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ROLE
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 2
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -56,14 +60,16 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: NUMBER
+        dataType: INTEGER
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 3
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -73,14 +79,16 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: NUMBER
+        dataType: STRING
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 4
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
       - acceptedValues:
           strictMatch: true
@@ -90,26 +98,29 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNTCONTACTROLE
         config: {}
-        dataType: TIMESTAMP
+        dataType: DATETIME
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: UPDATETIME
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: null
-                stepCounter: null
+              - columnCounter: 5
+                stepCounter: SRC_BC_ACCOUNTCONTACTROLE
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BC_ACCOUNTCONTACTROLE: BC_ACCOUNTCONTACTROLE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNTCONTACTROLE
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} "SRC_BC_ACCOUNTCONTACTROLE"
         name: SRC_BC_ACCOUNTCONTACTROLE
         noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACTROLE
