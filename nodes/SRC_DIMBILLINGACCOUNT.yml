@@ -1,4 +1,4 @@
-fileVersion: 1
+fileVersion: 1.0.0
 id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
 operation:
@@ -23,7 +23,9 @@ operation:
           stepCounter: SRC_DIMBILLINGACCOUNT
         config: {}
         dataType: STRING
-        description: PUBLICID column
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: PUBLICID
         nullable: true
         sourceColumnReferences:
@@ -40,7 +42,9 @@ operation:
           stepCounter: SRC_DIMBILLINGACCOUNT
         config: {}
         dataType: STRING
-        description: BEANVERSION column
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -58,7 +62,7 @@ operation:
           - locationName: SRC
             nodeName: DIMBILLINGACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'DIMBILLINGACCOUNT') }}
+          joinCondition: ""
         name: SRC_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: SRC_DIMBILLINGACCOUNT
