@@ -1,9 +1,14 @@
 name: SRC_BCTL_ACCOUNTSEGMENT
 type: source
-location:
-  database: GUIDEWIRE
-  schema: DBO
-  table: BCTL_ACCOUNTSEGMENT
+config:
+  sourceLocation:
+    database: "DATABASE"
+    schema: "SCHEMA"
+    table: "BCTL_ACCOUNTSEGMENT"
 columns:
   - name: ID
+    dataType: INTEGER
+    columnOrder: 1
   - name: NAME
+    dataType: STRING
+    columnOrder: 2
