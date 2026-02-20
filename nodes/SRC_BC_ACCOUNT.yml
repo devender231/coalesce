@@ -3,25 +3,14 @@ id: SRC_BC_ACCOUNT
 name: SRC_BC_ACCOUNT
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
+    insertStrategy: INSERT
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: ''
-  database: ''
+  database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNT
   isMultisource: false
   locationName: SRC
-  materializationType: source
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -33,10 +22,8 @@ operation:
           columnCounter: 1
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
@@ -52,10 +39,8 @@ operation:
           columnCounter: 2
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
@@ -71,10 +56,8 @@ operation:
           columnCounter: 3
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
@@ -90,10 +73,8 @@ operation:
           columnCounter: 4
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
@@ -109,10 +90,8 @@ operation:
           columnCounter: 5
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: SERVICETIER
         nullable: true
         sourceColumnReferences:
@@ -128,10 +107,8 @@ operation:
           columnCounter: 6
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: SECURITYZONEID
         nullable: true
         sourceColumnReferences:
@@ -147,10 +124,8 @@ operation:
           columnCounter: 7
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: SEGMENT
         nullable: true
         sourceColumnReferences:
@@ -166,10 +141,8 @@ operation:
           columnCounter: 8
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: CLOSEDATE
         nullable: true
         sourceColumnReferences:
@@ -185,10 +158,8 @@ operation:
           columnCounter: 9
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: CREATETIME
         nullable: true
         sourceColumnReferences:
@@ -204,10 +175,8 @@ operation:
           columnCounter: 10
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
@@ -223,10 +192,8 @@ operation:
           columnCounter: 11
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -242,10 +209,8 @@ operation:
           columnCounter: 12
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -261,10 +226,8 @@ operation:
           columnCounter: 13
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: STRING
+        dataType: VARCHAR
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: PUBLICID
         nullable: true
         sourceColumnReferences:
@@ -280,10 +243,8 @@ operation:
           columnCounter: 14
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -299,10 +260,8 @@ operation:
           columnCounter: 15
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: STRING
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -318,10 +277,8 @@ operation:
           columnCounter: 16
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: RETIRED
         nullable: true
         sourceColumnReferences:
@@ -337,10 +294,8 @@ operation:
           columnCounter: 17
           stepCounter: SRC_BC_ACCOUNT
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP
         description: ""
-        hashColumns: []
-        hashDetails: null
         name: UPDATETIME
         nullable: true
         sourceColumnReferences:
@@ -351,19 +306,20 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SRC_BC_ACCOUNT: BC_ACCOUNT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }}
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNT') }} "SRC_BC_ACCOUNT"
         name: SRC_BC_ACCOUNT
         noLinkRefs: []
   name: SRC_BC_ACCOUNT
   overrideSQL: false
-  schema: ''
+  schema: ""
   sqlType: Source
   type: sql
   version: 1
