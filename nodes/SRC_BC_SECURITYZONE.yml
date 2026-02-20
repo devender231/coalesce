@@ -1,6 +1,7 @@
 name: SRC_BC_SECURITYZONE
 type: source
 config:
+  source_type: table
   database: ""
   schema: ""
   table: BC_SECURITYZONE
