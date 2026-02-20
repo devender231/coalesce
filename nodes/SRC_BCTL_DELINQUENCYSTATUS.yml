@@ -1,15 +1,62 @@
+fileVersion: 1
+id: SRC_BCTL_DELINQUENCYSTATUS
 name: SRC_BCTL_DELINQUENCYSTATUS
-type: source
-config:
-  source_type: table
-  source_location:
-    database: GUIDEWIRE
-    schema: BCTL
-    table: BCTL_DELINQUENCYSTATUS
-columns:
-  - name: ID
-    data_type: INTEGER
-    nullable: true
-  - name: NAME
-    data_type: STRING
-    nullable: true
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: GUIDEWIRE
+  deployEnabled: true
+  locationName: SRC
+  locationID: SRC_LOCATION
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_DELINQUENCYSTATUS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }}
+        name: SRC_BCTL_DELINQUENCYSTATUS
+        noLinkRefs: []
+  name: SRC_BCTL_DELINQUENCYSTATUS
+  overrideSQL: false
+  schema: DBO
+  sqlType: Source
+  type: sql
+  version: 1
