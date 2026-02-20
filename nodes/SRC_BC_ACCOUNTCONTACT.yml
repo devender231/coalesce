@@ -3,8 +3,19 @@ id: SRC_BC_ACCOUNTCONTACT
 name: SRC_BC_ACCOUNTCONTACT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH
   database: ""
   deployEnabled: true
   description: Source table BC_ACCOUNTCONTACT
@@ -20,112 +31,96 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: SRC_BC_ACCOUNTCONTACT
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
+        defaultValue: ""
         description: ""
-        hashColumns: []
         hashDetails: null
         name: INSUREDACCOUNTID
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_BC_ACCOUNTCONTACT
-            transform: ""
+        primaryKey: false
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: SRC_BC_ACCOUNTCONTACT
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
+        defaultValue: ""
         description: ""
-        hashColumns: []
         hashDetails: null
         name: CONTACTID
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_BC_ACCOUNTCONTACT
-            transform: ""
+        primaryKey: false
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: SRC_BC_ACCOUNTCONTACT
+          stepCounter: 1
         config: {}
-        dataType: INTEGER
+        dataType: NUMBER
+        defaultValue: ""
         description: ""
-        hashColumns: []
         hashDetails: null
         name: ID
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_BC_ACCOUNTCONTACT
-            transform: ""
+        primaryKey: false
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: SRC_BC_ACCOUNTCONTACT
+          stepCounter: 1
         config: {}
-        dataType: STRING
+        dataType: NUMBER
+        defaultValue: ""
         description: ""
-        hashColumns: []
         hashDetails: null
         name: BEANVERSION
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_BC_ACCOUNTCONTACT
-            transform: ""
+        primaryKey: false
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 5
-          stepCounter: SRC_BC_ACCOUNTCONTACT
+          stepCounter: 1
         config: {}
-        dataType: DATETIME
+        dataType: TIMESTAMP
+        defaultValue: ""
         description: ""
-        hashColumns: []
         hashDetails: null
         name: UPDATETIME
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: SRC_BC_ACCOUNTCONTACT
-            transform: ""
+        primaryKey: false
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          BC_ACCOUNTCONTACT: SRC_BC_ACCOUNTCONTACT
-        customSQL:
+      - customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNTCONTACT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} "BC_ACCOUNTCONTACT"
-        name: SRC_BC_ACCOUNTCONTACT
+          joinCondition: ""
+        name: BC_ACCOUNTCONTACT
         noLinkRefs: []
   name: SRC_BC_ACCOUNTCONTACT
   overrideSQL: false
   schema: ""
-  sqlType: Source
+  sqlType: SOURCE
   type: sql
   version: 1
+type: Node
