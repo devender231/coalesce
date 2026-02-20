@@ -3,43 +3,71 @@ id: SRC_BCTL_ACCOUNTSEGMENT
 name: SRC_BCTL_ACCOUNTSEGMENT
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: GUIDEWIRE
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
+  database: ""
   deployEnabled: true
+  description: Source table BCTL_ACCOUNTSEGMENT
+  isDataVault: false
+  isMultisource: false
   locationName: SRC
-  locationID: SRC_LOCATION
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
+        defaultValue: ""
         description: ""
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BCTL_ACCOUNTSEGMENT
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -56,7 +84,7 @@ operation:
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTSEGMENT
   overrideSQL: false
-  schema: DBO
+  schema: ""
   sqlType: Source
   type: sql
   version: 1
