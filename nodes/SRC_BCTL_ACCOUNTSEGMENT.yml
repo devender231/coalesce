@@ -1,4 +1,4 @@
-fileVersion: 1
+fileVersion: 1.0.0
 id: SRC_BCTL_ACCOUNTSEGMENT
 name: SRC_BCTL_ACCOUNTSEGMENT
 operation:
@@ -23,7 +23,9 @@ operation:
           stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
         dataType: INTEGER
-        description: ID column
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: ID
         nullable: true
         sourceColumnReferences:
@@ -40,7 +42,9 @@ operation:
           stepCounter: SRC_BCTL_ACCOUNTSEGMENT
         config: {}
         dataType: STRING
-        description: NAME column
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: NAME
         nullable: true
         sourceColumnReferences:
@@ -58,7 +62,7 @@ operation:
           - locationName: SRC
             nodeName: BCTL_ACCOUNTSEGMENT
         join:
-          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }}
+          joinCondition: ""
         name: SRC_BCTL_ACCOUNTSEGMENT
         noLinkRefs: []
   name: SRC_BCTL_ACCOUNTSEGMENT
