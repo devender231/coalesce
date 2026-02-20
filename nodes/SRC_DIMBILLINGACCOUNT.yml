@@ -1,8 +1,10 @@
+fileVersion: 1.0.0
+id: SRC_DIMBILLINGACCOUNT
 name: SRC_DIMBILLINGACCOUNT
 type: source
-location:
-  database: DIM
-  schema: dbo
+config:
+  database: ""
+  schema: ""
   table: DIMBILLINGACCOUNT
 columns:
   - name: PUBLICID
