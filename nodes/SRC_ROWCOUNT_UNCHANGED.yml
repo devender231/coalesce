@@ -1,26 +1,120 @@
+fileVersion: 1
+id: SRC_ROWCOUNT_UNCHANGED
 name: SRC_ROWCOUNT_UNCHANGED
-type: transformation
-transformation_type: ROW_COUNT
-description: Counts unchanged rows (BeanVersion matches)
-execution_order: 6
-
-source:
-  - SRC_CONDITIONAL_SPLIT_BEANVERSION
-  source_output: UNCHANGED_ROWS
-
-transformation_logic:
-  operation: COUNT_ROWS
-  output_variable: User::UnChangeCount
-  description: Counts rows where BeanVersion matches existing dimension (no update needed)
-
-output:
-  columns:
-    - name: ROW_COUNT
-      dataType: INTEGER
-      description: Count of unchanged rows
-  variable_assignment:
-    variable_name: User::UnChangeCount
-    variable_type: INTEGER
-    description: Stores the count of unchanged rows for audit purposes
-  action: DISCARD
-  description: These rows are not loaded to target as they are unchanged
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts unchanged rows (BeanVersion matches) and stores in User::UnChangeCount variable"
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 1
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: INTEGER
+        description: "Account Number"
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 2
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: "Account Name"
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 3
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: "Public ID"
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 4
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: "Bean Version"
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 5
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: "EDW Bean Version"
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 35
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 6
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: STRING
+        description: "Split Flag"
+        name: SPLIT_FLAG
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 36
+                stepCounter: SRC_CONDITIONALSPLIT_BEANVERSION
+            transform: ""
+      - columnReference:
+          columnCounter: 7
+          stepCounter: SRC_ROWCOUNT_UNCHANGED
+        dataType: INTEGER
+        description: "Count of unchanged rows stored in User::UnChangeCount"
+        name: UNCHANGED_ROW_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_CONDITIONALSPLIT_BEANVERSION: SRC_CONDITIONALSPLIT_BEANVERSION
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_CONDITIONALSPLIT_BEANVERSION
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_CONDITIONALSPLIT_BEANVERSION') }} "SRC_CONDITIONALSPLIT_BEANVERSION"
+            WHERE "SRC_CONDITIONALSPLIT_BEANVERSION"."SPLIT_FLAG" = 'UNCHANGED'
+        name: SRC_CONDITIONALSPLIT_BEANVERSION
+        noLinkRefs: []
+  name: SRC_ROWCOUNT_UNCHANGED
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
