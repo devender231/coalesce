@@ -1,0 +1,16 @@
+source:
+  name: SRC_BCTL_CUSTOMERSTATUS
+  description: "Reads customer status codes from BCTL_CUSTOMERSTATUS"
+  location: SRC("BC"."BCTL_CUSTOMERSTATUS")
+  database: BC
+  schema: BC
+  table: BCTL_CUSTOMERSTATUS
+  connection: CM.GuideWire_BC
+  columns:
+    - name: ID
+      order: 1
+      dataType: i4
+    - name: NAME
+      order: 2
+      dataType: str
+      length: 100

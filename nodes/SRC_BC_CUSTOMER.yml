@@ -1,0 +1,42 @@
+source:
+  name: SRC_BC_CUSTOMER
+  description: "Reads customer records from GuideWire BC_CUSTOMER table"
+  location: SRC("BC"."BC_CUSTOMER")
+  database: BC
+  schema: BC
+  table: BC_CUSTOMER
+  connection: CM.GuideWire_BC
+  columns:
+    - name: ID
+      order: 1
+      dataType: i4
+    - name: PUBLICID
+      order: 2
+      dataType: str
+      length: 100
+    - name: CUSTOMERNUMBER
+      order: 3
+      dataType: i4
+    - name: CUSTOMERNAME
+      order: 4
+      dataType: str
+      length: 200
+    - name: CUSTOMERTYPE
+      order: 5
+      dataType: i4
+    - name: STATUS
+      order: 6
+      dataType: i4
+    - name: CREATETIME
+      order: 7
+      dataType: dbTimeStamp
+    - name: UPDATETIME
+      order: 8
+      dataType: dbTimeStamp
+    - name: BEANVERSION
+      order: 9
+      dataType: str
+      length: 50
+    - name: RETIRED
+      order: 10
+      dataType: i4
