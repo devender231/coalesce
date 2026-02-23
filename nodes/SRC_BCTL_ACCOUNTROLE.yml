@@ -2,56 +2,64 @@ fileVersion: 1
 id: S5
 name: BCTL_ACCOUNTROLE
 operation:
-  database: ""
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: "PC_COALESCE_DB"
   deployEnabled: true
-  description: ""
+  description: "Source node for BCTL_ACCOUNTROLE"
+  isMultisource: false
   locationName: SRC
+  materializationType: table
   metadata:
+    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C1
           stepCounter: S5
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
         name: ID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C2
           stepCounter: S5
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
         name: TYPECODE
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BCTL_ACCOUNTROLE: S5
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTROLE
+        join:
+          joinCondition: |
+            FROM ref('SRC', 'BCTL_ACCOUNTROLE')
+        name: BCTL_ACCOUNTROLE
+        noLinkRefs: []
   name: BCTL_ACCOUNTROLE
-  schema: ""
-  sqlType: Source
+  overrideSQL: false
+  schema: "RAW"
+  sqlType: Stage
   type: sourceInput
   version: 1
-
 type: Node
