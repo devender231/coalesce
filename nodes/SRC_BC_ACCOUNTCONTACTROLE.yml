@@ -2,116 +2,100 @@ fileVersion: 1
 id: S4
 name: BC_ACCOUNTCONTACTROLE
 operation:
-  database: ""
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: "PC_COALESCE_DB"
   deployEnabled: true
-  description: ""
+  description: "Source node for BC_ACCOUNTCONTACTROLE"
+  isMultisource: false
   locationName: SRC
+  materializationType: table
   metadata:
+    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C1
           stepCounter: S4
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
         name: ACCOUNTCONTACTID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C2
           stepCounter: S4
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
         name: ROLE
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C3
           stepCounter: S4
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
         name: ID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C4
           stepCounter: S4
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
         name: BEANVERSION
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C5
           stepCounter: S4
         config: {}
-        dataType: DATETIME
-        defaultValue: ""
+        dataType: TIMESTAMP
         description: ""
         name: UPDATETIME
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BC_ACCOUNTCONTACTROLE: S4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACTROLE
+        join:
+          joinCondition: |
+            FROM ref('SRC', 'BC_ACCOUNTCONTACTROLE')
+        name: BC_ACCOUNTCONTACTROLE
+        noLinkRefs: []
   name: BC_ACCOUNTCONTACTROLE
-  schema: ""
-  sqlType: Source
+  overrideSQL: false
+  schema: "RAW"
+  sqlType: Stage
   type: sourceInput
   version: 1
-
 type: Node
