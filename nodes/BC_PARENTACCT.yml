@@ -1,0 +1,89 @@
+fileVersion: 1
+id: S2
+name: BC_PARENTACCT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: "PC_COALESCE_DB"
+  deployEnabled: true
+  description: "Source node for BC_PARENTACCT"
+  isMultisource: false
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S2
+        config: {}
+        dataType: "NUMBER"
+        description: ""
+        name: OWNERID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S2
+        config: {}
+        dataType: "NUMBER"
+        description: ""
+        name: FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S2
+        config: {}
+        dataType: "VARCHAR"
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S2
+        config: {}
+        dataType: "TIMESTAMP"
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BC_PARENTACCT: S2
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_PARENTACCT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'BC_PARENTACCT') }}
+        name: BC_PARENTACCT
+        noLinkRefs: []
+  name: BC_PARENTACCT
+  overrideSQL: false
+  schema: "RAW"
+  sqlType: Stage
+  type: sourceInput
+  version: 1
+type: Node
