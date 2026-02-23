@@ -7,9 +7,9 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: Lookup transformation - Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID to determine if record exists and needs update
+  description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
   isMultisource: true
-  locationName: WORK
+  locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
@@ -22,7 +22,7 @@ operation:
           columnCounter: 1
           stepCounter: 1
         config: {}
-        dataType: VARCHAR
+        dataType: INTEGER
         description: Account Number
         name: ACCOUNTNUMBER
         nullable: true
@@ -39,7 +39,7 @@ operation:
           columnCounter: 2
           stepCounter: 1
         config: {}
-        dataType: VARCHAR
+        dataType: STRING
         description: Account Name
         name: ACCOUNTNAME
         nullable: true
@@ -56,9 +56,9 @@ operation:
           columnCounter: 3
           stepCounter: 1
         config: {}
-        dataType: VARCHAR
-        description: Public ID
-        name: PUBLICID
+        dataType: INTEGER
+        description: Account Type ID
+        name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -70,12 +70,199 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Account Type Name
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Billing Level ID
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Billing Level Name
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Service Tier ID
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Service Tier Name
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Security Zone ID
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Security Zone Name
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Segment ID
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Segment Name
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: Close Date
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: Create Time
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
           columnCounter: 15
           stepCounter: 1
         config: {}
-        dataType: NUMBER
-        description: Bean Version from source
-        name: BEANVERSION
+        dataType: INTEGER
+        description: Delinquency Status ID
+        name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -90,10 +277,10 @@ operation:
           columnCounter: 16
           stepCounter: 1
         config: {}
-        dataType: NUMBER
-        description: Batch ID
-        name: BATCHID
-        nullable: false
+        dataType: STRING
+        description: Delinquency Status Name
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 16
@@ -105,15 +292,304 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 17
-          stepCounter: 2
+          stepCounter: 1
         config: {}
-        dataType: NUMBER
-        description: EDW Bean Version from DIMBILLINGACCOUNT lookup
-        name: EDWBEANVERSION
+        dataType: INTEGER
+        description: First Twice Per Month Invoice DOM
+        name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
+              - columnCounter: 17
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Second Twice Per Month Invoice DOM
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Public ID
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Account ID
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 21
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Bean Version
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Retired Flag
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: Update Time
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Parent Account Foreign Entity ID
+        name: PARENTACCT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 25
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Contact First Name
+        name: CONTACT_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Contact Last Name
+        name: CONTACT_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Address Line 1
+        name: ADDRESSLINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 27
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Address Line 2
+        name: ADDRESSLINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Address Line 3
+        name: ADDRESSLINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: City
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 30
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: Postal Code
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: State Name
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: Batch ID from variable
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: EDW Bean Version from lookup
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34
                 stepCounter: 2
             transform: ""
     cteString: ""
@@ -124,29 +600,29 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: WORK
+          - locationName: SRC
             nodeName: SRC_TR_DERIVED_BATCHID
         join:
-          joinCondition: |
-            FROM {{ ref('WORK', 'SRC_TR_DERIVED_BATCHID') }} SRC_TR_DERIVED_BATCHID
-        name: SRC_TR_LOOKUP_BEANVERSION
+          joinCondition: |-
+            FROM {{ ref('SRC', 'SRC_TR_DERIVED_BATCHID') }} SRC_TR_DERIVED_BATCHID
+        name: SRC_TR_DERIVED_BATCHID
         noLinkRefs: []
       - aliases:
           DIMBILLINGACCOUNT: 2
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: WORK
+          - locationName: TARGET
             nodeName: DIMBILLINGACCOUNT
         join:
-          joinCondition: |
-            LEFT JOIN {{ ref('WORK', 'DIMBILLINGACCOUNT') }} DIMBILLINGACCOUNT
+          joinCondition: |-
+            LEFT JOIN {{ ref('TARGET', 'DIMBILLINGACCOUNT') }} DIMBILLINGACCOUNT
             ON SRC_TR_DERIVED_BATCHID.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
-        name: SRC_TR_LOOKUP_BEANVERSION
+        name: DIMBILLINGACCOUNT
         noLinkRefs: []
   name: SRC_TR_LOOKUP_BEANVERSION
   overrideSQL: false
   schema: ""
-  sqlType: DT113:::156
+  sqlType: Stage
   type: sql
   version: 1
