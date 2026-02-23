@@ -1,0 +1,53 @@
+fileVersion: 1
+id: dimbillingaccount_lookup_beanversion_node
+name: SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+  database: ""
+  deployEnabled: true
+  description: Lookup transformation - Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID
+  isMultisource: true
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - columnReference:
+          columnCounter: 20
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: EDW Bean Version from lookup
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 2
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - dependencies:
+          - locationName: SRC
+            nodeName: SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID
+          - locationName: TARGET
+            nodeName: DIMBILLINGACCOUNT
+        join:
+          joinCondition: |-
+            FROM {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT_DERIVED_BATCHID') }} "DERIVED"
+            LEFT JOIN {{ ref('TARGET', 'DIMBILLINGACCOUNT') }} "DIM"
+              ON "DERIVED"."PUBLICID" = "DIM"."PUBLICID"
+        name: SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION
+        noLinkRefs: []
+  name: SRC_DIMBILLINGACCOUNT_LOOKUP_BEANVERSION
+  overrideSQL: false
+  schema: ""
+  sqlType: Transform
+  type: sql
+  version: 1
