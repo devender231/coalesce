@@ -1,38 +1,48 @@
 name: SRC_TR_CONDITIONAL_SPLIT
-type: CONDITIONAL_SPLIT
-execution_order: 4
-description: Routes rows based on whether BeanVersion matches EDWBeanVersion to determine INSERT vs UPDATE vs UNCHANGED
+type: conditional_split
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion
 
 input:
   source: SRC_TR_LOOKUP_BEANVERSION
-  description: Data with EDW BeanVersion lookup results
-
+  
+transformation:
+  type: CONDITIONAL_SPLIT
+  
 split_conditions:
   - output_name: UNCHANGED_ROWS
-    condition: BeanVersion == EDWBeanVersion
+    condition: "BEANVERSION == EDWBeanVersion"
     description: Rows where source BeanVersion matches EDW BeanVersion (no changes)
     priority: 1
     
   - output_name: UPDATE_ROWS
-    condition: BeanVersion != EDWBeanVersion AND !ISNULL(EDWBeanVersion)
-    description: Rows where BeanVersion differs from EDW (updates required)
+    condition: "BEANVERSION != EDWBeanVersion AND !ISNULL(EDWBeanVersion)"
+    description: Rows where BeanVersion differs (updates needed)
     priority: 2
     
   - output_name: INSERT_ROWS
-    condition: ISNULL(EDWBeanVersion)
-    description: Rows with no match in EDW (new inserts)
+    condition: "ISNULL(EDWBeanVersion)"
+    description: Rows with no match in lookup (new inserts)
     priority: 3
     default: true
 
-output:
+logic:
+  description: |
+    Splits data flow into three paths:
+    1. UNCHANGED_ROWS: BeanVersion matches - no action needed
+    2. UPDATE_ROWS: BeanVersion differs - update existing records
+    3. INSERT_ROWS: No lookup match - insert new records
+
+output_paths:
   - name: UNCHANGED_ROWS
-    description: Records with no changes
-    route_to: SRC_TR_ROW_COUNT_UNCHANGED
+    destination: SRC_TR_ROW_COUNT_UNCHANGED
     
   - name: UPDATE_ROWS
-    description: Records requiring updates
-    route_to: SRC_TR_ROW_COUNT_UPDATE
+    destination: SRC_TR_ROW_COUNT_UPDATE
     
   - name: INSERT_ROWS
-    description: New records for insertion
-    route_to: SRC_TR_ROW_COUNT_INSERT
+    destination: SRC_TR_ROW_COUNT_INSERT
+
+execution_order: 5
+
+dependencies:
+  - SRC_TR_LOOKUP_BEANVERSION
