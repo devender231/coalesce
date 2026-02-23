@@ -1,117 +1,138 @@
 name: SRC_JOIN_DIMBILLINGACCOUNT
-type: JOIN
-description: Joins all source tables for DimBillingAccount with proper execution order
+type: join
+description: Joins all source tables for DimBillingAccount ETL pipeline
 
 sources:
-  - BC_ACCOUNT
-  - BCTL_ACCOUNTTYPE
-  - BC_PARENTACCT
-  - BCTL_BILLINGLEVEL
-  - BCTL_CUSTOMERSERVICETIER
-  - BC_SECURITYZONE
-  - BCTL_DELINQUENCYSTATUS
-  - BCTL_ACCOUNTSEGMENT
-  - BC_ACCOUNTCONTACT
-  - BC_ACCOUNTCONTACTROLE
-  - BCTL_ACCOUNTROLE
-  - BC_CONTACT
-  - BC_ADDRESS
-  - BCTL_STATE
-  - DIMBILLINGACCOUNT
+  - name: BC_ACCOUNT
+    alias: BC_ACCOUNT
+  - name: BCTL_ACCOUNTTYPE
+    alias: BCTL_ACCOUNTTYPE
+  - name: BC_PARENTACCT
+    alias: BC_PARENTACCT
+  - name: BCTL_BILLINGLEVEL
+    alias: BCTL_BILLINGLEVEL
+  - name: BCTL_CUSTOMERSERVICETIER
+    alias: BCTL_CUSTOMERSERVICETIER
+  - name: BC_SECURITYZONE
+    alias: BC_SECURITYZONE
+  - name: BCTL_DELINQUENCYSTATUS
+    alias: BCTL_DELINQUENCYSTATUS
+  - name: BCTL_ACCOUNTSEGMENT
+    alias: BCTL_ACCOUNTSEGMENT
+  - name: BC_ACCOUNTCONTACT
+    alias: BC_ACCOUNTCONTACT
+  - name: BC_ACCOUNTCONTACTROLE
+    alias: BC_ACCOUNTCONTACTROLE
+  - name: BCTL_ACCOUNTROLE
+    alias: BCTL_ACCOUNTROLE
+  - name: BC_CONTACT
+    alias: BC_CONTACT
+  - name: BC_ADDRESS
+    alias: BC_ADDRESS
+  - name: BCTL_STATE
+    alias: BCTL_STATE
+  - name: DIMBILLINGACCOUNT
+    alias: DIMBILLINGACCOUNT
 
 joins:
-  - join_order: 1
+  - join_type: LEFT
     left_table: BC_ACCOUNT
     right_table: BCTL_ACCOUNTTYPE
-    join_type: LEFT
     condition: BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
     
-  - join_order: 2
+  - join_type: LEFT
     left_table: BC_ACCOUNT
     right_table: BC_PARENTACCT
-    join_type: LEFT
     condition: BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
     
-  - join_order: 3
+  - join_type: LEFT
     left_table: BC_ACCOUNT
     right_table: BCTL_BILLINGLEVEL
-    join_type: LEFT
     condition: BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
     
-  - join_order: 4
+  - join_type: LEFT
     left_table: BC_ACCOUNT
     right_table: BCTL_CUSTOMERSERVICETIER
-    join_type: LEFT
     condition: BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
     
-  - join_order: 5
+  - join_type: LEFT
     left_table: BC_ACCOUNT
     right_table: BC_SECURITYZONE
-    join_type: LEFT
     condition: BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
     
-  - join_order: 6
+  - join_type: LEFT
     left_table: BC_ACCOUNT
     right_table: BCTL_DELINQUENCYSTATUS
-    join_type: LEFT
     condition: BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
     
-  - join_order: 7
+  - join_type: LEFT
     left_table: BC_ACCOUNT
     right_table: BCTL_ACCOUNTSEGMENT
-    join_type: LEFT
     condition: BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
     
-  - join_order: 8
+  - join_type: LEFT
     left_table: BC_ACCOUNT
-    right_table: INSUREDINFO
-    join_type: LEFT
-    condition: INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
-    description: Subquery join for insured information
-    
-  - join_order: 9
-    left_table: INSUREDINFO
     right_table: BC_ACCOUNTCONTACT
-    join_type: INNER
-    condition: BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
+    join_alias: INSUREDINFO
+    condition: BC_ACCOUNTCONTACT.INSUREDACCOUNTID = BC_ACCOUNT.ID
     
-  - join_order: 10
+  - join_type: INNER
     left_table: INSUREDINFO
     right_table: BC_ACCOUNTCONTACTROLE
-    join_type: INNER
     condition: BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
     
-  - join_order: 11
+  - join_type: INNER
     left_table: INSUREDINFO
     right_table: BCTL_ACCOUNTROLE
-    join_type: INNER
     condition: BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
     
-  - join_order: 12
+  - join_type: LEFT
     left_table: INSUREDINFO
     right_table: BC_CONTACT
-    join_type: LEFT
     condition: BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
     
-  - join_order: 13
+  - join_type: LEFT
     left_table: INSUREDINFO
     right_table: BC_ADDRESS
-    join_type: LEFT
     condition: BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
     
-  - join_order: 14
+  - join_type: LEFT
     left_table: INSUREDINFO
     right_table: BCTL_STATE
-    join_type: LEFT
     condition: BCTL_STATE.ID = BC_ADDRESS.STATE
-    
-  - join_order: 15
-    left_table: LOOKUP_INPUT
-    right_table: DIMBILLINGACCOUNT
-    join_type: INNER
-    condition: LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
-    description: Lookup join for existing records
 
-output:
-  name: JOINED_DIMBILLINGACCOUNT_DATA
-  description: All source tables joined with proper relationships preserved
+output_columns:
+  - BC_ACCOUNT.ACCOUNTNUMBER
+  - BC_ACCOUNT.ACCOUNTNAME
+  - BC_ACCOUNT.ACCOUNTTYPE
+  - BC_ACCOUNT.BILLINGLEVEL
+  - BC_ACCOUNT.SERVICETIER
+  - BC_ACCOUNT.SECURITYZONEID
+  - BC_ACCOUNT.SEGMENT
+  - BC_ACCOUNT.CLOSEDATE
+  - BC_ACCOUNT.CREATETIME
+  - BC_ACCOUNT.DELINQUENCYSTATUS
+  - BC_ACCOUNT.FIRSTTWICEPERMTHINVOICEDOM
+  - BC_ACCOUNT.SECONDTWICEPERMTHINVOICEDOM
+  - BC_ACCOUNT.PUBLICID
+  - BC_ACCOUNT.ID
+  - BC_ACCOUNT.BEANVERSION
+  - BC_ACCOUNT.RETIRED
+  - BC_ACCOUNT.UPDATETIME
+  - BCTL_ACCOUNTTYPE.NAME as ACCOUNTTYPE_NAME
+  - BC_PARENTACCT.FOREIGNENTITYID
+  - BCTL_BILLINGLEVEL.NAME as BILLINGLEVEL_NAME
+  - BCTL_CUSTOMERSERVICETIER.NAME as SERVICETIER_NAME
+  - BC_SECURITYZONE.NAME as SECURITYZONE_NAME
+  - BCTL_DELINQUENCYSTATUS.NAME as DELINQUENCYSTATUS_NAME
+  - BCTL_ACCOUNTSEGMENT.NAME as SEGMENT_NAME
+  - BC_CONTACT.FIRSTNAME
+  - BC_CONTACT.LASTNAME
+  - BC_ADDRESS.ADDRESSLINE1
+  - BC_ADDRESS.ADDRESSLINE2
+  - BC_ADDRESS.ADDRESSLINE3
+  - BC_ADDRESS.CITY
+  - BC_ADDRESS.POSTALCODE
+  - BCTL_STATE.NAME as STATE_NAME
+
+execution_order: 1
