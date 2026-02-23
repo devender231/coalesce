@@ -1,0 +1,38 @@
+name: SRC_TR_CONDITIONAL_SPLIT
+type: CONDITIONAL_SPLIT
+execution_order: 4
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion to determine INSERT vs UPDATE vs UNCHANGED
+
+input:
+  source: SRC_TR_LOOKUP_BEANVERSION
+  description: Data with EDW BeanVersion lookup results
+
+split_conditions:
+  - output_name: UNCHANGED_ROWS
+    condition: BeanVersion == EDWBeanVersion
+    description: Rows where source BeanVersion matches EDW BeanVersion (no changes)
+    priority: 1
+    
+  - output_name: UPDATE_ROWS
+    condition: BeanVersion != EDWBeanVersion AND !ISNULL(EDWBeanVersion)
+    description: Rows where BeanVersion differs from EDW (updates required)
+    priority: 2
+    
+  - output_name: INSERT_ROWS
+    condition: ISNULL(EDWBeanVersion)
+    description: Rows with no match in EDW (new inserts)
+    priority: 3
+    default: true
+
+output:
+  - name: UNCHANGED_ROWS
+    description: Records with no changes
+    route_to: SRC_TR_ROW_COUNT_UNCHANGED
+    
+  - name: UPDATE_ROWS
+    description: Records requiring updates
+    route_to: SRC_TR_ROW_COUNT_UPDATE
+    
+  - name: INSERT_ROWS
+    description: New records for insertion
+    route_to: SRC_TR_ROW_COUNT_INSERT
