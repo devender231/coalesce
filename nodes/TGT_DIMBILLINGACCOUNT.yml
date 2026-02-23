@@ -1,0 +1,571 @@
+fileVersion: 1
+id: TGT1
+name: TGT_DIMBILLINGACCOUNT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: "PC_COALESCE_DB"
+  deployEnabled: true
+  description: "Target table load for DIMBILLINGACCOUNT from SRC_TR_CONDITIONALSPLIT with INSERT/UPDATE SCD logic"
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Account number"
+        name: ACCOUNTNUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Account name"
+        name: ACCOUNTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Account type code"
+        name: ACCOUNTTYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Billing level code"
+        name: BILLINGLEVEL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Service tier code"
+        name: SERVICETIER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Security zone ID"
+        name: SECURITYZONEID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Segment code"
+        name: SEGMENT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: TGT1
+        config: {}
+        dataType: "TIMESTAMP"
+        description: "Account close date"
+        name: CLOSEDATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: TGT1
+        config: {}
+        dataType: "TIMESTAMP"
+        description: "Account create time"
+        name: CREATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Delinquency status code"
+        name: DELINQUENCYSTATUS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "First twice per month invoice"
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Second twice per month invoice"
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Public identifier (business key)"
+        name: PUBLICID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Account ID (surrogate key)"
+        name: ID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Bean version for SCD tracking"
+        name: BEANVERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Retired flag"
+        name: RETIRED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: TGT1
+        config: {}
+        dataType: "TIMESTAMP"
+        description: "Last update time"
+        name: UPDATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C18
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Account type name"
+        name: ACCOUNTTYPENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C18
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C19
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Parent account ID"
+        name: PARENTACCOUNTID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C19
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C20
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Billing level name"
+        name: BILLINGLEVELNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C20
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Service tier name"
+        name: SERVICETIER_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C21
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Security zone name"
+        name: SECURITYZONENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C22
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C23
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Delinquency status name"
+        name: DELINQUENCYSTATUSNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C23
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C24
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Segment name"
+        name: SEGMENTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C24
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C25
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Insured first name"
+        name: FIRSTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C25
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C26
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Insured last name"
+        name: LASTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C26
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C27
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Address line 1"
+        name: ADDRESSLINE1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C27
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C28
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Address line 2"
+        name: ADDRESSLINE2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C28
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C29
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Address line 3"
+        name: ADDRESSLINE3
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C29
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C30
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "City"
+        name: CITY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C30
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C31
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "Postal code"
+        name: POSTALCODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C31
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C32
+          stepCounter: TGT1
+        config: {}
+        dataType: "VARCHAR"
+        description: "State name"
+        name: STATENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C32
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C33
+          stepCounter: TGT1
+        config: {}
+        dataType: "NUMBER"
+        description: "Batch ID from pipeline variable"
+        name: BATCHID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C33
+                stepCounter: T5
+            transform: ""
+        uniqueKey: false
+    cteString: ""
+    enabledColumnTestIDs: []
+    nodeType: target
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONALSPLIT: T5
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_CONDITIONALSPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT') }}
+        name: SRC_TR_CONDITIONALSPLIT
+        noLinkRefs: []
+  name: TGT_DIMBILLINGACCOUNT
+  overrideSQL: false
+  schema: "EDW"
+  sqlType: Target
+  type: sql
+  version: 1
+
+type: Node
