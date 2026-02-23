@@ -1,22 +1,28 @@
 name: SRC_TR_ROW_COUNT_UPDATE
-type: ROW_COUNT
-execution_order: 7
-description: Counts update rows where BeanVersion differs from EDW BeanVersion
+type: row_count
+description: Counts update rows (BeanVersion different)
 
 input:
   source: SRC_TR_CONDITIONAL_SPLIT
-  source_output: UPDATE_ROWS
-  description: Rows routed to update path from conditional split
-
-transformation_logic:
+  source_path: UPDATE_ROWS
+  
+transformation:
+  type: ROW_COUNT
   operation: COUNT_ROWS
-  variable_name: User::UpdateCount
-  description: Stores count of existing rows requiring updates in DIMBILLINGACCOUNT
+  output_variable: User::UpdateCount
+  
+logic:
+  description: Counts rows where BeanVersion differs from EDWBeanVersion (updates needed)
+  variable_assignment: User::UpdateCount = COUNT(*)
+  condition: BEANVERSION != EDWBeanVersion AND !ISNULL(EDWBeanVersion)
 
 output:
-  name: UPDATE_ROW_COUNT
-  variable: User::UpdateCount
   pass_through: true
-  description: Counts and passes update rows to target for loading
-  target_table: DIMBILLINGACCOUNT
+  row_count_variable: User::UpdateCount
+  destination: DIMBILLINGACCOUNT
   load_type: UPDATE
+
+execution_order: 8
+
+dependencies:
+  - SRC_TR_CONDITIONAL_SPLIT
