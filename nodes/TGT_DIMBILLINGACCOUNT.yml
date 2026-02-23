@@ -494,6 +494,42 @@ operation:
             FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT') }}
         name: TGT_DIMBILLINGACCOUNT
         noLinkRefs: []
+      - aliases:
+          SRC_TR_ROWCOUNT_UNCHANGED: T6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_ROWCOUNT_UNCHANGED
+        join:
+          joinCondition: |
+            -- {{ ref('SRC', 'SRC_TR_ROWCOUNT_UNCHANGED') }}
+        name: TGT_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          SRC_TR_ROWCOUNT_INSERT: T8
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_ROWCOUNT_INSERT
+        join:
+          joinCondition: |
+            -- {{ ref('SRC', 'SRC_TR_ROWCOUNT_INSERT') }}
+        name: TGT_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          SRC_TR_ROWCOUNT_UPDATE: T7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_ROWCOUNT_UPDATE
+        join:
+          joinCondition: |
+            -- {{ ref('SRC', 'SRC_TR_ROWCOUNT_UPDATE') }}
+        name: TGT_DIMBILLINGACCOUNT
+        noLinkRefs: []
   name: TGT_DIMBILLINGACCOUNT
   overrideSQL: false
   schema: "RAW"
