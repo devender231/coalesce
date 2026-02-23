@@ -497,7 +497,7 @@ operation:
   name: TGT_DIMBILLINGACCOUNT
   overrideSQL: false
   schema: "RAW"
-  sqlType: Stage
+  sqlType: Target
   type: sql
   version: 1
 
