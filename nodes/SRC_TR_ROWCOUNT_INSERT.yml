@@ -1,0 +1,41 @@
+fileVersion: 1
+id: T8
+name: SRC_TR_ROWCOUNT_INSERT
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Counts new insert rows where EDWBEANVERSION is null into User::InsertCount"
+  locationName: SRC
+  materializationType: view
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: T8
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: INSERTCOUNT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "@[User::InsertCount]"
+        transform: ""
+        uniqueKey: false
+    sourceSteps:
+      - stepId: T5
+    splitOutput: "Insert"
+    variableName: "User::InsertCount"
+  name: SRC_TR_ROWCOUNT_INSERT
+  schema: ""
+  sqlType: RowCount
+  type: sql
+  version: 1
+
+type: Node
