@@ -1,0 +1,104 @@
+fileVersion: 1
+id: SRC_TR_ROW_COUNT_UNCHANGED
+name: SRC_TR_ROW_COUNT_UNCHANGED
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Row Count transformation for unchanged rows - Counts rows where BeanVersion equals EDWBeanVersion and stores in User::UnChangeCount variable
+  isMultisource: false
+  locationName: WORK
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Account Number
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Public ID
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Split output type
+        name: SPLIT_OUTPUT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER
+        description: Row count for unchanged records
+        name: UNCHANGED_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: COUNT(*)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONAL_SPLIT: 1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: SRC_TR_CONDITIONAL_SPLIT
+        join:
+          joinCondition: |
+            FROM {{ ref('WORK', 'SRC_TR_CONDITIONAL_SPLIT') }} SRC_TR_CONDITIONAL_SPLIT
+            WHERE SPLIT_OUTPUT = 'UNCHANGED'
+        name: SRC_TR_ROW_COUNT_UNCHANGED
+        noLinkRefs: []
+  name: SRC_TR_ROW_COUNT_UNCHANGED
+  overrideSQL: false
+  schema: ""
+  sqlType: DT113:::156
+  type: sql
+  version: 1
