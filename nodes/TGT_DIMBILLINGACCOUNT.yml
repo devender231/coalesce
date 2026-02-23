@@ -10,7 +10,7 @@ operation:
     truncateBefore: true
   database: "PC_COALESCE_DB"
   deployEnabled: true
-  description: "Target table for DIMBILLINGACCOUNT loaded from SRC_TR_CONDITIONALSPLIT with SCD INSERT/UPDATE logic"
+  description: "Target table DIMBILLINGACCOUNT — final materialization of all source and transformation nodes from EDW_BC_Load_DimBillingAccount SSIS package"
   isMultisource: false
   locationName: TARGET
   materializationType: table
@@ -163,7 +163,7 @@ operation:
           stepCounter: TGT1
         config: {}
         dataType: "NUMBER"
-        description: "First twice per month invoice"
+        description: "First twice per month invoice DOM"
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -177,7 +177,7 @@ operation:
           stepCounter: TGT1
         config: {}
         dataType: "NUMBER"
-        description: "Second twice per month invoice"
+        description: "Second twice per month invoice DOM"
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -191,7 +191,7 @@ operation:
           stepCounter: TGT1
         config: {}
         dataType: "VARCHAR"
-        description: "Public identifier (business key)"
+        description: "Public identifier — business key"
         name: PUBLICID
         nullable: false
         sourceColumnReferences:
@@ -205,7 +205,7 @@ operation:
           stepCounter: TGT1
         config: {}
         dataType: "NUMBER"
-        description: "Account ID (surrogate key)"
+        description: "Account ID — surrogate key"
         name: ID
         nullable: false
         sourceColumnReferences:
@@ -471,7 +471,7 @@ operation:
           stepCounter: TGT1
         config: {}
         dataType: "NUMBER"
-        description: "Batch ID from pipeline variable"
+        description: "Batch ID from User::BatchID variable"
         name: BATCHID
         nullable: true
         sourceColumnReferences:
@@ -492,7 +492,271 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT') }}
-        name: TGT_DIMBILLINGACCOUNT
+        name: SRC_TR_CONDITIONALSPLIT
+        noLinkRefs: []
+      - aliases:
+          SRC_JOINS_DIMBILLINGACCOUNT: T1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_JOINS_DIMBILLINGACCOUNT
+        join:
+          joinCondition: |
+            -- dependency: SRC_JOINS_DIMBILLINGACCOUNT
+        name: SRC_JOINS_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          SRC_TR_ROWCOUNT_SOURCE: T2
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_ROWCOUNT_SOURCE
+        join:
+          joinCondition: |
+            -- dependency: SRC_TR_ROWCOUNT_SOURCE
+        name: SRC_TR_ROWCOUNT_SOURCE
+        noLinkRefs: []
+      - aliases:
+          SRC_TR_DERIVED_BATCHID: T3
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_DERIVED_BATCHID
+        join:
+          joinCondition: |
+            -- dependency: SRC_TR_DERIVED_BATCHID
+        name: SRC_TR_DERIVED_BATCHID
+        noLinkRefs: []
+      - aliases:
+          SRC_TR_LOOKUP_BEANVERSION: T4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_LOOKUP_BEANVERSION
+        join:
+          joinCondition: |
+            -- dependency: SRC_TR_LOOKUP_BEANVERSION
+        name: SRC_TR_LOOKUP_BEANVERSION
+        noLinkRefs: []
+      - aliases:
+          SRC_TR_ROWCOUNT_UNCHANGED: T6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_ROWCOUNT_UNCHANGED
+        join:
+          joinCondition: |
+            -- dependency: SRC_TR_ROWCOUNT_UNCHANGED
+        name: SRC_TR_ROWCOUNT_UNCHANGED
+        noLinkRefs: []
+      - aliases:
+          SRC_TR_ROWCOUNT_UPDATE: T7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_ROWCOUNT_UPDATE
+        join:
+          joinCondition: |
+            -- dependency: SRC_TR_ROWCOUNT_UPDATE
+        name: SRC_TR_ROWCOUNT_UPDATE
+        noLinkRefs: []
+      - aliases:
+          SRC_TR_ROWCOUNT_INSERT: T8
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_ROWCOUNT_INSERT
+        join:
+          joinCondition: |
+            -- dependency: SRC_TR_ROWCOUNT_INSERT
+        name: SRC_TR_ROWCOUNT_INSERT
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNT: S1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+        join:
+          joinCondition: |
+            -- dependency: BC_ACCOUNT
+        name: BC_ACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BC_PARENTACCT: S2
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_PARENTACCT
+        join:
+          joinCondition: |
+            -- dependency: BC_PARENTACCT
+        name: BC_PARENTACCT
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNTCONTACT: S3
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACT
+        join:
+          joinCondition: |
+            -- dependency: BC_ACCOUNTCONTACT
+        name: BC_ACCOUNTCONTACT
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNTCONTACTROLE: S4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACTROLE
+        join:
+          joinCondition: |
+            -- dependency: BC_ACCOUNTCONTACTROLE
+        name: BC_ACCOUNTCONTACTROLE
+        noLinkRefs: []
+      - aliases:
+          BCTL_ACCOUNTROLE: S5
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTROLE
+        join:
+          joinCondition: |
+            -- dependency: BCTL_ACCOUNTROLE
+        name: BCTL_ACCOUNTROLE
+        noLinkRefs: []
+      - aliases:
+          BC_CONTACT: S6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_CONTACT
+        join:
+          joinCondition: |
+            -- dependency: BC_CONTACT
+        name: BC_CONTACT
+        noLinkRefs: []
+      - aliases:
+          BC_ADDRESS: S7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ADDRESS
+        join:
+          joinCondition: |
+            -- dependency: BC_ADDRESS
+        name: BC_ADDRESS
+        noLinkRefs: []
+      - aliases:
+          BCTL_STATE: S8
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_STATE
+        join:
+          joinCondition: |
+            -- dependency: BCTL_STATE
+        name: BCTL_STATE
+        noLinkRefs: []
+      - aliases:
+          BCTL_ACCOUNTTYPE: S9
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTTYPE
+        join:
+          joinCondition: |
+            -- dependency: BCTL_ACCOUNTTYPE
+        name: BCTL_ACCOUNTTYPE
+        noLinkRefs: []
+      - aliases:
+          BCTL_BILLINGLEVEL: S10
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_BILLINGLEVEL
+        join:
+          joinCondition: |
+            -- dependency: BCTL_BILLINGLEVEL
+        name: BCTL_BILLINGLEVEL
+        noLinkRefs: []
+      - aliases:
+          BCTL_CUSTOMERSERVICETIER: S11
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_CUSTOMERSERVICETIER
+        join:
+          joinCondition: |
+            -- dependency: BCTL_CUSTOMERSERVICETIER
+        name: BCTL_CUSTOMERSERVICETIER
+        noLinkRefs: []
+      - aliases:
+          BC_SECURITYZONE: S12
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_SECURITYZONE
+        join:
+          joinCondition: |
+            -- dependency: BC_SECURITYZONE
+        name: BC_SECURITYZONE
+        noLinkRefs: []
+      - aliases:
+          BCTL_DELINQUENCYSTATUS: S13
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_DELINQUENCYSTATUS
+        join:
+          joinCondition: |
+            -- dependency: BCTL_DELINQUENCYSTATUS
+        name: BCTL_DELINQUENCYSTATUS
+        noLinkRefs: []
+      - aliases:
+          BCTL_ACCOUNTSEGMENT: S14
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTSEGMENT
+        join:
+          joinCondition: |
+            -- dependency: BCTL_ACCOUNTSEGMENT
+        name: BCTL_ACCOUNTSEGMENT
+        noLinkRefs: []
+      - aliases:
+          DIMBILLINGACCOUNT: S15
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: DIMBILLINGACCOUNT
+        join:
+          joinCondition: |
+            -- dependency: DIMBILLINGACCOUNT
+        name: DIMBILLINGACCOUNT
         noLinkRefs: []
   name: TGT_DIMBILLINGACCOUNT
   overrideSQL: false
