@@ -1,0 +1,22 @@
+name: SRC_TR_ROW_COUNT_INSERT
+type: ROW_COUNT
+execution_order: 6
+description: Counts new insert rows where lookup found no match in EDW
+
+input:
+  source: SRC_TR_CONDITIONAL_SPLIT
+  source_output: INSERT_ROWS
+  description: Rows routed to insert path from conditional split
+
+transformation_logic:
+  operation: COUNT_ROWS
+  variable_name: User::InsertCount
+  description: Stores count of new rows to be inserted into DIMBILLINGACCOUNT
+
+output:
+  name: INSERT_ROW_COUNT
+  variable: User::InsertCount
+  pass_through: true
+  description: Counts and passes insert rows to target for loading
+  target_table: DIMBILLINGACCOUNT
+  load_type: INSERT
