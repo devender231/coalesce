@@ -1,0 +1,475 @@
+fileVersion: 1
+id: SRC_JOIN_ALL
+name: SRC_JOIN_ALL
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Combined JOIN operations for EDW_BC_Load_DimBillingAccount - Loads and updates Snowflake table DIMBILLINGACCOUNT from GuideWire
+  isMultisource: true
+  locationName: WORK
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Account Number from BC_ACCOUNT
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Account Name from BC_ACCOUNT
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Public ID from BC_ACCOUNT
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Account Type Description
+        name: ACCOUNTTYPE_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 2
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Parent Account Number
+        name: PARENTACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 3
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Billing Level Description
+        name: BILLINGLEVEL_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Customer Service Tier Description
+        name: SERVICETIER_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 5
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Security Zone Public ID
+        name: SECURITYZONE_PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 6
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Delinquency Status Description
+        name: DELINQUENCYSTATUS_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Account Segment Description
+        name: SEGMENT_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 8
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Contact Name
+        name: CONTACTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 12
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: Address Line 1
+        name: ADDRESSLINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 13
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: City
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 13
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR
+        description: State Description
+        name: STATE_DESC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 14
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER
+        description: Bean Version from BC_ACCOUNT
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BC_ACCOUNT: 1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BC_ACCOUNT
+        join:
+          joinCondition: |
+            FROM {{ ref('WORK', 'BC_ACCOUNT') }} BC_ACCOUNT
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BCTL_ACCOUNTTYPE: 2
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BCTL_ACCOUNTTYPE
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
+            ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BC_PARENTACCT: 3
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BC_PARENTACCT
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BC_PARENTACCT') }} BC_PARENTACCT
+            ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BCTL_BILLINGLEVEL: 4
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BCTL_BILLINGLEVEL
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
+            ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BCTL_CUSTOMERSERVICETIER: 5
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BCTL_CUSTOMERSERVICETIER
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
+            ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BC_SECURITYZONE: 6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BC_SECURITYZONE
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BC_SECURITYZONE') }} BC_SECURITYZONE
+            ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BCTL_DELINQUENCYSTATUS: 7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BCTL_DELINQUENCYSTATUS
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
+            ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BCTL_ACCOUNTSEGMENT: 8
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BCTL_ACCOUNTSEGMENT
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
+            ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          INSUREDINFO: 9
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: INSUREDINFO
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'INSUREDINFO') }} INSUREDINFO
+            ON INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNTCONTACT: 10
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BC_ACCOUNTCONTACT
+        join:
+          joinCondition: |
+            INNER JOIN {{ ref('WORK', 'BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
+            ON BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNTCONTACTROLE: 11
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BC_ACCOUNTCONTACTROLE
+        join:
+          joinCondition: |
+            INNER JOIN {{ ref('WORK', 'BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
+            ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BCTL_ACCOUNTROLE: 12
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BCTL_ACCOUNTROLE
+        join:
+          joinCondition: |
+            INNER JOIN {{ ref('WORK', 'BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
+            ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE 
+            AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BC_CONTACT: 13
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BC_CONTACT
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BC_CONTACT') }} BC_CONTACT
+            ON BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BC_ADDRESS: 14
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BC_ADDRESS
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BC_ADDRESS') }} BC_ADDRESS
+            ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+      - aliases:
+          BCTL_STATE: 15
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: BCTL_STATE
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('WORK', 'BCTL_STATE') }} BCTL_STATE
+            ON BCTL_STATE.ID = BC_ADDRESS.STATE
+        name: SRC_JOIN_ALL
+        noLinkRefs: []
+  name: SRC_JOIN_ALL
+  overrideSQL: false
+  schema: ""
+  sqlType: DT113:::156
+  type: sql
+  version: 1
