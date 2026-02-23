@@ -10,7 +10,7 @@ operation:
     truncateBefore: true
   database: "PC_COALESCE_DB"
   deployEnabled: true
-  description: "Target table for DIMBILLINGACCOUNT — final materialization from SCD pipeline"
+  description: "Target table for DIMBILLINGACCOUNT — final materialization from SCD pipeline EDW_BC_Load_DimBillingAccount"
   isMultisource: false
   locationName: TARGET
   materializationType: table
@@ -471,7 +471,7 @@ operation:
           stepCounter: TGT1
         config: {}
         dataType: "NUMBER"
-        description: "Batch ID from User::BatchID"
+        description: "Batch ID from User::BatchID variable"
         name: BATCHID
         nullable: true
         sourceColumnReferences:
