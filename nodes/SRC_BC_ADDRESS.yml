@@ -2,196 +2,148 @@ fileVersion: 1
 id: S7
 name: BC_ADDRESS
 operation:
-  database: ""
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: "PC_COALESCE_DB"
   deployEnabled: true
-  description: ""
+  description: "Source node for BC_ADDRESS"
+  isMultisource: false
   locationName: SRC
+  materializationType: table
   metadata:
+    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C1
           stepCounter: S7
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
         name: ID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C2
           stepCounter: S7
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
         name: ADDRESSLINE1
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C3
           stepCounter: S7
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
         name: ADDRESSLINE2
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C4
           stepCounter: S7
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
         name: ADDRESSLINE3
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C5
           stepCounter: S7
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
         name: CITY
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C6
           stepCounter: S7
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
         name: POSTALCODE
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C7
           stepCounter: S7
         config: {}
-        dataType: INTEGER
-        defaultValue: ""
+        dataType: NUMBER
         description: ""
         name: STATE
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C8
           stepCounter: S7
         config: {}
-        dataType: STRING
-        defaultValue: ""
+        dataType: VARCHAR
         description: ""
         name: BEANVERSION
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: C9
           stepCounter: S7
         config: {}
-        dataType: DATETIME
-        defaultValue: ""
+        dataType: TIMESTAMP
         description: ""
         name: UPDATETIME
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
-
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BC_ADDRESS: S7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ADDRESS
+        join:
+          joinCondition: |
+            FROM ref('SRC', 'BC_ADDRESS')
+        name: BC_ADDRESS
+        noLinkRefs: []
   name: BC_ADDRESS
-  schema: ""
-  sqlType: Source
+  overrideSQL: false
+  schema: "RAW"
+  sqlType: Stage
   type: sourceInput
   version: 1
-
 type: Node
