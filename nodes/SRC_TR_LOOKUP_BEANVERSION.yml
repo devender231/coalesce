@@ -1,0 +1,33 @@
+name: SRC_TR_LOOKUP_BEANVERSION
+type: LOOKUP
+execution_order: 3
+description: Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID to identify existing records
+
+input:
+  source: SRC_TR_DERIVED_BATCHID
+  description: Data with BatchID added
+
+lookup_configuration:
+  lookup_table: DIMBILLINGACCOUNT
+  lookup_query: |
+    SELECT Publicid, BeanVersion 
+    FROM DimBillingAccount
+  join_condition:
+    - input_column: PUBLICID
+      lookup_column: PUBLICID
+      match_type: EXACT
+  
+  return_columns:
+    - column_name: BeanVersion
+      alias: EDWBeanVersion
+      data_type: STRING
+      description: Existing BeanVersion from EDW for comparison
+  
+  no_match_behavior: PASS_THROUGH
+  description: Returns NULL for EDWBeanVersion if no match found
+
+output:
+  name: DATA_WITH_LOOKUP
+  description: Data enriched with EDW BeanVersion for comparison
+  columns_added:
+    - EDWBeanVersion
