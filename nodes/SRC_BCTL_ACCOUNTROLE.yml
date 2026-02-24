@@ -1,0 +1,67 @@
+fileVersion: 1
+id: S5
+name: SRC_BCTL_ACCOUNTROLE
+type: Node
+operation:
+  name: SRC_BCTL_ACCOUNTROLE
+  database: PC_COALESCE_DB
+  schema: RAW
+  locationName: SRC
+  sqlType: Source
+  type: sourceInput
+  deployEnabled: true
+  overrideSQL: false
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S5
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C1
+            stepCounter: S5
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S5
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: TYPECODE
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C2
+            stepCounter: S5
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTROLE
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} "BCTL_ACCOUNTROLE"
+        name: SRC_BCTL_ACCOUNTROLE
+        noLinkRefs: []
