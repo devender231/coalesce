@@ -1,0 +1,17 @@
+name: SRC_CUSTOMERS
+type: source
+database: PC_COALESCE_DB
+schema: RAW
+location:
+  name: CUSTOMERS
+  database: PC_COALESCE_DB
+  schema: RAW
+columns:
+  - name: CUSTOMER_ID
+    dataType: NUMBER
+  - name: FIRST_NAME
+    dataType: VARCHAR
+  - name: LAST_NAME
+    dataType: VARCHAR
+  - name: EMAIL
+    dataType: VARCHAR
