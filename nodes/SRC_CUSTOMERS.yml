@@ -1,0 +1,123 @@
+fileVersion: 1
+id: "SRC_CUSTOMERS"
+name: "SRC_CUSTOMERS"
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: "DEV ENVIRONMENT"
+  database: "PC_COALESCE_DB"
+  deployEnabled: true
+  description: "Source table for CUSTOMERS"
+  isMultisource: false
+  locationName: "RAW"
+  materializationType: "source"
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: "SRC_CUSTOMERS"
+        config: {}
+        dataType: "INTEGER"
+        description: "Customer ID"
+        hashColumns: []
+        hashDetails: null
+        name: "CUSTOMER_ID"
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: "SRC_CUSTOMERS"
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: "SRC_CUSTOMERS"
+        config: {}
+        dataType: "STRING"
+        description: "First Name"
+        hashColumns: []
+        hashDetails: null
+        name: "FIRST_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_CUSTOMERS"
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: "SRC_CUSTOMERS"
+        config: {}
+        dataType: "STRING"
+        description: "Last Name"
+        hashColumns: []
+        hashDetails: null
+        name: "LAST_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: "SRC_CUSTOMERS"
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: "SRC_CUSTOMERS"
+        config: {}
+        dataType: "STRING"
+        description: "Email"
+        hashColumns: []
+        hashDetails: null
+        name: "EMAIL"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: "SRC_CUSTOMERS"
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: "RAW"
+            nodeName: "CUSTOMERS"
+        join:
+          joinCondition: ""
+        name: "SRC_CUSTOMERS"
+        noLinkRefs: []
+  name: "SRC_CUSTOMERS"
+  overrideSQL: false
+  schema: "RAW"
+  sqlType: "Source"
+  type: "sql"
+  version: 1
