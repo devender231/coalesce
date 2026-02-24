@@ -1,0 +1,69 @@
+fileVersion: 1
+id: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+name: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Source table for payment data
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Order ID foreign key
+        name: ORDER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Amount paid
+        name: AMOUNT_PAID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: PC_COALESCE_DB.RAW.PAYMENTS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'PC_COALESCE_DB.RAW.PAYMENTS') }}
+        name: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+        noLinkRefs: []
+  name: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+  overrideSQL: false
+  schema: RAW
+  sqlType: Source
+  type: sql
+  version: 1
