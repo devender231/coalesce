@@ -1,0 +1,30 @@
+fileVersion: 1
+id: "TR_ROW_COUNT_SOURCE"
+name: "TR_ROW_COUNT_SOURCE"
+description: "Counts source rows from OLE_SRC - GuideWire"
+type: "sql"
+operation:
+  type: "transformation"
+  transformation_type: "ROW_COUNT"
+  database: "{{ ref('database') }}"
+  schema: "{{ ref('schema') }}"
+
+transformation:
+  type: "ROW_COUNT"
+  description: "Counts source rows from OLE_SRC - GuideWire"
+  logic: "Variable: User::SourceCount"
+  variable_name: "SourceCount"
+  scope: "User"
+  
+sql_logic: |
+  SELECT COUNT(*) as SourceCount
+  FROM {{ ref('SRC_JOIN_DIMBILLINGACCOUNT') }}
+
+metadata:
+  package_name: "EDW_BC_Load_DimBillingAccount"
+  source_system: "GuideWire"
+  execution_order: 2
+  upstream_dependencies:
+    - "SRC_JOIN_DIMBILLINGACCOUNT"
+  created_from: "SSIS_Package"
+  transformation_sequence: 1
