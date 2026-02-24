@@ -1,0 +1,13 @@
+name: SRC_BCTL_ACCOUNTROLE
+type: source
+location:
+  name: SRC
+  database: PC_COALESCE_DB
+  schema: RAW
+columns:
+  - name: ID
+    dataType: INTEGER
+    nullable: true
+  - name: TYPECODE
+    dataType: STRING
+    nullable: true
