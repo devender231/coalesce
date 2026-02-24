@@ -1,0 +1,110 @@
+fileVersion: 1
+id: SRC_PC_COALESCE_DB_RAW_ORDER_ITEMS
+name: SRC_PC_COALESCE_DB.RAW.ORDER_ITEMS
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    orderby: false
+    postSQL: ''
+    preSQL: ''
+    testsEnabled: true
+    truncateBefore: false
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Source table for order items data
+  isMultisource: false
+  locationName: SRC
+  materializationType: source
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Order ID foreign key
+        name: ORDER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ''
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(255)
+        description: Product name
+        name: PRODUCT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ''
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Quantity ordered
+        name: QUANTITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ''
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Unit price
+        name: PRICE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ''
+    cteString: ''
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ''
+        dependencies:
+          - locationName: SRC
+            nodeName: PC_COALESCE_DB.RAW.ORDER_ITEMS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'PC_COALESCE_DB.RAW.ORDER_ITEMS') }}
+        name: SRC_PC_COALESCE_DB_RAW_ORDER_ITEMS
+        noLinkRefs: []
+  name: SRC_PC_COALESCE_DB.RAW.ORDER_ITEMS
+  overrideSQL: false
+  schema: RAW
+  sqlType: Source
+  type: sql
+  version: 1
