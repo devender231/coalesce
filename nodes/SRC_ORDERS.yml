@@ -1,0 +1,17 @@
+name: SRC_ORDERS
+type: source
+database: PC_COALESCE_DB
+schema: RAW
+location:
+  name: ORDERS
+  database: PC_COALESCE_DB
+  schema: RAW
+columns:
+  - name: ORDER_ID
+    dataType: NUMBER
+  - name: CUSTOMER_ID
+    dataType: NUMBER
+  - name: ORDER_DATE
+    dataType: DATE
+  - name: TOTAL_AMOUNT
+    dataType: NUMBER
