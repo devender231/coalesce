@@ -1,0 +1,14 @@
+fileVersion: 1
+id: T3
+name: TR_CONDITIONAL_SPLIT_BEANVERSION
+operation:
+  metadata:
+    customSQL: |
+      SELECT *,
+        CASE
+          WHEN EDW_BEANVERSION IS NULL THEN 'INSERT'
+          WHEN BEANVERSION != EDW_BEANVERSION THEN 'UPDATE'
+          ELSE 'UNCHANGED'
+        END AS RECORD_STATUS
+      FROM PREVIOUS_NODE
+type: Node
