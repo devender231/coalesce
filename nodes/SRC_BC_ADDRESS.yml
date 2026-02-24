@@ -1,0 +1,193 @@
+fileVersion: 1
+id: S7
+name: SRC_BC_ADDRESS
+type: Node
+operation:
+  name: SRC_BC_ADDRESS
+  database: EDW
+  schema: RAW
+  locationName: SRC
+  sqlType: Source
+  type: sourceInput
+  deployEnabled: true
+  overrideSQL: false
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S7
+        config: {}
+        dataType: INTEGER
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C1
+            stepCounter: S7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S7
+        config: {}
+        dataType: STRING
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ADDRESSLINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C2
+            stepCounter: S7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S7
+        config: {}
+        dataType: STRING
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ADDRESSLINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C3
+            stepCounter: S7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S7
+        config: {}
+        dataType: STRING
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ADDRESSLINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C4
+            stepCounter: S7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: S7
+        config: {}
+        dataType: STRING
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C5
+            stepCounter: S7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: S7
+        config: {}
+        dataType: STRING
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C6
+            stepCounter: S7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: S7
+        config: {}
+        dataType: INTEGER
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: STATE
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C7
+            stepCounter: S7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: S7
+        config: {}
+        dataType: STRING
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C8
+            stepCounter: S7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: S7
+        config: {}
+        dataType: DATETIME
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C9
+            stepCounter: S7
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      aliases: {}
+      customSQL:
+        customSQL: ""
+      dependencies:
+        - locationName: SRC
+          nodeName: BC_ADDRESS
+      join:
+        joinCondition: FROM {{ ref('SRC', 'BC_ADDRESS') }} "BC_ADDRESS"
+      name: SRC_BC_ADDRESS
+      noLinkRefs: []
