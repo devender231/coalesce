@@ -1,0 +1,21 @@
+fileVersion: 1
+id: SRC_ORDER_ITEMS
+name: SRC_ORDER_ITEMS
+type: source
+config:
+  database: PC_COALESCE_DB
+  schema: RAW
+  table: ORDER_ITEMS
+columns:
+  - name: ORDER_ID
+    dataType: NUMBER
+    columnOrder: 1
+  - name: PRODUCT_NAME
+    dataType: VARCHAR
+    columnOrder: 2
+  - name: QUANTITY
+    dataType: NUMBER
+    columnOrder: 3
+  - name: PRICE
+    dataType: NUMBER
+    columnOrder: 4
