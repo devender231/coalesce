@@ -1,17 +1,103 @@
+fileVersion: 1
+id: SRC_CUSTOMERS
 name: SRC_CUSTOMERS
-type: source
-database: PC_COALESCE_DB
-schema: RAW
-location:
-  name: CUSTOMERS
-  database: PC_COALESCE_DB
-  schema: RAW
-columns:
-  - name: CUSTOMER_ID
-    dataType: NUMBER
-  - name: FIRST_NAME
-    dataType: VARCHAR
-  - name: LAST_NAME
-    dataType: VARCHAR
-  - name: EMAIL
-    dataType: VARCHAR
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Source table for customer data
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_CUSTOMERS
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Customer ID
+        name: CUSTOMER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_CUSTOMERS
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_CUSTOMERS
+        config: {}
+        dataType: VARCHAR(100)
+        description: First name
+        name: FIRST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_CUSTOMERS
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_CUSTOMERS
+        config: {}
+        dataType: VARCHAR(100)
+        description: Last name
+        name: LAST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_CUSTOMERS
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_CUSTOMERS
+        config: {}
+        dataType: VARCHAR(255)
+        description: Email address
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_CUSTOMERS
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: CUSTOMERS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'CUSTOMERS') }}
+        name: SRC_CUSTOMERS
+        noLinkRefs: []
+  name: SRC_CUSTOMERS
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
