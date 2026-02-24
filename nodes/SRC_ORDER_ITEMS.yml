@@ -1,80 +1,90 @@
 fileVersion: 1
-id: SRC_ORDER_ITEMS
+id: S1
 name: SRC_ORDER_ITEMS
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
+    insertStrategy: INSERT
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH
   database: PC_COALESCE_DB
   deployEnabled: true
-  description: Source table for order item details
-  isMultisource: false
-  locationName: SOURCE
-  materializationType: table
+  locationName: SRC
   metadata:
-    appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: SRC_ORDER_ITEMS
-        dataType: NUMBER(38,0)
-        description: Order identifier
+          columnCounter: C1
+          stepCounter: S1
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: ORDER_ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_ORDER_ITEMS
+              - columnCounter: C1
+                stepCounter: S1
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: SRC_ORDER_ITEMS
-        dataType: VARCHAR(255)
-        description: Name of the product
+          columnCounter: C2
+          stepCounter: S1
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: PRODUCT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_ORDER_ITEMS
+              - columnCounter: C2
+                stepCounter: S1
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 3
-          stepCounter: SRC_ORDER_ITEMS
-        dataType: NUMBER(10,0)
-        description: Quantity of product ordered
+          columnCounter: C3
+          stepCounter: S1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: QUANTITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_ORDER_ITEMS
+              - columnCounter: C3
+                stepCounter: S1
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 4
-          stepCounter: SRC_ORDER_ITEMS
-        dataType: NUMBER(10,2)
-        description: Price per unit of product
+          columnCounter: C4
+          stepCounter: S1
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: PRICE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_ORDER_ITEMS
+              - columnCounter: C4
+                stepCounter: S1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -83,14 +93,15 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SOURCE
+          - locationName: SRC
             nodeName: ORDER_ITEMS
         join:
-          joinCondition: ""
+          joinCondition: FROM {{ ref('SRC', 'ORDER_ITEMS') }} "ORDER_ITEMS"
         name: SRC_ORDER_ITEMS
         noLinkRefs: []
   name: SRC_ORDER_ITEMS
+  overrideSQL: false
   schema: RAW
   sqlType: Source
-  type: sql
-  version: 1
+  type: sourceInput
+type: Node
