@@ -1,0 +1,19 @@
+name: SRC_BC_PARENTACCT
+type: source
+location:
+  name: SRC
+  database: PC_COALESCE_DB
+  schema: RAW
+columns:
+  - name: OWNERID
+    dataType: INTEGER
+    nullable: true
+  - name: FOREIGNENTITYID
+    dataType: INTEGER
+    nullable: true
+  - name: BEANVERSION
+    dataType: STRING
+    nullable: true
+  - name: UPDATETIME
+    dataType: DATETIME
+    nullable: true
