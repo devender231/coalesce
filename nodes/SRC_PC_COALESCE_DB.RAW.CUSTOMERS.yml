@@ -1,23 +1,16 @@
 fileVersion: 1
 id: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
-name: SRC_PC_COALESCE_DB.RAW.CUSTOMERS
+name: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    orderby: false
-    postSQL: ''
-    preSQL: ''
-    testsEnabled: true
-    truncateBefore: false
+    insertStrategy: INSERT
+    selectDistinct: false
   database: PC_COALESCE_DB
   deployEnabled: true
   description: Source table for customer data
   isMultisource: false
   locationName: SRC
-  materializationType: source
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -27,25 +20,24 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
         config: {}
         dataType: NUMBER(38,0)
         description: Customer ID
-        isBusinessKey: true
         name: CUSTOMER_ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
-            transform: ''
+                stepCounter: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
         config: {}
         dataType: VARCHAR(100)
         description: Customer first name
@@ -54,15 +46,15 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
-            transform: ''
+                stepCounter: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: 1
+          stepCounter: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
         config: {}
         dataType: VARCHAR(100)
         description: Customer last name
@@ -71,15 +63,15 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: 1
-            transform: ''
+                stepCounter: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: 1
+          stepCounter: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
         config: {}
         dataType: VARCHAR(255)
         description: Customer email address
@@ -88,14 +80,14 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: 1
-            transform: ''
-    cteString: ''
+                stepCounter: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
+            transform: ""
+    cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases: {}
         customSQL:
-          customSQL: ''
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: PC_COALESCE_DB.RAW.CUSTOMERS
@@ -103,7 +95,7 @@ operation:
           joinCondition: FROM {{ ref('SRC', 'PC_COALESCE_DB.RAW.CUSTOMERS') }}
         name: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
         noLinkRefs: []
-  name: SRC_PC_COALESCE_DB.RAW.CUSTOMERS
+  name: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
   overrideSQL: false
   schema: RAW
   sqlType: Source
