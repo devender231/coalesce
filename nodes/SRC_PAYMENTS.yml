@@ -19,7 +19,7 @@ operation:
   deployEnabled: true
   description: Source table for payment data
   isMultisource: false
-  locationName: SOURCE
+  locationName: SRC
   materializationType: table
   metadata:
     appliedNodeTests: []
