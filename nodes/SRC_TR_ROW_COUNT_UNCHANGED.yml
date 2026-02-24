@@ -1,0 +1,32 @@
+fileVersion: 1
+id: "TR_ROW_COUNT_UNCHANGED"
+name: "TR_ROW_COUNT_UNCHANGED"
+description: "Counts unchanged rows (BeanVersion matches)"
+type: "sql"
+operation:
+  type: "transformation"
+  transformation_type: "ROW_COUNT"
+  database: "{{ ref('database') }}"
+  schema: "{{ ref('schema') }}"
+
+transformation:
+  type: "ROW_COUNT"
+  description: "Counts unchanged rows (BeanVersion matches)"
+  logic: "Variable: User::UnChangeCount"
+  variable_name: "UnChangeCount"
+  scope: "User"
+  filter_condition: "SPLIT_OUTPUT = 'UNCHANGED'"
+  
+sql_logic: |
+  SELECT COUNT(*) as UnChangeCount
+  FROM {{ ref('SRC_TR_CONDITIONAL_SPLIT') }}
+  WHERE SPLIT_OUTPUT = 'UNCHANGED'
+
+metadata:
+  package_name: "EDW_BC_Load_DimBillingAccount"
+  source_system: "GuideWire"
+  execution_order: 6
+  upstream_dependencies:
+    - "SRC_TR_CONDITIONAL_SPLIT"
+  created_from: "SSIS_Package"
+  transformation_sequence: 5
