@@ -1,0 +1,82 @@
+fileVersion: 1
+id: item_total_derived_node
+name: SRC_ITEM_TOTAL_DERIVED
+description: Derived column transformation - Calculates item_total as quantity * price
+type: sql
+config:
+  clusterKey: false
+  downstreamOption: true
+  groupByAll: false
+  initialize: ON_CREATE
+  insertStrategy: INSERT
+  orderby: false
+  postSQL: ''
+  preSQL: ''
+  testsEnabled: true
+  truncateBefore: true
+columns:
+  - name: CUSTOMER_ID
+    dataType: NUMBER
+    description: Customer identifier
+  - name: FIRST_NAME
+    dataType: VARCHAR
+    description: Customer first name
+  - name: LAST_NAME
+    dataType: VARCHAR
+    description: Customer last name
+  - name: EMAIL
+    dataType: VARCHAR
+    description: Customer email address
+  - name: ORDER_ID
+    dataType: NUMBER
+    description: Order identifier
+  - name: ORDER_DATE
+    dataType: DATE
+    description: Date when order was placed
+  - name: TOTAL_AMOUNT
+    dataType: NUMBER
+    description: Total amount of the order
+  - name: PRODUCT_NAME
+    dataType: VARCHAR
+    description: Product name
+  - name: QUANTITY
+    dataType: NUMBER
+    description: Quantity of items ordered
+  - name: PRICE
+    dataType: NUMBER
+    description: Price per item
+  - name: AMOUNT_PAID
+    dataType: NUMBER
+    description: Amount paid
+  - name: FULL_NAME
+    dataType: VARCHAR
+    description: Full name from previous transformation
+  - name: ORDER_YEAR
+    dataType: NUMBER
+    description: Year extracted from order_date
+  - name: ITEM_TOTAL
+    dataType: NUMBER
+    description: Derived column - Total calculated as quantity * price
+dependsOn:
+  - type: transformation
+    name: SRC_ORDER_YEAR_DERIVED
+sql: |
+  -- Transformation 3: Derived Column - item_total
+  -- Calculates quantity * price
+  SELECT
+    CUSTOMER_ID,
+    FIRST_NAME,
+    LAST_NAME,
+    EMAIL,
+    ORDER_ID,
+    ORDER_DATE,
+    TOTAL_AMOUNT,
+    PRODUCT_NAME,
+    QUANTITY,
+    PRICE,
+    AMOUNT_PAID,
+    FULL_NAME,
+    ORDER_YEAR,
+    QUANTITY * PRICE AS ITEM_TOTAL
+  FROM {{ ref('SRC_ORDER_YEAR_DERIVED') }}
+executionOrder: 4
