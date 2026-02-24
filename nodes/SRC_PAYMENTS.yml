@@ -1,0 +1,98 @@
+fileVersion: 1
+id: SRC_PAYMENTS
+name: SRC_PAYMENTS
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV ENVIRONMENT
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Source table for PAYMENTS
+  isMultisource: false
+  locationName: RAW
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_PAYMENTS
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Payment ID
+        name: PAYMENT_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_PAYMENTS
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_PAYMENTS
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Order ID
+        name: ORDER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_PAYMENTS
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_PAYMENTS
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Amount Paid
+        name: AMOUNT_PAID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_PAYMENTS
+            transform: ""
+    codeGeneration:
+      imports: []
+      node: SRC ("PC_COALESCE_DB"."RAW"."PAYMENTS")
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: RAW
+            nodeName: PAYMENTS
+        join:
+          joinCondition: FROM {{ ref('RAW', 'PAYMENTS') }}
+        name: SRC_PAYMENTS
+        noLinkRefs: []
+  name: SRC_PAYMENTS
+  overrideSQL: false
+  schema: ""
+  sqlType: SOURCE
+  type: sql
+  version: 1
