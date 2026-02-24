@@ -490,7 +490,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''{{ var("BatchID") }}'''
+            transform: "{{ parameter('BatchID') }}"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: SC35
