@@ -11,18 +11,15 @@ operation:
   metadata:
     columns:
       - name: ORDER_ID
-        dataType: NUMBER(38,0)
-        nullable: false
+        ordinalPosition: 1
       - name: CUSTOMER_ID
-        dataType: NUMBER(38,0)
-        nullable: true
+        ordinalPosition: 2
       - name: ORDER_DATE
-        dataType: DATE
-        nullable: true
+        ordinalPosition: 3
       - name: TOTAL_AMOUNT
-        dataType: NUMBER(18,2)
-        nullable: true
+        ordinalPosition: 4
+  name: SRC_ORDERS
   schema: RAW
   sqlType: Source
-  type: sql
-  tableName: ORDERS
+  type: sourceInput
+type: Node
