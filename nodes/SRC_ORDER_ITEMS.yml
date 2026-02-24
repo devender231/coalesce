@@ -1,0 +1,123 @@
+fileVersion: 1
+id: "SRC_ORDER_ITEMS"
+name: "SRC_ORDER_ITEMS"
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: "DEV ENVIRONMENT"
+  database: "PC_COALESCE_DB"
+  deployEnabled: true
+  description: "Source table for ORDER_ITEMS"
+  isMultisource: false
+  locationName: "RAW"
+  materializationType: "source"
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: "SRC_ORDER_ITEMS"
+        config: {}
+        dataType: "INTEGER"
+        description: "Order ID"
+        hashColumns: []
+        hashDetails: null
+        name: "ORDER_ID"
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: "SRC_ORDER_ITEMS"
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: "SRC_ORDER_ITEMS"
+        config: {}
+        dataType: "STRING"
+        description: "Product Name"
+        hashColumns: []
+        hashDetails: null
+        name: "PRODUCT_NAME"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: "SRC_ORDER_ITEMS"
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: "SRC_ORDER_ITEMS"
+        config: {}
+        dataType: "INTEGER"
+        description: "Quantity"
+        hashColumns: []
+        hashDetails: null
+        name: "QUANTITY"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: "SRC_ORDER_ITEMS"
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: "SRC_ORDER_ITEMS"
+        config: {}
+        dataType: "DECIMAL"
+        description: "Price"
+        hashColumns: []
+        hashDetails: null
+        name: "PRICE"
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: "SRC_ORDER_ITEMS"
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: "RAW"
+            nodeName: "ORDER_ITEMS"
+        join:
+          joinCondition: ""
+        name: "SRC_ORDER_ITEMS"
+        noLinkRefs: []
+  name: "SRC_ORDER_ITEMS"
+  overrideSQL: false
+  schema: "RAW"
+  sqlType: "Source"
+  type: "sql"
+  version: 1
