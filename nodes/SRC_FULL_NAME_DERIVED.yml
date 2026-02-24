@@ -1,0 +1,74 @@
+fileVersion: 1
+id: full_name_derived_node
+name: SRC_FULL_NAME_DERIVED
+description: Derived column transformation - Concatenates first_name and last_name to create full_name
+type: sql
+config:
+  clusterKey: false
+  downstreamOption: true
+  groupByAll: false
+  initialize: ON_CREATE
+  insertStrategy: INSERT
+  orderby: false
+  postSQL: ''
+  preSQL: ''
+  testsEnabled: true
+  truncateBefore: true
+columns:
+  - name: CUSTOMER_ID
+    dataType: NUMBER
+    description: Customer identifier
+  - name: FIRST_NAME
+    dataType: VARCHAR
+    description: Customer first name
+  - name: LAST_NAME
+    dataType: VARCHAR
+    description: Customer last name
+  - name: EMAIL
+    dataType: VARCHAR
+    description: Customer email address
+  - name: ORDER_ID
+    dataType: NUMBER
+    description: Order identifier
+  - name: ORDER_DATE
+    dataType: DATE
+    description: Date when order was placed
+  - name: TOTAL_AMOUNT
+    dataType: NUMBER
+    description: Total amount of the order
+  - name: PRODUCT_NAME
+    dataType: VARCHAR
+    description: Product name
+  - name: QUANTITY
+    dataType: NUMBER
+    description: Quantity of items ordered
+  - name: PRICE
+    dataType: NUMBER
+    description: Price per item
+  - name: AMOUNT_PAID
+    dataType: NUMBER
+    description: Amount paid
+  - name: FULL_NAME
+    dataType: VARCHAR
+    description: Derived column - Full name concatenated from first_name and last_name
+dependsOn:
+  - type: transformation
+    name: SRC_CUSTOMER_ORDER_JOINS
+sql: |
+  -- Transformation 1: Derived Column - full_name
+  -- Concatenates first_name || ' ' || last_name
+  SELECT
+    CUSTOMER_ID,
+    FIRST_NAME,
+    LAST_NAME,
+    EMAIL,
+    ORDER_ID,
+    ORDER_DATE,
+    TOTAL_AMOUNT,
+    PRODUCT_NAME,
+    QUANTITY,
+    PRICE,
+    AMOUNT_PAID,
+    FIRST_NAME || ' ' || LAST_NAME AS FULL_NAME
+  FROM {{ ref('SRC_CUSTOMER_ORDER_JOINS') }}
+executionOrder: 2
