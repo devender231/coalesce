@@ -1,8 +1,26 @@
+name: SRC_BCTL_ACCOUNTTYPE
+
 nodeType: Source
-locationName: GUIDEWIRE_BC
-database: GUIDEWIRE_BC
+
+locationName: GUIDEWIRE
+
+database: GUIDEWIRE
 schema: dbo
 table: BCTL_ACCOUNTTYPE
-columns:
-  - ID
-  - NAME
+
+config:
+  isMultisource: false
+
+sourceMapping:
+  - name: SRC_BCTL_ACCOUNTTYPE
+    database: GUIDEWIRE
+    schema: dbo
+    table: BCTL_ACCOUNTTYPE
+
+    columns:
+      - name: ID
+        dataType: INTEGER
+        nullable: true
+      - name: NAME
+        dataType: STRING
+        nullable: true
