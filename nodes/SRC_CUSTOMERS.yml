@@ -11,18 +11,15 @@ operation:
   metadata:
     columns:
       - name: CUSTOMER_ID
-        dataType: NUMBER(38,0)
-        nullable: false
+        ordinalPosition: 1
       - name: FIRST_NAME
-        dataType: VARCHAR(100)
-        nullable: true
+        ordinalPosition: 2
       - name: LAST_NAME
-        dataType: VARCHAR(100)
-        nullable: true
+        ordinalPosition: 3
       - name: EMAIL
-        dataType: VARCHAR(255)
-        nullable: true
+        ordinalPosition: 4
+  name: SRC_CUSTOMERS
   schema: RAW
   sqlType: Source
-  type: sql
-  tableName: CUSTOMERS
+  type: sourceInput
+type: Node
