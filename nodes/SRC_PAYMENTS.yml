@@ -1,0 +1,13 @@
+name: SRC_PAYMENTS
+type: source
+database: PC_COALESCE_DB
+schema: RAW
+location:
+  name: PAYMENTS
+  database: PC_COALESCE_DB
+  schema: RAW
+columns:
+  - name: ORDER_ID
+    dataType: NUMBER
+  - name: AMOUNT_PAID
+    dataType: NUMBER
