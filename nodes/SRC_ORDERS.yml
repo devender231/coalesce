@@ -1,80 +1,90 @@
 fileVersion: 1
-id: SRC_ORDERS
+id: S1
 name: SRC_ORDERS
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
+    insertStrategy: INSERT
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH
   database: PC_COALESCE_DB
   deployEnabled: true
-  description: Source table for order data
-  isMultisource: false
-  locationName: SOURCE
-  materializationType: table
+  locationName: SRC
   metadata:
-    appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: SRC_ORDERS
-        dataType: NUMBER(38,0)
-        description: Order unique identifier
+          columnCounter: C1
+          stepCounter: S1
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: ORDER_ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_ORDERS
+              - columnCounter: C1
+                stepCounter: S1
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: SRC_ORDERS
-        dataType: NUMBER(38,0)
-        description: Customer identifier for the order
+          columnCounter: C2
+          stepCounter: S1
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: CUSTOMER_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_ORDERS
+              - columnCounter: C2
+                stepCounter: S1
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 3
-          stepCounter: SRC_ORDERS
+          columnCounter: C3
+          stepCounter: S1
+        config: {}
         dataType: DATE
-        description: Date when order was placed
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: ORDER_DATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_ORDERS
+              - columnCounter: C3
+                stepCounter: S1
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 4
-          stepCounter: SRC_ORDERS
-        dataType: NUMBER(10,2)
-        description: Total amount of the order
+          columnCounter: C4
+          stepCounter: S1
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: TOTAL_AMOUNT
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_ORDERS
+              - columnCounter: C4
+                stepCounter: S1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -83,14 +93,15 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SOURCE
+          - locationName: SRC
             nodeName: ORDERS
         join:
-          joinCondition: ""
+          joinCondition: FROM {{ ref('SRC', 'ORDERS') }} "ORDERS"
         name: SRC_ORDERS
         noLinkRefs: []
   name: SRC_ORDERS
+  overrideSQL: false
   schema: RAW
   sqlType: Source
-  type: sql
-  version: 1
+  type: sourceInput
+type: Node
