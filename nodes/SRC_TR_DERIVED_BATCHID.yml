@@ -1,34 +1,36 @@
-fileVersion: 1
-id: "TR_DERIVED_BATCHID"
-name: "TR_DERIVED_BATCHID"
-description: "Adds or overwrites BatchID column"
-type: "sql"
-operation:
-  type: "transformation"
-  transformation_type: "DERIVED"
-  database: "{{ ref('database') }}"
-  schema: "{{ ref('schema') }}"
+fileVersion: 1.0.0
+id: tr_derived_batchid
+name: SRC_TR_DERIVED_BATCHID
+description: Adds or overwrites BatchID column
+type: DerivedColumn
+
+execution_order: 2
+
+source:
+  name: ROWCOUNT_SOURCE_OUTPUT
+  description: Input from row count transformation
 
 transformation:
-  type: "DERIVED"
-  description: "Adds or overwrites BatchID column"
-  logic: "BatchID = @[User::BatchID]"
-  derived_columns:
-    - column_name: "BatchID"
-      expression: "@[User::BatchID]"
-      data_type: "INTEGER"
-      
-sql_logic: |
-  SELECT 
-    *,
-    {{ var('BatchID') }} as BatchID
-  FROM {{ ref('SRC_TR_ROW_COUNT_SOURCE') }}
+  type: DERIVED
+  operation: ADD_OR_REPLACE_COLUMN
+  description: Adds BatchID column from package variable
 
-metadata:
-  package_name: "EDW_BC_Load_DimBillingAccount"
-  source_system: "GuideWire"
-  execution_order: 3
-  upstream_dependencies:
-    - "SRC_TR_ROW_COUNT_SOURCE"
-  created_from: "SSIS_Package"
-  transformation_sequence: 2
+derived_columns:
+  - column_name: BatchID
+    data_type: INTEGER
+    expression: "@[User::BatchID]"
+    operation: ADD_OR_REPLACE
+    description: Batch identifier from SSIS package variable
+    nullable: false
+
+logic:
+  derived_expressions:
+    - name: BatchID
+      expression: "@[User::BatchID]"
+      description: Assigns the current batch ID from package variable to each row
+
+output:
+  name: DERIVED_BATCHID_OUTPUT
+  description: All input columns plus BatchID column
+  columns_added:
+    - BatchID
