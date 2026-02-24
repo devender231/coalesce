@@ -1,11 +1,35 @@
+name: SRC_BC_ACCOUNTCONTACT
+
 nodeType: Source
-locationName: GUIDEWIRE_BC
-database: GUIDEWIRE_BC
+
+locationName: GUIDEWIRE
+
+database: GUIDEWIRE
 schema: dbo
 table: BC_ACCOUNTCONTACT
-columns:
-  - INSUREDACCOUNTID
-  - CONTACTID
-  - ID
-  - BEANVERSION
-  - UPDATETIME
+
+config:
+  isMultisource: false
+
+sourceMapping:
+  - name: SRC_BC_ACCOUNTCONTACT
+    database: GUIDEWIRE
+    schema: dbo
+    table: BC_ACCOUNTCONTACT
+
+    columns:
+      - name: INSUREDACCOUNTID
+        dataType: INTEGER
+        nullable: true
+      - name: CONTACTID
+        dataType: INTEGER
+        nullable: true
+      - name: ID
+        dataType: INTEGER
+        nullable: true
+      - name: BEANVERSION
+        dataType: STRING
+        nullable: true
+      - name: UPDATETIME
+        dataType: DATETIME
+        nullable: true
