@@ -1,0 +1,96 @@
+fileVersion: 1
+id: SRC_ORDER_ITEMS
+name: SRC_ORDER_ITEMS
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV_WH
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Source table for order item details
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_ORDER_ITEMS
+        dataType: NUMBER(38,0)
+        description: Order identifier
+        name: ORDER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_ORDER_ITEMS
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_ORDER_ITEMS
+        dataType: VARCHAR(255)
+        description: Name of the product
+        name: PRODUCT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_ORDER_ITEMS
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_ORDER_ITEMS
+        dataType: NUMBER(10,0)
+        description: Quantity of product ordered
+        name: QUANTITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_ORDER_ITEMS
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_ORDER_ITEMS
+        dataType: NUMBER(10,2)
+        description: Price per unit of product
+        name: PRICE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_ORDER_ITEMS
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: ORDER_ITEMS
+        join:
+          joinCondition: ""
+        name: SRC_ORDER_ITEMS
+        noLinkRefs: []
+  name: SRC_ORDER_ITEMS
+  schema: RAW
+  sqlType: Source
+  type: sql
+  version: 1
