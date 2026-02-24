@@ -1,123 +1,15 @@
-fileVersion: 1
-id: "SRC_ORDERS"
-name: "SRC_ORDERS"
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
-    selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: "DEV ENVIRONMENT"
-  database: "PC_COALESCE_DB"
-  deployEnabled: true
-  description: "Source table for ORDERS"
-  isMultisource: false
-  locationName: "RAW"
-  materializationType: "source"
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: "SRC_ORDERS"
-        config: {}
-        dataType: "INTEGER"
-        description: "Order ID"
-        hashColumns: []
-        hashDetails: null
-        name: "ORDER_ID"
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: "SRC_ORDERS"
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: "SRC_ORDERS"
-        config: {}
-        dataType: "INTEGER"
-        description: "Customer ID"
-        hashColumns: []
-        hashDetails: null
-        name: "CUSTOMER_ID"
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: "SRC_ORDERS"
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: "SRC_ORDERS"
-        config: {}
-        dataType: "DATE"
-        description: "Order Date"
-        hashColumns: []
-        hashDetails: null
-        name: "ORDER_DATE"
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: "SRC_ORDERS"
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: "SRC_ORDERS"
-        config: {}
-        dataType: "DECIMAL"
-        description: "Total Amount"
-        hashColumns: []
-        hashDetails: null
-        name: "TOTAL_AMOUNT"
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: "SRC_ORDERS"
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: "RAW"
-            nodeName: "ORDERS"
-        join:
-          joinCondition: ""
-        name: "SRC_ORDERS"
-        noLinkRefs: []
-  name: "SRC_ORDERS"
-  overrideSQL: false
-  schema: "RAW"
-  sqlType: "Source"
-  type: "sql"
-  version: 1
+name: SRC_ORDERS
+type: source
+location:
+  database: PC_COALESCE_DB
+  schema: RAW
+  table: ORDERS
+columns:
+  - name: ORDER_ID
+    dataType: NUMBER
+  - name: CUSTOMER_ID
+    dataType: NUMBER
+  - name: ORDER_DATE
+    dataType: DATE
+  - name: TOTAL_AMOUNT
+    dataType: NUMBER
