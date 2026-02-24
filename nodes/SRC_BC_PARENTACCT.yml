@@ -1,97 +1,10 @@
-fileVersion: 1
-id: S2
-name: BC_PARENTACCT
-operation:
-  database: ""
-  deployEnabled: true
-  description: ""
-  locationName: SRC
-  metadata:
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C1
-          stepCounter: S2
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: OWNERID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C2
-          stepCounter: S2
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: FOREIGNENTITYID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C3
-          stepCounter: S2
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C4
-          stepCounter: S2
-        config: {}
-        dataType: DATETIME
-        defaultValue: ""
-        description: ""
-        name: UPDATETIME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-
-  name: BC_PARENTACCT
-  schema: ""
-  sqlType: Source
-  type: sourceInput
-  version: 1
-
-type: Node
+nodeType: Source
+locationName: GUIDEWIRE_BC
+database: GUIDEWIRE_BC
+schema: dbo
+table: BC_PARENTACCT
+columns:
+  - OWNERID
+  - FOREIGNENTITYID
+  - BEANVERSION
+  - UPDATETIME
