@@ -1,0 +1,32 @@
+fileVersion: 1
+id: "TR_ROW_COUNT_UPDATE"
+name: "TR_ROW_COUNT_UPDATE"
+description: "Counts update rows (BeanVersion different)"
+type: "sql"
+operation:
+  type: "transformation"
+  transformation_type: "ROW_COUNT"
+  database: "{{ ref('database') }}"
+  schema: "{{ ref('schema') }}"
+
+transformation:
+  type: "ROW_COUNT"
+  description: "Counts update rows (BeanVersion different)"
+  logic: "Variable: User::UpdateCount"
+  variable_name: "UpdateCount"
+  scope: "User"
+  filter_condition: "SPLIT_OUTPUT = 'UPDATES'"
+  
+sql_logic: |
+  SELECT COUNT(*) as UpdateCount
+  FROM {{ ref('SRC_TR_CONDITIONAL_SPLIT') }}
+  WHERE SPLIT_OUTPUT = 'UPDATES'
+
+metadata:
+  package_name: "EDW_BC_Load_DimBillingAccount"
+  source_system: "GuideWire"
+  execution_order: 8
+  upstream_dependencies:
+    - "SRC_TR_CONDITIONAL_SPLIT"
+  created_from: "SSIS_Package"
+  transformation_sequence: 7
