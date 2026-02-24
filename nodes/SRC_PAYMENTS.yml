@@ -1,0 +1,15 @@
+name: SRC_PAYMENTS
+type: source
+location:
+  name: SRC
+  database: PC_COALESCE_DB
+  schema: RAW
+
+columns:
+  - name: ORDER_ID
+    dataType: NUMBER
+    description: Foreign key to order
+    
+  - name: AMOUNT_PAID
+    dataType: NUMBER
+    description: Amount paid for the order
