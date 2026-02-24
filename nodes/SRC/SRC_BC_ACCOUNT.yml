@@ -1,0 +1,75 @@
+name: SRC_BC_ACCOUNT
+locationName: SRC
+nodeType: source
+database: PC_COALESCE_DB
+schema: RAW
+table: BC_ACCOUNT
+columns:
+  - name: ACCOUNTNUMBER
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 1
+  - name: ACCOUNTNAME
+    dataType: VARCHAR(16777216)
+    nullable: true
+    ordinal: 2
+  - name: ACCOUNTTYPE
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 3
+  - name: BILLINGLEVEL
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 4
+  - name: SERVICETIER
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 5
+  - name: SECURITYZONEID
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 6
+  - name: SEGMENT
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 7
+  - name: CLOSEDATE
+    dataType: TIMESTAMP_NTZ(9)
+    nullable: true
+    ordinal: 8
+  - name: CREATETIME
+    dataType: TIMESTAMP_NTZ(9)
+    nullable: true
+    ordinal: 9
+  - name: DELINQUENCYSTATUS
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 10
+  - name: FIRSTTWICEPERMTHINVOICEDOM
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 11
+  - name: SECONDTWICEPERMTHINVOICEDOM
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 12
+  - name: PUBLICID
+    dataType: VARCHAR(16777216)
+    nullable: true
+    ordinal: 13
+  - name: ID
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 14
+  - name: BEANVERSION
+    dataType: VARCHAR(16777216)
+    nullable: true
+    ordinal: 15
+  - name: RETIRED
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 16
+  - name: UPDATETIME
+    dataType: TIMESTAMP_NTZ(9)
+    nullable: true
+    ordinal: 17
