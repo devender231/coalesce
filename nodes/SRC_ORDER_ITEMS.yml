@@ -1,0 +1,17 @@
+name: SRC_ORDER_ITEMS
+type: source
+database: PC_COALESCE_DB
+schema: RAW
+location:
+  name: ORDER_ITEMS
+  database: PC_COALESCE_DB
+  schema: RAW
+columns:
+  - name: ORDER_ID
+    dataType: NUMBER
+  - name: PRODUCT_NAME
+    dataType: VARCHAR
+  - name: QUANTITY
+    dataType: NUMBER
+  - name: PRICE
+    dataType: NUMBER
