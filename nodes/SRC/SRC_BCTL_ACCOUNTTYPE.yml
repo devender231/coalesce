@@ -1,0 +1,15 @@
+name: SRC_BCTL_ACCOUNTTYPE
+locationName: SRC
+nodeType: source
+database: PC_COALESCE_DB
+schema: RAW
+table: BCTL_ACCOUNTTYPE
+columns:
+  - name: ID
+    dataType: NUMBER(38,0)
+    nullable: true
+    ordinal: 1
+  - name: NAME
+    dataType: VARCHAR(16777216)
+    nullable: true
+    ordinal: 2
