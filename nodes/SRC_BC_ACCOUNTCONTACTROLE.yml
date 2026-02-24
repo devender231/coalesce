@@ -1,0 +1,121 @@
+fileVersion: 1
+id: S4
+name: SRC_BC_ACCOUNTCONTACTROLE
+type: Node
+operation:
+  name: SRC_BC_ACCOUNTCONTACTROLE
+  database: PC_COALESCE_DB
+  schema: RAW
+  locationName: SRC
+  sqlType: Source
+  type: sourceInput
+  deployEnabled: true
+  overrideSQL: false
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ACCOUNTCONTACTID
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C1
+            stepCounter: S4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ROLE
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C2
+            stepCounter: S4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C3
+            stepCounter: S4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C4
+            stepCounter: S4
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: S4
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C5
+            stepCounter: S4
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACTROLE
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} "BC_ACCOUNTCONTACTROLE"
+        name: SRC_BC_ACCOUNTCONTACTROLE
+        noLinkRefs: []
