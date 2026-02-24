@@ -1,0 +1,111 @@
+fileVersion: 1
+id: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
+name: SRC_PC_COALESCE_DB.RAW.CUSTOMERS
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    orderby: false
+    postSQL: ''
+    preSQL: ''
+    testsEnabled: true
+    truncateBefore: false
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Source table for customer data
+  isMultisource: false
+  locationName: SRC
+  materializationType: source
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Customer ID
+        isBusinessKey: true
+        name: CUSTOMER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ''
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(100)
+        description: Customer first name
+        name: FIRST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ''
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(100)
+        description: Customer last name
+        name: LAST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ''
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(255)
+        description: Customer email address
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ''
+    cteString: ''
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ''
+        dependencies:
+          - locationName: SRC
+            nodeName: PC_COALESCE_DB.RAW.CUSTOMERS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'PC_COALESCE_DB.RAW.CUSTOMERS') }}
+        name: SRC_PC_COALESCE_DB_RAW_CUSTOMERS
+        noLinkRefs: []
+  name: SRC_PC_COALESCE_DB.RAW.CUSTOMERS
+  overrideSQL: false
+  schema: RAW
+  sqlType: Source
+  type: sql
+  version: 1
