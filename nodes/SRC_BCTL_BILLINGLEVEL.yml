@@ -1,8 +1,0 @@
-nodeType: Source
-locationName: GUIDEWIRE_BC
-database: GUIDEWIRE_BC
-schema: dbo
-table: BCTL_BILLINGLEVEL
-columns:
-  - ID
-  - NAME
