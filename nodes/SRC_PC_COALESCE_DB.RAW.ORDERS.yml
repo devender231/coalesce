@@ -1,23 +1,16 @@
 fileVersion: 1
 id: SRC_PC_COALESCE_DB_RAW_ORDERS
-name: SRC_PC_COALESCE_DB.RAW.ORDERS
+name: SRC_PC_COALESCE_DB_RAW_ORDERS
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    orderby: false
-    postSQL: ''
-    preSQL: ''
-    testsEnabled: true
-    truncateBefore: false
+    insertStrategy: INSERT
+    selectDistinct: false
   database: PC_COALESCE_DB
   deployEnabled: true
   description: Source table for order data
   isMultisource: false
   locationName: SRC
-  materializationType: source
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -27,25 +20,24 @@ operation:
         appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_PC_COALESCE_DB_RAW_ORDERS
         config: {}
         dataType: NUMBER(38,0)
         description: Order ID
-        isBusinessKey: true
         name: ORDER_ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
-            transform: ''
+                stepCounter: SRC_PC_COALESCE_DB_RAW_ORDERS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_PC_COALESCE_DB_RAW_ORDERS
         config: {}
         dataType: NUMBER(38,0)
         description: Customer ID foreign key
@@ -54,15 +46,15 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
-            transform: ''
+                stepCounter: SRC_PC_COALESCE_DB_RAW_ORDERS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: 1
+          stepCounter: SRC_PC_COALESCE_DB_RAW_ORDERS
         config: {}
         dataType: DATE
         description: Order date
@@ -71,15 +63,15 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: 1
-            transform: ''
+                stepCounter: SRC_PC_COALESCE_DB_RAW_ORDERS
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: 1
+          stepCounter: SRC_PC_COALESCE_DB_RAW_ORDERS
         config: {}
         dataType: NUMBER(10,2)
         description: Total order amount
@@ -88,14 +80,14 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: 1
-            transform: ''
-    cteString: ''
+                stepCounter: SRC_PC_COALESCE_DB_RAW_ORDERS
+            transform: ""
+    cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases: {}
         customSQL:
-          customSQL: ''
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: PC_COALESCE_DB.RAW.ORDERS
@@ -103,7 +95,7 @@ operation:
           joinCondition: FROM {{ ref('SRC', 'PC_COALESCE_DB.RAW.ORDERS') }}
         name: SRC_PC_COALESCE_DB_RAW_ORDERS
         noLinkRefs: []
-  name: SRC_PC_COALESCE_DB.RAW.ORDERS
+  name: SRC_PC_COALESCE_DB_RAW_ORDERS
   overrideSQL: false
   schema: RAW
   sqlType: Source
