@@ -1,80 +1,90 @@
 fileVersion: 1
-id: SRC_CUSTOMERS
+id: S1
 name: SRC_CUSTOMERS
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
+    insertStrategy: INSERT
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: DEV_WH
   database: PC_COALESCE_DB
   deployEnabled: true
-  description: Source table for customer data
-  isMultisource: false
-  locationName: SOURCE
-  materializationType: table
+  locationName: SRC
   metadata:
-    appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 1
-          stepCounter: SRC_CUSTOMERS
-        dataType: NUMBER(38,0)
-        description: Customer unique identifier
+          columnCounter: C1
+          stepCounter: S1
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: CUSTOMER_ID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_CUSTOMERS
+              - columnCounter: C1
+                stepCounter: S1
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: SRC_CUSTOMERS
-        dataType: VARCHAR(100)
-        description: Customer first name
+          columnCounter: C2
+          stepCounter: S1
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: FIRST_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_CUSTOMERS
+              - columnCounter: C2
+                stepCounter: S1
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 3
-          stepCounter: SRC_CUSTOMERS
-        dataType: VARCHAR(100)
-        description: Customer last name
+          columnCounter: C3
+          stepCounter: S1
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: LAST_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_CUSTOMERS
+              - columnCounter: C3
+                stepCounter: S1
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: 4
-          stepCounter: SRC_CUSTOMERS
-        dataType: VARCHAR(255)
-        description: Customer email address
+          columnCounter: C4
+          stepCounter: S1
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
         name: EMAIL
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_CUSTOMERS
+              - columnCounter: C4
+                stepCounter: S1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -83,14 +93,15 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SOURCE
+          - locationName: SRC
             nodeName: CUSTOMERS
         join:
-          joinCondition: ""
+          joinCondition: FROM {{ ref('SRC', 'CUSTOMERS') }} "CUSTOMERS"
         name: SRC_CUSTOMERS
         noLinkRefs: []
   name: SRC_CUSTOMERS
+  overrideSQL: false
   schema: RAW
   sqlType: Source
-  type: sql
-  version: 1
+  type: sourceInput
+type: Node
