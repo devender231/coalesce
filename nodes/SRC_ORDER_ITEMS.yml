@@ -10,22 +10,16 @@ operation:
   locationName: SRC
   metadata:
     columns:
-      - name: ORDER_ITEM_ID
-        dataType: NUMBER(38,0)
-        nullable: false
       - name: ORDER_ID
-        dataType: NUMBER(38,0)
-        nullable: true
+        ordinalPosition: 1
       - name: PRODUCT_NAME
-        dataType: VARCHAR(255)
-        nullable: true
+        ordinalPosition: 2
       - name: QUANTITY
-        dataType: NUMBER(10,0)
-        nullable: true
+        ordinalPosition: 3
       - name: PRICE
-        dataType: NUMBER(18,2)
-        nullable: true
+        ordinalPosition: 4
+  name: SRC_ORDER_ITEMS
   schema: RAW
   sqlType: Source
-  type: sql
-  tableName: ORDER_ITEMS
+  type: sourceInput
+type: Node
