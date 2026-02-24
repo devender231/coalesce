@@ -1,0 +1,107 @@
+fileVersion: 1
+id: "JOIN_DIMBILLINGACCOUNT"
+name: "JOIN_DIMBILLINGACCOUNT"
+description: "Joins all source tables for DimBillingAccount ETL"
+type: "sql"
+operation:
+  type: "join"
+  database: "{{ ref('database') }}"
+  schema: "{{ ref('schema') }}"
+  
+joins:
+  - join_id: "JOIN_001"
+    left_table: "BC_ACCOUNT"
+    right_table: "BCTL_ACCOUNTTYPE"
+    join_type: "LEFT"
+    condition: "BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID"
+    
+  - join_id: "JOIN_002"
+    left_table: "BC_ACCOUNT"
+    right_table: "BC_PARENTACCT"
+    join_type: "LEFT"
+    condition: "BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID"
+    
+  - join_id: "JOIN_003"
+    left_table: "BC_ACCOUNT"
+    right_table: "BCTL_BILLINGLEVEL"
+    join_type: "LEFT"
+    condition: "BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID"
+    
+  - join_id: "JOIN_004"
+    left_table: "BC_ACCOUNT"
+    right_table: "BCTL_CUSTOMERSERVICETIER"
+    join_type: "LEFT"
+    condition: "BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID"
+    
+  - join_id: "JOIN_005"
+    left_table: "BC_ACCOUNT"
+    right_table: "BC_SECURITYZONE"
+    join_type: "LEFT"
+    condition: "BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID"
+    
+  - join_id: "JOIN_006"
+    left_table: "BC_ACCOUNT"
+    right_table: "BCTL_DELINQUENCYSTATUS"
+    join_type: "LEFT"
+    condition: "BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID"
+    
+  - join_id: "JOIN_007"
+    left_table: "BC_ACCOUNT"
+    right_table: "BCTL_ACCOUNTSEGMENT"
+    join_type: "LEFT"
+    condition: "BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID"
+    
+  - join_id: "JOIN_008"
+    left_table: "BC_ACCOUNT"
+    right_table: "INSUREDINFO"
+    join_type: "LEFT"
+    condition: "INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID"
+    
+  - join_id: "JOIN_009"
+    left_table: "INSUREDINFO"
+    right_table: "BC_ACCOUNTCONTACT"
+    join_type: "INNER"
+    condition: "BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID"
+    
+  - join_id: "JOIN_010"
+    left_table: "INSUREDINFO"
+    right_table: "BC_ACCOUNTCONTACTROLE"
+    join_type: "INNER"
+    condition: "BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID"
+    
+  - join_id: "JOIN_011"
+    left_table: "INSUREDINFO"
+    right_table: "BCTL_ACCOUNTROLE"
+    join_type: "INNER"
+    condition: "BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'"
+    
+  - join_id: "JOIN_012"
+    left_table: "INSUREDINFO"
+    right_table: "BC_CONTACT"
+    join_type: "LEFT"
+    condition: "BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID"
+    
+  - join_id: "JOIN_013"
+    left_table: "INSUREDINFO"
+    right_table: "BC_ADDRESS"
+    join_type: "LEFT"
+    condition: "BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID"
+    
+  - join_id: "JOIN_014"
+    left_table: "INSUREDINFO"
+    right_table: "BCTL_STATE"
+    join_type: "LEFT"
+    condition: "BCTL_STATE.ID = BC_ADDRESS.STATE"
+    
+  - join_id: "JOIN_015"
+    left_table: "LOOKUP_INPUT"
+    right_table: "DIMBILLINGACCOUNT"
+    join_type: "INNER"
+    condition: "LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID"
+
+metadata:
+  package_name: "EDW_BC_Load_DimBillingAccount"
+  source_system: "GuideWire"
+  execution_order: 1
+  upstream_dependencies: []
+  created_from: "SSIS_Package"
