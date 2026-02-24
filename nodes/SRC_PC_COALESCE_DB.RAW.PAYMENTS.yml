@@ -1,0 +1,76 @@
+fileVersion: 1
+id: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+name: SRC_PC_COALESCE_DB.RAW.PAYMENTS
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    orderby: false
+    postSQL: ''
+    preSQL: ''
+    testsEnabled: true
+    truncateBefore: false
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Source table for payment data
+  isMultisource: false
+  locationName: SRC
+  materializationType: source
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Order ID foreign key
+        name: ORDER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ''
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Amount paid
+        name: AMOUNT_PAID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ''
+    cteString: ''
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ''
+        dependencies:
+          - locationName: SRC
+            nodeName: PC_COALESCE_DB.RAW.PAYMENTS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'PC_COALESCE_DB.RAW.PAYMENTS') }}
+        name: SRC_PC_COALESCE_DB_RAW_PAYMENTS
+        noLinkRefs: []
+  name: SRC_PC_COALESCE_DB.RAW.PAYMENTS
+  overrideSQL: false
+  schema: RAW
+  sqlType: Source
+  type: sql
+  version: 1
