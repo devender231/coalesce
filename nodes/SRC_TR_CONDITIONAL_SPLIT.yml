@@ -1,0 +1,54 @@
+fileVersion: 1
+id: "TR_CONDITIONAL_SPLIT"
+name: "TR_CONDITIONAL_SPLIT"
+description: "Routes rows based on whether BeanVersion matches EDWBeanVersion"
+type: "sql"
+operation:
+  type: "transformation"
+  transformation_type: "CONDITIONAL_SPLIT"
+  database: "{{ ref('database') }}"
+  schema: "{{ ref('schema') }}"
+
+transformation:
+  type: "CONDITIONAL_SPLIT"
+  description: "Routes rows based on whether BeanVersion matches EDWBeanVersion"
+  logic: "BeanVersion == EDWBeanVersion"
+  conditions:
+    - condition_name: "UNCHANGED"
+      expression: "BEANVERSION = EDWBeanVersion"
+      output_path: "unchanged_rows"
+    - condition_name: "UPDATES"
+      expression: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
+      output_path: "update_rows"
+    - condition_name: "INSERTS"
+      expression: "EDWBeanVersion IS NULL"
+      output_path: "insert_rows"
+      
+sql_logic: |
+  -- Unchanged rows
+  SELECT *, 'UNCHANGED' as SPLIT_OUTPUT
+  FROM {{ ref('SRC_TR_LOOKUP_BEANVERSION') }}
+  WHERE BEANVERSION = EDWBeanVersion
+  
+  UNION ALL
+  
+  -- Update rows
+  SELECT *, 'UPDATES' as SPLIT_OUTPUT
+  FROM {{ ref('SRC_TR_LOOKUP_BEANVERSION') }}
+  WHERE BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
+  
+  UNION ALL
+  
+  -- Insert rows
+  SELECT *, 'INSERTS' as SPLIT_OUTPUT
+  FROM {{ ref('SRC_TR_LOOKUP_BEANVERSION') }}
+  WHERE EDWBeanVersion IS NULL
+
+metadata:
+  package_name: "EDW_BC_Load_DimBillingAccount"
+  source_system: "GuideWire"
+  execution_order: 5
+  upstream_dependencies:
+    - "SRC_TR_LOOKUP_BEANVERSION"
+  created_from: "SSIS_Package"
+  transformation_sequence: 4
