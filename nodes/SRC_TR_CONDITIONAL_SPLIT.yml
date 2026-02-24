@@ -1,54 +1,57 @@
-fileVersion: 1
-id: "TR_CONDITIONAL_SPLIT"
-name: "TR_CONDITIONAL_SPLIT"
-description: "Routes rows based on whether BeanVersion matches EDWBeanVersion"
-type: "sql"
-operation:
-  type: "transformation"
-  transformation_type: "CONDITIONAL_SPLIT"
-  database: "{{ ref('database') }}"
-  schema: "{{ ref('schema') }}"
+fileVersion: 1.0.0
+id: tr_conditional_split
+name: SRC_TR_CONDITIONAL_SPLIT
+description: Routes rows based on whether BeanVersion matches EDWBeanVersion
+type: ConditionalSplit
+
+execution_order: 4
+
+source:
+  name: LOOKUP_MATCH_OUTPUT
+  description: Input from lookup match output
 
 transformation:
-  type: "CONDITIONAL_SPLIT"
-  description: "Routes rows based on whether BeanVersion matches EDWBeanVersion"
-  logic: "BeanVersion == EDWBeanVersion"
-  conditions:
-    - condition_name: "UNCHANGED"
-      expression: "BEANVERSION = EDWBeanVersion"
-      output_path: "unchanged_rows"
-    - condition_name: "UPDATES"
-      expression: "BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL"
-      output_path: "update_rows"
-    - condition_name: "INSERTS"
-      expression: "EDWBeanVersion IS NULL"
-      output_path: "insert_rows"
-      
-sql_logic: |
-  -- Unchanged rows
-  SELECT *, 'UNCHANGED' as SPLIT_OUTPUT
-  FROM {{ ref('SRC_TR_LOOKUP_BEANVERSION') }}
-  WHERE BEANVERSION = EDWBeanVersion
-  
-  UNION ALL
-  
-  -- Update rows
-  SELECT *, 'UPDATES' as SPLIT_OUTPUT
-  FROM {{ ref('SRC_TR_LOOKUP_BEANVERSION') }}
-  WHERE BEANVERSION != EDWBeanVersion AND EDWBeanVersion IS NOT NULL
-  
-  UNION ALL
-  
-  -- Insert rows
-  SELECT *, 'INSERTS' as SPLIT_OUTPUT
-  FROM {{ ref('SRC_TR_LOOKUP_BEANVERSION') }}
-  WHERE EDWBeanVersion IS NULL
+  type: CONDITIONAL_SPLIT
+  operation: ROUTE_ROWS
+  description: Splits rows based on BeanVersion comparison for SCD logic
 
-metadata:
-  package_name: "EDW_BC_Load_DimBillingAccount"
-  source_system: "GuideWire"
-  execution_order: 5
-  upstream_dependencies:
-    - "SRC_TR_LOOKUP_BEANVERSION"
-  created_from: "SSIS_Package"
-  transformation_sequence: 4
+split_conditions:
+  - condition_name: UNCHANGED_ROWS
+    condition_expression: "BEANVERSION == EDWBeanVersion"
+    evaluation_order: 1
+    description: Rows where source BeanVersion matches EDW BeanVersion (no changes)
+    output_name: UNCHANGED_OUTPUT
+  
+  - condition_name: CHANGED_ROWS
+    condition_expression: "BEANVERSION != EDWBeanVersion"
+    evaluation_order: 2
+    description: Rows where source BeanVersion differs from EDW BeanVersion (updates needed)
+    output_name: CHANGED_OUTPUT
+  
+  - condition_name: DEFAULT_OUTPUT
+    condition_expression: "DEFAULT"
+    evaluation_order: 3
+    description: Default output for rows not matching other conditions
+    output_name: DEFAULT_SPLIT_OUTPUT
+
+logic:
+  evaluation_type: SEQUENTIAL
+  stop_on_first_match: true
+  comparison:
+    left_operand: BEANVERSION
+    operator: EQUALS
+    right_operand: EDWBeanVersion
+    description: Compares source BeanVersion with existing EDW BeanVersion
+
+outputs:
+  - name: UNCHANGED_OUTPUT
+    description: Rows with matching BeanVersion (no update needed)
+    condition: "BEANVERSION == EDWBeanVersion"
+  
+  - name: CHANGED_OUTPUT
+    description: Rows with different BeanVersion (update needed)
+    condition: "BEANVERSION != EDWBeanVersion"
+  
+  - name: DEFAULT_SPLIT_OUTPUT
+    description: Default output for unmatched conditions
+    condition: "DEFAULT"
