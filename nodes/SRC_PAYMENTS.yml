@@ -5,99 +5,24 @@ operation:
   config:
     insertStrategy: INSERT
     selectDistinct: false
-  database: ""
+  database: PC_COALESCE_DB
   deployEnabled: true
-  description: Source table for payment data
-  isMultisource: false
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_PAYMENTS
-        config: {}
+      - name: PAYMENT_ID
         dataType: NUMBER(38,0)
-        description: Payment ID
-        name: PAYMENT_ID
         nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_PAYMENTS
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_PAYMENTS
-        config: {}
+      - name: ORDER_ID
         dataType: NUMBER(38,0)
-        description: Order ID
-        name: ORDER_ID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_PAYMENTS
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_PAYMENTS
-        config: {}
-        dataType: NUMBER(10,2)
-        description: Amount paid
-        name: AMOUNT_PAID
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_PAYMENTS
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_PAYMENTS
-        config: {}
+      - name: AMOUNT_PAID
+        dataType: NUMBER(18,2)
+        nullable: true
+      - name: PAYMENT_DATE
         dataType: DATE
-        description: Payment date
-        name: PAYMENT_DATE
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_PAYMENTS
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: PAYMENTS
-        join:
-          joinCondition: FROM {{ ref('SRC', 'PAYMENTS') }}
-        name: SRC_PAYMENTS
-        noLinkRefs: []
-  name: SRC_PAYMENTS
-  overrideSQL: false
-  schema: ""
+  schema: RAW
   sqlType: Source
   type: sql
-  version: 1
+  tableName: PAYMENTS
