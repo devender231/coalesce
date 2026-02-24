@@ -1,54 +1,33 @@
-fileVersion: 1
-id: tr_rowcount_unchanged_001
+fileVersion: 1.0.0
+id: tr_rowcount_unchanged
 name: SRC_TR_ROWCOUNT_UNCHANGED
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: "Row Count Transformation - Counts unchanged rows (BeanVersion matches)"
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
-        dataType: INTEGER
-        description: "Unchanged Row Count"
-        name: UNCHANGED_ROW_COUNT
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: "COUNT(*)"
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_TR_CONDITIONALSPLIT: 1
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SRC_TR_CONDITIONALSPLIT
-        join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT') }} SRC_TR_CONDITIONALSPLIT
-            WHERE ROW_TYPE = 'UNCHANGED'
-        name: SRC_TR_CONDITIONALSPLIT
-        noLinkRefs: []
-  name: SRC_TR_ROWCOUNT_UNCHANGED
-  overrideSQL: false
-  schema: ""
-  sqlType: DT113:::156
-  type: sql
-  version: 1
-type: Node
+description: Counts unchanged rows (BeanVersion matches)
+type: RowCount
+
+execution_order: 5
+
+source:
+  name: UNCHANGED_OUTPUT
+  description: Input from conditional split unchanged output
+
+transformation:
+  type: ROW_COUNT
+  operation: COUNT_ROWS
+  output_variable: User::UnChangeCount
+  description: Counts rows where BeanVersion matches (no changes detected)
+
+logic:
+  count_expression: COUNT(*)
+  variable_assignment:
+    variable_name: User::UnChangeCount
+    variable_type: INTEGER
+    description: Number of rows with no changes (BeanVersion matches)
+  
+  filter_condition: "BEANVERSION == EDWBeanVersion"
+
+output:
+  name: ROWCOUNT_UNCHANGED_OUTPUT
+  pass_through: true
+  description: Unchanged rows passed through with count captured
+  action: NO_LOAD
+  reason: These rows already exist in EDW with same BeanVersion
