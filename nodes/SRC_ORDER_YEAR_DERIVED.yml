@@ -1,0 +1,78 @@
+fileVersion: 1
+id: order_year_derived_node
+name: SRC_ORDER_YEAR_DERIVED
+description: Derived column transformation - Extracts year from order_date
+type: sql
+config:
+  clusterKey: false
+  downstreamOption: true
+  groupByAll: false
+  initialize: ON_CREATE
+  insertStrategy: INSERT
+  orderby: false
+  postSQL: ''
+  preSQL: ''
+  testsEnabled: true
+  truncateBefore: true
+columns:
+  - name: CUSTOMER_ID
+    dataType: NUMBER
+    description: Customer identifier
+  - name: FIRST_NAME
+    dataType: VARCHAR
+    description: Customer first name
+  - name: LAST_NAME
+    dataType: VARCHAR
+    description: Customer last name
+  - name: EMAIL
+    dataType: VARCHAR
+    description: Customer email address
+  - name: ORDER_ID
+    dataType: NUMBER
+    description: Order identifier
+  - name: ORDER_DATE
+    dataType: DATE
+    description: Date when order was placed
+  - name: TOTAL_AMOUNT
+    dataType: NUMBER
+    description: Total amount of the order
+  - name: PRODUCT_NAME
+    dataType: VARCHAR
+    description: Product name
+  - name: QUANTITY
+    dataType: NUMBER
+    description: Quantity of items ordered
+  - name: PRICE
+    dataType: NUMBER
+    description: Price per item
+  - name: AMOUNT_PAID
+    dataType: NUMBER
+    description: Amount paid
+  - name: FULL_NAME
+    dataType: VARCHAR
+    description: Full name from previous transformation
+  - name: ORDER_YEAR
+    dataType: NUMBER
+    description: Derived column - Year extracted from order_date
+dependsOn:
+  - type: transformation
+    name: SRC_FULL_NAME_DERIVED
+sql: |
+  -- Transformation 2: Derived Column - order_year
+  -- Extracts year from order_date using YEAR(order_date)
+  SELECT
+    CUSTOMER_ID,
+    FIRST_NAME,
+    LAST_NAME,
+    EMAIL,
+    ORDER_ID,
+    ORDER_DATE,
+    TOTAL_AMOUNT,
+    PRODUCT_NAME,
+    QUANTITY,
+    PRICE,
+    AMOUNT_PAID,
+    FULL_NAME,
+    YEAR(ORDER_DATE) AS ORDER_YEAR
+  FROM {{ ref('SRC_FULL_NAME_DERIVED') }}
+executionOrder: 3
