@@ -1,0 +1,67 @@
+fileVersion: 1
+id: S9
+name: SRC_BCTL_ACCOUNTTYPE
+type: Node
+operation:
+  name: SRC_BCTL_ACCOUNTTYPE
+  database: PC_COALESCE_DB
+  schema: RAW
+  locationName: SRC
+  sqlType: Source
+  type: sourceInput
+  deployEnabled: true
+  overrideSQL: false
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S9
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C1
+            stepCounter: S9
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S9
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        hashColumns: []
+        hashDetails: null
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnCounter: C2
+            stepCounter: S9
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTTYPE
+        join:
+          joinCondition: FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} "BCTL_ACCOUNTTYPE"
+        name: SRC_BCTL_ACCOUNTTYPE
+        noLinkRefs: []
