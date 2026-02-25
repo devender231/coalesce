@@ -1,0 +1,106 @@
+fileVersion: 1
+id: SRC_PAYMENTS
+name: SRC_PAYMENTS
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: PC_COALESCE_WH
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Source table for Payments
+  isMultisource: false
+  locationID: SNOWFLAKE_LOCATION
+  locationName: SNOWFLAKE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Payment ID
+        hashColumns: []
+        hashDetails: null
+        name: PAYMENT_ID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Order ID Foreign Key
+        hashColumns: []
+        hashDetails: null
+        name: ORDER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Amount Paid
+        hashColumns: []
+        hashDetails: null
+        name: AMOUNT_PAID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_PAYMENTS: 1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SNOWFLAKE
+            nodeName: PAYMENTS
+        join:
+          joinCondition: FROM {{ ref('SNOWFLAKE', 'PAYMENTS') }} "SRC_PAYMENTS"
+        name: SRC_PAYMENTS
+        noLinkRefs: []
+  name: SRC_PAYMENTS
+  overrideSQL: false
+  schema: RAW
+  sqlType: SOURCE
+  type: sql
+  version: 1
