@@ -1,111 +1,21 @@
 fileVersion: 1
 id: SRC_SALESTERRITORY
 name: SRC_SALESTERRITORY
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: '{{ parameters.SRC_WH }}'
-  database: '{{ parameters.SRC_DB }}'
-  deployEnabled: true
-  description: Source table for Sales Territory data
-  isDataVault: false
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_SALESTERRITORY
-        config: {}
-        dataType: NUMBER(38,0)
-        description: Territory ID
-        hashColumns: []
-        hashDetails: null
-        name: TERRITORYID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_SALESTERRITORY
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_SALESTERRITORY
-        config: {}
-        dataType: VARCHAR(50)
-        description: Territory Name
-        hashColumns: []
-        hashDetails: null
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_SALESTERRITORY
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_SALESTERRITORY
-        config: {}
-        dataType: VARCHAR(50)
-        description: Territory Group
-        hashColumns: []
-        hashDetails: null
-        name: GROUP
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_SALESTERRITORY
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_SALESTERRITORY
-        config: {}
-        dataType: VARCHAR(10)
-        description: Country Region Code
-        hashColumns: []
-        hashDetails: null
-        name: COUNTRYREGIONCODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_SALESTERRITORY
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SALESTERRITORY
-        join:
-          joinCondition: ""
-        name: SRC_SALESTERRITORY
-        noLinkRefs: []
-  name: SRC_SALESTERRITORY
-  overrideSQL: false
-  schema: '{{ parameters.SRC_SCHEMA }}'
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+location:
+  name: SALES
+  database: ""
+  schema: SALES
+columns:
+  - name: TERRITORYID
+    dataType: NUMBER(38,0)
+    description: Territory identifier
+  - name: NAME
+    dataType: VARCHAR(50)
+    description: Territory name
+  - name: COUNTRYREGIONCODE
+    dataType: VARCHAR(3)
+    description: Country region code
+  - name: GROUP
+    dataType: VARCHAR(50)
+    description: Territory group
