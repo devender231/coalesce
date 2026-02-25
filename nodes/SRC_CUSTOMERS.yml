@@ -92,7 +92,7 @@ operation:
           - locationName: SRC
             nodeName: PC_COALESCE_DB.RAW.CUSTOMERS
         join:
-          joinCondition: FROM ref('SRC', 'PC_COALESCE_DB.RAW.CUSTOMERS')
+          joinCondition: FROM {{ ref('SRC', 'PC_COALESCE_DB.RAW.CUSTOMERS') }}
         name: SRC_CUSTOMERS
         noLinkRefs: []
   name: SRC_CUSTOMERS
