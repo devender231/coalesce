@@ -4,7 +4,7 @@ location:
   name: SRC
   database: ""
   schema: SALES
-table: SALESTERRITORY
+  table: SALESTERRITORY
 columns:
   - name: TERRITORYID
     dataType: NUMBER(38,0)
@@ -13,7 +13,7 @@ columns:
     dataType: VARCHAR(50)
     description: Territory Name
   - name: COUNTRYREGIONCODE
-    dataType: VARCHAR(10)
+    dataType: VARCHAR(3)
     description: Country Region Code
   - name: GROUP
     dataType: VARCHAR(50)
