@@ -1,75 +1,17 @@
-fileVersion: 1
-id: "SRC_COUNTRYNAME"
-name: "SRC_COUNTRYNAME"
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
+name: SRC_COUNTRYNAME
+type: source
+config:
+  source_type: table
+location:
+  name: SRC
   database: ""
-  deployEnabled: true
-  description: "Source extraction from SALES.COUNTRYNAME table"
-  isMultisource: false
-  locationName: "SRC"
-  materializationType: "view"
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: "SRC_COUNTRYNAME"
-        config: {}
-        dataType: "VARCHAR(10)"
-        description: "Country Code"
-        hashColumns: []
-        hashDetails: null
-        name: "COUNTRY_CODE"
-        nullable: false
-        primaryKey: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: "SRC_COUNTRYNAME"
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: "SRC_COUNTRYNAME"
-        config: {}
-        dataType: "VARCHAR(255)"
-        description: "Country Name"
-        hashColumns: []
-        hashDetails: null
-        name: "COUNTRY_NAME"
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: "SRC_COUNTRYNAME"
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: "SRC"
-            nodeName: "COUNTRYNAME"
-        join:
-          joinCondition: ""
-        name: "SRC_COUNTRYNAME"
-        noLinkRefs: []
-  name: "SRC_COUNTRYNAME"
-  overrideSQL: false
-  schema: "SALES"
-  sqlType: "Source"
-  type: "sql"
-  version: 1
+  schema: SALES
+object:
+  name: COUNTRYNAME
+columns:
+  - name: COUNTRY_CODE
+    data_type: NVARCHAR(3)
+    description: Country Code
+  - name: COUNTRY_NAME
+    data_type: VARCHAR(255)
+    description: Country Name
