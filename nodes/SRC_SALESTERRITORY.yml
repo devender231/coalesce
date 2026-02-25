@@ -1,115 +1,23 @@
-fileVersion: 1
-id: "SRC_SALESTERRITORY"
-name: "SRC_SALESTERRITORY"
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
+name: SRC_SALESTERRITORY
+type: source
+config:
+  source_type: table
+location:
+  name: SRC
   database: ""
-  deployEnabled: true
-  description: "Source extraction from SALES.SALESTERRITORY table"
-  isMultisource: false
-  locationName: "SRC"
-  materializationType: "view"
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: "SRC_SALESTERRITORY"
-        config: {}
-        dataType: "INT"
-        description: "Territory ID"
-        hashColumns: []
-        hashDetails: null
-        name: "TERRITORYID"
-        nullable: false
-        primaryKey: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: "SRC_SALESTERRITORY"
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: "SRC_SALESTERRITORY"
-        config: {}
-        dataType: "VARCHAR(50)"
-        description: "Territory Name"
-        hashColumns: []
-        hashDetails: null
-        name: "NAME"
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: "SRC_SALESTERRITORY"
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: "SRC_SALESTERRITORY"
-        config: {}
-        dataType: "VARCHAR(10)"
-        description: "Country Region Code used for joining with CountryName"
-        hashColumns: []
-        hashDetails: null
-        name: "COUNTRYREGIONCODE"
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: "SRC_SALESTERRITORY"
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: "SRC_SALESTERRITORY"
-        config: {}
-        dataType: "VARCHAR(50)"
-        description: "Territory Group"
-        hashColumns: []
-        hashDetails: null
-        name: "GROUP"
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: "SRC_SALESTERRITORY"
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: "SRC"
-            nodeName: "SALESTERRITORY"
-        join:
-          joinCondition: ""
-        name: "SRC_SALESTERRITORY"
-        noLinkRefs: []
-  name: "SRC_SALESTERRITORY"
-  overrideSQL: false
-  schema: "SALES"
-  sqlType: "Source"
-  type: "sql"
-  version: 1
+  schema: SALES
+object:
+  name: SALESTERRITORY
+columns:
+  - name: TERRITORYID
+    data_type: INT
+    description: Territory ID
+  - name: NAME
+    data_type: NVARCHAR(50)
+    description: Territory Name
+  - name: GROUP
+    data_type: NVARCHAR(50)
+    description: Territory Group
+  - name: COUNTRYREGIONCODE
+    data_type: NVARCHAR(3)
+    description: Country Region Code for joining
