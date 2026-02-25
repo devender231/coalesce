@@ -1,12 +1,14 @@
 name: SRC_COUNTRYNAME
 type: source
 location:
-  name: SRC
+  name: SALES.COUNTRYNAME
   database: ""
   schema: SALES
-table: COUNTRYNAME
+  table: COUNTRYNAME
 columns:
   - name: COUNTRY_CODE
     dataType: VARCHAR(3)
+    description: Country Code
   - name: COUNTRY_NAME
     dataType: VARCHAR(255)
+    description: Country Name
