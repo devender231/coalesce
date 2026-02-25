@@ -1,0 +1,59 @@
+fileVersion: 1
+id: "TR_ORDER_YEAR_001"
+name: "SRC_TR_ORDER_YEAR"
+description: "Derives order_year by extracting year from order_date"
+type: "derivedColumn"
+executionOrder: 3
+
+config:
+  upstreamDependency:
+    - "SRC_TR_FULL_NAME"
+
+transformation:
+  type: "DERIVED_COLUMN"
+  operation: "DATE_FUNCTION"
+  
+  derivedColumns:
+    - columnName: "order_year"
+      expression: "YEAR(order_date)"
+      dataType: "INTEGER"
+      description: "Year extracted from order_date"
+      sourceColumns:
+        - "order_date"
+
+inputColumns:
+  - customer_id
+  - first_name
+  - last_name
+  - full_name
+  - email
+  - order_id
+  - order_date
+  - total_amount
+  - product_name
+  - quantity
+  - price
+  - amount_paid
+
+outputColumns:
+  - customer_id
+  - first_name
+  - last_name
+  - full_name
+  - email
+  - order_id
+  - order_date
+  - order_year
+  - total_amount
+  - product_name
+  - quantity
+  - price
+  - amount_paid
+
+metadata:
+  sourceSystem: "SSIS"
+  sourcePackage: "Customer_Order_Flow_Complete.dtsx"
+  component: "SRC_Customer_Order_Full"
+  transformationType: "DerivedColumn"
+  createdDate: "2026-02-24T15:30:00"
+  extractedBy: "DataEngineering_Agent"
