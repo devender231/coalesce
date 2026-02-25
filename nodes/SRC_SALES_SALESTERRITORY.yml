@@ -1,0 +1,19 @@
+name: SRC_SALES_SALESTERRITORY
+type: source
+location:
+  database: ""
+  schema: SALES
+  table: SALESTERRITORY
+columns:
+  - name: TERRITORYID
+    dataType: INT
+    description: Territory ID
+  - name: NAME
+    dataType: NVARCHAR(50)
+    description: Territory Name
+  - name: COUNTRYREGIONCODE
+    dataType: NVARCHAR(3)
+    description: Country Region Code
+  - name: GROUP
+    dataType: NVARCHAR(50)
+    description: Territory Group
