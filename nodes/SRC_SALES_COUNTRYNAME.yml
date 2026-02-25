@@ -3,11 +3,22 @@ id: SRC_SALES_COUNTRYNAME
 name: SRC_SALES_COUNTRYNAME
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
-  description: Source table SALES.COUNTRYNAME from SSIS package Dim_ETL.dtsx
+  description: Source table SALES.COUNTRYNAME
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -19,10 +30,10 @@ operation:
           columnCounter: 1
           stepCounter: SRC_SALES_COUNTRYNAME
         config: {}
-        dataType: VARCHAR(3)
-        description: Country Code
-        name: COUNTRY_CODE
-        nullable: false
+        dataType: VARCHAR(255)
+        description: Country Name
+        name: COUNTRY_NAME
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
@@ -33,9 +44,9 @@ operation:
           columnCounter: 2
           stepCounter: SRC_SALES_COUNTRYNAME
         config: {}
-        dataType: VARCHAR(255)
-        description: Country Name
-        name: COUNTRY_NAME
+        dataType: VARCHAR(50)
+        description: Country Code
+        name: COUNTRY_CODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -53,7 +64,7 @@ operation:
           - locationName: SRC
             nodeName: SALES.COUNTRYNAME
         join:
-          joinCondition: FROM {{ ref('SRC', 'SALES.COUNTRYNAME') }}
+          joinCondition: FROM {{ ref('SRC', 'SALES.COUNTRYNAME') }} SRC_SALES_COUNTRYNAME
         name: SRC_SALES_COUNTRYNAME
         noLinkRefs: []
   name: SRC_SALES_COUNTRYNAME
