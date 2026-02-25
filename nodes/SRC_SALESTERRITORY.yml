@@ -1,95 +1,129 @@
-fileVersion: 1
-id: SRC_SALESTERRITORY
-name: SRC_SALESTERRITORY
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source table for Sales Territory data
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_SALESTERRITORY
-        config: {}
-        dataType: NUMBER(38,0)
-        description: Territory ID
-        isBusinessKey: false
-        name: TERRITORYID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_SALESTERRITORY
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_SALESTERRITORY
-        config: {}
-        dataType: VARCHAR(50)
-        description: Territory Name
-        isBusinessKey: false
-        name: NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_SALESTERRITORY
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_SALESTERRITORY
-        config: {}
-        dataType: VARCHAR(50)
-        description: Territory Group
-        isBusinessKey: false
-        name: GROUP
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_SALESTERRITORY
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_SALESTERRITORY
-        config: {}
-        dataType: VARCHAR(3)
-        description: Country Region Code
-        isBusinessKey: false
-        name: COUNTRYREGIONCODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_SALESTERRITORY
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: SALESTERRITORY
-        join:
-          joinCondition: ""
-        name: SRC_SALESTERRITORY
-        noLinkRefs: []
-  name: SRC_SALESTERRITORY
-  overrideSQL: false
-  schema: ""
-  sqlType: Source
-  type: sql
-  version: 1
+steps:
+  SRC_SALESTERRITORY:
+    operation:
+      config:
+        insertStrategy: INSERT
+        selectDistinct: false
+      database: ""
+      dataset: ""
+      deployEnabled: true
+      description: Source table for Sales Territory data
+      isMultisource: false
+      locationID: ""
+      locationName: SRC
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 0
+              stepCounter: 0
+            config: {}
+            dataType: NUMBER(38,0)
+            defaultValue: ""
+            description: Territory ID
+            hashColumns: []
+            hashDetails: null
+            isBusinessKey: false
+            isChangeTracking: false
+            isNaturalKey: false
+            isSystemVersion: false
+            name: TERRITORYID
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 0
+                    stepCounter: 0
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 1
+              stepCounter: 0
+            config: {}
+            dataType: VARCHAR(50)
+            defaultValue: ""
+            description: Territory Name
+            hashColumns: []
+            hashDetails: null
+            isBusinessKey: false
+            isChangeTracking: false
+            isNaturalKey: false
+            isSystemVersion: false
+            name: NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1
+                    stepCounter: 0
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 2
+              stepCounter: 0
+            config: {}
+            dataType: VARCHAR(3)
+            defaultValue: ""
+            description: Country Region Code
+            hashColumns: []
+            hashDetails: null
+            isBusinessKey: false
+            isChangeTracking: false
+            isNaturalKey: false
+            isSystemVersion: false
+            name: COUNTRYREGIONCODE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2
+                    stepCounter: 0
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 3
+              stepCounter: 0
+            config: {}
+            dataType: VARCHAR(50)
+            defaultValue: ""
+            description: Territory Group
+            hashColumns: []
+            hashDetails: null
+            isBusinessKey: false
+            isChangeTracking: false
+            isNaturalKey: false
+            isSystemVersion: false
+            name: GROUP
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 3
+                    stepCounter: 0
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: SRC
+                nodeName: SALESTERRITORY
+            name: SRC_SALESTERRITORY
+            noLinkRefs: []
+      name: SRC_SALESTERRITORY
+      overrideSQL: false
+      schema: sales
+      sqlType: Source
+      type: sourceInput
+      version: 1
