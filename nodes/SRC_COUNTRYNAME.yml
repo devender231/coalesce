@@ -1,76 +1,75 @@
 fileVersion: 1
-id: SRC_COUNTRYNAME
-name: SRC_COUNTRYNAME
+id: "SRC_COUNTRYNAME"
+name: "SRC_COUNTRYNAME"
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: ''
-  database: ''
+  database: ""
   deployEnabled: true
-  description: Source table for Country Name data
+  description: "Source extraction from Sales.CountryName table"
   isMultisource: false
-  locationName: SRC
-  materializationType: view
+  locationName: "SRC"
+  materializationType: "view"
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: SRC_COUNTRYNAME
+          stepCounter: "SRC_COUNTRYNAME"
         config: {}
-        dataType: VARCHAR(255)
-        description: Country Name
-        name: COUNTRY_NAME
-        nullable: true
+        dataType: "VARCHAR(10)"
+        description: "Country Code"
+        hashColumns: []
+        hashDetails: null
+        name: "COUNTRY_CODE"
+        nullable: false
+        primaryKey: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: SRC_COUNTRYNAME
+                stepCounter: "SRC_COUNTRYNAME"
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: SRC_COUNTRYNAME
+          stepCounter: "SRC_COUNTRYNAME"
         config: {}
-        dataType: VARCHAR(3)
-        description: Country Code
-        name: COUNTRY_CODE
+        dataType: "VARCHAR(255)"
+        description: "Country Name"
+        hashColumns: []
+        hashDetails: null
+        name: "COUNTRY_NAME"
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: SRC_COUNTRYNAME
+                stepCounter: "SRC_COUNTRYNAME"
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          SRC_COUNTRYNAME: Sales.CountryName
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: SRC
-            nodeName: Sales.CountryName
+          - locationName: "SRC"
+            nodeName: "COUNTRYNAME"
         join:
-          joinCondition: FROM {{ ref('SRC', 'Sales.CountryName') }} SRC_COUNTRYNAME
-        name: SRC_COUNTRYNAME
+          joinCondition: ""
+        name: "SRC_COUNTRYNAME"
         noLinkRefs: []
-  name: SRC_COUNTRYNAME
+  name: "SRC_COUNTRYNAME"
   overrideSQL: false
-  schema: ''
-  sqlType: SOURCE
-  type: sql
+  schema: "Sales"
+  sqlType: "Source"
+  type: "sql"
   version: 1
