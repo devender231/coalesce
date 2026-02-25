@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Source extraction from sales.SalesTerritory table"
+  description: "Source extraction from SALES.SALESTERRITORY table"
   isMultisource: false
   locationName: "SRC"
   materializationType: "view"
@@ -62,11 +62,11 @@ operation:
           columnCounter: 3
           stepCounter: "SRC_SALESTERRITORY"
         config: {}
-        dataType: "VARCHAR(50)"
-        description: "Territory Group"
+        dataType: "VARCHAR(10)"
+        description: "Country Region Code used for joining with CountryName"
         hashColumns: []
         hashDetails: null
-        name: "GROUP"
+        name: "COUNTRYREGIONCODE"
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -82,11 +82,11 @@ operation:
           columnCounter: 4
           stepCounter: "SRC_SALESTERRITORY"
         config: {}
-        dataType: "VARCHAR(10)"
-        description: "Country Region Code"
+        dataType: "VARCHAR(50)"
+        description: "Territory Group"
         hashColumns: []
         hashDetails: null
-        name: "COUNTRYREGIONCODE"
+        name: "GROUP"
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -109,7 +109,7 @@ operation:
         noLinkRefs: []
   name: "SRC_SALESTERRITORY"
   overrideSQL: false
-  schema: "sales"
+  schema: "SALES"
   sqlType: "Source"
   type: "sql"
   version: 1
