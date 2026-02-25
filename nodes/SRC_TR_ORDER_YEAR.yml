@@ -1,59 +1,295 @@
 fileVersion: 1
-id: "TR_ORDER_YEAR_001"
-name: "SRC_TR_ORDER_YEAR"
-description: "Derives order_year by extracting year from order_date"
-type: "derivedColumn"
-executionOrder: 3
-
-config:
-  upstreamDependency:
-    - "SRC_TR_FULL_NAME"
-
-transformation:
-  type: "DERIVED_COLUMN"
-  operation: "DATE_FUNCTION"
-  
-  derivedColumns:
-    - columnName: "order_year"
-      expression: "YEAR(order_date)"
-      dataType: "INTEGER"
-      description: "Year extracted from order_date"
-      sourceColumns:
-        - "order_date"
-
-inputColumns:
-  - customer_id
-  - first_name
-  - last_name
-  - full_name
-  - email
-  - order_id
-  - order_date
-  - total_amount
-  - product_name
-  - quantity
-  - price
-  - amount_paid
-
-outputColumns:
-  - customer_id
-  - first_name
-  - last_name
-  - full_name
-  - email
-  - order_id
-  - order_date
-  - order_year
-  - total_amount
-  - product_name
-  - quantity
-  - price
-  - amount_paid
-
-metadata:
-  sourceSystem: "SSIS"
-  sourcePackage: "Customer_Order_Flow_Complete.dtsx"
-  component: "SRC_Customer_Order_Full"
-  transformationType: "DerivedColumn"
-  createdDate: "2026-02-24T15:30:00"
-  extractedBy: "DataEngineering_Agent"
+id: SRC_TR_ORDER_YEAR
+name: SRC_TR_ORDER_YEAR
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: PC_COALESCE_WH
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Derived Column Transformation - Extract year from order_date
+  isMultisource: false
+  locationID: SNOWFLAKE_LOCATION
+  locationName: SNOWFLAKE
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Customer ID
+        hashColumns: []
+        hashDetails: null
+        name: CUSTOMER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(100)
+        description: First Name
+        hashColumns: []
+        hashDetails: null
+        name: FIRST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(100)
+        description: Last Name
+        hashColumns: []
+        hashDetails: null
+        name: LAST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(255)
+        description: Email
+        hashColumns: []
+        hashDetails: null
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Order ID
+        hashColumns: []
+        hashDetails: null
+        name: ORDER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: 1
+        config: {}
+        dataType: DATE
+        description: Order Date
+        hashColumns: []
+        hashDetails: null
+        name: ORDER_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Total Amount
+        hashColumns: []
+        hashDetails: null
+        name: TOTAL_AMOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(255)
+        description: Product Name
+        hashColumns: []
+        hashDetails: null
+        name: PRODUCT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Quantity
+        hashColumns: []
+        hashDetails: null
+        name: QUANTITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Price
+        hashColumns: []
+        hashDetails: null
+        name: PRICE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Amount Paid
+        hashColumns: []
+        hashDetails: null
+        name: AMOUNT_PAID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(201)
+        description: Full Name
+        hashColumns: []
+        hashDetails: null
+        name: FULL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(4,0)
+        description: Derived Column - Year extracted from order_date
+        hashColumns: []
+        hashDetails: null
+        name: ORDER_YEAR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 1
+            transform: YEAR(ORDER_DATE)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_FULL_NAME: 1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SNOWFLAKE
+            nodeName: SRC_TR_FULL_NAME
+        join:
+          joinCondition: FROM {{ ref('SNOWFLAKE', 'SRC_TR_FULL_NAME') }} "SRC_TR_FULL_NAME"
+        name: SRC_TR_ORDER_YEAR
+        noLinkRefs: []
+  name: SRC_TR_ORDER_YEAR
+  overrideSQL: false
+  schema: RAW
+  sqlType: TRANSFORM
+  type: sql
+  version: 1
