@@ -1,0 +1,64 @@
+fileVersion: 1
+id: SRC_SALES_COUNTRYNAME
+name: SRC_SALES_COUNTRYNAME
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Source table SALES.COUNTRYNAME from SSIS package Dim_ETL.dtsx
+  isMultisource: false
+  locationName: SRC
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_SALES_COUNTRYNAME
+        config: {}
+        dataType: VARCHAR(3)
+        description: Country Code
+        name: COUNTRY_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_SALES_COUNTRYNAME
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_SALES_COUNTRYNAME
+        config: {}
+        dataType: VARCHAR(255)
+        description: Country Name
+        name: COUNTRY_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_SALES_COUNTRYNAME
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_SALES_COUNTRYNAME: SALES.COUNTRYNAME
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SALES.COUNTRYNAME
+        join:
+          joinCondition: FROM {{ ref('SRC', 'SALES.COUNTRYNAME') }}
+        name: SRC_SALES_COUNTRYNAME
+        noLinkRefs: []
+  name: SRC_SALES_COUNTRYNAME
+  overrideSQL: false
+  schema: ""
+  sqlType: Source
+  type: sql
+  version: 1
