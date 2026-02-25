@@ -1,0 +1,13 @@
+name: SRC_SALES_COUNTRYNAME
+type: source
+location:
+  database: ""
+  schema: SALES
+  table: COUNTRYNAME
+columns:
+  - name: COUNTRY_CODE
+    dataType: NVARCHAR(3)
+    description: Country Code
+  - name: COUNTRY_NAME
+    dataType: VARCHAR(255)
+    description: Country Name
