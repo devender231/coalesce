@@ -1,17 +1,73 @@
-name: SRC_COUNTRYNAME
-type: source
-config:
-  source_type: table
-location:
-  name: SRC
-  database: ""
-  schema: SALES
-object:
-  name: COUNTRYNAME
-columns:
-  - name: COUNTRY_CODE
-    data_type: NVARCHAR(3)
-    description: Country Code
-  - name: COUNTRY_NAME
-    data_type: VARCHAR(255)
-    description: Country Name
+steps:
+  SRC_COUNTRYNAME:
+    operation:
+      config:
+        insertStrategy: INSERT
+      database: ""
+      deployEnabled: true
+      description: Source table for Country Name data
+      isMultisource: false
+      locationName: SRC
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 0
+              stepCounter: 0
+            config: {}
+            dataType: VARCHAR(50)
+            description: Country code
+            hashColumns: []
+            hashDetails: null
+            name: COUNTRY_CODE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 0
+                    stepCounter: 0
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 1
+              stepCounter: 0
+            config: {}
+            dataType: VARCHAR(255)
+            description: Country name
+            hashColumns: []
+            hashDetails: null
+            name: COUNTRY_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1
+                    stepCounter: 0
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases:
+              SRC_COUNTRYNAME: 0
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: SRC
+                nodeName: COUNTRYNAME
+            join:
+              joinCondition: FROM {{ ref('SRC', 'COUNTRYNAME') }} "SRC_COUNTRYNAME"
+            name: SRC_COUNTRYNAME
+            noLinkRefs: []
+      name: SRC_COUNTRYNAME
+      overrideSQL: false
+      schema: Sales
+      sqlType: Source
+      type: sql
+      version: 1
+type: Node
