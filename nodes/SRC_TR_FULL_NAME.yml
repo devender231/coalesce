@@ -1,0 +1,58 @@
+fileVersion: 1
+id: "TR_FULL_NAME_001"
+name: "SRC_TR_FULL_NAME"
+description: "Derives full_name by concatenating first_name and last_name"
+type: "derivedColumn"
+executionOrder: 2
+
+config:
+  upstreamDependency:
+    - "SRC_JOIN_CUSTOMER_ORDER"
+
+transformation:
+  type: "DERIVED_COLUMN"
+  operation: "CONCATENATE"
+  
+  derivedColumns:
+    - columnName: "full_name"
+      expression: "first_name || ' ' || last_name"
+      dataType: "VARCHAR"
+      description: "Customer full name created by concatenating first and last name with space"
+      sourceColumns:
+        - "first_name"
+        - "last_name"
+
+inputColumns:
+  - customer_id
+  - first_name
+  - last_name
+  - email
+  - order_id
+  - order_date
+  - total_amount
+  - product_name
+  - quantity
+  - price
+  - amount_paid
+
+outputColumns:
+  - customer_id
+  - first_name
+  - last_name
+  - full_name
+  - email
+  - order_id
+  - order_date
+  - total_amount
+  - product_name
+  - quantity
+  - price
+  - amount_paid
+
+metadata:
+  sourceSystem: "SSIS"
+  sourcePackage: "Customer_Order_Flow_Complete.dtsx"
+  component: "SRC_Customer_Order_Full"
+  transformationType: "DerivedColumn"
+  createdDate: "2026-02-24T15:30:00"
+  extractedBy: "DataEngineering_Agent"
