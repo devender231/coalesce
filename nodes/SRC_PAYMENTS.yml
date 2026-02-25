@@ -93,7 +93,7 @@ operation:
           - locationName: SRC
             nodeName: PAYMENTS
         join:
-          joinCondition: FROM {{ ref('SRC', 'PAYMENTS') }}
+          joinCondition: FROM {{ ref('SRC', 'PAYMENTS') }} "PAYMENTS"
         name: SRC_PAYMENTS
         noLinkRefs: []
   name: SRC_PAYMENTS
