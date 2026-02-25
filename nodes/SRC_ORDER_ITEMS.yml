@@ -1,0 +1,144 @@
+fileVersion: 1
+id: SRC_ORDER_ITEMS
+name: SRC_ORDER_ITEMS
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: PC_COALESCE_WH
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Source table for Order Items
+  isMultisource: false
+  locationID: SNOWFLAKE_LOCATION
+  locationName: SNOWFLAKE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Order Item ID
+        hashColumns: []
+        hashDetails: null
+        name: ORDER_ITEM_ID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Order ID Foreign Key
+        hashColumns: []
+        hashDetails: null
+        name: ORDER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(255)
+        description: Product Name
+        hashColumns: []
+        hashDetails: null
+        name: PRODUCT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Quantity
+        hashColumns: []
+        hashDetails: null
+        name: QUANTITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Price
+        hashColumns: []
+        hashDetails: null
+        name: PRICE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 1
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_ORDER_ITEMS: 1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SNOWFLAKE
+            nodeName: ORDER_ITEMS
+        join:
+          joinCondition: FROM {{ ref('SNOWFLAKE', 'ORDER_ITEMS') }} "SRC_ORDER_ITEMS"
+        name: SRC_ORDER_ITEMS
+        noLinkRefs: []
+  name: SRC_ORDER_ITEMS
+  overrideSQL: false
+  schema: RAW
+  sqlType: SOURCE
+  type: sql
+  version: 1
