@@ -1,19 +1,21 @@
 name: SRC_SALES_SALESTERRITORY
 type: source
+config:
+  source_type: table
 location:
+  name: SALES.SALESTERRITORY
   database: ""
   schema: SALES
-  table: SALESTERRITORY
 columns:
   - name: TERRITORYID
-    dataType: INTEGER
+    data_type: INTEGER
     description: Territory ID
   - name: NAME
-    dataType: VARCHAR(50)
+    data_type: VARCHAR(50)
     description: Territory Name
   - name: COUNTRYREGIONCODE
-    dataType: VARCHAR(3)
+    data_type: VARCHAR(10)
     description: Country Region Code
   - name: GROUP
-    dataType: VARCHAR(50)
+    data_type: VARCHAR(50)
     description: Territory Group
