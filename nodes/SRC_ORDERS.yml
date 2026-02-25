@@ -7,97 +7,19 @@ operation:
     selectDistinct: false
   database: PC_COALESCE_DB
   deployEnabled: true
-  description: Source table for ORDERS data
-  isMultisource: false
   locationName: SRC
-  materializationType: view
   metadata:
-    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_ORDERS
-        config: {}
-        dataType: NUMBER(38,0)
-        description: Order ID
-        name: ORDER_ID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_ORDERS
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_ORDERS
-        config: {}
-        dataType: NUMBER(38,0)
-        description: Customer ID
-        name: CUSTOMER_ID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_ORDERS
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: SRC_ORDERS
-        config: {}
-        dataType: DATE
-        description: Order date
-        name: ORDER_DATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: SRC_ORDERS
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: SRC_ORDERS
-        config: {}
-        dataType: NUMBER(10,2)
-        description: Total order amount
-        name: TOTAL_AMOUNT
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: SRC_ORDERS
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: PC_COALESCE_DB.RAW.ORDERS
-        join:
-          joinCondition: FROM {{ ref('SRC', 'PC_COALESCE_DB.RAW.ORDERS') }}
-        name: SRC_ORDERS
-        noLinkRefs: []
+      - name: ORDER_ID
+        ordinalPosition: 1
+      - name: CUSTOMER_ID
+        ordinalPosition: 2
+      - name: ORDER_DATE
+        ordinalPosition: 3
+      - name: TOTAL_AMOUNT
+        ordinalPosition: 4
   name: SRC_ORDERS
-  overrideSQL: false
   schema: RAW
   sqlType: Source
-  type: sql
-  version: 1
+  table: ORDERS
+  type: sourceInput
