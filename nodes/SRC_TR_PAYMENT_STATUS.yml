@@ -1,78 +1,340 @@
 fileVersion: 1
-id: "TR_PAYMENT_STATUS_001"
-name: "SRC_TR_PAYMENT_STATUS"
-description: "Derives payment_status using conditional logic based on amount_paid and total_amount"
-type: "conditionalSplit"
-executionOrder: 5
-
-config:
-  upstreamDependency:
-    - "SRC_TR_ITEM_TOTAL"
-
-transformation:
-  type: "CONDITIONAL_SPLIT"
-  operation: "CASE_WHEN"
-  
-  derivedColumns:
-    - columnName: "payment_status"
-      expression: |
-        CASE
-          WHEN amount_paid >= total_amount THEN 'PAID'
-          WHEN amount_paid IS NULL THEN 'NOT PAID'
-          ELSE 'PARTIAL'
-        END
-      dataType: "VARCHAR"
-      description: "Payment status determined by comparing amount_paid with total_amount"
-      sourceColumns:
-        - "amount_paid"
-        - "total_amount"
-      conditions:
-        - condition: "amount_paid >= total_amount"
-          result: "PAID"
-          order: 1
-        - condition: "amount_paid IS NULL"
-          result: "NOT PAID"
-          order: 2
-        - condition: "ELSE"
-          result: "PARTIAL"
-          order: 3
-
-inputColumns:
-  - customer_id
-  - first_name
-  - last_name
-  - full_name
-  - email
-  - order_id
-  - order_date
-  - order_year
-  - total_amount
-  - product_name
-  - quantity
-  - price
-  - item_total
-  - amount_paid
-
-outputColumns:
-  - customer_id
-  - full_name
-  - email
-  - order_id
-  - order_date
-  - order_year
-  - product_name
-  - quantity
-  - price
-  - item_total
-  - total_amount
-  - amount_paid
-  - payment_status
-
-metadata:
-  sourceSystem: "SSIS"
-  sourcePackage: "Customer_Order_Flow_Complete.dtsx"
-  component: "SRC_Customer_Order_Full"
-  transformationType: "ConditionalSplit"
-  destinationTable: "PC_COALESCE_DB.TARGET.CUSTOMER_ORDER_SUMMARY"
-  createdDate: "2026-02-24T15:30:00"
-  extractedBy: "DataEngineering_Agent"
+id: SRC_TR_PAYMENT_STATUS
+name: SRC_TR_PAYMENT_STATUS
+operation:
+  config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: PC_COALESCE_WH
+  database: PC_COALESCE_DB
+  deployEnabled: true
+  description: Conditional Split Transformation - Determine payment_status based on amount_paid and total_amount
+  isMultisource: false
+  locationID: SNOWFLAKE_LOCATION
+  locationName: SNOWFLAKE
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Customer ID
+        hashColumns: []
+        hashDetails: null
+        name: CUSTOMER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(100)
+        description: First Name
+        hashColumns: []
+        hashDetails: null
+        name: FIRST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(100)
+        description: Last Name
+        hashColumns: []
+        hashDetails: null
+        name: LAST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(255)
+        description: Email
+        hashColumns: []
+        hashDetails: null
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Order ID
+        hashColumns: []
+        hashDetails: null
+        name: ORDER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: 1
+        config: {}
+        dataType: DATE
+        description: Order Date
+        hashColumns: []
+        hashDetails: null
+        name: ORDER_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Total Amount
+        hashColumns: []
+        hashDetails: null
+        name: TOTAL_AMOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(255)
+        description: Product Name
+        hashColumns: []
+        hashDetails: null
+        name: PRODUCT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Quantity
+        hashColumns: []
+        hashDetails: null
+        name: QUANTITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Price
+        hashColumns: []
+        hashDetails: null
+        name: PRICE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(10,2)
+        description: Amount Paid
+        hashColumns: []
+        hashDetails: null
+        name: AMOUNT_PAID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(201)
+        description: Full Name
+        hashColumns: []
+        hashDetails: null
+        name: FULL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(4,0)
+        description: Order Year
+        hashColumns: []
+        hashDetails: null
+        name: ORDER_YEAR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14
+          stepCounter: 1
+        config: {}
+        dataType: NUMBER(20,2)
+        description: Item Total
+        hashColumns: []
+        hashDetails: null
+        name: ITEM_TOTAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: 1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(10)
+        description: Conditional Split - Payment Status (PAID/NOT PAID/PARTIAL)
+        hashColumns: []
+        hashDetails: null
+        name: PAYMENT_STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: 1
+              - columnCounter: 7
+                stepCounter: 1
+            transform: |
+              CASE
+                WHEN AMOUNT_PAID >= TOTAL_AMOUNT THEN 'PAID'
+                WHEN AMOUNT_PAID IS NULL THEN 'NOT PAID'
+                ELSE 'PARTIAL'
+              END
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_ITEM_TOTAL: 1
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SNOWFLAKE
+            nodeName: SRC_TR_ITEM_TOTAL
+        join:
+          joinCondition: FROM {{ ref('SNOWFLAKE', 'SRC_TR_ITEM_TOTAL') }} "SRC_TR_ITEM_TOTAL"
+        name: SRC_TR_PAYMENT_STATUS
+        noLinkRefs: []
+  name: SRC_TR_PAYMENT_STATUS
+  overrideSQL: false
+  schema: RAW
+  sqlType: TRANSFORM
+  type: sql
+  version: 1
