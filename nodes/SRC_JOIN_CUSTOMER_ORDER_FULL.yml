@@ -1,273 +1,97 @@
 fileVersion: 1
-id: SRC_JOIN_CUSTOMER_ORDER_FULL
 name: SRC_JOIN_CUSTOMER_ORDER_FULL
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    secureoption: false
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: PC_COALESCE_WH
   database: PC_COALESCE_DB
   deployEnabled: true
-  description: Join CUSTOMERS, ORDERS, ORDER_ITEMS, and PAYMENTS tables
-  isMultisource: true
-  locationID: SNOWFLAKE_LOCATION
-  locationName: SNOWFLAKE
-  materializationType: view
+  locationName: TARGET
   metadata:
-    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
+      - name: CUSTOMER_ID
         dataType: NUMBER(38,0)
-        description: Customer ID from CUSTOMERS
-        hashColumns: []
-        hashDetails: null
-        name: CUSTOMER_ID
         nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
+        description: Customer identifier from CUSTOMERS table
+      - name: FIRST_NAME
         dataType: VARCHAR(100)
-        description: First Name from CUSTOMERS
-        hashColumns: []
-        hashDetails: null
-        name: FIRST_NAME
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: 1
-        config: {}
+        description: Customer first name
+      - name: LAST_NAME
         dataType: VARCHAR(100)
-        description: Last Name from CUSTOMERS
-        hashColumns: []
-        hashDetails: null
-        name: LAST_NAME
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 1
-        config: {}
+        description: Customer last name
+      - name: EMAIL
         dataType: VARCHAR(255)
-        description: Email from CUSTOMERS
-        hashColumns: []
-        hashDetails: null
-        name: EMAIL
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: 2
-        config: {}
+        description: Customer email
+      - name: ORDER_ID
         dataType: NUMBER(38,0)
-        description: Order ID from ORDERS
-        hashColumns: []
-        hashDetails: null
-        name: ORDER_ID
         nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 2
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: 2
-        config: {}
+        description: Order identifier from ORDERS table
+      - name: ORDER_DATE
         dataType: DATE
-        description: Order Date from ORDERS
-        hashColumns: []
-        hashDetails: null
-        name: ORDER_DATE
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 2
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7
-          stepCounter: 2
-        config: {}
-        dataType: NUMBER(10,2)
-        description: Total Amount from ORDERS
-        hashColumns: []
-        hashDetails: null
-        name: TOTAL_AMOUNT
+        description: Order date
+      - name: TOTAL_AMOUNT
+        dataType: NUMBER(18,2)
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 2
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8
-          stepCounter: 3
-        config: {}
+        description: Total order amount
+      - name: PRODUCT_NAME
         dataType: VARCHAR(255)
-        description: Product Name from ORDER_ITEMS
-        hashColumns: []
-        hashDetails: null
-        name: PRODUCT_NAME
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 3
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9
-          stepCounter: 3
-        config: {}
-        dataType: NUMBER(38,0)
-        description: Quantity from ORDER_ITEMS
-        hashColumns: []
-        hashDetails: null
-        name: QUANTITY
+        description: Product name from ORDER_ITEMS
+      - name: QUANTITY
+        dataType: NUMBER(10,0)
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 3
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 10
-          stepCounter: 3
-        config: {}
-        dataType: NUMBER(10,2)
-        description: Price from ORDER_ITEMS
-        hashColumns: []
-        hashDetails: null
-        name: PRICE
+        description: Quantity ordered
+      - name: PRICE
+        dataType: NUMBER(18,2)
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 3
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 11
-          stepCounter: 4
-        config: {}
-        dataType: NUMBER(10,2)
-        description: Amount Paid from PAYMENTS
-        hashColumns: []
-        hashDetails: null
-        name: AMOUNT_PAID
+        description: Unit price
+      - name: AMOUNT_PAID
+        dataType: NUMBER(18,2)
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 4
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_CUSTOMERS: 1
-          SRC_ORDERS: 2
-          SRC_ORDER_ITEMS: 3
-          SRC_PAYMENTS: 4
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SNOWFLAKE
-            nodeName: SRC_CUSTOMERS
-          - locationName: SNOWFLAKE
-            nodeName: SRC_ORDERS
-          - locationName: SNOWFLAKE
-            nodeName: SRC_ORDER_ITEMS
-          - locationName: SNOWFLAKE
-            nodeName: SRC_PAYMENTS
-        join:
-          joinCondition: |
-            FROM {{ ref('SNOWFLAKE', 'SRC_CUSTOMERS') }} "SRC_CUSTOMERS"
-            INNER JOIN {{ ref('SNOWFLAKE', 'SRC_ORDERS') }} "SRC_ORDERS"
-              ON "SRC_CUSTOMERS"."CUSTOMER_ID" = "SRC_ORDERS"."CUSTOMER_ID"
-            LEFT JOIN {{ ref('SNOWFLAKE', 'SRC_ORDER_ITEMS') }} "SRC_ORDER_ITEMS"
-              ON "SRC_ORDERS"."ORDER_ID" = "SRC_ORDER_ITEMS"."ORDER_ID"
-            LEFT JOIN {{ ref('SNOWFLAKE', 'SRC_PAYMENTS') }} "SRC_PAYMENTS"
-              ON "SRC_ORDERS"."ORDER_ID" = "SRC_PAYMENTS"."ORDER_ID"
-        name: SRC_JOIN_CUSTOMER_ORDER_FULL
-        noLinkRefs: []
+        description: Amount paid from PAYMENTS
   name: SRC_JOIN_CUSTOMER_ORDER_FULL
-  overrideSQL: false
-  schema: RAW
-  sqlType: TRANSFORM
+  schema: STAGE
+  sources:
+    - name: SRC_CUSTOMERS
+      alias: c
+      dependencies:
+        - locationName: SOURCE
+          nodeName: SRC_CUSTOMERS
+    - name: SRC_ORDERS
+      alias: o
+      dependencies:
+        - locationName: SOURCE
+          nodeName: SRC_ORDERS
+    - name: SRC_ORDER_ITEMS
+      alias: oi
+      dependencies:
+        - locationName: SOURCE
+          nodeName: SRC_ORDER_ITEMS
+    - name: SRC_PAYMENTS
+      alias: p
+      dependencies:
+        - locationName: SOURCE
+          nodeName: SRC_PAYMENTS
+  joins:
+    - type: INNER
+      left: c
+      right: o
+      condition: c.CUSTOMER_ID = o.CUSTOMER_ID
+      description: Join customers with their orders
+    - type: LEFT
+      left: o
+      right: oi
+      condition: o.ORDER_ID = oi.ORDER_ID
+      description: Join orders with order items
+    - type: LEFT
+      left: o
+      right: p
+      condition: o.ORDER_ID = p.ORDER_ID
+      description: Join orders with payments
+  sqlType: Stage
   type: sql
   version: 1
