@@ -45,19 +45,20 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SALES: SALES
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: COUNTRYNAME
         join:
-          joinCondition: FROM {{ ref('SRC', 'COUNTRYNAME') }}
+          joinCondition: FROM {{ ref('SRC', 'COUNTRYNAME') }} "COUNTRYNAME"
         name: SRC_COUNTRYNAME
         noLinkRefs: []
   name: SRC_COUNTRYNAME
   overrideSQL: false
-  schema: ""
+  schema: SALES
   sqlType: Source
   type: sql
   version: 1
