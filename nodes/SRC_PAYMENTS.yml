@@ -3,31 +3,21 @@ id: SRC_PAYMENTS
 name: SRC_PAYMENTS
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    secureoption: false
     selectDistinct: false
-    testsEnabled: false
-    truncateBefore: false
-    warehouseName: DEV_WH_SMALL
   database: ""
   deployEnabled: true
   description: Source table for PAYMENTS
-  isDataVault: false
   isMultisource: false
   locationName: SRC
   materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 1
           stepCounter: SRC_PAYMENTS
@@ -41,7 +31,10 @@ operation:
               - columnCounter: 1
                 stepCounter: SRC_PAYMENTS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 2
           stepCounter: SRC_PAYMENTS
@@ -55,7 +48,10 @@ operation:
               - columnCounter: 2
                 stepCounter: SRC_PAYMENTS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 3
           stepCounter: SRC_PAYMENTS
@@ -69,7 +65,10 @@ operation:
               - columnCounter: 3
                 stepCounter: SRC_PAYMENTS
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: 4
           stepCounter: SRC_PAYMENTS
@@ -93,7 +92,7 @@ operation:
           - locationName: SRC
             nodeName: PAYMENTS
         join:
-          joinCondition: FROM {{ ref('SRC', 'PAYMENTS') }} "PAYMENTS"
+          joinCondition: FROM {{ ref('SRC', 'PAYMENTS') }}
         name: SRC_PAYMENTS
         noLinkRefs: []
   name: SRC_PAYMENTS
