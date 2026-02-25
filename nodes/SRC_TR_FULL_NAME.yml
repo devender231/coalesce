@@ -1,278 +1,67 @@
 fileVersion: 1
-id: SRC_TR_FULL_NAME
 name: SRC_TR_FULL_NAME
 operation:
   config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    secureoption: false
     selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: PC_COALESCE_WH
   database: PC_COALESCE_DB
   deployEnabled: true
-  description: Derived Column Transformation - Concatenate first_name and last_name to create full_name
-  isMultisource: false
-  locationID: SNOWFLAKE_LOCATION
-  locationName: SNOWFLAKE
-  materializationType: view
+  locationName: TARGET
   metadata:
-    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: 1
-        config: {}
+      - name: CUSTOMER_ID
         dataType: NUMBER(38,0)
-        description: Customer ID
-        hashColumns: []
-        hashDetails: null
-        name: CUSTOMER_ID
         nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: 1
-        config: {}
-        dataType: VARCHAR(100)
-        description: First Name
-        hashColumns: []
-        hashDetails: null
-        name: FIRST_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3
-          stepCounter: 1
-        config: {}
-        dataType: VARCHAR(100)
-        description: Last Name
-        hashColumns: []
-        hashDetails: null
-        name: LAST_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 1
-        config: {}
-        dataType: VARCHAR(255)
-        description: Email
-        hashColumns: []
-        hashDetails: null
-        name: EMAIL
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER(38,0)
-        description: Order ID
-        hashColumns: []
-        hashDetails: null
-        name: ORDER_ID
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 5
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6
-          stepCounter: 1
-        config: {}
-        dataType: DATE
-        description: Order Date
-        hashColumns: []
-        hashDetails: null
-        name: ORDER_DATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 6
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER(10,2)
-        description: Total Amount
-        hashColumns: []
-        hashDetails: null
-        name: TOTAL_AMOUNT
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 7
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8
-          stepCounter: 1
-        config: {}
-        dataType: VARCHAR(255)
-        description: Product Name
-        hashColumns: []
-        hashDetails: null
-        name: PRODUCT_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER(38,0)
-        description: Quantity
-        hashColumns: []
-        hashDetails: null
-        name: QUANTITY
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 9
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 10
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER(10,2)
-        description: Price
-        hashColumns: []
-        hashDetails: null
-        name: PRICE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 10
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 11
-          stepCounter: 1
-        config: {}
-        dataType: NUMBER(10,2)
-        description: Amount Paid
-        hashColumns: []
-        hashDetails: null
-        name: AMOUNT_PAID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 11
-                stepCounter: 1
-            transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 12
-          stepCounter: 1
-        config: {}
+        description: Customer identifier
+      - name: FULL_NAME
         dataType: VARCHAR(201)
-        description: Derived Column - Full Name (first_name || ' ' || last_name)
-        hashColumns: []
-        hashDetails: null
-        name: FULL_NAME
         nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-              - columnCounter: 3
-                stepCounter: 1
-            transform: "FIRST_NAME || ' ' || LAST_NAME"
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases:
-          SRC_JOIN_CUSTOMER_ORDER_FULL: 1
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SNOWFLAKE
-            nodeName: SRC_JOIN_CUSTOMER_ORDER_FULL
-        join:
-          joinCondition: FROM {{ ref('SNOWFLAKE', 'SRC_JOIN_CUSTOMER_ORDER_FULL') }} "SRC_JOIN_CUSTOMER_ORDER_FULL"
-        name: SRC_TR_FULL_NAME
-        noLinkRefs: []
+        description: Concatenated first and last name
+        transformationLogic: "FIRST_NAME || ' ' || LAST_NAME"
+      - name: EMAIL
+        dataType: VARCHAR(255)
+        nullable: true
+        description: Customer email
+      - name: ORDER_ID
+        dataType: NUMBER(38,0)
+        nullable: false
+        description: Order identifier
+      - name: ORDER_DATE
+        dataType: DATE
+        nullable: true
+        description: Order date
+      - name: TOTAL_AMOUNT
+        dataType: NUMBER(18,2)
+        nullable: true
+        description: Total order amount
+      - name: PRODUCT_NAME
+        dataType: VARCHAR(255)
+        nullable: true
+        description: Product name
+      - name: QUANTITY
+        dataType: NUMBER(10,0)
+        nullable: true
+        description: Quantity ordered
+      - name: PRICE
+        dataType: NUMBER(18,2)
+        nullable: true
+        description: Unit price
+      - name: AMOUNT_PAID
+        dataType: NUMBER(18,2)
+        nullable: true
+        description: Amount paid
   name: SRC_TR_FULL_NAME
-  overrideSQL: false
-  schema: RAW
-  sqlType: TRANSFORM
+  schema: STAGE
+  sources:
+    - name: SRC_JOIN_CUSTOMER_ORDER_FULL
+      dependencies:
+        - locationName: TARGET
+          nodeName: SRC_JOIN_CUSTOMER_ORDER_FULL
+  transformationType: DERIVED_COLUMN
+  transformations:
+    - columnName: FULL_NAME
+      expression: "FIRST_NAME || ' ' || LAST_NAME"
+      description: Concatenate first and last name with space
+  sqlType: Stage
   type: sql
   version: 1
