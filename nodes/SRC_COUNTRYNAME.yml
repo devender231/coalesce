@@ -1,79 +1,15 @@
 fileVersion: 1
 id: SRC_COUNTRYNAME
 name: SRC_COUNTRYNAME
-operation:
-  config:
-    clusterKey: false
-    downstreamOption: true
-    groupByAll: false
-    initialize: ON_CREATE
-    insertStrategy: INSERT
-    orderby: false
-    postSQL: ""
-    preSQL: ""
-    refresh_mode: AUTO
-    selectDistinct: false
-    testsEnabled: true
-    truncateBefore: false
-    warehouseName: '{{ parameters.SRC_WH }}'
-  database: '{{ parameters.SRC_DB }}'
-  deployEnabled: true
-  description: Source table for Country Name data
-  isDataVault: false
-  isMultisource: false
-  locationName: SRC
-  materializationType: view
-  metadata:
-    appliedNodeTests: []
-    columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1
-          stepCounter: SRC_COUNTRYNAME
-        config: {}
-        dataType: VARCHAR(10)
-        description: Country Code
-        hashColumns: []
-        hashDetails: null
-        name: COUNTRY_CODE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 1
-                stepCounter: SRC_COUNTRYNAME
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2
-          stepCounter: SRC_COUNTRYNAME
-        config: {}
-        dataType: VARCHAR(255)
-        description: Country Name
-        hashColumns: []
-        hashDetails: null
-        name: COUNTRY_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: SRC_COUNTRYNAME
-            transform: ""
-    cteString: ""
-    enabledColumnTestIDs: []
-    sourceMapping:
-      - aliases: {}
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: COUNTRYNAME
-        join:
-          joinCondition: ""
-        name: SRC_COUNTRYNAME
-        noLinkRefs: []
-  name: SRC_COUNTRYNAME
-  overrideSQL: false
-  schema: '{{ parameters.SRC_SCHEMA }}'
-  sqlType: Source
-  type: sql
-  version: 1
+type: source
+location:
+  name: SALES
+  database: ""
+  schema: SALES
+columns:
+  - name: COUNTRY_NAME
+    dataType: VARCHAR(255)
+    description: Country name
+  - name: COUNTRY_CODE
+    dataType: VARCHAR(3)
+    description: Country code
