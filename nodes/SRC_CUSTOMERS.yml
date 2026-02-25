@@ -3,23 +3,102 @@ id: SRC_CUSTOMERS
 name: SRC_CUSTOMERS
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
+    secureoption: false
     selectDistinct: false
-  database: PC_COALESCE_DB
+    testsEnabled: false
+    truncateBefore: false
+    warehouseName: DEV_WH_SMALL
+  database: ""
   deployEnabled: true
+  description: Source table for CUSTOMERS
+  isDataVault: false
+  isMultisource: false
   locationName: SRC
+  materializationType: view
   metadata:
+    appliedNodeTests: []
     columns:
-      - name: CUSTOMER_ID
-        ordinalPosition: 1
-      - name: FIRST_NAME
-        ordinalPosition: 2
-      - name: LAST_NAME
-        ordinalPosition: 3
-      - name: EMAIL
-        ordinalPosition: 4
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: SRC_CUSTOMERS
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Customer ID
+        name: CUSTOMER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: SRC_CUSTOMERS
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_CUSTOMERS
+        config: {}
+        dataType: VARCHAR(100)
+        description: First Name
+        name: FIRST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: SRC_CUSTOMERS
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: SRC_CUSTOMERS
+        config: {}
+        dataType: VARCHAR(100)
+        description: Last Name
+        name: LAST_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: SRC_CUSTOMERS
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_CUSTOMERS
+        config: {}
+        dataType: VARCHAR(255)
+        description: Email Address
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_CUSTOMERS
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: CUSTOMERS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'CUSTOMERS') }}
+        name: SRC_CUSTOMERS
+        noLinkRefs: []
   name: SRC_CUSTOMERS
-  schema: RAW
+  overrideSQL: false
+  schema: ""
   sqlType: Source
-  table: CUSTOMERS
-  type: sourceInput
+  type: sql
+  version: 1
