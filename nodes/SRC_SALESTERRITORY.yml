@@ -56,22 +56,37 @@ operation:
               - columnCounter: 3
                 stepCounter: SRC_SALESTERRITORY
             transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: SRC_SALESTERRITORY
+        config: {}
+        dataType: VARCHAR(50)
+        description: Country Region Code
+        name: COUNTRYREGIONCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: SRC_SALESTERRITORY
+            transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          SALES: SALES
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: SALESTERRITORY
         join:
-          joinCondition: FROM {{ ref('SRC', 'SALESTERRITORY') }}
+          joinCondition: FROM {{ ref('SRC', 'SALESTERRITORY') }} "SALESTERRITORY"
         name: SRC_SALESTERRITORY
         noLinkRefs: []
   name: SRC_SALESTERRITORY
   overrideSQL: false
-  schema: ""
+  schema: SALES
   sqlType: Source
   type: sql
   version: 1
