@@ -1,0 +1,16 @@
+name: "SRC_SALESTERRITORY"
+type: "source"
+location:
+  name: "SRC"
+  database: ""
+  schema: "SALES"
+  object: "SALESTERRITORY"
+columns:
+  - name: "TERRITORYID"
+    dataType: "INT"
+  - name: "NAME"
+    dataType: "NVARCHAR(50)"
+  - name: "COUNTRYREGIONCODE"
+    dataType: "NVARCHAR(3)"
+  - name: "GROUP"
+    dataType: "NVARCHAR(50)"
