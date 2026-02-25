@@ -6,14 +6,14 @@ location:
   table: SALESTERRITORY
 columns:
   - name: TERRITORYID
-    dataType: INT
+    dataType: INTEGER
     description: Territory ID
   - name: NAME
-    dataType: NVARCHAR(50)
+    dataType: VARCHAR(50)
     description: Territory Name
   - name: COUNTRYREGIONCODE
-    dataType: NVARCHAR(3)
+    dataType: VARCHAR(3)
     description: Country Region Code
   - name: GROUP
-    dataType: NVARCHAR(50)
+    dataType: VARCHAR(50)
     description: Territory Group
