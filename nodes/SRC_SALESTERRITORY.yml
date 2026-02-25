@@ -1,21 +1,38 @@
 fileVersion: 1
-id: SRC_SALESTERRITORY
+id: src_salesterritory_001
 name: SRC_SALESTERRITORY
-type: source
-location:
-  name: SALES
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
   database: ""
-  schema: SALES
-columns:
-  - name: TERRITORYID
-    dataType: NUMBER(38,0)
-    description: Territory identifier
-  - name: NAME
-    dataType: VARCHAR(50)
-    description: Territory name
-  - name: COUNTRYREGIONCODE
-    dataType: VARCHAR(3)
-    description: Country region code
-  - name: GROUP
-    dataType: VARCHAR(50)
-    description: Territory group
+  deployEnabled: true
+  description: Source extraction from sales.SalesTerritory table
+  locationName: SRC
+  metadata:
+    columns:
+      - name: TERRITORYID
+        dataType: NUMBER(38,0)
+        description: Territory identifier
+        isBusinessKey: true
+        ordinalPosition: 1
+      - name: NAME
+        dataType: VARCHAR(50)
+        description: Territory name
+        ordinalPosition: 2
+      - name: COUNTRYREGIONCODE
+        dataType: VARCHAR(10)
+        description: Country region code
+        ordinalPosition: 3
+      - name: GROUP
+        dataType: VARCHAR(50)
+        description: Territory group
+        ordinalPosition: 4
+  name: SRC_SALESTERRITORY
+  schema: ""
+  sources:
+    - database: ""
+      name: sales.SalesTerritory
+      schema: sales
+      table: SalesTerritory
+  type: source
