@@ -1,0 +1,78 @@
+fileVersion: 1
+id: "TR_PAYMENT_STATUS_001"
+name: "SRC_TR_PAYMENT_STATUS"
+description: "Derives payment_status using conditional logic based on amount_paid and total_amount"
+type: "conditionalSplit"
+executionOrder: 5
+
+config:
+  upstreamDependency:
+    - "SRC_TR_ITEM_TOTAL"
+
+transformation:
+  type: "CONDITIONAL_SPLIT"
+  operation: "CASE_WHEN"
+  
+  derivedColumns:
+    - columnName: "payment_status"
+      expression: |
+        CASE
+          WHEN amount_paid >= total_amount THEN 'PAID'
+          WHEN amount_paid IS NULL THEN 'NOT PAID'
+          ELSE 'PARTIAL'
+        END
+      dataType: "VARCHAR"
+      description: "Payment status determined by comparing amount_paid with total_amount"
+      sourceColumns:
+        - "amount_paid"
+        - "total_amount"
+      conditions:
+        - condition: "amount_paid >= total_amount"
+          result: "PAID"
+          order: 1
+        - condition: "amount_paid IS NULL"
+          result: "NOT PAID"
+          order: 2
+        - condition: "ELSE"
+          result: "PARTIAL"
+          order: 3
+
+inputColumns:
+  - customer_id
+  - first_name
+  - last_name
+  - full_name
+  - email
+  - order_id
+  - order_date
+  - order_year
+  - total_amount
+  - product_name
+  - quantity
+  - price
+  - item_total
+  - amount_paid
+
+outputColumns:
+  - customer_id
+  - full_name
+  - email
+  - order_id
+  - order_date
+  - order_year
+  - product_name
+  - quantity
+  - price
+  - item_total
+  - total_amount
+  - amount_paid
+  - payment_status
+
+metadata:
+  sourceSystem: "SSIS"
+  sourcePackage: "Customer_Order_Flow_Complete.dtsx"
+  component: "SRC_Customer_Order_Full"
+  transformationType: "ConditionalSplit"
+  destinationTable: "PC_COALESCE_DB.TARGET.CUSTOMER_ORDER_SUMMARY"
+  createdDate: "2026-02-24T15:30:00"
+  extractedBy: "DataEngineering_Agent"
