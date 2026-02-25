@@ -1,0 +1,12 @@
+name: "SRC_COUNTRYNAME"
+type: "source"
+location:
+  name: "SRC"
+  database: ""
+  schema: "SALES"
+  object: "COUNTRYNAME"
+columns:
+  - name: "COUNTRY_CODE"
+    dataType: "NVARCHAR(3)"
+  - name: "COUNTRY_NAME"
+    dataType: "VARCHAR(255)"
