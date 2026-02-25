@@ -1,0 +1,62 @@
+fileVersion: 1
+id: "TR_ITEM_TOTAL_001"
+name: "SRC_TR_ITEM_TOTAL"
+description: "Derives item_total by multiplying quantity and price"
+type: "derivedColumn"
+executionOrder: 4
+
+config:
+  upstreamDependency:
+    - "SRC_TR_ORDER_YEAR"
+
+transformation:
+  type: "DERIVED_COLUMN"
+  operation: "ARITHMETIC"
+  
+  derivedColumns:
+    - columnName: "item_total"
+      expression: "quantity * price"
+      dataType: "DECIMAL"
+      description: "Total item cost calculated by multiplying quantity and price"
+      sourceColumns:
+        - "quantity"
+        - "price"
+
+inputColumns:
+  - customer_id
+  - first_name
+  - last_name
+  - full_name
+  - email
+  - order_id
+  - order_date
+  - order_year
+  - total_amount
+  - product_name
+  - quantity
+  - price
+  - amount_paid
+
+outputColumns:
+  - customer_id
+  - first_name
+  - last_name
+  - full_name
+  - email
+  - order_id
+  - order_date
+  - order_year
+  - total_amount
+  - product_name
+  - quantity
+  - price
+  - item_total
+  - amount_paid
+
+metadata:
+  sourceSystem: "SSIS"
+  sourcePackage: "Customer_Order_Flow_Complete.dtsx"
+  component: "SRC_Customer_Order_Full"
+  transformationType: "DerivedColumn"
+  createdDate: "2026-02-24T15:30:00"
+  extractedBy: "DataEngineering_Agent"
