@@ -7,7 +7,7 @@ operation:
     selectDistinct: false
   database: ""
   deployEnabled: true
-  description: "Source extraction from Sales.CountryName table"
+  description: "Source extraction from SALES.COUNTRYNAME table"
   isMultisource: false
   locationName: "SRC"
   materializationType: "view"
@@ -69,7 +69,7 @@ operation:
         noLinkRefs: []
   name: "SRC_COUNTRYNAME"
   overrideSQL: false
-  schema: "Sales"
+  schema: "SALES"
   sqlType: "Source"
   type: "sql"
   version: 1
