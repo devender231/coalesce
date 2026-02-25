@@ -1,15 +1,30 @@
 fileVersion: 1
-id: SRC_COUNTRYNAME
+id: src_countryname_001
 name: SRC_COUNTRYNAME
-type: source
-location:
-  name: SALES
+operation:
+  config:
+    insertStrategy: INSERT
+    selectDistinct: false
   database: ""
-  schema: SALES
-columns:
-  - name: COUNTRY_NAME
-    dataType: VARCHAR(255)
-    description: Country name
-  - name: COUNTRY_CODE
-    dataType: VARCHAR(3)
-    description: Country code
+  deployEnabled: true
+  description: Source extraction from Sales.CountryName table
+  locationName: SRC
+  metadata:
+    columns:
+      - name: COUNTRY_CODE
+        dataType: VARCHAR(10)
+        description: Country code identifier
+        isBusinessKey: true
+        ordinalPosition: 1
+      - name: COUNTRY_NAME
+        dataType: VARCHAR(255)
+        description: Country name
+        ordinalPosition: 2
+  name: SRC_COUNTRYNAME
+  schema: ""
+  sources:
+    - database: ""
+      name: Sales.CountryName
+      schema: Sales
+      table: CountryName
+  type: source
