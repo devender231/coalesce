@@ -3,11 +3,22 @@ id: SRC_SALES_SALESTERRITORY
 name: SRC_SALES_SALESTERRITORY
 operation:
   config:
+    clusterKey: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: true
+    truncateBefore: false
+    warehouseName: DEV_WH_XS
   database: ""
   deployEnabled: true
-  description: Source table SALES.SALESTERRITORY from SSIS package Dim_ETL.dtsx
+  description: Source table SALES.SALESTERRITORY
   isMultisource: false
   locationName: SRC
   materializationType: view
@@ -61,7 +72,7 @@ operation:
           columnCounter: 4
           stepCounter: SRC_SALES_SALESTERRITORY
         config: {}
-        dataType: VARCHAR(3)
+        dataType: VARCHAR(50)
         description: Country Region Code
         name: COUNTRYREGIONCODE
         nullable: true
@@ -81,7 +92,7 @@ operation:
           - locationName: SRC
             nodeName: SALES.SALESTERRITORY
         join:
-          joinCondition: FROM {{ ref('SRC', 'SALES.SALESTERRITORY') }}
+          joinCondition: FROM {{ ref('SRC', 'SALES.SALESTERRITORY') }} SRC_SALES_SALESTERRITORY
         name: SRC_SALES_SALESTERRITORY
         noLinkRefs: []
   name: SRC_SALES_SALESTERRITORY
