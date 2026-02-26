@@ -13,10 +13,10 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Joins all source tables for DimBillingAccount ETL process"
+  description: "Joins all source tables for DimBillingAccount - BC_ACCOUNT with lookup tables and insured information"
   isMultisource: true
   locationName: SRC
-  materializationType: view
+  materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
@@ -250,7 +250,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "First Twice Per Month Invoice Day"
+        description: "First Twice Per Month Invoice DOM"
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -264,7 +264,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Second Twice Per Month Invoice Day"
+        description: "Second Twice Per Month Invoice DOM"
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -349,7 +349,7 @@ operation:
         config: {}
         dataType: INTEGER
         description: "Parent Account Foreign Entity ID"
-        name: PARENT_FOREIGNENTITYID
+        name: PARENTACCT_FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -481,182 +481,51 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('SRC', 'BC_ACCOUNT') }} BC_ACCOUNT
-        name: BC_ACCOUNT
-        noLinkRefs: []
-      - aliases:
-          BCTL_ACCOUNTTYPE: BCTL_ACCOUNTTYPE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTTYPE
-        join:
-          joinCondition: |
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
-            ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
-        name: BCTL_ACCOUNTTYPE
-        noLinkRefs: []
-      - aliases:
-          BC_PARENTACCT: BC_PARENTACCT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_PARENTACCT
-        join:
-          joinCondition: |
+              ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
             LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} BC_PARENTACCT
-            ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
-        name: BC_PARENTACCT
-        noLinkRefs: []
-      - aliases:
-          BCTL_BILLINGLEVEL: BCTL_BILLINGLEVEL
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_BILLINGLEVEL
-        join:
-          joinCondition: |
+              ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
-            ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
-        name: BCTL_BILLINGLEVEL
-        noLinkRefs: []
-      - aliases:
-          BCTL_CUSTOMERSERVICETIER: BCTL_CUSTOMERSERVICETIER
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_CUSTOMERSERVICETIER
-        join:
-          joinCondition: |
+              ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
-            ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
-        name: BCTL_CUSTOMERSERVICETIER
-        noLinkRefs: []
-      - aliases:
-          BC_SECURITYZONE: BC_SECURITYZONE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_SECURITYZONE
-        join:
-          joinCondition: |
+              ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
             LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} BC_SECURITYZONE
-            ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
-        name: BC_SECURITYZONE
-        noLinkRefs: []
-      - aliases:
-          BCTL_DELINQUENCYSTATUS: BCTL_DELINQUENCYSTATUS
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_DELINQUENCYSTATUS
-        join:
-          joinCondition: |
+              ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
-            ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
-        name: BCTL_DELINQUENCYSTATUS
-        noLinkRefs: []
-      - aliases:
-          BCTL_ACCOUNTSEGMENT: BCTL_ACCOUNTSEGMENT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTSEGMENT
-        join:
-          joinCondition: |
+              ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
-            ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
-        name: BCTL_ACCOUNTSEGMENT
-        noLinkRefs: []
-      - aliases:
-          BC_ACCOUNTCONTACT: BC_ACCOUNTCONTACT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_ACCOUNTCONTACT
-        join:
-          joinCondition: |
-            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
-            ON BC_ACCOUNTCONTACT.INSUREDACCOUNTID = BC_ACCOUNT.ID
-        name: BC_ACCOUNTCONTACT
-        noLinkRefs: []
-      - aliases:
-          BC_ACCOUNTCONTACTROLE: BC_ACCOUNTCONTACTROLE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_ACCOUNTCONTACTROLE
-        join:
-          joinCondition: |
-            INNER JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
-            ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
-        name: BC_ACCOUNTCONTACTROLE
-        noLinkRefs: []
-      - aliases:
-          BCTL_ACCOUNTROLE: BCTL_ACCOUNTROLE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTROLE
-        join:
-          joinCondition: |
-            INNER JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
-            ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE
-            AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
-        name: BCTL_ACCOUNTROLE
-        noLinkRefs: []
-      - aliases:
-          BC_CONTACT: BC_CONTACT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_CONTACT
-        join:
-          joinCondition: |
-            LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} BC_CONTACT
-            ON BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
-        name: BC_CONTACT
-        noLinkRefs: []
-      - aliases:
-          BC_ADDRESS: BC_ADDRESS
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_ADDRESS
-        join:
-          joinCondition: |
-            LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} BC_ADDRESS
-            ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
-        name: BC_ADDRESS
-        noLinkRefs: []
-      - aliases:
-          BCTL_STATE: BCTL_STATE
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BCTL_STATE
-        join:
-          joinCondition: |
-            LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} BCTL_STATE
-            ON BCTL_STATE.ID = BC_ADDRESS.STATE
-        name: BCTL_STATE
+              ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+            LEFT JOIN (
+              SELECT 
+                BC_ACCOUNTCONTACT.INSUREDACCOUNTID AS ACCOUNTID,
+                BC_CONTACT.FIRSTNAME,
+                BC_CONTACT.LASTNAME,
+                BC_ADDRESS.ADDRESSLINE1,
+                BC_ADDRESS.ADDRESSLINE2,
+                BC_ADDRESS.ADDRESSLINE3,
+                BC_ADDRESS.CITY,
+                BC_ADDRESS.POSTALCODE,
+                BCTL_STATE.NAME AS STATE_NAME
+              FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
+              INNER JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
+                ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+              INNER JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
+                ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE
+                AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+              LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} BC_CONTACT
+                ON BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+              LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} BC_ADDRESS
+                ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+              LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} BCTL_STATE
+                ON BCTL_STATE.ID = BC_ADDRESS.STATE
+            ) INSUREDINFO
+              ON INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: SRC_JOIN_DIMBILLINGACCOUNT
   overrideSQL: false
   schema: ""
-  sqlType: Source
+  sqlType: Stage
   type: sql
   version: 1
 
