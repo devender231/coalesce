@@ -1,0 +1,112 @@
+fileVersion: 1
+id: T3
+name: LOOKUP_BEANVERSION
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Transformation 3: Lookup - Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
+  locationName: SRC
+  metadata:
+    columns:
+      - name: ACCOUNTNUMBER
+        dataType: INTEGER
+        nullable: true
+      - name: ACCOUNTNAME
+        dataType: STRING
+        nullable: true
+      - name: ACCOUNTTYPE_NAME
+        dataType: STRING
+        nullable: true
+      - name: BILLINGLEVEL_NAME
+        dataType: STRING
+        nullable: true
+      - name: SERVICETIER_NAME
+        dataType: STRING
+        nullable: true
+      - name: SECURITYZONE_NAME
+        dataType: STRING
+        nullable: true
+      - name: SEGMENT_NAME
+        dataType: STRING
+        nullable: true
+      - name: DELINQUENCYSTATUS_NAME
+        dataType: STRING
+        nullable: true
+      - name: PARENTACCOUNT_ID
+        dataType: INTEGER
+        nullable: true
+      - name: INSURED_FIRSTNAME
+        dataType: STRING
+        nullable: true
+      - name: INSURED_LASTNAME
+        dataType: STRING
+        nullable: true
+      - name: ADDRESS_LINE1
+        dataType: STRING
+        nullable: true
+      - name: ADDRESS_LINE2
+        dataType: STRING
+        nullable: true
+      - name: ADDRESS_LINE3
+        dataType: STRING
+        nullable: true
+      - name: CITY
+        dataType: STRING
+        nullable: true
+      - name: STATE_NAME
+        dataType: STRING
+        nullable: true
+      - name: POSTALCODE
+        dataType: STRING
+        nullable: true
+      - name: CLOSEDATE
+        dataType: DATETIME
+        nullable: true
+      - name: CREATETIME
+        dataType: DATETIME
+        nullable: true
+      - name: FIRSTTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+        nullable: true
+      - name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+        nullable: true
+      - name: PUBLICID
+        dataType: STRING
+        nullable: true
+      - name: ACCOUNT_ID
+        dataType: INTEGER
+        nullable: true
+      - name: BEANVERSION
+        dataType: STRING
+        nullable: true
+        description: "Source BeanVersion"
+      - name: RETIRED
+        dataType: INTEGER
+        nullable: true
+      - name: UPDATETIME
+        dataType: DATETIME
+        nullable: true
+      - name: BATCHID
+        dataType: INTEGER
+        nullable: false
+      - name: EDW_BEANVERSION
+        dataType: STRING
+        nullable: true
+        description: "BeanVersion from DIMBILLINGACCOUNT lookup"
+  name: LOOKUP_BEANVERSION
+  schema: ""
+  sqlType: Transformation
+  type: transformation
+  version: 1
+  transformationLogic:
+    type: LOOKUP
+    description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID"
+    lookupTable: DIMBILLINGACCOUNT
+    lookupColumns:
+      - PUBLICID
+      - BEANVERSION
+    joinCondition: "PUBLICID = DIMBILLINGACCOUNT.PUBLICID"
+    returnColumn: BEANVERSION
+    returnColumnAlias: EDW_BEANVERSION
+type: Node
