@@ -1,0 +1,76 @@
+fileVersion: 1
+id: SRC_TR_LOOKUP_BEANVERSION
+name: SRC_TR_LOOKUP_BEANVERSION
+type: transformation
+metadata:
+  description: Lookup transformation to retrieve BeanVersion from dimension table
+  transformationType: lookup
+  database: EDW
+  schema: dbo
+sources:
+  - id: SRC_TR_DERIVED_BATCHID
+    alias: SOURCE_WITH_BATCH
+  - id: SRC_DIMBILLINGACCOUNT
+    alias: DIM_LOOKUP
+transformation:
+  type: LOOKUP
+  lookupTable: DIMBILLINGACCOUNT
+  lookupCondition: SOURCE_WITH_BATCH.PUBLICID = DIM_LOOKUP.PUBLICID
+  lookupColumns:
+    - name: EXISTING_BEANVERSION
+      sourceColumn: DIM_LOOKUP.BEANVERSION
+      dataType: INT
+  cacheMode: FULL
+  noMatchBehavior: NULL
+columns:
+  - name: PUBLICID
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.PUBLICID
+  - name: ACCOUNTTYPE
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.ACCOUNTTYPE
+  - name: PARENTACCOUNT
+    dataType: VARCHAR(50)
+    sourceExpression: SOURCE_WITH_BATCH.PARENTACCOUNT
+  - name: BILLINGLEVEL
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.BILLINGLEVEL
+  - name: SERVICETIER
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.SERVICETIER
+  - name: SECURITYZONE
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.SECURITYZONE
+  - name: DELINQUENCYSTATUS
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.DELINQUENCYSTATUS
+  - name: SEGMENT
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.SEGMENT
+  - name: INSUREDFIRSTNAME
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.INSUREDFIRSTNAME
+  - name: INSUREDLASTNAME
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.INSUREDLASTNAME
+  - name: INSUREDADDRESS
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_WITH_BATCH.INSUREDADDRESS
+  - name: INSUREDCITY
+    dataType: VARCHAR(100)
+    sourceExpression: SOURCE_WITH_BATCH.INSUREDCITY
+  - name: INSUREDSTATE
+    dataType: VARCHAR(100)
+    sourceExpression: SOURCE_WITH_BATCH.INSUREDSTATE
+  - name: INSUREDPOSTALCODE
+    dataType: VARCHAR(20)
+    sourceExpression: SOURCE_WITH_BATCH.INSUREDPOSTALCODE
+  - name: BEANVERSION
+    dataType: INT
+    sourceExpression: SOURCE_WITH_BATCH.BEANVERSION
+  - name: EXISTING_BEANVERSION
+    dataType: INT
+    sourceExpression: DIM_LOOKUP.BEANVERSION
+  - name: BATCHID
+    dataType: DATETIME
+    sourceExpression: SOURCE_WITH_BATCH.BATCHID
