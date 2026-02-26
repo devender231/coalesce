@@ -8,7 +8,7 @@ operation:
     preSQL: ""
     testsEnabled: true
     truncateBefore: true
-  database: "AdventureWorks"
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Join between SalesTerritory and CountryName tables on CountryRegionCode"
   isMultisource: false
