@@ -1,9 +1,6 @@
 fileVersion: 1
-
-id: S2
-
+id: SRC_BC_PARENTACCT_002
 name: SRC_BC_PARENTACCT
-
 operation:
   config:
     insertStrategy: INSERT
@@ -13,7 +10,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Source table BC_PARENTACCT from GuideWire"
+  description: "Source table BC_PARENTACCT from GuideWire BillingCenter"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -23,7 +20,7 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 2
+          stepCounter: SRC_BC_PARENTACCT_002
         config: {}
         dataType: INTEGER
         description: ""
@@ -32,12 +29,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 2
+                stepCounter: SRC_BC_PARENTACCT_002
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 2
+          stepCounter: SRC_BC_PARENTACCT_002
         config: {}
         dataType: INTEGER
         description: ""
@@ -46,12 +43,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 2
+                stepCounter: SRC_BC_PARENTACCT_002
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: 2
+          stepCounter: SRC_BC_PARENTACCT_002
         config: {}
         dataType: STRING
         description: ""
@@ -60,12 +57,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: 2
+                stepCounter: SRC_BC_PARENTACCT_002
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: 2
+          stepCounter: SRC_BC_PARENTACCT_002
         config: {}
         dataType: DATETIME
         description: ""
@@ -74,7 +71,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: 2
+                stepCounter: SRC_BC_PARENTACCT_002
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -97,5 +94,4 @@ operation:
   sqlType: Stage
   type: sql
   version: 1
-
 type: Node
