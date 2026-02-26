@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S2
-name: SRC_BC_PARENTACCT
+name: BC_PARENTACCT
 operation:
   database: ""
   deployEnabled: true
