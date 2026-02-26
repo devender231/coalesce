@@ -1,76 +1,544 @@
 fileVersion: 1
 id: SRC_TR_LOOKUP_BEANVERSION
 name: SRC_TR_LOOKUP_BEANVERSION
-type: transformation
-metadata:
-  description: Lookup transformation to retrieve BeanVersion from dimension table
-  transformationType: lookup
-  database: EDW
-  schema: dbo
-sources:
-  - id: SRC_TR_DERIVED_BATCHID
-    alias: SOURCE_WITH_BATCH
-  - id: SRC_DIMBILLINGACCOUNT
-    alias: DIM_LOOKUP
-transformation:
-  type: LOOKUP
-  lookupTable: DIMBILLINGACCOUNT
-  lookupCondition: SOURCE_WITH_BATCH.PUBLICID = DIM_LOOKUP.PUBLICID
-  lookupColumns:
-    - name: EXISTING_BEANVERSION
-      sourceColumn: DIM_LOOKUP.BEANVERSION
-      dataType: INT
-  cacheMode: FULL
-  noMatchBehavior: NULL
-columns:
-  - name: PUBLICID
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.PUBLICID
-  - name: ACCOUNTTYPE
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.ACCOUNTTYPE
-  - name: PARENTACCOUNT
-    dataType: VARCHAR(50)
-    sourceExpression: SOURCE_WITH_BATCH.PARENTACCOUNT
-  - name: BILLINGLEVEL
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.BILLINGLEVEL
-  - name: SERVICETIER
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.SERVICETIER
-  - name: SECURITYZONE
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.SECURITYZONE
-  - name: DELINQUENCYSTATUS
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.DELINQUENCYSTATUS
-  - name: SEGMENT
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.SEGMENT
-  - name: INSUREDFIRSTNAME
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.INSUREDFIRSTNAME
-  - name: INSUREDLASTNAME
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.INSUREDLASTNAME
-  - name: INSUREDADDRESS
-    dataType: VARCHAR(255)
-    sourceExpression: SOURCE_WITH_BATCH.INSUREDADDRESS
-  - name: INSUREDCITY
-    dataType: VARCHAR(100)
-    sourceExpression: SOURCE_WITH_BATCH.INSUREDCITY
-  - name: INSUREDSTATE
-    dataType: VARCHAR(100)
-    sourceExpression: SOURCE_WITH_BATCH.INSUREDSTATE
-  - name: INSUREDPOSTALCODE
-    dataType: VARCHAR(20)
-    sourceExpression: SOURCE_WITH_BATCH.INSUREDPOSTALCODE
-  - name: BEANVERSION
-    dataType: INT
-    sourceExpression: SOURCE_WITH_BATCH.BEANVERSION
-  - name: EXISTING_BEANVERSION
-    dataType: INT
-    sourceExpression: DIM_LOOKUP.BEANVERSION
-  - name: BATCHID
-    dataType: DATETIME
-    sourceExpression: SOURCE_WITH_BATCH.BATCHID
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID to identify new vs changed records"
+  isMultisource: true
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: PARENT_OWNERID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: PARENT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 21
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 25
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CONTACT_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CONTACT_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 27
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 30
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 35
+          stepCounter: 2
+        config: {}
+        dataType: STRING
+        description: "BeanVersion from EDW DimBillingAccount for comparison"
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 2
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_DERIVED_BATCHID: SRC_TR_DERIVED_BATCHID
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_DERIVED_BATCHID
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_DERIVED_BATCHID') }} SRC_TR_DERIVED_BATCHID
+        name: SRC_TR_LOOKUP_BEANVERSION
+        noLinkRefs: []
+      - aliases:
+          DIMBILLINGACCOUNT: DIMBILLINGACCOUNT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_DIMBILLINGACCOUNT
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT') }} DIMBILLINGACCOUNT
+            ON SRC_TR_DERIVED_BATCHID.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
+        name: SRC_TR_LOOKUP_BEANVERSION
+        noLinkRefs: []
+  name: SRC_TR_LOOKUP_BEANVERSION
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
