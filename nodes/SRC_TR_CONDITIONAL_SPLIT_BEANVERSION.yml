@@ -1,0 +1,34 @@
+fileVersion: 1
+id: T4
+name: TR_CONDITIONAL_SPLIT_BEANVERSION
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Conditional Split transformation - Routes rows based on whether source BeanVersion matches EDW BeanVersion to determine unchanged vs update records"
+  locationName: SRC
+  metadata:
+    transformation:
+      type: CONDITIONAL_SPLIT
+      inputSource:
+        name: TR_LOOKUP_BEANVERSION
+        stepCounter: T3
+      conditions:
+        - outputName: UNCHANGED_ROWS
+          condition: "BEANVERSION == EDWBeanVersion"
+          description: "Records where BeanVersion matches - no changes needed"
+          order: 1
+        - outputName: UPDATE_ROWS
+          condition: "BEANVERSION != EDWBeanVersion"
+          description: "Records where BeanVersion differs - needs update"
+          order: 2
+      defaultOutput:
+        name: DEFAULT_OUTPUT
+        description: "Catch-all for any rows not matching conditions"
+      executionOrder: 4
+      purpose: "Split data flow into unchanged records (for counting only) and changed records (for update)"
+  name: TR_CONDITIONAL_SPLIT_BEANVERSION
+  schema: ""
+  sqlType: Transformation
+  type: conditionalSplit
+  version: 1
+type: Node
