@@ -1,44 +1,424 @@
 fileVersion: 1
-id: T3
-name: TR_LOOKUP_BEANVERSION
+id: S19
+name: SRC_TR_LOOKUP_BEANVERSION
 operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Lookup transformation - Looks up BeanVersion from DIMBILLINGACCOUNT table by PUBLICID to determine if record exists and needs update"
+  description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID for SCD comparison"
+  isMultisource: true
   locationName: SRC
+  materializationType: table
   metadata:
-    transformation:
-      type: LOOKUP
-      inputSource:
-        name: TR_DERIVED_BATCHID
-        stepCounter: T2
-      lookupTable:
-        name: DIMBILLINGACCOUNT
-        stepCounter: S15
-        database: ""
-        schema: ""
-      lookupQuery:
-        sql: "SELECT PUBLICID, BEANVERSION FROM DIMBILLINGACCOUNT"
-        description: "Query to retrieve existing records with their BeanVersion for comparison"
-      joinCondition:
-        type: INNER
-        columns:
-          - sourceColumn: PUBLICID
-            lookupColumn: PUBLICID
-            operator: "="
-      returnColumns:
-        - columnName: BEANVERSION
-          alias: EDWBeanVersion
-          dataType: STRING
-          description: "BeanVersion from existing EDW record for SCD comparison"
-      noMatchOutput:
-        action: "SEND_TO_NO_MATCH_OUTPUT"
-        description: "Rows with no match are new inserts"
-      executionOrder: 3
-      purpose: "Identify existing records and retrieve their BeanVersion for SCD Type 1 logic"
-  name: TR_LOOKUP_BEANVERSION
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S19
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S19
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: PARENTACCT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: INSURED_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: INSURED_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C18
+          stepCounter: S19
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C18
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C19
+          stepCounter: S19
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C19
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C20
+          stepCounter: S19
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C20
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: S19
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C21
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C22
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C23
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C23
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C24
+          stepCounter: S19
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C24
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C25
+          stepCounter: S19
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C25
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C26
+          stepCounter: S19
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C26
+                stepCounter: S18
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C27
+          stepCounter: S19
+        config: {}
+        dataType: STRING
+        description: "Looked up BeanVersion from DimBillingAccount for SCD comparison"
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S15
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_DERIVED_BATCHID: S18
+          SRC_DIMBILLINGACCOUNT: S15
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_DERIVED_BATCHID
+          - locationName: SRC
+            nodeName: SRC_DIMBILLINGACCOUNT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_DERIVED_BATCHID') }} SRC_TR_DERIVED_BATCHID
+            LEFT JOIN {{ ref('SRC', 'SRC_DIMBILLINGACCOUNT') }} SRC_DIMBILLINGACCOUNT
+              ON SRC_TR_DERIVED_BATCHID.PUBLICID = SRC_DIMBILLINGACCOUNT.PUBLICID
+        name: SRC_TR_LOOKUP_BEANVERSION
+        noLinkRefs: []
+  name: SRC_TR_LOOKUP_BEANVERSION
+  overrideSQL: false
   schema: ""
-  sqlType: Transformation
-  type: lookup
+  sqlType: Stage
+  type: sql
   version: 1
 type: Node
