@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S11
-name: SRC_BCTL_CUSTOMERSERVICETIER
+name: BCTL_CUSTOMERSERVICETIER
 operation:
   database: ""
   deployEnabled: true
