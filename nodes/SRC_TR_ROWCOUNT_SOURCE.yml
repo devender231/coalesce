@@ -1,0 +1,28 @@
+fileVersion: 1
+id: T1
+name: TR_ROWCOUNT_SOURCE
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts source rows from OLE_SRC GuideWire and stores count in User::SourceCount variable"
+  locationName: SRC
+  metadata:
+    transformation:
+      type: ROW_COUNT
+      inputSource:
+        name: BC_ACCOUNT
+        stepCounter: S1
+      logic: "Count all rows from source BC_ACCOUNT table"
+      variable:
+        name: "User::SourceCount"
+        type: "INTEGER"
+        scope: "Package"
+        description: "Stores the total count of source rows from GuideWire BC_ACCOUNT table"
+      executionOrder: 1
+      purpose: "Audit and tracking of source record count for ETL monitoring"
+  name: TR_ROWCOUNT_SOURCE
+  schema: ""
+  sqlType: Transformation
+  type: rowCount
+  version: 1
+type: Node
