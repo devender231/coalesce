@@ -1,6 +1,9 @@
 fileVersion: 1
+
 id: SRC_TR_ROWCOUNT_UPDATE
+
 name: SRC_TR_ROWCOUNT_UPDATE
+
 operation:
   config:
     insertStrategy: INSERT
@@ -10,7 +13,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Counts update rows where BeanVersion differs from EDW_BEANVERSION and stores in User::UpdateCount variable"
+  description: "Row Count transformation - Counts update rows where BeanVersion differs from EDW BeanVersion and stores in UpdateCount variable"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -23,7 +26,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Count of update rows"
+        description: "Update Row Count"
         name: UPDATE_ROW_COUNT
         nullable: false
         sourceColumnReferences:
@@ -44,7 +47,7 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT_BEANVERSION') }} SRC_TR_CONDITIONALSPLIT_BEANVERSION
-            WHERE RECORD_TYPE = 'UPDATE'
+            WHERE ROW_TYPE = 'UPDATE'
         name: SRC_TR_ROWCOUNT_UPDATE
         noLinkRefs: []
   name: SRC_TR_ROWCOUNT_UPDATE
@@ -53,4 +56,5 @@ operation:
   sqlType: Stage
   type: sql
   version: 1
+
 type: Node
