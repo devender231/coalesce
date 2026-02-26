@@ -8,7 +8,7 @@ operation:
     preSQL: ""
     testsEnabled: true
     truncateBefore: true
-  database: ""
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Source table for Country Name data"
   isMultisource: false
@@ -62,7 +62,7 @@ operation:
         noLinkRefs: []
   name: SRC_COUNTRYNAME
   overrideSQL: false
-  schema: Sales
+  schema: "Sales"
   sqlType: Source
   type: sql
   version: 1
