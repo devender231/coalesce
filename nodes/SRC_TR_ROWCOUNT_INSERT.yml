@@ -1,0 +1,29 @@
+fileVersion: 1
+id: T6
+name: TR_ROWCOUNT_INSERT
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts new insert rows where lookup found no match in DIMBILLINGACCOUNT and stores count in User::InsertCount variable"
+  locationName: SRC
+  metadata:
+    transformation:
+      type: ROW_COUNT
+      inputSource:
+        name: TR_LOOKUP_BEANVERSION
+        stepCounter: T3
+        outputName: NO_MATCH_OUTPUT
+      logic: "Count rows with no match in lookup (new records to insert)"
+      variable:
+        name: "User::InsertCount"
+        type: "INTEGER"
+        scope: "Package"
+        description: "Stores the count of new records to be inserted into DIMBILLINGACCOUNT"
+      executionOrder: 6
+      purpose: "Audit and tracking of new insert record count for ETL monitoring"
+  name: TR_ROWCOUNT_INSERT
+  schema: ""
+  sqlType: Transformation
+  type: rowCount
+  version: 1
+type: Node
