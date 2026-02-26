@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S14
-name: SRC_BCTL_ACCOUNTSEGMENT
+name: BCTL_ACCOUNTSEGMENT
 operation:
   database: ""
   deployEnabled: true
