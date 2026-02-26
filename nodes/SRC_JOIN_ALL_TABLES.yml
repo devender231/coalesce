@@ -1,0 +1,186 @@
+fileVersion: 1
+id: J1
+name: JOIN_ALL_TABLES
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Comprehensive join of all source tables for DimBillingAccount"
+  locationName: SRC
+  metadata:
+    columns:
+      - name: ACCOUNTNUMBER
+        dataType: INTEGER
+        nullable: true
+        description: "Account number from BC_ACCOUNT"
+      - name: ACCOUNTNAME
+        dataType: STRING
+        nullable: true
+        description: "Account name from BC_ACCOUNT"
+      - name: ACCOUNTTYPE_NAME
+        dataType: STRING
+        nullable: true
+        description: "Account type name from BCTL_ACCOUNTTYPE"
+      - name: BILLINGLEVEL_NAME
+        dataType: STRING
+        nullable: true
+        description: "Billing level name from BCTL_BILLINGLEVEL"
+      - name: SERVICETIER_NAME
+        dataType: STRING
+        nullable: true
+        description: "Service tier name from BCTL_CUSTOMERSERVICETIER"
+      - name: SECURITYZONE_NAME
+        dataType: STRING
+        nullable: true
+        description: "Security zone name from BC_SECURITYZONE"
+      - name: SEGMENT_NAME
+        dataType: STRING
+        nullable: true
+        description: "Account segment name from BCTL_ACCOUNTSEGMENT"
+      - name: DELINQUENCYSTATUS_NAME
+        dataType: STRING
+        nullable: true
+        description: "Delinquency status name from BCTL_DELINQUENCYSTATUS"
+      - name: PARENTACCOUNT_ID
+        dataType: INTEGER
+        nullable: true
+        description: "Parent account ID from BC_PARENTACCT"
+      - name: INSURED_FIRSTNAME
+        dataType: STRING
+        nullable: true
+        description: "Insured first name from BC_CONTACT"
+      - name: INSURED_LASTNAME
+        dataType: STRING
+        nullable: true
+        description: "Insured last name from BC_CONTACT"
+      - name: ADDRESS_LINE1
+        dataType: STRING
+        nullable: true
+        description: "Address line 1 from BC_ADDRESS"
+      - name: ADDRESS_LINE2
+        dataType: STRING
+        nullable: true
+        description: "Address line 2 from BC_ADDRESS"
+      - name: ADDRESS_LINE3
+        dataType: STRING
+        nullable: true
+        description: "Address line 3 from BC_ADDRESS"
+      - name: CITY
+        dataType: STRING
+        nullable: true
+        description: "City from BC_ADDRESS"
+      - name: STATE_NAME
+        dataType: STRING
+        nullable: true
+        description: "State name from BCTL_STATE"
+      - name: POSTALCODE
+        dataType: STRING
+        nullable: true
+        description: "Postal code from BC_ADDRESS"
+      - name: CLOSEDATE
+        dataType: DATETIME
+        nullable: true
+        description: "Account close date from BC_ACCOUNT"
+      - name: CREATETIME
+        dataType: DATETIME
+        nullable: true
+        description: "Account create time from BC_ACCOUNT"
+      - name: FIRSTTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+        nullable: true
+        description: "First twice per month invoice day from BC_ACCOUNT"
+      - name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: INTEGER
+        nullable: true
+        description: "Second twice per month invoice day from BC_ACCOUNT"
+      - name: PUBLICID
+        dataType: STRING
+        nullable: true
+        description: "Public ID from BC_ACCOUNT"
+      - name: ACCOUNT_ID
+        dataType: INTEGER
+        nullable: true
+        description: "Account ID from BC_ACCOUNT"
+      - name: BEANVERSION
+        dataType: STRING
+        nullable: true
+        description: "Bean version from BC_ACCOUNT"
+      - name: RETIRED
+        dataType: INTEGER
+        nullable: true
+        description: "Retired flag from BC_ACCOUNT"
+      - name: UPDATETIME
+        dataType: DATETIME
+        nullable: true
+        description: "Update time from BC_ACCOUNT"
+  name: JOIN_ALL_TABLES
+  schema: ""
+  sqlType: Join
+  type: join
+  version: 1
+  joins:
+    - joinType: LEFT
+      leftTable: BC_ACCOUNT
+      rightTable: BCTL_ACCOUNTTYPE
+      joinCondition: "BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID"
+      description: "Join to get account type name"
+    - joinType: LEFT
+      leftTable: BC_ACCOUNT
+      rightTable: BC_PARENTACCT
+      joinCondition: "BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID"
+      description: "Join to get parent account information"
+    - joinType: LEFT
+      leftTable: BC_ACCOUNT
+      rightTable: BCTL_BILLINGLEVEL
+      joinCondition: "BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID"
+      description: "Join to get billing level name"
+    - joinType: LEFT
+      leftTable: BC_ACCOUNT
+      rightTable: BCTL_CUSTOMERSERVICETIER
+      joinCondition: "BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID"
+      description: "Join to get service tier name"
+    - joinType: LEFT
+      leftTable: BC_ACCOUNT
+      rightTable: BC_SECURITYZONE
+      joinCondition: "BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID"
+      description: "Join to get security zone name"
+    - joinType: LEFT
+      leftTable: BC_ACCOUNT
+      rightTable: BCTL_DELINQUENCYSTATUS
+      joinCondition: "BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID"
+      description: "Join to get delinquency status name"
+    - joinType: LEFT
+      leftTable: BC_ACCOUNT
+      rightTable: BCTL_ACCOUNTSEGMENT
+      joinCondition: "BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID"
+      description: "Join to get account segment name"
+    - joinType: LEFT
+      leftTable: BC_ACCOUNT
+      rightTable: BC_ACCOUNTCONTACT
+      joinCondition: "BC_ACCOUNTCONTACT.INSUREDACCOUNTID = BC_ACCOUNT.ID"
+      description: "Join to get account contact for insured role"
+    - joinType: INNER
+      leftTable: BC_ACCOUNTCONTACT
+      rightTable: BC_ACCOUNTCONTACTROLE
+      joinCondition: "BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID"
+      description: "Join to get account contact role"
+    - joinType: INNER
+      leftTable: BC_ACCOUNTCONTACTROLE
+      rightTable: BCTL_ACCOUNTROLE
+      joinCondition: "BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'"
+      description: "Join to filter for insured role type"
+    - joinType: LEFT
+      leftTable: BC_ACCOUNTCONTACT
+      rightTable: BC_CONTACT
+      joinCondition: "BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID"
+      description: "Join to get contact details"
+    - joinType: LEFT
+      leftTable: BC_CONTACT
+      rightTable: BC_ADDRESS
+      joinCondition: "BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID"
+      description: "Join to get primary address"
+    - joinType: LEFT
+      leftTable: BC_ADDRESS
+      rightTable: BCTL_STATE
+      joinCondition: "BCTL_STATE.ID = BC_ADDRESS.STATE"
+      description: "Join to get state name"
+type: Node
