@@ -129,16 +129,7 @@ operation:
           SALESTERRITORY: ST
           COUNTRYNAME: CN
         customSQL:
-          customSQL: |
-            SELECT
-              ST.TERRITORYID,
-              ST.NAME,
-              ST."GROUP",
-              ST.COUNTRYREGIONCODE,
-              CN.COUNTRY_NAME
-            FROM {{ ref('SRC', 'SALESTERRITORY') }} ST
-            INNER JOIN {{ ref('SRC', 'COUNTRYNAME') }} CN
-            ON ST.COUNTRYREGIONCODE = CN.COUNTRY_CODE
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: SALESTERRITORY
@@ -152,7 +143,7 @@ operation:
         name: JOIN_SALESTERRITORY_COUNTRYNAME
         noLinkRefs: []
   name: JOIN_SALESTERRITORY_COUNTRYNAME
-  overrideSQL: true
+  overrideSQL: false
   schema: "Sales"
   sqlType: Stage
   type: sql
