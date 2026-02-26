@@ -1,6 +1,6 @@
 fileVersion: 1
 
-id: SRC_TR_ROWCOUNT_INSERT
+id: T6
 
 name: SRC_TR_ROWCOUNT_INSERT
 
@@ -13,7 +13,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Counts new insert rows (lookup no match) and stores in User::InsertCount variable"
+  description: "Counts new insert rows where no match found in EDW"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -26,7 +26,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Insert Row Count"
+        description: "Count of new insert rows"
         name: INSERT_ROW_COUNT
         nullable: false
         sourceColumnReferences:
@@ -38,16 +38,16 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_TR_CONDITIONALSPLIT_SCD: SRC_TR_CONDITIONALSPLIT_SCD
+          SRC_TR_CONDITIONALSPLIT: SRC_TR_CONDITIONALSPLIT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_TR_CONDITIONALSPLIT_SCD
+            nodeName: SRC_TR_CONDITIONALSPLIT
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT_SCD') }} SRC_TR_CONDITIONALSPLIT_SCD
-            WHERE RECORD_TYPE = 'INSERT'
+            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT') }} SRC_TR_CONDITIONALSPLIT
+            WHERE ROW_TYPE = 'INSERT'
         name: SRC_TR_ROWCOUNT_INSERT
         noLinkRefs: []
   name: SRC_TR_ROWCOUNT_INSERT
