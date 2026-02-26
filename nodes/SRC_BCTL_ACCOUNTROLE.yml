@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S5
-name: SRC_BCTL_ACCOUNTROLE
+name: BCTL_ACCOUNTROLE
 operation:
   database: ""
   deployEnabled: true
