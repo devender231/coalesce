@@ -1,0 +1,62 @@
+fileVersion: 1
+id: SRC_TR_ROW_COUNT_SOURCE
+name: SRC_TR_ROW_COUNT_SOURCE
+type: transformation
+metadata:
+  description: Row count transformation for source data
+  transformationType: rowCount
+  database: EDW
+  schema: dbo
+sources:
+  - id: SRC_JOIN_DIMBILLINGACCOUNT
+    alias: SOURCE_DATA
+transformation:
+  type: ROW_COUNT
+  variableName: SourceRowCount
+  description: Counts total rows from source join
+columns:
+  - name: PUBLICID
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.PUBLICID
+  - name: ACCOUNTTYPE
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.ACCOUNTTYPE
+  - name: PARENTACCOUNT
+    dataType: VARCHAR(50)
+    sourceExpression: SOURCE_DATA.PARENTACCOUNT
+  - name: BILLINGLEVEL
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.BILLINGLEVEL
+  - name: SERVICETIER
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.SERVICETIER
+  - name: SECURITYZONE
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.SECURITYZONE
+  - name: DELINQUENCYSTATUS
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.DELINQUENCYSTATUS
+  - name: SEGMENT
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.SEGMENT
+  - name: INSUREDFIRSTNAME
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.INSUREDFIRSTNAME
+  - name: INSUREDLASTNAME
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.INSUREDLASTNAME
+  - name: INSUREDADDRESS
+    dataType: VARCHAR(255)
+    sourceExpression: SOURCE_DATA.INSUREDADDRESS
+  - name: INSUREDCITY
+    dataType: VARCHAR(100)
+    sourceExpression: SOURCE_DATA.INSUREDCITY
+  - name: INSUREDSTATE
+    dataType: VARCHAR(100)
+    sourceExpression: SOURCE_DATA.INSUREDSTATE
+  - name: INSUREDPOSTALCODE
+    dataType: VARCHAR(20)
+    sourceExpression: SOURCE_DATA.INSUREDPOSTALCODE
+  - name: BEANVERSION
+    dataType: INT
+    sourceExpression: SOURCE_DATA.BEANVERSION
