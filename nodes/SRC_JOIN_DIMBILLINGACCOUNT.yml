@@ -1,148 +1,673 @@
 fileVersion: 1
 id: SRC_JOIN_DIMBILLINGACCOUNT
 name: SRC_JOIN_DIMBILLINGACCOUNT
-type: join
-metadata:
-  description: Consolidated join logic for all 15 joins from SSIS package EDW_BC_Load_DimBillingAccount
-  database: EDW
-  schema: dbo
-sources:
-  - id: SRC_BC_ACCOUNT
-    alias: BC_ACCOUNT
-  - id: SRC_BCTL_ACCOUNTTYPE
-    alias: BCTL_ACCOUNTTYPE
-  - id: SRC_BC_PARENTACCT
-    alias: BC_PARENTACCT
-  - id: SRC_BCTL_BILLINGLEVEL
-    alias: BCTL_BILLINGLEVEL
-  - id: SRC_BCTL_CUSTOMERSERVICETIER
-    alias: BCTL_CUSTOMERSERVICETIER
-  - id: SRC_BC_SECURITYZONE
-    alias: BC_SECURITYZONE
-  - id: SRC_BCTL_DELINQUENCYSTATUS
-    alias: BCTL_DELINQUENCYSTATUS
-  - id: SRC_BCTL_ACCOUNTSEGMENT
-    alias: BCTL_ACCOUNTSEGMENT
-  - id: SRC_BC_ACCOUNTCONTACT
-    alias: BC_ACCOUNTCONTACT
-  - id: SRC_BC_ACCOUNTCONTACTROLE
-    alias: BC_ACCOUNTCONTACTROLE
-  - id: SRC_BCTL_ACCOUNTROLE
-    alias: BCTL_ACCOUNTROLE
-  - id: SRC_BC_CONTACT
-    alias: BC_CONTACT
-  - id: SRC_BC_ADDRESS
-    alias: BC_ADDRESS
-  - id: SRC_BCTL_STATE
-    alias: BCTL_STATE
-  - id: SRC_DIMBILLINGACCOUNT
-    alias: DIMBILLINGACCOUNT
-joins:
-  - type: LEFT
-    leftSource: BC_ACCOUNT
-    rightSource: BCTL_ACCOUNTTYPE
-    condition: BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
-  - type: LEFT
-    leftSource: BC_ACCOUNT
-    rightSource: BC_PARENTACCT
-    condition: BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
-  - type: LEFT
-    leftSource: BC_ACCOUNT
-    rightSource: BCTL_BILLINGLEVEL
-    condition: BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
-  - type: LEFT
-    leftSource: BC_ACCOUNT
-    rightSource: BCTL_CUSTOMERSERVICETIER
-    condition: BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
-  - type: LEFT
-    leftSource: BC_ACCOUNT
-    rightSource: BC_SECURITYZONE
-    condition: BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
-  - type: LEFT
-    leftSource: BC_ACCOUNT
-    rightSource: BCTL_DELINQUENCYSTATUS
-    condition: BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
-  - type: LEFT
-    leftSource: BC_ACCOUNT
-    rightSource: BCTL_ACCOUNTSEGMENT
-    condition: BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
-  - type: LEFT
-    leftSource: BC_ACCOUNT
-    rightSource: INSUREDINFO
-    condition: INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
-    description: Join to INSUREDINFO intermediate result
-  - type: INNER
-    leftSource: INSUREDINFO
-    rightSource: BC_ACCOUNTCONTACT
-    condition: BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
-  - type: INNER
-    leftSource: INSUREDINFO
-    rightSource: BC_ACCOUNTCONTACTROLE
-    condition: BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
-  - type: INNER
-    leftSource: INSUREDINFO
-    rightSource: BCTL_ACCOUNTROLE
-    condition: BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
-  - type: LEFT
-    leftSource: INSUREDINFO
-    rightSource: BC_CONTACT
-    condition: BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
-  - type: LEFT
-    leftSource: INSUREDINFO
-    rightSource: BC_ADDRESS
-    condition: BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
-  - type: LEFT
-    leftSource: INSUREDINFO
-    rightSource: BCTL_STATE
-    condition: BCTL_STATE.ID = BC_ADDRESS.STATE
-  - type: INNER
-    leftSource: LOOKUP_INPUT
-    rightSource: DIMBILLINGACCOUNT
-    condition: LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
-    description: Lookup join for existing dimension records
-columns:
-  - name: PUBLICID
-    dataType: VARCHAR(255)
-    sourceExpression: BC_ACCOUNT.PUBLICID
-  - name: ACCOUNTTYPE
-    dataType: VARCHAR(255)
-    sourceExpression: BCTL_ACCOUNTTYPE.NAME
-  - name: PARENTACCOUNT
-    dataType: VARCHAR(50)
-    sourceExpression: BC_PARENTACCT.ACCOUNTNUMBER
-  - name: BILLINGLEVEL
-    dataType: VARCHAR(255)
-    sourceExpression: BCTL_BILLINGLEVEL.NAME
-  - name: SERVICETIER
-    dataType: VARCHAR(255)
-    sourceExpression: BCTL_CUSTOMERSERVICETIER.NAME
-  - name: SECURITYZONE
-    dataType: VARCHAR(255)
-    sourceExpression: BC_SECURITYZONE.NAME
-  - name: DELINQUENCYSTATUS
-    dataType: VARCHAR(255)
-    sourceExpression: BCTL_DELINQUENCYSTATUS.NAME
-  - name: SEGMENT
-    dataType: VARCHAR(255)
-    sourceExpression: BCTL_ACCOUNTSEGMENT.NAME
-  - name: INSUREDFIRSTNAME
-    dataType: VARCHAR(255)
-    sourceExpression: BC_CONTACT.FIRSTNAME
-  - name: INSUREDLASTNAME
-    dataType: VARCHAR(255)
-    sourceExpression: BC_CONTACT.LASTNAME
-  - name: INSUREDADDRESS
-    dataType: VARCHAR(255)
-    sourceExpression: BC_ADDRESS.ADDRESSLINE1
-  - name: INSUREDCITY
-    dataType: VARCHAR(100)
-    sourceExpression: BC_ADDRESS.CITY
-  - name: INSUREDSTATE
-    dataType: VARCHAR(100)
-    sourceExpression: BCTL_STATE.NAME
-  - name: INSUREDPOSTALCODE
-    dataType: VARCHAR(20)
-    sourceExpression: BC_ADDRESS.POSTALCODE
-  - name: BEANVERSION
-    dataType: INT
-    sourceExpression: DIMBILLINGACCOUNT.BEANVERSION
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: "Joins all source tables for DimBillingAccount with proper join conditions and execution order"
+  isMultisource: true
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18
+          stepCounter: 2
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19
+          stepCounter: 3
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: PARENT_OWNERID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20
+          stepCounter: 3
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: PARENT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 21
+          stepCounter: 4
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22
+          stepCounter: 5
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23
+          stepCounter: 6
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24
+          stepCounter: 7
+        config: {}
+        dataType: STRING
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 25
+          stepCounter: 8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 8
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26
+          stepCounter: 9
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CONTACT_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 12
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27
+          stepCounter: 9
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CONTACT_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 12
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28
+          stepCounter: 13
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 13
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29
+          stepCounter: 13
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 13
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30
+          stepCounter: 13
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 13
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31
+          stepCounter: 13
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 13
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32
+          stepCounter: 13
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 13
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33
+          stepCounter: 14
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 14
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          BC_ACCOUNT: BC_ACCOUNT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BC_ACCOUNT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_BC_ACCOUNT') }} BC_ACCOUNT
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BCTL_ACCOUNTTYPE: BCTL_ACCOUNTTYPE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BCTL_ACCOUNTTYPE
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
+            ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BC_PARENTACCT: BC_PARENTACCT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BC_PARENTACCT
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BC_PARENTACCT') }} BC_PARENTACCT
+            ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BCTL_BILLINGLEVEL: BCTL_BILLINGLEVEL
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BCTL_BILLINGLEVEL
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
+            ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BCTL_CUSTOMERSERVICETIER: BCTL_CUSTOMERSERVICETIER
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BCTL_CUSTOMERSERVICETIER
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
+            ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BC_SECURITYZONE: BC_SECURITYZONE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BC_SECURITYZONE
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BC_SECURITYZONE') }} BC_SECURITYZONE
+            ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BCTL_DELINQUENCYSTATUS: BCTL_DELINQUENCYSTATUS
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BCTL_DELINQUENCYSTATUS
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
+            ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BCTL_ACCOUNTSEGMENT: BCTL_ACCOUNTSEGMENT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BCTL_ACCOUNTSEGMENT
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
+            ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNTCONTACT: BC_ACCOUNTCONTACT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BC_ACCOUNTCONTACT
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
+            ON BC_ACCOUNTCONTACT.INSUREDACCOUNTID = BC_ACCOUNT.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BC_ACCOUNTCONTACTROLE: BC_ACCOUNTCONTACTROLE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BC_ACCOUNTCONTACTROLE
+        join:
+          joinCondition: |
+            INNER JOIN {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
+            ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BCTL_ACCOUNTROLE: BCTL_ACCOUNTROLE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BCTL_ACCOUNTROLE
+        join:
+          joinCondition: |
+            INNER JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
+            ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE
+            AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BC_CONTACT: BC_CONTACT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BC_CONTACT
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BC_CONTACT') }} BC_CONTACT
+            ON BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BC_ADDRESS: BC_ADDRESS
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BC_ADDRESS
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BC_ADDRESS') }} BC_ADDRESS
+            ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+      - aliases:
+          BCTL_STATE: BCTL_STATE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_BCTL_STATE
+        join:
+          joinCondition: |
+            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_STATE') }} BCTL_STATE
+            ON BCTL_STATE.ID = BC_ADDRESS.STATE
+        name: SRC_JOIN_DIMBILLINGACCOUNT
+        noLinkRefs: []
+  name: SRC_JOIN_DIMBILLINGACCOUNT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
