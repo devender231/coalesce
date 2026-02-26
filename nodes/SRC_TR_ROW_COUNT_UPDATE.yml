@@ -1,0 +1,69 @@
+fileVersion: 1
+id: SRC_TR_ROW_COUNT_UPDATE
+name: SRC_TR_ROW_COUNT_UPDATE
+type: transformation
+metadata:
+  description: Row count transformation for update records
+  transformationType: rowCount
+  database: EDW
+  schema: dbo
+sources:
+  - id: SRC_TR_CONDITIONAL_SPLIT
+    alias: UPDATE_OUTPUT
+    outputPath: UPDATE_RECORDS
+transformation:
+  type: ROW_COUNT
+  variableName: UpdateRowCount
+  description: Counts existing records with changed BeanVersion to be updated
+columns:
+  - name: PUBLICID
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.PUBLICID
+  - name: ACCOUNTTYPE
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.ACCOUNTTYPE
+  - name: PARENTACCOUNT
+    dataType: VARCHAR(50)
+    sourceExpression: UPDATE_OUTPUT.PARENTACCOUNT
+  - name: BILLINGLEVEL
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.BILLINGLEVEL
+  - name: SERVICETIER
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.SERVICETIER
+  - name: SECURITYZONE
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.SECURITYZONE
+  - name: DELINQUENCYSTATUS
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.DELINQUENCYSTATUS
+  - name: SEGMENT
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.SEGMENT
+  - name: INSUREDFIRSTNAME
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.INSUREDFIRSTNAME
+  - name: INSUREDLASTNAME
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.INSUREDLASTNAME
+  - name: INSUREDADDRESS
+    dataType: VARCHAR(255)
+    sourceExpression: UPDATE_OUTPUT.INSUREDADDRESS
+  - name: INSUREDCITY
+    dataType: VARCHAR(100)
+    sourceExpression: UPDATE_OUTPUT.INSUREDCITY
+  - name: INSUREDSTATE
+    dataType: VARCHAR(100)
+    sourceExpression: UPDATE_OUTPUT.INSUREDSTATE
+  - name: INSUREDPOSTALCODE
+    dataType: VARCHAR(20)
+    sourceExpression: UPDATE_OUTPUT.INSUREDPOSTALCODE
+  - name: BEANVERSION
+    dataType: INT
+    sourceExpression: UPDATE_OUTPUT.BEANVERSION
+  - name: EXISTING_BEANVERSION
+    dataType: INT
+    sourceExpression: UPDATE_OUTPUT.EXISTING_BEANVERSION
+  - name: BATCHID
+    dataType: DATETIME
+    sourceExpression: UPDATE_OUTPUT.BATCHID
