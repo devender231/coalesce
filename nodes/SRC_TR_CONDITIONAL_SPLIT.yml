@@ -1,0 +1,431 @@
+fileVersion: 1
+id: S20
+name: SRC_TR_CONDITIONAL_SPLIT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: "Routes rows based on BeanVersion comparison: UNCHANGED (match), UPDATE (different), INSERT (no match)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S20
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S20
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: PARENTACCT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: INSURED_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: INSURED_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C18
+          stepCounter: S20
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C18
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C19
+          stepCounter: S20
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C19
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C20
+          stepCounter: S20
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C20
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: S20
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C21
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C22
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C23
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C23
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C24
+          stepCounter: S20
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C24
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C25
+          stepCounter: S20
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C25
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C26
+          stepCounter: S20
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: BATCHID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C26
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C27
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: EDW_BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C27
+                stepCounter: S19
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C28
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: "Route indicator: UNCHANGED, UPDATE, or INSERT"
+        name: ROUTE_TYPE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "CASE WHEN EDW_BEANVERSION IS NULL THEN 'INSERT' WHEN BEANVERSION = EDW_BEANVERSION THEN 'UNCHANGED' ELSE 'UPDATE' END"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_LOOKUP_BEANVERSION: S19
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_LOOKUP_BEANVERSION
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_LOOKUP_BEANVERSION') }} SRC_TR_LOOKUP_BEANVERSION
+        name: SRC_TR_CONDITIONAL_SPLIT
+        noLinkRefs: []
+  name: SRC_TR_CONDITIONAL_SPLIT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
