@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S7
-name: SRC_BC_ADDRESS
+name: BC_ADDRESS
 operation:
   database: ""
   deployEnabled: true
