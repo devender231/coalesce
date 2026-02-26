@@ -1,0 +1,45 @@
+fileVersion: 1
+id: SRC_TR_ROW_COUNT_UNCHANGED
+name: SRC_TR_ROW_COUNT_UNCHANGED
+type: transformation
+metadata:
+  description: Row count transformation for unchanged records
+  transformationType: rowCount
+  database: EDW
+  schema: dbo
+sources:
+  - id: SRC_TR_CONDITIONAL_SPLIT
+    alias: UNCHANGED_OUTPUT
+    outputPath: UNCHANGED_RECORDS
+transformation:
+  type: ROW_COUNT
+  variableName: UnchangedRowCount
+  description: Counts rows with matching BeanVersion (no updates needed)
+columns:
+  - name: PUBLICID
+    dataType: VARCHAR(255)
+    sourceExpression: UNCHANGED_OUTPUT.PUBLICID
+  - name: ACCOUNTTYPE
+    dataType: VARCHAR(255)
+    sourceExpression: UNCHANGED_OUTPUT.ACCOUNTTYPE
+  - name: PARENTACCOUNT
+    dataType: VARCHAR(50)
+    sourceExpression: UNCHANGED_OUTPUT.PARENTACCOUNT
+  - name: BILLINGLEVEL
+    dataType: VARCHAR(255)
+    sourceExpression: UNCHANGED_OUTPUT.BILLINGLEVEL
+  - name: SERVICETIER
+    dataType: VARCHAR(255)
+    sourceExpression: UNCHANGED_OUTPUT.SERVICETIER
+  - name: SECURITYZONE
+    dataType: VARCHAR(255)
+    sourceExpression: UNCHANGED_OUTPUT.SECURITYZONE
+  - name: DELINQUENCYSTATUS
+    dataType: VARCHAR(255)
+    sourceExpression: UNCHANGED_OUTPUT.DELINQUENCYSTATUS
+  - name: SEGMENT
+    dataType: VARCHAR(255)
+    sourceExpression: UNCHANGED_OUTPUT.SEGMENT
+  - name: BATCHID
+    dataType: DATETIME
+    sourceExpression: UNCHANGED_OUTPUT.BATCHID
