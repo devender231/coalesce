@@ -1,0 +1,44 @@
+fileVersion: 1
+id: T3
+name: TR_LOOKUP_BEANVERSION
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Lookup transformation - Looks up BeanVersion from DIMBILLINGACCOUNT table by PUBLICID to determine if record exists and needs update"
+  locationName: SRC
+  metadata:
+    transformation:
+      type: LOOKUP
+      inputSource:
+        name: TR_DERIVED_BATCHID
+        stepCounter: T2
+      lookupTable:
+        name: DIMBILLINGACCOUNT
+        stepCounter: S15
+        database: ""
+        schema: ""
+      lookupQuery:
+        sql: "SELECT PUBLICID, BEANVERSION FROM DIMBILLINGACCOUNT"
+        description: "Query to retrieve existing records with their BeanVersion for comparison"
+      joinCondition:
+        type: INNER
+        columns:
+          - sourceColumn: PUBLICID
+            lookupColumn: PUBLICID
+            operator: "="
+      returnColumns:
+        - columnName: BEANVERSION
+          alias: EDWBeanVersion
+          dataType: STRING
+          description: "BeanVersion from existing EDW record for SCD comparison"
+      noMatchOutput:
+        action: "SEND_TO_NO_MATCH_OUTPUT"
+        description: "Rows with no match are new inserts"
+      executionOrder: 3
+      purpose: "Identify existing records and retrieve their BeanVersion for SCD Type 1 logic"
+  name: TR_LOOKUP_BEANVERSION
+  schema: ""
+  sqlType: Transformation
+  type: lookup
+  version: 1
+type: Node
