@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S3
-name: SRC_BC_ACCOUNTCONTACT
+name: BC_ACCOUNTCONTACT
 operation:
   database: ""
   deployEnabled: true
