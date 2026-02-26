@@ -7,7 +7,7 @@ operation:
     postSQL: ""
     preSQL: ""
     testsEnabled: true
-    truncateBefore: true
+    truncateBefore: false
   database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Data Conversion transformation - converts COUNTRY_NAME to VARCHAR(400)"
@@ -128,14 +128,7 @@ operation:
       - aliases:
           JOIN_SALESTERRITORY_COUNTRYNAME: JTC
         customSQL:
-          customSQL: |
-            SELECT
-              JTC.TERRITORYID,
-              JTC.NAME,
-              JTC."GROUP",
-              JTC.COUNTRYREGIONCODE,
-              CAST(JTC.COUNTRY_NAME AS VARCHAR(400)) AS COUNTRY_NAME
-            FROM {{ ref('SRC', 'JOIN_SALESTERRITORY_COUNTRYNAME') }} JTC
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: JOIN_SALESTERRITORY_COUNTRYNAME
@@ -145,7 +138,7 @@ operation:
         name: DATA_CONVERSION_COUNTRY
         noLinkRefs: []
   name: DATA_CONVERSION_COUNTRY
-  overrideSQL: true
+  overrideSQL: false
   schema: "Sales"
   sqlType: Stage
   type: sql
