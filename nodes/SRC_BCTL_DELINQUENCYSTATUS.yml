@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S13
-name: SRC_BCTL_DELINQUENCYSTATUS
+name: BCTL_DELINQUENCYSTATUS
 operation:
   database: ""
   deployEnabled: true
