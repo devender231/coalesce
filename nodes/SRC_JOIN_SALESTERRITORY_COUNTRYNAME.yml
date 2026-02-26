@@ -98,7 +98,7 @@ operation:
         noLinkRefs: []
   name: SRC_JOIN_SALESTERRITORY_COUNTRYNAME
   overrideSQL: false
-  schema: ""
+  schema: "Sales"
   sqlType: Stage
   type: sql
   version: 1
