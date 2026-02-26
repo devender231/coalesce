@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S4
-name: SRC_BC_ACCOUNTCONTACTROLE
+name: BC_ACCOUNTCONTACTROLE
 operation:
   database: ""
   deployEnabled: true
