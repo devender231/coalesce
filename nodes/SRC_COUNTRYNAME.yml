@@ -1,30 +1,71 @@
-fileVersion: 1
-id: src_countryname_001
-name: SRC_COUNTRYNAME
-operation:
-  config:
-    insertStrategy: INSERT
-    selectDistinct: false
-  database: ""
-  deployEnabled: true
-  description: Source extraction from Sales.CountryName table
-  locationName: SRC
-  metadata:
-    columns:
-      - name: COUNTRY_CODE
-        dataType: VARCHAR(10)
-        description: Country code identifier
-        isBusinessKey: true
-        ordinalPosition: 1
-      - name: COUNTRY_NAME
-        dataType: VARCHAR(255)
-        description: Country name
-        ordinalPosition: 2
-  name: SRC_COUNTRYNAME
-  schema: ""
-  sources:
-    - database: ""
-      name: Sales.CountryName
+steps:
+  SRC_COUNTRYNAME:
+    operation:
+      config:
+        insertStrategy: INSERT
+      database: ""
+      deployEnabled: true
+      description: Source table for Country Name data
+      isMultisource: false
+      locationName: SRC
+      materializationType: view
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 0
+              stepCounter: 0
+            config: {}
+            dataType: VARCHAR(255)
+            description: Country Name
+            hashColumns: []
+            hashDetails: null
+            name: COUNTRY_NAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 0
+                    stepCounter: 0
+                transform: ""
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 1
+              stepCounter: 0
+            config: {}
+            dataType: VARCHAR(10)
+            description: Country Code
+            hashColumns: []
+            hashDetails: null
+            name: COUNTRY_CODE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 1
+                    stepCounter: 0
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: SRC
+                nodeName: COUNTRYNAME
+            join:
+              joinCondition: FROM {{ ref('SRC', 'COUNTRYNAME') }}
+            name: SRC_COUNTRYNAME
+            noLinkRefs: []
+      name: SRC_COUNTRYNAME
+      overrideSQL: false
       schema: Sales
-      table: CountryName
-  type: source
+      sqlType: Source
+      type: sourceInput
+    stepCounter: 0
