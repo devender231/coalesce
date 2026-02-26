@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S1
-name: SRC_BC_ACCOUNT
+name: BC_ACCOUNT
 operation:
   database: ""
   deployEnabled: true
