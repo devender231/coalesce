@@ -1,0 +1,28 @@
+fileVersion: 1
+id: T2
+name: TR_DERIVED_BATCHID
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Derived Column transformation - Adds or overwrites BatchID column with value from User::BatchID package variable"
+  locationName: SRC
+  metadata:
+    transformation:
+      type: DERIVED_COLUMN
+      inputSource:
+        name: TR_ROWCOUNT_SOURCE
+        stepCounter: T1
+      derivedColumns:
+        - columnName: BATCHID
+          dataType: INTEGER
+          expression: "@[User::BatchID]"
+          replaceExisting: true
+          description: "Batch ID from package variable for tracking ETL execution batch"
+      executionOrder: 2
+      purpose: "Add BatchID to track which ETL batch processed each record"
+  name: TR_DERIVED_BATCHID
+  schema: ""
+  sqlType: Transformation
+  type: derivedColumn
+  version: 1
+type: Node
