@@ -1,111 +1,115 @@
 fileVersion: 1
+
 id: S4
-name: BC_ACCOUNTCONTACTROLE
+
+name: SRC_BC_ACCOUNTCONTACTROLE
+
 operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
   database: ""
   deployEnabled: true
   description: "Source table BC_ACCOUNTCONTACTROLE from GuideWire"
+  isMultisource: false
   locationName: SRC
+  materializationType: table
   metadata:
+    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: C1
-          stepCounter: S4
+          columnCounter: 1
+          stepCounter: 4
         config: {}
         dataType: INTEGER
-        defaultValue: ""
         description: ""
         name: ACCOUNTCONTACTID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 4
             transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: C2
-          stepCounter: S4
+          columnCounter: 2
+          stepCounter: 4
         config: {}
         dataType: INTEGER
-        defaultValue: ""
         description: ""
         name: ROLE
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 4
             transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: C3
-          stepCounter: S4
+          columnCounter: 3
+          stepCounter: 4
         config: {}
         dataType: INTEGER
-        defaultValue: ""
         description: ""
         name: ID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 4
             transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: C4
-          stepCounter: S4
+          columnCounter: 4
+          stepCounter: 4
         config: {}
         dataType: STRING
-        defaultValue: ""
         description: ""
         name: BEANVERSION
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 4
             transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: C5
-          stepCounter: S4
+          columnCounter: 5
+          stepCounter: 4
         config: {}
         dataType: DATETIME
-        defaultValue: ""
         description: ""
         name: UPDATETIME
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 4
             transform: ""
-        transform: ""
-        uniqueKey: false
-  name: BC_ACCOUNTCONTACTROLE
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_BC_ACCOUNTCONTACTROLE: SRC_BC_ACCOUNTCONTACTROLE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACTROLE
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }}
+        name: SRC_BC_ACCOUNTCONTACTROLE
+        noLinkRefs: []
+  name: SRC_BC_ACCOUNTCONTACTROLE
+  overrideSQL: false
   schema: ""
-  sqlType: Source
-  type: sourceInput
+  sqlType: Stage
+  type: sql
   version: 1
+
 type: Node
