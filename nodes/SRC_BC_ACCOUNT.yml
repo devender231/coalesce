@@ -1,9 +1,6 @@
 fileVersion: 1
-
-id: S1
-
+id: SRC_BC_ACCOUNT_001
 name: SRC_BC_ACCOUNT
-
 operation:
   config:
     insertStrategy: INSERT
@@ -13,7 +10,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Source table BC_ACCOUNT from GuideWire"
+  description: "Source table BC_ACCOUNT from GuideWire BillingCenter"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -23,7 +20,7 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -32,12 +29,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: STRING
         description: ""
@@ -46,12 +43,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -60,12 +57,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -74,12 +71,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 5
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -88,12 +85,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 5
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 6
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -102,12 +99,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 6
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 7
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -116,12 +113,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 7
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 8
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: DATETIME
         description: ""
@@ -130,12 +127,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 8
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 9
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: DATETIME
         description: ""
@@ -144,12 +141,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 9
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 10
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -158,12 +155,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 10
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 11
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -172,12 +169,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 11
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 12
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -186,12 +183,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 12
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 13
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: STRING
         description: ""
@@ -200,12 +197,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 13
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 14
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -214,12 +211,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 14
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 15
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: STRING
         description: ""
@@ -228,12 +225,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 15
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 16
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: INTEGER
         description: ""
@@ -242,12 +239,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 16
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 17
-          stepCounter: 1
+          stepCounter: SRC_BC_ACCOUNT_001
         config: {}
         dataType: DATETIME
         description: ""
@@ -256,7 +253,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 17
-                stepCounter: 1
+                stepCounter: SRC_BC_ACCOUNT_001
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -279,5 +276,4 @@ operation:
   sqlType: Stage
   type: sql
   version: 1
-
 type: Node
