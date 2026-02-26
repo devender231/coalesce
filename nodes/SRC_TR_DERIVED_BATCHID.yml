@@ -13,10 +13,10 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Adds BatchID column derived from User::BatchID variable"
+  description: "Derived Column transformation - Adds BatchID column from variable"
   isMultisource: false
   locationName: SRC
-  materializationType: view
+  materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
@@ -250,7 +250,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "First Twice Per Month Invoice Day"
+        description: "First Twice Per Month Invoice DOM"
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -264,7 +264,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Second Twice Per Month Invoice Day"
+        description: "Second Twice Per Month Invoice DOM"
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -349,7 +349,7 @@ operation:
         config: {}
         dataType: INTEGER
         description: "Parent Account Foreign Entity ID"
-        name: PARENT_FOREIGNENTITYID
+        name: PARENTACCT_FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -471,34 +471,36 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 33
-          stepCounter: 2
+          stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Batch ID from ETL execution context"
+        description: "Batch ID - Derived from variable"
         name: BATCHID
         nullable: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 33
+                stepCounter: 1
             transform: "{{ var('BatchID') }}"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_TR_ROWCOUNT_SOURCE: SRC_TR_ROWCOUNT_SOURCE
+          SRC_JOIN_DIMBILLINGACCOUNT: SRC_JOIN_DIMBILLINGACCOUNT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_TR_ROWCOUNT_SOURCE
+            nodeName: SRC_JOIN_DIMBILLINGACCOUNT
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_TR_ROWCOUNT_SOURCE') }} SRC_TR_ROWCOUNT_SOURCE
-        name: SRC_TR_ROWCOUNT_SOURCE
+            FROM {{ ref('SRC', 'SRC_JOIN_DIMBILLINGACCOUNT') }} SRC_JOIN_DIMBILLINGACCOUNT
+        name: SRC_TR_DERIVED_BATCHID
         noLinkRefs: []
   name: SRC_TR_DERIVED_BATCHID
   overrideSQL: false
   schema: ""
-  sqlType: Source
+  sqlType: Stage
   type: sql
   version: 1
 
