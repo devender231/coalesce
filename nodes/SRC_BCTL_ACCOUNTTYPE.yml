@@ -1,54 +1,69 @@
 fileVersion: 1
-id: S9
-name: BCTL_ACCOUNTTYPE
+id: SRC_BCTL_ACCOUNTTYPE_009
+name: SRC_BCTL_ACCOUNTTYPE
 operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
   database: ""
   deployEnabled: true
-  description: ""
+  description: "Source table BCTL_ACCOUNTTYPE from GuideWire"
+  isMultisource: false
   locationName: SRC
+  materializationType: table
   metadata:
+    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: C1
-          stepCounter: S9
+          columnCounter: 1
+          stepCounter: 9
         config: {}
         dataType: INTEGER
-        defaultValue: ""
         description: ""
         name: ID
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 9
             transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: C2
-          stepCounter: S9
+          columnCounter: 2
+          stepCounter: 9
         config: {}
         dataType: STRING
-        defaultValue: ""
         description: ""
         name: NAME
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 9
             transform: ""
-        transform: ""
-        uniqueKey: false
-  name: BCTL_ACCOUNTTYPE
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_BCTL_ACCOUNTTYPE: SRC_BCTL_ACCOUNTTYPE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTTYPE
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} SRC_BCTL_ACCOUNTTYPE
+        name: SRC_BCTL_ACCOUNTTYPE
+        noLinkRefs: []
+  name: SRC_BCTL_ACCOUNTTYPE
+  overrideSQL: false
   schema: ""
-  sqlType: Source
-  type: sourceInput
+  sqlType: Stage
+  type: sql
   version: 1
 type: Node
