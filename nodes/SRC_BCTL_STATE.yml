@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S8
-name: SRC_BCTL_STATE
+name: BCTL_STATE
 operation:
   database: ""
   deployEnabled: true
