@@ -118,7 +118,7 @@ operation:
         noLinkRefs: []
   name: DATA_CONVERSION_COUNTRY
   overrideSQL: false
-  schema: "sales"
+  schema: "Sales"
   sqlType: Stage
   type: sql
   version: 1
