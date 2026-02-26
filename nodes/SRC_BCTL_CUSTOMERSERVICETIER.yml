@@ -1,54 +1,27 @@
 fileVersion: 1
-id: S11
-name: BCTL_CUSTOMERSERVICETIER
-operation:
-  database: ""
-  deployEnabled: true
-  description: "Source table BCTL_CUSTOMERSERVICETIER from GuideWire"
-  locationName: SRC
-  metadata:
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C1
-          stepCounter: S11
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: ID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C2
-          stepCounter: S11
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: NAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-  name: BCTL_CUSTOMERSERVICETIER
-  schema: ""
-  sqlType: Source
-  type: sourceInput
-  version: 1
-type: Node
+id: SRC_BCTL_CUSTOMERSERVICETIER
+name: SRC_BCTL_CUSTOMERSERVICETIER
+type: source
+metadata:
+  description: Source table for BCTL_CUSTOMERSERVICETIER
+  database: EDW
+  schema: dbo
+  table: BCTL_CUSTOMERSERVICETIER
+columns:
+  - name: ID
+    dataType: BIGINT
+    nullable: false
+    primaryKey: true
+  - name: CODE
+    dataType: VARCHAR(50)
+    nullable: true
+  - name: NAME
+    dataType: VARCHAR(255)
+    nullable: true
+sourceMapping:
+  - columnName: ID
+    sourceExpression: ID
+  - columnName: CODE
+    sourceExpression: CODE
+  - columnName: NAME
+    sourceExpression: NAME
