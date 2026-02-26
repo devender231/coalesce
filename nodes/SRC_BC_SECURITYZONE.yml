@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S12
-name: SRC_BC_SECURITYZONE
+name: BC_SECURITYZONE
 operation:
   database: ""
   deployEnabled: true
