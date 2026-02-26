@@ -1,0 +1,97 @@
+fileVersion: 1
+id: SRC_TR_DATA_CONVERSION_COUNTRY
+name: SRC_TR_DATA_CONVERSION_COUNTRY
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: "Data Conversion transformation - converts country_name from VARCHAR(255) to VARCHAR(400)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 3
+        config: {}
+        dataType: NUMBER(38,0)
+        description: "Territory ID"
+        name: TerritoryID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 3
+        config: {}
+        dataType: VARCHAR(50)
+        description: "Territory Name"
+        name: Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 3
+        config: {}
+        dataType: VARCHAR(400)
+        description: "Country name converted from VARCHAR(255) to VARCHAR(400)"
+        name: country
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 2
+            transform: "CAST(country_name AS VARCHAR(400))"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 3
+        config: {}
+        dataType: VARCHAR(50)
+        description: "Territory Group"
+        name: Group
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 2
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_DATA_CONVERSION_COUNTRY: SRC_JOIN_TERRITORY_COUNTRY
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_JOIN_TERRITORY_COUNTRY
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_JOIN_TERRITORY_COUNTRY') }}
+        name: SRC_TR_DATA_CONVERSION_COUNTRY
+        noLinkRefs: []
+  name: SRC_TR_DATA_CONVERSION_COUNTRY
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
