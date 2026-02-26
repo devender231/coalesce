@@ -1,54 +1,69 @@
 fileVersion: 1
-id: S2
-name: COUNTRYNAME
+id: SRC_CN_001
+name: SRC_COUNTRYNAME
 operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
   database: ""
   deployEnabled: true
-  description: ""
+  description: "Source table for Country Name data"
+  isMultisource: false
   locationName: SRC
+  materializationType: table
   metadata:
+    appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: C1
-          stepCounter: S2
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: VARCHAR(10)
+        description: "Country Code"
+        name: COUNTRY_CODE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
         config: {}
         dataType: VARCHAR(255)
-        defaultValue: ""
-        description: ""
+        description: "Country Name"
         name: COUNTRY_NAME
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
-          - columnReferences: []
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
             transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C2
-          stepCounter: S2
-        config: {}
-        dataType: VARCHAR(50)
-        defaultValue: ""
-        description: ""
-        name: COUNTRY_CODE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-  name: COUNTRYNAME
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_COUNTRYNAME: SRC_COUNTRYNAME
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_COUNTRYNAME
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_COUNTRYNAME') }}
+        name: SRC_COUNTRYNAME
+        noLinkRefs: []
+  name: SRC_COUNTRYNAME
+  overrideSQL: false
   schema: Sales
-  sqlType: Source
-  type: sourceInput
+  sqlType: Stage
+  type: sql
   version: 1
 type: Node
