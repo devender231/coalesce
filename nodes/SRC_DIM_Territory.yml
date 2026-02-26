@@ -1,6 +1,6 @@
 fileVersion: 1
 
-id: SRC_DIM_TERRITORY_01
+id: SRC_DIM_TERRITORY
 
 name: SRC_DIM_Territory
 
@@ -13,7 +13,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Target dimension table for Territory data - loaded from transformed source"
+  description: "Dimension Territory table - final destination for territory data"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -23,21 +23,33 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: 4
+          stepCounter: SRC_DIM_TERRITORY
         config: {}
         dataType: NUMBER(38,0)
-        description: "Territory ID - Primary Key"
+        description: "Territory Key - Auto-generated identity column"
+        name: territory_key
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "IDENTITY(1,1)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: SRC_DIM_TERRITORY
+        config: {}
+        dataType: NUMBER(38,0)
+        description: "Territory ID"
         name: territory_id
         nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: 3
+                stepCounter: SRC_TR_DATACONVERSION_COUNTRY
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 2
-          stepCounter: 4
+          columnCounter: 3
+          stepCounter: SRC_DIM_TERRITORY
         config: {}
         dataType: VARCHAR(50)
         description: "Territory Name"
@@ -46,26 +58,26 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: 3
+                stepCounter: SRC_TR_DATACONVERSION_COUNTRY
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3
-          stepCounter: 4
+          columnCounter: 4
+          stepCounter: SRC_DIM_TERRITORY
         config: {}
-        dataType: NVARCHAR(400)
+        dataType: VARCHAR(400)
         description: "Territory Country"
         name: territory_country
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: 3
+                stepCounter: SRC_TR_DATACONVERSION_COUNTRY
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 4
-          stepCounter: 4
+          columnCounter: 5
+          stepCounter: SRC_DIM_TERRITORY
         config: {}
         dataType: VARCHAR(50)
         description: "Territory Group"
@@ -74,13 +86,13 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: 3
+                stepCounter: SRC_TR_DATACONVERSION_COUNTRY
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_TR_DataConversion_Country: SRC_TR_DATACONVERSION_COUNTRY_01
+          SRC_TR: SRC_TR_DATACONVERSION_COUNTRY
         customSQL:
           customSQL: ""
         dependencies:
@@ -88,7 +100,7 @@ operation:
             nodeName: SRC_TR_DataConversion_Country
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_TR_DataConversion_Country') }} SRC_TR_DataConversion_Country
+            FROM {{ ref('SRC', 'SRC_TR_DataConversion_Country') }} SRC_TR
         name: SRC_DIM_Territory
         noLinkRefs: []
   name: SRC_DIM_Territory
