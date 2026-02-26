@@ -1,97 +1,178 @@
 fileVersion: 1
 id: S4
-name: TR_DATA_CONVERSION
+name: SRC_TR_DATA_CONVERSION
 operation:
   config:
+    clusterKey: false
+    clusterKeyConfig: null
+    clusterKeyConfigExpressions:
+      items: []
+    clusterKeyExpressions: false
+    downstreamOption: true
+    groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
-    postSQL: ""
-    preSQL: ""
+    lagSpecification:
+      items: []
+    orderby: false
+    orderbycolumn:
+      items: []
+    postSQL: null
+    preSQL: null
+    refresh_mode: AUTO
+    secureoption: false
+    selectDistinct: false
     testsEnabled: true
-    truncateBefore: true
+    truncateBefore: false
+    warehouseName: null
   database: ""
   deployEnabled: true
-  description: "Data Conversion transformation - converts country_name from VARCHAR(255) to VARCHAR(400)"
+  description: Data Conversion - Convert COUNTRY_NAME from VARCHAR(255) to NVARCHAR(400)
   isMultisource: false
   locationName: SRC
   materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C1
           stepCounter: S4
         config: {}
-        dataType: NUMBER(38,0)
-        description: ""
+        dataType: INT
+        defaultValue: null
+        description: Territory ID from SalesTerritory
+        isBusinessKey: false
         name: TERRITORYID
         nullable: false
+        primaryKey: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C1
                 stepCounter: S3
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C2
           stepCounter: S4
         config: {}
-        dataType: VARCHAR(50)
-        description: ""
+        dataType: NVARCHAR(50)
+        defaultValue: null
+        description: Territory Name
+        isBusinessKey: false
         name: NAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S3
             transform: ""
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C3
           stepCounter: S4
         config: {}
-        dataType: VARCHAR(400)
-        description: "Converted from VARCHAR(255) to VARCHAR(400)"
-        name: COUNTRY
+        dataType: NVARCHAR(50)
+        defaultValue: null
+        description: Country Region Code
+        isBusinessKey: false
+        name: COUNTRYREGIONCODE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C3
                 stepCounter: S3
-            transform: "CAST(COUNTRY_NAME AS VARCHAR(400))"
-      - appliedColumnTests: {}
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C4
           stepCounter: S4
         config: {}
-        dataType: VARCHAR(50)
-        description: ""
+        dataType: NVARCHAR(50)
+        defaultValue: null
+        description: Territory Group
+        isBusinessKey: false
         name: GROUP
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C4
                 stepCounter: S3
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: S4
+        config: {}
+        dataType: VARCHAR(10)
+        defaultValue: null
+        description: Country Code from CountryName
+        isBusinessKey: false
+        name: COUNTRY_CODE
+        nullable: false
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S3
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: S4
+        config: {}
+        dataType: NVARCHAR(400)
+        defaultValue: null
+        description: Converted Country Name from VARCHAR(255) to NVARCHAR(400)
+        isBusinessKey: false
+        name: COUNTRY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S3
+            transform: "CAST({{ ref_no_link('SRC', 'SRC_JOIN_TERRITORY_COUNTRY') }}.COUNTRY_NAME AS NVARCHAR(400))"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          JOIN_TERRITORY_COUNTRY: S3
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: JOIN_TERRITORY_COUNTRY
+            nodeName: SRC_JOIN_TERRITORY_COUNTRY
         join:
-          joinCondition: |
-            FROM {{ ref('SRC', 'JOIN_TERRITORY_COUNTRY') }} JOIN_TERRITORY_COUNTRY
-        name: TR_DATA_CONVERSION
+          joinCondition: |-
+            FROM {{ ref('SRC', 'SRC_JOIN_TERRITORY_COUNTRY') }}
+        name: SRC_TR_DATA_CONVERSION
         noLinkRefs: []
-  name: TR_DATA_CONVERSION
+  name: SRC_TR_DATA_CONVERSION
   overrideSQL: false
   schema: ""
   sqlType: Stage
   type: sql
   version: 1
+stepCounter: S4
 type: Node
