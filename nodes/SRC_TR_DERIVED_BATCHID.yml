@@ -1,6 +1,9 @@
 fileVersion: 1
+
 id: SRC_TR_DERIVED_BATCHID
+
 name: SRC_TR_DERIVED_BATCHID
+
 operation:
   config:
     insertStrategy: INSERT
@@ -10,10 +13,10 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Adds or overwrites BatchID column using User::BatchID variable"
+  description: "Adds BatchID column derived from User::BatchID variable"
   isMultisource: false
   locationName: SRC
-  materializationType: table
+  materializationType: view
   metadata:
     appliedNodeTests: []
     columns:
@@ -23,7 +26,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: ""
+        description: "Account Number"
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
@@ -37,7 +40,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
+        description: "Account Name"
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
@@ -51,7 +54,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: ""
+        description: "Account Type ID"
         name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
@@ -64,9 +67,9 @@ operation:
           columnCounter: 4
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: ""
-        name: BILLINGLEVEL
+        dataType: STRING
+        description: "Account Type Name"
+        name: ACCOUNTTYPE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -79,8 +82,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: ""
-        name: SERVICETIER
+        description: "Billing Level ID"
+        name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -92,9 +95,9 @@ operation:
           columnCounter: 6
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: ""
-        name: SECURITYZONEID
+        dataType: STRING
+        description: "Billing Level Name"
+        name: BILLINGLEVEL_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -107,8 +110,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: ""
-        name: SEGMENT
+        description: "Service Tier ID"
+        name: SERVICETIER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -120,9 +123,9 @@ operation:
           columnCounter: 8
           stepCounter: 1
         config: {}
-        dataType: DATETIME
-        description: ""
-        name: CLOSEDATE
+        dataType: STRING
+        description: "Service Tier Name"
+        name: SERVICETIER_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -134,9 +137,9 @@ operation:
           columnCounter: 9
           stepCounter: 1
         config: {}
-        dataType: DATETIME
-        description: ""
-        name: CREATETIME
+        dataType: INTEGER
+        description: "Security Zone ID"
+        name: SECURITYZONEID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -148,9 +151,9 @@ operation:
           columnCounter: 10
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: ""
-        name: DELINQUENCYSTATUS
+        dataType: STRING
+        description: "Security Zone Name"
+        name: SECURITYZONE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -163,8 +166,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: ""
-        name: FIRSTTWICEPERMTHINVOICEDOM
+        description: "Segment ID"
+        name: SEGMENT
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -176,9 +179,9 @@ operation:
           columnCounter: 12
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: ""
-        name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: STRING
+        description: "Segment Name"
+        name: SEGMENT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -190,9 +193,9 @@ operation:
           columnCounter: 13
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: ""
-        name: PUBLICID
+        dataType: DATETIME
+        description: "Close Date"
+        name: CLOSEDATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -204,9 +207,9 @@ operation:
           columnCounter: 14
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: ""
-        name: ID
+        dataType: DATETIME
+        description: "Create Time"
+        name: CREATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -218,9 +221,9 @@ operation:
           columnCounter: 15
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: ""
-        name: BEANVERSION
+        dataType: INTEGER
+        description: "Delinquency Status ID"
+        name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -232,9 +235,9 @@ operation:
           columnCounter: 16
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: ""
-        name: RETIRED
+        dataType: STRING
+        description: "Delinquency Status Name"
+        name: DELINQUENCYSTATUS_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -246,9 +249,9 @@ operation:
           columnCounter: 17
           stepCounter: 1
         config: {}
-        dataType: DATETIME
-        description: ""
-        name: UPDATETIME
+        dataType: INTEGER
+        description: "First Twice Per Month Invoice Day"
+        name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -260,9 +263,9 @@ operation:
           columnCounter: 18
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: ""
-        name: ACCOUNTTYPE_NAME
+        dataType: INTEGER
+        description: "Second Twice Per Month Invoice Day"
+        name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -274,9 +277,9 @@ operation:
           columnCounter: 19
           stepCounter: 1
         config: {}
-        dataType: INTEGER
-        description: ""
-        name: PARENT_OWNERID
+        dataType: STRING
+        description: "Public ID"
+        name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -289,8 +292,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: ""
-        name: PARENT_FOREIGNENTITYID
+        description: "Account ID"
+        name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -303,8 +306,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
-        name: BILLINGLEVEL_NAME
+        description: "Bean Version"
+        name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -316,9 +319,9 @@ operation:
           columnCounter: 22
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: ""
-        name: SERVICETIER_NAME
+        dataType: INTEGER
+        description: "Retired Flag"
+        name: RETIRED
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -330,9 +333,9 @@ operation:
           columnCounter: 23
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: ""
-        name: SECURITYZONE_NAME
+        dataType: DATETIME
+        description: "Update Time"
+        name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -344,9 +347,9 @@ operation:
           columnCounter: 24
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: ""
-        name: DELINQUENCYSTATUS_NAME
+        dataType: INTEGER
+        description: "Parent Account Foreign Entity ID"
+        name: PARENT_FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -359,8 +362,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
-        name: SEGMENT_NAME
+        description: "Insured First Name"
+        name: INSURED_FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -373,8 +376,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
-        name: CONTACT_FIRSTNAME
+        description: "Insured Last Name"
+        name: INSURED_LASTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -387,8 +390,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
-        name: CONTACT_LASTNAME
+        description: "Insured Address Line 1"
+        name: INSURED_ADDRESSLINE1
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -401,8 +404,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
-        name: ADDRESS_LINE1
+        description: "Insured Address Line 2"
+        name: INSURED_ADDRESSLINE2
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -415,8 +418,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
-        name: ADDRESS_LINE2
+        description: "Insured Address Line 3"
+        name: INSURED_ADDRESSLINE3
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -429,8 +432,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
-        name: ADDRESS_LINE3
+        description: "Insured City"
+        name: INSURED_CITY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -443,8 +446,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
-        name: ADDRESS_CITY
+        description: "Insured Postal Code"
+        name: INSURED_POSTALCODE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -457,8 +460,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: ""
-        name: ADDRESS_POSTALCODE
+        description: "Insured State Name"
+        name: INSURED_STATE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -468,50 +471,35 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 33
-          stepCounter: 1
-        config: {}
-        dataType: STRING
-        description: ""
-        name: STATE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 33
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 34
-          stepCounter: 1
+          stepCounter: 2
         config: {}
         dataType: INTEGER
-        description: "Derived BatchID from User variable"
+        description: "Batch ID from ETL execution context"
         name: BATCHID
         nullable: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 34
-                stepCounter: 1
+          - columnReferences: []
             transform: "{{ var('BatchID') }}"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_JOIN_DIMBILLINGACCOUNT: SRC_JOIN_DIMBILLINGACCOUNT
+          SRC_TR_ROWCOUNT_SOURCE: SRC_TR_ROWCOUNT_SOURCE
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_JOIN_DIMBILLINGACCOUNT
+            nodeName: SRC_TR_ROWCOUNT_SOURCE
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_JOIN_DIMBILLINGACCOUNT') }} SRC_JOIN_DIMBILLINGACCOUNT
-        name: SRC_TR_DERIVED_BATCHID
+            FROM {{ ref('SRC', 'SRC_TR_ROWCOUNT_SOURCE') }} SRC_TR_ROWCOUNT_SOURCE
+        name: SRC_TR_ROWCOUNT_SOURCE
         noLinkRefs: []
   name: SRC_TR_DERIVED_BATCHID
   overrideSQL: false
   schema: ""
-  sqlType: Stage
+  sqlType: Source
   type: sql
   version: 1
+
 type: Node
