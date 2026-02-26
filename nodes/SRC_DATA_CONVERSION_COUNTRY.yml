@@ -8,7 +8,7 @@ operation:
     preSQL: ""
     testsEnabled: true
     truncateBefore: true
-  database: "AdventureWorks"
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Data conversion transformation to convert country_name from VARCHAR(255) to VARCHAR(400)"
   isMultisource: false
