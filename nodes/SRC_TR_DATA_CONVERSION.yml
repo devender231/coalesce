@@ -1,5 +1,5 @@
 fileVersion: 1
-id: SRC_TR_DC_001
+id: SRC_TR_DATA_CONVERSION
 name: SRC_TR_DATA_CONVERSION
 operation:
   config:
@@ -10,7 +10,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Data Conversion - Convert country_name from VARCHAR to NVARCHAR(400) and rename to country"
+  description: "Data Conversion transformation - converts country_name from VARCHAR(255) to VARCHAR(400)"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -50,42 +50,36 @@ operation:
           columnCounter: 3
           stepCounter: 3
         config: {}
-        dataType: NVARCHAR(400)
-        description: "Country Name - Converted to NVARCHAR(400)"
-        name: COUNTRY
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 3
-                stepCounter: 2
-            transform: "CAST(COUNTRY_NAME AS NVARCHAR(400))"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 3
-        config: {}
         dataType: VARCHAR(50)
         description: "Territory Group"
         name: "GROUP"
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4
+              - columnCounter: 3
                 stepCounter: 2
             transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 3
+        config: {}
+        dataType: VARCHAR(400)
+        description: "Country Name - Converted to VARCHAR(400)"
+        name: COUNTRY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 2
+            transform: "CAST(COUNTRY_NAME AS VARCHAR(400))"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
           SRC_JOIN_TERRITORY_COUNTRY: JTC
         customSQL:
-          customSQL: |
-            SELECT
-              JTC.TERRITORYID,
-              JTC.NAME,
-              CAST(JTC.COUNTRY_NAME AS NVARCHAR(400)) AS COUNTRY,
-              JTC."GROUP"
-            FROM {{ ref('SRC', 'SRC_JOIN_TERRITORY_COUNTRY') }} JTC
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: SRC_JOIN_TERRITORY_COUNTRY
@@ -95,7 +89,7 @@ operation:
         name: SRC_TR_DATA_CONVERSION
         noLinkRefs: []
   name: SRC_TR_DATA_CONVERSION
-  overrideSQL: true
+  overrideSQL: false
   schema: ""
   sqlType: Stage
   type: sql
