@@ -13,10 +13,10 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Lookup BeanVersion from DIMBILLINGACCOUNT by PUBLICID to determine if record exists and has changed"
+  description: "Lookup transformation - Looks up BeanVersion from DIMBILLINGACCOUNT by PUBLICID to determine if record exists and if it has changed"
   isMultisource: true
   locationName: SRC
-  materializationType: view
+  materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
@@ -250,7 +250,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "First Twice Per Month Invoice Day"
+        description: "First Twice Per Month Invoice DOM"
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -264,7 +264,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Second Twice Per Month Invoice Day"
+        description: "Second Twice Per Month Invoice DOM"
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
@@ -306,7 +306,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: "Bean Version from source"
+        description: "Bean Version from Source"
         name: BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -349,7 +349,7 @@ operation:
         config: {}
         dataType: INTEGER
         description: "Parent Account Foreign Entity ID"
-        name: PARENT_FOREIGNENTITYID
+        name: PARENTACCT_FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -474,7 +474,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Batch ID from ETL execution context"
+        description: "Batch ID"
         name: BATCHID
         nullable: false
         sourceColumnReferences:
@@ -485,10 +485,10 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 34
-          stepCounter: 2
+          stepCounter: 1
         config: {}
         dataType: STRING
-        description: "Bean Version from EDW (existing record)"
+        description: "EDW Bean Version from Lookup - NULL if no match"
         name: EDW_BEANVERSION
         nullable: true
         sourceColumnReferences:
@@ -509,25 +509,14 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('SRC', 'SRC_TR_DERIVED_BATCHID') }} SRC_TR_DERIVED_BATCHID
-        name: SRC_TR_DERIVED_BATCHID
-        noLinkRefs: []
-      - aliases:
-          DIMBILLINGACCOUNT: DIMBILLINGACCOUNT
-        customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: DIMBILLINGACCOUNT
-        join:
-          joinCondition: |
             LEFT JOIN {{ ref('SRC', 'DIMBILLINGACCOUNT') }} DIMBILLINGACCOUNT
-            ON SRC_TR_DERIVED_BATCHID.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
-        name: DIMBILLINGACCOUNT
+              ON SRC_TR_DERIVED_BATCHID.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
+        name: SRC_TR_LOOKUP_BEANVERSION
         noLinkRefs: []
   name: SRC_TR_LOOKUP_BEANVERSION
   overrideSQL: false
   schema: ""
-  sqlType: Source
+  sqlType: Stage
   type: sql
   version: 1
 
