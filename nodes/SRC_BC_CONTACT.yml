@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S6
-name: SRC_BC_CONTACT
+name: BC_CONTACT
 operation:
   database: ""
   deployEnabled: true
