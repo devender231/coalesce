@@ -1,5 +1,5 @@
 fileVersion: 1
-id: SRC_JOIN_TC_001
+id: SRC_JOIN_TERRITORY_COUNTRY
 name: SRC_JOIN_TERRITORY_COUNTRY
 operation:
   config:
@@ -10,7 +10,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Join SalesTerritory with CountryName"
+  description: "Join between Sales Territory and Country Name tables"
   isMultisource: true
   locationName: SRC
   materializationType: table
@@ -50,20 +50,6 @@ operation:
           columnCounter: 3
           stepCounter: 2
         config: {}
-        dataType: VARCHAR(255)
-        description: "Country Name"
-        name: COUNTRY_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 2
-                stepCounter: 1
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4
-          stepCounter: 2
-        config: {}
         dataType: VARCHAR(50)
         description: "Territory Group"
         name: "GROUP"
@@ -72,6 +58,34 @@ operation:
           - columnReferences:
               - columnCounter: 3
                 stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 2
+        config: {}
+        dataType: VARCHAR(10)
+        description: "Country Region Code"
+        name: COUNTRYREGIONCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 2
+        config: {}
+        dataType: VARCHAR(255)
+        description: "Country Name"
+        name: COUNTRY_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 2
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -84,8 +98,9 @@ operation:
             SELECT
               ST.TERRITORYID,
               ST.NAME,
-              CN.COUNTRY_NAME,
-              ST."GROUP"
+              ST."GROUP",
+              ST.COUNTRYREGIONCODE,
+              CN.COUNTRY_NAME
             FROM {{ ref('SRC', 'SRC_SALESTERRITORY') }} ST
             INNER JOIN {{ ref('SRC', 'SRC_COUNTRYNAME') }} CN
             ON ST.COUNTRYREGIONCODE = CN.COUNTRY_CODE
