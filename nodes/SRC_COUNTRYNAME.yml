@@ -2,7 +2,7 @@ fileVersion: 1
 id: S2
 name: COUNTRYNAME
 operation:
-  database: "AdventureWorks"
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: ""
   locationName: SRC
