@@ -1,0 +1,148 @@
+fileVersion: 1
+id: SRC_JOIN_DIMBILLINGACCOUNT
+name: SRC_JOIN_DIMBILLINGACCOUNT
+type: join
+metadata:
+  description: Consolidated join logic for all 15 joins from SSIS package EDW_BC_Load_DimBillingAccount
+  database: EDW
+  schema: dbo
+sources:
+  - id: SRC_BC_ACCOUNT
+    alias: BC_ACCOUNT
+  - id: SRC_BCTL_ACCOUNTTYPE
+    alias: BCTL_ACCOUNTTYPE
+  - id: SRC_BC_PARENTACCT
+    alias: BC_PARENTACCT
+  - id: SRC_BCTL_BILLINGLEVEL
+    alias: BCTL_BILLINGLEVEL
+  - id: SRC_BCTL_CUSTOMERSERVICETIER
+    alias: BCTL_CUSTOMERSERVICETIER
+  - id: SRC_BC_SECURITYZONE
+    alias: BC_SECURITYZONE
+  - id: SRC_BCTL_DELINQUENCYSTATUS
+    alias: BCTL_DELINQUENCYSTATUS
+  - id: SRC_BCTL_ACCOUNTSEGMENT
+    alias: BCTL_ACCOUNTSEGMENT
+  - id: SRC_BC_ACCOUNTCONTACT
+    alias: BC_ACCOUNTCONTACT
+  - id: SRC_BC_ACCOUNTCONTACTROLE
+    alias: BC_ACCOUNTCONTACTROLE
+  - id: SRC_BCTL_ACCOUNTROLE
+    alias: BCTL_ACCOUNTROLE
+  - id: SRC_BC_CONTACT
+    alias: BC_CONTACT
+  - id: SRC_BC_ADDRESS
+    alias: BC_ADDRESS
+  - id: SRC_BCTL_STATE
+    alias: BCTL_STATE
+  - id: SRC_DIMBILLINGACCOUNT
+    alias: DIMBILLINGACCOUNT
+joins:
+  - type: LEFT
+    leftSource: BC_ACCOUNT
+    rightSource: BCTL_ACCOUNTTYPE
+    condition: BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
+  - type: LEFT
+    leftSource: BC_ACCOUNT
+    rightSource: BC_PARENTACCT
+    condition: BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
+  - type: LEFT
+    leftSource: BC_ACCOUNT
+    rightSource: BCTL_BILLINGLEVEL
+    condition: BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
+  - type: LEFT
+    leftSource: BC_ACCOUNT
+    rightSource: BCTL_CUSTOMERSERVICETIER
+    condition: BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
+  - type: LEFT
+    leftSource: BC_ACCOUNT
+    rightSource: BC_SECURITYZONE
+    condition: BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
+  - type: LEFT
+    leftSource: BC_ACCOUNT
+    rightSource: BCTL_DELINQUENCYSTATUS
+    condition: BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
+  - type: LEFT
+    leftSource: BC_ACCOUNT
+    rightSource: BCTL_ACCOUNTSEGMENT
+    condition: BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
+  - type: LEFT
+    leftSource: BC_ACCOUNT
+    rightSource: INSUREDINFO
+    condition: INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
+    description: Join to INSUREDINFO intermediate result
+  - type: INNER
+    leftSource: INSUREDINFO
+    rightSource: BC_ACCOUNTCONTACT
+    condition: BC_ACCOUNTCONTACT.ID = INSUREDINFO.ACCOUNTID
+  - type: INNER
+    leftSource: INSUREDINFO
+    rightSource: BC_ACCOUNTCONTACTROLE
+    condition: BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
+  - type: INNER
+    leftSource: INSUREDINFO
+    rightSource: BCTL_ACCOUNTROLE
+    condition: BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
+  - type: LEFT
+    leftSource: INSUREDINFO
+    rightSource: BC_CONTACT
+    condition: BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
+  - type: LEFT
+    leftSource: INSUREDINFO
+    rightSource: BC_ADDRESS
+    condition: BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
+  - type: LEFT
+    leftSource: INSUREDINFO
+    rightSource: BCTL_STATE
+    condition: BCTL_STATE.ID = BC_ADDRESS.STATE
+  - type: INNER
+    leftSource: LOOKUP_INPUT
+    rightSource: DIMBILLINGACCOUNT
+    condition: LOOKUP_INPUT.PUBLICID = DIMBILLINGACCOUNT.PUBLICID
+    description: Lookup join for existing dimension records
+columns:
+  - name: PUBLICID
+    dataType: VARCHAR(255)
+    sourceExpression: BC_ACCOUNT.PUBLICID
+  - name: ACCOUNTTYPE
+    dataType: VARCHAR(255)
+    sourceExpression: BCTL_ACCOUNTTYPE.NAME
+  - name: PARENTACCOUNT
+    dataType: VARCHAR(50)
+    sourceExpression: BC_PARENTACCT.ACCOUNTNUMBER
+  - name: BILLINGLEVEL
+    dataType: VARCHAR(255)
+    sourceExpression: BCTL_BILLINGLEVEL.NAME
+  - name: SERVICETIER
+    dataType: VARCHAR(255)
+    sourceExpression: BCTL_CUSTOMERSERVICETIER.NAME
+  - name: SECURITYZONE
+    dataType: VARCHAR(255)
+    sourceExpression: BC_SECURITYZONE.NAME
+  - name: DELINQUENCYSTATUS
+    dataType: VARCHAR(255)
+    sourceExpression: BCTL_DELINQUENCYSTATUS.NAME
+  - name: SEGMENT
+    dataType: VARCHAR(255)
+    sourceExpression: BCTL_ACCOUNTSEGMENT.NAME
+  - name: INSUREDFIRSTNAME
+    dataType: VARCHAR(255)
+    sourceExpression: BC_CONTACT.FIRSTNAME
+  - name: INSUREDLASTNAME
+    dataType: VARCHAR(255)
+    sourceExpression: BC_CONTACT.LASTNAME
+  - name: INSUREDADDRESS
+    dataType: VARCHAR(255)
+    sourceExpression: BC_ADDRESS.ADDRESSLINE1
+  - name: INSUREDCITY
+    dataType: VARCHAR(100)
+    sourceExpression: BC_ADDRESS.CITY
+  - name: INSUREDSTATE
+    dataType: VARCHAR(100)
+    sourceExpression: BCTL_STATE.NAME
+  - name: INSUREDPOSTALCODE
+    dataType: VARCHAR(20)
+    sourceExpression: BC_ADDRESS.POSTALCODE
+  - name: BEANVERSION
+    dataType: INT
+    sourceExpression: DIMBILLINGACCOUNT.BEANVERSION
