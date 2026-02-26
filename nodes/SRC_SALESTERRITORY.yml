@@ -85,7 +85,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: SALESTERRITORY
-  schema: sales
+  schema: Sales
   sqlType: Source
   type: sourceInput
   version: 1
