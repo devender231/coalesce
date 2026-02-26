@@ -1,6 +1,6 @@
 fileVersion: 1
 
-id: SRC_TR_ROWCOUNT_SOURCE
+id: T1
 
 name: SRC_TR_ROWCOUNT_SOURCE
 
@@ -13,7 +13,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Counts source rows from OLE_SRC - GuideWire and stores in User::SourceCount variable"
+  description: "Counts source rows from BC_ACCOUNT and related tables"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -26,12 +26,460 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Source Row Count"
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: CREATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 12
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 14
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: RETIRED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17
+          stepCounter: 1
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 17
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: PARENTACCT_FOREIGNENTITYID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 21
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 22
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 23
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 24
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 25
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: INSURED_FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 25
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: INSURED_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 27
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 30
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32
+          stepCounter: 1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: "Row count for source validation"
         name: SOURCE_ROW_COUNT
         nullable: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 1
+              - columnCounter: 33
                 stepCounter: 1
             transform: "COUNT(*)"
     cteString: ""
