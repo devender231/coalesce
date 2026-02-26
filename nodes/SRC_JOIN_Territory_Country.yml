@@ -1,0 +1,106 @@
+fileVersion: 1
+
+id: SRC_JOIN_TERRITORY_COUNTRY_01
+
+name: SRC_JOIN_Territory_Country
+
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: "Join between SalesTerritory and CountryName tables on CountryRegionCode"
+  isMultisource: true
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 2
+        config: {}
+        dataType: NUMBER(38,0)
+        description: "Territory ID from SalesTerritory"
+        name: TerritoryID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2
+          stepCounter: 2
+        config: {}
+        dataType: VARCHAR(50)
+        description: "Territory Name from SalesTerritory"
+        name: Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3
+          stepCounter: 2
+        config: {}
+        dataType: VARCHAR(255)
+        description: "Country Name from CountryName"
+        name: country_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4
+          stepCounter: 2
+        config: {}
+        dataType: VARCHAR(50)
+        description: "Territory Group from SalesTerritory"
+        name: Group
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 1
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          st: SRC_SALESTERRITORY_01
+          cn: SRC_COUNTRYNAME_01
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_SalesTerritory
+          - locationName: SRC
+            nodeName: SRC_CountryName
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_SalesTerritory') }} st
+            INNER JOIN {{ ref('SRC', 'SRC_CountryName') }} cn
+              ON st.CountryRegionCode = cn.country_code
+        name: SRC_JOIN_Territory_Country
+        noLinkRefs: []
+  name: SRC_JOIN_Territory_Country
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+
+type: Node
