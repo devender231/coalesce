@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S9
-name: SRC_BCTL_ACCOUNTTYPE
+name: BCTL_ACCOUNTTYPE
 operation:
   database: ""
   deployEnabled: true
