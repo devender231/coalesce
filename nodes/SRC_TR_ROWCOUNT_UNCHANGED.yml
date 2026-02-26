@@ -1,0 +1,29 @@
+fileVersion: 1
+id: T5
+name: TR_ROWCOUNT_UNCHANGED
+operation:
+  database: ""
+  deployEnabled: true
+  description: "Row Count transformation - Counts unchanged rows where BeanVersion matches EDW BeanVersion and stores count in User::UnChangeCount variable"
+  locationName: SRC
+  metadata:
+    transformation:
+      type: ROW_COUNT
+      inputSource:
+        name: TR_CONDITIONAL_SPLIT_BEANVERSION
+        stepCounter: T4
+        outputName: UNCHANGED_ROWS
+      logic: "Count rows where BEANVERSION == EDWBeanVersion (no changes detected)"
+      variable:
+        name: "User::UnChangeCount"
+        type: "INTEGER"
+        scope: "Package"
+        description: "Stores the count of unchanged records that match existing EDW data"
+      executionOrder: 5
+      purpose: "Audit and tracking of unchanged record count for ETL monitoring and SCD reporting"
+  name: TR_ROWCOUNT_UNCHANGED
+  schema: ""
+  sqlType: Transformation
+  type: rowCount
+  version: 1
+type: Node
