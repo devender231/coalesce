@@ -1,6 +1,6 @@
 fileVersion: 1
 
-id: SRC_TR_ROWCOUNT_UPDATE
+id: T7
 
 name: SRC_TR_ROWCOUNT_UPDATE
 
@@ -13,7 +13,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Counts update rows (BeanVersion different) and stores in User::UpdateCount variable"
+  description: "Counts update rows where BeanVersion differs from EDW BeanVersion"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -26,7 +26,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Update Row Count"
+        description: "Count of update rows"
         name: UPDATE_ROW_COUNT
         nullable: false
         sourceColumnReferences:
@@ -38,16 +38,16 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_TR_CONDITIONALSPLIT_SCD: SRC_TR_CONDITIONALSPLIT_SCD
+          SRC_TR_CONDITIONALSPLIT: SRC_TR_CONDITIONALSPLIT
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_TR_CONDITIONALSPLIT_SCD
+            nodeName: SRC_TR_CONDITIONALSPLIT
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT_SCD') }} SRC_TR_CONDITIONALSPLIT_SCD
-            WHERE RECORD_TYPE = 'UPDATE'
+            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT') }} SRC_TR_CONDITIONALSPLIT
+            WHERE ROW_TYPE = 'UPDATE'
         name: SRC_TR_ROWCOUNT_UPDATE
         noLinkRefs: []
   name: SRC_TR_ROWCOUNT_UPDATE
