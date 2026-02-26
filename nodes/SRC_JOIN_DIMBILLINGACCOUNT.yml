@@ -1,6 +1,6 @@
 fileVersion: 1
 
-id: SRC_JOIN_DIMBILLINGACCOUNT
+id: J1
 
 name: SRC_JOIN_DIMBILLINGACCOUNT
 
@@ -13,7 +13,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Joins BC_ACCOUNT with all related lookup tables and insured information for DimBillingAccount"
+  description: "Joins BC_ACCOUNT with related lookup tables and insured information"
   isMultisource: true
   locationName: SRC
   materializationType: table
@@ -26,7 +26,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Account Number"
+        description: ""
         name: ACCOUNTNUMBER
         nullable: true
         sourceColumnReferences:
@@ -40,7 +40,7 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: "Account Name"
+        description: ""
         name: ACCOUNTNAME
         nullable: true
         sourceColumnReferences:
@@ -53,14 +53,14 @@ operation:
           columnCounter: 3
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Account Type Name"
-        name: ACCOUNTTYPE_NAME
+        dataType: INTEGER
+        description: ""
+        name: ACCOUNTTYPE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: 2
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -68,125 +68,125 @@ operation:
           stepCounter: 1
         config: {}
         dataType: INTEGER
-        description: "Parent Account Foreign Entity ID"
-        name: PARENTACCT_FOREIGNENTITYID
+        description: ""
+        name: BILLINGLEVEL
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: 3
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 5
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Billing Level Name"
-        name: BILLINGLEVEL_NAME
+        dataType: INTEGER
+        description: ""
+        name: SERVICETIER
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 5
-                stepCounter: 4
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 6
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Customer Service Tier Name"
-        name: SERVICETIER_NAME
+        dataType: INTEGER
+        description: ""
+        name: SECURITYZONEID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 6
-                stepCounter: 5
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 7
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Security Zone Name"
-        name: SECURITYZONE_NAME
+        dataType: INTEGER
+        description: ""
+        name: SEGMENT
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 7
-                stepCounter: 6
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 8
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Delinquency Status Name"
-        name: DELINQUENCYSTATUS_NAME
+        dataType: DATETIME
+        description: ""
+        name: CLOSEDATE
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 8
-                stepCounter: 7
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 9
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Account Segment Name"
-        name: ACCOUNTSEGMENT_NAME
+        dataType: DATETIME
+        description: ""
+        name: CREATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 9
-                stepCounter: 8
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 10
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Insured First Name"
-        name: INSURED_FIRSTNAME
+        dataType: INTEGER
+        description: ""
+        name: DELINQUENCYSTATUS
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 10
-                stepCounter: 12
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 11
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Insured Last Name"
-        name: INSURED_LASTNAME
+        dataType: INTEGER
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 11
-                stepCounter: 12
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 12
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Insured Address Line 1"
-        name: INSURED_ADDRESSLINE1
+        dataType: INTEGER
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 12
-                stepCounter: 13
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -194,27 +194,27 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: "Insured Address Line 2"
-        name: INSURED_ADDRESSLINE2
+        description: ""
+        name: PUBLICID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 13
-                stepCounter: 13
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 14
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Insured City"
-        name: INSURED_CITY
+        dataType: INTEGER
+        description: ""
+        name: ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 14
-                stepCounter: 13
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -222,27 +222,27 @@ operation:
           stepCounter: 1
         config: {}
         dataType: STRING
-        description: "Insured State Name"
-        name: INSURED_STATE
+        description: ""
+        name: BEANVERSION
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 15
-                stepCounter: 14
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 16
           stepCounter: 1
         config: {}
-        dataType: STRING
-        description: "Insured Postal Code"
-        name: INSURED_POSTALCODE
+        dataType: INTEGER
+        description: ""
+        name: RETIRED
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 16
-                stepCounter: 13
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
@@ -250,8 +250,8 @@ operation:
           stepCounter: 1
         config: {}
         dataType: DATETIME
-        description: "Account Close Date"
-        name: CLOSEDATE
+        description: ""
+        name: UPDATETIME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -261,114 +261,212 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 18
-          stepCounter: 1
+          stepCounter: 2
         config: {}
-        dataType: DATETIME
-        description: "Account Create Time"
-        name: CREATETIME
+        dataType: STRING
+        description: ""
+        name: ACCOUNTTYPE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 18
-                stepCounter: 1
+              - columnCounter: 2
+                stepCounter: 2
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 19
-          stepCounter: 1
+          stepCounter: 3
         config: {}
         dataType: INTEGER
-        description: "First Twice Per Month Invoice Day of Month"
-        name: FIRSTTWICEPERMTHINVOICEDOM
+        description: ""
+        name: PARENTACCT_FOREIGNENTITYID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 19
-                stepCounter: 1
+              - columnCounter: 2
+                stepCounter: 3
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 20
-          stepCounter: 1
+          stepCounter: 4
         config: {}
-        dataType: INTEGER
-        description: "Second Twice Per Month Invoice Day of Month"
-        name: SECONDTWICEPERMTHINVOICEDOM
+        dataType: STRING
+        description: ""
+        name: BILLINGLEVEL_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 20
-                stepCounter: 1
+              - columnCounter: 2
+                stepCounter: 4
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 21
-          stepCounter: 1
+          stepCounter: 5
         config: {}
         dataType: STRING
-        description: "Account Public ID"
-        name: PUBLICID
+        description: ""
+        name: SERVICETIER_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 21
-                stepCounter: 1
+              - columnCounter: 2
+                stepCounter: 5
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 22
-          stepCounter: 1
+          stepCounter: 6
         config: {}
-        dataType: INTEGER
-        description: "Account ID"
-        name: ID
+        dataType: STRING
+        description: ""
+        name: SECURITYZONE_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 22
-                stepCounter: 1
+              - columnCounter: 2
+                stepCounter: 6
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 23
-          stepCounter: 1
+          stepCounter: 7
         config: {}
         dataType: STRING
-        description: "Bean Version"
-        name: BEANVERSION
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 23
-                stepCounter: 1
+              - columnCounter: 2
+                stepCounter: 7
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 24
-          stepCounter: 1
+          stepCounter: 8
         config: {}
-        dataType: INTEGER
-        description: "Retired Flag"
-        name: RETIRED
+        dataType: STRING
+        description: ""
+        name: SEGMENT_NAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 24
-                stepCounter: 1
+              - columnCounter: 2
+                stepCounter: 8
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 25
-          stepCounter: 1
+          stepCounter: 9
         config: {}
-        dataType: DATETIME
-        description: "Update Time"
-        name: UPDATETIME
+        dataType: STRING
+        description: ""
+        name: INSURED_FIRSTNAME
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 25
-                stepCounter: 1
+              - columnCounter: 2
+                stepCounter: 9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26
+          stepCounter: 9
+        config: {}
+        dataType: STRING
+        description: ""
+        name: INSURED_LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27
+          stepCounter: 10
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 10
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28
+          stepCounter: 10
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3
+                stepCounter: 10
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29
+          stepCounter: 10
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ADDRESS_LINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4
+                stepCounter: 10
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30
+          stepCounter: 10
+        config: {}
+        dataType: STRING
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5
+                stepCounter: 10
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31
+          stepCounter: 10
+        config: {}
+        dataType: STRING
+        description: ""
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6
+                stepCounter: 10
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32
+          stepCounter: 11
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2
+                stepCounter: 11
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
@@ -379,23 +477,23 @@ operation:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_BC_ACCOUNT
+            nodeName: BC_ACCOUNT
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_BC_ACCOUNT') }} BC_ACCOUNT
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
+            FROM {{ ref('SRC', 'BC_ACCOUNT') }} BC_ACCOUNT
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} BCTL_ACCOUNTTYPE
               ON BC_ACCOUNT.ACCOUNTTYPE = BCTL_ACCOUNTTYPE.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BC_PARENTACCT') }} BC_PARENTACCT
+            LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} BC_PARENTACCT
               ON BC_PARENTACCT.OWNERID = BC_ACCOUNT.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
+            LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BCTL_BILLINGLEVEL
               ON BC_ACCOUNT.BILLINGLEVEL = BCTL_BILLINGLEVEL.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
+            LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} BCTL_CUSTOMERSERVICETIER
               ON BC_ACCOUNT.SERVICETIER = BCTL_CUSTOMERSERVICETIER.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BC_SECURITYZONE') }} BC_SECURITYZONE
+            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} BC_SECURITYZONE
               ON BC_ACCOUNT.SECURITYZONEID = BC_SECURITYZONE.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
+            LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} BCTL_DELINQUENCYSTATUS
               ON BC_ACCOUNT.DELINQUENCYSTATUS = BCTL_DELINQUENCYSTATUS.ID
-            LEFT JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} BCTL_ACCOUNTSEGMENT
               ON BC_ACCOUNT.SEGMENT = BCTL_ACCOUNTSEGMENT.ID
             LEFT JOIN (
               SELECT 
@@ -408,17 +506,17 @@ operation:
                 BC_ADDRESS.CITY,
                 BC_ADDRESS.POSTALCODE,
                 BCTL_STATE.NAME AS STATE_NAME
-              FROM {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
-              INNER JOIN {{ ref('SRC', 'SRC_BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
+              FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} BC_ACCOUNTCONTACT
+              INNER JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} BC_ACCOUNTCONTACTROLE
                 ON BC_ACCOUNTCONTACTROLE.ACCOUNTCONTACTID = BC_ACCOUNTCONTACT.ID
-              INNER JOIN {{ ref('SRC', 'SRC_BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
-                ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE 
+              INNER JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} BCTL_ACCOUNTROLE
+                ON BCTL_ACCOUNTROLE.ID = BC_ACCOUNTCONTACTROLE.ROLE
                 AND BCTL_ACCOUNTROLE.TYPECODE = 'insured'
-              LEFT JOIN {{ ref('SRC', 'SRC_BC_CONTACT') }} BC_CONTACT
+              LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} BC_CONTACT
                 ON BC_CONTACT.ID = BC_ACCOUNTCONTACT.CONTACTID
-              LEFT JOIN {{ ref('SRC', 'SRC_BC_ADDRESS') }} BC_ADDRESS
+              LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} BC_ADDRESS
                 ON BC_ADDRESS.ID = BC_CONTACT.PRIMARYADDRESSID
-              LEFT JOIN {{ ref('SRC', 'SRC_BCTL_STATE') }} BCTL_STATE
+              LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} BCTL_STATE
                 ON BCTL_STATE.ID = BC_ADDRESS.STATE
             ) INSUREDINFO
               ON INSUREDINFO.ACCOUNTID = BC_ACCOUNT.ID
