@@ -1,0 +1,56 @@
+fileVersion: 1
+id: SRC_TR_ROWCOUNT_UNCHANGED
+name: SRC_TR_ROWCOUNT_UNCHANGED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: "Counts unchanged rows where BeanVersion matches EDW_BEANVERSION and stores in User::UnChangeCount variable"
+  isMultisource: false
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1
+          stepCounter: 1
+        config: {}
+        dataType: INTEGER
+        description: "Count of unchanged rows"
+        name: UNCHANGED_ROW_COUNT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1
+                stepCounter: 1
+            transform: "COUNT(*)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          SRC_TR_CONDITIONALSPLIT_BEANVERSION: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SRC_TR_CONDITIONALSPLIT_BEANVERSION
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'SRC_TR_CONDITIONALSPLIT_BEANVERSION') }} SRC_TR_CONDITIONALSPLIT_BEANVERSION
+            WHERE RECORD_TYPE = 'UNCHANGED'
+        name: SRC_TR_ROWCOUNT_UNCHANGED
+        noLinkRefs: []
+  name: SRC_TR_ROWCOUNT_UNCHANGED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
