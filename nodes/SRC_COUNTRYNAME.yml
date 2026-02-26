@@ -2,7 +2,7 @@ fileVersion: 1
 id: S2
 name: COUNTRYNAME
 operation:
-  database: ""
+  database: "AdventureWorks"
   deployEnabled: true
   description: ""
   locationName: SRC
@@ -16,12 +16,12 @@ operation:
           columnCounter: C1
           stepCounter: S2
         config: {}
-        dataType: VARCHAR(255)
+        dataType: VARCHAR(10)
         defaultValue: ""
         description: ""
-        name: COUNTRY_NAME
-        nullable: true
-        primaryKey: false
+        name: COUNTRY_CODE
+        nullable: false
+        primaryKey: true
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
@@ -35,10 +35,10 @@ operation:
           columnCounter: C2
           stepCounter: S2
         config: {}
-        dataType: VARCHAR(50)
+        dataType: VARCHAR(255)
         defaultValue: ""
         description: ""
-        name: COUNTRY_CODE
+        name: COUNTRY_NAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: COUNTRYNAME
-  schema: Sales
+  schema: "Sales"
   sqlType: Source
   type: sourceInput
   version: 1
