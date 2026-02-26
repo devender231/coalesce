@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S15
-name: SRC_DIMBILLINGACCOUNT
+name: DIMBILLINGACCOUNT
 operation:
   database: ""
   deployEnabled: true
