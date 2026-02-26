@@ -2,7 +2,7 @@ fileVersion: 1
 id: S1
 name: SALESTERRITORY
 operation:
-  database: ""
+  database: "AdventureWorks"
   deployEnabled: true
   description: ""
   locationName: SRC
@@ -16,7 +16,7 @@ operation:
           columnCounter: C1
           stepCounter: S1
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: INT
         defaultValue: ""
         description: ""
         name: TERRITORYID
@@ -35,11 +35,11 @@ operation:
           columnCounter: C2
           stepCounter: S1
         config: {}
-        dataType: VARCHAR(50)
+        dataType: NVARCHAR(50)
         defaultValue: ""
         description: ""
         name: NAME
-        nullable: true
+        nullable: false
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -54,11 +54,11 @@ operation:
           columnCounter: C3
           stepCounter: S1
         config: {}
-        dataType: VARCHAR(50)
+        dataType: NVARCHAR(50)
         defaultValue: ""
         description: ""
         name: COUNTRYREGIONCODE
-        nullable: true
+        nullable: false
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -73,11 +73,11 @@ operation:
           columnCounter: C4
           stepCounter: S1
         config: {}
-        dataType: VARCHAR(50)
+        dataType: NVARCHAR(50)
         defaultValue: ""
         description: ""
         name: GROUP
-        nullable: true
+        nullable: false
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -85,7 +85,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: SALESTERRITORY
-  schema: sales
+  schema: "sales"
   sqlType: Source
   type: sourceInput
   version: 1
