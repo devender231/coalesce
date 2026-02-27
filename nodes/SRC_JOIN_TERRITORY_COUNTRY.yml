@@ -1,6 +1,6 @@
 fileVersion: 1
 
-id: J1
+id: SRC_JOIN_TERRITORY_COUNTRY
 
 name: SRC_JOIN_TERRITORY_COUNTRY
 
@@ -13,7 +13,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Join between SalesTerritory and CountryName tables"
+  description: "Join between SalesTerritory and CountryName tables on CountryRegionCode"
   isMultisource: true
   locationName: SRC
   materializationType: table
@@ -23,77 +23,82 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: J1
+          stepCounter: 1
         config: {}
-        dataType: NUMBER(38,0)
-        description: "Territory ID from SalesTerritory"
+        dataType: INTEGER
+        description: "Territory ID from SalesTerritory table"
         name: TerritoryID
         nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: S1
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: J1
+          stepCounter: 1
         config: {}
         dataType: VARCHAR(50)
-        description: "Territory Name from SalesTerritory"
+        description: "Territory Name from SalesTerritory table"
         name: Name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: S1
+                stepCounter: 1
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: J1
+          stepCounter: 1
         config: {}
         dataType: VARCHAR(255)
-        description: "Country Name from CountryName table"
+        description: "Country name from CountryName table"
         name: country_name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 2
-                stepCounter: S2
+              - columnCounter: 3
+                stepCounter: 2
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: J1
+          stepCounter: 1
         config: {}
         dataType: VARCHAR(50)
-        description: "Territory Group from SalesTerritory"
+        description: "Territory Group from SalesTerritory table"
         name: Group
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 3
-                stepCounter: S1
+              - columnCounter: 4
+                stepCounter: 1
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          ST: SRC_SALESTERRITORY
-          CN: SRC_COUNTRYNAME
+          st: sales.SalesTerritory
+          cn: Sales.CountryName
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_SALESTERRITORY
+            nodeName: sales.SalesTerritory
           - locationName: SRC
-            nodeName: SRC_COUNTRYNAME
+            nodeName: Sales.CountryName
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_SALESTERRITORY') }} ST
-            INNER JOIN {{ ref('SRC', 'SRC_COUNTRYNAME') }} CN
-            ON ST.CountryRegionCode = CN.country_code
+            SELECT 
+              st.TerritoryID,
+              st.Name,
+              cn.country_name,
+              st.[Group]
+            FROM {{ ref('SRC', 'sales.SalesTerritory') }} st
+            INNER JOIN {{ ref('SRC', 'Sales.CountryName') }} cn
+              ON st.CountryRegionCode = cn.country_code
         name: SRC_JOIN_TERRITORY_COUNTRY
         noLinkRefs: []
   name: SRC_JOIN_TERRITORY_COUNTRY
