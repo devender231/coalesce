@@ -1,14 +1,14 @@
 fileVersion: 1
-id: "c7fd1c1b-207a-4e10-814b-84704d8f72df"
-name: "DIM_TERRITORY"
+id: S5
+name: DIM_TERRITORY
 operation:
   config:
     insertStrategy: INSERT
     postSQL: ""
     preSQL: ""
     testsEnabled: true
-    truncateBefore: true
-  database: ""
+    truncateBefore: false
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Target table for Territory dimension data with data conversion applied"
   isMultisource: false
@@ -17,80 +17,108 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: "1"
-          stepCounter: "c7fd1c1b-207a-4e10-814b-84704d8f72df"
+          columnCounter: C1
+          stepCounter: S5
         config: {}
         dataType: NUMBER(38,0)
-        description: "Territory identifier"
-        name: "territory_id"
+        defaultValue: ""
+        description: "Territory ID"
+        name: TERRITORY_ID
         nullable: false
+        primaryKey: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: "1"
-                stepCounter: "stg-dim-territory-001"
+              - columnCounter: C1
+                stepCounter: S4
             transform: ""
-      - appliedColumnTests: {}
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: "2"
-          stepCounter: "c7fd1c1b-207a-4e10-814b-84704d8f72df"
+          columnCounter: C2
+          stepCounter: S5
         config: {}
         dataType: VARCHAR(50)
-        description: "Territory name"
-        name: "territory_name"
+        defaultValue: ""
+        description: "Territory Name"
+        name: TERRITORY_NAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: "2"
-                stepCounter: "stg-dim-territory-001"
+              - columnCounter: C2
+                stepCounter: S4
             transform: ""
-      - appliedColumnTests: {}
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: "3"
-          stepCounter: "c7fd1c1b-207a-4e10-814b-84704d8f72df"
+          columnCounter: C3
+          stepCounter: S5
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: "Territory Group"
+        name: TERRITORY_GROUP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S4
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S5
         config: {}
         dataType: VARCHAR(400)
-        description: "Territory country - converted from source"
-        name: "territory_country"
+        defaultValue: ""
+        description: "Territory Country - converted to VARCHAR(400)"
+        name: TERRITORY_COUNTRY
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: "3"
-                stepCounter: "stg-dim-territory-001"
+              - columnCounter: C5
+                stepCounter: S4
             transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: "4"
-          stepCounter: "c7fd1c1b-207a-4e10-814b-84704d8f72df"
-        config: {}
-        dataType: VARCHAR(50)
-        description: "Territory group"
-        name: "territory_group"
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "4"
-                stepCounter: "stg-dim-territory-001"
-            transform: ""
+        transform: ""
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          STG_DIM_TERRITORY: "stg-dim-territory-001"
+          DATA_CONVERSION_COUNTRY: DC
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: STG_DIM_TERRITORY
+            nodeName: DATA_CONVERSION_COUNTRY
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'STG_DIM_TERRITORY') }}
+            FROM {{ ref('SRC', 'DATA_CONVERSION_COUNTRY') }} DC
         name: DIM_TERRITORY
         noLinkRefs: []
   name: DIM_TERRITORY
   overrideSQL: false
-  schema: "dbo"
+  schema: "Sales"
   sqlType: Stage
   type: sql
   version: 1
