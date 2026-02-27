@@ -1,0 +1,167 @@
+fileVersion: 1
+id: S4
+name: DATA_CONVERSION
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: "Source Database"
+  deployEnabled: true
+  description: "Data Conversion - Convert COUNTRY_NAME to VARCHAR(400)"
+  isMultisource: false
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S4
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: TERRITORYID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S3
+            transform: "JN.TERRITORYID"
+        transform: "JN.TERRITORYID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S4
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        name: NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S3
+            transform: "JN.NAME"
+        transform: "JN.NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S4
+        config: {}
+        dataType: VARCHAR(400)
+        defaultValue: ""
+        description: "Converted from VARCHAR(255) to VARCHAR(400)"
+        name: COUNTRY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S3
+            transform: "CAST(JN.COUNTRY_NAME AS VARCHAR(400))"
+        transform: "CAST(JN.COUNTRY_NAME AS VARCHAR(400))"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S4
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        name: GROUP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S3
+            transform: "JN.\"GROUP\""
+        transform: "JN.\"GROUP\""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: S4
+        config: {}
+        dataType: VARCHAR(3)
+        defaultValue: ""
+        description: ""
+        name: COUNTRYREGIONCODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S3
+            transform: "JN.COUNTRYREGIONCODE"
+        transform: "JN.COUNTRYREGIONCODE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: S4
+        config: {}
+        dataType: VARCHAR(3)
+        defaultValue: ""
+        description: ""
+        name: COUNTRY_CODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S3
+            transform: "JN.COUNTRY_CODE"
+        transform: "JN.COUNTRY_CODE"
+        uniqueKey: false
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          JOIN_SALESTERRITORY_COUNTRYNAME: JN
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: JOIN_SALESTERRITORY_COUNTRYNAME
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'JOIN_SALESTERRITORY_COUNTRYNAME') }} JN
+        name: DATA_CONVERSION
+        noLinkRefs: []
+  name: DATA_CONVERSION
+  overrideSQL: false
+  schema: "sales"
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
