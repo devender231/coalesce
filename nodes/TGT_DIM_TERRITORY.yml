@@ -119,7 +119,7 @@ operation:
   name: DIM_TERRITORY
   overrideSQL: false
   schema: "Sales"
-  sqlType: Stage
-  type: sql
+  sqlType: Target
+  type: target
   version: 1
 type: Node
