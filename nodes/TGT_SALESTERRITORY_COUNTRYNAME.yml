@@ -119,7 +119,7 @@ operation:
   name: TGT_SALESTERRITORY_COUNTRYNAME
   overrideSQL: false
   schema: "Sales"
-  sqlType: Persistent Stage
+  sqlType: Dimension
   type: sql
   version: 1
 type: Node
