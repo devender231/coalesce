@@ -105,21 +105,21 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          DATA_CONVERSION_COUNTRY: DC
+          DATA_CONVERSION: DC
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: DATA_CONVERSION_COUNTRY
+            nodeName: DATA_CONVERSION
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'DATA_CONVERSION_COUNTRY') }} DC
+            FROM {{ ref('SRC', 'DATA_CONVERSION') }} DC
         name: TGT_SALESTERRITORY_COUNTRYNAME
         noLinkRefs: []
   name: TGT_SALESTERRITORY_COUNTRYNAME
   overrideSQL: false
   schema: "Sales"
-  sqlType: Target
+  sqlType: Stage
   type: sql
   version: 1
 type: Node
