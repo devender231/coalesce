@@ -1,6 +1,6 @@
 fileVersion: 1
 
-id: T1
+id: SRC_TR_DC
 
 name: SRC_TR_DATA_CONVERSION_COUNTRY
 
@@ -13,7 +13,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: "Data Conversion transformation - converts country_name from VARCHAR(255) to VARCHAR(400)"
+  description: "Data Conversion transformation - converts country_name to NVARCHAR(400)"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -23,7 +23,7 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1
-          stepCounter: T1
+          stepCounter: 3
         config: {}
         dataType: INTEGER
         description: "Territory ID"
@@ -32,12 +32,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 1
-                stepCounter: J1
+                stepCounter: 2
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2
-          stepCounter: T1
+          stepCounter: 3
         config: {}
         dataType: VARCHAR(50)
         description: "Territory Name"
@@ -46,26 +46,26 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 2
-                stepCounter: J1
+                stepCounter: 2
             transform: ""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3
-          stepCounter: T1
+          stepCounter: 3
         config: {}
-        dataType: VARCHAR(400)
-        description: "Country name - converted from VARCHAR(255) to VARCHAR(400)"
+        dataType: NVARCHAR(400)
+        description: "Country name converted to NVARCHAR(400)"
         name: country
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 3
-                stepCounter: J1
-            transform: "CAST(country_name AS VARCHAR(400))"
+                stepCounter: 2
+            transform: "CAST(country_name AS NVARCHAR(400))"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4
-          stepCounter: T1
+          stepCounter: 3
         config: {}
         dataType: VARCHAR(50)
         description: "Territory Group"
@@ -74,21 +74,26 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4
-                stepCounter: J1
+                stepCounter: 2
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          J1: SRC_JOIN_SALESTERRITORY_COUNTRYNAME
+          SRC_TR_DATA_CONVERSION_COUNTRY: SRC_JOIN_TERRITORY_COUNTRY
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SRC
-            nodeName: SRC_JOIN_SALESTERRITORY_COUNTRYNAME
+            nodeName: SRC_JOIN_TERRITORY_COUNTRY
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_JOIN_SALESTERRITORY_COUNTRYNAME') }} J1
+            SELECT
+              TerritoryID,
+              Name,
+              CAST(country_name AS NVARCHAR(400)) AS country,
+              [Group]
+            FROM {{ ref('SRC', 'SRC_JOIN_TERRITORY_COUNTRY') }}
         name: SRC_TR_DATA_CONVERSION_COUNTRY
         noLinkRefs: []
   name: SRC_TR_DATA_CONVERSION_COUNTRY
