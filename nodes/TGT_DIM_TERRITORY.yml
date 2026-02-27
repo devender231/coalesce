@@ -10,7 +10,7 @@ operation:
     truncateBefore: false
   database: "PC_COALESCE_DB"
   deployEnabled: true
-  description: "Target table for Territory dimension data with data conversion applied"
+  description: "Target table for Territory dimension data"
   isMultisource: false
   locationName: TARGET
   materializationType: table
