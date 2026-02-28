@@ -1,0 +1,103 @@
+fileVersion: 1
+id: S3
+name: TGT_DIM_TERRITORY
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ADVENTUREWORKS
+  deployEnabled: true
+  description: Target table for dimension territory data
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S3
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Territory ID
+        name: territory_id
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S2
+            transform: "DC.TerritoryID"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S3
+        config: {}
+        dataType: VARCHAR(50)
+        description: Territory name
+        name: territory_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S2
+            transform: "DC.Name"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S3
+        config: {}
+        dataType: VARCHAR(400)
+        description: Territory country
+        name: territory_country
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S2
+            transform: "DC.country"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S3
+        config: {}
+        dataType: VARCHAR(50)
+        description: Territory group
+        name: territory_group
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S2
+            transform: 'DC."GROUP"'
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DATA_CONVERSION: DC
+        customSQL:
+          customSQL: |
+            SELECT
+              DC.TerritoryID,
+              DC.Name,
+              DC.country,
+              DC."GROUP"
+            FROM {{ ref('SRC', 'DATA_CONVERSION') }} DC
+        dependencies:
+          - locationName: SRC
+            nodeName: DATA_CONVERSION
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'DATA_CONVERSION') }} DC
+        name: TGT_DIM_TERRITORY
+        noLinkRefs: []
+  name: TGT_DIM_TERRITORY
+  overrideSQL: true
+  schema: dbo
+  sqlType: persistentStage
+  type: sql
+  version: 1
+type: Node
