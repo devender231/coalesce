@@ -30,7 +30,7 @@ operation:
           - columnReferences:
               - columnCounter: C1
                 stepCounter: S4
-            transform: ""
+            transform: "DC.TERRITORYID"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C2
@@ -44,7 +44,7 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S4
-            transform: ""
+            transform: "DC.NAME"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C3
@@ -58,7 +58,7 @@ operation:
           - columnReferences:
               - columnCounter: C3
                 stepCounter: S4
-            transform: ""
+            transform: "DC.\"GROUP\""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C4
@@ -72,7 +72,7 @@ operation:
           - columnReferences:
               - columnCounter: C4
                 stepCounter: S4
-            transform: ""
+            transform: "DC.COUNTRYREGIONCODE"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C5
@@ -86,7 +86,7 @@ operation:
           - columnReferences:
               - columnCounter: C5
                 stepCounter: S4
-            transform: ""
+            transform: "DC.COUNTRY_CODE"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C6
@@ -100,14 +100,22 @@ operation:
           - columnReferences:
               - columnCounter: C6
                 stepCounter: S4
-            transform: ""
+            transform: "DC.COUNTRY_NAME"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
           DATA_CONVERSION: DC
         customSQL:
-          customSQL: ""
+          customSQL: |
+            SELECT
+              DC.TERRITORYID,
+              DC.NAME,
+              DC."GROUP",
+              DC.COUNTRYREGIONCODE,
+              DC.COUNTRY_CODE,
+              DC.COUNTRY_NAME
+            FROM {{ ref('SRC', 'DATA_CONVERSION') }} DC
         dependencies:
           - locationName: SRC
             nodeName: DATA_CONVERSION
@@ -117,7 +125,7 @@ operation:
         name: TGT_SALESTERRITORY_COUNTRYNAME
         noLinkRefs: []
   name: TGT_SALESTERRITORY_COUNTRYNAME
-  overrideSQL: false
+  overrideSQL: true
   schema: "Sales"
   sqlType: persistentStage
   type: sql
