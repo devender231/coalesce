@@ -94,13 +94,13 @@ operation:
         config: {}
         dataType: VARCHAR(400)
         description: "Country Name converted to VARCHAR(400)"
-        name: COUNTRY_NAME
+        name: COUNTRY
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C6
                 stepCounter: S4
-            transform: "DC.COUNTRY_NAME"
+            transform: "DC.COUNTRY"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -114,7 +114,7 @@ operation:
               DC."GROUP",
               DC.COUNTRYREGIONCODE,
               DC.COUNTRY_CODE,
-              DC.COUNTRY_NAME
+              DC.COUNTRY
             FROM {{ ref('SRC', 'DATA_CONVERSION') }} DC
         dependencies:
           - locationName: SRC
