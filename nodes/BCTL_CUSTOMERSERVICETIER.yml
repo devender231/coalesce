@@ -1,0 +1,54 @@
+fileVersion: 1
+id: S11
+name: BCTL_CUSTOMERSERVICETIER
+operation:
+  database: "GUIDEWIRE"
+  deployEnabled: true
+  description: "Source table for customer service tier type codes"
+  locationName: SRC
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S11
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S11
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: BCTL_CUSTOMERSERVICETIER
+  schema: "BCTL"
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
