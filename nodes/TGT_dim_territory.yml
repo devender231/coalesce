@@ -1,5 +1,5 @@
 fileVersion: 1
-id: S3
+id: S5
 name: TGT_dim_territory
 operation:
   config:
@@ -8,7 +8,7 @@ operation:
     preSQL: ""
     testsEnabled: true
     truncateBefore: true
-  database: AdventureWorksDW
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: Target table for dimension territory data
   isMultisource: false
@@ -96,7 +96,7 @@ operation:
         noLinkRefs: []
   name: TGT_dim_territory
   overrideSQL: true
-  schema: dbo
+  schema: "Sales"
   sqlType: persistentStage
   type: sql
   version: 1
