@@ -10,7 +10,7 @@ operation:
     truncateBefore: true
   database: "PC_COALESCE_DB"
   deployEnabled: true
-  description: Target table for dimension territory data
+  description: "Target table for dimension territory data"
   isMultisource: false
   locationName: TARGET
   materializationType: table
@@ -20,7 +20,7 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C1
-          stepCounter: S3
+          stepCounter: S5
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -29,12 +29,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C1
-                stepCounter: S2
+                stepCounter: S4
             transform: "DC.TerritoryID"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C2
-          stepCounter: S3
+          stepCounter: S5
         config: {}
         dataType: VARCHAR(50)
         description: ""
@@ -43,12 +43,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
-                stepCounter: S2
+                stepCounter: S4
             transform: "DC.Name"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C3
-          stepCounter: S3
+          stepCounter: S5
         config: {}
         dataType: VARCHAR(50)
         description: ""
@@ -57,12 +57,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C3
-                stepCounter: S2
+                stepCounter: S4
             transform: 'DC."GROUP"'
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C4
-          stepCounter: S3
+          stepCounter: S5
         config: {}
         dataType: VARCHAR(400)
         description: ""
@@ -71,7 +71,7 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C4
-                stepCounter: S2
+                stepCounter: S4
             transform: "DC.country"
     cteString: ""
     enabledColumnTestIDs: []
