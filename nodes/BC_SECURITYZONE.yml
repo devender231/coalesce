@@ -2,7 +2,7 @@ fileVersion: 1
 id: S12
 name: BC_SECURITYZONE
 operation:
-  database: "GUIDEWIRE"
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Source table for security zone information"
   locationName: SRC
@@ -85,7 +85,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BC_SECURITYZONE
-  schema: "BC"
+  schema: "RAW"
   sqlType: Source
   type: sourceInput
   version: 1
