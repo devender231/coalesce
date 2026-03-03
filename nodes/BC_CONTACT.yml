@@ -2,7 +2,7 @@ fileVersion: 1
 id: S6
 name: BC_CONTACT
 operation:
-  database: "GUIDEWIRE"
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Source table for contact information"
   locationName: SRC
@@ -123,7 +123,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BC_CONTACT
-  schema: "BC"
+  schema: "RAW"
   sqlType: Source
   type: sourceInput
   version: 1
