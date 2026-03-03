@@ -25,7 +25,7 @@ operation:
           columnCounter: C1
           stepCounter: S16
         config: {}
-        dataType: INTEGER
+        dataType: STRING
         defaultValue: ""
         description: ""
         name: ACCOUNTNUMBER
