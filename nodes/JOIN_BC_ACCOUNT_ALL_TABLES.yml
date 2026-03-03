@@ -476,8 +476,8 @@ operation:
           - columnReferences:
               - columnCounter: C1
                 stepCounter: S6
-            transform: "INS.CONTACT_ID"
-        transform: "INS.CONTACT_ID"
+            transform: "CON.ID"
+        transform: "CON.ID"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -497,8 +497,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S6
-            transform: "INS.FIRSTNAME"
-        transform: "INS.FIRSTNAME"
+            transform: "CON.FIRSTNAME"
+        transform: "CON.FIRSTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -518,8 +518,8 @@ operation:
           - columnReferences:
               - columnCounter: C3
                 stepCounter: S6
-            transform: "INS.LASTNAME"
-        transform: "INS.LASTNAME"
+            transform: "CON.LASTNAME"
+        transform: "CON.LASTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -539,8 +539,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S7
-            transform: "INS.ADDRESSLINE1"
-        transform: "INS.ADDRESSLINE1"
+            transform: "ADR.ADDRESSLINE1"
+        transform: "ADR.ADDRESSLINE1"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -560,8 +560,8 @@ operation:
           - columnReferences:
               - columnCounter: C3
                 stepCounter: S7
-            transform: "INS.ADDRESSLINE2"
-        transform: "INS.ADDRESSLINE2"
+            transform: "ADR.ADDRESSLINE2"
+        transform: "ADR.ADDRESSLINE2"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -581,8 +581,8 @@ operation:
           - columnReferences:
               - columnCounter: C4
                 stepCounter: S7
-            transform: "INS.ADDRESSLINE3"
-        transform: "INS.ADDRESSLINE3"
+            transform: "ADR.ADDRESSLINE3"
+        transform: "ADR.ADDRESSLINE3"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -602,8 +602,8 @@ operation:
           - columnReferences:
               - columnCounter: C5
                 stepCounter: S7
-            transform: "INS.CITY"
-        transform: "INS.CITY"
+            transform: "ADR.CITY"
+        transform: "ADR.CITY"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -623,8 +623,8 @@ operation:
           - columnReferences:
               - columnCounter: C6
                 stepCounter: S7
-            transform: "INS.POSTALCODE"
-        transform: "INS.POSTALCODE"
+            transform: "ADR.POSTALCODE"
+        transform: "ADR.POSTALCODE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -644,8 +644,8 @@ operation:
           - columnReferences:
               - columnCounter: C7
                 stepCounter: S7
-            transform: "INS.STATE"
-        transform: "INS.STATE"
+            transform: "ADR.STATE"
+        transform: "ADR.STATE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -665,8 +665,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S8
-            transform: "INS.STATE_NAME"
-        transform: "INS.STATE_NAME"
+            transform: "STT.NAME"
+        transform: "STT.NAME"
         uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
@@ -710,16 +710,16 @@ operation:
               BA.RETIRED,
               BA.UPDATETIME,
               PA.FOREIGNENTITYID AS PARENTACCT_FOREIGNENTITYID,
-              INS.CONTACT_ID,
-              INS.FIRSTNAME,
-              INS.LASTNAME,
-              INS.ADDRESSLINE1,
-              INS.ADDRESSLINE2,
-              INS.ADDRESSLINE3,
-              INS.CITY,
-              INS.POSTALCODE,
-              INS.STATE,
-              INS.STATE_NAME
+              CON.ID AS CONTACT_ID,
+              CON.FIRSTNAME,
+              CON.LASTNAME,
+              ADR.ADDRESSLINE1,
+              ADR.ADDRESSLINE2,
+              ADR.ADDRESSLINE3,
+              ADR.CITY,
+              ADR.POSTALCODE,
+              ADR.STATE,
+              STT.NAME AS STATE_NAME
             FROM {{ ref('SRC', 'BC_ACCOUNT') }} BA
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} ATY ON BA.ACCOUNTTYPE = ATY.ID
             LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} PA ON PA.OWNERID = BA.ID
@@ -728,25 +728,12 @@ operation:
             LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} SZN ON BA.SECURITYZONEID = SZN.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} DS ON BA.DELINQUENCYSTATUS = DS.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG ON BA.SEGMENT = ACSG.ID
-            LEFT JOIN (
-              SELECT ACC.INSUREDACCOUNTID AS ACCOUNTID,
-                     CON.ID AS CONTACT_ID,
-                     CON.FIRSTNAME,
-                     CON.LASTNAME,
-                     ADR.ADDRESSLINE1,
-                     ADR.ADDRESSLINE2,
-                     ADR.ADDRESSLINE3,
-                     ADR.CITY,
-                     ADR.POSTALCODE,
-                     ADR.STATE,
-                     STT.NAME AS STATE_NAME
-              FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC
-              INNER JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR ON ACR.ACCOUNTCONTACTID = ACC.ID
-              INNER JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} ARO ON ARO.ID = ACR.ROLE AND ARO.TYPECODE = 'insured'
-              LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CON ON CON.ID = ACC.CONTACTID
-              LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} ADR ON ADR.ID = CON.PRIMARYADDRESSID
-              LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} STT ON STT.ID = ADR.STATE
-            ) INS ON INS.ACCOUNTID = BA.ID
+            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC ON ACC.INSUREDACCOUNTID = BA.ID
+            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR ON ACR.ACCOUNTCONTACTID = ACC.ID
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} ARO ON ARO.ID = ACR.ROLE AND ARO.TYPECODE = 'insured'
+            LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CON ON CON.ID = ACC.CONTACTID
+            LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} ADR ON ADR.ID = CON.PRIMARYADDRESSID
+            LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} STT ON STT.ID = ADR.STATE
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
