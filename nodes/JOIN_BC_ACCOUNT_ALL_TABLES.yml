@@ -786,12 +786,25 @@ operation:
             LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} SZN ON BA.SECURITYZONEID = SZN.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} DS ON BA.DELINQUENCYSTATUS = DS.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG ON BA.SEGMENT = ACSG.ID
-            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC ON ACC.INSUREDACCOUNTID = BA.ID
-            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR ON ACR.ACCOUNTCONTACTID = ACC.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} ARO ON ARO.ID = ACR.ROLE
-            LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CON ON CON.ID = ACC.CONTACTID
-            LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} ADR ON ADR.ID = CON.PRIMARYADDRESSID
-            LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} STT ON STT.ID = ADR.STATE
+            LEFT JOIN (
+              SELECT ACC.INSUREDACCOUNTID AS ACCOUNTID,
+                     CON.ID AS CONTACT_ID,
+                     CON.FIRSTNAME,
+                     CON.LASTNAME,
+                     ADR.ADDRESSLINE1,
+                     ADR.ADDRESSLINE2,
+                     ADR.ADDRESSLINE3,
+                     ADR.CITY,
+                     ADR.POSTALCODE,
+                     ADR.STATE,
+                     STT.NAME AS STATE_NAME
+              FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC
+              INNER JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR ON ACR.ACCOUNTCONTACTID = ACC.ID
+              INNER JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} ARO ON ARO.ID = ACR.ROLE AND ARO.TYPECODE = 'insured'
+              LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CON ON CON.ID = ACC.CONTACTID
+              LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} ADR ON ADR.ID = CON.PRIMARYADDRESSID
+              LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} STT ON STT.ID = ADR.STATE
+            ) INS ON INS.ACCOUNTID = BA.ID
         name: JOIN_BC_ACCOUNT_ALL_TABLES
         noLinkRefs: []
   name: JOIN_BC_ACCOUNT_ALL_TABLES
