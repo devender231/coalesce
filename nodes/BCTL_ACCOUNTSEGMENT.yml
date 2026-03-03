@@ -2,7 +2,7 @@ fileVersion: 1
 id: S14
 name: BCTL_ACCOUNTSEGMENT
 operation:
-  database: "GUIDEWIRE"
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Source table for account segment type codes"
   locationName: SRC
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BCTL_ACCOUNTSEGMENT
-  schema: "BCTL"
+  schema: "RAW"
   sqlType: Source
   type: sourceInput
   version: 1
