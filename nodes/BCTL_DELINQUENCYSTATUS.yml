@@ -2,7 +2,7 @@ fileVersion: 1
 id: S13
 name: BCTL_DELINQUENCYSTATUS
 operation:
-  database: "GUIDEWIRE"
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Source table for delinquency status type codes"
   locationName: SRC
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BCTL_DELINQUENCYSTATUS
-  schema: "BCTL"
+  schema: "RAW"
   sqlType: Source
   type: sourceInput
   version: 1
