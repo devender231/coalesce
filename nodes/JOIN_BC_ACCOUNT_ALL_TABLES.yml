@@ -518,8 +518,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S14
-            transform: "AS.NAME"
-        transform: "AS.NAME"
+            transform: "ACSG.NAME"
+        transform: "ACSG.NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -784,7 +784,7 @@ operation:
           BCTL_CUSTOMERSERVICETIER: CST
           BC_SECURITYZONE: SZ
           BCTL_DELINQUENCYSTATUS: DS
-          BCTL_ACCOUNTSEGMENT: AS
+          BCTL_ACCOUNTSEGMENT: ACSG
           BC_ACCOUNTCONTACT: AC
           BC_ACCOUNTCONTACTROLE: ACR
           BCTL_ACCOUNTROLE: AR
@@ -792,7 +792,58 @@ operation:
           BC_ADDRESS: A
           BCTL_STATE: ST
         customSQL:
-          customSQL: ""
+          customSQL: |
+            SELECT
+              BCA.ACCOUNTNUMBER,
+              BCA.ACCOUNTNAME,
+              BCA.ACCOUNTTYPE,
+              BCA.BILLINGLEVEL,
+              BCA.SERVICETIER,
+              BCA.SECURITYZONEID,
+              BCA.SEGMENT,
+              BCA.CLOSEDATE,
+              BCA.CREATETIME,
+              BCA.DELINQUENCYSTATUS,
+              BCA.FIRSTTWICEPERMTHINVOICEDOM,
+              BCA.SECONDTWICEPERMTHINVOICEDOM,
+              BCA.PUBLICID,
+              BCA.ID,
+              BCA.BEANVERSION,
+              BCA.RETIRED,
+              BCA.UPDATETIME,
+              AT.NAME AS ACCOUNTTYPE_NAME,
+              PA.FOREIGNENTITYID AS PARENTACCT_FOREIGNENTITYID,
+              BL.NAME AS BILLINGLEVEL_NAME,
+              CST.NAME AS SERVICETIER_NAME,
+              SZ.NAME AS SECURITYZONE_NAME,
+              DS.NAME AS DELINQUENCYSTATUS_NAME,
+              ACSG.NAME AS SEGMENT_NAME,
+              AC.ID AS ACCOUNTCONTACT_ID,
+              AC.CONTACTID,
+              AR.TYPECODE AS ACCOUNTROLE_TYPECODE,
+              C.FIRSTNAME AS CONTACT_FIRSTNAME,
+              C.LASTNAME AS CONTACT_LASTNAME,
+              C.PRIMARYADDRESSID,
+              A.ADDRESSLINE1 AS ADDRESS_ADDRESSLINE1,
+              A.ADDRESSLINE2 AS ADDRESS_ADDRESSLINE2,
+              A.ADDRESSLINE3 AS ADDRESS_ADDRESSLINE3,
+              A.CITY AS ADDRESS_CITY,
+              A.POSTALCODE AS ADDRESS_POSTALCODE,
+              ST.NAME AS STATE_NAME
+            FROM {{ ref('SRC', 'BC_ACCOUNT') }} BCA
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} AT ON BCA.ACCOUNTTYPE = AT.ID
+            LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} PA ON PA.OWNERID = BCA.ID
+            LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BL ON BCA.BILLINGLEVEL = BL.ID
+            LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST ON BCA.SERVICETIER = CST.ID
+            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} SZ ON BCA.SECURITYZONEID = SZ.ID
+            LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} DS ON BCA.DELINQUENCYSTATUS = DS.ID
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG ON BCA.SEGMENT = ACSG.ID
+            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} AC ON AC.INSUREDACCOUNTID = BCA.ID
+            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR ON ACR.ACCOUNTCONTACTID = AC.ID
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} AR ON AR.ID = ACR.ROLE AND AR.TYPECODE = 'insured'
+            LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} C ON C.ID = AC.CONTACTID
+            LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} A ON A.ID = C.PRIMARYADDRESSID
+            LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} ST ON ST.ID = A.STATE
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
@@ -831,7 +882,7 @@ operation:
             LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST ON BCA.SERVICETIER = CST.ID
             LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} SZ ON BCA.SECURITYZONEID = SZ.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} DS ON BCA.DELINQUENCYSTATUS = DS.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} AS ON BCA.SEGMENT = AS.ID
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG ON BCA.SEGMENT = ACSG.ID
             LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} AC ON AC.INSUREDACCOUNTID = BCA.ID
             LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR ON ACR.ACCOUNTCONTACTID = AC.ID
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} AR ON AR.ID = ACR.ROLE AND AR.TYPECODE = 'insured'
@@ -841,7 +892,7 @@ operation:
         name: JOIN_BC_ACCOUNT_ALL_TABLES
         noLinkRefs: []
   name: JOIN_BC_ACCOUNT_ALL_TABLES
-  overrideSQL: false
+  overrideSQL: true
   schema: "RAW"
   sqlType: Stage
   type: sql
