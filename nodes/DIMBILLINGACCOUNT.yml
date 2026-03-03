@@ -2,7 +2,7 @@ fileVersion: 1
 id: S15
 name: DIMBILLINGACCOUNT
 operation:
-  database: "EDW"
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: "Source table for dimension billing account lookup"
   locationName: SRC
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: DIMBILLINGACCOUNT
-  schema: "DBO"
+  schema: "PC_COALESCE_DB"
   sqlType: Source
   type: sourceInput
   version: 1
