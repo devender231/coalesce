@@ -22,7 +22,217 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C13
+          columnCounter: C1
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S1
+            transform: "BCA.ACCOUNTNUMBER"
+        transform: "BCA.ACCOUNTNUMBER"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S16
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S1
+            transform: "BCA.ACCOUNTNAME"
+        transform: "BCA.ACCOUNTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S1
+            transform: "BCA.ACCOUNTTYPE"
+        transform: "BCA.ACCOUNTTYPE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S1
+            transform: "BCA.BILLINGLEVEL"
+        transform: "BCA.BILLINGLEVEL"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S1
+            transform: "BCA.SERVICETIER"
+        transform: "BCA.SERVICETIER"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S1
+            transform: "BCA.SECURITYZONEID"
+        transform: "BCA.SECURITYZONEID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: SEGMENT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: S1
+            transform: "BCA.SEGMENT"
+        transform: "BCA.SEGMENT"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: S16
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: S1
+            transform: "BCA.CLOSEDATE"
+        transform: "BCA.CLOSEDATE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: S16
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: ""
+        name: CREATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: S1
+            transform: "BCA.CREATETIME"
+        transform: "BCA.CREATETIME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: S1
+            transform: "BCA.DELINQUENCYSTATUS"
+        transform: "BCA.DELINQUENCYSTATUS"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -33,10 +243,52 @@ operation:
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C13
+              - columnCounter: C11
                 stepCounter: S1
             transform: "BCA.PUBLICID"
         transform: "BCA.PUBLICID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: S1
+            transform: "BCA.ID"
+        transform: "BCA.ID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: S16
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: S1
+            transform: "BCA.BEANVERSION"
+        transform: "BCA.BEANVERSION"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -49,54 +301,12 @@ operation:
         dataType: INTEGER
         defaultValue: ""
         description: ""
-        name: ID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C14
-                stepCounter: S1
-            transform: "BCA.ID"
-        transform: "BCA.ID"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C15
-          stepCounter: S16
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: BEANVERSION
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C15
-                stepCounter: S1
-            transform: "BCA.BEANVERSION"
-        transform: "BCA.BEANVERSION"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C16
-          stepCounter: S16
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
         name: RETIRED
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C16
+              - columnCounter: C14
                 stepCounter: S1
             transform: "BCA.RETIRED"
         transform: "BCA.RETIRED"
@@ -106,7 +316,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C17
+          columnCounter: C15
           stepCounter: S16
         config: {}
         dataType: DATETIME
@@ -117,7 +327,7 @@ operation:
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C17
+              - columnCounter: C15
                 stepCounter: S1
             transform: "BCA.UPDATETIME"
         transform: "BCA.UPDATETIME"
@@ -127,7 +337,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C18
+          columnCounter: C16
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -148,7 +358,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C19
+          columnCounter: C17
           stepCounter: S16
         config: {}
         dataType: INTEGER
@@ -169,7 +379,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C20
+          columnCounter: C18
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -190,7 +400,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C21
+          columnCounter: C19
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -211,28 +421,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C22
-          stepCounter: S16
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: SECURITYZONE_NAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C2
-                stepCounter: S12
-            transform: "SZ.NAME"
-        transform: "SZ.NAME"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C23
+          columnCounter: C20
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -253,7 +442,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C24
+          columnCounter: C21
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -274,7 +463,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C25
+          columnCounter: C22
           stepCounter: S16
         config: {}
         dataType: INTEGER
@@ -295,7 +484,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C26
+          columnCounter: C23
           stepCounter: S16
         config: {}
         dataType: INTEGER
@@ -316,7 +505,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C27
+          columnCounter: C24
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -337,7 +526,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C28
+          columnCounter: C25
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -358,7 +547,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C29
+          columnCounter: C26
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -379,7 +568,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C30
+          columnCounter: C27
           stepCounter: S16
         config: {}
         dataType: INTEGER
@@ -400,7 +589,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C31
+          columnCounter: C28
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -421,7 +610,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C32
+          columnCounter: C29
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -442,7 +631,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C33
+          columnCounter: C30
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -463,7 +652,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C34
+          columnCounter: C31
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -484,7 +673,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C35
+          columnCounter: C32
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -505,7 +694,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C36
+          columnCounter: C33
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -561,7 +750,6 @@ operation:
               PA.FOREIGNENTITYID AS PARENTACCT_FOREIGNENTITYID,
               BL.NAME AS BILLINGLEVEL_NAME,
               CST.NAME AS SERVICETIER_NAME,
-              SZ.NAME AS SECURITYZONE_NAME,
               DS.NAME AS DELINQUENCYSTATUS_NAME,
               ACSG.NAME AS SEGMENT_NAME,
               AC.ID AS ACCOUNTCONTACT_ID,
