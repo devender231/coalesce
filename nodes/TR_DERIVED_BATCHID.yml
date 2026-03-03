@@ -1,0 +1,752 @@
+fileVersion: 1
+id: S18
+name: TR_DERIVED_BATCHID
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: "PC_COALESCE_DB"
+  deployEnabled: true
+  description: "Derived column transformation - adds BatchID column"
+  isMultisource: false
+  locationName: SRC
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S17
+            transform: "ACCOUNTNUMBER"
+        transform: "ACCOUNTNUMBER"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S17
+            transform: "ACCOUNTNAME"
+        transform: "ACCOUNTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTTYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S17
+            transform: "ACCOUNTTYPE"
+        transform: "ACCOUNTTYPE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S17
+            transform: "ACCOUNTTYPE_NAME"
+        transform: "ACCOUNTTYPE_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: BILLINGLEVEL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S17
+            transform: "BILLINGLEVEL"
+        transform: "BILLINGLEVEL"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S17
+            transform: "BILLINGLEVEL_NAME"
+        transform: "BILLINGLEVEL_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: SERVICETIER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: S17
+            transform: "SERVICETIER"
+        transform: "SERVICETIER"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: S17
+            transform: "SERVICETIER_NAME"
+        transform: "SERVICETIER_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: SECURITYZONEID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: S17
+            transform: "SECURITYZONEID"
+        transform: "SECURITYZONEID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: S17
+            transform: "SECURITYZONE_NAME"
+        transform: "SECURITYZONE_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: SEGMENT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: S17
+            transform: "SEGMENT"
+        transform: "SEGMENT"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: SEGMENT_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: S17
+            transform: "SEGMENT_NAME"
+        transform: "SEGMENT_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: S18
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: ""
+        name: CLOSEDATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: S17
+            transform: "CLOSEDATE"
+        transform: "CLOSEDATE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: S18
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: ""
+        name: CREATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: S17
+            transform: "CREATETIME"
+        transform: "CREATETIME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: DELINQUENCYSTATUS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: S17
+            transform: "DELINQUENCYSTATUS"
+        transform: "DELINQUENCYSTATUS"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: S17
+            transform: "DELINQUENCYSTATUS_NAME"
+        transform: "DELINQUENCYSTATUS_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: S17
+            transform: "FIRSTTWICEPERMTHINVOICEDOM"
+        transform: "FIRSTTWICEPERMTHINVOICEDOM"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C18
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C18
+                stepCounter: S17
+            transform: "SECONDTWICEPERMTHINVOICEDOM"
+        transform: "SECONDTWICEPERMTHINVOICEDOM"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C19
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: PUBLICID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C19
+                stepCounter: S17
+            transform: "PUBLICID"
+        transform: "PUBLICID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C20
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C20
+                stepCounter: S17
+            transform: "ID"
+        transform: "ID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C21
+                stepCounter: S17
+            transform: "BEANVERSION"
+        transform: "BEANVERSION"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: RETIRED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C22
+                stepCounter: S17
+            transform: "RETIRED"
+        transform: "RETIRED"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C23
+          stepCounter: S18
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: ""
+        name: UPDATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C23
+                stepCounter: S17
+            transform: "UPDATETIME"
+        transform: "UPDATETIME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C24
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: PARENTACCT_FOREIGNENTITYID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C24
+                stepCounter: S17
+            transform: "PARENTACCT_FOREIGNENTITYID"
+        transform: "PARENTACCT_FOREIGNENTITYID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C25
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: INSURED_FIRSTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C25
+                stepCounter: S17
+            transform: "INSURED_FIRSTNAME"
+        transform: "INSURED_FIRSTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C26
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: INSURED_LASTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C26
+                stepCounter: S17
+            transform: "INSURED_LASTNAME"
+        transform: "INSURED_LASTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C27
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ADDRESS_LINE1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C27
+                stepCounter: S17
+            transform: "ADDRESS_LINE1"
+        transform: "ADDRESS_LINE1"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C28
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ADDRESS_LINE2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C28
+                stepCounter: S17
+            transform: "ADDRESS_LINE2"
+        transform: "ADDRESS_LINE2"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C29
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ADDRESS_LINE3
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C29
+                stepCounter: S17
+            transform: "ADDRESS_LINE3"
+        transform: "ADDRESS_LINE3"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C30
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: CITY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C30
+                stepCounter: S17
+            transform: "CITY"
+        transform: "CITY"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C31
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: POSTALCODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C31
+                stepCounter: S17
+            transform: "POSTALCODE"
+        transform: "POSTALCODE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C32
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: STATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C32
+                stepCounter: S17
+            transform: "STATE"
+        transform: "STATE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C33
+          stepCounter: S18
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: STATE_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C33
+                stepCounter: S17
+            transform: "STATE_NAME"
+        transform: "STATE_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C34
+          stepCounter: S18
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: "Derived BatchID column"
+        name: BATCHID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "1"
+        transform: "1"
+        uniqueKey: false
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: TR_ROW_COUNT_SOURCE
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'TR_ROW_COUNT_SOURCE') }}
+        name: TR_DERIVED_BATCHID
+        noLinkRefs: []
+  name: TR_DERIVED_BATCHID
+  overrideSQL: false
+  schema: "RAW"
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
