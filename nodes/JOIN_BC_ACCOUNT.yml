@@ -77,8 +77,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S9
-            transform: "ATY.NAME"
-        transform: "ATY.NAME"
+            transform: "CAST(ATY.NAME AS VARCHAR(50))"
+        transform: "CAST(ATY.NAME AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -96,10 +96,10 @@ operation:
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C2
+              - columnCounter: C1
                 stepCounter: S2
-            transform: "PACCT.FOREIGNENTITYID"
-        transform: "PACCT.FOREIGNENTITYID"
+            transform: "CAST(PACCT.ACCOUNTNUMBER AS INTEGER)"
+        transform: "CAST(PACCT.ACCOUNTNUMBER AS INTEGER)"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -119,8 +119,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S10
-            transform: "BL.NAME"
-        transform: "BL.NAME"
+            transform: "CAST(BL.NAME AS VARCHAR(100))"
+        transform: "CAST(BL.NAME AS VARCHAR(100))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -140,8 +140,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S14
-            transform: "ACSG.NAME"
-        transform: "ACSG.NAME"
+            transform: "CAST(ACSG.NAME AS VARCHAR(50))"
+        transform: "CAST(ACSG.NAME AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -161,8 +161,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S11
-            transform: "CST.NAME"
-        transform: "CST.NAME"
+            transform: "CAST(CST.NAME AS VARCHAR(50))"
+        transform: "CAST(CST.NAME AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -308,8 +308,8 @@ operation:
           - columnReferences:
               - columnCounter: C5
                 stepCounter: S7
-            transform: "ADDR.CITY"
-        transform: "ADDR.CITY"
+            transform: "CAST(ADDR.CITY AS VARCHAR(50))"
+        transform: "CAST(ADDR.CITY AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -329,8 +329,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S8
-            transform: "TLS.NAME"
-        transform: "TLS.NAME"
+            transform: "CAST(TLS.NAME AS VARCHAR(50))"
+        transform: "CAST(TLS.NAME AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -350,8 +350,8 @@ operation:
           - columnReferences:
               - columnCounter: C6
                 stepCounter: S7
-            transform: "ADDR.POSTALCODE"
-        transform: "ADDR.POSTALCODE"
+            transform: "CAST(ADDR.POSTALCODE AS VARCHAR(50))"
+        transform: "CAST(ADDR.POSTALCODE AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -413,8 +413,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S13
-            transform: "TLDS.NAME"
-        transform: "TLDS.NAME"
+            transform: "CAST(TLDS.NAME AS VARCHAR(50))"
+        transform: "CAST(TLDS.NAME AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -518,8 +518,12 @@ operation:
           - columnReferences:
               - columnCounter: C15
                 stepCounter: S1
-            transform: "BA.BEANVERSION"
-        transform: "BA.BEANVERSION"
+              - columnCounter: C3
+                stepCounter: S2
+              - columnCounter: C5
+                stepCounter: S12
+            transform: "CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20))"
+        transform: "CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -539,8 +543,8 @@ operation:
           - columnReferences:
               - columnCounter: C16
                 stepCounter: S1
-            transform: "BA.RETIRED"
-        transform: "BA.RETIRED"
+            transform: "CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END"
+        transform: "CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -731,65 +735,37 @@ operation:
             SELECT DISTINCT
               BA.ACCOUNTNUMBER,
               BA.ACCOUNTNAME,
-              ATY.NAME                           AS ACCOUNTTYPENAME,
-              PACCT.FOREIGNENTITYID              AS PARENTACCOUNTNUMBER,
-              BL.NAME                            AS BILLINGLEVELNAME,
-              ACSG.NAME                          AS SEGMENT,
-              CST.NAME                           AS SERVICETIERNAME,
-              BCSZ.NAME                            AS SECURITYZONE,
+              CAST(ATY.NAME AS VARCHAR(50))                                                    AS ACCOUNTTYPENAME,
+              CAST(PACCT.ACCOUNTNUMBER AS INTEGER)                                             AS PARENTACCOUNTNUMBER,
+              CAST(BL.NAME AS VARCHAR(100))                                                    AS BILLINGLEVELNAME,
+              CAST(ACSG.NAME AS VARCHAR(50))                                                   AS SEGMENT,
+              CAST(CST.NAME AS VARCHAR(50))                                                    AS SERVICETIERNAME,
+              BCSZ.NAME                                                                        AS SECURITYZONE,
               CON.FIRSTNAME,
               CON.LASTNAME,
               ADDR.ADDRESSLINE1,
               ADDR.ADDRESSLINE2,
               ADDR.ADDRESSLINE3,
-              ADDR.CITY,
-              TLS.NAME                           AS STATE,
-              ADDR.POSTALCODE,
-              BA.CLOSEDATE                       AS ACCOUNTCLOSEDATE,
-              BA.CREATETIME                      AS ACCOUNTCREATIONDATE,
-              TLDS.NAME                          AS DELIQUENCYSTATUSNAME,
+              CAST(ADDR.CITY AS VARCHAR(50))                                                   AS CITY,
+              CAST(TLS.NAME AS VARCHAR(50))                                                    AS STATE,
+              CAST(ADDR.POSTALCODE AS VARCHAR(50))                                             AS POSTALCODE,
+              BA.CLOSEDATE                                                                     AS ACCOUNTCLOSEDATE,
+              BA.CREATETIME                                                                    AS ACCOUNTCREATIONDATE,
+              CAST(TLDS.NAME AS VARCHAR(50))                                                   AS DELIQUENCYSTATUSNAME,
               BA.FIRSTTWICEPERMTHINVOICEDOM,
               BA.SECONDTWICEPERMTHINVOICEDOM,
               BA.PUBLICID,
-              BA.ID                              AS GWROWNUMBER,
-              BA.BEANVERSION,
-              BA.RETIRED                         AS ISACTIVE,
-              'WC'                               AS LEGACYSOURCESYSTEM,
-              BA.UPDATETIME                      AS BA_UPDATETIME,
-              PACCT.UPDATETIME                   AS PACCT_UPDATETIME,
-              BCSZ.UPDATETIME                    AS SZ_UPDATETIME,
-              ACC.UPDATETIME                     AS AC_UPDATETIME,
-              ACR.UPDATETIME                     AS ACR_UPDATETIME,
-              CON.UPDATETIME                     AS C_UPDATETIME,
-              ADDR.UPDATETIME                    AS A_UPDATETIME
-            FROM {{ ref('SRC', 'BC_ACCOUNT') }} BA
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} ATY
-              ON ATY.ID = BA.ACCOUNTTYPE
-            LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} PACCT
-              ON PACCT.OWNERID = BA.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BL
-              ON BL.ID = BA.BILLINGLEVEL
-            LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST
-              ON CST.ID = BA.SERVICETIER
-            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} BCSZ
-              ON BCSZ.ID = BA.SECURITYZONEID
-            LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} TLDS
-              ON TLDS.ID = BA.DELINQUENCYSTATUS
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG
-              ON ACSG.ID = BA.SEGMENT
-            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC
-              ON ACC.INSUREDACCOUNTID = BA.ID
-            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR
-              ON ACR.ACCOUNTCONTACTID = ACC.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} TLAR
-              ON TLAR.ID = ACR.ROLE
-            LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CON
-              ON CON.ID = ACC.CONTACTID
-            LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} ADDR
-              ON ADDR.ID = CON.PRIMARYADDRESSID
-            LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} TLS
-              ON TLS.ID = ADDR.STATE
-            WHERE TLAR.TYPECODE = 'insured' OR TLAR.TYPECODE IS NULL
+              BA.ID                                                                            AS GWROWNUMBER,
+              CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20)) AS BEANVERSION,
+              CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END                                        AS ISACTIVE,
+              'WC'                                                                             AS LEGACYSOURCESYSTEM,
+              BA.UPDATETIME                                                                    AS BA_UPDATETIME,
+              PACCT.UPDATETIME                                                                 AS PACCT_UPDATETIME,
+              BCSZ.UPDATETIME                                                                  AS SZ_UPDATETIME,
+              ACC.UPDATETIME                                                                   AS AC_UPDATETIME,
+              ACR.UPDATETIME                                                                   AS ACR_UPDATETIME,
+              CON.UPDATETIME                                                                   AS C_UPDATETIME,
+              ADDR.UPDATETIME                                                                  AS A_UPDATETIME
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
@@ -836,11 +812,11 @@ operation:
               ON TLDS.ID = BA.DELINQUENCYSTATUS
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG
               ON ACSG.ID = BA.SEGMENT
-            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC
+            JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC
               ON ACC.INSUREDACCOUNTID = BA.ID
-            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR
+            JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR
               ON ACR.ACCOUNTCONTACTID = ACC.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} TLAR
+            JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} TLAR
               ON TLAR.ID = ACR.ROLE
             LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CON
               ON CON.ID = ACC.CONTACTID
@@ -848,7 +824,7 @@ operation:
               ON ADDR.ID = CON.PRIMARYADDRESSID
             LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} TLS
               ON TLS.ID = ADDR.STATE
-            WHERE TLAR.TYPECODE = 'insured' OR TLAR.TYPECODE IS NULL
+            WHERE TLAR.TYPECODE = 'insured'
         name: JOIN_BC_ACCOUNT
         noLinkRefs: []
   name: JOIN_BC_ACCOUNT
