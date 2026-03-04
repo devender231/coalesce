@@ -35,8 +35,8 @@ operation:
           - columnReferences:
               - columnCounter: C1
                 stepCounter: S1
-            transform: "ACCOUNTNUMBER"
-        transform: "ACCOUNTNUMBER"
+            transform: "BA.ACCOUNTNUMBER"
+        transform: "BA.ACCOUNTNUMBER"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -56,8 +56,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S1
-            transform: "ACCOUNTNAME"
-        transform: "ACCOUNTNAME"
+            transform: "BA.ACCOUNTNAME"
+        transform: "BA.ACCOUNTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -371,8 +371,8 @@ operation:
           - columnReferences:
               - columnCounter: C8
                 stepCounter: S1
-            transform: "CLOSEDATE"
-        transform: "CLOSEDATE"
+            transform: "BA.CLOSEDATE"
+        transform: "BA.CLOSEDATE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -392,8 +392,8 @@ operation:
           - columnReferences:
               - columnCounter: C9
                 stepCounter: S1
-            transform: "CREATETIME"
-        transform: "CREATETIME"
+            transform: "BA.CREATETIME"
+        transform: "BA.CREATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -434,8 +434,8 @@ operation:
           - columnReferences:
               - columnCounter: C11
                 stepCounter: S1
-            transform: "FIRSTTWICEPERMTHINVOICEDOM"
-        transform: "FIRSTTWICEPERMTHINVOICEDOM"
+            transform: "BA.FIRSTTWICEPERMTHINVOICEDOM"
+        transform: "BA.FIRSTTWICEPERMTHINVOICEDOM"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -455,8 +455,8 @@ operation:
           - columnReferences:
               - columnCounter: C12
                 stepCounter: S1
-            transform: "SECONDTWICEPERMTHINVOICEDOM"
-        transform: "SECONDTWICEPERMTHINVOICEDOM"
+            transform: "BA.SECONDTWICEPERMTHINVOICEDOM"
+        transform: "BA.SECONDTWICEPERMTHINVOICEDOM"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -476,8 +476,8 @@ operation:
           - columnReferences:
               - columnCounter: C13
                 stepCounter: S1
-            transform: "PUBLICID"
-        transform: "PUBLICID"
+            transform: "BA.PUBLICID"
+        transform: "BA.PUBLICID"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
