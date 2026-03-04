@@ -182,8 +182,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S12
-            transform: "SZ.NAME"
-        transform: "SZ.NAME"
+            transform: "BCSZ.NAME"
+        transform: "BCSZ.NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -557,9 +557,7 @@ operation:
         nullable: true
         primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C13
-                stepCounter: S1
+          - columnReferences: []
             transform: "'WC'"
         transform: "'WC'"
         uniqueKey: false
@@ -623,8 +621,8 @@ operation:
           - columnReferences:
               - columnCounter: C4
                 stepCounter: S12
-            transform: "SZ.UPDATETIME"
-        transform: "SZ.UPDATETIME"
+            transform: "BCSZ.UPDATETIME"
+        transform: "BCSZ.UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -725,7 +723,7 @@ operation:
           BCTL_ACCOUNTTYPE: ATY
           BCTL_BILLINGLEVEL: BL
           BCTL_CUSTOMERSERVICETIER: CST
-          BC_SECURITYZONE: SZ
+          BC_SECURITYZONE: BCSZ
           BCTL_DELINQUENCYSTATUS: TLDS
           BCTL_ACCOUNTSEGMENT: ACSG
         customSQL:
@@ -738,7 +736,7 @@ operation:
               BL.NAME                            AS BILLINGLEVELNAME,
               ACSG.NAME                          AS SEGMENT,
               CST.NAME                           AS SERVICETIERNAME,
-              SZ.NAME                            AS SECURITYZONE,
+              BCSZ.NAME                            AS SECURITYZONE,
               CON.FIRSTNAME,
               CON.LASTNAME,
               ADDR.ADDRESSLINE1,
@@ -759,7 +757,7 @@ operation:
               'WC'                               AS LEGACYSOURCESYSTEM,
               BA.UPDATETIME                      AS BA_UPDATETIME,
               PACCT.UPDATETIME                   AS PACCT_UPDATETIME,
-              SZ.UPDATETIME                      AS SZ_UPDATETIME,
+              BCSZ.UPDATETIME                    AS SZ_UPDATETIME,
               ACC.UPDATETIME                     AS AC_UPDATETIME,
               ACR.UPDATETIME                     AS ACR_UPDATETIME,
               CON.UPDATETIME                     AS C_UPDATETIME,
@@ -773,8 +771,8 @@ operation:
               ON BL.ID = BA.BILLINGLEVEL
             LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST
               ON CST.ID = BA.SERVICETIER
-            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} SZ
-              ON SZ.ID = BA.SECURITYZONEID
+            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} BCSZ
+              ON BCSZ.ID = BA.SECURITYZONEID
             LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} TLDS
               ON TLDS.ID = BA.DELINQUENCYSTATUS
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG
@@ -832,8 +830,8 @@ operation:
               ON BL.ID = BA.BILLINGLEVEL
             LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST
               ON CST.ID = BA.SERVICETIER
-            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} SZ
-              ON SZ.ID = BA.SECURITYZONEID
+            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} BCSZ
+              ON BCSZ.ID = BA.SECURITYZONEID
             LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} TLDS
               ON TLDS.ID = BA.DELINQUENCYSTATUS
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG
