@@ -97,9 +97,9 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C1
-                stepCounter: S2
-            transform: "CAST(PACCT.ACCOUNTNUMBER AS INTEGER)"
-        transform: "CAST(PACCT.ACCOUNTNUMBER AS INTEGER)"
+                stepCounter: S1
+            transform: "CAST(BA2.ACCOUNTNUMBER AS INTEGER)"
+        transform: "CAST(BA2.ACCOUNTNUMBER AS INTEGER)"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -518,10 +518,6 @@ operation:
           - columnReferences:
               - columnCounter: C15
                 stepCounter: S1
-              - columnCounter: C3
-                stepCounter: S2
-              - columnCounter: C5
-                stepCounter: S12
             transform: "CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20))"
         transform: "CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20))"
         uniqueKey: false
@@ -735,37 +731,37 @@ operation:
             SELECT DISTINCT
               BA.ACCOUNTNUMBER,
               BA.ACCOUNTNAME,
-              CAST(ATY.NAME AS VARCHAR(50))                                                    AS ACCOUNTTYPENAME,
-              CAST(PACCT.ACCOUNTNUMBER AS INTEGER)                                             AS PARENTACCOUNTNUMBER,
-              CAST(BL.NAME AS VARCHAR(100))                                                    AS BILLINGLEVELNAME,
-              CAST(ACSG.NAME AS VARCHAR(50))                                                   AS SEGMENT,
-              CAST(CST.NAME AS VARCHAR(50))                                                    AS SERVICETIERNAME,
-              BCSZ.NAME                                                                        AS SECURITYZONE,
+              CAST(ATY.NAME AS VARCHAR(50))                                                     AS ACCOUNTTYPENAME,
+              CAST(BA2.ACCOUNTNUMBER AS INTEGER)                                                AS PARENTACCOUNTNUMBER,
+              CAST(BL.NAME AS VARCHAR(100))                                                     AS BILLINGLEVELNAME,
+              CAST(ACSG.NAME AS VARCHAR(50))                                                    AS SEGMENT,
+              CAST(CST.NAME AS VARCHAR(50))                                                     AS SERVICETIERNAME,
+              BCSZ.NAME                                                                         AS SECURITYZONE,
               CON.FIRSTNAME,
               CON.LASTNAME,
               ADDR.ADDRESSLINE1,
               ADDR.ADDRESSLINE2,
               ADDR.ADDRESSLINE3,
-              CAST(ADDR.CITY AS VARCHAR(50))                                                   AS CITY,
-              CAST(TLS.NAME AS VARCHAR(50))                                                    AS STATE,
-              CAST(ADDR.POSTALCODE AS VARCHAR(50))                                             AS POSTALCODE,
-              BA.CLOSEDATE                                                                     AS ACCOUNTCLOSEDATE,
-              BA.CREATETIME                                                                    AS ACCOUNTCREATIONDATE,
-              CAST(TLDS.NAME AS VARCHAR(50))                                                   AS DELIQUENCYSTATUSNAME,
+              CAST(ADDR.CITY AS VARCHAR(50))                                                    AS CITY,
+              CAST(TLS.NAME AS VARCHAR(50))                                                     AS STATE,
+              CAST(ADDR.POSTALCODE AS VARCHAR(50))                                              AS POSTALCODE,
+              BA.CLOSEDATE                                                                      AS ACCOUNTCLOSEDATE,
+              BA.CREATETIME                                                                     AS ACCOUNTCREATIONDATE,
+              CAST(TLDS.NAME AS VARCHAR(50))                                                    AS DELIQUENCYSTATUSNAME,
               BA.FIRSTTWICEPERMTHINVOICEDOM,
               BA.SECONDTWICEPERMTHINVOICEDOM,
               BA.PUBLICID,
-              BA.ID                                                                            AS GWROWNUMBER,
+              BA.ID                                                                             AS GWROWNUMBER,
               CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20)) AS BEANVERSION,
-              CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END                                        AS ISACTIVE,
-              'WC'                                                                             AS LEGACYSOURCESYSTEM,
-              BA.UPDATETIME                                                                    AS BA_UPDATETIME,
-              PACCT.UPDATETIME                                                                 AS PACCT_UPDATETIME,
-              BCSZ.UPDATETIME                                                                  AS SZ_UPDATETIME,
-              ACC.UPDATETIME                                                                   AS AC_UPDATETIME,
-              ACR.UPDATETIME                                                                   AS ACR_UPDATETIME,
-              CON.UPDATETIME                                                                   AS C_UPDATETIME,
-              ADDR.UPDATETIME                                                                  AS A_UPDATETIME
+              CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END                                         AS ISACTIVE,
+              'WC'                                                                              AS LEGACYSOURCESYSTEM,
+              BA.UPDATETIME                                                                     AS BA_UPDATETIME,
+              PACCT.UPDATETIME                                                                  AS PACCT_UPDATETIME,
+              BCSZ.UPDATETIME                                                                   AS SZ_UPDATETIME,
+              ACC.UPDATETIME                                                                    AS AC_UPDATETIME,
+              ACR.UPDATETIME                                                                    AS ACR_UPDATETIME,
+              CON.UPDATETIME                                                                    AS C_UPDATETIME,
+              ADDR.UPDATETIME                                                                   AS A_UPDATETIME
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
@@ -802,6 +798,8 @@ operation:
               ON ATY.ID = BA.ACCOUNTTYPE
             LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} PACCT
               ON PACCT.OWNERID = BA.ID
+            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNT') }} BA2
+              ON BA2.ID = PACCT.FOREIGNENTITYID
             LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BL
               ON BL.ID = BA.BILLINGLEVEL
             LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST
