@@ -1,6 +1,6 @@
 fileVersion: 1
 id: S16
-name: JOIN_BC_ACCOUNT_ALL_TABLES
+name: JOIN_BC_ACCOUNT
 operation:
   config:
     insertStrategy: INSERT
@@ -10,7 +10,7 @@ operation:
     truncateBefore: false
   database: "PC_COALESCE_DB"
   deployEnabled: true
-  description: "Join BC_ACCOUNT with all related lookup tables and contact information"
+  description: "Join node combining BC_ACCOUNT with all lookup and related source tables"
   isMultisource: false
   locationName: SRC
   materializationType: table
@@ -67,18 +67,18 @@ operation:
           columnCounter: C3
           stepCounter: S16
         config: {}
-        dataType: INTEGER
+        dataType: STRING
         defaultValue: ""
         description: ""
-        name: ACCOUNTTYPE
+        name: ACCOUNTTYPENAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C3
-                stepCounter: S1
-            transform: "BA.ACCOUNTTYPE"
-        transform: "BA.ACCOUNTTYPE"
+              - columnCounter: C2
+                stepCounter: S9
+            transform: "CAST(ATY.NAME AS VARCHAR(50))"
+        transform: "CAST(ATY.NAME AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -88,18 +88,18 @@ operation:
           columnCounter: C4
           stepCounter: S16
         config: {}
-        dataType: STRING
+        dataType: INTEGER
         defaultValue: ""
         description: ""
-        name: ACCOUNTTYPE_NAME
+        name: PARENTACCOUNTNUMBER
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
-                stepCounter: S9
-            transform: "ATY.NAME"
-        transform: "ATY.NAME"
+                stepCounter: S2
+            transform: "CAST(BA2.ACCOUNTNUMBER AS INTEGER)"
+        transform: "CAST(BA2.ACCOUNTNUMBER AS INTEGER)"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -109,18 +109,18 @@ operation:
           columnCounter: C5
           stepCounter: S16
         config: {}
-        dataType: INTEGER
+        dataType: STRING
         defaultValue: ""
         description: ""
-        name: BILLINGLEVEL
+        name: BILLINGLEVELNAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C4
-                stepCounter: S1
-            transform: "BA.BILLINGLEVEL"
-        transform: "BA.BILLINGLEVEL"
+              - columnCounter: C2
+                stepCounter: S10
+            transform: "CAST(BL.NAME AS VARCHAR(100))"
+        transform: "CAST(BL.NAME AS VARCHAR(100))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -133,15 +133,15 @@ operation:
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: BILLINGLEVEL_NAME
+        name: SEGMENT
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
-                stepCounter: S10
-            transform: "BL.NAME"
-        transform: "BL.NAME"
+                stepCounter: S14
+            transform: "CAST(ACSG.NAME AS VARCHAR(50))"
+        transform: "CAST(ACSG.NAME AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -151,18 +151,18 @@ operation:
           columnCounter: C7
           stepCounter: S16
         config: {}
-        dataType: INTEGER
+        dataType: STRING
         defaultValue: ""
         description: ""
-        name: SERVICETIER
+        name: SERVICETIERNAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C5
-                stepCounter: S1
-            transform: "BA.SERVICETIER"
-        transform: "BA.SERVICETIER"
+              - columnCounter: C2
+                stepCounter: S11
+            transform: "CAST(CST.NAME AS VARCHAR(50))"
+        transform: "CAST(CST.NAME AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -175,15 +175,15 @@ operation:
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: SERVICETIER_NAME
+        name: SECURITYZONE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
-                stepCounter: S11
-            transform: "CST.NAME"
-        transform: "CST.NAME"
+                stepCounter: S12
+            transform: "BCSZ.NAME"
+        transform: "BCSZ.NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -193,18 +193,18 @@ operation:
           columnCounter: C9
           stepCounter: S16
         config: {}
-        dataType: INTEGER
+        dataType: STRING
         defaultValue: ""
         description: ""
-        name: SECURITYZONEID
+        name: FIRSTNAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C6
-                stepCounter: S1
-            transform: "BA.SECURITYZONEID"
-        transform: "BA.SECURITYZONEID"
+              - columnCounter: C2
+                stepCounter: S6
+            transform: "CON.FIRSTNAME"
+        transform: "CON.FIRSTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -214,18 +214,18 @@ operation:
           columnCounter: C10
           stepCounter: S16
         config: {}
-        dataType: INTEGER
+        dataType: STRING
         defaultValue: ""
         description: ""
-        name: SEGMENT
+        name: LASTNAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C7
-                stepCounter: S1
-            transform: "BA.SEGMENT"
-        transform: "BA.SEGMENT"
+              - columnCounter: C3
+                stepCounter: S6
+            transform: "CON.LASTNAME"
+        transform: "CON.LASTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -238,15 +238,15 @@ operation:
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: SEGMENT_NAME
+        name: ADDRESSLINE1
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
-                stepCounter: S14
-            transform: "ACSG.NAME"
-        transform: "ACSG.NAME"
+                stepCounter: S7
+            transform: "ADDR.ADDRESSLINE1"
+        transform: "ADDR.ADDRESSLINE1"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -256,10 +256,115 @@ operation:
           columnCounter: C12
           stepCounter: S16
         config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ADDRESSLINE2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S7
+            transform: "ADDR.ADDRESSLINE2"
+        transform: "ADDR.ADDRESSLINE2"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: S16
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ADDRESSLINE3
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S7
+            transform: "ADDR.ADDRESSLINE3"
+        transform: "ADDR.ADDRESSLINE3"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: S16
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: CITY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S7
+            transform: "CAST(ADDR.CITY AS VARCHAR(50))"
+        transform: "CAST(ADDR.CITY AS VARCHAR(50))"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: S16
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: STATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S8
+            transform: "CAST(TLS.NAME AS VARCHAR(50))"
+        transform: "CAST(TLS.NAME AS VARCHAR(50))"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: S16
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: POSTALCODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S7
+            transform: "CAST(ADDR.POSTALCODE AS VARCHAR(50))"
+        transform: "CAST(ADDR.POSTALCODE AS VARCHAR(50))"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: S16
+        config: {}
         dataType: DATETIME
         defaultValue: ""
         description: ""
-        name: CLOSEDATE
+        name: ACCOUNTCLOSEDATE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -274,13 +379,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C13
+          columnCounter: C18
           stepCounter: S16
         config: {}
         dataType: DATETIME
         defaultValue: ""
         description: ""
-        name: CREATETIME
+        name: ACCOUNTCREATIONDATE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -295,49 +400,70 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C14
-          stepCounter: S16
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: DELINQUENCYSTATUS
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C10
-                stepCounter: S1
-            transform: "BA.DELINQUENCYSTATUS"
-        transform: "BA.DELINQUENCYSTATUS"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C15
+          columnCounter: C19
           stepCounter: S16
         config: {}
         dataType: STRING
         defaultValue: ""
         description: ""
-        name: DELINQUENCYSTATUS_NAME
+        name: DELIQUENCYSTATUSNAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S13
-            transform: "DS.NAME"
-        transform: "DS.NAME"
+            transform: "CAST(TLDS.NAME AS VARCHAR(50))"
+        transform: "CAST(TLDS.NAME AS VARCHAR(50))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C16
+          columnCounter: C20
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: FIRSTTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: S1
+            transform: "BA.FIRSTTWICEPERMTHINVOICEDOM"
+        transform: "BA.FIRSTTWICEPERMTHINVOICEDOM"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: S16
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: SECONDTWICEPERMTHINVOICEDOM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: S1
+            transform: "BA.SECONDTWICEPERMTHINVOICEDOM"
+        transform: "BA.SECONDTWICEPERMTHINVOICEDOM"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -358,13 +484,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C17
+          columnCounter: C23
           stepCounter: S16
         config: {}
         dataType: INTEGER
         defaultValue: ""
         description: ""
-        name: ID
+        name: GWROWNUMBER
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -379,7 +505,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C18
+          columnCounter: C24
           stepCounter: S16
         config: {}
         dataType: STRING
@@ -392,42 +518,61 @@ operation:
           - columnReferences:
               - columnCounter: C15
                 stepCounter: S1
-            transform: "BA.BEANVERSION"
-        transform: "BA.BEANVERSION"
+            transform: "CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20))"
+        transform: "CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20))"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C19
+          columnCounter: C25
           stepCounter: S16
         config: {}
         dataType: INTEGER
         defaultValue: ""
         description: ""
-        name: RETIRED
+        name: ISACTIVE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C16
                 stepCounter: S1
-            transform: "BA.RETIRED"
-        transform: "BA.RETIRED"
+            transform: "CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END"
+        transform: "CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C20
+          columnCounter: C26
+          stepCounter: S16
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: LEGACYSOURCESYSTEM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'WC'"
+        transform: "'WC'"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C27
           stepCounter: S16
         config: {}
         dataType: DATETIME
         defaultValue: ""
         description: ""
-        name: UPDATETIME
+        name: BA_UPDATETIME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -442,168 +587,21 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: C21
+          columnCounter: C28
           stepCounter: S16
         config: {}
-        dataType: INTEGER
+        dataType: DATETIME
         defaultValue: ""
         description: ""
-        name: PARENTACCT_FOREIGNENTITYID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C2
-                stepCounter: S2
-            transform: "PA.FOREIGNENTITYID"
-        transform: "PA.FOREIGNENTITYID"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C22
-          stepCounter: S16
-        config: {}
-        dataType: INTEGER
-        defaultValue: ""
-        description: ""
-        name: CONTACT_ID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C1
-                stepCounter: S6
-            transform: "INS.CONTACT_ID"
-        transform: "INS.CONTACT_ID"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C23
-          stepCounter: S16
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: FIRSTNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C2
-                stepCounter: S6
-            transform: "INS.FIRSTNAME"
-        transform: "INS.FIRSTNAME"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C24
-          stepCounter: S16
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: LASTNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C3
-                stepCounter: S6
-            transform: "INS.LASTNAME"
-        transform: "INS.LASTNAME"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C25
-          stepCounter: S16
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: ADDRESSLINE1
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C2
-                stepCounter: S7
-            transform: "INS.ADDRESSLINE1"
-        transform: "INS.ADDRESSLINE1"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C26
-          stepCounter: S16
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: ADDRESSLINE2
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C3
-                stepCounter: S7
-            transform: "INS.ADDRESSLINE2"
-        transform: "INS.ADDRESSLINE2"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C27
-          stepCounter: S16
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: ADDRESSLINE3
+        name: PACCT_UPDATETIME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C4
-                stepCounter: S7
-            transform: "INS.ADDRESSLINE3"
-        transform: "INS.ADDRESSLINE3"
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: C28
-          stepCounter: S16
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: CITY
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C5
-                stepCounter: S7
-            transform: "INS.CITY"
-        transform: "INS.CITY"
+                stepCounter: S2
+            transform: "PACCT.UPDATETIME"
+        transform: "PACCT.UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -613,18 +611,18 @@ operation:
           columnCounter: C29
           stepCounter: S16
         config: {}
-        dataType: STRING
+        dataType: DATETIME
         defaultValue: ""
         description: ""
-        name: POSTALCODE
+        name: SZ_UPDATETIME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C6
-                stepCounter: S7
-            transform: "INS.POSTALCODE"
-        transform: "INS.POSTALCODE"
+              - columnCounter: C4
+                stepCounter: S12
+            transform: "BCSZ.UPDATETIME"
+        transform: "BCSZ.UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -634,18 +632,18 @@ operation:
           columnCounter: C30
           stepCounter: S16
         config: {}
-        dataType: INTEGER
+        dataType: DATETIME
         defaultValue: ""
         description: ""
-        name: STATE
+        name: AC_UPDATETIME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C7
-                stepCounter: S7
-            transform: "INS.STATE"
-        transform: "INS.STATE"
+              - columnCounter: C5
+                stepCounter: S3
+            transform: "ACC.UPDATETIME"
+        transform: "ACC.UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -655,98 +653,81 @@ operation:
           columnCounter: C31
           stepCounter: S16
         config: {}
-        dataType: STRING
+        dataType: DATETIME
         defaultValue: ""
         description: ""
-        name: STATE_NAME
+        name: ACR_UPDATETIME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C2
-                stepCounter: S8
-            transform: "INS.STATE_NAME"
-        transform: "INS.STATE_NAME"
+              - columnCounter: C5
+                stepCounter: S4
+            transform: "ACR.UPDATETIME"
+        transform: "ACR.UPDATETIME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C32
+          stepCounter: S16
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: ""
+        name: C_UPDATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S6
+            transform: "CON.UPDATETIME"
+        transform: "CON.UPDATETIME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C33
+          stepCounter: S16
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: ""
+        name: A_UPDATETIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: S7
+            transform: "ADDR.UPDATETIME"
+        transform: "ADDR.UPDATETIME"
         uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
           BC_ACCOUNT: BA
-          BCTL_ACCOUNTTYPE: ATY
-          BC_PARENTACCT: PA
-          BCTL_BILLINGLEVEL: BL
-          BCTL_CUSTOMERSERVICETIER: CST
-          BC_SECURITYZONE: SZN
-          BCTL_DELINQUENCYSTATUS: DS
-          BCTL_ACCOUNTSEGMENT: ACSG
+          BC_PARENTACCT: PACCT
           BC_ACCOUNTCONTACT: ACC
           BC_ACCOUNTCONTACTROLE: ACR
-          BCTL_ACCOUNTROLE: ARO
+          BCTL_ACCOUNTROLE: TLAR
           BC_CONTACT: CON
-          BC_ADDRESS: ADR
-          BCTL_STATE: STT
+          BC_ADDRESS: ADDR
+          BCTL_STATE: TLS
+          BCTL_ACCOUNTTYPE: ATY
+          BCTL_BILLINGLEVEL: BL
+          BCTL_CUSTOMERSERVICETIER: CST
+          BC_SECURITYZONE: BCSZ
+          BCTL_DELINQUENCYSTATUS: TLDS
+          BCTL_ACCOUNTSEGMENT: ACSG
         customSQL:
-          customSQL: |
-            SELECT
-              BA.ACCOUNTNUMBER,
-              BA.ACCOUNTNAME,
-              BA.ACCOUNTTYPE,
-              ATY.NAME AS ACCOUNTTYPE_NAME,
-              BA.BILLINGLEVEL,
-              BL.NAME AS BILLINGLEVEL_NAME,
-              BA.SERVICETIER,
-              CST.NAME AS SERVICETIER_NAME,
-              BA.SECURITYZONEID,
-              BA.SEGMENT,
-              ACSG.NAME AS SEGMENT_NAME,
-              BA.CLOSEDATE,
-              BA.CREATETIME,
-              BA.DELINQUENCYSTATUS,
-              DS.NAME AS DELINQUENCYSTATUS_NAME,
-              BA.PUBLICID,
-              BA.ID,
-              BA.BEANVERSION,
-              BA.RETIRED,
-              BA.UPDATETIME,
-              PA.FOREIGNENTITYID AS PARENTACCT_FOREIGNENTITYID,
-              INS.CONTACT_ID,
-              INS.FIRSTNAME,
-              INS.LASTNAME,
-              INS.ADDRESSLINE1,
-              INS.ADDRESSLINE2,
-              INS.ADDRESSLINE3,
-              INS.CITY,
-              INS.POSTALCODE,
-              INS.STATE,
-              INS.STATE_NAME
-            FROM {{ ref('SRC', 'BC_ACCOUNT') }} BA
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} ATY ON BA.ACCOUNTTYPE = ATY.ID
-            LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} PA ON PA.OWNERID = BA.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BL ON BA.BILLINGLEVEL = BL.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST ON BA.SERVICETIER = CST.ID
-            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} SZN ON BA.SECURITYZONEID = SZN.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} DS ON BA.DELINQUENCYSTATUS = DS.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG ON BA.SEGMENT = ACSG.ID
-            LEFT JOIN (
-              SELECT ACC.INSUREDACCOUNTID AS ACCOUNTID,
-                     CON.ID AS CONTACT_ID,
-                     CON.FIRSTNAME,
-                     CON.LASTNAME,
-                     ADR.ADDRESSLINE1,
-                     ADR.ADDRESSLINE2,
-                     ADR.ADDRESSLINE3,
-                     ADR.CITY,
-                     ADR.POSTALCODE,
-                     ADR.STATE,
-                     STT.NAME AS STATE_NAME
-              FROM {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC
-              INNER JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR ON ACR.ACCOUNTCONTACTID = ACC.ID
-              INNER JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} ARO ON ARO.ID = ACR.ROLE AND ARO.TYPECODE = 'insured'
-              LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CON ON CON.ID = ACC.CONTACTID
-              LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} ADR ON ADR.ID = CON.PRIMARYADDRESSID
-              LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} STT ON STT.ID = ADR.STATE
-            ) INS ON INS.ACCOUNTID = BA.ID
+          customSQL: ""
         dependencies:
           - locationName: SRC
             nodeName: BC_ACCOUNT
@@ -779,23 +760,39 @@ operation:
         join:
           joinCondition: |
             FROM {{ ref('SRC', 'BC_ACCOUNT') }} BA
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} ATY ON BA.ACCOUNTTYPE = ATY.ID
-            LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} PA ON PA.OWNERID = BA.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BL ON BA.BILLINGLEVEL = BL.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST ON BA.SERVICETIER = CST.ID
-            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} SZN ON BA.SECURITYZONEID = SZN.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} DS ON BA.DELINQUENCYSTATUS = DS.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG ON BA.SEGMENT = ACSG.ID
-            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC ON ACC.INSUREDACCOUNTID = BA.ID
-            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR ON ACR.ACCOUNTCONTACTID = ACC.ID
-            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} ARO ON ARO.ID = ACR.ROLE
-            LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CON ON CON.ID = ACC.CONTACTID
-            LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} ADR ON ADR.ID = CON.PRIMARYADDRESSID
-            LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} STT ON STT.ID = ADR.STATE
-        name: JOIN_BC_ACCOUNT_ALL_TABLES
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} ATY
+              ON ATY.ID = BA.ACCOUNTTYPE
+            LEFT JOIN {{ ref('SRC', 'BC_PARENTACCT') }} PACCT
+              ON PACCT.OWNERID = BA.ID
+            LEFT JOIN {{ ref('SRC', 'BC_ACCOUNT') }} BA2
+              ON BA2.ID = PACCT.FOREIGNENTITYID
+            LEFT JOIN {{ ref('SRC', 'BCTL_BILLINGLEVEL') }} BL
+              ON BL.ID = BA.BILLINGLEVEL
+            LEFT JOIN {{ ref('SRC', 'BCTL_CUSTOMERSERVICETIER') }} CST
+              ON CST.ID = BA.SERVICETIER
+            LEFT JOIN {{ ref('SRC', 'BC_SECURITYZONE') }} BCSZ
+              ON BCSZ.ID = BA.SECURITYZONEID
+            LEFT JOIN {{ ref('SRC', 'BCTL_DELINQUENCYSTATUS') }} TLDS
+              ON TLDS.ID = BA.DELINQUENCYSTATUS
+            LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTSEGMENT') }} ACSG
+              ON ACSG.ID = BA.SEGMENT
+            JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACT') }} ACC
+              ON ACC.INSUREDACCOUNTID = BA.ID
+            JOIN {{ ref('SRC', 'BC_ACCOUNTCONTACTROLE') }} ACR
+              ON ACR.ACCOUNTCONTACTID = ACC.ID
+            JOIN {{ ref('SRC', 'BCTL_ACCOUNTROLE') }} TLAR
+              ON TLAR.ID = ACR.ROLE
+            LEFT JOIN {{ ref('SRC', 'BC_CONTACT') }} CON
+              ON CON.ID = ACC.CONTACTID
+            LEFT JOIN {{ ref('SRC', 'BC_ADDRESS') }} ADDR
+              ON ADDR.ID = CON.PRIMARYADDRESSID
+            LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} TLS
+              ON TLS.ID = ADDR.STATE
+            WHERE TLAR.TYPECODE = 'insured'
+        name: JOIN_BC_ACCOUNT
         noLinkRefs: []
-  name: JOIN_BC_ACCOUNT_ALL_TABLES
-  overrideSQL: true
+  name: JOIN_BC_ACCOUNT
+  overrideSQL: false
   schema: "RAW"
   sqlType: Stage
   type: sql
