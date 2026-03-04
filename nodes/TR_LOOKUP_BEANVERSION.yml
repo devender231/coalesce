@@ -35,8 +35,8 @@ operation:
           - columnReferences:
               - columnCounter: C1
                 stepCounter: S17
-            transform: "ACCOUNTNUMBER"
-        transform: "ACCOUNTNUMBER"
+            transform: "SRC.ACCOUNTNUMBER"
+        transform: "SRC.ACCOUNTNUMBER"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -56,8 +56,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S17
-            transform: "ACCOUNTNAME"
-        transform: "ACCOUNTNAME"
+            transform: "SRC.ACCOUNTNAME"
+        transform: "SRC.ACCOUNTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -77,8 +77,8 @@ operation:
           - columnReferences:
               - columnCounter: C3
                 stepCounter: S17
-            transform: "ACCOUNTTYPE"
-        transform: "ACCOUNTTYPE"
+            transform: "SRC.ACCOUNTTYPE"
+        transform: "SRC.ACCOUNTTYPE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -98,8 +98,8 @@ operation:
           - columnReferences:
               - columnCounter: C4
                 stepCounter: S17
-            transform: "ACCOUNTTYPE_NAME"
-        transform: "ACCOUNTTYPE_NAME"
+            transform: "SRC.ACCOUNTTYPE_NAME"
+        transform: "SRC.ACCOUNTTYPE_NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -119,8 +119,8 @@ operation:
           - columnReferences:
               - columnCounter: C5
                 stepCounter: S17
-            transform: "BILLINGLEVEL"
-        transform: "BILLINGLEVEL"
+            transform: "SRC.BILLINGLEVEL"
+        transform: "SRC.BILLINGLEVEL"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -140,8 +140,8 @@ operation:
           - columnReferences:
               - columnCounter: C6
                 stepCounter: S17
-            transform: "BILLINGLEVEL_NAME"
-        transform: "BILLINGLEVEL_NAME"
+            transform: "SRC.BILLINGLEVEL_NAME"
+        transform: "SRC.BILLINGLEVEL_NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -161,8 +161,8 @@ operation:
           - columnReferences:
               - columnCounter: C7
                 stepCounter: S17
-            transform: "SERVICETIER"
-        transform: "SERVICETIER"
+            transform: "SRC.SERVICETIER"
+        transform: "SRC.SERVICETIER"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -182,8 +182,8 @@ operation:
           - columnReferences:
               - columnCounter: C8
                 stepCounter: S17
-            transform: "SERVICETIER_NAME"
-        transform: "SERVICETIER_NAME"
+            transform: "SRC.SERVICETIER_NAME"
+        transform: "SRC.SERVICETIER_NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -203,8 +203,8 @@ operation:
           - columnReferences:
               - columnCounter: C9
                 stepCounter: S17
-            transform: "SECURITYZONEID"
-        transform: "SECURITYZONEID"
+            transform: "SRC.SECURITYZONEID"
+        transform: "SRC.SECURITYZONEID"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -224,8 +224,8 @@ operation:
           - columnReferences:
               - columnCounter: C10
                 stepCounter: S17
-            transform: "SECURITYZONE_NAME"
-        transform: "SECURITYZONE_NAME"
+            transform: "SRC.SECURITYZONE_NAME"
+        transform: "SRC.SECURITYZONE_NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -245,8 +245,8 @@ operation:
           - columnReferences:
               - columnCounter: C11
                 stepCounter: S17
-            transform: "SEGMENT"
-        transform: "SEGMENT"
+            transform: "SRC.SEGMENT"
+        transform: "SRC.SEGMENT"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -266,8 +266,8 @@ operation:
           - columnReferences:
               - columnCounter: C12
                 stepCounter: S17
-            transform: "SEGMENT_NAME"
-        transform: "SEGMENT_NAME"
+            transform: "SRC.SEGMENT_NAME"
+        transform: "SRC.SEGMENT_NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -287,8 +287,8 @@ operation:
           - columnReferences:
               - columnCounter: C13
                 stepCounter: S17
-            transform: "CLOSEDATE"
-        transform: "CLOSEDATE"
+            transform: "SRC.CLOSEDATE"
+        transform: "SRC.CLOSEDATE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -308,8 +308,8 @@ operation:
           - columnReferences:
               - columnCounter: C14
                 stepCounter: S17
-            transform: "CREATETIME"
-        transform: "CREATETIME"
+            transform: "SRC.CREATETIME"
+        transform: "SRC.CREATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -329,8 +329,8 @@ operation:
           - columnReferences:
               - columnCounter: C15
                 stepCounter: S17
-            transform: "DELINQUENCYSTATUS"
-        transform: "DELINQUENCYSTATUS"
+            transform: "SRC.DELINQUENCYSTATUS"
+        transform: "SRC.DELINQUENCYSTATUS"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -350,8 +350,8 @@ operation:
           - columnReferences:
               - columnCounter: C16
                 stepCounter: S17
-            transform: "DELINQUENCYSTATUS_NAME"
-        transform: "DELINQUENCYSTATUS_NAME"
+            transform: "SRC.DELINQUENCYSTATUS_NAME"
+        transform: "SRC.DELINQUENCYSTATUS_NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -371,8 +371,8 @@ operation:
           - columnReferences:
               - columnCounter: C17
                 stepCounter: S17
-            transform: "FIRSTTWICEPERMTHINVOICEDOM"
-        transform: "FIRSTTWICEPERMTHINVOICEDOM"
+            transform: "SRC.FIRSTTWICEPERMTHINVOICEDOM"
+        transform: "SRC.FIRSTTWICEPERMTHINVOICEDOM"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -392,8 +392,8 @@ operation:
           - columnReferences:
               - columnCounter: C18
                 stepCounter: S17
-            transform: "SECONDTWICEPERMTHINVOICEDOM"
-        transform: "SECONDTWICEPERMTHINVOICEDOM"
+            transform: "SRC.SECONDTWICEPERMTHINVOICEDOM"
+        transform: "SRC.SECONDTWICEPERMTHINVOICEDOM"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -413,8 +413,8 @@ operation:
           - columnReferences:
               - columnCounter: C19
                 stepCounter: S17
-            transform: "PUBLICID"
-        transform: "PUBLICID"
+            transform: "SRC.PUBLICID"
+        transform: "SRC.PUBLICID"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -434,8 +434,8 @@ operation:
           - columnReferences:
               - columnCounter: C20
                 stepCounter: S17
-            transform: "ID"
-        transform: "ID"
+            transform: "SRC.ID"
+        transform: "SRC.ID"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -455,8 +455,8 @@ operation:
           - columnReferences:
               - columnCounter: C21
                 stepCounter: S17
-            transform: "BEANVERSION"
-        transform: "BEANVERSION"
+            transform: "SRC.BEANVERSION"
+        transform: "SRC.BEANVERSION"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -476,8 +476,8 @@ operation:
           - columnReferences:
               - columnCounter: C22
                 stepCounter: S17
-            transform: "RETIRED"
-        transform: "RETIRED"
+            transform: "SRC.RETIRED"
+        transform: "SRC.RETIRED"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -497,8 +497,8 @@ operation:
           - columnReferences:
               - columnCounter: C23
                 stepCounter: S17
-            transform: "UPDATETIME"
-        transform: "UPDATETIME"
+            transform: "SRC.UPDATETIME"
+        transform: "SRC.UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -518,8 +518,8 @@ operation:
           - columnReferences:
               - columnCounter: C24
                 stepCounter: S17
-            transform: "PARENTACCT_FOREIGNENTITYID"
-        transform: "PARENTACCT_FOREIGNENTITYID"
+            transform: "SRC.PARENTACCT_FOREIGNENTITYID"
+        transform: "SRC.PARENTACCT_FOREIGNENTITYID"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -539,8 +539,8 @@ operation:
           - columnReferences:
               - columnCounter: C25
                 stepCounter: S17
-            transform: "INSURED_FIRSTNAME"
-        transform: "INSURED_FIRSTNAME"
+            transform: "SRC.INSURED_FIRSTNAME"
+        transform: "SRC.INSURED_FIRSTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -560,8 +560,8 @@ operation:
           - columnReferences:
               - columnCounter: C26
                 stepCounter: S17
-            transform: "INSURED_LASTNAME"
-        transform: "INSURED_LASTNAME"
+            transform: "SRC.INSURED_LASTNAME"
+        transform: "SRC.INSURED_LASTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -581,8 +581,8 @@ operation:
           - columnReferences:
               - columnCounter: C27
                 stepCounter: S17
-            transform: "ADDRESS_LINE1"
-        transform: "ADDRESS_LINE1"
+            transform: "SRC.ADDRESS_LINE1"
+        transform: "SRC.ADDRESS_LINE1"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -602,8 +602,8 @@ operation:
           - columnReferences:
               - columnCounter: C28
                 stepCounter: S17
-            transform: "ADDRESS_LINE2"
-        transform: "ADDRESS_LINE2"
+            transform: "SRC.ADDRESS_LINE2"
+        transform: "SRC.ADDRESS_LINE2"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -623,8 +623,8 @@ operation:
           - columnReferences:
               - columnCounter: C29
                 stepCounter: S17
-            transform: "ADDRESS_LINE3"
-        transform: "ADDRESS_LINE3"
+            transform: "SRC.ADDRESS_LINE3"
+        transform: "SRC.ADDRESS_LINE3"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -644,8 +644,8 @@ operation:
           - columnReferences:
               - columnCounter: C30
                 stepCounter: S17
-            transform: "CITY"
-        transform: "CITY"
+            transform: "SRC.CITY"
+        transform: "SRC.CITY"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -665,8 +665,8 @@ operation:
           - columnReferences:
               - columnCounter: C31
                 stepCounter: S17
-            transform: "POSTALCODE"
-        transform: "POSTALCODE"
+            transform: "SRC.POSTALCODE"
+        transform: "SRC.POSTALCODE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -686,8 +686,8 @@ operation:
           - columnReferences:
               - columnCounter: C32
                 stepCounter: S17
-            transform: "STATE"
-        transform: "STATE"
+            transform: "SRC.STATE"
+        transform: "SRC.STATE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -707,8 +707,8 @@ operation:
           - columnReferences:
               - columnCounter: C33
                 stepCounter: S17
-            transform: "STATE_NAME"
-        transform: "STATE_NAME"
+            transform: "SRC.STATE_NAME"
+        transform: "SRC.STATE_NAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -728,8 +728,8 @@ operation:
           - columnReferences:
               - columnCounter: C34
                 stepCounter: S17
-            transform: "BATCHID"
-        transform: "BATCHID"
+            transform: "SRC.BATCHID"
+        transform: "SRC.BATCHID"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -756,11 +756,45 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
+          TR_ADD_BATCHID: SRC
           DIMBILLINGACCOUNT: DIM
         customSQL:
           customSQL: |
             SELECT
-              SRC.*,
+              SRC.ACCOUNTNUMBER,
+              SRC.ACCOUNTNAME,
+              SRC.ACCOUNTTYPE,
+              SRC.ACCOUNTTYPE_NAME,
+              SRC.BILLINGLEVEL,
+              SRC.BILLINGLEVEL_NAME,
+              SRC.SERVICETIER,
+              SRC.SERVICETIER_NAME,
+              SRC.SECURITYZONEID,
+              SRC.SECURITYZONE_NAME,
+              SRC.SEGMENT,
+              SRC.SEGMENT_NAME,
+              SRC.CLOSEDATE,
+              SRC.CREATETIME,
+              SRC.DELINQUENCYSTATUS,
+              SRC.DELINQUENCYSTATUS_NAME,
+              SRC.FIRSTTWICEPERMTHINVOICEDOM,
+              SRC.SECONDTWICEPERMTHINVOICEDOM,
+              SRC.PUBLICID,
+              SRC.ID,
+              SRC.BEANVERSION,
+              SRC.RETIRED,
+              SRC.UPDATETIME,
+              SRC.PARENTACCT_FOREIGNENTITYID,
+              SRC.INSURED_FIRSTNAME,
+              SRC.INSURED_LASTNAME,
+              SRC.ADDRESS_LINE1,
+              SRC.ADDRESS_LINE2,
+              SRC.ADDRESS_LINE3,
+              SRC.CITY,
+              SRC.POSTALCODE,
+              SRC.STATE,
+              SRC.STATE_NAME,
+              SRC.BATCHID,
               DIM.BEANVERSION AS EDW_BEANVERSION
             FROM {{ ref('SRC', 'TR_ADD_BATCHID') }} SRC
             LEFT JOIN {{ ref('SRC', 'DIMBILLINGACCOUNT') }} DIM
