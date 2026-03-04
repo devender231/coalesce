@@ -35,8 +35,8 @@ operation:
           - columnReferences:
               - columnCounter: C1
                 stepCounter: S1
-            transform: "BA.ACCOUNTNUMBER"
-        transform: "BA.ACCOUNTNUMBER"
+            transform: "ACCOUNTNUMBER"
+        transform: "ACCOUNTNUMBER"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -56,8 +56,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S1
-            transform: "BA.ACCOUNTNAME"
-        transform: "BA.ACCOUNTNAME"
+            transform: "ACCOUNTNAME"
+        transform: "ACCOUNTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -77,8 +77,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S9
-            transform: "CAST(ATY.NAME AS VARCHAR(50))"
-        transform: "CAST(ATY.NAME AS VARCHAR(50))"
+            transform: "ACCOUNTTYPENAME"
+        transform: "ACCOUNTTYPENAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -96,10 +96,10 @@ operation:
         primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C1
-                stepCounter: S1
-            transform: "CAST(BA2.ACCOUNTNUMBER AS INTEGER)"
-        transform: "CAST(BA2.ACCOUNTNUMBER AS INTEGER)"
+              - columnCounter: C2
+                stepCounter: S2
+            transform: "PARENTACCOUNTNUMBER"
+        transform: "PARENTACCOUNTNUMBER"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -119,8 +119,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S10
-            transform: "CAST(BL.NAME AS VARCHAR(100))"
-        transform: "CAST(BL.NAME AS VARCHAR(100))"
+            transform: "BILLINGLEVELNAME"
+        transform: "BILLINGLEVELNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -140,8 +140,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S14
-            transform: "CAST(ACSG.NAME AS VARCHAR(50))"
-        transform: "CAST(ACSG.NAME AS VARCHAR(50))"
+            transform: "SEGMENT"
+        transform: "SEGMENT"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -161,8 +161,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S11
-            transform: "CAST(CST.NAME AS VARCHAR(50))"
-        transform: "CAST(CST.NAME AS VARCHAR(50))"
+            transform: "SERVICETIERNAME"
+        transform: "SERVICETIERNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -182,8 +182,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S12
-            transform: "BCSZ.NAME"
-        transform: "BCSZ.NAME"
+            transform: "SECURITYZONE"
+        transform: "SECURITYZONE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -203,8 +203,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S6
-            transform: "CON.FIRSTNAME"
-        transform: "CON.FIRSTNAME"
+            transform: "FIRSTNAME"
+        transform: "FIRSTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -224,8 +224,8 @@ operation:
           - columnReferences:
               - columnCounter: C3
                 stepCounter: S6
-            transform: "CON.LASTNAME"
-        transform: "CON.LASTNAME"
+            transform: "LASTNAME"
+        transform: "LASTNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -245,8 +245,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S7
-            transform: "ADDR.ADDRESSLINE1"
-        transform: "ADDR.ADDRESSLINE1"
+            transform: "ADDRESSLINE1"
+        transform: "ADDRESSLINE1"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -266,8 +266,8 @@ operation:
           - columnReferences:
               - columnCounter: C3
                 stepCounter: S7
-            transform: "ADDR.ADDRESSLINE2"
-        transform: "ADDR.ADDRESSLINE2"
+            transform: "ADDRESSLINE2"
+        transform: "ADDRESSLINE2"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -287,8 +287,8 @@ operation:
           - columnReferences:
               - columnCounter: C4
                 stepCounter: S7
-            transform: "ADDR.ADDRESSLINE3"
-        transform: "ADDR.ADDRESSLINE3"
+            transform: "ADDRESSLINE3"
+        transform: "ADDRESSLINE3"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -308,8 +308,8 @@ operation:
           - columnReferences:
               - columnCounter: C5
                 stepCounter: S7
-            transform: "CAST(ADDR.CITY AS VARCHAR(50))"
-        transform: "CAST(ADDR.CITY AS VARCHAR(50))"
+            transform: "CITY"
+        transform: "CITY"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -329,8 +329,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S8
-            transform: "CAST(TLS.NAME AS VARCHAR(50))"
-        transform: "CAST(TLS.NAME AS VARCHAR(50))"
+            transform: "STATE"
+        transform: "STATE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -350,8 +350,8 @@ operation:
           - columnReferences:
               - columnCounter: C6
                 stepCounter: S7
-            transform: "CAST(ADDR.POSTALCODE AS VARCHAR(50))"
-        transform: "CAST(ADDR.POSTALCODE AS VARCHAR(50))"
+            transform: "POSTALCODE"
+        transform: "POSTALCODE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -371,8 +371,8 @@ operation:
           - columnReferences:
               - columnCounter: C8
                 stepCounter: S1
-            transform: "BA.CLOSEDATE"
-        transform: "BA.CLOSEDATE"
+            transform: "ACCOUNTCLOSEDATE"
+        transform: "ACCOUNTCLOSEDATE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -392,8 +392,8 @@ operation:
           - columnReferences:
               - columnCounter: C9
                 stepCounter: S1
-            transform: "BA.CREATETIME"
-        transform: "BA.CREATETIME"
+            transform: "ACCOUNTCREATIONDATE"
+        transform: "ACCOUNTCREATIONDATE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -413,8 +413,8 @@ operation:
           - columnReferences:
               - columnCounter: C2
                 stepCounter: S13
-            transform: "CAST(TLDS.NAME AS VARCHAR(50))"
-        transform: "CAST(TLDS.NAME AS VARCHAR(50))"
+            transform: "DELIQUENCYSTATUSNAME"
+        transform: "DELIQUENCYSTATUSNAME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -434,8 +434,8 @@ operation:
           - columnReferences:
               - columnCounter: C11
                 stepCounter: S1
-            transform: "BA.FIRSTTWICEPERMTHINVOICEDOM"
-        transform: "BA.FIRSTTWICEPERMTHINVOICEDOM"
+            transform: "FIRSTTWICEPERMTHINVOICEDOM"
+        transform: "FIRSTTWICEPERMTHINVOICEDOM"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -455,8 +455,8 @@ operation:
           - columnReferences:
               - columnCounter: C12
                 stepCounter: S1
-            transform: "BA.SECONDTWICEPERMTHINVOICEDOM"
-        transform: "BA.SECONDTWICEPERMTHINVOICEDOM"
+            transform: "SECONDTWICEPERMTHINVOICEDOM"
+        transform: "SECONDTWICEPERMTHINVOICEDOM"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -476,8 +476,8 @@ operation:
           - columnReferences:
               - columnCounter: C13
                 stepCounter: S1
-            transform: "BA.PUBLICID"
-        transform: "BA.PUBLICID"
+            transform: "PUBLICID"
+        transform: "PUBLICID"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -497,8 +497,8 @@ operation:
           - columnReferences:
               - columnCounter: C14
                 stepCounter: S1
-            transform: "BA.ID"
-        transform: "BA.ID"
+            transform: "GWROWNUMBER"
+        transform: "GWROWNUMBER"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -518,8 +518,8 @@ operation:
           - columnReferences:
               - columnCounter: C15
                 stepCounter: S1
-            transform: "CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20))"
-        transform: "CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20))"
+            transform: "BEANVERSION"
+        transform: "BEANVERSION"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -539,8 +539,8 @@ operation:
           - columnReferences:
               - columnCounter: C16
                 stepCounter: S1
-            transform: "CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END"
-        transform: "CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END"
+            transform: "ISACTIVE"
+        transform: "ISACTIVE"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -558,8 +558,8 @@ operation:
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: "'WC'"
-        transform: "'WC'"
+            transform: "LEGACYSOURCESYSTEM"
+        transform: "LEGACYSOURCESYSTEM"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -579,8 +579,8 @@ operation:
           - columnReferences:
               - columnCounter: C17
                 stepCounter: S1
-            transform: "BA.UPDATETIME"
-        transform: "BA.UPDATETIME"
+            transform: "BA_UPDATETIME"
+        transform: "BA_UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -600,8 +600,8 @@ operation:
           - columnReferences:
               - columnCounter: C4
                 stepCounter: S2
-            transform: "PACCT.UPDATETIME"
-        transform: "PACCT.UPDATETIME"
+            transform: "PACCT_UPDATETIME"
+        transform: "PACCT_UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -621,8 +621,8 @@ operation:
           - columnReferences:
               - columnCounter: C4
                 stepCounter: S12
-            transform: "BCSZ.UPDATETIME"
-        transform: "BCSZ.UPDATETIME"
+            transform: "SZ_UPDATETIME"
+        transform: "SZ_UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -642,8 +642,8 @@ operation:
           - columnReferences:
               - columnCounter: C5
                 stepCounter: S3
-            transform: "ACC.UPDATETIME"
-        transform: "ACC.UPDATETIME"
+            transform: "AC_UPDATETIME"
+        transform: "AC_UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -663,8 +663,8 @@ operation:
           - columnReferences:
               - columnCounter: C5
                 stepCounter: S4
-            transform: "ACR.UPDATETIME"
-        transform: "ACR.UPDATETIME"
+            transform: "ACR_UPDATETIME"
+        transform: "ACR_UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -684,8 +684,8 @@ operation:
           - columnReferences:
               - columnCounter: C6
                 stepCounter: S6
-            transform: "CON.UPDATETIME"
-        transform: "CON.UPDATETIME"
+            transform: "C_UPDATETIME"
+        transform: "C_UPDATETIME"
         uniqueKey: false
       - acceptedValues:
           strictMatch: true
@@ -705,8 +705,8 @@ operation:
           - columnReferences:
               - columnCounter: C9
                 stepCounter: S7
-            transform: "ADDR.UPDATETIME"
-        transform: "ADDR.UPDATETIME"
+            transform: "A_UPDATETIME"
+        transform: "A_UPDATETIME"
         uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
@@ -727,38 +727,41 @@ operation:
           BCTL_DELINQUENCYSTATUS: TLDS
           BCTL_ACCOUNTSEGMENT: ACSG
         customSQL:
-          customSQL: ""
-        dependencies:
-          - locationName: SRC
-            nodeName: BC_ACCOUNT
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTTYPE
-          - locationName: SRC
-            nodeName: BC_PARENTACCT
-          - locationName: SRC
-            nodeName: BCTL_BILLINGLEVEL
-          - locationName: SRC
-            nodeName: BCTL_CUSTOMERSERVICETIER
-          - locationName: SRC
-            nodeName: BC_SECURITYZONE
-          - locationName: SRC
-            nodeName: BCTL_DELINQUENCYSTATUS
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTSEGMENT
-          - locationName: SRC
-            nodeName: BC_ACCOUNTCONTACT
-          - locationName: SRC
-            nodeName: BC_ACCOUNTCONTACTROLE
-          - locationName: SRC
-            nodeName: BCTL_ACCOUNTROLE
-          - locationName: SRC
-            nodeName: BC_CONTACT
-          - locationName: SRC
-            nodeName: BC_ADDRESS
-          - locationName: SRC
-            nodeName: BCTL_STATE
-        join:
-          joinCondition: |
+          customSQL: |
+            SELECT DISTINCT
+              BA.ACCOUNTNUMBER                                                                   AS ACCOUNTNUMBER,
+              BA.ACCOUNTNAME                                                                     AS ACCOUNTNAME,
+              CAST(ATY.NAME AS VARCHAR(50))                                                      AS ACCOUNTTYPENAME,
+              CAST(BA2.ACCOUNTNUMBER AS INTEGER)                                                 AS PARENTACCOUNTNUMBER,
+              CAST(BL.NAME AS VARCHAR(100))                                                      AS BILLINGLEVELNAME,
+              CAST(ACSG.NAME AS VARCHAR(50))                                                     AS SEGMENT,
+              CAST(CST.NAME AS VARCHAR(50))                                                      AS SERVICETIERNAME,
+              BCSZ.NAME                                                                          AS SECURITYZONE,
+              CON.FIRSTNAME                                                                      AS FIRSTNAME,
+              CON.LASTNAME                                                                       AS LASTNAME,
+              ADDR.ADDRESSLINE1                                                                  AS ADDRESSLINE1,
+              ADDR.ADDRESSLINE2                                                                  AS ADDRESSLINE2,
+              ADDR.ADDRESSLINE3                                                                  AS ADDRESSLINE3,
+              CAST(ADDR.CITY AS VARCHAR(50))                                                     AS CITY,
+              CAST(TLS.NAME AS VARCHAR(50))                                                      AS STATE,
+              CAST(ADDR.POSTALCODE AS VARCHAR(50))                                               AS POSTALCODE,
+              BA.CLOSEDATE                                                                       AS ACCOUNTCLOSEDATE,
+              BA.CREATETIME                                                                      AS ACCOUNTCREATIONDATE,
+              CAST(TLDS.NAME AS VARCHAR(50))                                                     AS DELIQUENCYSTATUSNAME,
+              BA.FIRSTTWICEPERMTHINVOICEDOM                                                      AS FIRSTTWICEPERMTHINVOICEDOM,
+              BA.SECONDTWICEPERMTHINVOICEDOM                                                     AS SECONDTWICEPERMTHINVOICEDOM,
+              BA.PUBLICID                                                                        AS PUBLICID,
+              BA.ID                                                                              AS GWROWNUMBER,
+              CAST(CONCAT(BA.BEANVERSION, PACCT.BEANVERSION, BCSZ.BEANVERSION) AS VARCHAR(20))  AS BEANVERSION,
+              CASE BA.RETIRED WHEN 0 THEN 1 ELSE 0 END                                          AS ISACTIVE,
+              'WC'                                                                               AS LEGACYSOURCESYSTEM,
+              BA.UPDATETIME                                                                      AS BA_UPDATETIME,
+              PACCT.UPDATETIME                                                                   AS PACCT_UPDATETIME,
+              BCSZ.UPDATETIME                                                                    AS SZ_UPDATETIME,
+              ACC.UPDATETIME                                                                     AS AC_UPDATETIME,
+              ACR.UPDATETIME                                                                     AS ACR_UPDATETIME,
+              CON.UPDATETIME                                                                     AS C_UPDATETIME,
+              ADDR.UPDATETIME                                                                    AS A_UPDATETIME
             FROM {{ ref('SRC', 'BC_ACCOUNT') }} BA
             LEFT JOIN {{ ref('SRC', 'BCTL_ACCOUNTTYPE') }} ATY
               ON ATY.ID = BA.ACCOUNTTYPE
@@ -789,6 +792,37 @@ operation:
             LEFT JOIN {{ ref('SRC', 'BCTL_STATE') }} TLS
               ON TLS.ID = ADDR.STATE
             WHERE TLAR.TYPECODE = 'insured'
+        dependencies:
+          - locationName: SRC
+            nodeName: BC_ACCOUNT
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTTYPE
+          - locationName: SRC
+            nodeName: BC_PARENTACCT
+          - locationName: SRC
+            nodeName: BCTL_BILLINGLEVEL
+          - locationName: SRC
+            nodeName: BCTL_CUSTOMERSERVICETIER
+          - locationName: SRC
+            nodeName: BC_SECURITYZONE
+          - locationName: SRC
+            nodeName: BCTL_DELINQUENCYSTATUS
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTSEGMENT
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACT
+          - locationName: SRC
+            nodeName: BC_ACCOUNTCONTACTROLE
+          - locationName: SRC
+            nodeName: BCTL_ACCOUNTROLE
+          - locationName: SRC
+            nodeName: BC_CONTACT
+          - locationName: SRC
+            nodeName: BC_ADDRESS
+          - locationName: SRC
+            nodeName: BCTL_STATE
+        join:
+          joinCondition: ""
         name: JOIN_BC_ACCOUNT
         noLinkRefs: []
   name: JOIN_BC_ACCOUNT
