@@ -2,9 +2,9 @@ fileVersion: 1
 id: S2
 name: BC_PARENTACCT
 operation:
-  database: "PC_COALESCE_DB"
+  database: GUIDEWIRE_BC
   deployEnabled: true
-  description: "Source table for parent account relationships"
+  description: ""
   locationName: SRC
   metadata:
     columns:
@@ -85,7 +85,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BC_PARENTACCT
-  schema: "RAW"
+  schema: "dbo"
   sqlType: Source
   type: sourceInput
   version: 1
