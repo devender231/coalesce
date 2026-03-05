@@ -2,9 +2,9 @@ fileVersion: 1
 id: S7
 name: BC_ADDRESS
 operation:
-  database: "PC_COALESCE_DB"
+  database: GUIDEWIRE_BC
   deployEnabled: true
-  description: "Source table for address information"
+  description: ""
   locationName: SRC
   metadata:
     columns:
@@ -180,7 +180,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BC_ADDRESS
-  schema: "RAW"
+  schema: "dbo"
   sqlType: Source
   type: sourceInput
   version: 1
