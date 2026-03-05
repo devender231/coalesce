@@ -2,9 +2,9 @@ fileVersion: 1
 id: S8
 name: BCTL_STATE
 operation:
-  database: "PC_COALESCE_DB"
+  database: GUIDEWIRE_BC
   deployEnabled: true
-  description: "Source table for state type codes"
+  description: ""
   locationName: SRC
   metadata:
     columns:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BCTL_STATE
-  schema: "RAW"
+  schema: "dbo"
   sqlType: Source
   type: sourceInput
   version: 1
