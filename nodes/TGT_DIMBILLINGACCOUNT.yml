@@ -1,5 +1,5 @@
 fileVersion: 1
-id: S20
+id: S24
 name: TGT_DIMBILLINGACCOUNT
 operation:
   config:
@@ -8,577 +8,783 @@ operation:
     preSQL: ""
     testsEnabled: true
     truncateBefore: true
-  database: "PC_COALESCE_DB"
+  database: GUIDEWIRE_BC
   deployEnabled: true
-  description: "Target table for DimBillingAccount with SCD logic - loads only INSERT and UPDATE records"
+  description: "Target table for DimBillingAccount - loads insert and update records"
   isMultisource: false
   locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C1
-          stepCounter: S20
+          stepCounter: S24
         config: {}
-        dataType: STRING
+        dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: ACCOUNTNUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C1
-                stepCounter: S19
-            transform: "TR.ACCOUNTNUMBER"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.ACCOUNTNUMBER"
+        transform: "TGT.ACCOUNTNUMBER"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C2
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
         name: ACCOUNTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
-                stepCounter: S19
-            transform: "TR.ACCOUNTNAME"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.ACCOUNTNAME"
+        transform: "TGT.ACCOUNTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C3
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: ACCOUNTTYPE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C3
-                stepCounter: S19
-            transform: "TR.ACCOUNTTYPE"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.ACCOUNTTYPE"
+        transform: "TGT.ACCOUNTTYPE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C4
-          stepCounter: S20
-        config: {}
-        dataType: STRING
-        description: ""
-        name: ACCOUNTTYPE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C4
-                stepCounter: S19
-            transform: "TR.ACCOUNTTYPE_NAME"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: C5
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: BILLINGLEVEL
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C5
-                stepCounter: S19
-            transform: "TR.BILLINGLEVEL"
-      - appliedColumnTests: {}
+              - columnCounter: C4
+                stepCounter: S23
+            transform: "TGT.BILLINGLEVEL"
+        transform: "TGT.BILLINGLEVEL"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C6
-          stepCounter: S20
-        config: {}
-        dataType: STRING
-        description: ""
-        name: BILLINGLEVEL_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C6
-                stepCounter: S19
-            transform: "TR.BILLINGLEVEL_NAME"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: C7
-          stepCounter: S20
+          columnCounter: C5
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: SERVICETIER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C7
-                stepCounter: S19
-            transform: "TR.SERVICETIER"
-      - appliedColumnTests: {}
+              - columnCounter: C5
+                stepCounter: S23
+            transform: "TGT.SERVICETIER"
+        transform: "TGT.SERVICETIER"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C8
-          stepCounter: S20
-        config: {}
-        dataType: STRING
-        description: ""
-        name: SERVICETIER_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C8
-                stepCounter: S19
-            transform: "TR.SERVICETIER_NAME"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: C9
-          stepCounter: S20
+          columnCounter: C6
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: SECURITYZONEID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C9
-                stepCounter: S19
-            transform: "TR.SECURITYZONEID"
-      - appliedColumnTests: {}
+              - columnCounter: C6
+                stepCounter: S23
+            transform: "TGT.SECURITYZONEID"
+        transform: "TGT.SECURITYZONEID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C10
-          stepCounter: S20
-        config: {}
-        dataType: STRING
-        description: ""
-        name: SECURITYZONE_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C10
-                stepCounter: S19
-            transform: "TR.SECURITYZONE_NAME"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: C11
-          stepCounter: S20
+          columnCounter: C7
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: SEGMENT
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C11
-                stepCounter: S19
-            transform: "TR.SEGMENT"
-      - appliedColumnTests: {}
+              - columnCounter: C7
+                stepCounter: S23
+            transform: "TGT.SEGMENT"
+        transform: "TGT.SEGMENT"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C12
-          stepCounter: S20
-        config: {}
-        dataType: STRING
-        description: ""
-        name: SEGMENT_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C12
-                stepCounter: S19
-            transform: "TR.SEGMENT_NAME"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: C13
-          stepCounter: S20
+          columnCounter: C8
+          stepCounter: S24
         config: {}
         dataType: DATETIME
+        defaultValue: ""
         description: ""
         name: CLOSEDATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C13
-                stepCounter: S19
-            transform: "TR.CLOSEDATE"
-      - appliedColumnTests: {}
+              - columnCounter: C8
+                stepCounter: S23
+            transform: "TGT.CLOSEDATE"
+        transform: "TGT.CLOSEDATE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C14
-          stepCounter: S20
+          columnCounter: C9
+          stepCounter: S24
         config: {}
         dataType: DATETIME
+        defaultValue: ""
         description: ""
         name: CREATETIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C14
-                stepCounter: S19
-            transform: "TR.CREATETIME"
-      - appliedColumnTests: {}
+              - columnCounter: C9
+                stepCounter: S23
+            transform: "TGT.CREATETIME"
+        transform: "TGT.CREATETIME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C15
-          stepCounter: S20
+          columnCounter: C10
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: DELINQUENCYSTATUS
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C15
-                stepCounter: S19
-            transform: "TR.DELINQUENCYSTATUS"
-      - appliedColumnTests: {}
+              - columnCounter: C10
+                stepCounter: S23
+            transform: "TGT.DELINQUENCYSTATUS"
+        transform: "TGT.DELINQUENCYSTATUS"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C16
-          stepCounter: S20
-        config: {}
-        dataType: STRING
-        description: ""
-        name: DELINQUENCYSTATUS_NAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C16
-                stepCounter: S19
-            transform: "TR.DELINQUENCYSTATUS_NAME"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: C17
-          stepCounter: S20
+          columnCounter: C11
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: FIRSTTWICEPERMTHINVOICEDOM
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C17
-                stepCounter: S19
-            transform: "TR.FIRSTTWICEPERMTHINVOICEDOM"
-      - appliedColumnTests: {}
+              - columnCounter: C11
+                stepCounter: S23
+            transform: "TGT.FIRSTTWICEPERMTHINVOICEDOM"
+        transform: "TGT.FIRSTTWICEPERMTHINVOICEDOM"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C18
-          stepCounter: S20
+          columnCounter: C12
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: SECONDTWICEPERMTHINVOICEDOM
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C18
-                stepCounter: S19
-            transform: "TR.SECONDTWICEPERMTHINVOICEDOM"
-      - appliedColumnTests: {}
+              - columnCounter: C12
+                stepCounter: S23
+            transform: "TGT.SECONDTWICEPERMTHINVOICEDOM"
+        transform: "TGT.SECONDTWICEPERMTHINVOICEDOM"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C19
-          stepCounter: S20
+          columnCounter: C13
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
         name: PUBLICID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C19
-                stepCounter: S19
-            transform: "TR.PUBLICID"
-      - appliedColumnTests: {}
+              - columnCounter: C13
+                stepCounter: S23
+            transform: "TGT.PUBLICID"
+        transform: "TGT.PUBLICID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C20
-          stepCounter: S20
+          columnCounter: C14
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: ID
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C20
-                stepCounter: S19
-            transform: "TR.ID"
-      - appliedColumnTests: {}
+              - columnCounter: C14
+                stepCounter: S23
+            transform: "TGT.ID"
+        transform: "TGT.ID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C21
-          stepCounter: S20
+          columnCounter: C15
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
         name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C21
-                stepCounter: S19
-            transform: "TR.BEANVERSION"
-      - appliedColumnTests: {}
+              - columnCounter: C15
+                stepCounter: S23
+            transform: "TGT.BEANVERSION"
+        transform: "TGT.BEANVERSION"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C22
-          stepCounter: S20
+          columnCounter: C16
+          stepCounter: S24
         config: {}
         dataType: INTEGER
+        defaultValue: ""
         description: ""
         name: RETIRED
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: C22
-                stepCounter: S19
-            transform: "TR.RETIRED"
-      - appliedColumnTests: {}
+              - columnCounter: C16
+                stepCounter: S23
+            transform: "TGT.RETIRED"
+        transform: "TGT.RETIRED"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
-          columnCounter: C23
-          stepCounter: S20
+          columnCounter: C17
+          stepCounter: S24
         config: {}
         dataType: DATETIME
+        defaultValue: ""
         description: ""
         name: UPDATETIME
         nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: S23
+            transform: "TGT.UPDATETIME"
+        transform: "TGT.UPDATETIME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C18
+          stepCounter: S24
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTTYPE_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C18
+                stepCounter: S23
+            transform: "TGT.ACCOUNTTYPE_NAME"
+        transform: "TGT.ACCOUNTTYPE_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C19
+          stepCounter: S24
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: PARENT_ACCOUNT_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C19
+                stepCounter: S23
+            transform: "TGT.PARENT_ACCOUNT_ID"
+        transform: "TGT.PARENT_ACCOUNT_ID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C20
+          stepCounter: S24
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: BILLINGLEVEL_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C20
+                stepCounter: S23
+            transform: "TGT.BILLINGLEVEL_NAME"
+        transform: "TGT.BILLINGLEVEL_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: S24
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: SERVICETIER_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C21
+                stepCounter: S23
+            transform: "TGT.SERVICETIER_NAME"
+        transform: "TGT.SERVICETIER_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
+          stepCounter: S24
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: SECURITYZONE_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C22
+                stepCounter: S23
+            transform: "TGT.SECURITYZONE_NAME"
+        transform: "TGT.SECURITYZONE_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C23
+          stepCounter: S24
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: DELINQUENCYSTATUS_NAME
+        nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C23
-                stepCounter: S19
-            transform: "TR.UPDATETIME"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.DELINQUENCYSTATUS_NAME"
+        transform: "TGT.DELINQUENCYSTATUS_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C24
-          stepCounter: S20
+          stepCounter: S24
         config: {}
-        dataType: INTEGER
+        dataType: STRING
+        defaultValue: ""
         description: ""
-        name: PARENTACCT_FOREIGNENTITYID
+        name: SEGMENT_NAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C24
-                stepCounter: S19
-            transform: "TR.PARENTACCT_FOREIGNENTITYID"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.SEGMENT_NAME"
+        transform: "TGT.SEGMENT_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C25
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
         name: INSURED_FIRSTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C25
-                stepCounter: S19
-            transform: "TR.INSURED_FIRSTNAME"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.INSURED_FIRSTNAME"
+        transform: "TGT.INSURED_FIRSTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C26
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
         name: INSURED_LASTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C26
-                stepCounter: S19
-            transform: "TR.INSURED_LASTNAME"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.INSURED_LASTNAME"
+        transform: "TGT.INSURED_LASTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C27
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
-        name: ADDRESS_LINE1
+        name: ADDRESSLINE1
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C27
-                stepCounter: S19
-            transform: "TR.ADDRESS_LINE1"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.ADDRESSLINE1"
+        transform: "TGT.ADDRESSLINE1"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C28
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
-        name: ADDRESS_LINE2
+        name: ADDRESSLINE2
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C28
-                stepCounter: S19
-            transform: "TR.ADDRESS_LINE2"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.ADDRESSLINE2"
+        transform: "TGT.ADDRESSLINE2"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C29
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
-        name: ADDRESS_LINE3
+        name: ADDRESSLINE3
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C29
-                stepCounter: S19
-            transform: "TR.ADDRESS_LINE3"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.ADDRESSLINE3"
+        transform: "TGT.ADDRESSLINE3"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C30
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
         name: CITY
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C30
-                stepCounter: S19
-            transform: "TR.CITY"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.CITY"
+        transform: "TGT.CITY"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C31
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
         name: POSTALCODE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C31
-                stepCounter: S19
-            transform: "TR.POSTALCODE"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.POSTALCODE"
+        transform: "TGT.POSTALCODE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C32
-          stepCounter: S20
-        config: {}
-        dataType: INTEGER
-        description: ""
-        name: STATE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C32
-                stepCounter: S19
-            transform: "TR.STATE"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: C33
-          stepCounter: S20
+          stepCounter: S24
         config: {}
         dataType: STRING
+        defaultValue: ""
         description: ""
         name: STATE_NAME
         nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C32
+                stepCounter: S23
+            transform: "TGT.STATE_NAME"
+        transform: "TGT.STATE_NAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C33
+          stepCounter: S24
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: BATCHID
+        nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C33
-                stepCounter: S19
-            transform: "TR.STATE_NAME"
-      - appliedColumnTests: {}
+                stepCounter: S23
+            transform: "TGT.BATCHID"
+        transform: "TGT.BATCHID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C34
-          stepCounter: S20
+          stepCounter: S24
         config: {}
-        dataType: INTEGER
-        description: "Batch ID for tracking data loads"
-        name: BATCHID
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: EDWBEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C34
-                stepCounter: S19
-            transform: "TR.BATCHID"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: C35
-          stepCounter: S20
-        config: {}
-        dataType: STRING
-        description: "BeanVersion from EDW for SCD comparison"
-        name: EDW_BEANVERSION
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C35
-                stepCounter: S19
-            transform: "TR.EDW_BEANVERSION"
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: C36
-          stepCounter: S20
-        config: {}
-        dataType: STRING
-        description: "Routing flag: INSERT, UPDATE, or UNCHANGED"
-        name: ROUTING_FLAG
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: C36
-                stepCounter: S19
-            transform: "TR.ROUTING_FLAG"
+                stepCounter: S23
+            transform: "TGT.EDWBEANVERSION"
+        transform: "TGT.EDWBEANVERSION"
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          TR_CONDITIONAL_SPLIT: TR
+          TGT: TR_ROW_COUNT_UPDATES
         customSQL:
           customSQL: |
             SELECT
-              TR.ACCOUNTNUMBER,
-              TR.ACCOUNTNAME,
-              TR.ACCOUNTTYPE,
-              TR.ACCOUNTTYPE_NAME,
-              TR.BILLINGLEVEL,
-              TR.BILLINGLEVEL_NAME,
-              TR.SERVICETIER,
-              TR.SERVICETIER_NAME,
-              TR.SECURITYZONEID,
-              TR.SECURITYZONE_NAME,
-              TR.SEGMENT,
-              TR.SEGMENT_NAME,
-              TR.CLOSEDATE,
-              TR.CREATETIME,
-              TR.DELINQUENCYSTATUS,
-              TR.DELINQUENCYSTATUS_NAME,
-              TR.FIRSTTWICEPERMTHINVOICEDOM,
-              TR.SECONDTWICEPERMTHINVOICEDOM,
-              TR.PUBLICID,
-              TR.ID,
-              TR.BEANVERSION,
-              TR.RETIRED,
-              TR.UPDATETIME,
-              TR.PARENTACCT_FOREIGNENTITYID,
-              TR.INSURED_FIRSTNAME,
-              TR.INSURED_LASTNAME,
-              TR.ADDRESS_LINE1,
-              TR.ADDRESS_LINE2,
-              TR.ADDRESS_LINE3,
-              TR.CITY,
-              TR.POSTALCODE,
-              TR.STATE,
-              TR.STATE_NAME,
-              TR.BATCHID,
-              TR.EDW_BEANVERSION,
-              TR.ROUTING_FLAG
-            FROM {{ ref('SRC', 'TR_CONDITIONAL_SPLIT') }} TR
-            WHERE TR.ROUTING_FLAG IN ('INSERT', 'UPDATE')
+                TGT.ACCOUNTNUMBER,
+                TGT.ACCOUNTNAME,
+                TGT.ACCOUNTTYPE,
+                TGT.BILLINGLEVEL,
+                TGT.SERVICETIER,
+                TGT.SECURITYZONEID,
+                TGT.SEGMENT,
+                TGT.CLOSEDATE,
+                TGT.CREATETIME,
+                TGT.DELINQUENCYSTATUS,
+                TGT.FIRSTTWICEPERMTHINVOICEDOM,
+                TGT.SECONDTWICEPERMTHINVOICEDOM,
+                TGT.PUBLICID,
+                TGT.ID,
+                TGT.BEANVERSION,
+                TGT.RETIRED,
+                TGT.UPDATETIME,
+                TGT.ACCOUNTTYPE_NAME,
+                TGT.PARENT_ACCOUNT_ID,
+                TGT.BILLINGLEVEL_NAME,
+                TGT.SERVICETIER_NAME,
+                TGT.SECURITYZONE_NAME,
+                TGT.DELINQUENCYSTATUS_NAME,
+                TGT.SEGMENT_NAME,
+                TGT.INSURED_FIRSTNAME,
+                TGT.INSURED_LASTNAME,
+                TGT.ADDRESSLINE1,
+                TGT.ADDRESSLINE2,
+                TGT.ADDRESSLINE3,
+                TGT.CITY,
+                TGT.POSTALCODE,
+                TGT.STATE_NAME,
+                TGT.BATCHID,
+                TGT.EDWBEANVERSION
+            FROM {{ ref('SRC', 'TR_ROW_COUNT_UPDATES') }} TGT
         dependencies:
           - locationName: SRC
-            nodeName: TR_CONDITIONAL_SPLIT
+            nodeName: TR_ROW_COUNT_UPDATES
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'TR_CONDITIONAL_SPLIT') }} TR
-            WHERE TR.ROUTING_FLAG IN ('INSERT', 'UPDATE')
+            FROM {{ ref('SRC', 'TR_ROW_COUNT_UPDATES') }} TGT
         name: TGT_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: TGT_DIMBILLINGACCOUNT
   overrideSQL: true
-  schema: "RAW"
+  schema: dbo
   sqlType: persistentStage
   type: sql
   version: 1
