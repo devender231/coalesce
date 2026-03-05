@@ -2,9 +2,9 @@ fileVersion: 1
 id: S10
 name: BCTL_BILLINGLEVEL
 operation:
-  database: "PC_COALESCE_DB"
+  database: GUIDEWIRE_BC
   deployEnabled: true
-  description: "Source table for billing level type codes"
+  description: ""
   locationName: SRC
   metadata:
     columns:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BCTL_BILLINGLEVEL
-  schema: "RAW"
+  schema: "dbo"
   sqlType: Source
   type: sourceInput
   version: 1
