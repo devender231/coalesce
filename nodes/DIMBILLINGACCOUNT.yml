@@ -2,9 +2,9 @@ fileVersion: 1
 id: S15
 name: DIMBILLINGACCOUNT
 operation:
-  database: "PC_COALESCE_DB"
+  database: GUIDEWIRE_BC
   deployEnabled: true
-  description: "Source table for dimension billing account lookup"
+  description: ""
   locationName: SRC
   metadata:
     columns:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: DIMBILLINGACCOUNT
-  schema: "PC_COALESCE_DB"
+  schema: "dbo"
   sqlType: Source
   type: sourceInput
   version: 1
