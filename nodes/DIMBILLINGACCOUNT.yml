@@ -2,9 +2,9 @@ fileVersion: 1
 id: S15
 name: DIMBILLINGACCOUNT
 operation:
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Source table DIMBILLINGACCOUNT from GuideWire"
+  description: "Source table for Dim Billing Account lookup"
   locationName: SRC
   metadata:
     columns:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: DIMBILLINGACCOUNT
-  schema: ""
+  schema: "dbo"
   sqlType: Source
   type: sourceInput
   version: 1
