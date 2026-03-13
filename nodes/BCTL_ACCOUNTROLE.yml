@@ -2,7 +2,7 @@ fileVersion: 1
 id: S5
 name: BCTL_ACCOUNTROLE
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BCTL_ACCOUNTROLE from GuideWire"
   locationName: SRC
