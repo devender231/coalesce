@@ -2,9 +2,9 @@ fileVersion: 1
 id: S13
 name: BCTL_DELINQUENCYSTATUS
 operation:
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Source table BCTL_DELINQUENCYSTATUS from GuideWire"
+  description: "Source table for Delinquency Status codes"
   locationName: SRC
   metadata:
     columns:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BCTL_DELINQUENCYSTATUS
-  schema: ""
+  schema: "bctl"
   sqlType: Source
   type: sourceInput
   version: 1
