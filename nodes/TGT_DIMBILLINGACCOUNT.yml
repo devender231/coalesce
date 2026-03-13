@@ -1,5 +1,5 @@
 fileVersion: 1
-id: S17
+id: S20
 name: TGT_DIMBILLINGACCOUNT
 operation:
   config:
@@ -10,7 +10,7 @@ operation:
     truncateBefore: true
   database: "SRC"
   deployEnabled: true
-  description: "Target table for DimBillingAccount with all transformed data"
+  description: "Target table for DimBillingAccount - loads INSERT and UPDATE rows only (filters out UNCHANGED rows)"
   isMultisource: false
   locationName: TARGET
   materializationType: table
@@ -20,7 +20,7 @@ operation:
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C1
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -29,12 +29,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C1
-                stepCounter: S16
-            transform: "JAT.ACCOUNTNUMBER"
+                stepCounter: S19
+            transform: "CS.ACCOUNTNUMBER"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C2
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -43,12 +43,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
-                stepCounter: S16
-            transform: "JAT.ACCOUNTNAME"
+                stepCounter: S19
+            transform: "CS.ACCOUNTNAME"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C3
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -57,12 +57,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C3
-                stepCounter: S16
-            transform: "JAT.ACCOUNTTYPE"
+                stepCounter: S19
+            transform: "CS.ACCOUNTTYPE"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C4
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -71,12 +71,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C4
-                stepCounter: S16
-            transform: "JAT.PARENTACCOUNTID"
+                stepCounter: S19
+            transform: "CS.PARENTACCOUNTID"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C5
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -85,12 +85,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C5
-                stepCounter: S16
-            transform: "JAT.BILLINGLEVEL"
+                stepCounter: S19
+            transform: "CS.BILLINGLEVEL"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C6
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -99,12 +99,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C6
-                stepCounter: S16
-            transform: "JAT.SERVICETIER"
+                stepCounter: S19
+            transform: "CS.SERVICETIER"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C7
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: INTEGER
         description: ""
@@ -113,12 +113,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C7
-                stepCounter: S16
-            transform: "JAT.SECURITYZONEID"
+                stepCounter: S19
+            transform: "CS.SECURITYZONEID"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C8
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -127,12 +127,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C8
-                stepCounter: S16
-            transform: "JAT.SEGMENT"
+                stepCounter: S19
+            transform: "CS.SEGMENT"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C9
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: DATETIME
         description: ""
@@ -141,12 +141,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C9
-                stepCounter: S16
-            transform: "JAT.CLOSEDATE"
+                stepCounter: S19
+            transform: "CS.CLOSEDATE"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C10
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: DATETIME
         description: ""
@@ -155,12 +155,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C10
-                stepCounter: S16
-            transform: "JAT.CREATETIME"
+                stepCounter: S19
+            transform: "CS.CREATETIME"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C11
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -169,12 +169,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C11
-                stepCounter: S16
-            transform: "JAT.DELINQUENCYSTATUS"
+                stepCounter: S19
+            transform: "CS.DELINQUENCYSTATUS"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C12
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: INTEGER
         description: ""
@@ -183,12 +183,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C12
-                stepCounter: S16
-            transform: "JAT.FIRSTTWICEPERMTHINVOICEDOM"
+                stepCounter: S19
+            transform: "CS.FIRSTTWICEPERMTHINVOICEDOM"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C13
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: INTEGER
         description: ""
@@ -197,12 +197,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C13
-                stepCounter: S16
-            transform: "JAT.SECONDTWICEPERMTHINVOICEDOM"
+                stepCounter: S19
+            transform: "CS.SECONDTWICEPERMTHINVOICEDOM"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C14
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -211,12 +211,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C14
-                stepCounter: S16
-            transform: "JAT.INSUREDFIRSTNAME"
+                stepCounter: S19
+            transform: "CS.INSUREDFIRSTNAME"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C15
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -225,12 +225,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C15
-                stepCounter: S16
-            transform: "JAT.INSUREDLASTNAME"
+                stepCounter: S19
+            transform: "CS.INSUREDLASTNAME"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C16
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -239,12 +239,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C16
-                stepCounter: S16
-            transform: "JAT.ADDRESSLINE1"
+                stepCounter: S19
+            transform: "CS.ADDRESSLINE1"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C17
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -253,12 +253,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C17
-                stepCounter: S16
-            transform: "JAT.ADDRESSLINE2"
+                stepCounter: S19
+            transform: "CS.ADDRESSLINE2"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C18
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -267,12 +267,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C18
-                stepCounter: S16
-            transform: "JAT.ADDRESSLINE3"
+                stepCounter: S19
+            transform: "CS.ADDRESSLINE3"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C19
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -281,12 +281,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C19
-                stepCounter: S16
-            transform: "JAT.CITY"
+                stepCounter: S19
+            transform: "CS.CITY"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C20
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -295,12 +295,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C20
-                stepCounter: S16
-            transform: "JAT.POSTALCODE"
+                stepCounter: S19
+            transform: "CS.POSTALCODE"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C21
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -309,12 +309,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C21
-                stepCounter: S16
-            transform: "JAT.STATE"
+                stepCounter: S19
+            transform: "CS.STATE"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C22
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -323,12 +323,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C22
-                stepCounter: S16
-            transform: "JAT.PUBLICID"
+                stepCounter: S19
+            transform: "CS.PUBLICID"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C23
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: INTEGER
         description: ""
@@ -337,12 +337,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C23
-                stepCounter: S16
-            transform: "JAT.ID"
+                stepCounter: S19
+            transform: "CS.ID"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C24
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: STRING
         description: ""
@@ -351,12 +351,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C24
-                stepCounter: S16
-            transform: "JAT.BEANVERSION"
+                stepCounter: S19
+            transform: "CS.BEANVERSION"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C25
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: INTEGER
         description: ""
@@ -365,12 +365,12 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C25
-                stepCounter: S16
-            transform: "JAT.RETIRED"
+                stepCounter: S19
+            transform: "CS.RETIRED"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: C26
-          stepCounter: S17
+          stepCounter: S20
         config: {}
         dataType: DATETIME
         description: ""
@@ -379,49 +379,96 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C26
-                stepCounter: S16
-            transform: "JAT.UPDATETIME"
+                stepCounter: S19
+            transform: "CS.UPDATETIME"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C27
+          stepCounter: S20
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: BATCHID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C27
+                stepCounter: S19
+            transform: "CS.BATCHID"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C28
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: ""
+        name: EDWBEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C28
+                stepCounter: S19
+            transform: "CS.EDWBEANVERSION"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C29
+          stepCounter: S20
+        config: {}
+        dataType: STRING
+        description: "Row Type: INSERT or UPDATE only"
+        name: ROWTYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C29
+                stepCounter: S19
+            transform: "CS.ROWTYPE"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          JOIN_ALL_TABLES: JAT
+          TR_CONDITIONAL_SPLIT: CS
         customSQL:
           customSQL: |
             SELECT
-              JAT.ACCOUNTNUMBER,
-              JAT.ACCOUNTNAME,
-              JAT.ACCOUNTTYPE,
-              JAT.PARENTACCOUNTID,
-              JAT.BILLINGLEVEL,
-              JAT.SERVICETIER,
-              JAT.SECURITYZONEID,
-              JAT.SEGMENT,
-              JAT.CLOSEDATE,
-              JAT.CREATETIME,
-              JAT.DELINQUENCYSTATUS,
-              JAT.FIRSTTWICEPERMTHINVOICEDOM,
-              JAT.SECONDTWICEPERMTHINVOICEDOM,
-              JAT.INSUREDFIRSTNAME,
-              JAT.INSUREDLASTNAME,
-              JAT.ADDRESSLINE1,
-              JAT.ADDRESSLINE2,
-              JAT.ADDRESSLINE3,
-              JAT.CITY,
-              JAT.POSTALCODE,
-              JAT.STATE,
-              JAT.PUBLICID,
-              JAT.ID,
-              JAT.BEANVERSION,
-              JAT.RETIRED,
-              JAT.UPDATETIME
-            FROM {{ ref('SRC', 'JOIN_ALL_TABLES') }} JAT
+              CS.ACCOUNTNUMBER,
+              CS.ACCOUNTNAME,
+              CS.ACCOUNTTYPE,
+              CS.PARENTACCOUNTID,
+              CS.BILLINGLEVEL,
+              CS.SERVICETIER,
+              CS.SECURITYZONEID,
+              CS.SEGMENT,
+              CS.CLOSEDATE,
+              CS.CREATETIME,
+              CS.DELINQUENCYSTATUS,
+              CS.FIRSTTWICEPERMTHINVOICEDOM,
+              CS.SECONDTWICEPERMTHINVOICEDOM,
+              CS.INSUREDFIRSTNAME,
+              CS.INSUREDLASTNAME,
+              CS.ADDRESSLINE1,
+              CS.ADDRESSLINE2,
+              CS.ADDRESSLINE3,
+              CS.CITY,
+              CS.POSTALCODE,
+              CS.STATE,
+              CS.PUBLICID,
+              CS.ID,
+              CS.BEANVERSION,
+              CS.RETIRED,
+              CS.UPDATETIME,
+              CS.BATCHID,
+              CS.EDWBEANVERSION,
+              CS.ROWTYPE
+            FROM {{ ref('SRC', 'TR_CONDITIONAL_SPLIT') }} CS
+            WHERE CS.ROWTYPE IN ('INSERT', 'UPDATE')
         dependencies:
           - locationName: SRC
-            nodeName: JOIN_ALL_TABLES
+            nodeName: TR_CONDITIONAL_SPLIT
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'JOIN_ALL_TABLES') }} JAT
+            FROM {{ ref('SRC', 'TR_CONDITIONAL_SPLIT') }} CS
+            WHERE CS.ROWTYPE IN ('INSERT', 'UPDATE')
         name: TGT_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: TGT_DIMBILLINGACCOUNT
