@@ -2,9 +2,9 @@ fileVersion: 1
 id: S11
 name: BCTL_CUSTOMERSERVICETIER
 operation:
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Source table BCTL_CUSTOMERSERVICETIER from GuideWire"
+  description: "Source table for Customer Service Tier codes"
   locationName: SRC
   metadata:
     columns:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BCTL_CUSTOMERSERVICETIER
-  schema: ""
+  schema: "bctl"
   sqlType: Source
   type: sourceInput
   version: 1
