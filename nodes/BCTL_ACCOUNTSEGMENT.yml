@@ -2,7 +2,7 @@ fileVersion: 1
 id: S14
 name: BCTL_ACCOUNTSEGMENT
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BCTL_ACCOUNTSEGMENT from GuideWire"
   locationName: SRC
