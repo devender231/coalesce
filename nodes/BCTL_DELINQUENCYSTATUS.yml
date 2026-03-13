@@ -2,7 +2,7 @@ fileVersion: 1
 id: S13
 name: BCTL_DELINQUENCYSTATUS
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BCTL_DELINQUENCYSTATUS from GuideWire"
   locationName: SRC
