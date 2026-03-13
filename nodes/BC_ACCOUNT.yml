@@ -16,7 +16,7 @@ operation:
           columnCounter: C1
           stepCounter: S2
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: ID
@@ -35,7 +35,7 @@ operation:
           columnCounter: C2
           stepCounter: S2
         config: {}
-        dataType: VARCHAR(50)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: ACCOUNTNUMBER
@@ -54,7 +54,7 @@ operation:
           columnCounter: C3
           stepCounter: S2
         config: {}
-        dataType: VARCHAR(255)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: ACCOUNTNAME
@@ -73,7 +73,7 @@ operation:
           columnCounter: C4
           stepCounter: S2
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: ACCOUNTTYPE
@@ -92,7 +92,7 @@ operation:
           columnCounter: C5
           stepCounter: S2
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: BILLINGLEVEL
@@ -111,7 +111,7 @@ operation:
           columnCounter: C6
           stepCounter: S2
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: SERVICETIER
@@ -130,7 +130,7 @@ operation:
           columnCounter: C7
           stepCounter: S2
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: SECURITYZONEID
@@ -187,7 +187,7 @@ operation:
           columnCounter: C10
           stepCounter: S2
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: DELINQUENCYSTATUS
@@ -244,7 +244,7 @@ operation:
           columnCounter: C13
           stepCounter: S2
         config: {}
-        dataType: VARCHAR(64)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: PUBLICID
@@ -263,7 +263,7 @@ operation:
           columnCounter: C14
           stepCounter: S2
         config: {}
-        dataType: VARCHAR(20)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: BEANVERSION
@@ -282,7 +282,7 @@ operation:
           columnCounter: C15
           stepCounter: S2
         config: {}
-        dataType: NUMBER(1,0)
+        dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         name: RETIRED
@@ -301,7 +301,7 @@ operation:
           columnCounter: C16
           stepCounter: S2
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: SEGMENT
