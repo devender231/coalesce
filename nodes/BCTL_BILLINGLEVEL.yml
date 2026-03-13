@@ -2,7 +2,7 @@ fileVersion: 1
 id: S10
 name: BCTL_BILLINGLEVEL
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BCTL_BILLINGLEVEL from GuideWire"
   locationName: SRC
