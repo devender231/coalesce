@@ -8,9 +8,9 @@ operation:
     preSQL: ""
     testsEnabled: true
     truncateBefore: true
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Target table for DimBillingAccount - loads INSERT and UPDATE rows only (filters out UNCHANGED rows)"
+  description: "Target table for Billing Account dimension - loads INSERT and UPDATE rows from conditional split"
   isMultisource: false
   locationName: TARGET
   materializationType: table
@@ -415,7 +415,7 @@ operation:
           stepCounter: S20
         config: {}
         dataType: STRING
-        description: "Row Type: INSERT or UPDATE only"
+        description: "Row Type: UNCHANGED, INSERT, or UPDATE"
         name: ROWTYPE
         nullable: true
         sourceColumnReferences:
@@ -461,19 +461,17 @@ operation:
               CS.EDWBEANVERSION,
               CS.ROWTYPE
             FROM {{ ref('SRC', 'TR_CONDITIONAL_SPLIT') }} CS
-            WHERE CS.ROWTYPE IN ('INSERT', 'UPDATE')
         dependencies:
           - locationName: SRC
             nodeName: TR_CONDITIONAL_SPLIT
         join:
           joinCondition: |
             FROM {{ ref('SRC', 'TR_CONDITIONAL_SPLIT') }} CS
-            WHERE CS.ROWTYPE IN ('INSERT', 'UPDATE')
         name: TGT_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: TGT_DIMBILLINGACCOUNT
   overrideSQL: true
-  schema: ""
+  schema: "bc"
   sqlType: persistentStage
   type: sql
   version: 1
