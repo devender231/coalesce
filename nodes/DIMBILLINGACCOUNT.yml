@@ -2,7 +2,7 @@ fileVersion: 1
 id: S15
 name: DIMBILLINGACCOUNT
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table DIMBILLINGACCOUNT from GuideWire"
   locationName: SRC
