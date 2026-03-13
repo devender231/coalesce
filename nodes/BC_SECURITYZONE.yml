@@ -2,9 +2,9 @@ fileVersion: 1
 id: S12
 name: BC_SECURITYZONE
 operation:
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Source table BC_SECURITYZONE from GuideWire"
+  description: "Source table for Security Zone information"
   locationName: SRC
   metadata:
     columns:
@@ -85,7 +85,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BC_SECURITYZONE
-  schema: ""
+  schema: "bc"
   sqlType: Source
   type: sourceInput
   version: 1
