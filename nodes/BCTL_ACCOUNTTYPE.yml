@@ -2,7 +2,7 @@ fileVersion: 1
 id: S9
 name: BCTL_ACCOUNTTYPE
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BCTL_ACCOUNTTYPE from GuideWire"
   locationName: SRC
