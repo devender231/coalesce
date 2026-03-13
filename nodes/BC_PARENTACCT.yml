@@ -2,7 +2,7 @@ fileVersion: 1
 id: S2
 name: BC_PARENTACCT
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BC_PARENTACCT from GuideWire"
   locationName: SRC
