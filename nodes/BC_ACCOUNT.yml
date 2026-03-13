@@ -2,7 +2,7 @@ fileVersion: 1
 id: S1
 name: BC_ACCOUNT
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BC_ACCOUNT from GuideWire"
   locationName: SRC
