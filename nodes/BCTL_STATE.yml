@@ -2,7 +2,7 @@ fileVersion: 1
 id: S8
 name: BCTL_STATE
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BCTL_STATE from GuideWire"
   locationName: SRC
