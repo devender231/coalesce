@@ -2,9 +2,9 @@ fileVersion: 1
 id: S7
 name: BC_ADDRESS
 operation:
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Source table BC_ADDRESS from GuideWire"
+  description: "Source table for Address information"
   locationName: SRC
   metadata:
     columns:
@@ -180,7 +180,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BC_ADDRESS
-  schema: ""
+  schema: "bc"
   sqlType: Source
   type: sourceInput
   version: 1
