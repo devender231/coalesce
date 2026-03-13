@@ -1,0 +1,463 @@
+fileVersion: 1
+id: S20
+name: TGT_DIMBILLINGACCOUNT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: "PC_COALESCE_DB"
+  deployEnabled: true
+  description: "Target table for DimBillingAccount"
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: ACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C1
+                stepCounter: S19
+            transform: "TRC.ACCOUNTNUMBER"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: ACCOUNTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C2
+                stepCounter: S19
+            transform: "TRC.ACCOUNTNAME"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: ACCOUNTTYPENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C3
+                stepCounter: S19
+            transform: "TRC.ACCOUNTTYPENAME"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C4
+          stepCounter: S20
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: PARENTACCOUNTNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C4
+                stepCounter: S19
+            transform: "TRC.PARENTACCOUNTNUMBER"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C5
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: BILLINGLEVELNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C5
+                stepCounter: S19
+            transform: "TRC.BILLINGLEVELNAME"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C6
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: SEGMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C6
+                stepCounter: S19
+            transform: "TRC.SEGMENT"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C7
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: SERVICETIERNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C7
+                stepCounter: S19
+            transform: "TRC.SERVICETIERNAME"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C8
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: SECURITYZONE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C8
+                stepCounter: S19
+            transform: "TRC.SECURITYZONE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C9
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: FIRSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C9
+                stepCounter: S19
+            transform: "TRC.FIRSTNAME"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C10
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: LASTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C10
+                stepCounter: S19
+            transform: "TRC.LASTNAME"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C11
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: ADDRESSLINE1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C11
+                stepCounter: S19
+            transform: "TRC.ADDRESSLINE1"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C12
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: ADDRESSLINE2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C12
+                stepCounter: S19
+            transform: "TRC.ADDRESSLINE2"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C13
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: ADDRESSLINE3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C13
+                stepCounter: S19
+            transform: "TRC.ADDRESSLINE3"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C14
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C14
+                stepCounter: S19
+            transform: "TRC.CITY"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C15
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: STATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C15
+                stepCounter: S19
+            transform: "TRC.STATE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C16
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: POSTALCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C16
+                stepCounter: S19
+            transform: "TRC.POSTALCODE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C17
+          stepCounter: S20
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: ACCOUNTCLOSEDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C17
+                stepCounter: S19
+            transform: "TRC.ACCOUNTCLOSEDATE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C18
+          stepCounter: S20
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: ACCOUNTCREATIONDATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C18
+                stepCounter: S19
+            transform: "TRC.ACCOUNTCREATIONDATE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C19
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: DELIQUENCYSTATUSNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C19
+                stepCounter: S19
+            transform: "TRC.DELIQUENCYSTATUSNAME"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C20
+          stepCounter: S20
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: FIRSTTWICEPERMONTH INVOICEDAYOFMONTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C20
+                stepCounter: S19
+            transform: "TRC.FIRSTTWICEPERMONTH INVOICEDAYOFMONTH"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C21
+          stepCounter: S20
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SECONDTWICEPERMONTH INVOICEDAYOFMONTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C21
+                stepCounter: S19
+            transform: "TRC.SECONDTWICEPERMONTH INVOICEDAYOFMONTH"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C22
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(64)
+        description: ""
+        name: PUBLICID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C22
+                stepCounter: S19
+            transform: "TRC.PUBLICID"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C23
+          stepCounter: S20
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: GWROWNUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C23
+                stepCounter: S19
+            transform: "TRC.GWROWNUMBER"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C24
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        name: BEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C24
+                stepCounter: S19
+            transform: "TRC.BEANVERSION"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C25
+          stepCounter: S20
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISACTIVE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C25
+                stepCounter: S19
+            transform: "TRC.ISACTIVE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C26
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: LEGACYSOURCESYSTEM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C26
+                stepCounter: S19
+            transform: "TRC.LEGACYSOURCESYSTEM"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C27
+          stepCounter: S20
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        name: EDWBEANVERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C27
+                stepCounter: S19
+            transform: "TRC.EDWBEANVERSION"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: C28
+          stepCounter: S20
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: BATCHID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C28
+                stepCounter: S19
+            transform: "TRC.BATCHID"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          TR_ROWCOUNT: TRC
+        customSQL:
+          customSQL: |
+            SELECT
+              TRC.ACCOUNTNUMBER,
+              TRC.ACCOUNTNAME,
+              TRC.ACCOUNTTYPENAME,
+              TRC.PARENTACCOUNTNUMBER,
+              TRC.BILLINGLEVELNAME,
+              TRC.SEGMENT,
+              TRC.SERVICETIERNAME,
+              TRC.SECURITYZONE,
+              TRC.FIRSTNAME,
+              TRC.LASTNAME,
+              TRC.ADDRESSLINE1,
+              TRC.ADDRESSLINE2,
+              TRC.ADDRESSLINE3,
+              TRC.CITY,
+              TRC.STATE,
+              TRC.POSTALCODE,
+              TRC.ACCOUNTCLOSEDATE,
+              TRC.ACCOUNTCREATIONDATE,
+              TRC.DELIQUENCYSTATUSNAME,
+              TRC.FIRSTTWICEPERMONTH INVOICEDAYOFMONTH,
+              TRC.SECONDTWICEPERMONTH INVOICEDAYOFMONTH,
+              TRC.PUBLICID,
+              TRC.GWROWNUMBER,
+              TRC.BEANVERSION,
+              TRC.ISACTIVE,
+              TRC.LEGACYSOURCESYSTEM,
+              TRC.EDWBEANVERSION,
+              TRC.BATCHID
+            FROM {{ ref('SRC', 'TR_ROWCOUNT') }} TRC
+        dependencies:
+          - locationName: SRC
+            nodeName: TR_ROWCOUNT
+        join:
+          joinCondition: |
+            FROM {{ ref('SRC', 'TR_ROWCOUNT') }} TRC
+        name: TGT_DIMBILLINGACCOUNT
+        noLinkRefs: []
+  name: TGT_DIMBILLINGACCOUNT
+  overrideSQL: true
+  schema: "RAW"
+  sqlType: persistentStage
+  type: sql
+  version: 1
+type: Node
