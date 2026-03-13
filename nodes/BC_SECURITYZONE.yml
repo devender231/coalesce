@@ -2,7 +2,7 @@ fileVersion: 1
 id: S12
 name: BC_SECURITYZONE
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BC_SECURITYZONE from GuideWire"
   locationName: SRC
