@@ -2,9 +2,9 @@ fileVersion: 1
 id: S3
 name: BC_ACCOUNTCONTACT
 operation:
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Source table BC_ACCOUNTCONTACT from GuideWire"
+  description: "Source table for Account Contact relationships"
   locationName: SRC
   metadata:
     columns:
@@ -104,7 +104,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BC_ACCOUNTCONTACT
-  schema: ""
+  schema: "bc"
   sqlType: Source
   type: sourceInput
   version: 1
