@@ -2,7 +2,7 @@ fileVersion: 1
 id: S11
 name: BCTL_CUSTOMERSERVICETIER
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BCTL_CUSTOMERSERVICETIER from GuideWire"
   locationName: SRC
