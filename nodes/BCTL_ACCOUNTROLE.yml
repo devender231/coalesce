@@ -2,9 +2,9 @@ fileVersion: 1
 id: S5
 name: BCTL_ACCOUNTROLE
 operation:
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Source table BCTL_ACCOUNTROLE from GuideWire"
+  description: "Source table for Account Role type codes"
   locationName: SRC
   metadata:
     columns:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BCTL_ACCOUNTROLE
-  schema: ""
+  schema: "bctl"
   sqlType: Source
   type: sourceInput
   version: 1
