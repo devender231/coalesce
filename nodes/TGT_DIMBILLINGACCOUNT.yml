@@ -8,7 +8,7 @@ operation:
     preSQL: ""
     testsEnabled: true
     truncateBefore: true
-  database: EDW
+  database: "PC_COALESCE_DB"
   deployEnabled: true
   description: Target table for DimBillingAccount dimension
   isMultisource: false
@@ -441,7 +441,7 @@ operation:
         noLinkRefs: []
   name: TGT_DIMBILLINGACCOUNT
   overrideSQL: true
-  schema: dbo
+  schema: "RAW"
   sqlType: persistentStage
   type: sql
   version: 1
