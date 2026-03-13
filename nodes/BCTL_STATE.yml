@@ -2,9 +2,9 @@ fileVersion: 1
 id: S8
 name: BCTL_STATE
 operation:
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Source table BCTL_STATE from GuideWire"
+  description: "Source table for State type codes"
   locationName: SRC
   metadata:
     columns:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BCTL_STATE
-  schema: ""
+  schema: "bctl"
   sqlType: Source
   type: sourceInput
   version: 1
