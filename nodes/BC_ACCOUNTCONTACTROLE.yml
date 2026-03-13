@@ -2,7 +2,7 @@ fileVersion: 1
 id: S4
 name: BC_ACCOUNTCONTACTROLE
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BC_ACCOUNTCONTACTROLE from GuideWire"
   locationName: SRC
