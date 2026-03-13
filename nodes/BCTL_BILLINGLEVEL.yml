@@ -2,9 +2,9 @@ fileVersion: 1
 id: S10
 name: BCTL_BILLINGLEVEL
 operation:
-  database: "SRC"
+  database: "GUIDEWIRE"
   deployEnabled: true
-  description: "Source table BCTL_BILLINGLEVEL from GuideWire"
+  description: "Source table for Billing Level codes"
   locationName: SRC
   metadata:
     columns:
@@ -47,7 +47,7 @@ operation:
         transform: ""
         uniqueKey: false
   name: BCTL_BILLINGLEVEL
-  schema: ""
+  schema: "bctl"
   sqlType: Source
   type: sourceInput
   version: 1
