@@ -2,7 +2,7 @@ fileVersion: 1
 id: S6
 name: BC_CONTACT
 operation:
-  database: ""
+  database: "SRC"
   deployEnabled: true
   description: "Source table BC_CONTACT from GuideWire"
   locationName: SRC
