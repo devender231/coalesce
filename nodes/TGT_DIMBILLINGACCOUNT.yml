@@ -10,433 +10,644 @@ operation:
     truncateBefore: true
   database: "PC_COALESCE_DB"
   deployEnabled: true
-  description: Target table for DimBillingAccount dimension
+  description: "Target table for DimBillingAccount"
   isMultisource: false
   locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C1
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(64)
-        description: Account Number
-        name: AccountNumber
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTNUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C1
-                stepCounter: S1
-            transform: SRC.AccountNumber
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.ACCOUNTNUMBER"
+        transform: "TRC.ACCOUNTNUMBER"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C2
-          stepCounter: S1
+          stepCounter: S20
         config: {}
         dataType: VARCHAR(255)
-        description: Account Name
-        name: AccountName
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C2
-                stepCounter: S1
-            transform: SRC.AccountName
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.ACCOUNTNAME"
+        transform: "TRC.ACCOUNTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C3
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(50)
-        description: Account Type Name
-        name: AccountTypeName
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTTYPENAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C3
-                stepCounter: S1
-            transform: SRC.AccountTypeName
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.ACCOUNTTYPENAME"
+        transform: "TRC.ACCOUNTTYPENAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C4
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: INT
-        description: Parent Account Number
-        name: ParentAccountNumber
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: PARENTACCOUNTNUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C4
-                stepCounter: S1
-            transform: SRC.ParentAccountNumber
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.PARENTACCOUNTNUMBER"
+        transform: "TRC.PARENTACCOUNTNUMBER"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C5
-          stepCounter: S1
+          stepCounter: S20
         config: {}
         dataType: VARCHAR(100)
-        description: Billing Level Name
-        name: BillingLevelName
+        defaultValue: ""
+        description: ""
+        name: BILLINGLEVELNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C5
-                stepCounter: S1
-            transform: SRC.BillingLevelName
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.BILLINGLEVELNAME"
+        transform: "TRC.BILLINGLEVELNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C6
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(50)
-        description: Segment
-        name: Segment
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: SEGMENT
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C6
-                stepCounter: S1
-            transform: SRC.Segment
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.SEGMENT"
+        transform: "TRC.SEGMENT"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C7
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(50)
-        description: Service Tier Name
-        name: ServiceTierName
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: SERVICETIERNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C7
-                stepCounter: S1
-            transform: SRC.ServiceTierName
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.SERVICETIERNAME"
+        transform: "TRC.SERVICETIERNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C8
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(255)
-        description: Security Zone
-        name: SecurityZone
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: SECURITYZONE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C8
-                stepCounter: S1
-            transform: SRC.SecurityZone
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.SECURITYZONE"
+        transform: "TRC.SECURITYZONE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C9
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(255)
-        description: First Name
-        name: FirstName
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: FIRSTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C9
-                stepCounter: S1
-            transform: SRC.FirstName
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.FIRSTNAME"
+        transform: "TRC.FIRSTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C10
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(255)
-        description: Last Name
-        name: LastName
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: LASTNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C10
-                stepCounter: S1
-            transform: SRC.LastName
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.LASTNAME"
+        transform: "TRC.LASTNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C11
-          stepCounter: S1
+          stepCounter: S20
         config: {}
         dataType: VARCHAR(255)
-        description: Address Line 1
-        name: AddressLine1
+        defaultValue: ""
+        description: ""
+        name: ADDRESSLINE1
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C11
-                stepCounter: S1
-            transform: SRC.AddressLine1
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.ADDRESSLINE1"
+        transform: "TRC.ADDRESSLINE1"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C12
-          stepCounter: S1
+          stepCounter: S20
         config: {}
         dataType: VARCHAR(255)
-        description: Address Line 2
-        name: AddressLine2
+        defaultValue: ""
+        description: ""
+        name: ADDRESSLINE2
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C12
-                stepCounter: S1
-            transform: SRC.AddressLine2
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.ADDRESSLINE2"
+        transform: "TRC.ADDRESSLINE2"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C13
-          stepCounter: S1
+          stepCounter: S20
         config: {}
         dataType: VARCHAR(255)
-        description: Address Line 3
-        name: AddressLine3
+        defaultValue: ""
+        description: ""
+        name: ADDRESSLINE3
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C13
-                stepCounter: S1
-            transform: SRC.AddressLine3
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.ADDRESSLINE3"
+        transform: "TRC.ADDRESSLINE3"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C14
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(50)
-        description: City
-        name: City
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: CITY
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C14
-                stepCounter: S1
-            transform: SRC.City
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.CITY"
+        transform: "TRC.CITY"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C15
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(50)
-        description: State
-        name: State
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: STATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C15
-                stepCounter: S1
-            transform: SRC."State"
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.STATE"
+        transform: "TRC.STATE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C16
-          stepCounter: S1
+          stepCounter: S20
         config: {}
         dataType: VARCHAR(50)
-        description: Postal Code
-        name: PostalCode
+        defaultValue: ""
+        description: ""
+        name: POSTALCODE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C16
-                stepCounter: S1
-            transform: SRC.PostalCode
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.POSTALCODE"
+        transform: "TRC.POSTALCODE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C17
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: DATETIME
-        description: Account Close Date
-        name: AccountCloseDate
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTCLOSEDATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C17
-                stepCounter: S1
-            transform: SRC.AccountCloseDate
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.ACCOUNTCLOSEDATE"
+        transform: "TRC.ACCOUNTCLOSEDATE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C18
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: DATETIME
-        description: Account Creation Date
-        name: AccountCreationDate
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: ACCOUNTCREATIONDATE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C18
-                stepCounter: S1
-            transform: SRC.AccountCreationDate
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.ACCOUNTCREATIONDATE"
+        transform: "TRC.ACCOUNTCREATIONDATE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C19
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(50)
-        description: Deliquency Status Name
-        name: DeliquencyStatusName
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: DELIQUENCYSTATUSNAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C19
-                stepCounter: S1
-            transform: SRC.DeliquencyStatusName
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.DELIQUENCYSTATUSNAME"
+        transform: "TRC.DELIQUENCYSTATUSNAME"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C20
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: INT
-        description: First Twice Per Month Invoice Day Of Month
-        name: FirstTwicePerMonthInvoiceDayOfMonth
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: "FIRSTTWICEPERMONTH INVOICEDAYOFMONTH"
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C20
-                stepCounter: S1
-            transform: SRC.FirstTwicePerMthInvoiceDOM
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.\"FIRSTTWICEPERMONTH INVOICEDAYOFMONTH\""
+        transform: "TRC.\"FIRSTTWICEPERMONTH INVOICEDAYOFMONTH\""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C21
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: INT
-        description: Second Twice Per Month Invoice Day Of Month
-        name: SecondTwicePerMonthInvoiceDayOfMonth
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: "SECONDTWICEPERMONTH INVOICEDAYOFMONTH"
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C21
-                stepCounter: S1
-            transform: SRC.SecondTwicePerMthInvoiceDOM
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.\"SECONDTWICEPERMONTH INVOICEDAYOFMONTH\""
+        transform: "TRC.\"SECONDTWICEPERMONTH INVOICEDAYOFMONTH\""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C22
-          stepCounter: S1
+          stepCounter: S20
         config: {}
         dataType: VARCHAR(64)
-        description: Public ID
-        name: PublicID
-        nullable: false
+        defaultValue: ""
+        description: ""
+        name: PUBLICID
+        nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C22
-                stepCounter: S1
-            transform: SRC.PublicID
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.PUBLICID"
+        transform: "TRC.PUBLICID"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C23
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: BIGINT
-        description: GW Row Number
-        name: GWRowNumber
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: GWROWNUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C23
-                stepCounter: S1
-            transform: SRC.GWRowNumber
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.GWROWNUMBER"
+        transform: "TRC.GWROWNUMBER"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C24
-          stepCounter: S1
+          stepCounter: S20
         config: {}
         dataType: VARCHAR(20)
-        description: Bean Version
-        name: BeanVersion
+        defaultValue: ""
+        description: ""
+        name: BEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C24
-                stepCounter: S1
-            transform: SRC.BeanVersion
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.BEANVERSION"
+        transform: "TRC.BEANVERSION"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C25
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: BIT
-        description: Is Active
-        name: IsActive
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: ISACTIVE
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C25
-                stepCounter: S1
-            transform: SRC.IsActive
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.ISACTIVE"
+        transform: "TRC.ISACTIVE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C26
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: VARCHAR(10)
-        description: Legacy Source System
-        name: LegacySourceSystem
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        name: LEGACYSOURCESYSTEM
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C26
-                stepCounter: S1
-            transform: SRC.LegacySourceSystem
-      - appliedColumnTests: {}
+                stepCounter: S19
+            transform: "TRC.LEGACYSOURCESYSTEM"
+        transform: "TRC.LEGACYSOURCESYSTEM"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
         columnReference:
           columnCounter: C27
-          stepCounter: S1
+          stepCounter: S20
         config: {}
-        dataType: INT
-        description: Batch ID
-        name: BatchId
+        dataType: VARCHAR(20)
+        defaultValue: ""
+        description: ""
+        name: EDWBEANVERSION
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: C27
-                stepCounter: S1
-            transform: SRC.BatchId
+                stepCounter: S19
+            transform: "TRC.EDWBEANVERSION"
+        transform: "TRC.EDWBEANVERSION"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C28
+          stepCounter: S20
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: BATCHID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: C28
+                stepCounter: S19
+            transform: "TRC.BATCHID"
+        transform: "TRC.BATCHID"
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          SRC_GUIDEWIRE: SRC
+          TR_ROWCOUNT: TRC
         customSQL:
           customSQL: |
             SELECT
-              SRC.AccountNumber,
-              SRC.AccountName,
-              SRC.AccountTypeName,
-              SRC.ParentAccountNumber,
-              SRC.BillingLevelName,
-              SRC.Segment,
-              SRC.ServiceTierName,
-              SRC.SecurityZone,
-              SRC.FirstName,
-              SRC.LastName,
-              SRC.AddressLine1,
-              SRC.AddressLine2,
-              SRC.AddressLine3,
-              SRC.City,
-              SRC."State",
-              SRC.PostalCode,
-              SRC.AccountCloseDate,
-              SRC.AccountCreationDate,
-              SRC.DeliquencyStatusName,
-              SRC.FirstTwicePerMthInvoiceDOM,
-              SRC.SecondTwicePerMthInvoiceDOM,
-              SRC.PublicID,
-              SRC.GWRowNumber,
-              SRC.BeanVersion,
-              SRC.IsActive,
-              SRC.LegacySourceSystem,
-              SRC.BatchId
-            FROM {{ ref('SRC', 'SRC_GUIDEWIRE') }} SRC
+              TRC.ACCOUNTNUMBER,
+              TRC.ACCOUNTNAME,
+              TRC.ACCOUNTTYPENAME,
+              TRC.PARENTACCOUNTNUMBER,
+              TRC.BILLINGLEVELNAME,
+              TRC.SEGMENT,
+              TRC.SERVICETIERNAME,
+              TRC.SECURITYZONE,
+              TRC.FIRSTNAME,
+              TRC.LASTNAME,
+              TRC.ADDRESSLINE1,
+              TRC.ADDRESSLINE2,
+              TRC.ADDRESSLINE3,
+              TRC.CITY,
+              TRC.STATE,
+              TRC.POSTALCODE,
+              TRC.ACCOUNTCLOSEDATE,
+              TRC.ACCOUNTCREATIONDATE,
+              TRC.DELIQUENCYSTATUSNAME,
+              TRC."FIRSTTWICEPERMONTH INVOICEDAYOFMONTH",
+              TRC."SECONDTWICEPERMONTH INVOICEDAYOFMONTH",
+              TRC.PUBLICID,
+              TRC.GWROWNUMBER,
+              TRC.BEANVERSION,
+              TRC.ISACTIVE,
+              TRC.LEGACYSOURCESYSTEM,
+              TRC.EDWBEANVERSION,
+              TRC.BATCHID
+            FROM {{ ref('SRC', 'TR_ROWCOUNT') }} TRC
         dependencies:
           - locationName: SRC
-            nodeName: SRC_GUIDEWIRE
+            nodeName: TR_ROWCOUNT
         join:
           joinCondition: |
-            FROM {{ ref('SRC', 'SRC_GUIDEWIRE') }} SRC
+            FROM {{ ref('SRC', 'TR_ROWCOUNT') }} TRC
         name: TGT_DIMBILLINGACCOUNT
         noLinkRefs: []
   name: TGT_DIMBILLINGACCOUNT
