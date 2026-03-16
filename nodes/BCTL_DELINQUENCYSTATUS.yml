@@ -16,7 +16,7 @@ operation:
           columnCounter: C1
           stepCounter: S13
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         name: ID
@@ -35,10 +35,29 @@ operation:
           columnCounter: C2
           stepCounter: S13
         config: {}
-        dataType: VARCHAR(100)
+        dataType: VARCHAR
         defaultValue: ""
         description: ""
         name: NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C3
+          stepCounter: S13
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: TYPECODE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
