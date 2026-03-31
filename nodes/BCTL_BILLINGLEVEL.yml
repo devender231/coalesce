@@ -1,0 +1,54 @@
+fileVersion: 1
+id: S10
+name: BCTL_BILLINGLEVEL
+operation:
+  database: "PC_COALESCE_DB"
+  deployEnabled: true
+  description: "Source table for billing level type codes"
+  locationName: SRC
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C1
+          stepCounter: S10
+        config: {}
+        dataType: INTEGER
+        defaultValue: ""
+        description: ""
+        name: ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: C2
+          stepCounter: S10
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: BCTL_BILLINGLEVEL
+  schema: "RAW"
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
