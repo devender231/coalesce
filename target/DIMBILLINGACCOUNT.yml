@@ -1,0 +1,758 @@
+fileVersion: 1.0.0
+id: TARGET_DIMBILLINGACCOUNT
+name: DIMBILLINGACCOUNT
+description: |
+  Target dimension table for Billing Account.
+  Loads and updates Snowflake table DIMBILLINGACCOUNT from GuideWire and related source tables.
+  Implements SCD Type 1 logic with INSERT/UPDATE operations.
+  Package: EDW_BC_Load_DimBillingAccount
+
+type: target
+metadata:
+  package_name: EDW_BC_Load_DimBillingAccount
+  load_type: INSERT_UPDATE
+  scd_type: TYPE_1
+  target_table: DIMBILLINGACCOUNT
+  database: SNOWFLAKE
+  schema: EDW
+
+sources:
+  - id: SRC_BC_ACCOUNT
+    name: BC_ACCOUNT
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_ACCOUNT
+    columns:
+      - ID
+      - PUBLICID
+      - ACCOUNTTYPE
+      - BILLINGLEVEL
+      - SERVICETIER
+      - SECURITYZONEID
+      - DELINQUENCYSTATUS
+      - SEGMENT
+      - ACCOUNTNUMBER
+      - ACCOUNTHOLDERNAME
+      - CREATETIME
+      - UPDATETIME
+      - BEANVERSION
+      - RETIRED
+      - ARCHIVEPARTITION
+      - FROZENSET
+      - ACCOUNTORGTYPE
+
+  - id: SRC_BC_PARENTACCT
+    name: BC_PARENTACCT
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_PARENTACCT
+    columns:
+      - ID
+      - OWNERID
+      - PARENTID
+      - SUBTYPE
+
+  - id: SRC_BC_ACCOUNTCONTACT
+    name: BC_ACCOUNTCONTACT
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_ACCOUNTCONTACT
+    columns:
+      - ID
+      - ACCOUNTID
+      - CONTACTID
+      - CREATETIME
+      - UPDATETIME
+
+  - id: SRC_BC_ACCOUNTCONTACTROLE
+    name: BC_ACCOUNTCONTACTROLE
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_ACCOUNTCONTACTROLE
+    columns:
+      - ID
+      - ACCOUNTCONTACTID
+      - ROLE
+      - CREATETIME
+      - UPDATETIME
+
+  - id: SRC_BCTL_ACCOUNTROLE
+    name: BCTL_ACCOUNTROLE
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_ACCOUNTROLE
+    columns:
+      - ID
+      - TYPECODE
+
+  - id: SRC_BC_CONTACT
+    name: BC_CONTACT
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_CONTACT
+    columns:
+      - ID
+      - PUBLICID
+      - PRIMARYADDRESSID
+      - FIRSTNAME
+      - LASTNAME
+      - EMAILADDRESS1
+
+  - id: SRC_BC_ADDRESS
+    name: BC_ADDRESS
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_ADDRESS
+    columns:
+      - ID
+      - PUBLICID
+      - ADDRESSLINE1
+      - ADDRESSLINE2
+      - CITY
+      - STATE
+      - POSTALCODE
+      - COUNTRY
+      - ADDRESSTYPE
+
+  - id: SRC_BCTL_STATE
+    name: BCTL_STATE
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_STATE
+    columns:
+      - ID
+      - TYPECODE
+
+  - id: SRC_BCTL_ACCOUNTTYPE
+    name: BCTL_ACCOUNTTYPE
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_ACCOUNTTYPE
+    columns:
+      - ID
+      - TYPECODE
+
+  - id: SRC_BCTL_BILLINGLEVEL
+    name: BCTL_BILLINGLEVEL
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_BILLINGLEVEL
+    columns:
+      - ID
+      - TYPECODE
+
+  - id: SRC_BCTL_CUSTOMERSERVICETIER
+    name: BCTL_CUSTOMERSERVICETIER
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_CUSTOMERSERVICETIER
+    columns:
+      - ID
+      - TYPECODE
+
+  - id: SRC_BC_SECURITYZONE
+    name: BC_SECURITYZONE
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BC_SECURITYZONE
+    columns:
+      - ID
+      - PUBLICID
+      - NAME
+      - DESCRIPTION
+
+  - id: SRC_BCTL_DELINQUENCYSTATUS
+    name: BCTL_DELINQUENCYSTATUS
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_DELINQUENCYSTATUS
+    columns:
+      - ID
+      - TYPECODE
+
+  - id: SRC_BCTL_ACCOUNTSEGMENT
+    name: BCTL_ACCOUNTSEGMENT
+    type: source
+    database: GUIDEWIRE
+    schema: BC
+    table: BCTL_ACCOUNTSEGMENT
+    columns:
+      - ID
+      - TYPECODE
+
+  - id: SRC_DIMBILLINGACCOUNT_LOOKUP
+    name: DIMBILLINGACCOUNT
+    type: source
+    database: SNOWFLAKE
+    schema: EDW
+    table: DIMBILLINGACCOUNT
+    columns:
+      - PUBLICID
+      - BEANVERSION
+
+joins:
+  - id: JOIN_ACCOUNTTYPE
+    name: BC_ACCOUNT_TO_ACCOUNTTYPE
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNT
+    right_source: SRC_BCTL_ACCOUNTTYPE
+    join_conditions:
+      - left_column: ACCOUNTTYPE
+        right_column: ID
+        operator: "="
+
+  - id: JOIN_PARENTACCT
+    name: BC_ACCOUNT_TO_PARENTACCT
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNT
+    right_source: SRC_BC_PARENTACCT
+    join_conditions:
+      - left_column: ID
+        right_column: OWNERID
+        operator: "="
+
+  - id: JOIN_BILLINGLEVEL
+    name: BC_ACCOUNT_TO_BILLINGLEVEL
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNT
+    right_source: SRC_BCTL_BILLINGLEVEL
+    join_conditions:
+      - left_column: BILLINGLEVEL
+        right_column: ID
+        operator: "="
+
+  - id: JOIN_SERVICETIER
+    name: BC_ACCOUNT_TO_SERVICETIER
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNT
+    right_source: SRC_BCTL_CUSTOMERSERVICETIER
+    join_conditions:
+      - left_column: SERVICETIER
+        right_column: ID
+        operator: "="
+
+  - id: JOIN_SECURITYZONE
+    name: BC_ACCOUNT_TO_SECURITYZONE
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNT
+    right_source: SRC_BC_SECURITYZONE
+    join_conditions:
+      - left_column: SECURITYZONEID
+        right_column: ID
+        operator: "="
+
+  - id: JOIN_DELINQUENCYSTATUS
+    name: BC_ACCOUNT_TO_DELINQUENCYSTATUS
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNT
+    right_source: SRC_BCTL_DELINQUENCYSTATUS
+    join_conditions:
+      - left_column: DELINQUENCYSTATUS
+        right_column: ID
+        operator: "="
+
+  - id: JOIN_ACCOUNTSEGMENT
+    name: BC_ACCOUNT_TO_ACCOUNTSEGMENT
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNT
+    right_source: SRC_BCTL_ACCOUNTSEGMENT
+    join_conditions:
+      - left_column: SEGMENT
+        right_column: ID
+        operator: "="
+
+  - id: JOIN_ACCOUNTCONTACT
+    name: BC_ACCOUNT_TO_ACCOUNTCONTACT
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNT
+    right_source: SRC_BC_ACCOUNTCONTACT
+    join_conditions:
+      - left_column: ID
+        right_column: ACCOUNTID
+        operator: "="
+
+  - id: JOIN_ACCOUNTCONTACTROLE
+    name: ACCOUNTCONTACT_TO_CONTACTROLE
+    type: INNER
+    left_source: SRC_BC_ACCOUNTCONTACT
+    right_source: SRC_BC_ACCOUNTCONTACTROLE
+    join_conditions:
+      - left_column: ID
+        right_column: ACCOUNTCONTACTID
+        operator: "="
+
+  - id: JOIN_ACCOUNTROLE
+    name: CONTACTROLE_TO_ACCOUNTROLE
+    type: INNER
+    left_source: SRC_BC_ACCOUNTCONTACTROLE
+    right_source: SRC_BCTL_ACCOUNTROLE
+    join_conditions:
+      - left_column: ROLE
+        right_column: ID
+        operator: "="
+    additional_conditions:
+      - column: TYPECODE
+        operator: "="
+        value: "'insured'"
+        source: SRC_BCTL_ACCOUNTROLE
+
+  - id: JOIN_CONTACT
+    name: ACCOUNTCONTACT_TO_CONTACT
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNTCONTACT
+    right_source: SRC_BC_CONTACT
+    join_conditions:
+      - left_column: CONTACTID
+        right_column: ID
+        operator: "="
+
+  - id: JOIN_ADDRESS
+    name: CONTACT_TO_ADDRESS
+    type: LEFT_OUTER
+    left_source: SRC_BC_CONTACT
+    right_source: SRC_BC_ADDRESS
+    join_conditions:
+      - left_column: PRIMARYADDRESSID
+        right_column: ID
+        operator: "="
+
+  - id: JOIN_STATE
+    name: ADDRESS_TO_STATE
+    type: LEFT_OUTER
+    left_source: SRC_BC_ADDRESS
+    right_source: SRC_BCTL_STATE
+    join_conditions:
+      - left_column: STATE
+        right_column: ID
+        operator: "="
+
+  - id: JOIN_LOOKUP_DIMBILLINGACCOUNT
+    name: LOOKUP_EXISTING_DIMENSION
+    type: LEFT_OUTER
+    left_source: SRC_BC_ACCOUNT
+    right_source: SRC_DIMBILLINGACCOUNT_LOOKUP
+    join_conditions:
+      - left_column: PUBLICID
+        right_column: PUBLICID
+        operator: "="
+    description: "Lookup existing dimension records for SCD Type 1 comparison"
+
+transformations:
+  - id: TRANS_ROW_COUNT_SOURCE
+    name: ROW_COUNT_SOURCE
+    type: ROW_COUNT
+    description: "Count source rows for audit"
+    input_source: SRC_BC_ACCOUNT
+    variable_name: SourceRowCount
+
+  - id: TRANS_DERIVED_BATCHID
+    name: DERIVED_BATCHID
+    type: DERIVED_COLUMN
+    description: "Add BatchID column from SSIS variable"
+    input_source: SRC_BC_ACCOUNT
+    derived_columns:
+      - name: BATCHID
+        data_type: INTEGER
+        expression: "@[User::BatchID]"
+        description: "Batch identifier from SSIS package variable"
+
+  - id: TRANS_LOOKUP_BEANVERSION
+    name: LOOKUP_BEANVERSION
+    type: LOOKUP
+    description: "Lookup existing BeanVersion from DIMBILLINGACCOUNT for SCD comparison"
+    lookup_source: SRC_DIMBILLINGACCOUNT_LOOKUP
+    lookup_columns:
+      - source_column: PUBLICID
+        lookup_column: PUBLICID
+    return_columns:
+      - column: BEANVERSION
+        alias: EDW_BEANVERSION
+    no_match_behavior: NULL
+
+  - id: TRANS_CONDITIONAL_SPLIT
+    name: CONDITIONAL_SPLIT_SCD
+    type: CONDITIONAL_SPLIT
+    description: "Route rows based on SCD Type 1 logic"
+    conditions:
+      - name: UNCHANGED_ROWS
+        expression: "BEANVERSION == EDW_BEANVERSION"
+        description: "Rows with no changes - no action needed"
+        output_name: UNCHANGED
+      - name: UPDATE_ROWS
+        expression: "BEANVERSION != EDW_BEANVERSION AND EDW_BEANVERSION IS NOT NULL"
+        description: "Rows with changes - update existing records"
+        output_name: UPDATE
+      - name: INSERT_ROWS
+        expression: "EDW_BEANVERSION IS NULL"
+        description: "New rows - insert as new records"
+        output_name: INSERT
+    default_output: ERROR
+
+  - id: TRANS_ROW_COUNT_UNCHANGED
+    name: ROW_COUNT_UNCHANGED
+    type: ROW_COUNT
+    description: "Count unchanged rows for audit"
+    input_source: TRANS_CONDITIONAL_SPLIT
+    input_path: UNCHANGED
+    variable_name: UnchangedRowCount
+
+  - id: TRANS_ROW_COUNT_INSERT
+    name: ROW_COUNT_INSERT
+    type: ROW_COUNT
+    description: "Count insert rows for audit"
+    input_source: TRANS_CONDITIONAL_SPLIT
+    input_path: INSERT
+    variable_name: InsertRowCount
+
+  - id: TRANS_ROW_COUNT_UPDATE
+    name: ROW_COUNT_UPDATE
+    type: ROW_COUNT
+    description: "Count update rows for audit"
+    input_source: TRANS_CONDITIONAL_SPLIT
+    input_path: UPDATE
+    variable_name: UpdateRowCount
+
+target:
+  database: SNOWFLAKE
+  schema: EDW
+  table: DIMBILLINGACCOUNT
+  load_type: INSERT_UPDATE
+  scd_type: TYPE_1
+  
+  insert_mapping:
+    source: TRANS_CONDITIONAL_SPLIT
+    source_path: INSERT
+    columns:
+      - source: BC_ACCOUNT.PUBLICID
+        target: PUBLICID
+        data_type: VARCHAR(50)
+        primary_key: true
+      
+      - source: BC_ACCOUNT.ID
+        target: ACCOUNT_ID
+        data_type: BIGINT
+      
+      - source: BC_ACCOUNT.ACCOUNTNUMBER
+        target: ACCOUNTNUMBER
+        data_type: VARCHAR(50)
+      
+      - source: BC_ACCOUNT.ACCOUNTHOLDERNAME
+        target: ACCOUNTHOLDERNAME
+        data_type: VARCHAR(255)
+      
+      - source: BCTL_ACCOUNTTYPE.TYPECODE
+        target: ACCOUNTTYPE
+        data_type: VARCHAR(50)
+      
+      - source: BC_PARENTACCT.PARENTID
+        target: PARENTACCOUNTID
+        data_type: BIGINT
+      
+      - source: BCTL_BILLINGLEVEL.TYPECODE
+        target: BILLINGLEVEL
+        data_type: VARCHAR(50)
+      
+      - source: BCTL_CUSTOMERSERVICETIER.TYPECODE
+        target: SERVICETIER
+        data_type: VARCHAR(50)
+      
+      - source: BC_SECURITYZONE.PUBLICID
+        target: SECURITYZONE_PUBLICID
+        data_type: VARCHAR(50)
+      
+      - source: BC_SECURITYZONE.NAME
+        target: SECURITYZONE_NAME
+        data_type: VARCHAR(255)
+      
+      - source: BCTL_DELINQUENCYSTATUS.TYPECODE
+        target: DELINQUENCYSTATUS
+        data_type: VARCHAR(50)
+      
+      - source: BCTL_ACCOUNTSEGMENT.TYPECODE
+        target: ACCOUNTSEGMENT
+        data_type: VARCHAR(50)
+      
+      - source: BC_ACCOUNT.ACCOUNTORGTYPE
+        target: ACCOUNTORGTYPE
+        data_type: VARCHAR(50)
+      
+      - source: BC_CONTACT.PUBLICID
+        target: INSURED_CONTACT_PUBLICID
+        data_type: VARCHAR(50)
+      
+      - source: BC_CONTACT.FIRSTNAME
+        target: INSURED_FIRSTNAME
+        data_type: VARCHAR(100)
+      
+      - source: BC_CONTACT.LASTNAME
+        target: INSURED_LASTNAME
+        data_type: VARCHAR(100)
+      
+      - source: BC_CONTACT.EMAILADDRESS1
+        target: INSURED_EMAIL
+        data_type: VARCHAR(255)
+      
+      - source: BC_ADDRESS.ADDRESSLINE1
+        target: INSURED_ADDRESS1
+        data_type: VARCHAR(255)
+      
+      - source: BC_ADDRESS.ADDRESSLINE2
+        target: INSURED_ADDRESS2
+        data_type: VARCHAR(255)
+      
+      - source: BC_ADDRESS.CITY
+        target: INSURED_CITY
+        data_type: VARCHAR(100)
+      
+      - source: BCTL_STATE.TYPECODE
+        target: INSURED_STATE
+        data_type: VARCHAR(50)
+      
+      - source: BC_ADDRESS.POSTALCODE
+        target: INSURED_POSTALCODE
+        data_type: VARCHAR(20)
+      
+      - source: BC_ADDRESS.COUNTRY
+        target: INSURED_COUNTRY
+        data_type: VARCHAR(50)
+      
+      - source: BC_ACCOUNT.CREATETIME
+        target: SOURCE_CREATETIME
+        data_type: TIMESTAMP
+      
+      - source: BC_ACCOUNT.UPDATETIME
+        target: SOURCE_UPDATETIME
+        data_type: TIMESTAMP
+      
+      - source: BC_ACCOUNT.BEANVERSION
+        target: BEANVERSION
+        data_type: INTEGER
+      
+      - source: BC_ACCOUNT.RETIRED
+        target: RETIRED
+        data_type: INTEGER
+      
+      - source: BC_ACCOUNT.ARCHIVEPARTITION
+        target: ARCHIVEPARTITION
+        data_type: BIGINT
+      
+      - source: TRANS_DERIVED_BATCHID.BATCHID
+        target: BATCHID
+        data_type: INTEGER
+      
+      - source: CURRENT_TIMESTAMP
+        target: EDW_CREATEDATE
+        data_type: TIMESTAMP
+        expression: "CURRENT_TIMESTAMP"
+      
+      - source: CURRENT_TIMESTAMP
+        target: EDW_UPDATEDATE
+        data_type: TIMESTAMP
+        expression: "CURRENT_TIMESTAMP"
+  
+  update_mapping:
+    source: TRANS_CONDITIONAL_SPLIT
+    source_path: UPDATE
+    update_key:
+      - PUBLICID
+    columns:
+      - source: BC_ACCOUNT.ACCOUNTNUMBER
+        target: ACCOUNTNUMBER
+        data_type: VARCHAR(50)
+      
+      - source: BC_ACCOUNT.ACCOUNTHOLDERNAME
+        target: ACCOUNTHOLDERNAME
+        data_type: VARCHAR(255)
+      
+      - source: BCTL_ACCOUNTTYPE.TYPECODE
+        target: ACCOUNTTYPE
+        data_type: VARCHAR(50)
+      
+      - source: BC_PARENTACCT.PARENTID
+        target: PARENTACCOUNTID
+        data_type: BIGINT
+      
+      - source: BCTL_BILLINGLEVEL.TYPECODE
+        target: BILLINGLEVEL
+        data_type: VARCHAR(50)
+      
+      - source: BCTL_CUSTOMERSERVICETIER.TYPECODE
+        target: SERVICETIER
+        data_type: VARCHAR(50)
+      
+      - source: BC_SECURITYZONE.PUBLICID
+        target: SECURITYZONE_PUBLICID
+        data_type: VARCHAR(50)
+      
+      - source: BC_SECURITYZONE.NAME
+        target: SECURITYZONE_NAME
+        data_type: VARCHAR(255)
+      
+      - source: BCTL_DELINQUENCYSTATUS.TYPECODE
+        target: DELINQUENCYSTATUS
+        data_type: VARCHAR(50)
+      
+      - source: BCTL_ACCOUNTSEGMENT.TYPECODE
+        target: ACCOUNTSEGMENT
+        data_type: VARCHAR(50)
+      
+      - source: BC_ACCOUNT.ACCOUNTORGTYPE
+        target: ACCOUNTORGTYPE
+        data_type: VARCHAR(50)
+      
+      - source: BC_CONTACT.PUBLICID
+        target: INSURED_CONTACT_PUBLICID
+        data_type: VARCHAR(50)
+      
+      - source: BC_CONTACT.FIRSTNAME
+        target: INSURED_FIRSTNAME
+        data_type: VARCHAR(100)
+      
+      - source: BC_CONTACT.LASTNAME
+        target: INSURED_LASTNAME
+        data_type: VARCHAR(100)
+      
+      - source: BC_CONTACT.EMAILADDRESS1
+        target: INSURED_EMAIL
+        data_type: VARCHAR(255)
+      
+      - source: BC_ADDRESS.ADDRESSLINE1
+        target: INSURED_ADDRESS1
+        data_type: VARCHAR(255)
+      
+      - source: BC_ADDRESS.ADDRESSLINE2
+        target: INSURED_ADDRESS2
+        data_type: VARCHAR(255)
+      
+      - source: BC_ADDRESS.CITY
+        target: INSURED_CITY
+        data_type: VARCHAR(100)
+      
+      - source: BCTL_STATE.TYPECODE
+        target: INSURED_STATE
+        data_type: VARCHAR(50)
+      
+      - source: BC_ADDRESS.POSTALCODE
+        target: INSURED_POSTALCODE
+        data_type: VARCHAR(20)
+      
+      - source: BC_ADDRESS.COUNTRY
+        target: INSURED_COUNTRY
+        data_type: VARCHAR(50)
+      
+      - source: BC_ACCOUNT.UPDATETIME
+        target: SOURCE_UPDATETIME
+        data_type: TIMESTAMP
+      
+      - source: BC_ACCOUNT.BEANVERSION
+        target: BEANVERSION
+        data_type: INTEGER
+      
+      - source: BC_ACCOUNT.RETIRED
+        target: RETIRED
+        data_type: INTEGER
+      
+      - source: BC_ACCOUNT.ARCHIVEPARTITION
+        target: ARCHIVEPARTITION
+        data_type: BIGINT
+      
+      - source: TRANS_DERIVED_BATCHID.BATCHID
+        target: BATCHID
+        data_type: INTEGER
+      
+      - source: CURRENT_TIMESTAMP
+        target: EDW_UPDATEDATE
+        data_type: TIMESTAMP
+        expression: "CURRENT_TIMESTAMP"
+
+audit:
+  row_counts:
+    - name: SOURCE_ROW_COUNT
+      variable: SourceRowCount
+      description: "Total rows read from BC_ACCOUNT source"
+    
+    - name: UNCHANGED_ROW_COUNT
+      variable: UnchangedRowCount
+      description: "Rows with no changes (BeanVersion matches)"
+    
+    - name: INSERT_ROW_COUNT
+      variable: InsertRowCount
+      description: "New rows inserted into DIMBILLINGACCOUNT"
+    
+    - name: UPDATE_ROW_COUNT
+      variable: UpdateRowCount
+      description: "Existing rows updated in DIMBILLINGACCOUNT"
+
+execution:
+  pre_sql:
+    - "-- Pre-execution validation"
+    - "-- Ensure target table exists"
+  
+  post_sql:
+    - "-- Post-execution audit"
+    - "-- Log row counts to audit table"
+    - "INSERT INTO EDW.AUDIT_LOG (PACKAGE_NAME, SOURCE_COUNT, INSERT_COUNT, UPDATE_COUNT, UNCHANGED_COUNT, BATCH_ID, EXECUTION_TIME)"
+    - "VALUES ('EDW_BC_Load_DimBillingAccount', @SourceRowCount, @InsertRowCount, @UpdateRowCount, @UnchangedRowCount, @[User::BatchID], CURRENT_TIMESTAMP)"
+
+data_quality:
+  validations:
+    - name: CHECK_PRIMARY_KEY_NOT_NULL
+      type: NOT_NULL
+      columns:
+        - PUBLICID
+      severity: ERROR
+    
+    - name: CHECK_BEANVERSION_POSITIVE
+      type: RANGE
+      columns:
+        - BEANVERSION
+      min_value: 0
+      severity: WARNING
+    
+    - name: CHECK_DUPLICATE_PUBLICID
+      type: UNIQUENESS
+      columns:
+        - PUBLICID
+      severity: ERROR
+
+dependencies:
+  upstream:
+    - source_yaml: sources/BC_ACCOUNT.yml
+    - source_yaml: sources/BC_PARENTACCT.yml
+    - source_yaml: sources/BC_ACCOUNTCONTACT.yml
+    - source_yaml: sources/BC_ACCOUNTCONTACTROLE.yml
+    - source_yaml: sources/BCTL_ACCOUNTROLE.yml
+    - source_yaml: sources/BC_CONTACT.yml
+    - source_yaml: sources/BC_ADDRESS.yml
+    - source_yaml: sources/BCTL_STATE.yml
+    - source_yaml: sources/BCTL_ACCOUNTTYPE.yml
+    - source_yaml: sources/BCTL_BILLINGLEVEL.yml
+    - source_yaml: sources/BCTL_CUSTOMERSERVICETIER.yml
+    - source_yaml: sources/BC_SECURITYZONE.yml
+    - source_yaml: sources/BCTL_DELINQUENCYSTATUS.yml
+    - source_yaml: sources/BCTL_ACCOUNTSEGMENT.yml
+    - source_yaml: sources/DIMBILLINGACCOUNT_LOOKUP.yml
+
+version_control:
+  created_by: Agent_3_Target_Generator
+  created_date: 2025-01-22
+  last_modified_by: Agent_3_Target_Generator
+  last_modified_date: 2025-01-22
+  version: 1.0.0
+  change_log:
+    - version: 1.0.0
+      date: 2025-01-22
+      description: Initial creation of DIMBILLINGACCOUNT target YAML with complete SCD Type 1 logic, 15 source dependencies, 14 joins, and full transformation pipeline
